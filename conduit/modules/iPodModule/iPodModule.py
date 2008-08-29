@@ -71,7 +71,7 @@ class iPodFactory(VolumeFactory.VolumeFactory):
     def get_category(self, udi, **kwargs):
         return DataProviderCategory.DataProviderCategory(
                     kwargs['label'],
-                    "multimedia-player-ipod-standard-color",
+                    "multimedia-player-ipod-video-white",
                     kwargs['mount'])
 
     def get_dataproviders(self, udi, **kwargs):
@@ -348,7 +348,6 @@ class IPodPhotoSink(IPodBase):
     _in_type_ = "file/photo"
     _out_type_ = "file/photo"
     _icon_ = "image-x-generic"
-    _configurable_ = True
 
     SAFE_PHOTO_ALBUM = "Photo Library"
 
@@ -774,7 +773,7 @@ IPOD_AUDIO_ENCODINGS = {
 
 class IPodMusicTwoWay(IPodMediaTwoWay):
 
-    _name_ = "Music"
+    _name_ = "iPod Music"
     _description_ = "Sync your iPod music"
     _module_type_ = "twoway"
     _in_type_ = "file/audio"
@@ -798,7 +797,7 @@ IPOD_VIDEO_ENCODINGS = {
 
 class IPodVideoTwoWay(IPodMediaTwoWay):
 
-    _name_ = "Video"
+    _name_ = "iPod Video"
     _description_ = "Sync your iPod videos"
     _module_type_ = "twoway"
     _in_type_ = "file/video"

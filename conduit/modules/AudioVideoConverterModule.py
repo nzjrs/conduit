@@ -11,20 +11,14 @@ import conduit.datatypes.Audio as Audio
 import conduit.datatypes.Video as Video
 
 import gobject
+import pygst
+pygst.require('0.10')
+import gst
+from gst.extend import discoverer
 
-try:
-    import gst
-    from gst.extend import discoverer
-    from gst import Pipeline
-    MODULES = {
-        "AudioVideoConverter" :  { "type": "converter" }
-    }
-    log.info("Module Information: %s" % Utils.get_module_information(gst, "pygst_version"))
-except ImportError:
-    class Pipeline: 
-        pass    
-    MODULES = {}
-    log.info("GStreamer transcoding disabled")
+MODULES = {
+    "AudioVideoConverter" :  { "type": "converter" }
+}
 
 '''
 GStreamer Conversion properties
@@ -54,7 +48,7 @@ These are the properties the GStreamer converter can take:
     specified, the other is calculated to keep the video proportional.    
 '''
 
-class GStreamerConversionPipeline(Pipeline):
+class GStreamerConversionPipeline(gst.Pipeline):
     """
     Converts between different multimedia formats.
     This class is event-based and needs a mainloop to work properly.
@@ -78,7 +72,7 @@ class GStreamerConversionPipeline(Pipeline):
         
     
     def __init__(self, **kwargs):        
-        Pipeline.__init__(self)
+        gst.Pipeline.__init__(self)
         #if 'file_mux' not in kwargs:
         #    raise Exception('Output file format not specified')        
         self._has_video_enc = ('vcodec' in kwargs) or ('vcodec_pass1' in kwargs) or ('vcodec_pass2' in kwargs)
