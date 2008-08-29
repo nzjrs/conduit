@@ -18,7 +18,6 @@ log = logging.getLogger("gtkui.Canvas")
 
 import conduit.utils as Utils
 import conduit.Conduit as Conduit
-import conduit.Knowledge as Knowledge
 import conduit.gtkui.Tree
 import conduit.gtkui.Util as GtkUtil
 
@@ -26,6 +25,24 @@ log.info("Module Information: %s" % Utils.get_module_information(goocanvas, "pyg
 
 class _StyleMixin:
 
+    STYLES = (
+        "fg",
+        "bg",
+        "light",
+        "dark",
+        "mid",
+        "text",
+        "base",
+        "text_aa"
+        )
+    STYLE_STATES = (
+        "normal",
+        "active",
+        "prelight",
+        "selected",
+        "insensitive"
+        )
+        
     def _get_colors_and_state(self, styleName, stateName):
         style = self.get_gtk_style()
         if style:
@@ -147,7 +164,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
     ]
 
     WELCOME_MESSAGE = _("Drag a Data Provider here to continue")
-    def __init__(self, parentWindow, typeConverter, syncManager, dataproviderMenu, conduitMenu, msg):
+    def __init__(self, parentWindow, typeConverter, syncManager, dataproviderMenu, conduitMenu):
         """
         Draws an empty canvas of the appropriate size
         """
@@ -166,7 +183,6 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         self.sync_manager = syncManager
         self.typeConverter = typeConverter
         self.parentWindow = parentWindow
-        self.msg = msg
 
         self._setup_popup_menus(dataproviderMenu, conduitMenu)
 
@@ -195,46 +211,9 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         
         #Show a friendly welcome message on the canvas the first time the
         #application is launched
-        self.welcome = None
-        self._maybe_show_welcome()
+        self.welcomeMessage = None
+        self._show_welcome_message()
         
-    def _do_hint(self, msgarea, respid):
-        if respid == Knowledge.HINT_BLANK_CANVAS:
-            new = conduit.GLOBALS.moduleManager.get_module_wrapper_with_instance("FolderTwoWay")
-            self.add_dataprovider_to_canvas(
-                                "FolderTwoWay",
-                                new,
-                                1,1
-                                )
-
-    def _make_hint(self, hint, timeout=4):
-        if Knowledge.HINT_TEXT[hint][2]:
-            buttons = [("Show me",hint)]
-        else:
-            buttons = []
-        h = self.msg.new_from_text_and_icon(
-                            gtk.STOCK_INFO,
-                            Knowledge.HINT_TEXT[hint][0],
-                            Knowledge.HINT_TEXT[hint][1],
-                            buttons=buttons,
-                            timeout=timeout)
-        h.connect("response", self._do_hint)
-        h.show_all()    
-        
-    def _show_hint(self, conduitCanvasItem, dataproviderCanvasItem, newItem):
-        if not self.msg:
-            return
-            
-        if not conduit.GLOBALS.settings.get("gui_show_hints"):
-            return
-            
-        if newItem == conduitCanvasItem:
-            self._make_hint(Knowledge.HINT_ADD_DATAPROVIDER)
-        elif newItem == dataproviderCanvasItem:
-            #check if we have a source and a sink
-            if conduitCanvasItem.model.can_sync():
-                self._make_hint(Knowledge.HINT_RIGHT_CLICK_CONFIGURE)
-            
     def _update_for_theme(self, *args):
         if not self.get_gtk_style() or self._changing_style:
             return
@@ -244,8 +223,8 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
                 "background_color_rgb",
                 self.get_style_color_int_rgb("bg","normal")
                 )
-        if self.welcome:
-            self.welcome.set_property(
+        if self.welcomeMessage:
+            self.welcomeMessage.set_property(
                 "fill_color_rgba",
                 self.get_style_color_int_rgba("text","normal")
                 )
@@ -289,44 +268,41 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         conduitPopupXML.signal_autoconnect(self)
         dataproviderPopupXML.signal_autoconnect(self)
 
-    def _delete_welcome(self):
-        idx = self.root.find_child(self.welcome)
-        if idx != -1:
-            self.root.remove_child(idx)
-        self.welcome = None
-
-    def _resize_welcome(self, width):
-        self.welcome.set_width(width)
+    def _show_welcome_message(self):
+        """
+        Adds a friendly welcome message to the canvas.
         
-    def _create_welcome(self):
-        c_x,c_y,c_w,c_h = self.get_bounds()
-        self.welcome = ConduitCanvasItem(
-                                parent=self.root, 
-                                model=None,
-                                width=c_w
-                                )
+        Does so only if there are no conduits, otherwise it would just
+        get in the way.
+        """
+        if self.welcomeMessage == None:
+            c_x,c_y,c_w,c_h = self.get_bounds()
+            self.welcomeMessage = goocanvas.Text(  
+                                    x=c_w/2, 
+                                    y=c_w/3, 
+                                    width=3*c_w/5, 
+                                    text=self.WELCOME_MESSAGE, 
+                                    anchor=gtk.ANCHOR_CENTER,
+                                    alignment=pango.ALIGN_CENTER,
+                                    font="Sans 10",
+                                    fill_color_rgba=self.get_style_color_int_rgba("text","normal"),
+                                    )
 
-    def _maybe_show_welcome(self):
-        """
-        Adds a friendly welcome to the canvas. Only does so only if 
-        there are no conduits, otherwise it would just get in the way.
-        """
+        idx = self.root.find_child(self.welcomeMessage)
         if self.model == None or (self.model != None and self.model.num_conduits() == 0):
-            if self.welcome == None:
-                self._create_welcome()
-            if self.msg and conduit.GLOBALS.settings.get("gui_show_hints"):
-                self._make_hint(Knowledge.HINT_BLANK_CANVAS, timeout=0)
-
-        elif self.welcome:
-            self._delete_welcome()
+            if idx == -1:
+                self.root.add_child(self.welcomeMessage,-1)
+        else:
+            if idx != -1:
+                self.root.remove_child(idx)
+                self.welcomeMessage = None
 
     def _get_child_conduit_canvas_items(self):
         items = []
         for i in range(0, self.root.get_n_children()):
             condItem = self.root.get_child(i)
             if isinstance(condItem, ConduitCanvasItem):
-                if condItem != self.welcome:
-                    items.append(condItem)
+                items.append(condItem)
         return items
 
     def _get_child_dataprovider_canvas_items(self):
@@ -344,10 +320,6 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
                     allocation.width,
                     self._get_minimum_canvas_size(allocation.height)
                     )
-
-        if self.welcome:
-            self._resize_welcome(allocation.width)
-
         for i in self._get_child_conduit_canvas_items():
             i.set_width(allocation.width)
 
@@ -434,8 +406,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
             allocH = self.get_allocation().height
     
         bottom = self._get_bottom_of_conduits_coord()
-        #return allocH-1 to stop vertical scroll bar
-        return max(bottom + ConduitCanvasItem.WIDGET_HEIGHT + 20, allocH-1)
+        return max(bottom + ConduitCanvasItem.WIDGET_HEIGHT + 20, allocH)
         
     def _remove_overlap(self):
         """
@@ -471,7 +442,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
                     log.warn("Error finding item")
         self._remove_overlap()
 
-        self._maybe_show_welcome()
+        self._show_welcome_message()
         c_x,c_y,c_w,c_h = self.get_bounds()
         self.set_bounds(
                     0,
@@ -507,15 +478,13 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         conduitAdded.connect("dataprovider-added", self.on_dataprovider_added, conduitCanvasItem)
         conduitAdded.connect("dataprovider-removed", self.on_dataprovider_removed, conduitCanvasItem)
 
-        self._maybe_show_welcome()
+        self._show_welcome_message()
         self.set_bounds(
                     0,
                     0,
                     c_w,
                     self._get_minimum_canvas_size()
                     )
-
-        self._show_hint(conduitCanvasItem, None, conduitCanvasItem)
 
     def on_dataprovider_removed(self, sender, dataproviderRemoved, conduitCanvasItem):
         for item in self._get_child_dataprovider_canvas_items():
@@ -540,8 +509,6 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         item.connect('button-press-event', self._on_dataprovider_button_press)
         conduitCanvasItem.add_dataprovider_canvas_item(item)
         self._remove_overlap()
-        
-        self._show_hint(conduitCanvasItem, item, item)
 
     def get_sync_set(self):
         return self.model
@@ -649,7 +616,6 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         @type y: C{int}
         @returns: The conduit that the dataprovider was added to
         """
-        parent = None
         existing = self.get_item_at(x,y,False)
         c_x,c_y,c_w,c_h = self.get_bounds()
 
@@ -658,29 +624,19 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
             trySourceFirst = True
         else:
             trySourceFirst = False
-            
-        #recurse up the canvas objects to determine if we have been dropped
-        #inside an existing conduit
-        if existing:
+
+        if existing == None:
+            cond = Conduit.Conduit(self.sync_manager)
+            cond.add_dataprovider(dataproviderWrapper, trySourceFirst)
+            self.model.add_conduit(cond)
+
+        else:
             parent = existing.get_parent()
-            while parent != None and not parent == self.welcome and not isinstance(parent, ConduitCanvasItem):
+            while parent != None and not isinstance(parent, ConduitCanvasItem):
                 parent = parent.get_parent()
-
-        #if we were dropped on the welcome message we first remove that
-        if parent and parent == self.welcome:
-            self._delete_welcome()
-            #ensure a new conduit is created
-            parent = None
-
-        if parent != None:
-            #we were dropped on an existing conduit            
-            parent.model.add_dataprovider(dataproviderWrapper, trySourceFirst)
-            return
             
-        #create a new conduit
-        cond = Conduit.Conduit(self.sync_manager)
-        cond.add_dataprovider(dataproviderWrapper, trySourceFirst)
-        self.model.add_conduit(cond)
+            if parent != None:
+                parent.model.add_dataprovider(dataproviderWrapper, trySourceFirst)
 
     def clear_canvas(self):
         self.model.clear()
@@ -688,7 +644,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
 class DataProviderCanvasItem(_CanvasItem):
 
     WIDGET_WIDTH = 130
-    WIDGET_HEIGHT = 50
+    WIDGET_HEIGHT = 60
     IMAGE_TO_TEXT_PADDING = 5
     PENDING_MESSAGE = "Pending"
     MAX_TEXT_LENGTH = 10
@@ -845,20 +801,18 @@ class DataProviderCanvasItem(_CanvasItem):
     
 class ConduitCanvasItem(_CanvasItem):
 
-    BUTTONS = False
     DIVIDER = False
     FLAT_BOX = True
-    WIDGET_HEIGHT = 63.0
+    WIDGET_HEIGHT = 100
     SIDE_PADDING = 10.0
     LINE_WIDTH = 2.0
 
     def __init__(self, parent, model, width):
         _CanvasItem.__init__(self, parent, model)
 
-        if self.model:
-            self.model.connect("parameters-changed", self._on_conduit_parameters_changed)
-            self.model.connect("dataprovider-changed", self._on_conduit_dataprovider_changed)
-            self.model.connect("sync-progress", self._on_conduit_progress)
+        self.model.connect("parameters-changed", self._on_conduit_parameters_changed)
+        self.model.connect("dataprovider-changed", self._on_conduit_dataprovider_changed)
+        self.model.connect("sync-progress", self._on_conduit_progress)
 
         self.sourceItem = None
         self.sinkDpItems = []
@@ -873,10 +827,6 @@ class ConduitCanvasItem(_CanvasItem):
         self.divider = None
         #goocanvas.Points need a list of tuples, not a list of lists. Yuck
         self.dividerPoints = [(),()]
-
-        #if self.BUTTONS, show sync and stop buttons
-        self.syncButton = None
-        self.stopButton = None
 
         #Build the widget
         self._build_widget(width)
@@ -950,38 +900,6 @@ class ConduitCanvasItem(_CanvasItem):
                                     **self.get_style_properties("divider")
                                     )
             self.add_child(self.divider)
-
-        if self.BUTTONS and self.model:
-            w = gtk.Button(label="")
-            w.set_image(
-                gtk.image_new_from_stock(gtk.STOCK_REFRESH, gtk.ICON_SIZE_MENU)
-                )
-            w.set_relief(gtk.RELIEF_HALF)
-            self.syncButton = goocanvas.Widget(
-                                widget=w,
-                                x=true_width-19,
-                                y=22,
-                                width=28,
-                                height=28,
-                                anchor=gtk.ANCHOR_CENTER
-                                )
-            self.add_child(self.syncButton)
-
-            w = gtk.Button(label="")
-            w.set_image(
-                gtk.image_new_from_stock(gtk.STOCK_MEDIA_STOP, gtk.ICON_SIZE_MENU)
-                )
-            w.set_relief(gtk.RELIEF_HALF)
-            self.stopButton = goocanvas.Widget(
-                                widget=w,
-                                x=true_width-19,
-                                y=22+2+28,
-                                width=28,
-                                height=28,
-                                anchor=gtk.ANCHOR_CENTER
-                                )
-            self.add_child(self.stopButton)
-
 
     def _resize_height(self):
         sourceh =   0.0
@@ -1200,7 +1118,7 @@ class ConduitCanvasItem(_CanvasItem):
             self.dividerPoints[0] = (self.dividerPoints[0][0],h+10)
             self.dividerPoints[1] = (self.dividerPoints[0][0],h+10)
             self.divider.set_property("points", 
-                                goocanvas.Points(self.dividerPoints))
+                                goocanvas.Points(self.dividerPoints))        
 
     def set_width(self, w):
         true_width = w-self.LINE_WIDTH
@@ -1212,10 +1130,6 @@ class ConduitCanvasItem(_CanvasItem):
             self.dividerPoints[1] = (2*(true_width*0.33),self.dividerPoints[1][1])
             self.divider.set_property("points", 
                                 goocanvas.Points(self.dividerPoints))
-
-        #if self.BUTTONS:
-        #    self.syncButton.set_property("x", true_width-19)
-        #    self.stopButton.set_property("x", true_width-19)
 
         #resize the spacer
         p = goocanvas.Points([(0.0, 0.0), (true_width, 0.0)])
@@ -1237,7 +1151,7 @@ class ConnectorCanvasItem(_CanvasItem):
     CONNECTOR_YOFFSET = 20
     CONNECTOR_TEXT_XPADDING = 5
     CONNECTOR_TEXT_YPADDING = 10
-    LINE_WIDTH = 4.0
+    LINE_WIDTH = 5.0
 
     def __init__(self, parent, fromX, fromY, toX, toY, twoway, conversionExists):
         _CanvasItem.__init__(self, parent, None)
@@ -1259,7 +1173,7 @@ class ConnectorCanvasItem(_CanvasItem):
                                     line_width=0.0,
                                     **self.get_style_properties("left_end_round")
                                     )
-        points = goocanvas.Points([(self.fromX+3, self.fromY), (self.fromX-5, self.fromY)])
+        points = goocanvas.Points([(self.fromX-6, self.fromY), (self.fromX-7, self.fromY)])
         self.left_end_arrow = goocanvas.Polyline(
                             points=points,
                             line_width=5,
@@ -1272,7 +1186,7 @@ class ConnectorCanvasItem(_CanvasItem):
 
         
 
-        points = goocanvas.Points([(self.toX-3, self.toY), (self.toX+3, self.toY)])
+        points = goocanvas.Points([(self.toX-1, self.toY), (self.toX, self.toY)])
         self.right_end = goocanvas.Polyline(
                             points=points,
                             line_width=5,
@@ -1295,7 +1209,7 @@ class ConnectorCanvasItem(_CanvasItem):
 
     def _draw_arrow_ends(self):
         #Always draw the right arrow end for the correct width
-        points = goocanvas.Points([(self.toX-3, self.toY), (self.toX+3, self.toY)])
+        points = goocanvas.Points([(self.toX-1, self.toY), (self.toX, self.toY)])
         self.right_end.set_property("points",points)
         #selectively add or remove a rounded left or right arrow
         #remove both
