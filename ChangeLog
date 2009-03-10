@@ -1,3 +1,13 @@
+2009-03-10  Alexandre Rosenfeld  <airmind@gmail.com>
+
+	* conduit/gtkui/ConfigItems.py:
+	Fixed regression in item count with list items.
+	
+	* conduit/modules/BackpackModule/BackpackModule.py:
+	* conduit/modules/BackpackModule/Makefile.am:
+	* conduit/modules/BackpackModule/config.glade:
+	Port to new config system.
+
 2009-03-04  John Stowers  <john.stowers@gmail.com>
 
 	* conduit/modules/GConfModule/GConfModule.py:

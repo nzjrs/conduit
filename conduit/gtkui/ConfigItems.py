@@ -690,7 +690,7 @@ class ConfigList(ItemBase):
     def _get_value(self):
         if not self._checked_items:
             self._checked_items = sorted([row[self.VALUE_COLUMN] for row in self.model if row[self.CHECKED_COLUMN]])
-            #self._update_total()
+            self._update_total()
         return self._checked_items
     
     def _set_value(self, value):
