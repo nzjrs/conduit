@@ -389,7 +389,7 @@ class ItemBase(gobject.GObject):
             #self.widget.set_sensitive(self.enabled)
             self.set_enabled(self.enabled)
             if self.initial_value_callback:
-                self.initial_value = self.initial_value_callback()
+                self.initial_value = self.initial_value_callback(self)
             self.value = self.initial_value
     
     def save_state(self):
@@ -696,10 +696,9 @@ class ConfigList(ItemBase):
     def _set_value(self, value):
         self._checked_items = []
         try:
+            self._checked_items = sorted(value)
             for row in self.model:
-                row[self.CHECKED_COLUMN] = (row[self.VALUE_COLUMN] in value)
-                if row[self.CHECKED_COLUMN]:
-                    self._checked_items.append(row[self.VALUE_COLUMN])
+                row[self.CHECKED_COLUMN] = (row[self.VALUE_COLUMN] in self._checked_items)
         except:
             log.warn("Value %s could not be added to list %s" % (value, repr(self.title)))
         self._update_total()

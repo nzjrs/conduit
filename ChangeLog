@@ -1,6 +1,19 @@
 2009-03-10  Alexandre Rosenfeld  <airmind@gmail.com>
 
 	* conduit/gtkui/ConfigItems.py:
+	Changed initial_value_callback behaviour.
+	Changed list behaviour when a value is set. Now it remembers that value
+	even if there is not a choice avaliable. It was needed for Banshee, but
+	it might affect other dataproviders.
+	
+	* conduit/modules/BansheeModule/BansheeModule.py:
+	* conduit/modules/BansheeModule/Makefile.am:
+	* conduit/modules/BansheeModule/config.glade:
+	Port to new config system.
+
+2009-03-10  Alexandre Rosenfeld  <airmind@gmail.com>
+
+	* conduit/gtkui/ConfigItems.py:
 	Fixed regression in item count with list items.
 	
 	* conduit/modules/BackpackModule/BackpackModule.py:

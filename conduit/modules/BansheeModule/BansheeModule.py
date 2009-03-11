@@ -28,13 +28,14 @@ BANSHEE_INSTALLED = False
 BANSHEE_VERSION_1 = False
 BANSHEE_BASE_LOCATION = ""
 
-if Utils.program_installed("banshee"):
-    BANSHEE_INSTALLED = True
-elif Utils.program_installed("banshee-1"):
+
+if Utils.program_installed("banshee-1"):
     BANSHEE_INSTALLED = True
     BANSHEE_VERSION_1 = True
     import gconf
     BANSHEE_BASE_LOCATION = "file://%s/" % gconf.Client().get_string( "/apps/banshee-1/library/base_location" )
+elif Utils.program_installed("banshee"):
+    BANSHEE_INSTALLED = True
 
 if BANSHEE_INSTALLED:
     MODULES = {
@@ -66,10 +67,12 @@ class BansheeSource(DataProvider.DataSource):
         DataProvider.DataSource.__init__(self)
         #Names of the playlists we know
         self.allPlaylists = []
-        #Playlist Ids we wish to sync
-        self.playlists = []
-        self.smart_playlists = []
-        self.video_playlists = []
+        self.update_configuration(
+            #Playlist Ids we wish to sync
+            playlists = [],
+            smart_playlists = [],
+            video_playlists = [],
+        )
         self.tracks = []
 
     def _get_full_uri(self, uri):
@@ -78,7 +81,9 @@ class BansheeSource(DataProvider.DataSource):
 
     def _get_all_playlists(self):
         allPlaylists = []
+        log.debug("Banshee db %s" % self.MUSIC_DB)
         if os.path.exists(BansheeSource.MUSIC_DB):
+            
             #Create a connection to the database
             con = sqlite.connect(BansheeSource.MUSIC_DB)
             cur = con.cursor()
@@ -121,7 +126,7 @@ class BansheeSource(DataProvider.DataSource):
         return True
 
     def is_configured(self, isSource, isTwoWay):
-        return len(self.playlists+self.smart_playlists+self.video_playlists) > 0
+        return len(self.playlists) > 0 or len(self.smart_playlists) > 0 or len(self.video_playlists) > 0
         
     def refresh(self):
         DataProvider.DataSource.refresh(self)
@@ -158,96 +163,42 @@ class BansheeSource(DataProvider.DataSource):
         f.set_UID(LUID)
         f.set_open_URI(LUID)
         return f
-
-    def configure(self, window):
-        import gtk
-        def col1_toggled_cb(cell, path, model ):
-            #not because we get this cb before change state
-            checked = not cell.get_active()
-            model[path][CHECKED_IDX] = checked
-            ( Name, Id, Type ) = ( model[path][NAME_IDX], model[path][ID_IDX], model[path][TYPE_IDX] )
-            if Type == NORMAL_PLAYLIST:
-                if checked and Name not in self.playlists:
-                    self.playlists.append(Id)
-                elif not checked and Name in self.playlists:
-                    self.playlists.remove(Id)
-            elif Type == SMART_PLAYLIST:
-                if checked and Name not in self.smart_playlists:
-                    self.smart_playlists.append(Id)
-                elif not checked and Name in self.smart_playlists:
-                    self.smart_playlists.remove(Id)
-            elif Type == VIDEO_PLAYLIST:
-                if checked and Name not in self.video_playlists:
-                    self.video_playlists.append(Id)
-                elif not checked and Name in self.video_playlists:
-                    self.video_playlists.remove(Id)
-            log.debug("Toggle name: '%s', type: '%s', id: '%s' to: %s" % (Name, Type, Id, checked))
-            return
-
-        tree = Utils.dataprovider_glade_get_widget(
-                        __file__, 
-                        "config.glade",
-                        "BansheeConfigDialog"
-        )
-        tagtreeview = tree.get_widget("tagtreeview")
-        #Build a list of all the tags
-        list_store = gtk.ListStore( gobject.TYPE_STRING,    #ID_IDX      - 0
-                                    gobject.TYPE_STRING,    #NAME_IDX    - 1
-                                    gobject.TYPE_BOOLEAN,   #CHECKED_IDX - 2
-                                    gobject.TYPE_INT,       #TYPE_IDX    - 3
-                                    )
-        #Fill the list store
-        for playlist in self._get_all_playlists():
-            if playlist["type"] == NORMAL_PLAYLIST and playlist["id"] in self.playlists:
-                checked = True
-            elif playlist["type"] == SMART_PLAYLIST and playlist["id"] in self.smart_playlists:
-                checked = True
-            elif playlist["type"] == VIDEO_PLAYLIST and playlist["id"] in self.video_playlists:
-                checked = True
-            else:
-                checked = False
-            # Make video playlists more obvious
-            if playlist["type"] == VIDEO_PLAYLIST:
-                playlist["name"] += " (Video)"
-            list_store.append( ( playlist["id"], playlist["name"], checked, playlist["type"] ) )
-                     
-        #Set up the treeview
-        tagtreeview.set_model(list_store)
-        #column 1 is the tag name
-        tagtreeview.append_column(  gtk.TreeViewColumn(_("Playlist Name"), # Tag name is confusing?
-                                    gtk.CellRendererText(), 
-                                    text=NAME_IDX)
-                                    )
-        #column 2 is a checkbox for selecting the tag to sync
-        renderer1 = gtk.CellRendererToggle()
-        renderer1.set_property('activatable', True)
-        renderer1.connect( 'toggled', col1_toggled_cb, list_store )
-        tagtreeview.append_column(  gtk.TreeViewColumn(_("Enabled"), 
-                                    renderer1, 
-                                    active=CHECKED_IDX)
-                                    )
-
-        dlg = tree.get_widget("BansheeConfigDialog")
+    
+    def _get_config_playlists(self, config_item):
+        playlists = []
+        for playlist in self.playlists:
+            playlists.append((playlist, NORMAL_PLAYLIST))
+        for playlist in self.smart_playlists:
+            playlists.append((playlist, SMART_PLAYLIST))
+        for playlist in self.video_playlists:
+            playlists.append((playlist, VIDEO_PLAYLIST))
+        return playlists
         
-        response = Utils.run_dialog (dlg, window)
-        dlg.destroy()
-
-    def set_configuration(self, config):
+    def _set_config_playlists(self, config_item, value):
         self.playlists = []
         self.smart_playlists = []
-        self.video_playlist = []
-        for playlistid in config.get("playlists", []):
-            self.playlists.append( playlistid )
-        for playlistid in config.get("smart_playlists", []):
-            self.smart_playlists.append( playlistid )
-        for playlistid in config.get("video_playlists", []):
-            self.video_playlists.append( playlistid )
-            
-    def get_configuration(self):
-        return { "playlists"       : self.playlists,
-                 "smart_playlists" : self.smart_playlists,
-                 "video_playlists" : self.video_playlists
-        }
+        self.video_playlists = []
+        for playlist_id, playlist_type in value:
+            {NORMAL_PLAYLIST: self.playlists,
+             SMART_PLAYLIST: self.smart_playlists,
+             VIDEO_PLAYLIST: self.video_playlists}[playlist_type].append(playlist_id)
+
+    def config_setup(self, config):
+        config.add_section("Playlists")        
+        self._playlist_config = config.add_item("Playlists", "list",
+            initial_value_callback = self._get_config_playlists,
+            save_callback = self._set_config_playlists
+        )
+        
+    def config_show(self, config):
+        self._all_playlists = self._get_all_playlists()
+        playlists = []
+        for playlist in self._all_playlists:
+            name = playlist['name']
+            if playlist['type'] == VIDEO_PLAYLIST:
+                name += " (Video)"
+            playlists.append(((playlist['id'], playlist['type']), name))
+        self._playlist_config.choices = playlists
 
     def get_UID(self):
         return Utils.get_user_string()
