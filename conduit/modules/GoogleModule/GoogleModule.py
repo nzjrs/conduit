@@ -10,6 +10,7 @@ from dateutil.tz import tzutc, tzlocal
 from gettext import gettext as _
 import logging
 log = logging.getLogger("modules.Google")
+import gtk
 
 import conduit
 import conduit.dataproviders.DataProvider as DataProvider
@@ -811,6 +812,7 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
     def __init__(self, *args):
         _GoogleBase.__init__(self,gdata.contacts.service.ContactsService())
         DataProvider.TwoWay.__init__(self)
+        self.selectedGroup = None
         
     def _google_contact_from_conduit_contact(self, contact, gc=None):
         """
@@ -930,10 +932,21 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
         return c
 
     def _get_all_contacts(self):
-        feed = self.service.GetContactsFeed()
-        if not feed.entry:
-            return []
-        return [str(contact.id.text) for contact in feed.entry]
+        if self.selectedGroup:
+            query=gdata.contacts.service.ContactsQuery(group=self.selectedGroup.get_feed_link())
+            log.debug("Group query uri = %s" % query.ToUri())
+            feed = self.service.GetContactsFeed(query.ToUri())
+        else:
+            feed = self.service.GetContactsFeed()
+        res = []
+        while True:
+            for contact in feed.entry:
+                res.append(str(contact.id.text))
+            nextLink = feed.GetNextLink()
+            if nextLink == None:
+                break
+            feed = self.service.GetContactsFeed(uri=nextLink.href)
+        return res
         
     def refresh(self):
         DataProvider.TwoWay.refresh(self)
@@ -997,6 +1010,36 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
     def finish(self, aborted, error, conflict):
         DataProvider.TwoWay.finish(self)
 
+    def _get_all_groups(self):
+        '''Get a list of addressbook groups'''
+        self._do_login()
+        #System Groups are only returned in version 2 of the API
+        query=gdata.contacts.service.GroupsQuery()
+        query['v']='2'
+        feed = self.service.GetContactsFeed(query.ToUri())
+        for entry in feed.entry:
+            yield _GoogleContactGroup.from_google_format(entry)
+
+    def _load_groups(self, widget, tree):        
+        sourceComboBox = tree.get_widget("Group")
+        store = sourceComboBox.get_model()
+        store.clear()
+
+        self._set_username(tree.get_widget("username").get_text())
+        self._set_password(tree.get_widget("password").get_text())
+        
+        try:
+            for group in self._get_all_groups():
+                rowref = store.append( (group.get_name(), group) )
+                if group == self.selectedGroup:
+                    sourceComboBox.set_active_iter(rowref)
+        except gdata.service.BadAuthentication:
+            errorMsg = "Login Failed"
+            errorDlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format=errorMsg, buttons=gtk.BUTTONS_OK)
+            errorDlg.run()
+            errorDlg.destroy()
+            return
+        
     def configure(self, window):
         """
         Configures the PicasaTwoWay
@@ -1009,18 +1052,80 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
         #get a whole bunch of widgets
         username = widget.get_widget("username")
         password = widget.get_widget("password")
+        group = widget.get_widget("Group")
+        store = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
+        group.set_model(store)
         
         #preload the widgets        
         username.set_text(self.username)
         password.set_text(self.password)
         
+        signalConnections = { "on_getGroups_clicked" : (self._load_groups, widget) }
+        widget.signal_autoconnect( signalConnections )
+        
+        if self.selectedGroup is not None:
+            rowref = store.append( (self.selectedGroup.get_name(), self.selectedGroup) )
+            group.set_active_iter(rowref)
+            
         dlg = widget.get_widget("GoogleContactsConfigDialog")
         response = Utils.run_dialog (dlg, window)
         if response == True:
             self._set_username(username.get_text())
             self._set_password(password.get_text())
-        dlg.destroy()    
+            self.selectedGroup = store.get_value(group.get_active_iter(),1)
+        dlg.destroy()
+
+    def get_configuration(self):
+        conf = _GoogleBase.get_configuration(self)
+        if self.selectedGroup != None:
+            conf.update({
+                "selectedGroupName"  :   self.selectedGroup.get_name(),
+                "selectedGroupURI"   :   self.selectedGroup.get_uri()})
+        return conf
+            
+    def set_configuration(self, config):
+        _GoogleBase.set_configuration(self, config)
+        if "selectedGroupName" in config:
+            if "selectedGroupURI" in config:
+                self.selectedGroup = _GoogleContactGroup(
+                                            config['selectedGroupName'],
+                                            config['selectedGroupURI']
+                                            )
+
+    def is_configured (self, isSource, isTwoWay):
+        if not _GoogleBase.is_configured(self, isSource, isTwoWay):
+            return False
+        if self.selectedGroup == None:
+            return False
+        return True
+
+class _GoogleContactGroup:
+    def __init__(self, name, uri):
+        self.uri = uri
+        self.name = name
+
+    @classmethod    
+    def from_google_format(cls, group):
+        uri = group.id.text
+        name = group.title.text
+        return cls(name, uri)
         
+    def __eq__(self, other):
+        if other is None:
+            return False
+        else:
+            return self.get_uri() == other.get_uri()
+        
+    def get_uri(self):
+        return self.uri
+        
+    def get_name(self):
+        return self.name
+    
+    def get_feed_link(self):
+        return self.get_uri()
+        
+
 class _GoogleDocument:
     def __init__(self, doc):
         self.id = doc.GetSelfLink().href

@@ -1,3 +1,11 @@
+2009-03-16  John Stowers  <john.stowers@gmail.com>
+
+	* conduit/modules/GoogleModule/GoogleModule.py:
+	* conduit/modules/GoogleModule/contacts-config.glade: Allow
+	selecting groups when configuring google contacts.
+	Fixes #574907 (Michael Thompson)
+
+
 2009-03-10  Alexandre Rosenfeld  <airmind@gmail.com>
 
 	* conduit/gtkui/ConfigItems.py:
