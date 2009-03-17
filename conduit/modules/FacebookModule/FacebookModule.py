@@ -48,7 +48,9 @@ class FacebookSink(Image.ImageSink):
         Image.ImageSink.__init__(self)
         self.fapi = pyfacebook.Facebook(FacebookSink.API_KEY, FacebookSink.SECRET)
         self.browser = conduit.BROWSER_IMPL
-        self.albumname = ""
+        self.update_configuration(
+            albumname = ""
+        )
         self.albums = {}
 
     def _upload_photo (self, uploadInfo):
@@ -114,65 +116,46 @@ class FacebookSink(Image.ImageSink):
         rsp = self.fapi.auth.getSession()
         return rsp.has_key("secret") and rsp.has_key("session_key")
         
-    def configure(self, window):
-        import gtk
-        import gobject
-        def on_login_finish(*args):
-            if self.fapi.uid:
-                build_album_store()
-            Utils.dialog_reset_cursor(dlg)
-            
-        def on_response(sender, responseID):
-            if responseID == gtk.RESPONSE_OK:
-                self.albumname = albumnamecombo.child.get_text()
-                
-        def load_button_clicked(button):
-            Utils.dialog_set_busy_cursor(dlg)
+    def config_setup(self, config):
+
+        def _login_finished(*args):
+            try:
+                if self.fapi.uid:
+                    status_label.value = _('Loading album list...')
+                    try:
+                        albums = self._get_albums().keys()
+                    except:
+                        status_label.value = _('Failed to connect')
+                    else:
+                        albums_config.choices = albums
+                        status_label.value = _('Logged in')
+                else:
+                    status_label.value = _('Failed to login')
+            finally:
+                album_section.enabled = True
+                config.set_busy(False)
+
+        def _load_albums(button):
+            config.set_busy(True)
+            album_section.enabled = False
+            status_label.value = 'Logging in, please wait...'
             conduit.GLOBALS.syncManager.run_blocking_dataprovider_function_calls(
-                                            self,
-                                            on_login_finish,
-                                            self._login)
+                self, _login_finished, self._login)
 
-        def build_album_store():
-            album_store.clear()
-            album_count = 0
-            album_iter = None
-            for album_name in self._get_albums().keys():
-                iter = album_store.append((album_name,))
-                if album_name != "" and album_name == self.albumname:
-                    album_iter = iter
-                album_count += 1
+        status_label = config.add_item('Status', 'label',
+            initial_value = "Logged in" if self.fapi.uid else "Not logged in",
+            use_markup = True,
+        )
 
-            if album_iter:
-                albumnamecombo.set_active_iter(album_iter)
-            elif self.albumname:
-                albumnamecombo.child.set_text(self.albumname)
-            elif album_count:
-                albumnamecombo.set_active(0)
-
-        tree = Utils.dataprovider_glade_get_widget(
-                        __file__,
-                        "config.glade",
-                        "FacebookConfigDialog")
-
-        #get a whole bunch of widgets
-        albumnamecombo = tree.get_widget("albumnamecombo")
-        load_button = tree.get_widget("load_button")
-        dlg = tree.get_widget("FacebookConfigDialog")
-
-        # setup combobox
-        album_store = gtk.ListStore(gobject.TYPE_STRING)
-        albumnamecombo.set_model(album_store)
-        cell = gtk.CellRendererText()
-        albumnamecombo.pack_start(cell, True)
-        albumnamecombo.set_text_column(0)
-
-        # load button
-        load_button.connect('clicked', load_button_clicked)
-        albumnamecombo.child.set_text(self.albumname)
-
-        # run the dialog
-        Utils.run_dialog_non_blocking(dlg, on_response, window)
+        album_section = config.add_section("Album")
+        albums_config = config.add_item("Album name", "combotext",
+            config_name = "albumname",
+            choices = [],
+        )
+        
+        load_albums_config = config.add_item("Load albums", "button",
+            initial_value = _load_albums
+        )                    
         
     def refresh(self):
         Image.ImageSink.refresh(self)
@@ -201,9 +184,3 @@ class FacebookSink(Image.ImageSink):
     def is_configured (self, isSource, isTwoWay):
         #Specifing an album is optional
         return True
-
-    def get_configuration(self):
-        return {
-            "albumname" : self.albumname
-        }
-            

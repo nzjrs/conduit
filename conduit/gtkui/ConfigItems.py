@@ -368,6 +368,8 @@ class ItemBase(gobject.GObject):
         
     def _set_enabled(self, enabled):
         self.widget.set_sensitive(enabled)
+        if self.label:
+            self.label.set_sensitive(enabled)
         
     def set_enabled(self, enabled):
         '''

@@ -295,9 +295,13 @@ class FlickrTwoWay(Image.ImageTwoWay):
                     status_label.value = '<span foreground="red">Failed to login.</span>'
             finally:
                 load_photosets_config.enabled = True
+                account_section.enabled = True
+                config.set_busy(False)
                 
         def _load_photosets(button):
+            config.set_busy(True)
             load_photosets_config.enabled = False
+            account_section.enabled = False
             #FIXME: This applies the username value before OK/Apply is clicked, 
             #we should do a better job
             username_config.apply()
@@ -305,7 +309,7 @@ class FlickrTwoWay(Image.ImageTwoWay):
             conduit.GLOBALS.syncManager.run_blocking_dataprovider_function_calls(
                 self, _login_finished, self._login)
 
-        config.add_section('Account details')
+        account_section = config.add_section('Account details')
         username_config = config.add_item('Username', 'text',
             config_name = 'username',
         )

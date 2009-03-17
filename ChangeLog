@@ -1,3 +1,16 @@
+2009-03-17  Alexandre Rosenfeld  <airmind@gmail.com>
+
+	* conduit/gtkui/ConfigContainer.py:
+	* conduit/gtkui/WindowConfigurator.py:
+	* conduit/modules/FlickrModule/FlickrModule.py:
+	Added busy indication.
+	* conduit/gtkui/ConfigItems.py:
+	Made item label become disabled as well as the widget.
+	* conduit/modules/FacebookModule/FacebookModule.py:
+	* conduit/modules/FacebookModule/Makefile.am:
+	* conduit/modules/FacebookModule/config.glade:
+	Port to new config system.
+
 2009-03-17  John Stowers  <john.stowers@gmail.com>
 
 	* conduit/modules/GoogleModule/atom/*:

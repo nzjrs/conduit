@@ -129,7 +129,14 @@ class WindowConfigurator:
     def get_widget(self):
         return None
         
-    def get_window(self):
+    def set_busy(self, busy):
+        if busy:
+            self.window.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
+        else:
+            self.window.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.ARROW))            
+        
+    @property
+    def window(self):
         return self.dialog
         
     def run(self, config_container):
@@ -162,6 +169,7 @@ class WindowConfigurator:
         for container in containers:
             container.hide()
         self.dialog.hide()
+        self.window.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.ARROW))
         self.showing = False
         if resp == gtk.RESPONSE_OK:
             for container in containers:

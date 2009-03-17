@@ -204,6 +204,10 @@ class ConfigContainer(Configurator.BaseConfigContainer):
         '''
         super(ConfigContainer, self).show()
         self.config_widget.show_all()
+        
+    def set_busy(self, busy):
+        self.__busy = busy
+        self.configurator.set_busy(busy)
 
     def apply_config(self, items = None, sections = None):
         '''
