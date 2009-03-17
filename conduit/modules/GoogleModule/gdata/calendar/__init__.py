@@ -15,10 +15,6 @@
 # limitations under the License.
 
 
-# TODO:
-#   add text=none to all inits
-
-
 """Contains extensions to ElementWrapper objects used with Google Calendar."""
 
 
@@ -171,7 +167,6 @@ class CalendarListFeed(gdata.GDataFeed, gdata.LinkFinder):
   _children = gdata.GDataFeed._children.copy()
   _attributes = gdata.GDataFeed._attributes.copy()
   _children['{%s}entry' % atom.ATOM_NAMESPACE] = ('entry', [CalendarListEntry])
-  #_attributes = {}
 
 
 class Scope(atom.AtomBase):
@@ -221,10 +216,8 @@ class CalendarAclEntry(gdata.GDataEntry, gdata.LinkFinder):
                         content=content, atom_id=atom_id, link=link, 
                         published=published, title=title, 
                         updated=updated, text=None)
-
     self.scope = scope
     self.role = role
-
 
 
 class CalendarAclFeed(gdata.GDataFeed, gdata.LinkFinder):
@@ -257,23 +250,9 @@ class CalendarEventCommentFeed(gdata.GDataFeed, gdata.LinkFinder):
       [CalendarEventCommentEntry])
 
 
-class ExtendedProperty(atom.AtomBase):
-  """The Google Calendar extendedProperty element"""
-
-  _tag = 'extendedProperty'
-  _namespace = gdata.GDATA_NAMESPACE
-  _children = atom.AtomBase._children.copy()
-  _attributes = atom.AtomBase._attributes.copy()
-  _attributes['name'] = 'name'
-  _attributes['value'] = 'value'
-
-  def __init__(self, name=None, value=None, extension_elements=None,
-      extension_attributes=None, text=None):
-    self.name = name 
-    self.value = value
-    self.text = text
-    self.extension_elements = extension_elements or []
-    self.extension_attributes = extension_attributes or {}
+class ExtendedProperty(gdata.ExtendedProperty):
+  """A transparent subclass of gdata.ExtendedProperty added to this module
+  for backwards compatibility."""
 
     
 class Reminder(atom.AtomBase):
@@ -557,17 +536,18 @@ class Who(UriEnumElement):
               'http://schemas.google.com/g/2005#message.reply-to' : 'REPLY_TO',
               'http://schemas.google.com/g/2005#message.to' : 'TO' }
   
-  def __init__(self, extension_elements=None, 
-    extension_attributes=None, text=None):
+  def __init__(self, name=None, email=None, attendee_status=None, 
+      attendee_type=None, rel=None, extension_elements=None, 
+      extension_attributes=None, text=None):
     UriEnumElement.__init__(self, 'who', Who.relEnum, attrib_name='rel',
                             extension_elements=extension_elements,
                             extension_attributes=extension_attributes, 
                             text=text)
-    self.name=None
-    self.email=None
-    self.attendee_status=None
-    self.attendee_type=None
-    self.rel=None
+    self.name = name
+    self.email = email
+    self.attendee_status = attendee_status
+    self.attendee_type = attendee_type
+    self.rel = rel
 
 
 class OriginalEvent(atom.AtomBase):
@@ -925,74 +905,3 @@ def CalendarEventFeedFromString(xml_string):
   
 def CalendarEventCommentFeedFromString(xml_string):
   return atom.CreateClassFromXMLString(CalendarEventCommentFeed, xml_string)
-
-
-# Code to create atom feeds from element trees
-#_CalendarListFeedFromElementTree = atom._AtomInstanceFromElementTree(
-#    CalendarListFeed, 'feed', atom.ATOM_NAMESPACE)
-#_CalendarListEntryFromElementTree = atom._AtomInstanceFromElementTree(
-#    CalendarListEntry, 'entry', atom.ATOM_NAMESPACE)
-#_CalendarAclFeedFromElementTree = atom._AtomInstanceFromElementTree(
-#    CalendarAclFeed, 'feed', atom.ATOM_NAMESPACE)
-#_CalendarAclEntryFromElementTree = atom._AtomInstanceFromElementTree(
-#    CalendarAclEntry, 'entry', atom.ATOM_NAMESPACE)
-#_CalendarEventFeedFromElementTree = atom._AtomInstanceFromElementTree(
-#    CalendarEventFeed, 'feed', atom.ATOM_NAMESPACE)
-#_CalendarEventEntryFromElementTree = atom._AtomInstanceFromElementTree(
-#    CalendarEventEntry, 'entry', atom.ATOM_NAMESPACE)
-#_CalendarEventCommentFeedFromElementTree = atom._AtomInstanceFromElementTree(
-#    CalendarEventCommentFeed, 'feed', atom.ATOM_NAMESPACE)
-#_CalendarEventCommentEntryFromElementTree = atom._AtomInstanceFromElementTree(
-#    CalendarEventCommentEntry, 'entry', atom.ATOM_NAMESPACE)
-#_WhereFromElementTree = atom._AtomInstanceFromElementTree(
-#    Where, 'where', gdata.GDATA_NAMESPACE)
-#_WhenFromElementTree = atom._AtomInstanceFromElementTree(
-#    When, 'when', gdata.GDATA_NAMESPACE)
-#_WhoFromElementTree = atom._AtomInstanceFromElementTree(
-#    Who, 'who', gdata.GDATA_NAMESPACE)
-#_VisibilityFromElementTree= atom._AtomInstanceFromElementTree(
-#    Visibility, 'visibility', gdata.GDATA_NAMESPACE)
-#_TransparencyFromElementTree = atom._AtomInstanceFromElementTree(
-#    Transparency, 'transparency', gdata.GDATA_NAMESPACE)
-#_CommentsFromElementTree = atom._AtomInstanceFromElementTree(
-#    Comments, 'comments', gdata.GDATA_NAMESPACE)
-#_EventStatusFromElementTree = atom._AtomInstanceFromElementTree(
-#    EventStatus, 'eventStatus', gdata.GDATA_NAMESPACE)
-#_SendEventNotificationsFromElementTree = atom._AtomInstanceFromElementTree(
-#    SendEventNotifications, 'sendEventNotifications', GCAL_NAMESPACE)
-#_QuickAddFromElementTree = atom._AtomInstanceFromElementTree(
-#    QuickAdd, 'quickadd', GCAL_NAMESPACE)
-#_AttendeeStatusFromElementTree = atom._AtomInstanceFromElementTree(
-#    AttendeeStatus, 'attendeeStatus', gdata.GDATA_NAMESPACE)
-#_AttendeeTypeFromElementTree = atom._AtomInstanceFromElementTree(
-#    AttendeeType, 'attendeeType', gdata.GDATA_NAMESPACE)
-#_ExtendedPropertyFromElementTree = atom._AtomInstanceFromElementTree(
-#    ExtendedProperty, 'extendedProperty', gdata.GDATA_NAMESPACE)
-#_RecurrenceFromElementTree = atom._AtomInstanceFromElementTree(
-#    Recurrence, 'recurrence', gdata.GDATA_NAMESPACE)
-#_RecurrenceExceptionFromElementTree = atom._AtomInstanceFromElementTree(
-#    RecurrenceException, 'recurrenceException', gdata.GDATA_NAMESPACE)
-#_OriginalEventFromElementTree = atom._AtomInstanceFromElementTree(
-#    OriginalEvent, 'originalEvent', gdata.GDATA_NAMESPACE)
-#_ColorFromElementTree = atom._AtomInstanceFromElementTree(
-#    Color, 'color', GCAL_NAMESPACE)
-#_HiddenFromElementTree = atom._AtomInstanceFromElementTree(
-#    Hidden, 'hidden', GCAL_NAMESPACE)
-#_SelectedFromElementTree = atom._AtomInstanceFromElementTree(
-#    Selected, 'selected', GCAL_NAMESPACE)
-#_TimezoneFromElementTree = atom._AtomInstanceFromElementTree(
-#    Timezone, 'timezone', GCAL_NAMESPACE)
-#_AccessLevelFromElementTree = atom._AtomInstanceFromElementTree(
-#    AccessLevel, 'accesslevel', GCAL_NAMESPACE)
-#_ReminderFromElementTree = atom._AtomInstanceFromElementTree(
-#    Reminder, 'reminder', gdata.GDATA_NAMESPACE)
-#_ScopeFromElementTree = atom._AtomInstanceFromElementTree(
-#    Scope, 'scope', GACL_NAMESPACE)
-#_RoleFromElementTree = atom._AtomInstanceFromElementTree(
-#    Role, 'role', GACL_NAMESPACE)
-#_WebContentLinkFromElementTree = atom._AtomInstanceFromElementTree(
-#    WebContentLink, 'link', atom.ATOM_NAMESPACE)
-#_WebContentFromElementTree = atom._AtomInstanceFromElementTree(
-#    WebContent, 'webContent', GCAL_NAMESPACE)
-#_WebContentGadgetPrefFromElementTree = atom._AtomInstanceFromElementTree(
-#    WebContentGadgetPref, 'webContentGadgetPref', GCAL_NAMESPACE)

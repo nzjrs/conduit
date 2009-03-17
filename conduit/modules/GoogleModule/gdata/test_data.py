@@ -1217,15 +1217,15 @@ NICK_ENTRY = """<?xml version="1.0" encoding="UTF-8"?>
 <atom:entry xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:apps="http://schemas.google.com/apps/2006"
   xmlns:gd="http://schemas.google.com/g/2005">
-  <atom:id>https://www.google.com/a/feeds/example.com/nickname/2.0/Foo</atom:id>
+  <atom:id>https://apps-apis.google.com/a/feeds/example.com/nickname/2.0/Foo</atom:id>
   <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
   <atom:category scheme='http://schemas.google.com/g/2005#kind'
     term='http://schemas.google.com/apps/2006#nickname'/>
   <atom:title type="text">Foo</atom:title>
   <atom:link rel="self" type="application/atom+xml"
-    href="https://www.google.com/a/feeds/example.com/nickname/2.0/Foo"/>
+    href="https://apps-apis.google.com/a/feeds/example.com/nickname/2.0/Foo"/>
   <atom:link rel="edit" type="application/atom+xml"
-    href="https://www.google.com/a/feeds/example.com/nickname/2.0/Foo"/>
+    href="https://apps-apis.google.com/a/feeds/example.com/nickname/2.0/Foo"/>
   <apps:nickname name="Foo"/>
   <apps:login userName="TestUser"/>
 </atom:entry>"""
@@ -1235,7 +1235,7 @@ NICK_FEED = """<?xml version="1.0" encoding="UTF-8"?>
   xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/"
   xmlns:apps="http://schemas.google.com/apps/2006">
   <atom:id>
-    http://www.google.com/a/feeds/example.com/nickname/2.0
+    http://apps-apis.google.com/a/feeds/example.com/nickname/2.0
   </atom:id>
   <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
   <atom:category scheme='http://schemas.google.com/g/2005#kind'
@@ -1243,39 +1243,39 @@ NICK_FEED = """<?xml version="1.0" encoding="UTF-8"?>
   <atom:title type="text">Nicknames for user SusanJones</atom:title>
   <atom:link rel='http://schemas.google.com/g/2005#feed'
     type="application/atom+xml"
-    href="http://www.google.com/a/feeds/example.com/nickname/2.0"/>
+    href="http://apps-apis.google.com/a/feeds/example.com/nickname/2.0"/>
   <atom:link rel='http://schemas.google.com/g/2005#post'
     type="application/atom+xml"
-    href="http://www.google.com/a/feeds/example.com/nickname/2.0"/>
+    href="http://apps-apis.google.com/a/feeds/example.com/nickname/2.0"/>
   <atom:link rel="self" type="application/atom+xml"
-    href="http://www.google.com/a/feeds/example.com/nickname/2.0?username=TestUser"/>
+    href="http://apps-apis.google.com/a/feeds/example.com/nickname/2.0?username=TestUser"/>
   <openSearch:startIndex>1</openSearch:startIndex>
   <openSearch:itemsPerPage>2</openSearch:itemsPerPage>
   <atom:entry>
     <atom:id>
-      http://www.google.com/a/feeds/example.com/nickname/2.0/Foo
+      http://apps-apis.google.com/a/feeds/example.com/nickname/2.0/Foo
     </atom:id>
     <atom:category scheme='http://schemas.google.com/g/2005#kind'
       term='http://schemas.google.com/apps/2006#nickname'/>
     <atom:title type="text">Foo</atom:title>
     <atom:link rel="self" type="application/atom+xml"
-      href="http://www.google.com/a/feeds/example.com/nickname/2.0/Foo"/>
+      href="http://apps-apis.google.com/a/feeds/example.com/nickname/2.0/Foo"/>
     <atom:link rel="edit" type="application/atom+xml"
-      href="http://www.google.com/a/feeds/example.com/nickname/2.0/Foo"/>
+      href="http://apps-apis.google.com/a/feeds/example.com/nickname/2.0/Foo"/>
     <apps:nickname name="Foo"/>
     <apps:login userName="TestUser"/>
   </atom:entry>
   <atom:entry>
     <atom:id>
-      http://www.google.com/a/feeds/example.com/nickname/2.0/suse
+      http://apps-apis.google.com/a/feeds/example.com/nickname/2.0/suse
     </atom:id>
     <atom:category scheme='http://schemas.google.com/g/2005#kind'
       term='http://schemas.google.com/apps/2006#nickname'/>
     <atom:title type="text">suse</atom:title>
     <atom:link rel="self" type="application/atom+xml"
-      href="http://www.google.com/a/feeds/example.com/nickname/2.0/Bar"/>
+      href="http://apps-apis.google.com/a/feeds/example.com/nickname/2.0/Bar"/>
     <atom:link rel="edit" type="application/atom+xml"
-      href="http://www.google.com/a/feeds/example.com/nickname/2.0/Bar"/>
+      href="http://apps-apis.google.com/a/feeds/example.com/nickname/2.0/Bar"/>
     <apps:nickname name="Bar"/>
     <apps:login userName="TestUser"/>
   </atom:entry>
@@ -1285,23 +1285,23 @@ USER_ENTRY = """<?xml version="1.0" encoding="UTF-8"?>
 <atom:entry xmlns:atom="http://www.w3.org/2005/Atom"
             xmlns:apps="http://schemas.google.com/apps/2006"
             xmlns:gd="http://schemas.google.com/g/2005">
-  <atom:id>https://www.google.com/a/feeds/example.com/user/2.0/TestUser</atom:id>
+  <atom:id>https://apps-apis.google.com/a/feeds/example.com/user/2.0/TestUser</atom:id>
   <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
   <atom:category scheme='http://schemas.google.com/g/2005#kind'
     term='http://schemas.google.com/apps/2006#user'/>
   <atom:title type="text">TestUser</atom:title>
   <atom:link rel="self" type="application/atom+xml"
-    href="https://www.google.com/a/feeds/example.com/user/2.0/TestUser"/>
+    href="https://apps-apis.google.com/a/feeds/example.com/user/2.0/TestUser"/>
   <atom:link rel="edit" type="application/atom+xml"
-    href="https://www.google.com/a/feeds/example.com/user/2.0/TestUser"/>
+    href="https://apps-apis.google.com/a/feeds/example.com/user/2.0/TestUser"/>
   <apps:login userName="TestUser" password="password" suspended="false"
     ipWhitelisted='false' hashFunctionName="SHA-1"/>
   <apps:name familyName="Test" givenName="User"/>
   <apps:quota limit="1024"/>
   <gd:feedLink rel='http://schemas.google.com/apps/2006#user.nicknames'
-    href="https://www.google.com/a/feeds/example.com/nickname/2.0?username=Test-3121"/>
+    href="https://apps-apis.google.com/a/feeds/example.com/nickname/2.0?username=Test-3121"/>
   <gd:feedLink rel='http://schemas.google.com/apps/2006#user.emailLists'
-    href="https://www.google.com/a/feeds/example.com/emailList/2.0?recipient=testlist@example.com"/>
+    href="https://apps-apis.google.com/a/feeds/example.com/emailList/2.0?recipient=testlist@example.com"/>
 </atom:entry>"""
 
 USER_FEED = """<?xml version="1.0" encoding="UTF-8"?>
@@ -1310,64 +1310,64 @@ USER_FEED = """<?xml version="1.0" encoding="UTF-8"?>
   xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/"
   xmlns:gd="http://schemas.google.com/g/2005">
     <atom:id>
-        http://www.google.com/a/feeds/example.com/user/2.0
+        http://apps-apis.google.com/a/feeds/example.com/user/2.0
     </atom:id>
     <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
     <atom:category scheme='http://schemas.google.com/g/2005#kind' 
         term='http://schemas.google.com/apps/2006#user'/>
     <atom:title type="text">Users</atom:title>
     <atom:link rel="next" type="application/atom+xml" 
-        href="http://www.google.com/a/feeds/example.com/user/2.0?startUsername=john"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/user/2.0?startUsername=john"/>
     <atom:link rel='http://schemas.google.com/g/2005#feed' 
         type="application/atom+xml" 
-        href="http://www.google.com/a/feeds/example.com/user/2.0"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/user/2.0"/>
     <atom:link rel='http://schemas.google.com/g/2005#post'
         type="application/atom+xml"
-        href="http://www.google.com/a/feeds/example.com/user/2.0"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/user/2.0"/>
     <atom:link rel="self" type="application/atom+xml" 
-        href="http://www.google.com/a/feeds/example.com/user/2.0"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/user/2.0"/>
     <openSearch:startIndex>1</openSearch:startIndex>
     <atom:entry>
         <atom:id>
-            http://www.google.com/a/feeds/example.com/user/2.0/TestUser
+            http://apps-apis.google.com/a/feeds/example.com/user/2.0/TestUser
         </atom:id>
         <atom:category scheme='http://schemas.google.com/g/2005#kind'
             term='http://schemas.google.com/apps/2006#user'/>
         <atom:title type="text">TestUser</atom:title>
         <atom:link rel="self" type="application/atom+xml" 
-            href="http://www.google.com/a/feeds/example.com/user/2.0/TestUser"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/user/2.0/TestUser"/>
         <atom:link rel="edit" type="application/atom+xml"
-            href="http://www.google.com/a/feeds/example.com/user/2.0/TestUser"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/user/2.0/TestUser"/>
         <gd:who rel='http://schemas.google.com/apps/2006#user.recipient' 
             email="TestUser@example.com"/>
         <apps:login userName="TestUser" suspended="false"/>
         <apps:quota limit="2048"/>
         <apps:name familyName="Test" givenName="User"/>
         <gd:feedLink rel='http://schemas.google.com/apps/2006#user.nicknames'
-            href="http://www.google.com/a/feeds/example.com/nickname/2.0?username=TestUser"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/nickname/2.0?username=TestUser"/>
         <gd:feedLink rel='http://schemas.google.com/apps/2006#user.emailLists'
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0?recipient=TestUser@example.com"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0?recipient=TestUser@example.com"/>
     </atom:entry>
     <atom:entry>
         <atom:id>
-            http://www.google.com/a/feeds/example.com/user/2.0/JohnSmith
+            http://apps-apis.google.com/a/feeds/example.com/user/2.0/JohnSmith
         </atom:id>
         <atom:category scheme='http://schemas.google.com/g/2005#kind'
             term='http://schemas.google.com/apps/2006#user'/>
         <atom:title type="text">JohnSmith</atom:title>
         <atom:link rel="self" type="application/atom+xml" 
-            href="http://www.google.com/a/feeds/example.com/user/2.0/JohnSmith"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/user/2.0/JohnSmith"/>
         <atom:link rel="edit" type="application/atom+xml"
-            href="http://www.google.com/a/feeds/example.com/user/2.0/JohnSmith"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/user/2.0/JohnSmith"/>
         <gd:who rel='http://schemas.google.com/apps/2006#user.recipient'
             email="JohnSmith@example.com"/>
         <apps:login userName="JohnSmith" suspended="false"/>
         <apps:quota limit="2048"/>
         <apps:name familyName="Smith" givenName="John"/>
         <gd:feedLink rel='http://schemas.google.com/apps/2006#user.nicknames'
-            href="http://www.google.com/a/feeds/example.com/nickname/2.0?username=JohnSmith"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/nickname/2.0?username=JohnSmith"/>
         <gd:feedLink rel='http://schemas.google.com/apps/2006#user.emailLists'
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0?recipient=JohnSmith@example.com"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0?recipient=JohnSmith@example.com"/>
     </atom:entry>
 </atom:feed>"""
 
@@ -1376,19 +1376,19 @@ EMAIL_LIST_ENTRY = """<?xml version="1.0" encoding="UTF-8"?>
   xmlns:apps="http://schemas.google.com/apps/2006"
   xmlns:gd="http://schemas.google.com/g/2005">
     <atom:id>
-      https://www.google.com/a/feeds/example.com/emailList/2.0/testlist
+      https://apps-apis.google.com/a/feeds/example.com/emailList/2.0/testlist
     </atom:id>
     <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
     <atom:category scheme='http://schemas.google.com/g/2005#kind'
       term='http://schemas.google.com/apps/2006#emailList'/>
     <atom:title type="text">testlist</atom:title>
     <atom:link rel="self" type="application/atom+xml" 
-      href="https://www.google.com/a/feeds/example.com/emailList/2.0/testlist"/>
+      href="https://apps-apis.google.com/a/feeds/example.com/emailList/2.0/testlist"/>
     <atom:link rel="edit" type="application/atom+xml" 
-      href="https://www.google.com/a/feeds/example.com/emailList/2.0/testlist"/>
+      href="https://apps-apis.google.com/a/feeds/example.com/emailList/2.0/testlist"/>
     <apps:emailList name="testlist"/>
     <gd:feedLink rel='http://schemas.google.com/apps/2006#emailList.recipients'
-        href="http://www.google.com/a/feeds/example.com/emailList/2.0/testlist/recipient/"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/testlist/recipient/"/>
 </atom:entry>"""
 
 EMAIL_LIST_FEED = """<?xml version="1.0" encoding="UTF-8"?>
@@ -1397,54 +1397,54 @@ EMAIL_LIST_FEED = """<?xml version="1.0" encoding="UTF-8"?>
   xmlns:apps="http://schemas.google.com/apps/2006"
   xmlns:gd="http://schemas.google.com/g/2005">
     <atom:id>
-        http://www.google.com/a/feeds/example.com/emailList/2.0
+        http://apps-apis.google.com/a/feeds/example.com/emailList/2.0
     </atom:id>
     <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
     <atom:category scheme='http://schemas.google.com/g/2005#kind'
         term='http://schemas.google.com/apps/2006#emailList'/>
     <atom:title type="text">EmailLists</atom:title>
     <atom:link rel="next" type="application/atom+xml" 
-        href="http://www.google.com/a/feeds/example.com/emailList/2.0?startEmailListName=john"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0?startEmailListName=john"/>
     <atom:link rel='http://schemas.google.com/g/2005#feed'
         type="application/atom+xml" 
-        href="http://www.google.com/a/feeds/example.com/emailList/2.0"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0"/>
     <atom:link rel='http://schemas.google.com/g/2005#post' 
         type="application/atom+xml"
-        href="http://www.google.com/a/feeds/example.com/emailList/2.0"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0"/>
     <atom:link rel="self" type="application/atom+xml" 
-        href="http://www.google.com/a/feeds/example.com/emailList/2.0"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0"/>
     <openSearch:startIndex>1</openSearch:startIndex>
     <atom:entry>
         <atom:id>
-            http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales
+            http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales
         </atom:id>
         <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
         <atom:category scheme='http://schemas.google.com/g/2005#kind'
             term='http://schemas.google.com/apps/2006#emailList'/>
         <atom:title type="text">us-sales</atom:title>
         <atom:link rel="self" type="application/atom+xml" 
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales"/>
         <atom:link rel="edit" type="application/atom+xml"
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales"/>
         <apps:emailList name="us-sales"/>
         <gd:feedLink rel='http://schemas.google.com/apps/2006#emailList.recipients'
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/"/>
     </atom:entry>
     <atom:entry>
         <atom:id>
-            http://www.google.com/a/feeds/example.com/emailList/2.0/us-eng
+            http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-eng
         </atom:id>
         <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
         <atom:category scheme='http://schemas.google.com/g/2005#kind'
             term='http://schemas.google.com/apps/2006#emailList'/>
         <atom:title type="text">us-eng</atom:title>
         <atom:link rel="self" type="application/atom+xml" 
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-eng"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-eng"/>
         <atom:link rel="edit" type="application/atom+xml"
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-eng"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-eng"/>
         <apps:emailList name="us-eng"/>
         <gd:feedLink rel='http://schemas.google.com/apps/2006#emailList.recipients'
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-eng/recipient/"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-eng/recipient/"/>
     </atom:entry>
 </atom:feed>"""
 
@@ -1452,15 +1452,15 @@ EMAIL_LIST_RECIPIENT_ENTRY = """<?xml version="1.0" encoding="UTF-8"?>
 <atom:entry xmlns:atom="http://www.w3.org/2005/Atom"
   xmlns:apps="http://schemas.google.com/apps/2006"
   xmlns:gd="http://schemas.google.com/g/2005">
-    <atom:id>https://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/TestUser%40example.com</atom:id>
+    <atom:id>https://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/TestUser%40example.com</atom:id>
     <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
     <atom:category scheme='http://schemas.google.com/g/2005#kind'
         term='http://schemas.google.com/apps/2006#emailList.recipient'/>
     <atom:title type="text">TestUser</atom:title>
     <atom:link rel="self" type="application/atom+xml" 
-        href="https://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/TestUser%40example.com"/>
+        href="https://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/TestUser%40example.com"/>
     <atom:link rel="edit" type="application/atom+xml" 
-        href="https://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/TestUser%40example.com"/>
+        href="https://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/TestUser%40example.com"/>
     <gd:who email="TestUser@example.com"/>
 </atom:entry>"""
 
@@ -1469,49 +1469,49 @@ EMAIL_LIST_RECIPIENT_FEED = """<?xml version="1.0" encoding="UTF-8"?>
   xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/"
   xmlns:gd="http://schemas.google.com/g/2005">
     <atom:id>
-        http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient
+        http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient
     </atom:id>
     <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
     <atom:category scheme='http://schemas.google.com/g/2005#kind'
         term='http://schemas.google.com/apps/2006#emailList.recipient'/>
     <atom:title type="text">Recipients for email list us-sales</atom:title>
     <atom:link rel="next" type="application/atom+xml" 
-        href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/?startRecipient=terry@example.com"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/?startRecipient=terry@example.com"/>
     <atom:link rel='http://schemas.google.com/g/2005#feed'
         type="application/atom+xml" 
-        href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient"/>
     <atom:link rel='http://schemas.google.com/g/2005#post'
         type="application/atom+xml"
-        href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient"/>
     <atom:link rel="self" type="application/atom+xml" 
-        href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient"/>
+        href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient"/>
     <openSearch:startIndex>1</openSearch:startIndex>
     <atom:entry>
         <atom:id>
-            http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/joe%40example.com
+            http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/joe%40example.com
         </atom:id>
         <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
         <atom:category scheme='http://schemas.google.com/g/2005#kind'
             term='http://schemas.google.com/apps/2006#emailList.recipient'/>
         <atom:title type="text">joe@example.com</atom:title>
         <atom:link rel="self" type="application/atom+xml" 
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/joe%40example.com"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/joe%40example.com"/>
         <atom:link rel="edit" type="application/atom+xml"
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/joe%40example.com"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/joe%40example.com"/>
         <gd:who email="joe@example.com"/>
     </atom:entry>
     <atom:entry>
         <atom:id>
-            http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/susan%40example.com
+            http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/susan%40example.com
         </atom:id>
         <atom:updated>1970-01-01T00:00:00.000Z</atom:updated>
         <atom:category scheme='http://schemas.google.com/g/2005#kind'
             term='http://schemas.google.com/apps/2006#emailList.recipient'/>
         <atom:title type="text">susan@example.com</atom:title>
         <atom:link rel="self" type="application/atom+xml" 
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/susan%40example.com"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/susan%40example.com"/>
         <atom:link rel="edit" type="application/atom+xml"
-            href="http://www.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/susan%40example.com"/>
+            href="http://apps-apis.google.com/a/feeds/example.com/emailList/2.0/us-sales/recipient/susan%40example.com"/>
         <gd:who email="susan@example.com"/>
     </atom:entry>
 </atom:feed>"""
@@ -2075,7 +2075,7 @@ CODE_SEARCH_FEED = """<?xml version="1.0" encoding="UTF-8"?>
 </feed>"""
 
 YOUTUBE_VIDEO_FEED = """<?xml version='1.0' encoding='UTF-8'?><feed xmlns='http://www.w3.org/2005/Atom' xmlns:openSearch='http://a9.com/-/spec/opensearchrss/1.0/' xmlns:gml='http://www.opengis.net/gml' xmlns:georss='http://www.georss.org/georss' xmlns:media='http://search.yahoo.com/mrss/' xmlns:yt='http://gdata.youtube.com/schemas/2007' xmlns:gd='http://schemas.google.com/g/2005'><id>http://gdata.youtube.com/feeds/api/standardfeeds/top_rated</id><updated>2008-05-14T02:24:07.000-07:00</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://gdata.youtube.com/schemas/2007#video'/><title type='text'>Top Rated</title><logo>http://www.youtube.com/img/pic_youtubelogo_123x63.gif</logo><link rel='alternate' type='text/html' href='http://www.youtube.com/browse?s=tr'/><link rel='http://schemas.google.com/g/2005#feed' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/standardfeeds/top_rated'/><link rel='self' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/standardfeeds/top_rated?start-index=1&amp;max-results=25'/><link rel='next' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/standardfeeds/top_rated?start-index=26&amp;max-results=25'/><author><name>YouTube</name><uri>http://www.youtube.com/</uri></author><generator version='beta' uri='http://gdata.youtube.com/'>YouTube data API</generator><openSearch:totalResults>100</openSearch:totalResults><openSearch:startIndex>1</openSearch:startIndex><openSearch:itemsPerPage>25</openSearch:itemsPerPage>
-<entry><id>http://gdata.youtube.com/feeds/api/videos/C71ypXYGho8</id><published>2008-03-20T10:17:27.000-07:00</published><updated>2008-05-14T04:26:37.000-07:00</updated><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='karyn'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='garcia'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='me'/><category scheme='http://schemas.google.com/g/2005#kind' term='http://gdata.youtube.com/schemas/2007#video'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='boyfriend'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='por'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='te'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='odeio'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='amar'/><category scheme='http://gdata.youtube.com/schemas/2007/categories.cat' term='Music' label='Music'/><title type='text'>Me odeio por te amar - KARYN GARCIA</title><content type='text'>http://www.karyngarcia.com.br</content><link rel='alternate' type='text/html' href='http://www.youtube.com/watch?v=C71ypXYGho8'/><link rel='http://gdata.youtube.com/schemas/2007#video.related' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/videos/C71ypXYGho8/related'/><link rel='self' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/standardfeeds/top_rated/C71ypXYGho8'/><author><name>TvKarynGarcia</name><uri>http://gdata.youtube.com/feeds/api/users/tvkaryngarcia</uri></author><media:group><media:title type='plain'>Me odeio por te amar - KARYN GARCIA</media:title><media:description type='plain'>http://www.karyngarcia.com.br</media:description><media:keywords>amar, boyfriend, garcia, karyn, me, odeio, por, te</media:keywords><yt:duration seconds='203'/><media:category label='Music' scheme='http://gdata.youtube.com/schemas/2007/categories.cat'>Music</media:category><media:content url='http://www.youtube.com/v/C71ypXYGho8' type='application/x-shockwave-flash' medium='video' isDefault='true' expression='full' duration='203' yt:format='5'/><media:content url='rtsp://rtsp2.youtube.com/ChoLENy73wIaEQmPhgZ2pXK9CxMYDSANFEgGDA==/0/0/0/video.3gp' type='video/3gpp' medium='video' expression='full' duration='203' yt:format='1'/><media:content url='rtsp://rtsp2.youtube.com/ChoLENy73wIaEQmPhgZ2pXK9CxMYESARFEgGDA==/0/0/0/video.3gp' type='video/3gpp' medium='video' expression='full' duration='203' yt:format='6'/><media:player url='http://www.youtube.com/watch?v=C71ypXYGho8'/><media:thumbnail url='http://img.youtube.com/vi/C71ypXYGho8/2.jpg' height='97' width='130' time='00:01:41.500'/><media:thumbnail url='http://img.youtube.com/vi/C71ypXYGho8/1.jpg' height='97' width='130' time='00:00:50.750'/><media:thumbnail url='http://img.youtube.com/vi/C71ypXYGho8/3.jpg' height='97' width='130' time='00:02:32.250'/><media:thumbnail url='http://img.youtube.com/vi/C71ypXYGho8/0.jpg' height='240' width='320' time='00:01:41.500'/></media:group><yt:statistics viewCount='138864' favoriteCount='2474'/><gd:rating min='1' max='5' numRaters='4626' average='4.95'/><gd:comments><gd:feedLink href='http://gdata.youtube.com/feeds/api/videos/C71ypXYGho8/comments' countHint='27'/></gd:comments></entry>
+<entry><id>http://gdata.youtube.com/feeds/api/videos/C71ypXYGho8</id><published>2008-03-20T10:17:27.000-07:00</published><updated>2008-05-14T04:26:37.000-07:00</updated><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='karyn'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='garcia'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='me'/><category scheme='http://schemas.google.com/g/2005#kind' term='http://gdata.youtube.com/schemas/2007#video'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='boyfriend'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='por'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='te'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='odeio'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='amar'/><category scheme='http://gdata.youtube.com/schemas/2007/categories.cat' term='Music' label='Music'/><title type='text'>Me odeio por te amar - KARYN GARCIA</title><content type='text'>http://www.karyngarcia.com.br</content><link rel='alternate' type='text/html' href='http://www.youtube.com/watch?v=C71ypXYGho8'/><link rel='http://gdata.youtube.com/schemas/2007#video.related' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/videos/C71ypXYGho8/related'/><link rel='self' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/standardfeeds/top_rated/C71ypXYGho8'/><author><name>TvKarynGarcia</name><uri>http://gdata.youtube.com/feeds/api/users/tvkaryngarcia</uri></author><media:group><media:title type='plain'>Me odeio por te amar - KARYN GARCIA</media:title><media:description type='plain'>http://www.karyngarcia.com.br</media:description><media:keywords>amar, boyfriend, garcia, karyn, me, odeio, por, te</media:keywords><yt:duration seconds='203'/><media:category label='Music' scheme='http://gdata.youtube.com/schemas/2007/categories.cat'>Music</media:category><media:category label='test111' scheme='http://gdata.youtube.com/schemas/2007/developertags.cat'>test111</media:category><media:category label='test222' scheme='http://gdata.youtube.com/schemas/2007/developertags.cat'>test222</media:category><media:content url='http://www.youtube.com/v/C71ypXYGho8' type='application/x-shockwave-flash' medium='video' isDefault='true' expression='full' duration='203' yt:format='5'/><media:content url='rtsp://rtsp2.youtube.com/ChoLENy73wIaEQmPhgZ2pXK9CxMYDSANFEgGDA==/0/0/0/video.3gp' type='video/3gpp' medium='video' expression='full' duration='203' yt:format='1'/><media:content url='rtsp://rtsp2.youtube.com/ChoLENy73wIaEQmPhgZ2pXK9CxMYESARFEgGDA==/0/0/0/video.3gp' type='video/3gpp' medium='video' expression='full' duration='203' yt:format='6'/><media:player url='http://www.youtube.com/watch?v=C71ypXYGho8'/><media:thumbnail url='http://img.youtube.com/vi/C71ypXYGho8/2.jpg' height='97' width='130' time='00:01:41.500'/><media:thumbnail url='http://img.youtube.com/vi/C71ypXYGho8/1.jpg' height='97' width='130' time='00:00:50.750'/><media:thumbnail url='http://img.youtube.com/vi/C71ypXYGho8/3.jpg' height='97' width='130' time='00:02:32.250'/><media:thumbnail url='http://img.youtube.com/vi/C71ypXYGho8/0.jpg' height='240' width='320' time='00:01:41.500'/></media:group><yt:statistics viewCount='138864' favoriteCount='2474'/><gd:rating min='1' max='5' numRaters='4626' average='4.95'/><gd:comments><gd:feedLink href='http://gdata.youtube.com/feeds/api/videos/C71ypXYGho8/comments' countHint='27'/></gd:comments></entry>
 <entry><id>http://gdata.youtube.com/feeds/api/videos/gsVaTyb1tBw</id><published>2008-02-15T04:31:45.000-08:00</published><updated>2008-05-14T05:09:42.000-07:00</updated><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='extreme'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='cam'/><category scheme='http://gdata.youtube.com/schemas/2007/categories.cat' term='Sports' label='Sports'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='alcala'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='kani'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='helmet'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='campillo'/><category scheme='http://schemas.google.com/g/2005#kind' term='http://gdata.youtube.com/schemas/2007#video'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='pato'/><category scheme='http://gdata.youtube.com/schemas/2007/keywords.cat' term='dirt'/><title type='text'>extreme helmet cam Kani, Keil and Pato</title><content type='text'>trimmed</content><link rel='alternate' type='text/html' href='http://www.youtube.com/watch?v=gsVaTyb1tBw'/><link rel='http://gdata.youtube.com/schemas/2007#video.responses' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/videos/gsVaTyb1tBw/responses'/><link rel='http://gdata.youtube.com/schemas/2007#video.related' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/videos/gsVaTyb1tBw/related'/><link rel='self' type='application/atom+xml' href='http://gdata.youtube.com/feeds/api/standardfeeds/recently_featured/gsVaTyb1tBw'/><author><name>peraltamagic</name><uri>http://gdata.youtube.com/feeds/api/users/peraltamagic</uri></author><media:group><media:title type='plain'>extreme helmet cam Kani, Keil and Pato</media:title><media:description type='plain'>trimmed</media:description><media:keywords>alcala, cam, campillo, dirt, extreme, helmet, kani, pato</media:keywords><yt:duration seconds='31'/><media:category label='Sports' scheme='http://gdata.youtube.com/schemas/2007/categories.cat'>Sports</media:category><media:content url='http://www.youtube.com/v/gsVaTyb1tBw' type='application/x-shockwave-flash' medium='video' isDefault='true' expression='full' duration='31' yt:format='5'/><media:content url='rtsp://rtsp2.youtube.com/ChoLENy73wIaEQkctPUmT1rFghMYDSANFEgGDA==/0/0/0/video.3gp' type='video/3gpp' medium='video' expression='full' duration='31' yt:format='1'/><media:content url='rtsp://rtsp2.youtube.com/ChoLENy73wIaEQkctPUmT1rFghMYESARFEgGDA==/0/0/0/video.3gp' type='video/3gpp' medium='video' expression='full' duration='31' yt:format='6'/><media:player url='http://www.youtube.com/watch?v=gsVaTyb1tBw'/><media:thumbnail url='http://img.youtube.com/vi/gsVaTyb1tBw/2.jpg' height='97' width='130' time='00:00:15.500'/><media:thumbnail url='http://img.youtube.com/vi/gsVaTyb1tBw/1.jpg' height='97' width='130' time='00:00:07.750'/><media:thumbnail url='http://img.youtube.com/vi/gsVaTyb1tBw/3.jpg' height='97' width='130' time='00:00:23.250'/><media:thumbnail url='http://img.youtube.com/vi/gsVaTyb1tBw/0.jpg' height='240' width='320' time='00:00:15.500'/></media:group><yt:statistics viewCount='489941' favoriteCount='561'/><gd:rating min='1' max='5' numRaters='1255' average='4.11'/><gd:comments><gd:feedLink href='http://gdata.youtube.com/feeds/api/videos/gsVaTyb1tBw/comments' countHint='1116'/></gd:comments></entry>
 </feed>"""
 
@@ -2470,32 +2470,47 @@ YOUTUBE_CONTACTS_FEED = """<?xml version='1.0' encoding='UTF-8'?><feed xmlns='ht
       <id>http://gdata.youtube.com/feeds/users/apitestjhartmann/contacts/testjfisher</id><published>2008-02-26T14:13:03.000-08:00</published><updated>2008-05-16T19:24:34.916Z</updated><category scheme='http://schemas.google.com/g/2005#kind' term='http://gdata.youtube.com/schemas/2007#friend'/><title type='text'>testjfisher</title><link rel='related' type='application/atom+xml' href='http://gdata.youtube.com/feeds/users/testjfisher'/><link rel='alternate' type='text/html' href='http://www.youtube.com/profile?user=testjfisher'/><link rel='self' type='application/atom+xml' href='http://gdata.youtube.com/feeds/users/apitestjhartmann/contacts/testjfisher'/><link rel='edit' type='application/atom+xml' href='http://gdata.youtube.com/feeds/users/apitestjhartmann/contacts/testjfisher'/><author><name>apitestjhartmann</name><uri>http://gdata.youtube.com/feeds/users/apitestjhartmann</uri></author><yt:username>testjfisher</yt:username><yt:status>pending</yt:status></entry>
 </feed>"""
 
-
 NEW_CONTACT = """<?xml version='1.0' encoding='UTF-8'?>
-<atom:entry xmlns:atom='http://www.w3.org/2005/Atom'
-    xmlns:gd='http://schemas.google.com/g/2005'>
-  <atom:category scheme='http://schemas.google.com/g/2005#kind'
+<entry xmlns='http://www.w3.org/2005/Atom' 
+       xmlns:gd='http://schemas.google.com/g/2005'
+       xmlns:gContact='http://schemas.google.com/contact/2008'>
+  <id>http://www.google.com/m8/feeds/contacts/liz%40gmail.com/base/8411573</id>
+  <updated>2008-02-28T18:47:02.303Z</updated>
+  <category scheme='http://schemas.google.com/g/2005#kind'
     term='http://schemas.google.com/contact/2008#contact' />
-  <atom:title type='text'>Elizabeth Bennet</atom:title>
-  <atom:content type='text'>Notes</atom:content>
+  <title type='text'>Fitzgerald</title>
+  <content type='text'>Notes</content>
+  <link rel='self' type='application/atom+xml'
+    href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/full/8411573' />
+  <link rel='edit' type='application/atom+xml'
+    href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/full/8411573/1204224422303000' />
   <gd:email rel='http://schemas.google.com/g/2005#work'
     address='liz@gmail.com' />
   <gd:email rel='http://schemas.google.com/g/2005#home'
     address='liz@example.org' />
   <gd:phoneNumber rel='http://schemas.google.com/g/2005#work'
     primary='true'>(206)555-1212</gd:phoneNumber>
+  <gd:phoneNumber rel='http://schemas.google.com/g/2005#other' 
+    primary='true'>456-123-2133</gd:phoneNumber>
   <gd:phoneNumber rel='http://schemas.google.com/g/2005#home'>(206)555-1213</gd:phoneNumber>
+  <gd:extendedProperty name="pet" value="hamster" />
+  <gd:extendedProperty name="cousine"> 
+    <italian />
+  </gd:extendedProperty>
+  <gContact:groupMembershipInfo deleted="false" href="http://google.com/m8/feeds/groups/liz%40gmail.com/base/270f" /> 
   <gd:im address='liz@gmail.com'
     protocol='http://schemas.google.com/g/2005#GOOGLE_TALK'
     rel='http://schemas.google.com/g/2005#home' />
   <gd:postalAddress rel='http://schemas.google.com/g/2005#work'
     primary='true'>1600 Amphitheatre Pkwy Mountain View</gd:postalAddress>
-</atom:entry>"""
+</entry>"""
 
 CONTACTS_FEED = """<?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns='http://www.w3.org/2005/Atom'
     xmlns:openSearch='http://a9.com/-/spec/opensearchrss/1.0/'
-    xmlns:gd='http://schemas.google.com/g/2005'>
+    xmlns:gd='http://schemas.google.com/g/2005'
+    xmlns:gContact='http://schemas.google.com/contact/2008'
+    xmlns:batch='http://schemas.google.com/gdata/batch'>
   <id>http://www.google.com/m8/feeds/contacts/liz%40gmail.com/base</id>
   <updated>2008-03-05T12:36:38.836Z</updated>
   <category scheme='http://schemas.google.com/g/2005#kind'
@@ -2503,34 +2518,113 @@ CONTACTS_FEED = """<?xml version='1.0' encoding='UTF-8'?>
   <title type='text'>Contacts</title>
   <link rel='http://schemas.google.com/g/2005#feed'
     type='application/atom+xml'
-    href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/base' />
+    href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/full' />
   <link rel='http://schemas.google.com/g/2005#post'
     type='application/atom+xml'
-    href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/base' />
+    href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/full' />
+  <link rel='http://schemas.google.com/g/2005#batch'
+    type='application/atom+xml'
+    href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/full/batch' />
   <link rel='self' type='application/atom+xml'
-    href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/base?max-results=25' />
+    href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/full?max-results=25' />
   <author>
     <name>Elizabeth Bennet</name>
     <email>liz@gmail.com</email>
   </author>
-  <generator version='1.0' uri='http://www.google.com/m8/feeds/contacts'>Contacts</generator>
+  <generator version='1.0' uri='http://www.google.com/m8/feeds/contacts'>
+    Contacts
+  </generator>
   <openSearch:totalResults>1</openSearch:totalResults>
   <openSearch:startIndex>1</openSearch:startIndex>
   <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
   <entry>
-    <id>http://www.google.com/m8/feeds/contacts/liz%40gmail.com/base/c9012de</id>
+    <id>
+      http://www.google.com/m8/feeds/contacts/liz%40gmail.com/base/c9012de
+    </id>
     <updated>2008-03-05T12:36:38.835Z</updated>
     <category scheme='http://schemas.google.com/g/2005#kind'
       term='http://schemas.google.com/contact/2008#contact' />
     <title type='text'>Fitzgerald</title>
+    <link rel="http://schemas.google.com/contacts/2008/rel#photo" type="image/*" 
+      href="http://google.com/m8/feeds/photos/media/liz%40gmail.com/c9012de"/>
+    <link rel="http://schemas.google.com/contacts/2008/rel#edit-photo" type="image/*" 
+      href="http://www.google.com/m8/feeds/photos/media/liz%40gmail.com/c9012de/photo4524"/>
     <link rel='self' type='application/atom+xml'
-      href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/base/c9012de' />
+      href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/full/c9012de' />
     <link rel='edit' type='application/atom+xml'
-      href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/base/c9012de/1204720598835000' />
+      href='http://www.google.com/m8/feeds/contacts/liz%40gmail.com/full/c9012de/1204720598835000' />
     <gd:phoneNumber rel='http://schemas.google.com/g/2005#home'
-      primary='true'>456</gd:phoneNumber>
+      primary='true'>
+      456
+    </gd:phoneNumber>
+    <gd:extendedProperty name="pet" value="hamster" />
+    <gContact:groupMembershipInfo deleted="false" href="http://google.com/m8/feeds/groups/liz%40gmail.com/base/270f" />
   </entry>
 </feed>"""
+
+
+CONTACT_GROUPS_FEED = """<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" 
+  xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/" 
+  xmlns:gContact="http://schemas.google.com/contact/2008" 
+  xmlns:batch="http://schemas.google.com/gdata/batch" 
+  xmlns:gd="http://schemas.google.com/g/2005">
+  <id>jo@gmail.com</id>
+  <updated>2008-05-21T21:11:25.237Z</updated>
+  <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/contact/2008#group"/>
+  <title type="text">Jo's Contact Groups</title>
+  <link rel="alternate" type="text/html" href="http://www.google.com/"/>
+  <link rel="http://schemas.google.com/g/2005#feed" 
+    type="application/atom+xml" 
+    href="http://google.m/m8/feeds/groups/jo%40gmail.com/thin"/>
+  <link rel="http://schemas.google.com/g/2005#post" 
+      type="application/atom+xml" 
+      href="http://google.m/m8/feeds/groups/jo%40gmail.com/thin"/>
+  <link rel="http://schemas.google.com/g/2005#batch" 
+      type="application/atom+xml" 
+      href="http://googleom/m8/feeds/groups/jo%40gmail.com/thin/batch"/>
+  <link rel="self" 
+      type="application/atom+xml" 
+      href="http://google.com/m8/feeds/groups/jo%40gmail.com/thin?max-results=25"/>
+  <author>
+    <name>Jo Brown</name>
+    <email>jo@gmail.com</email>
+  </author>
+  <generator version="1.0" uri="http://google.com/m8/feeds">Contacts</generator>
+  <openSearch:totalResults>3</openSearch:totalResults>
+  <openSearch:startIndex>1</openSearch:startIndex>
+  <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
+  <entry>
+    <id>http://google.com/m8/feeds/groups/jo%40gmail.com/base/270f</id>
+    <updated>2008-05-14T13:10:19.070Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/contact/2008#group"/>
+    <title type="text">joggers</title>
+    <content type="text">joggers</content>
+    <link rel="self" type="application/atom+xml" 
+        href="http://google.com/m8/feeds/groups/jo%40gmail.com/thin/270f"/>
+    <link rel="edit" type="application/atom+xml"
+        href="http://google.com/m8/feeds/groups/jo%40gmail.com/thin/270f/1210770619070000"/>
+  </entry>
+</feed>"""
+
+CONTACT_GROUP_ENTRY = """<?xml version="1.0" encoding="UTF-8"?>
+<entry xmlns='http://www.w3.org/2005/Atom'
+       xmlns:gd="http://schemas.google.com/g/2005">
+    <category scheme="http://schemas.google.com/g/2005#kind"
+        term="http://schemas.google.com/g/2005#group"/>
+    <id>http://www.google.com/feeds/groups/jo%40gmail.com/base/1234</id>
+    <published>2005-01-18T21:00:00Z</published>
+    <updated>2006-01-01T00:00:00Z</updated>
+    <title type="text">Salsa group</title>
+    <content type="text">Salsa group</content>
+    <link rel='self' type='application/atom+xml'
+        href= 'http://www.google.com/m8/feeds/groups/jo%40gmail.com/full/2' />
+    <link rel='edit' type='application/atom+xml'
+        href='http://www.google.com/m8/feeds/groups/jo%40gmail.com/full/2/0'/>
+    <gd:extendedProperty name="more info about the group">
+        <info>Very nice people.</info>
+    </gd:extendedProperty>
+</entry>"""
 
 BLOG_ENTRY = """<entry xmlns='http://www.w3.org/2005/Atom'>
   <id>tag:blogger.com,1999:blog-blogID.post-postID</id>
@@ -2643,5 +2737,102 @@ BLOG_COMMENTS_FEED = """<feed xmlns="http://www.w3.org/2005/Atom" xmlns:openSear
     <author>
       <name>Blog Author name</name>
     </author>
+    <thr:in-reply-to xmlns:thr='http://purl.org/syndication/thread/1.0' 
+        href='http://blogName.blogspot.com/2007/04/first-post.html' 
+        ref='tag:blogger.com,1999:blog-blogID.post-postID' 
+        source='http://blogName.blogspot.com/feeds/posts/default/postID'
+        type='text/html' />
+  </entry>
+</feed>"""
+
+
+SITES_FEED = """<feed xmlns="http://www.w3.org/2005/Atom"
+  xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/"
+  xmlns:gd="http://schemas.google.com/g/2005"
+  xmlns:wt="http://schemas.google.com/webmasters/tools/2007">
+  <id>https://www.google.com/webmasters/tools/feeds/sites</id>
+  <title>Sites</title>
+  <openSearch:startIndex>1</openSearch:startIndex>
+  <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/webmasters/tools/2007#sites-feed" />
+  <link href="http://www.google.com/webmasters/tools/feeds/sites" rel="http://schemas.google.com/g/2005#feed" type="application/atom+xml" />
+  <link href="http://www.google.com/webmasters/tools/feeds/sites" rel="http://schemas.google.com/g/2005#post" type="application/atom+xml" />
+  <link href="http://www.google.com/webmasters/tools/feeds/sites" rel="self" type="application/atom+xml" />
+  <updated>2008-10-02T07:26:51.833Z</updated>
+  <entry>
+    <id>http://www.example.com</id>
+    <title type="text">http://www.example.com</title>
+    <link href="http://www.google.com/webmasters/tools/feeds/sites/http%3A%2F%2Fwww.example.com%2F" rel="self" type="application/atom+xml"/>
+    <link href="http://www.google.com/webmasters/tools/feeds/sites/http%3A%2F%2Fwww.example.com%2F" rel="edit" type="application/atom+xml"/>
+    <content src="http://www.example.com"/>
+    <updated>2007-11-17T18:27:32.543Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/webmasters/tools/2007#site-info"/>
+    <gd:entryLink rel="http://schemas.google.com/webmasters/tools/2007#verification" 
+      href="https://www.google.com/webmasters/tools/feeds/http%3A%2F%2Fwww%2Eexample%2Ecom%2F/verification" />
+    <gd:entryLink rel="http://schemas.google.com/webmasters/tools/2007#sitemaps" 
+      href="https://www.google.com/webmasters/tools/feeds/http%3A%2F%2Fwww%2Eexample%2Ecom%2F/sitemaps" />
+    <wt:indexed>true</wt:indexed>
+    <wt:crawled>2008-09-14T08:59:28.000</wt:crawled>
+    <wt:geolocation>US</wt:geolocation>
+    <wt:preferred-domain>none</wt:preferred-domain>
+    <wt:crawl-rate>normal</wt:crawl-rate>
+    <wt:enhanced-image-search>true</wt:enhanced-image-search>
+    <wt:verified>false</wt:verified>
+    <wt:verification-method type="metatag" in-use="false"><meta name="verify-v1" content="a2Ai"/>
+      </wt:verification-method>
+    <wt:verification-method type="htmlpage" in-use="false">456456-google.html</wt:verification-method>
+  </entry>
+</feed>"""
+
+
+SITEMAPS_FEED = """<feed xmlns="http://www.w3.org/2005/Atom" 
+  xmlns:wt="http://schemas.google.com/webmasters/tools/2007">
+  <id>http://www.example.com</id>
+  <title type="text">http://www.example.com/</title>
+  <updated>2006-11-17T18:27:32.543Z</updated>
+  <link rel="self" type="application/atom+xml" 
+    href="https://www.google.com/webmasters/tools/feeds/http%3A%2F%2Fwww%2Eexample%2Ecom%2F/sitemaps" />
+  <category scheme='http://schemas.google.com/g/2005#kind' 
+    term='http://schemas.google.com/webmasters/tools/2007#sitemaps-feed'/>
+  <wt:sitemap-mobile>
+    <wt:markup-language>HTML</wt:markup-language>
+    <wt:markup-language>WAP</wt:markup-language>
+  </wt:sitemap-mobile>
+  <wt:sitemap-news>
+    <wt:publication-label>Value1</wt:publication-label>
+    <wt:publication-label>Value2</wt:publication-label>
+    <wt:publication-label>Value3</wt:publication-label>
+  </wt:sitemap-news>
+  <entry>
+    <id>http://www.example.com/sitemap-index.xml</id>
+    <title type="text">http://www.example.com/sitemap-index.xml</title>
+    <category scheme='http://schemas.google.com/g/2005#kind' 
+      term='http://schemas.google.com/webmasters/tools/2007#sitemap-regular'/>
+    <updated>2006-11-17T18:27:32.543Z</updated>
+    <wt:sitemap-type>WEB</wt:sitemap-type>
+    <wt:sitemap-status>StatusValue</wt:sitemap-status>
+    <wt:sitemap-last-downloaded>2006-11-18T19:27:32.543Z</wt:sitemap-last-downloaded>
+    <wt:sitemap-url-count>102</wt:sitemap-url-count>
+  </entry>
+  <entry>
+    <id>http://www.example.com/mobile/sitemap-index.xml</id>
+    <title type="text">http://www.example.com/mobile/sitemap-index.xml</title>
+    <category scheme='http://schemas.google.com/g/2005#kind' 
+      term='http://schemas.google.com/webmasters/tools/2007#sitemap-mobile'/>
+    <updated>2006-11-17T18:27:32.543Z</updated>
+    <wt:sitemap-status>StatusValue</wt:sitemap-status>
+    <wt:sitemap-last-downloaded>2006-11-18T19:27:32.543Z</wt:sitemap-last-downloaded>
+    <wt:sitemap-url-count>102</wt:sitemap-url-count>
+    <wt:sitemap-mobile-markup-language>HTML</wt:sitemap-mobile-markup-language>
+  </entry>
+  <entry>
+    <id>http://www.example.com/news/sitemap-index.xml</id>
+    <title type="text">http://www.example.com/news/sitemap-index.xml</title>
+    <category scheme='http://schemas.google.com/g/2005#kind' 
+      term='http://schemas.google.com/webmasters/tools/2007#sitemap-news'/>
+    <updated>2006-11-17T18:27:32.543Z</updated>
+    <wt:sitemap-status>StatusValue</wt:sitemap-status>
+    <wt:sitemap-last-downloaded>2006-11-18T19:27:32.543Z</wt:sitemap-last-downloaded>
+    <wt:sitemap-url-count>102</wt:sitemap-url-count>
+    <wt:sitemap-news-publication-label>LabelValue</wt:sitemap-news-publication-label>
   </entry>
 </feed>"""

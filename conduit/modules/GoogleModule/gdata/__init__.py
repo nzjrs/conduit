@@ -25,6 +25,16 @@ __author__ = 'api.jscudder (Jeffrey Scudder)'
 
 import os
 import atom
+try:
+  from xml.etree import cElementTree as ElementTree
+except ImportError:
+  try:
+    import cElementTree as ElementTree
+  except ImportError:
+    try:
+      from xml.etree import ElementTree
+    except ImportError:
+      from elementtree import ElementTree
 
 
 # XML namespaces which are often used in GData entities.
@@ -79,8 +89,7 @@ class MediaSource(object):
 
     if (file_handle is None and content_type is not None and
         file_path is not None):
-
-        self.setFile(file_path, content_type)
+      self.setFile(file_path, content_type)
 
   def setFile(self, file_name, content_type):
     """A helper function which can create a file handle from a given filename
@@ -179,6 +188,12 @@ class LinkFinder(atom.LinkFinder):
         return a_link
     return None
 
+  def GetPrevLink(self):
+    for a_link in self.link:
+      if a_link.rel == 'previous':
+        return a_link
+    return None
+
 
 class TotalResults(atom.AtomBase):
   """opensearch:TotalResults for a GData feed"""
@@ -235,6 +250,82 @@ class ItemsPerPage(atom.AtomBase):
 
 def ItemsPerPageFromString(xml_string):
   return atom.CreateClassFromXMLString(ItemsPerPage, xml_string)
+
+
+class ExtendedProperty(atom.AtomBase):
+  """The Google Data extendedProperty element.
+  
+  Used to store arbitrary key-value information specific to your
+  application. The value can either be a text string stored as an XML 
+  attribute (.value), or an XML node (XmlBlob) as a child element.
+
+  This element is used in the Google Calendar data API and the Google
+  Contacts data API.
+  """
+
+  _tag = 'extendedProperty'
+  _namespace = GDATA_NAMESPACE
+  _children = atom.AtomBase._children.copy()
+  _attributes = atom.AtomBase._attributes.copy()
+  _attributes['name'] = 'name'
+  _attributes['value'] = 'value'
+
+  def __init__(self, name=None, value=None, extension_elements=None,
+      extension_attributes=None, text=None):
+    self.name = name
+    self.value = value
+    self.text = text
+    self.extension_elements = extension_elements or []
+    self.extension_attributes = extension_attributes or {}
+
+  def GetXmlBlobExtensionElement(self):
+    """Returns the XML blob as an atom.ExtensionElement.
+    
+    Returns:
+      An atom.ExtensionElement representing the blob's XML, or None if no
+      blob was set.
+    """
+    if len(self.extension_elements) < 1:
+      return None
+    else:
+      return self.extension_elements[0]
+
+  def GetXmlBlobString(self):
+    """Returns the XML blob as a string.
+
+    Returns:
+      A string containing the blob's XML, or None if no blob was set.
+    """
+    blob = self.GetXmlBlobExtensionElement()
+    if blob:
+      return blob.ToString()
+    return None
+
+  def SetXmlBlob(self, blob):
+    """Sets the contents of the extendedProperty to XML as a child node.
+
+    Since the extendedProperty is only allowed one child element as an XML
+    blob, setting the XML blob will erase any preexisting extension elements
+    in this object.
+
+    Args:
+      blob: str, ElementTree Element or atom.ExtensionElement representing
+            the XML blob stored in the extendedProperty.
+    """
+    # Erase any existing extension_elements, clears the child nodes from the
+    # extendedProperty.
+    self.extension_elements = []
+    if isinstance(blob, atom.ExtensionElement):
+      self.extension_elements.append(blob)
+    elif ElementTree.iselement(blob):
+      self.extension_elements.append(atom._ExtensionElementFromElementTree(
+          blob))
+    else:
+      self.extension_elements.append(atom.ExtensionElementFromString(blob))
+
+
+def ExtendedPropertyFromString(xml_string):
+  return atom.CreateClassFromXMLString(ExtendedProperty, xml_string)
 
 
 class GDataEntry(atom.Entry, LinkFinder):
@@ -694,7 +785,7 @@ class EntryLink(atom.AtomBase):
   _attributes = atom.AtomBase._attributes.copy()
   # The entry used to be an atom.Entry, now it is a GDataEntry.
   _children['{%s}entry' % atom.ATOM_NAMESPACE] = ('entry', GDataEntry)
-  _attributes['rel'] = 'rel',
+  _attributes['rel'] = 'rel'
   _attributes['readOnly'] = 'read_only'
   _attributes['href'] = 'href'
   

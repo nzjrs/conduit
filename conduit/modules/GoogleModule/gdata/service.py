@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# Copyright (C) 2006 Google Inc.
+# Copyright (C) 2006,2008 Google Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -33,7 +33,11 @@
 
   NonAuthSubToken: Raised if a method to modify an AuthSub token is used when
                    the user is either not authenticated or is authenticated
-                   through programmatic login.
+                   through another authentication mechanism.
+
+  NonOAuthToken: Raised if a method to modify an OAuth token is used when the
+                 user is either not authenticated or is authenticated through
+                 another authentication mechanism.
 
   RequestError: Raised if a CRUD request returned a non-success code. 
 
@@ -58,8 +62,8 @@ __author__ = 'api.jscudder (Jeffrey Scudder)'
 
 
 import re
-import httplib
 import urllib
+import urlparse
 try:
   from xml.etree import cElementTree as ElementTree
 except ImportError:
@@ -73,17 +77,83 @@ except ImportError:
 import atom.service
 import gdata
 import atom
+import atom.http_interface
+import atom.token_store
 import gdata.auth
 
 
-PROGRAMMATIC_AUTH_LABEL = 'GoogleLogin auth'
-AUTHSUB_AUTH_LABEL = 'AuthSub token'
 AUTH_SERVER_HOST = 'https://www.google.com'
 
+
+# When requesting an AuthSub token, it is often helpful to track the scope
+# which is being requested. One way to accomplish this is to add a URL 
+# parameter to the 'next' URL which contains the requested scope. This
+# constant is the default name (AKA key) for the URL parameter.
+SCOPE_URL_PARAM_NAME = 'authsub_token_scope'
+# When requesting an OAuth access token or authorization of an existing OAuth
+# request token, it is often helpful to track the scope(s) which is/are being
+# requested. One way to accomplish this is to add a URL parameter to the
+# 'callback' URL which contains the requested scope. This constant is the
+# default name (AKA key) for the URL parameter.
+OAUTH_SCOPE_URL_PARAM_NAME = 'oauth_token_scope'
+# Maps the service names used in ClientLogin to scope URLs.
+CLIENT_LOGIN_SCOPES = {
+    'cl': [ # Google Calendar
+        'https://www.google.com/calendar/feeds/',
+        'http://www.google.com/calendar/feeds/'],
+    'gbase': [ # Google Base
+        'http://base.google.com/base/feeds/',
+        'http://www.google.com/base/feeds/'], 
+    'blogger': [ # Blogger
+        'http://www.blogger.com/feeds/'], 
+    'codesearch': [ # Google Code Search
+        'http://www.google.com/codesearch/feeds/'],
+    'cp': [ # Contacts API
+        'https://www.google.com/m8/feeds/',
+        'http://www.google.com/m8/feeds/'],
+    'finance': [ # Google Finance
+        'http://finance.google.com/finance/feeds/'],
+    'health': [ # Google Health
+        'https://www.google.com/health/feeds/'],
+    'writely': [ # Documents List API
+        'https://docs.google.com/feeds/',
+        'http://docs.google.com/feeds/'],
+    'lh2': [ # Picasa Web Albums
+        'http://picasaweb.google.com/data/'],
+    'apps': [ # Google Apps Provisioning API
+        'http://www.google.com/a/feeds/',
+        'https://www.google.com/a/feeds/',
+        'http://apps-apis.google.com/a/feeds/',
+        'https://apps-apis.google.com/a/feeds/'],
+    'weaver': [ # Health H9 Sandbox
+        'https://www.google.com/h9/'],
+    'wise': [ # Spreadsheets Data API
+        'https://spreadsheets.google.com/feeds/',
+        'http://spreadsheets.google.com/feeds/'],
+    'sitemaps': [ # Google Webmaster Tools
+        'https://www.google.com/webmasters/tools/feeds/'],
+    'youtube': [ # YouTube
+        'http://gdata.youtube.com/feeds/api/',
+        'http://uploads.gdata.youtube.com/feeds/api',
+        'http://gdata.youtube.com/action/GetUploadToken']}
+
+
+def lookup_scopes(service_name):
+  """Finds the scope URLs for the desired service.
+  
+  In some cases, an unknown service may be used, and in those cases this
+  function will return None.
+  """
+  if service_name in CLIENT_LOGIN_SCOPES:
+    return CLIENT_LOGIN_SCOPES[service_name]
+  return None
+    
 
 # Module level variable specifies which module should be used by GDataService
 # objects to make HttpRequests. This setting can be overridden on each 
 # instance of GDataService.
+# This module level variable is deprecated. Reassign the http_client member
+# of a GDataService object instead.
 http_request_handler = atom.service
 
 
@@ -107,6 +177,10 @@ class NonAuthSubToken(Error):
   pass
 
 
+class NonOAuthToken(Error):
+  pass
+
+
 class RequestError(Error):
   pass
 
@@ -114,8 +188,30 @@ class RequestError(Error):
 class UnexpectedReturnType(Error):
   pass
 
+
 class BadAuthenticationServiceURL(Error):
   pass
+
+
+class FetchingOAuthRequestTokenFailed(RequestError):
+  pass
+
+
+class TokenUpgradeFailed(RequestError):
+  pass
+
+
+class RevokingOAuthTokenFailed(RequestError):
+  pass
+
+
+class AuthorizationRequired(Error):
+  pass
+
+
+class TokenHadNoScope(Error):
+  pass
+
 
 class GDataService(atom.service.AtomService):
   """Contains elements needed for GData login and CRUD request headers.
@@ -123,10 +219,17 @@ class GDataService(atom.service.AtomService):
   Maintains additional headers (tokens for example) needed for the GData 
   services to allow a user to perform inserts, updates, and deletes.
   """
+  # The hander member is deprecated, use http_client instead.
+  handler = None
+  # The auth_token member is deprecated, use the token_store instead.
+  auth_token = None
+  # The tokens dict is deprecated in favor of the token_store.
+  tokens = None
 
   def __init__(self, email=None, password=None, account_type='HOSTED_OR_GOOGLE',
                service=None, auth_service_url=None, source=None, server=None, 
-               additional_headers=None, handler=None):
+               additional_headers=None, handler=None, tokens=None,
+               http_client=None, token_store=None):
     """Creates an object of type GDataService.
 
     Args:
@@ -147,11 +250,20 @@ class GDataService(atom.service.AtomService):
           will be opened. Default value: 'base.google.com'.
       additional_headers: dictionary (optional) Any additional headers which 
           should be included with CRUD operations.
-      handler: module (optional) The module whose HttpRequest function 
-          should be used when making requests to the server. The default 
-          value is atom.service.
+      handler: module (optional) This parameter is deprecated and has been
+          replaced by http_client.
+      tokens: This parameter is deprecated, calls should be made to 
+          token_store instead.
+      http_client: An object responsible for making HTTP requests using a
+          request method. If none is provided, a new instance of
+          atom.http.ProxiedHttpClient will be used.
+      token_store: Keeps a collection of authorization tokens which can be
+          applied to requests for a specific URLs. Critical methods are
+          find_token based on a URL (atom.url.Url or a string), add_token,
+          and remove_token.
     """
-
+    atom.service.AtomService.__init__(self, http_client=http_client, 
+        token_store=token_store)
     self.email = email
     self.password = password
     self.account_type = account_type
@@ -159,32 +271,24 @@ class GDataService(atom.service.AtomService):
     self.auth_service_url = auth_service_url
     self.server = server
     self.additional_headers = additional_headers or {}
-    self.handler = handler or http_request_handler
+    self._oauth_input_params = None
     self.__SetSource(source)
-    self.__auth_token = None
     self.__captcha_token = None
     self.__captcha_url = None
     self.__gsessionid = None
+
+    if http_request_handler.__name__ == 'gdata.urlfetch':
+      import gdata.alt.appengine
+      self.http_client = gdata.alt.appengine.AppEngineHttpClient()
  
   # Define properties for GDataService
-  def _SetAuthSubToken(self, auth_token):
-    """Sets the token sent in requests to an AuthSub token.
+  def _SetAuthSubToken(self, auth_token, scopes=None):
+    """Deprecated, use SetAuthSubToken instead."""
+    self.SetAuthSubToken(auth_token, scopes=scopes)
 
-    Only use this method if you have received a token from the AuthSub 
-    service. The auth_token is set automatically when ProgrammaticLogin()
-    is used. See documentation for Google AuthSub here:
-    http://code.google.com/apis/accounts/AuthForWebApps.html .
-
-    Args:
-      auth_token: string The token returned by the AuthSub service.
-    """
-
-    self.__auth_token = '%s=%s' % (AUTHSUB_AUTH_LABEL, auth_token)
-    # The auth token is only set externally when using AuthSub authentication,
-    # so set the auth_type to indicate AuthSub.
-
-  def __SetAuthSubToken(self, auth_token):
-    self._SetAuthSubToken(auth_token)
+  def __SetAuthSubToken(self, auth_token, scopes=None):
+    """Deprecated, use SetAuthSubToken instead."""
+    self._SetAuthSubToken(auth_token, scopes=scopes)
 
   def _GetAuthToken(self):
     """Returns the auth token used for authenticating requests.
@@ -192,14 +296,12 @@ class GDataService(atom.service.AtomService):
     Returns:
       string
     """
-
-    return self.__auth_token
-
-  def __GetAuthToken(self):
-    return self._GetAuthToken()
-
-  auth_token = property(__GetAuthToken, __SetAuthSubToken,
-      doc="""Get or set the token used for authentication.""")
+    current_scopes = lookup_scopes(self.service)
+    if current_scopes:
+      token = self.token_store.find_token(current_scopes[0])
+      if hasattr(token, 'auth_header'):
+        return token.auth_header
+    return None
 
   def _GetCaptchaToken(self):
     """Returns a captcha token if the most recent login attempt generated one.
@@ -210,7 +312,6 @@ class GDataService(atom.service.AtomService):
     Returns:
       string
     """
-
     return self.__captcha_token
 
   def __GetCaptchaToken(self):
@@ -228,7 +329,6 @@ class GDataService(atom.service.AtomService):
     Returns:
       string
     """
-
     return self.__captcha_url
 
   def __GetCaptchaURL(self):
@@ -237,38 +337,363 @@ class GDataService(atom.service.AtomService):
   captcha_url = property(__GetCaptchaURL,
       doc="""Get the captcha URL for a login request.""")
 
-  def GetAuthSubToken(self):
-    """Returns the AuthSub Token after removing the AuthSub Authorization
-    Label.
-     
-    The AuthSub Authorization Label reads: "AuthSub token"
-
-    Returns:
-      If the AuthSub Token is set AND it begins with the AuthSub 
-      Authorization Label, the AuthSub Token is returned minus the AuthSub
-      Label. If the AuthSub Token does not start with the AuthSub
-      Authorization Label or it is not set, None is returned.
+  def SetOAuthInputParameters(self, signature_method, consumer_key,
+                              consumer_secret=None, rsa_key=None,
+                              two_legged_oauth=False):
+    """Sets parameters required for using OAuth authentication mechanism.
+    
+    NOTE: Though consumer_secret and rsa_key are optional, either of the two
+    is required depending on the value of the signature_method.
+    
+    Args:
+      signature_method: class which provides implementation for strategy class
+          oauth.oauth.OAuthSignatureMethod. Signature method to be used for
+          signing each request. Valid implementations are provided as the
+          constants defined by gdata.auth.OAuthSignatureMethod. Currently
+          they are gdata.auth.OAuthSignatureMethod.RSA_SHA1 and
+          gdata.auth.OAuthSignatureMethod.HMAC_SHA1
+      consumer_key: string Domain identifying third_party web application.
+      consumer_secret: string (optional) Secret generated during registration.
+          Required only for HMAC_SHA1 signature method.
+      rsa_key: string (optional) Private key required for RSA_SHA1 signature
+          method.
+      two_legged_oauth: string (default=False) Enables two-legged OAuth process.
     """
-    if self.__auth_token.startswith(AUTHSUB_AUTH_LABEL):
-      # Strip off the leading 'AUTHSUB_AUTH_LABEL=' and just return the
-      # token value.
-      return self.__auth_token[len(AUTHSUB_AUTH_LABEL)+1:]
+    self._oauth_input_params = gdata.auth.OAuthInputParams(
+        signature_method, consumer_key, consumer_secret=consumer_secret,
+        rsa_key=rsa_key)
+    if two_legged_oauth:
+      oauth_token = gdata.auth.OAuthToken(
+          oauth_input_params=self._oauth_input_params)
+      self.SetOAuthToken(oauth_token)
+  
+  def FetchOAuthRequestToken(self, scopes=None, extra_parameters=None,
+                             request_url='%s/accounts/OAuthGetRequestToken' % \
+                             AUTH_SERVER_HOST):
+    """Fetches OAuth request token and returns it.
+    
+    Args:
+      scopes: string or list of string base URL(s) of the service(s) to be
+          accessed. If None, then this method tries to determine the
+          scope(s) from the current service.
+      extra_parameters: dict (optional) key-value pairs as any additional
+          parameters to be included in the URL and signature while making a
+          request for fetching an OAuth request token. All the OAuth parameters
+          are added by default. But if provided through this argument, any
+          default parameters will be overwritten. For e.g. a default parameter
+          oauth_version 1.0 can be overwritten if
+          extra_parameters = {'oauth_version': '2.0'}
+      request_url: Request token URL. The default is
+          'https://www.google.com/accounts/OAuthGetRequestToken'.
+      
+    Returns:
+      The fetched request token as a gdata.auth.OAuthToken object.
+      
+    Raises:
+      FetchingOAuthRequestTokenFailed if the server responded to the request
+      with an error.
+    """
+    if scopes is None:
+      scopes = lookup_scopes(self.service)
+    if not isinstance(scopes, (list, tuple)):
+      scopes = [scopes,]
+    request_token_url = gdata.auth.GenerateOAuthRequestTokenUrl(
+        self._oauth_input_params, scopes,
+        request_token_url=request_url,
+        extra_parameters=extra_parameters)
+    response = self.http_client.request('GET', str(request_token_url))
+    if response.status == 200:
+      token = gdata.auth.OAuthToken()
+      token.set_token_string(response.read())
+      token.scopes = scopes
+      token.oauth_input_params = self._oauth_input_params
+      return token
+    error = {
+        'status': response.status,
+        'reason': 'Non 200 response on upgrade',
+        'body': response.read()
+        }
+    raise FetchingOAuthRequestTokenFailed(error)    
+  
+  def SetOAuthToken(self, oauth_token):
+    """Attempts to set the current token and add it to the token store.
+    
+    The oauth_token can be any OAuth token i.e. unauthorized request token,
+    authorized request token or access token.
+    This method also attempts to add the token to the token store.
+    Use this method any time you want the current token to point to the
+    oauth_token passed. For e.g. call this method with the request token
+    you receive from FetchOAuthRequestToken.
+    
+    Args:
+      request_token: gdata.auth.OAuthToken OAuth request token.
+    """
+    if self.auto_set_current_token:
+      self.current_token = oauth_token
+    if self.auto_store_tokens:
+      self.token_store.add_token(oauth_token)
+    
+  def GenerateOAuthAuthorizationURL(
+      self, request_token=None, callback_url=None, extra_params=None,
+      include_scopes_in_callback=False,
+      scopes_param_prefix=OAUTH_SCOPE_URL_PARAM_NAME,
+      request_url='%s/accounts/OAuthAuthorizeToken' % AUTH_SERVER_HOST):
+    """Generates URL at which user will login to authorize the request token.
+    
+    Args:
+      request_token: gdata.auth.OAuthToken (optional) OAuth request token.
+          If not specified, then the current token will be used if it is of
+          type <gdata.auth.OAuthToken>, else it is found by looking in the
+          token_store by looking for a token for the current scope.    
+      callback_url: string (optional) The URL user will be sent to after
+          logging in and granting access.
+      extra_params: dict (optional) Additional parameters to be sent.
+      include_scopes_in_callback: Boolean (default=False) if set to True, and
+          if 'callback_url' is present, the 'callback_url' will be modified to
+          include the scope(s) from the request token as a URL parameter. The
+          key for the 'callback' URL's scope parameter will be
+          OAUTH_SCOPE_URL_PARAM_NAME. The benefit of including the scope URL as
+          a parameter to the 'callback' URL, is that the page which receives
+          the OAuth token will be able to tell which URLs the token grants
+          access to.
+      scopes_param_prefix: string (default='oauth_token_scope') The URL
+          parameter key which maps to the list of valid scopes for the token.
+          This URL parameter will be included in the callback URL along with
+          the scopes of the token as value if include_scopes_in_callback=True.
+      request_url: Authorization URL. The default is
+          'https://www.google.com/accounts/OAuthAuthorizeToken'.
+    Returns:
+      A string URL at which the user is required to login.
+    
+    Raises:
+      NonOAuthToken if the user's request token is not an OAuth token or if a
+      request token was not available.
+    """
+    if request_token and not isinstance(request_token, gdata.auth.OAuthToken):
+      raise NonOAuthToken
+    if not request_token:
+      if isinstance(self.current_token, gdata.auth.OAuthToken):
+        request_token = self.current_token
+      else:
+        current_scopes = lookup_scopes(self.service)
+        if current_scopes:
+          token = self.token_store.find_token(current_scopes[0])
+          if isinstance(token, gdata.auth.OAuthToken):
+            request_token = token
+    if not request_token:
+      raise NonOAuthToken
+    return str(gdata.auth.GenerateOAuthAuthorizationUrl(
+        request_token,
+        authorization_url=request_url,
+        callback_url=callback_url, extra_params=extra_params,
+        include_scopes_in_callback=include_scopes_in_callback,
+        scopes_param_prefix=scopes_param_prefix))   
+  
+  def UpgradeToOAuthAccessToken(self, authorized_request_token=None,
+                                request_url='%s/accounts/OAuthGetAccessToken' \
+                                % AUTH_SERVER_HOST, oauth_version='1.0'):
+    """Upgrades the authorized request token to an access token.
+    
+    Args:
+      authorized_request_token: gdata.auth.OAuthToken (optional) OAuth request
+          token. If not specified, then the current token will be used if it is
+          of type <gdata.auth.OAuthToken>, else it is found by looking in the
+          token_store by looking for a token for the current scope.
+      oauth_version: str (default='1.0') oauth_version parameter. All other
+          'oauth_' parameters are added by default. This parameter too, is
+          added by default but here you can override it's value.
+      request_url: Access token URL. The default is
+          'https://www.google.com/accounts/OAuthGetAccessToken'.
+          
+    Raises:
+      NonOAuthToken if the user's authorized request token is not an OAuth
+      token or if an authorized request token was not available.
+      TokenUpgradeFailed if the server responded to the request with an 
+      error.
+    """
+    if (authorized_request_token and
+        not isinstance(authorized_request_token, gdata.auth.OAuthToken)):
+      raise NonOAuthToken
+    if not authorized_request_token:
+      if isinstance(self.current_token, gdata.auth.OAuthToken):
+        authorized_request_token = self.current_token
+      else:
+        current_scopes = lookup_scopes(self.service)
+        if current_scopes:
+          token = self.token_store.find_token(current_scopes[0])
+          if isinstance(token, gdata.auth.OAuthToken):
+            authorized_request_token = token
+    if not authorized_request_token:
+      raise NonOAuthToken
+    access_token_url = gdata.auth.GenerateOAuthAccessTokenUrl(
+        authorized_request_token,
+        self._oauth_input_params,
+        access_token_url=request_url,
+        oauth_version=oauth_version)
+    response = self.http_client.request('GET', str(access_token_url))
+    if response.status == 200:
+      token = gdata.auth.OAuthTokenFromHttpBody(response.read())
+      token.scopes = authorized_request_token.scopes
+      token.oauth_input_params = authorized_request_token.oauth_input_params
+      self.SetOAuthToken(token)
     else:
+      raise TokenUpgradeFailed({'status': response.status,
+                                'reason': 'Non 200 response on upgrade',
+                                'body': response.read()})      
+  
+  def RevokeOAuthToken(self, request_url='%s/accounts/AuthSubRevokeToken' % \
+                       AUTH_SERVER_HOST):
+    """Revokes an existing OAuth token.
+
+    request_url: Token revoke URL. The default is
+          'https://www.google.com/accounts/AuthSubRevokeToken'.
+    Raises:
+      NonOAuthToken if the user's auth token is not an OAuth token.
+      RevokingOAuthTokenFailed if request for revoking an OAuth token failed.
+    """
+    scopes = lookup_scopes(self.service)
+    token = self.token_store.find_token(scopes[0])
+    if not isinstance(token, gdata.auth.OAuthToken):
+      raise NonOAuthToken
+
+    response = token.perform_request(self.http_client, 'GET', request_url,
+        headers={'Content-Type':'application/x-www-form-urlencoded'})
+    if response.status == 200:
+      self.token_store.remove_token(token)
+    else:
+      raise RevokingOAuthTokenFailed
+  
+  def GetAuthSubToken(self):
+    """Returns the AuthSub token as a string.
+     
+    If the token is an gdta.auth.AuthSubToken, the Authorization Label
+    ("AuthSub token") is removed.
+
+    This method examines the current_token to see if it is an AuthSubToken
+    or SecureAuthSubToken. If not, it searches the token_store for a token
+    which matches the current scope.
+    
+    The current scope is determined by the service name string member.
+    
+    Returns:
+      If the current_token is set to an AuthSubToken/SecureAuthSubToken,
+      return the token string. If there is no current_token, a token string
+      for a token which matches the service object's default scope is returned.
+      If there are no tokens valid for the scope, returns None.
+    """
+    if isinstance(self.current_token, gdata.auth.AuthSubToken):
+      return self.current_token.get_token_string()
+    current_scopes = lookup_scopes(self.service)
+    if current_scopes:
+      token = self.token_store.find_token(current_scopes[0])
+      if isinstance(token, gdata.auth.AuthSubToken):
+        return token.get_token_string()
+    else:
+      token = self.token_store.find_token(atom.token_store.SCOPE_ALL)
+      if isinstance(token, gdata.auth.ClientLoginToken):
+        return token.get_token_string()
       return None
 
-  def SetAuthSubToken(self, token):
-    self.__auth_token = '%s=%s' % (AUTHSUB_AUTH_LABEL, token)
+  def SetAuthSubToken(self, token, scopes=None, rsa_key=None):
+    """Sets the token sent in requests to an AuthSub token.
+
+    Sets the current_token and attempts to add the token to the token_store.
+    
+    Only use this method if you have received a token from the AuthSub
+    service. The auth token is set automatically when UpgradeToSessionToken()
+    is used. See documentation for Google AuthSub here:
+    http://code.google.com/apis/accounts/AuthForWebApps.html 
+
+    Args:
+     token: gdata.auth.AuthSubToken or gdata.auth.SecureAuthSubToken or string
+            The token returned by the AuthSub service. If the token is an
+            AuthSubToken or SecureAuthSubToken, the scope information stored in
+            the token is used. If the token is a string, the scopes parameter is
+            used to determine the valid scopes.
+     scopes: list of URLs for which the token is valid. This is only used
+             if the token parameter is a string.
+     rsa_key: string (optional) Private key required for RSA_SHA1 signature
+              method.  This parameter is necessary if the token is a string
+              representing a secure token.
+    """
+    if not isinstance(token, gdata.auth.AuthSubToken):
+      token_string = token
+      if rsa_key:
+        token = gdata.auth.SecureAuthSubToken(rsa_key)
+      else:
+        token = gdata.auth.AuthSubToken()
+
+      token.set_token_string(token_string)
+        
+    # If no scopes were set for the token, use the scopes passed in, or
+    # try to determine the scopes based on the current service name. If
+    # all else fails, set the token to match all requests.
+    if not token.scopes:
+      if scopes is None:
+        scopes = lookup_scopes(self.service)
+        if scopes is None:
+          scopes = [atom.token_store.SCOPE_ALL]
+      token.scopes = scopes
+    if self.auto_set_current_token:
+      self.current_token = token
+    if self.auto_store_tokens:
+      self.token_store.add_token(token)
 
   def GetClientLoginToken(self):
-    if self.__auth_token.startswith(PROGRAMMATIC_AUTH_LABEL):
-      # Strip off the leading 'PROGRAMMATIC_AUTH_LABEL=' and just return the
-      # token value.
-      return self.__auth_token[len(PROGRAMMATIC_AUTH_LABEL)+1:]
+    """Returns the token string for the current token or a token matching the 
+    service scope.
+
+    If the current_token is a ClientLoginToken, the token string for 
+    the current token is returned. If the current_token is not set, this method
+    searches for a token in the token_store which is valid for the service 
+    object's current scope.
+
+    The current scope is determined by the service name string member.
+    The token string is the end of the Authorization header, it doesn not
+    include the ClientLogin label.
+    """
+    if isinstance(self.current_token, gdata.auth.ClientLoginToken):
+      return self.current_token.get_token_string()
+    current_scopes = lookup_scopes(self.service)
+    if current_scopes:
+      token = self.token_store.find_token(current_scopes[0])
+      if isinstance(token, gdata.auth.ClientLoginToken):
+        return token.get_token_string()
     else:
+      token = self.token_store.find_token(atom.token_store.SCOPE_ALL)
+      if isinstance(token, gdata.auth.ClientLoginToken):
+        return token.get_token_string()
       return None
 
-  def SetClientLoginToken(self, token):
-    self.__auth_token = '%s=%s' % (PROGRAMMATIC_AUTH_LABEL, token)
+  def SetClientLoginToken(self, token, scopes=None):
+    """Sets the token sent in requests to a ClientLogin token.
+
+    This method sets the current_token to a new ClientLoginToken and it 
+    also attempts to add the ClientLoginToken to the token_store.
+    
+    Only use this method if you have received a token from the ClientLogin
+    service. The auth_token is set automatically when ProgrammaticLogin()
+    is used. See documentation for Google ClientLogin here:
+    http://code.google.com/apis/accounts/docs/AuthForInstalledApps.html
+
+    Args:
+      token: string or instance of a ClientLoginToken. 
+    """
+    if not isinstance(token, gdata.auth.ClientLoginToken):
+      token_string = token
+      token = gdata.auth.ClientLoginToken()
+      token.set_token_string(token_string)
+
+    if not token.scopes:
+      if scopes is None:
+        scopes = lookup_scopes(self.service)
+        if scopes is None:
+          scopes = [atom.token_store.SCOPE_ALL]
+      token.scopes = scopes
+    if self.auto_set_current_token:
+      self.current_token = token
+    if self.auto_store_tokens:
+      self.token_store.add_token(token)
 
   # Private methods to create the source property.
   def __GetSource(self):
@@ -277,8 +702,8 @@ class GDataService(atom.service.AtomService):
   def __SetSource(self, new_source):
     self.__source = new_source
     # Update the UserAgent header to include the new application name.
-    self.additional_headers['User-Agent'] = '%s GData-Python/1.0.13' % (
-        self.__source)
+    self.additional_headers['User-Agent'] = atom.http_interface.USER_AGENT % (
+        self.__source,)
 
   source = property(__GetSource, __SetSource, 
       doc="""The source is the name of the application making the request. 
@@ -308,8 +733,8 @@ class GDataService(atom.service.AtomService):
       BadAuthentication if the login service rejected the username or password
       Error if the login service responded with a 403 different from the above
     """
-    request_body = gdata.auth.GenerateClientLoginRequestBody(self.email, 
-        self.password, self.service, self.source, self.account_type, 
+    request_body = gdata.auth.generate_client_login_request_body(self.email,
+        self.password, self.service, self.source, self.account_type,
         captcha_token, captcha_response)
 
     # If the user has defined their own authentication service URL, 
@@ -319,22 +744,22 @@ class GDataService(atom.service.AtomService):
     else:
         auth_request_url = self.auth_service_url
 
-    auth_response = self.handler.HttpRequest(self, 'POST', request_body, 
-        auth_request_url,
-        extra_headers={'Content-Length':str(len(request_body))},
-        content_type='application/x-www-form-urlencoded')
+    auth_response = self.http_client.request('POST', auth_request_url,
+        data=request_body, 
+        headers={'Content-Type':'application/x-www-form-urlencoded'})
     response_body = auth_response.read()
 
     if auth_response.status == 200:
-      self.__auth_token = gdata.auth.GenerateClientLoginAuthToken(
-           response_body)
+      # TODO: insert the token into the token_store directly.
+      self.SetClientLoginToken(
+          gdata.auth.get_client_login_token(response_body))
       self.__captcha_token = None
       self.__captcha_url = None
 
     elif auth_response.status == 403:
       # Examine each line to find the error type and the captcha token and
       # captch URL if they are present.
-      captcha_parameters = gdata.auth.GetCaptchChallenge(response_body, 
+      captcha_parameters = gdata.auth.get_captcha_challenge(response_body,
           captcha_base_url='%s/accounts/' % AUTH_SERVER_HOST)
       if captcha_parameters:
         self.__captcha_token = captcha_parameters['token']
@@ -357,7 +782,8 @@ class GDataService(atom.service.AtomService):
       raise BadAuthenticationServiceURL, 'Server responded with a 302 code.'
 
   def ClientLogin(self, username, password, account_type=None, service=None,
-      auth_service_url=None, source=None, captcha_token=None, captcha_response=None):
+      auth_service_url=None, source=None, captcha_token=None, 
+      captcha_response=None):
     """Convenience method for authenticating using ProgrammaticLogin. 
     
     Sets values for email, password, and other optional members.
@@ -385,58 +811,83 @@ class GDataService(atom.service.AtomService):
 
     self.ProgrammaticLogin(captcha_token, captcha_response)
 
-  def GenerateAuthSubURL(self, next, scope, secure=False, session=True):
+  def GenerateAuthSubURL(self, next, scope, secure=False, session=True, 
+      domain='default'):
     """Generate a URL at which the user will login and be redirected back.
 
     Users enter their credentials on a Google login page and a token is sent
     to the URL specified in next. See documentation for AuthSub login at:
-    http://code.google.com/apis/accounts/AuthForWebApps.html
+    http://code.google.com/apis/accounts/docs/AuthSub.html
 
     Args:
       next: string The URL user will be sent to after logging in.
-      scope: string The URL of the service to be accessed.
+      scope: string or list of strings. The URLs of the services to be 
+             accessed.
       secure: boolean (optional) Determines whether or not the issued token
               is a secure token.
       session: boolean (optional) Determines whether or not the issued token
                can be upgraded to a session token.
     """
+    if not isinstance(scope, (list, tuple)):
+      scope = (scope,)
+    return gdata.auth.generate_auth_sub_url(next, scope, secure=secure, 
+        session=session, 
+        request_url='%s/accounts/AuthSubRequest' % AUTH_SERVER_HOST, 
+        domain=domain)
 
-    # Translate True/False values for parameters into numeric values acceoted
-    # by the AuthSub service.
-    if secure:
-      secure = 1
-    else:
-      secure = 0
-
-    if session:
-      session = 1
-    else:
-      session = 0
-
-    request_params = urllib.urlencode({'next': next, 'scope': scope,
-                                    'secure': secure, 'session': session})
-    return '%s/accounts/AuthSubRequest?%s' % (AUTH_SERVER_HOST, request_params)
-
-  def UpgradeToSessionToken(self):
+  def UpgradeToSessionToken(self, token=None):
     """Upgrades a single use AuthSub token to a session token.
+
+    Args:
+      token: A gdata.auth.AuthSubToken or gdata.auth.SecureAuthSubToken
+             (optional) which is good for a single use but can be upgraded
+             to a session token. If no token is passed in, the token
+             is found by looking in the token_store by looking for a token
+             for the current scope.
 
     Raises:
       NonAuthSubToken if the user's auth token is not an AuthSub token
+      TokenUpgradeFailed if the server responded to the request with an 
+      error.
     """
-   
-    if not self.__auth_token.startswith(AUTHSUB_AUTH_LABEL):
+    if token is None:
+      scopes = lookup_scopes(self.service)
+      if scopes:
+        token = self.token_store.find_token(scopes[0])
+      else:
+        token = self.token_store.find_token(atom.token_store.SCOPE_ALL)
+    if not isinstance(token, gdata.auth.AuthSubToken):
       raise NonAuthSubToken
 
-    response = self.handler.HttpRequest(self, 'GET', None, 
-        AUTH_SERVER_HOST + '/accounts/AuthSubSessionToken', 
-        extra_headers={'Authorization':self.__auth_token}, 
-        content_type='application/x-www-form-urlencoded')
+    self.SetAuthSubToken(self.upgrade_to_session_token(token))
 
+  def upgrade_to_session_token(self, token):
+    """Upgrades a single use AuthSub token to a session token.
+
+    Args:
+      token: A gdata.auth.AuthSubToken or gdata.auth.SecureAuthSubToken
+             which is good for a single use but can be upgraded to a
+             session token.
+
+    Returns:
+      The upgraded token as a gdata.auth.AuthSubToken object.
+
+    Raises:
+      TokenUpgradeFailed if the server responded to the request with an 
+      error.
+    """
+    response = token.perform_request(self.http_client, 'GET', 
+        AUTH_SERVER_HOST + '/accounts/AuthSubSessionToken', 
+        headers={'Content-Type':'application/x-www-form-urlencoded'})
     response_body = response.read()
     if response.status == 200:
-      for response_line in response_body.splitlines():
-        if response_line.startswith('Token='):
-          self.SetAuthSubToken(response_line.lstrip('Token='))
+      token.set_token_string(
+          gdata.auth.token_from_http_body(response_body))
+      return token
+    else:
+      raise TokenUpgradeFailed({'status': response.status,
+                                'reason': 'Non 200 response on upgrade',
+                                'body': response_body})
 
   def RevokeAuthSubToken(self):
     """Revokes an existing AuthSub token.
@@ -444,16 +895,37 @@ class GDataService(atom.service.AtomService):
     Raises:
       NonAuthSubToken if the user's auth token is not an AuthSub token
     """
-
-    if not self.__auth_token.startswith(AUTHSUB_AUTH_LABEL):
+    scopes = lookup_scopes(self.service)
+    token = self.token_store.find_token(scopes[0])
+    if not isinstance(token, gdata.auth.AuthSubToken):
       raise NonAuthSubToken
-    
-    response = self.handler.HttpRequest(self, 'GET', None, 
+
+    response = token.perform_request(self.http_client, 'GET', 
         AUTH_SERVER_HOST + '/accounts/AuthSubRevokeToken', 
-        extra_headers={'Authorization':self.__auth_token}, 
-        content_type='application/x-www-form-urlencoded')
+        headers={'Content-Type':'application/x-www-form-urlencoded'})
     if response.status == 200:
-      self.__auth_token = None
+      self.token_store.remove_token(token)
+
+  def AuthSubTokenInfo(self):
+    """Fetches the AuthSub token's metadata from the server.
+
+    Raises:
+      NonAuthSubToken if the user's auth token is not an AuthSub token
+    """
+    scopes = lookup_scopes(self.service)
+    token = self.token_store.find_token(scopes[0])
+    if not isinstance(token, gdata.auth.AuthSubToken):
+      raise NonAuthSubToken
+
+    response = token.perform_request(self.http_client, 'GET', 
+        AUTH_SERVER_HOST + '/accounts/AuthSubTokenInfo', 
+        headers={'Content-Type':'application/x-www-form-urlencoded'})
+    result_body = response.read()
+    if response.status == 200:
+      return result_body
+    else:
+      raise RequestError, {'status': response.status,
+          'body': result_body}
 
   # CRUD operations
   def Get(self, uri, extra_headers=None, redirects_remaining=4, 
@@ -498,10 +970,6 @@ class GDataService(atom.service.AtomService):
     if extra_headers is None:
       extra_headers = {}
 
-    # Add the authentication header to the Get request
-    if self.__auth_token:
-      extra_headers['Authorization'] = self.__auth_token
-
     if self.__gsessionid is not None:
       if uri.find('gsessionid=') < 0:
         if uri.find('?') > -1:
@@ -509,8 +977,8 @@ class GDataService(atom.service.AtomService):
         else:
           uri += '?gsessionid=%s' % (self.__gsessionid,)
 
-    server_response = self.handler.HttpRequest(self, 'GET', None, uri, 
-        extra_headers=extra_headers)
+    server_response = self.request('GET', uri, 
+        headers=extra_headers)
     result_body = server_response.read()
 
     if server_response.status == 200:
@@ -536,7 +1004,7 @@ class GDataService(atom.service.AtomService):
           m = re.compile('[\?\&]gsessionid=(\w*)').search(location)
           if m is not None:
             self.__gsessionid = m.group(1)
-          return self.Get(location, extra_headers, redirects_remaining - 1, 
+          return GDataService.Get(self, location, extra_headers, redirects_remaining - 1, 
               encoding=encoding, converter=converter)
         else:
           raise RequestError, {'status': server_response.status,
@@ -554,8 +1022,8 @@ class GDataService(atom.service.AtomService):
     """Returns a MediaSource containing media and its metadata from the given
     URI string.
     """
-    response_handle = self.handler.HttpRequest(self, 'GET', None, uri, 
-        extra_headers=extra_headers)
+    response_handle = self.request('GET', uri,
+        headers=extra_headers)
     return gdata.MediaSource(response_handle, response_handle.getheader(
             'Content-Type'),
         response_handle.getheader('Content-Length'))
@@ -578,7 +1046,8 @@ class GDataService(atom.service.AtomService):
       A GDataEntry built from the XML in the server's response.
     """
 
-    result = self.Get(uri, extra_headers, converter=atom.EntryFromString)
+    result = GDataService.Get(self, uri, extra_headers, 
+        converter=atom.EntryFromString)
     if isinstance(result, atom.Entry):
       return result
     else:
@@ -603,7 +1072,7 @@ class GDataService(atom.service.AtomService):
       A GDataFeed built from the XML in the server's response.
     """
 
-    result = self.Get(uri, extra_headers, converter=converter)
+    result = GDataService.Get(self, uri, extra_headers, converter=converter)
     if isinstance(result, atom.Feed):
       return result
     else:
@@ -633,7 +1102,8 @@ class GDataService(atom.service.AtomService):
     # Make a GET request on the next link and use the above closure for the
     # converted which processes the XML string from the server.
     if next_link and next_link.href:
-      return self.Get(next_link.href, converter=ConvertToFeedClass)
+      return GDataService.Get(self, next_link.href, 
+          converter=ConvertToFeedClass)
     else:
       return None
 
@@ -671,9 +1141,9 @@ class GDataService(atom.service.AtomService):
       or the results of running converter on the server's result body (if
       converter was specified).
     """
-    return self.PostOrPut('POST', data, uri, extra_headers=extra_headers, 
-        url_params=url_params, escape_params=escape_params, 
-        redirects_remaining=redirects_remaining, 
+    return GDataService.PostOrPut(self, 'POST', data, uri, 
+        extra_headers=extra_headers, url_params=url_params, 
+        escape_params=escape_params, redirects_remaining=redirects_remaining,
         media_source=media_source, converter=converter)
 
   def PostOrPut(self, verb, data, uri, extra_headers=None, url_params=None, 
@@ -714,10 +1184,6 @@ class GDataService(atom.service.AtomService):
     if extra_headers is None:
       extra_headers = {}
 
-    # Add the authentication header to the Get request
-    if self.__auth_token:
-      extra_headers['Authorization'] = self.__auth_token
-
     if self.__gsessionid is not None:
       if uri.find('gsessionid=') < 0:
         if uri.find('?') > -1:
@@ -743,31 +1209,27 @@ class GDataService(atom.service.AtomService):
           len(multipart[1]) + len(multipart[2]) +
           len(data_str) + media_source.content_length)
 
-      server_response = self.handler.HttpRequest(self, verb, 
-          [multipart[0], data_str, multipart[1], media_source.file_handle,
-              multipart[2]], uri,
-          extra_headers=extra_headers, url_params=url_params, 
-          escape_params=escape_params, 
-          content_type='multipart/related; boundary=END_OF_PART')
+      extra_headers['Content-Type'] = 'multipart/related; boundary=END_OF_PART'
+      server_response = self.request(verb, uri, 
+          data=[multipart[0], data_str, multipart[1], media_source.file_handle,
+              multipart[2]], headers=extra_headers)
       result_body = server_response.read()
       
     elif media_source or isinstance(data, gdata.MediaSource):
       if isinstance(data, gdata.MediaSource):
         media_source = data
-      extra_headers['Content-Length'] = media_source.content_length
-      server_response = self.handler.HttpRequest(self, verb, 
-          media_source.file_handle, uri, extra_headers=extra_headers, 
-          url_params=url_params, escape_params=escape_params, 
-          content_type=media_source.content_type)
+      extra_headers['Content-Length'] = str(media_source.content_length)
+      extra_headers['Content-Type'] = media_source.content_type
+      server_response = self.request(verb, uri, 
+          data=media_source.file_handle, headers=extra_headers)
       result_body = server_response.read()
 
     else:
       http_data = data
       content_type = 'application/atom+xml'
-      server_response = self.handler.HttpRequest(self, verb, 
-          http_data, uri, extra_headers=extra_headers, 
-          url_params=url_params, escape_params=escape_params, 
-          content_type=content_type)
+      extra_headers['Content-Type'] = content_type
+      server_response = self.request(verb, uri, data=http_data,
+          headers=extra_headers)
       result_body = server_response.read()
 
     # Server returns 201 for most post requests, but when performing a batch
@@ -789,9 +1251,9 @@ class GDataService(atom.service.AtomService):
           m = re.compile('[\?\&]gsessionid=(\w*)').search(location)
           if m is not None:
             self.__gsessionid = m.group(1) 
-          return self.Post(data, location, extra_headers, url_params,
-              escape_params, redirects_remaining - 1, media_source, 
-              converter=converter)
+          return GDataService.PostOrPut(self, verb, data, location, 
+              extra_headers, url_params, escape_params, 
+              redirects_remaining - 1, media_source, converter=converter)
         else:
           raise RequestError, {'status': server_response.status,
               'reason': '302 received without Location header',
@@ -836,9 +1298,9 @@ class GDataService(atom.service.AtomService):
       or the results of running converter on the server's result body (if
       converter was specified).
     """
-    return self.PostOrPut('PUT', data, uri, extra_headers=extra_headers, 
-        url_params=url_params, escape_params=escape_params, 
-        redirects_remaining=redirects_remaining, 
+    return GDataService.PostOrPut(self, 'PUT', data, uri, 
+        extra_headers=extra_headers, url_params=url_params, 
+        escape_params=escape_params, redirects_remaining=redirects_remaining,
         media_source=media_source, converter=converter)
 
   def Delete(self, uri, extra_headers=None, url_params=None, 
@@ -867,20 +1329,15 @@ class GDataService(atom.service.AtomService):
     if extra_headers is None:
       extra_headers = {}
 
-    # Add the authentication header to the Get request
-    if self.__auth_token:
-      extra_headers['Authorization'] = self.__auth_token
-
     if self.__gsessionid is not None:
       if uri.find('gsessionid=') < 0:
         if uri.find('?') > -1:
           uri += '&gsessionid=%s' % (self.__gsessionid,)
         else:
           uri += '?gsessionid=%s' % (self.__gsessionid,)
-  
-    server_response = self.handler.HttpRequest(self, 'DELETE', None, uri,
-        extra_headers=extra_headers, url_params=url_params, 
-        escape_params=escape_params)
+ 
+    server_response = self.request('DELETE', uri, 
+        headers=extra_headers)
     result_body = server_response.read()
 
     if server_response.status == 200:
@@ -892,8 +1349,8 @@ class GDataService(atom.service.AtomService):
           m = re.compile('[\?\&]gsessionid=(\w*)').search(location)
           if m is not None:
             self.__gsessionid = m.group(1) 
-          return self.Delete(location, extra_headers, url_params,
-              escape_params, redirects_remaining - 1)
+          return GDataService.Delete(self, location, extra_headers, 
+              url_params, escape_params, redirects_remaining - 1)
         else:
           raise RequestError, {'status': server_response.status,
               'reason': '302 received without Location header',
@@ -905,6 +1362,86 @@ class GDataService(atom.service.AtomService):
     else:
       raise RequestError, {'status': server_response.status,
           'reason': server_response.reason, 'body': result_body}
+
+
+def ExtractToken(url, scopes_included_in_next=True):
+  """Gets the AuthSub token from the current page's URL.
+
+  Designed to be used on the URL that the browser is sent to after the user
+  authorizes this application at the page given by GenerateAuthSubRequestUrl.
+
+  Args:
+    url: The current page's URL. It should contain the token as a URL
+        parameter. Example: 'http://example.com/?...&token=abcd435'
+    scopes_included_in_next: If True, this function looks for a scope value
+        associated with the token. The scope is a URL parameter with the
+        key set to SCOPE_URL_PARAM_NAME. This parameter should be present
+        if the AuthSub request URL was generated using
+        GenerateAuthSubRequestUrl with include_scope_in_next set to True.
+
+  Returns:
+    A tuple containing the token string and a list of scope strings for which
+    this token should be valid. If the scope was not included in the URL, the
+    tuple will contain (token, None).
+  """
+  parsed = urlparse.urlparse(url)
+  token = gdata.auth.AuthSubTokenFromUrl(parsed[4])
+  scopes = ''
+  if scopes_included_in_next:
+    for pair in parsed[4].split('&'):
+      if pair.startswith('%s=' % SCOPE_URL_PARAM_NAME):
+        scopes = urllib.unquote_plus(pair.split('=')[1])
+  return (token, scopes.split(' '))
+
+
+def GenerateAuthSubRequestUrl(next, scopes, hd='default', secure=False,
+    session=True, request_url='http://www.google.com/accounts/AuthSubRequest',
+    include_scopes_in_next=True):
+  """Creates a URL to request an AuthSub token to access Google services.
+
+  For more details on AuthSub, see the documentation here:
+  http://code.google.com/apis/accounts/docs/AuthSub.html
+
+  Args:
+    next: The URL where the browser should be sent after the user authorizes
+        the application. This page is responsible for receiving the token
+        which is embeded in the URL as a parameter.
+    scopes: The base URL to which access will be granted. Example:
+        'http://www.google.com/calendar/feeds' will grant access to all
+        URLs in the Google Calendar data API. If you would like a token for
+        multiple scopes, pass in a list of URL strings.
+    hd: The domain to which the user's account belongs. This is set to the
+        domain name if you are using Google Apps. Example: 'example.org'
+        Defaults to 'default'
+    secure: If set to True, all requests should be signed. The default is
+        False.
+    session: If set to True, the token received by the 'next' URL can be
+        upgraded to a multiuse session token. If session is set to False, the
+        token may only be used once and cannot be upgraded. Default is True.
+    request_url: The base of the URL to which the user will be sent to
+        authorize this application to access their data. The default is
+        'http://www.google.com/accounts/AuthSubRequest'.
+    include_scopes_in_next: Boolean if set to true, the 'next' parameter will
+        be modified to include the requested scope as a URL parameter. The
+        key for the next's scope parameter will be SCOPE_URL_PARAM_NAME. The
+        benefit of including the scope URL as a parameter to the next URL, is
+        that the page which receives the AuthSub token will be able to tell
+        which URLs the token grants access to.
+
+  Returns:
+    A URL string to which the browser should be sent.
+  """
+  if isinstance(scopes, list):
+    scope = ' '.join(scopes)
+  else:
+    scope = scopes
+  if include_scopes_in_next:
+    if next.find('?') > -1:
+      next += '&%s' % urllib.urlencode({SCOPE_URL_PARAM_NAME:scope})
+    else:
+      next += '?%s' % urllib.urlencode({SCOPE_URL_PARAM_NAME:scope})
+  return gdata.auth.GenerateAuthSubUrl(next=next, scope=scope, secure=secure,
+      session=session, request_url=request_url, domain=hd)
 
 
 class Query(dict):

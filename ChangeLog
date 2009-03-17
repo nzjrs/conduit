@@ -1,3 +1,9 @@
+2009-03-17  John Stowers  <john.stowers@gmail.com>
+
+	* conduit/modules/GoogleModule/atom/*:
+	* conduit/modules/GoogleModule/gdata/*:
+	Update to python-gdata 1.2.4
+
 2009-03-16  John Stowers  <john.stowers@gmail.com>
 
 	* conduit/modules/GoogleModule/GoogleModule.py:

@@ -66,7 +66,7 @@ class AppsForYourDomainException(Error):
 
   def __init__(self, response):
 
-    self.args = response
+    Error.__init__(self, response)
     try:
       self.element_tree = ElementTree.fromstring(response['body'])
       self.error_code = int(self.element_tree[0].attrib['errorCode'])
@@ -79,11 +79,24 @@ class AppsService(gdata.service.GDataService):
   """Client for the Google Apps Provisioning service."""
 
   def __init__(self, email=None, password=None, domain=None, source=None,
-               server='www.google.com', additional_headers=None):
-    gdata.service.GDataService.__init__(self, email=email, password=password,
-                                        service='apps', source=source,
-                                        server=server,
-                                        additional_headers=additional_headers)
+               server='apps-apis.google.com', additional_headers=None,
+               **kwargs):
+    """Creates a client for the Google Apps Provisioning service.
+
+    Args:
+      email: string (optional) The user's email address, used for
+          authentication.
+      password: string (optional) The user's password.
+      domain: string (optional) The Google Apps domain name.
+      source: string (optional) The name of the user's application.
+      server: string (optional) The name of the server to which a connection
+          will be opened. Default value: 'apps-apis.google.com'.
+      **kwargs: The other parameters to pass to gdata.service.GDataService
+          constructor.
+    """
+    gdata.service.GDataService.__init__(
+        self, email=email, password=password, service='apps', source=source,
+        server=server, additional_headers=additional_headers, **kwargs)
     self.ssl = True
     self.port = 443
     self.domain = domain
@@ -91,7 +104,7 @@ class AppsService(gdata.service.GDataService):
   def _baseURL(self):
     return "/a/feeds/%s" % self.domain 
 
-  def GetGenaratorFromLinkFinder(self, link_finder, func):
+  def GetGeneratorFromLinkFinder(self, link_finder, func):
     """returns a generator for pagination"""
     yield link_finder
     next = link_finder.GetNextLink()
@@ -372,7 +385,7 @@ class AppsService(gdata.service.GDataService):
   def GetGeneratorForAllUsers(self):
     """Retrieve a generator for all users in this domain."""
     first_page = self.RetrievePageOfUsers()
-    return self.GetGenaratorFromLinkFinder(first_page,
+    return self.GetGeneratorFromLinkFinder(first_page,
                                            gdata.apps.UserFeedFromString)
 
   def RetrieveAllUsers(self):
@@ -383,3 +396,54 @@ class AppsService(gdata.service.GDataService):
     return self.AddAllElementsFromAllPages(
       ret, gdata.apps.UserFeedFromString)
 
+
+class PropertyService(gdata.service.GDataService):
+  """Client for the Google Apps Property service."""
+
+  def __init__(self, email=None, password=None, domain=None, source=None,
+               server='apps-apis.google.com', additional_headers=None):
+    gdata.service.GDataService.__init__(self, email=email, password=password,
+                                        service='apps', source=source,
+                                        server=server,
+                                        additional_headers=additional_headers)
+    self.ssl = True
+    self.port = 443
+    self.domain = domain
+
+  def _GetPropertyEntry(self, properties):
+    property_entry = gdata.apps.PropertyEntry()
+    property = []
+    for name, value in properties.iteritems():
+      if name is not None and value is not None:
+        property.append(gdata.apps.Property(name=name, value=value))
+    property_entry.property = property
+    return property_entry
+
+  def _PropertyEntry2Dict(self, property_entry):
+    properties = {}
+    for i, property in enumerate(property_entry.property):
+      properties[property.name] = property.value
+    return properties
+
+  def _GetProperties(self, uri):
+    try:
+      return self._PropertyEntry2Dict(gdata.apps.PropertyEntryFromString(
+        str(self.Get(uri))))
+    except gdata.service.RequestError, e:
+      raise gdata.apps.service.AppsForYourDomainException(e.args[0])
+
+  def _PostProperties(self, uri, properties):
+    property_entry = self._GetPropertyEntry(properties)
+    try:
+      return self._PropertyEntry2Dict(gdata.apps.PropertyEntryFromString(
+        str(self.Post(property_entry, uri))))
+    except gdata.service.RequestError, e:
+      raise gdata.apps.service.AppsForYourDomainException(e.args[0])
+
+  def _PutProperties(self, uri, properties):
+    property_entry = self._GetPropertyEntry(properties)
+    try:
+      return self._PropertyEntry2Dict(gdata.apps.PropertyEntryFromString(
+        str(self.Put(property_entry, uri))))
+    except gdata.service.RequestError, e:
+      raise gdata.apps.service.AppsForYourDomainException(e.args[0])
