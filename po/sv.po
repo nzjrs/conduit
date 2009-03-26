@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: conduit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-04 14:45+0100\n"
-"PO-Revision-Date: 2009-03-04 14:47+0100\n"
+"POT-Creation-Date: 2009-03-26 23:55+0100\n"
+"PO-Revision-Date: 2009-03-26 23:55+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -322,7 +322,7 @@ msgstr "Synkronisering"
 msgid "Description"
 msgstr "Beskrivning"
 
-#: ../conduit/gtkui/ConfigItems.py:688
+#: ../conduit/gtkui/ConfigItems.py:690
 #, python-format
 msgid "Total: %d"
 msgstr "Totalt: %d"
@@ -379,73 +379,21 @@ msgstr "Konflikt i synkronisering"
 msgid "Not Configured"
 msgstr "Inte konfigurerad"
 
-#: ../conduit/modules/BackpackModule/BackpackModule.py:56
+#: ../conduit/modules/BackpackModule/BackpackModule.py:58
 msgid "Backpack Notes"
 msgstr "Backpack-anteckningar"
 
-#: ../conduit/modules/BackpackModule/BackpackModule.py:57
+#: ../conduit/modules/BackpackModule/BackpackModule.py:59
 msgid "Store things in Backpack Notes"
 msgstr "Lagra saker i Backpack-anteckningar"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:1
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:1
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:1
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:1
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:1
-#: ../conduit/modules/SmugMugModule/config.glade.h:1
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:1
-msgid "<b>Account Details</b>"
-msgstr "<b>Kontodetaljer</b>"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:2
-msgid "<b>Saved Note Settings</b>"
-msgstr "<b>Inställningar för sparad anteckning</b>"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:3
-msgid "API key:"
-msgstr "API-nyckel:"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:4
-msgid "Backpack"
-msgstr "Backpack"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:5
-msgid "Save notes in page:"
-msgstr "Spara anteckningar i sida:"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:6
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:8
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:9
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:6
-#: ../conduit/modules/SmugMugModule/config.glade.h:7
-msgid "Username:"
-msgstr "Användarnamn:"
-
-#: ../conduit/modules/BansheeModule/BansheeModule.py:51
+#: ../conduit/modules/BansheeModule/BansheeModule.py:52
 msgid "Banshee Playlists"
 msgstr "Banshee-spellistor"
 
-#: ../conduit/modules/BansheeModule/BansheeModule.py:52
+#: ../conduit/modules/BansheeModule/BansheeModule.py:53
 msgid "Synchronize your Banshee playlists"
 msgstr "Synkronisera dina Banshee-spellistor"
-
-#. column 1 is the tag name
-#: ../conduit/modules/BansheeModule/BansheeModule.py:217
-msgid "Playlist Name"
-msgstr "Spellistenamn"
-
-#: ../conduit/modules/BansheeModule/BansheeModule.py:225
-msgid "Enabled"
-msgstr "Aktiverad"
-
-#: ../conduit/modules/BansheeModule/config.glade.h:1
-msgid "<b>Return Playlists</b>"
-msgstr "<b>Returnera spellistor</b>"
-
-#: ../conduit/modules/BansheeModule/config.glade.h:2
-msgid "Banshee"
-msgstr "Banshee"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:29
 msgid "Box.net"
@@ -488,13 +436,28 @@ msgid "Synchronize your memos"
 msgstr "Synkronisera dina memon"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:38
-#: ../conduit/modules/FacebookModule/config.glade.h:2
 msgid "Facebook"
 msgstr "Facebook"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:39
 msgid "Synchronize your Facebook photos"
 msgstr "Synkronisera dina Facebook-foton"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:124
+msgid "Loading album list..."
+msgstr "Läser in albumlista..."
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:128
+msgid "Failed to connect"
+msgstr "Misslyckades med att ansluta"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:131
+msgid "Logged in"
+msgstr "Inloggad"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:133
+msgid "Failed to login"
+msgstr "Misslyckades med att logga in"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:58
 msgid "RSS Feed"
@@ -593,61 +556,71 @@ msgstr "Synkronisera dina programinställningar"
 msgid "Applications to Synchronize"
 msgstr "Program att synkronisera"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:369
+#: ../conduit/modules/GoogleModule/GoogleModule.py:370
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
 msgstr "Google Kalender"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:370
+#: ../conduit/modules/GoogleModule/GoogleModule.py:371
 msgid "Synchronize your Google Calendar"
 msgstr "Synkronisera din Google Kalender"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:555
+#: ../conduit/modules/GoogleModule/GoogleModule.py:556
 #: ../conduit/modules/GoogleModule/picasa-config.glade.h:6
 msgid "Picasa"
 msgstr "Picasa"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:556
+#: ../conduit/modules/GoogleModule/GoogleModule.py:557
 msgid "Synchronize your Google Picasa photos"
 msgstr "Synkronisera dina Google Picasa-foton"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:803
+#: ../conduit/modules/GoogleModule/GoogleModule.py:804
 msgid "Google Contacts"
 msgstr "Google-kontakter"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:804
+#: ../conduit/modules/GoogleModule/GoogleModule.py:805
 msgid "Synchronize your Google Mail contacts"
 msgstr "Synkronisera dina Google Mail-kontakter"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1060
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1165
 #: ../conduit/modules/GoogleModule/documents-config.glade.h:5
 msgid "Google Documents"
 msgstr "Google Dokument"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1061
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1166
 msgid "Synchronize your Google Documents"
 msgstr "Synkronisera dina Google Dokument"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1338
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1443
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:69
 msgid "Unknown"
 msgstr "Okänt"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1339
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1444
 msgid "miscellaneous"
 msgstr "diverse"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1340
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1445
 msgid "No description."
 msgstr "Ingen beskrivning."
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1349
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1454
 msgid "YouTube"
 msgstr "YouTube"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1350
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1455
 msgid "Synchronize data from YouTube"
 msgstr "Synkronisera data från YouTube"
+
+#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
+#: ../conduit/modules/GoogleModule/documents-config.glade.h:1
+#: ../conduit/modules/GoogleModule/picasa-config.glade.h:1
+#: ../conduit/modules/GoogleModule/youtube-config.glade.h:1
+#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:1
+#: ../conduit/modules/SmugMugModule/config.glade.h:1
+#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:1
+msgid "<b>Account Details</b>"
+msgstr "<b>Kontodetaljer</b>"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
 msgid "Calendar:"
@@ -696,7 +669,6 @@ msgstr "<b>Inställningar för sparat foto</b>"
 #: ../conduit/modules/GoogleModule/picasa-config.glade.h:3
 #: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:3
 #: ../conduit/modules/SmugMugModule/config.glade.h:3
-#: ../conduit/modules/FacebookModule/config.glade.h:1
 msgid "Album:"
 msgstr "Album:"
 
@@ -708,6 +680,13 @@ msgstr "Inloggning"
 #: ../conduit/modules/SmugMugModule/config.glade.h:5
 msgid "Resize Photos:"
 msgstr "Ändra storlek på foton:"
+
+#: ../conduit/modules/GoogleModule/picasa-config.glade.h:8
+#: ../conduit/modules/GoogleModule/youtube-config.glade.h:9
+#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:6
+#: ../conduit/modules/SmugMugModule/config.glade.h:7
+msgid "Username:"
+msgstr "Användarnamn:"
 
 #: ../conduit/modules/GoogleModule/youtube-config.glade.h:2
 msgid "<b>Download Videos</b>"
@@ -850,11 +829,6 @@ msgstr "Zoto"
 msgid "Synchronize your Zoto photos"
 msgstr "Synkronisera dina Zoto-foton"
 
-# FIXME. Kolla denna
-#: ../conduit/modules/FacebookModule/config.glade.h:3
-msgid "Load"
-msgstr "Läs in"
-
 #: ../conduit/modules/FileModule/config.glade.h:1
 msgid "<b>Items to Synchronize</b>"
 msgstr "<b>Objekt att synkronisera</b>"
@@ -947,194 +921,20 @@ msgstr ""
 "Ja\n"
 "Nej"
 
-#~ msgid "Folder:"
-#~ msgstr "Mapp:"
-#~ msgid "Select %s:"
-#~ msgstr "Välj %s:"
-#~ msgid "Addressbook:"
-#~ msgstr "Adressbok:"
-#~ msgid "Evolution"
-#~ msgstr "Evolution"
-#~ msgid "<b>Feed Details</b>"
-#~ msgstr "<b>Detaljer för kanal</b>"
-#~ msgid "Download Audio Files"
-#~ msgstr "Hämta ner ljudfiler"
-#~ msgid "Download Photos"
-#~ msgstr "Hämta ner foton"
-#~ msgid "Download Video Files"
-#~ msgstr "Hämta ner videofiler"
-#~ msgid "Feed Address:"
-#~ msgstr "Kanaladress:"
-#~ msgid ""
-#~ "Limit the Number of\n"
-#~ "Enclosures Downloaded to:"
-#~ msgstr ""
-#~ "Begränsa antalet bilagor\n"
-#~ "att hämta ner till:"
-#~ msgid "Randomize Enclosures"
-#~ msgstr "Slumpa bilagor"
-#~ msgid "Photos are public"
-#~ msgstr "Foton är publika"
-#~ msgid "Photoset Name:"
-#~ msgstr "Namn på fotouppsättning:"
-#~ msgid "Tag Name"
-#~ msgstr "Taggnamn"
-#~ msgid "<b>Return Photos Tagged With</b>"
-#~ msgstr "<b>Returnera foton som är taggade med</b>"
-#~ msgid "Create Tags: "
-#~ msgstr "Skapa taggar: "
-#~ msgid "Keep converted files"
-#~ msgstr "Behåll konverterade filer"
-#~ msgid "<b>Encoding</b>"
-#~ msgstr "<b>Kodning</b>"
-#~ msgid "iPod Photos"
-#~ msgstr "iPod-bilder"
-#~ msgid "%s Format (%s)"
-#~ msgstr "Format för %s (%s)"
-#~ msgid "unchanged"
-#~ msgstr "oförändrad"
-#~ msgid "<b>Synchronize the Following Playlists</b>"
-#~ msgstr "<b>Synkronisera följande spellistor</b>"
-#~ msgid "Rhythmbox Playlists"
-#~ msgstr "Rhythmbox-spellistor"
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-#~ msgid "Not Configured Correctly"
-#~ msgstr "Inte konfigurerad korrekt"
-#~ msgid "Synchronize your desktop preferences"
-#~ msgstr "Synkronisera dina skrivbordsinställningar"
-#~ msgid "Slow Sync"
-#~ msgstr "Långsam synkronisering"
-#~ msgid "Sync Options"
-#~ msgstr "Synkalternativ"
-#~ msgid "Two Way Sync"
-#~ msgstr "Tvåvägssynkroniering"
-#~ msgid "Use Built in Web Browser"
-#~ msgstr "Använd inbyggd webbläsare"
-#~ msgid "_About"
-#~ msgstr "_Om"
-#~ msgid "About Conduit"
-#~ msgstr "Om Conduit"
-#~ msgid "Please Enter a Folder Name"
-#~ msgstr "Ange ett mappnamn"
-#~ msgid ""
-#~ "All folders require a descriptive name. To name a folder enter its name "
-#~ "where indicated"
-#~ msgstr ""
-#~ "Alla mappar kräver ett beskrivande namn. För att namnge en mapp, ange "
-#~ "dess namn där det behövs "
-#~ msgid "Folder Name:"
-#~ msgstr "Mappnamn:"
-#~ msgid "F-Spot Photos"
-#~ msgstr "F-Spot-foton"
-#~ msgid "Gmail Emails"
-#~ msgstr "Gmail e-post"
-#~ msgid "Sync your emails"
-#~ msgstr "Synkronisera din e-post"
-#~ msgid "<b>Return Emails Matching</b>"
-#~ msgstr "<b>Returnera e-post som matchar</b>"
-#~ msgid "<b>When Saving Emails</b>"
-#~ msgstr "<b>När e-post sparas</b>"
-#~ msgid "Add Label:"
-#~ msgstr "Lägg till etikett:"
-#~ msgid "All emails"
-#~ msgstr "All e-post"
-#~ msgid "Emails in folder:"
-#~ msgstr "E-post i mapp:"
-#~ msgid "Emails with label:"
-#~ msgstr "E-post med etikett:"
-#~ msgid "Unread emails"
-#~ msgstr "Oläst e-post"
-#~ msgid "By user"
-#~ msgstr "Efter användare"
-#~ msgid "User: "
-#~ msgstr "Användare:"
-#~ msgid "Sync your Evolution contacts"
-#~ msgstr "Synkronisera dina Evolution-kontakter"
-#~ msgid "Evolution Events"
-#~ msgstr "Evolution-händelser"
-#~ msgid "Sync your Evolution events"
-#~ msgstr "Synkronisera dina Evolution-händelser"
-#~ msgid "Evolution Todo"
-#~ msgstr "Evolution-attgöra"
-#~ msgid "Sync your Evolution tasks"
-#~ msgstr "Synkronisera dina Evolution-uppgifter"
-#~ msgid "Picasa Desktop"
-#~ msgstr "Picasa-skrivbord"
-#~ msgid "Sync your Picasa photos"
-#~ msgstr "Synkronisera dina Picasa-foton"
-#~ msgid "Album Name"
-#~ msgstr "Albumnamn:"
-#~ msgid "<b>Return Photos In The Following Albums</b>"
-#~ msgstr "<b>Returnera foton i följande album</b>"
-#~ msgid "Windows Mobile Contacts"
-#~ msgstr "Windows Mobile-kontakter"
-#~ msgid "Sync your devices contacts"
-#~ msgstr "Synkronisera kontakter från dina enheter"
-#~ msgid "Windows Mobile Events"
-#~ msgstr "Windows Mobile-händelser"
-#~ msgid "Sync your devices events"
-#~ msgstr "Synkronisera händelser från dina enheter"
-#~ msgid "Windows Mobile Todo"
-#~ msgstr "Windows Mobile-attgöra"
-#~ msgid "Sync your devices tasks"
-#~ msgstr "Synkronisera uppgifter från dina enheter"
-#~ msgid "_Synchronize"
-#~ msgstr "_Synkronisera"
-#~ msgid "Synchronize all dataproviders"
-#~ msgstr "Synkronisera alla dataleverantörer"
-#~ msgid "dialog1"
-#~ msgstr "dialog1"
-#~ msgid "F-Spot DBus Photos"
-#~ msgstr "F-Spot DBus-foton"
-#~ msgid "Sync your F-Spot photos over DBus"
-#~ msgstr "Synkronisera dina F-Spot-foton över DBus"
-
-#, fuzzy
-#~ msgid "Failed to get remotes"
-#~ msgstr "Egenskaper för filkälla"
-#~ msgid "Email"
-#~ msgstr "E-post"
-#~ msgid "<b>Login Details</b>"
-#~ msgstr "<b>Inloggningsdetaljer</b>"
-#~ msgid "<b>Saved Email Settings</b>"
-#~ msgstr "<b>Inställningar för sparad e-post</b>"
-#~ msgid "Attach label to email"
-#~ msgstr "Fäst etikett på e-post"
-#~ msgid "Gmail Sink Properties"
-#~ msgstr "Sinkegenskaper för Gmail"
-#~ msgid "Password:   "
-#~ msgstr "Lösenord:   "
-#~ msgid "Save with label:"
-#~ msgstr "Spara med etikett:"
-#~ msgid "Username: "
-#~ msgstr "Användarnamn: "
-#~ msgid "%Y-%m-%dT%H:%M:%S"
-#~ msgstr "%Y-%m-%dT%H.%M.%S"
-#~ msgid "Settings Configuration"
-#~ msgstr "Konfiguration"
-#~ msgid "Enable iPod and USB Key Support"
-#~ msgstr "Aktivera stöd för iPod och USB-minne"
-#~ msgid "Tag Photos With:"
-#~ msgstr "Tagga foton med:"
-#~ msgid "Backpack Notes Sink Properties"
-#~ msgstr "Sinkegenskaper för Backpack-anteckningar"
-#~ msgid "Url: "
-#~ msgstr "Url: "
-#~ msgid "Attach Tag to Photo"
-#~ msgstr "Bifoga tagg till foto"
-#~ msgid "Flickr Sink Properties"
-#~ msgstr "Sinkegenskaper för Flickr"
-#~ msgid "Photos are Restricted to Family"
-#~ msgstr "Foton är begränsade till familjen"
-#~ msgid "Photos are Restricted to Friends"
-#~ msgstr "Foton är begränsade till vänner"
-#~ msgid "Gmail Source Properties"
-#~ msgstr "Källegenskaper för Gmail"
-#~ msgid "Tomboy Notes"
-#~ msgstr "Tomboy-anteckningar"
-#~ msgid "GNOME Wiki"
-#~ msgstr "GNOME Wiki"
-#~ msgid "Get Pages from the GNOME Wiki"
-#~ msgstr "Hämta sidor från GNOME:s wiki"
+#~ msgid "<b>Saved Note Settings</b>"
+#~ msgstr "<b>Inställningar för sparad anteckning</b>"
+#~ msgid "API key:"
+#~ msgstr "API-nyckel:"
+#~ msgid "Backpack"
+#~ msgstr "Backpack"
+#~ msgid "Save notes in page:"
+#~ msgstr "Spara anteckningar i sida:"
+#~ msgid "Playlist Name"
+#~ msgstr "Spellistenamn"
+#~ msgid "Enabled"
+#~ msgstr "Aktiverad"
+#~ msgid "<b>Return Playlists</b>"
+#~ msgstr "<b>Returnera spellistor</b>"
+#~ msgid "Banshee"
+#~ msgstr "Banshee"
 
