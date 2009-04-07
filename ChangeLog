@@ -1,3 +1,8 @@
+2009-04-08 John Stowers  <john.stowers@gmail.com>
+
+	* conduit/platform/FileGio.py:
+	Catch errors when failing to add a file monitor.
+
 2009-03-17  Alexandre Rosenfeld  <airmind@gmail.com>
 
 	* conduit/gtkui/ConfigContainer.py:

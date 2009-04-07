@@ -305,12 +305,15 @@ class FileMonitor(conduit.platform.FileMonitor):
         self.emit("changed", f1.get_uri(), event)
 
     def add(self, URI, monitorType):
-        if monitorType == self.MONITOR_DIRECTORY:
-            self._fm = gio.File(URI).monitor_directory()
-        else:
-            self._fm = gio.File(URI).monitor_file()
+        try:
+            if monitorType == self.MONITOR_DIRECTORY:
+                self._fm = gio.File(URI).monitor_directory()
+            else:
+                self._fm = gio.File(URI).monitor_file()
 
-        self._fm.connect("changed", self._on_change)
+            self._fm.connect("changed", self._on_change)
+        except gio.Error:
+            log.warn("Could not add monitor", exc_info=True)
 
     def cancel(self):
         if self._fm:
