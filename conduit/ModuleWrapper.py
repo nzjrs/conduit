@@ -245,8 +245,8 @@ class ModuleWrapper:
     
         return self.descriptiveIcon
         
-    def set_configuration_xml(self, xmltext):
-        self.module.set_configuration_xml(xmltext)
+    def set_configuration_xml(self, xmltext, xmlversion):
+        self.module.set_configuration_xml(xmltext, xmlversion)
 
     def get_configuration_xml(self):
         return self.module.get_configuration_xml()
@@ -282,8 +282,9 @@ class PendingDataproviderWrapper(ModuleWrapper):
     def get_key(self):
         return self.key
 
-    def set_configuration_xml(self, xmltext):
+    def set_configuration_xml(self, xmltext, xmlversion):
         self.xmltext = xmltext
+        self.xmlversion = xmlversion
 
     def get_configuration_xml(self):
         return self.xmltext
