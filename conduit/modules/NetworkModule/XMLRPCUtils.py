@@ -12,7 +12,6 @@ import cPickle
 import xmlrpclib
 import SimpleXMLRPCServer
 import logging
-import sys
 import time
 
 #One log for the client
