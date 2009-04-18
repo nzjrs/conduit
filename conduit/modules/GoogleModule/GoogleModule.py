@@ -54,8 +54,11 @@ FORMAT_STRING = "%Y-%m-%dT%H:%M:%S"
 class _GoogleBase:
     _configurable_ = True
     def __init__(self, service):
-        self.username = ""
-        self.password = ""
+        self.update_configuration(
+            username = ("", self._set_username),
+            password = ("", self._set_password),
+            authenticated = False,
+        )
         self.loggedIn = False
         self.service = service
         
@@ -77,6 +80,7 @@ class _GoogleBase:
             try:
                 self._do_login()
                 self.loggedIn = True
+                self.authenticated = True
             except gdata.service.BadAuthentication:
                 log.info("Error logging in: Incorrect username or password")
             except Exception, e:
@@ -86,21 +90,23 @@ class _GoogleBase:
         if self.username != username:
             self.username = username
             self.loggedIn = False
+            self.authenticated = False
     
     def _set_password(self, password):
         if self.password != password:
             self.password = password
             self.loggedIn = False
-
-    def set_configuration(self, config):
-        self._set_username(config.get("username",""))
-        self._set_password(config.get("password",""))
-
-    def get_configuration(self):
-        return {
-            "username": self.username,
-            "password": self.password
-            }
+            self.authenticated = False
+            
+    def _login_finished(self):
+        pass
+            
+    def config_setup(self, config):
+        config.add_section("Google Account")
+        username_config = config.add_item("Email", "text", config_name = "username")
+        password_config = config.add_item("Password", "text", config_name = "password", password = True)
+        config.add_item("Login", "button")
+        return username_config, password_config
 
     def is_configured (self, isSource, isTwoWay):
         if len(self.username) < 1:
@@ -376,10 +382,25 @@ class GoogleCalendarTwoWay(_GoogleBase, DataProvider.TwoWay):
     _icon_ = "appointment-new"
     
     def __init__(self):
-        _GoogleBase.__init__(self,gdata.calendar.service.CalendarService())
         DataProvider.TwoWay.__init__(self)
-        self.selectedCalendar = None
+        _GoogleBase.__init__(self,gdata.calendar.service.CalendarService())
+        self.update_configuration(
+            selectedCalendar = (None, _set_calendar, _get_calendar),
+        )
         self.events = {}
+        
+    def _get_calendar(self):
+        return (self.selectedCalendar.get_name(), 
+                self.selectedCalendar.get_uri())
+    
+    def _set_calendar(self, value):
+        try:
+            if len(value) == 2:
+                self.selectedCalendar = _GoogleCalendar(*value)
+            else:
+                raise TypeError
+        except TypeError:
+            log.error("Unknown calendar information")
 
     def _get_all_events(self):
         self._login()
@@ -526,30 +547,11 @@ class GoogleCalendarTwoWay(_GoogleBase, DataProvider.TwoWay):
         log.info("Creating new object")
         rid = self._create_event(obj)
         return rid
-        
-    def get_configuration(self):
-        conf = _GoogleBase.get_configuration(self)
-        if self.selectedCalendar != None:
-            conf.update({
-                "selectedCalendarName"  :   self.selectedCalendar.get_name(),
-                "selectedCalendarURI"   :   self.selectedCalendar.get_uri()})
-        return conf
-            
-    def set_configuration(self, config):
-        _GoogleBase.set_configuration(self, config)
-        if "selectedCalendarName" in config:
-            if "selectedCalendarURI" in config:
-                self.selectedCalendar = _GoogleCalendar(
-                                            config['selectedCalendarName'],
-                                            config['selectedCalendarURI']
-                                            )
 
     def is_configured (self, isSource, isTwoWay):
         if not _GoogleBase.is_configured(self, isSource, isTwoWay):
             return False
-        if self.selectedCalendar == None:
-            return False
-        return True
+        return (self.selectedCalendar != None)
 
 class PicasaTwoWay(_GoogleBase, Image.ImageTwoWay):
 
@@ -558,10 +560,12 @@ class PicasaTwoWay(_GoogleBase, Image.ImageTwoWay):
     _icon_ = "picasa"
 
     def __init__(self, *args):
-        _GoogleBase.__init__(self, gdata.photos.service.PhotosService())
         Image.ImageTwoWay.__init__(self)
-        self.albumName = ""
-        self.imageSize = "None"
+        _GoogleBase.__init__(self, gdata.photos.service.PhotosService())
+        self.update_configuration(
+            albumName = "",
+            imageSize = "None",
+        )
         self.galbum = None
         self.gphoto_dict = {}
 
@@ -689,105 +693,19 @@ class PicasaTwoWay(_GoogleBase, Image.ImageTwoWay):
 
         self.service.Delete(self.gphoto_dict[LUID])
         del self.gphoto_dict[LUID]
-
-    def configure(self, window):
-        """
-        Configures the PicasaTwoWay
-        """
-        import gobject
-        import gtk
-        def on_login_finish(*args):
-            if self.loggedIn:
-                build_album_model()
-            Utils.dialog_reset_cursor(dlg)
-                
-        def on_response(sender, responseID):
-            if responseID == gtk.RESPONSE_OK:
-                self._set_username(username.get_text())
-                self._set_password(password.get_text())
-                self.albumName = album_combo.get_active_text()
-                self.imageSize = self._resize_combobox_get_active(resizecombobox)
-
-        def login_click(button, window, usernameEntry, passwordEntry):
-            self._set_username(usernameEntry.get_text())
-            self._set_password(passwordEntry.get_text())
-            Utils.dialog_set_busy_cursor(dlg)
-            conduit.GLOBALS.syncManager.run_blocking_dataprovider_function_calls(
-                                            self,
-                                            on_login_finish,
-                                            self._login)        
-
-        def username_password_changed(sender, username, password, login_button):
-            login_button.set_sensitive(
-                            len(username.get_text()) > 0 and len(password.get_text()) > 0)
-
-        def build_album_model():
-            album_store.clear()
-            album_count = 0
-            album_iter = None
-            for name, album in self._get_albums():       
-                iter = album_store.append((name,))
-                if name == self.albumName:
-                    album_iter = iter
-                album_count += 1
-
-            if album_iter:
-                album_combo.set_active_iter(album_iter)
-            elif self.albumName:
-                album_combo.child.set_text(self.albumName)
-            elif album_count:
-                album_combo.set_active(0)
         
-        #get widget and dialog 
-        tree = Utils.dataprovider_glade_get_widget(
-                        __file__, 
-                        "picasa-config.glade", 
-                        "PicasaTwoWayConfigDialog")
+    def config_setup(self, config):
+        username_config, password_config = _GoogleBase.config_setup(self, config)
 
-        #get a whole bunch of widgets
-        username = tree.get_widget('username')
-        password = tree.get_widget('password')
-        album_combo = tree.get_widget('album_combobox')
-        login_button = tree.get_widget("login_button")
-        dlg = tree.get_widget("PicasaTwoWayConfigDialog")        
-
-        resizecombobox = tree.get_widget("resize_combobox")
-        self._resize_combobox_build(resizecombobox, self.imageSize)
-
-        #connect to signals
-        login_button.connect('clicked', login_click, window, username, password)
-        username.connect('changed', username_password_changed, username, password, login_button)
-        password.connect('changed', username_password_changed, username, password, login_button)
+        def _load_albums(button):
+            config.apply_config(items = [username_config, password_config])
+            albums_config.choices = [album_name for album_name, album in self._get_albums()]
         
-        #preload the widgets        
-        username.set_text(self.username)
-        password.set_text(self.password)
-
-        #setup album combo
-        album_store = gtk.ListStore(gobject.TYPE_STRING)
-        album_combo.set_model (album_store)
-        cell = gtk.CellRendererText()
-        album_combo.pack_start(cell, True)
-        album_combo.set_text_column(0)
-        
-        #disable album lookup if no username entered
-        enabled = len(self.username) > 0
-        login_button.set_sensitive(enabled)
-
-        # Now run the dialog 
-        Utils.run_dialog_non_blocking(dlg, on_response, window)
-        
-    def get_configuration(self):
-        conf = _GoogleBase.get_configuration(self)
-        conf.update({
-            "imageSize" :   self.imageSize,
-            "album"     :   self.albumName})
-        return conf
-        
-    def set_configuration(self, config):
-        _GoogleBase.set_configuration(self, config)
-        self.imageSize = config.get("imageSize","None")
-        self.albumName = config.get("album","")
+        config.add_section("Saved photo settings")
+        albums_config = config.add_item("Album", "combotext", config_name = "albumName")
+        config.add_item("Load albums", "button", action = _load_albums)
+        config.add_item("Resize photos", "combo", config_name = "imageSize", 
+            choices = [self.NO_RESIZE] + self.IMAGE_SIZES)
 
     def is_configured (self, isSource, isTwoWay):
         if not _GoogleBase.is_configured(self, isSource, isTwoWay):
@@ -810,9 +728,30 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
     _icon_ = "contact-new"
 
     def __init__(self, *args):
-        _GoogleBase.__init__(self,gdata.contacts.service.ContactsService())
         DataProvider.TwoWay.__init__(self)
-        self.selectedGroup = None
+        _GoogleBase.__init__(self,gdata.contacts.service.ContactsService())
+        self.update_configuration(
+            selectedGroup = (None, self._set_contact_group, self._get_contact_group),
+        )
+
+    def _get_contact_group(self):
+        if not self.selectedGroup:
+            return None
+        return (self.selectedGroup.get_name(), 
+                self.selectedGroup.get_uri())
+    
+    def _set_contact_group(self, value):
+        if not value:
+            return 
+        try:
+            if isinstance(value, _GoogleContactGroup):
+                self.selectedGroup = value
+                return
+            if len(value) != 2:
+                raise TypeError
+            self.selectedGroup = _GoogleContactGroup(*value)
+        except TypeError:
+            log.error("Unknown group information")
         
     def _google_contact_from_conduit_contact(self, contact, gc=None):
         """
@@ -1019,28 +958,20 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
         feed = self.service.GetContactsFeed(query.ToUri())
         for entry in feed.entry:
             yield _GoogleContactGroup.from_google_format(entry)
-
-    def _load_groups(self, widget, tree):        
-        sourceComboBox = tree.get_widget("Group")
-        store = sourceComboBox.get_model()
-        store.clear()
-
-        self._set_username(tree.get_widget("username").get_text())
-        self._set_password(tree.get_widget("password").get_text())
         
-        try:
-            for group in self._get_all_groups():
-                rowref = store.append( (group.get_name(), group) )
-                if group == self.selectedGroup:
-                    sourceComboBox.set_active_iter(rowref)
-        except gdata.service.BadAuthentication:
-            errorMsg = "Login Failed"
-            errorDlg = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, message_format=errorMsg, buttons=gtk.BUTTONS_OK)
-            errorDlg.run()
-            errorDlg.destroy()
-            return
+    def config_setup(self, config):
+        username_config, password_config = _GoogleBase.config_setup(self, config)
+
+        def _load_groups(item):
+            config.apply_config(items = [username_config, password_config])
+            groups = self._get_all_groups()
+            group_config.choices = [(group, group.get_name()) for group in groups]
         
-    def configure(self, window):
+        config.add_section("Contacts group")
+        group_config = config.add_item("Group", "combo", config_name = "selectedGroup")
+        load_group_config = config.add_item("Load contact groups", "button", action = _load_groups)
+        
+    def configure_(self, window):
         """
         Configures the PicasaTwoWay
         """
@@ -1075,23 +1006,6 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
             self.selectedGroup = store.get_value(group.get_active_iter(),1)
         dlg.destroy()
 
-    def get_configuration(self):
-        conf = _GoogleBase.get_configuration(self)
-        if self.selectedGroup != None:
-            conf.update({
-                "selectedGroupName"  :   self.selectedGroup.get_name(),
-                "selectedGroupURI"   :   self.selectedGroup.get_uri()})
-        return conf
-            
-    def set_configuration(self, config):
-        _GoogleBase.set_configuration(self, config)
-        if "selectedGroupName" in config:
-            if "selectedGroupURI" in config:
-                self.selectedGroup = _GoogleContactGroup(
-                                            config['selectedGroupName'],
-                                            config['selectedGroupURI']
-                                            )
-
     def is_configured (self, isSource, isTwoWay):
         if not _GoogleBase.is_configured(self, isSource, isTwoWay):
             return False
@@ -1124,7 +1038,6 @@ class _GoogleContactGroup:
     
     def get_feed_link(self):
         return self.get_uri()
-        
 
 class _GoogleDocument:
     def __init__(self, doc):
@@ -1178,8 +1091,8 @@ class DocumentsSink(_GoogleBase,  DataProvider.DataSink):
     TYPE_PRESENTATION = 'presentation'
 
     def __init__(self, *args):
-        _GoogleBase.__init__(self,gdata.docs.service.DocsService())
         DataProvider.DataSink.__init__(self)
+        _GoogleBase.__init__(self,gdata.docs.service.DocsService())
 
         self.documentFormat = 'ODT'
         self.spreadsheetFormat = 'ODS'
@@ -1473,8 +1386,8 @@ class YouTubeTwoWay(_GoogleBase, DataProvider.TwoWay):
         youtube_service.client_id = self.UPLOAD_CLIENT_ID
         youtube_service.developer_key = self.UPLOAD_DEVELOPER_KEY
 
-        _GoogleBase.__init__(self,youtube_service)
         DataProvider.TwoWay.__init__(self)
+        _GoogleBase.__init__(self,youtube_service)
 
         self.entries = None
         self.max_downloads = 0

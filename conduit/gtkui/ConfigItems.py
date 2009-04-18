@@ -442,7 +442,7 @@ class ConfigButton(ItemBase):
         action = kwargs.pop('action', None)
         ItemBase.__init__(self, *args, **kwargs)
         self.callback = None
-        self.needs_space = kwargs.get('needs_space', True)
+        self.needs_space = kwargs.get('needs_space', False)
         self.needs_label = kwargs.get('needs_label', False)
         if action:
             self.initial_value = action
@@ -453,8 +453,10 @@ class ConfigButton(ItemBase):
             self.callback(self)
     
     def _build_widget(self):
-        self.widget = gtk.Button(self.title)
-        self.widget.connect("clicked", self._button_clicked)
+        self.widget = gtk.Alignment(1.0, 0.5, 0.0, 1.0)
+        button_widget = gtk.Button(self.title)
+        button_widget.connect("clicked", self._button_clicked)
+        self.widget.add(button_widget)
         
     def _set_value(self, value):
         #if self.callback_id:
