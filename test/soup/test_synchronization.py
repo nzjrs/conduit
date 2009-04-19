@@ -1,0 +1,3 @@
+
+class TestSynchronization(BaseTest):
+    pass
