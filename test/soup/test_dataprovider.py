@@ -1,8 +1,8 @@
 import unittest
 
-import modules
+import soup
 
-class TestDataprovider(BaseTest):
+class TestDataprovider(soup.BaseTest):
 
     def test_add(self):
         pass
@@ -26,7 +26,7 @@ class TestDataproviders(unittest.TestSuite):
 
     def __init__(self, tests=None):
         tests = []
-        for mod in modules.all():
+        for mod in soup.modules.all():
             tests.append(TestDataprovider(mod))
 
         super(TestDataproviders, self).__init__(tests)
