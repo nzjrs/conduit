@@ -1,3 +1,6 @@
+import unittest
+
+import modules
 
 class TestDataprovider(BaseTest):
 
@@ -18,4 +21,13 @@ class TestDataprovider(BaseTest):
 
     def test_get_num_items(self):
         pass
+
+class TestDataproviders(unittest.TestSuite):
+
+    def __init__(self, tests=None):
+        tests = []
+        for mod in modules.all():
+            tests.append(TestDataprovider(mod))
+
+        super(TestDataproviders, self).__init__(tests)
 
