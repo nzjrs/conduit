@@ -37,3 +37,7 @@ class ModuleWrapper(object):
             elif t == CHANGE_DELETE:
                 self.delete(uid)
 
+def all():
+    """ Load all plugin wrappers and return everything that subclasses ModuleWrapper """
+    return ModuleWrapper.__classes__.__subclasses__
+
