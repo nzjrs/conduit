@@ -5,7 +5,7 @@ CHANGE_ADD = 1
 CHANGE_REPLACE = 2
 CHANGE_DELETE = 3
 
-class BaseTest(unittest.TestCase):
+class TestCase(unittest.TestCase):
 
     def grumpy(self):
         #Set up our own mapping DB so we dont pollute the global one

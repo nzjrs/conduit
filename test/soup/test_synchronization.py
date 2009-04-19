@@ -2,7 +2,7 @@ import unittest
 
 import soup
 
-class TestSynchronizationPair(soup.BaseTest):
+class TestSynchronizationPair(soup.TestCase):
 
     def __init__(self, source, sink):
         super(TestSynchronizationPair, self).__init__(self)

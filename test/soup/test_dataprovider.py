@@ -2,10 +2,10 @@ import unittest
 
 import soup
 
-class DataproviderTest(soup.BaseTest):
+class DataproviderTest(soup.TestCase):
 
     def test_add(self):
-        pass
+        assert self.dataprovider != None
 
     def test_replace(self):
         pass
@@ -22,14 +22,18 @@ class DataproviderTest(soup.BaseTest):
     def test_get_num_items(self):
         pass
 
-class TestDataproviders(unittest.TestSuite):
-
-    def __init__(self, tests=None):
-        tests = []
-        for mod in soup.modules.all():
-            tests.append(TestDataprovider)
-
-        super(TestDataproviders, self).__init__(tests)
+def test_suite():
+    collection = []
+    bases = [DataproviderTest]
+    for mod in soup.modules.all():
+        name = mod.__class__.__name__
+        attrs = {
+            "dataprovider": mod
+        }
+        testcase = type(name, bases, attrs)
+        suite = TestLoader().loadTestsFromTestCase(testcase)
+        collection.append(suite)
+    return unittest.TestSuite(collection)
 
 if __name__ == "__main__":
     unittest.main()
