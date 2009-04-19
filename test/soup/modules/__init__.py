@@ -39,5 +39,6 @@ class ModuleWrapper(object):
 
 def all():
     """ Load all plugin wrappers and return everything that subclasses ModuleWrapper """
+    import folder
     return ModuleWrapper.__class__.__subclasses__
 

@@ -7,9 +7,7 @@ CHANGE_DELETE = 3
 
 class BaseTest(unittest.TestCase):
 
-    def __init__(self):
-        super(BaseTest, self).__init__()
-
+    def grumpy(self):
         #Set up our own mapping DB so we dont pollute the global one
         dbFile = os.path.join(os.environ['TEST_DIRECTORY'],Utils.random_string()+".db")
         conduit.GLOBALS.mappingDB = MappingDB.MappingDB(dbFile)
