@@ -7,6 +7,10 @@ class ModuleWrapper(object):
         self.conduit = conduit
         self.dp = self.create_dataprovider()
 
+    @classmethod
+    def name(cls):
+        return cls.__name__
+
     def get_num_items(self):
         count = 0
         try:
