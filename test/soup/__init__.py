@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(cwd, '..', '..')))
 import unittest
 
 import modules
+import data
 
 CHANGE_ADD = 1
 CHANGE_REPLACE = 2
