@@ -1,10 +1,7 @@
-import unittest
-
 import soup
 
 def make_testcase(dp):
     class TestDataprovider(soup.TestCase):
-
         dataprovider = dp
 
         def test_add(self):
@@ -27,9 +24,10 @@ def make_testcase(dp):
 
     return TestDataprovider
 
+
 from soup.modules import folder
 TestDataproviderFolder = make_testcase(folder.FolderWrapper)
 
 if __name__ == "__main__":
+    import unittest
     unittest.main()
-

@@ -1,25 +1,19 @@
-import unittest
-
 import soup
 
-class TestSynchronizationPair(soup.TestCase):
+def make_testcase(src, snk):
+    class TestSynchronization(soup.TestCase):
+        source = src
+        sink = snk
 
-    def __init__(self, source, sink):
-        super(TestSynchronizationPair, self).__init__(self)
-        self.source = source
-        self.sink = sink
+        def testDoNothing(self):
+            pass
 
-    def testDoNothing(self):
-        pass
+    return TestSynchronization
 
-class TestSynchronization(unittest.TestSuite):
 
-    def __init__(self, tests=None):
-        """ Generate TestSuite for all module wrapper pairs  """
-        tests = []
-        for a in soup.modules.all():
-            for b in soup.modules.all():
-                tests.append(TestSynchronizationPair(a, b))
+from soup.modules import folder
+TestSynchronizationFolderFolder = make_testcase(folder.FolderWrapper, folder.FolderWrapper)
 
-        super(TestSynchronization, self).__init__(tests)
-
+if __name__ == "__main__":
+    import unittest
+    unittest.main()
