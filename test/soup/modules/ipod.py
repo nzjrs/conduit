@@ -35,7 +35,7 @@ class iPodPhoto(soup.modules.ModuleWrapper):
 
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
-        photodp = iPodModule.IPodPhotoTwoWay(self.folder, "")
+        photodp = iPodModule.IPodPhotoSink(self.folder, "")
         photodp._set_sysinfo("ModelNumStr", "MA450")
         return photodp
 
