@@ -25,9 +25,14 @@ def make_testcase(dp):
     return TestDataprovider
 
 
-from soup.modules import folder
-TestDataproviderFolder = make_testcase(folder.FolderWrapper)
+# Generate TestCase objects for each dataprovider wrapper
+self = soup.get_module(__name__)
+for wrapper in soup.modules.get_all():
+    print wrapper
+    setattr(self, "TestDataprovider%s" % "Folder", make_testcase(wrapper))
 
+
+# Allow people to run the test case directly
 if __name__ == "__main__":
     import unittest
     unittest.main()

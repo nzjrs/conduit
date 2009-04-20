@@ -1,5 +1,5 @@
+import os, sys
 
-from soup import *
 
 class ModuleWrapper(object):
 
@@ -37,8 +37,25 @@ class ModuleWrapper(object):
             elif t == CHANGE_DELETE:
                 self.delete(uid)
 
-def all():
-    """ Load all plugin wrappers and return everything that subclasses ModuleWrapper """
-    import folder
-    return ModuleWrapper.__class__.__subclasses__
 
+def load_modules():
+    basepath = os.path.dirname(__file__)
+    for root, dirs, files in os.walk(basepath):
+        for dir in dirs:
+            if dir[:1] != ".":
+                load_module(dir)
+        for file in files:
+            if file.endswith(".py") and not file.startswith("__"):
+                load_module(file[:-3])
+        break
+
+def load_module(module):
+    if sys.modules.has_key(module):
+        reload(sys.modules[module])
+    else:
+        __import__("modules", {}, {}, [module])
+
+load_modules()
+
+def get_all():
+    return ModuleWrapper.__subclasses__()

@@ -9,6 +9,10 @@ CHANGE_ADD = 1
 CHANGE_REPLACE = 2
 CHANGE_DELETE = 3
 
+def get_module(name):
+    """ This is just to avoid importing sys everywhere and i want my tests to be pretty! """
+    return sys.modules[name]
+
 class TestCase(unittest.TestCase):
 
     def grumpy(self):
@@ -57,3 +61,6 @@ class TestCase(unittest.TestCase):
         except KeyError:
             return False
 
+
+import modules
+print modules.get_all()
