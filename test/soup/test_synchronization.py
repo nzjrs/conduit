@@ -11,8 +11,14 @@ def make_testcase(src, snk):
     return TestSynchronization
 
 
-from soup.modules import folder
-TestSynchronizationFolderFolder = make_testcase(folder.FolderWrapper, folder.FolderWrapper)
+self = soup.get_module(__name__)
+mods = soup.modules.get_all()
+for i in range(len(mods)):
+    for j in range(i+1, len(mods)):
+        source = mods[i]
+        sink = mods[j]
+        setattr(self, "TestSynchronization%s%s" % (source.name(), sink.name()), make_testcase(source, sink))
+
 
 if __name__ == "__main__":
     import unittest
