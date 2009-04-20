@@ -56,5 +56,7 @@ def load_module(module):
         __import__("soup.modules", {}, {}, [module])
 
 def get_all():
+    if len(ModuleWrapper.__subclasses__()) == 0:
+        load_modules()
     return ModuleWrapper.__subclasses__()
 

@@ -5,6 +5,8 @@ sys.path.insert(0, os.path.abspath(os.path.join(cwd, '..', '..')))
 
 import unittest
 
+import modules
+
 CHANGE_ADD = 1
 CHANGE_REPLACE = 2
 CHANGE_DELETE = 3
@@ -61,6 +63,3 @@ class TestCase(unittest.TestCase):
         except KeyError:
             return False
 
-import modules
-modules.load_modules()
-print modules.get_all()
