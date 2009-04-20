@@ -4,8 +4,15 @@ def make_testcase(dp):
     class TestDataprovider(soup.TestCase):
         dataprovider = dp
 
+        def setUp(self):
+            super(TestDataprovider, self).setUp()
+            self.dp = self.dataprovider(self)
+
+        def tearDown(self):
+            self.dp = None
+
         def test_add(self):
-            assert self.dataprovider != None
+            pass
 
         def test_replace(self):
             pass
@@ -17,10 +24,11 @@ def make_testcase(dp):
             pass
 
         def test_finish(self):
-            pass
+            self.dp.finish()
 
         def test_get_num_items(self):
-            pass
+            self.dp.refresh()
+            assert self.dp.get_num_items() == 0
 
     return TestDataprovider
 
