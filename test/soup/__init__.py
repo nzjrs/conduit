@@ -18,6 +18,8 @@ import conduit.Synchronization as Synchronization
 
 conduit.SHARED_MODULE_DIR = os.path.join(root,"conduit","modules")
 
+print conduit.SHARED_MODULE_DIR
+
 CHANGE_ADD = 1
 CHANGE_REPLACE = 2
 CHANGE_DELETE = 3
@@ -33,7 +35,7 @@ class TestCase(unittest.TestCase):
         dbFile = os.path.join(os.environ['TEST_DIRECTORY'],Utils.random_string()+".db")
         conduit.GLOBALS.mappingDB = MappingDB.MappingDB(dbFile)
 
-        self.modules = Module.ModuleManager([root])
+        self.modules = Module.ModuleManager([conduit.SHARED_MODULE_DIR])
         conduit.GLOBALS.moduleManager = self.modules
         self.modules.load_all(whitelist=None, blacklist=None)
 
@@ -45,7 +47,7 @@ class TestCase(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def get_dataprovider(self, key):
+    def get_dataprovider(self, name):
         wrapper = None
         for dp in self.modules.get_all_modules():
             if dp.classname == name:

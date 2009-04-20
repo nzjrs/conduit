@@ -6,7 +6,7 @@ class Folder(soup.modules.ModuleWrapper):
 
     def create_dataprovider(self):
         dp = self.conduit.get_dataprovider("FolderTwoWay")
-        dp.set_configuration({
+        dp.module.set_configuration({
             "source": Utils.new_tempdir(),
         })
         return dp
