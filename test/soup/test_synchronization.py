@@ -11,6 +11,7 @@ def make_testcase(src, snk):
     return TestSynchronization
 
 
+# Generate all the variations of TestSynchronization
 self = soup.get_module(__name__)
 mods = soup.modules.get_all()
 for i in range(len(mods)):
@@ -20,6 +21,7 @@ for i in range(len(mods)):
         setattr(self, "TestSynchronization%s%s" % (source.name(), sink.name()), make_testcase(source, sink))
 
 
+# Allow people to run the test directly
 if __name__ == "__main__":
     import unittest
     unittest.main()
