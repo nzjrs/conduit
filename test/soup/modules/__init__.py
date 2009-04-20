@@ -53,9 +53,8 @@ def load_module(module):
     if sys.modules.has_key(module):
         reload(sys.modules[module])
     else:
-        __import__("modules", {}, {}, [module])
-
-load_modules()
+        __import__("soup.modules", {}, {}, [module])
 
 def get_all():
     return ModuleWrapper.__subclasses__()
+

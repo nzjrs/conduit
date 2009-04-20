@@ -1,8 +1,8 @@
-import modules
+import soup.modules
 
 import conduit.utils as Utils
 
-class FolderWrapper(modules.ModuleWrapper):
+class FolderWrapper(soup.modules.ModuleWrapper):
 
     def create_dataprovider(self):
         dp = self.conduit.get_dataprovider("FolderTwoWay")

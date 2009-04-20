@@ -61,6 +61,6 @@ class TestCase(unittest.TestCase):
         except KeyError:
             return False
 
-
 import modules
+modules.load_modules()
 print modules.get_all()
