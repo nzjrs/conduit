@@ -28,9 +28,8 @@ def make_testcase(wrp):
             self.dp.module.finish(None, None, None)
 
         def test_get_num_items(self):
-            #self.dp.refresh()
-            #assert self.dp.get_num_items() == 0
-            pass
+            self.dp.module.refresh()
+            assert self.dp.module.get_num_items() == 0
 
     return TestDataprovider
 
