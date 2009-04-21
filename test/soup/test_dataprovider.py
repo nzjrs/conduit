@@ -1,12 +1,13 @@
 import soup
 
-def make_testcase(dp):
+def make_testcase(wrp):
     class TestDataprovider(soup.TestCase):
-        dataprovider = dp
+        wrapperclass = wrp
 
         def setUp(self):
             super(TestDataprovider, self).setUp()
-            self.dp = self.dataprovider(self)
+            self.wrapper = self.wrapperclass(self)
+            self.dp = self.wrapper.dp
 
         def tearDown(self):
             self.dp = None
@@ -24,8 +25,7 @@ def make_testcase(dp):
             pass
 
         def test_finish(self):
-            #self.dp.finish()
-            pass
+            self.dp.module.finish(None, None, None)
 
         def test_get_num_items(self):
             #self.dp.refresh()

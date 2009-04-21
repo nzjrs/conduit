@@ -48,5 +48,5 @@ class iPodMusic(soup.modules.ModuleWrapper):
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
         ipod = iPodModule.IPodMusicTwoWay(self.folder, "")
-        return self.conduit.wrap_dataprovider(photodp)
+        return self.conduit.wrap_dataprovider(ipod)
 
