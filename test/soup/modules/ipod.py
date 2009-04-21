@@ -14,21 +14,24 @@ class iPodNote(soup.modules.ModuleWrapper):
 
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
-        return iPodModule.IPodNoteTwoWay(self.folder, "")
+        ipod = iPodModule.IPodNoteTwoWay(self.folder, "")
+        return self.conduit.wrap_dataprovider(ipod)
 
 
 class iPodContacts(soup.modules.ModuleWrapper):
 
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
-        return iPodModule.IPodContactsTwoWay(self.folder, "")
+        ipod = iPodModule.IPodContactsTwoWay(self.folder, "")
+        return self.conduit.wrap_dataprovider(ipod)
 
 
 class iPodCalendar(soup.modules.ModuleWrapper):
 
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
-        return iPodModule.IPodCalendarTwoWay(self.folder, "")
+        ipod = iPodModule.IPodCalendarTwoWay(self.folder, "")
+        return self.conduit.wrap_dataprovider(ipod)
 
 
 class iPodPhoto(soup.modules.ModuleWrapper):
@@ -37,12 +40,13 @@ class iPodPhoto(soup.modules.ModuleWrapper):
         self.folder = create_fake_ipod()
         photodp = iPodModule.IPodPhotoSink(self.folder, "")
         photodp._set_sysinfo("ModelNumStr", "MA450")
-        return photodp
+        return self.conduit.wrap_dataprovider(photodp)
 
 
 class iPodMusic(soup.modules.ModuleWrapper):
 
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
-        return iPodModule.IPodMusicTwoWay(self.folder, "")
+        ipod = iPodModule.IPodMusicTwoWay(self.folder, "")
+        return self.conduit.wrap_dataprovider(photodp)
 

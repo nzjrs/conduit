@@ -15,6 +15,7 @@ import conduit.MappingDB as MappingDB
 import conduit.Module as Module
 import conduit.TypeConverter as TypeConverter
 import conduit.Synchronization as Synchronization
+import conduit.ModuleWrapper as ModuleWrapper
 
 conduit.SHARED_MODULE_DIR = os.path.join(root,"conduit","modules")
 
@@ -54,6 +55,42 @@ class TestCase(unittest.TestCase):
                 wrapper = self.modules.get_module_wrapper_with_instance(dp.get_key())
         assert wrapper != None
         return wrapper
+
+    def get_dataprovider_factory(self, className, die=True):
+        factory = None
+        for f in self.model.dataproviderFactories:
+            if f.__class__.__name__ == className:
+                factory = f
+        assert factory != None
+        return factory
+
+    def wrap_dataprovider(self, dp):
+        wrapper = ModuleWrapper.ModuleWrapper(
+                         klass=dp.__class__,
+                         initargs=(),
+                         category=None
+                         )
+        wrapper.module = dp
+        return wrapper
+
+    def networked_dataprovider(self, dp):
+        """
+        Dirty evil cludge so we can test networked sync...
+        """
+        factory = self.get_dataprovider_factory("NetworkServerFactory")
+        server = factory.share_dataprovider(dp)
+        assert server != None
+
+        conduit = Conduit.Conduit(self.sync_manager)
+        time.sleep(1)
+
+        factory = self.get_dataprovider_factory("NetworkClientFactory")
+        newdp = factory.dataprovider_create("http://localhost", conduit.uid, server.get_info())
+        assert newdp != None
+        return self.wrap_dataprovider( newdp() )
+
+    def create_conduit(self):
+        return Conduit.Conduit(self.sync_manager)
 
     def create_syncset(self):
         return SyncSet.SyncSet(
