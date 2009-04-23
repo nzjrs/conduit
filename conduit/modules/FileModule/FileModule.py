@@ -26,6 +26,7 @@ class FileSource(FileDataProvider.FileSource):
 
     def __init__(self, *args):
         FileDataProvider.FileSource.__init__(self)
+        self.file_configurator = None
         self._files_folders = None
         self.update_configuration(
             files = ([], self.set_files, self.get_files),
@@ -42,33 +43,19 @@ class FileSource(FileDataProvider.FileSource):
             self._add_folder(folder, group)
 
     def get_config_container(self, configContainerKlass, name, icon, configurator):
-        Utils.dataprovider_add_dir_to_path(__file__, "")
-        import FileConfiguration
-        f = FileConfiguration._FileSourceConfigurator(self, configurator, self.db)
+        if not self.file_configurator:
+            Utils.dataprovider_add_dir_to_path(__file__, "")
+            import FileConfiguration
+            self.file_configurator = FileConfiguration._FileSourceConfigurator(self, configurator, self.db)
 
-        f.name = name
-        f.icon = icon
-        f.connect('apply', self.config_apply)
-        f.connect('cancel', self.config_cancel)
-        f.connect('show', self.config_show)
-        f.connect('hide', self.config_hide)
+            self.file_configurator.name = name
+            self.file_configurator.icon = icon
+            self.file_configurator.connect('apply', self.config_apply)
+            self.file_configurator.connect('cancel', self.config_cancel)
+            self.file_configurator.connect('show', self.config_show)
+            self.file_configurator.connect('hide', self.config_hide)
 
-        ##FIXME FIXME: This seems wrong. Under what configurators is this a bad
-        #idea. Perhaps the configurators api should be changed to 
-        #configurator.add_container()
-        #which first checks if a container is not allready added, before adding it
-        configurator.set_containers([f])
-
-        return f
-
-    '''
-    def set_configuration_(self, config):
-        for f in config.get("files",[]):
-            self._add_file(f)
-        for f in config.get("folders",[]):
-            f,group = f.split("---FIXME---")
-            self._add_folder(f,group)
-    '''
+        return self.file_configurator
     
     def _get_files_folders(self, get_files = False, get_folders = False):
         if self._files_folders:
