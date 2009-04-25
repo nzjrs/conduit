@@ -41,13 +41,26 @@ class FileSource(FileDataProvider.FileSource):
             folder, group = folder.split("---FIXME---")
             self._add_folder(folder, group)
 
-    def get_config_controller(self, config_view):
+    def get_config_container(self, configContainerKlass, name, icon, configurator):
         Utils.dataprovider_add_dir_to_path(__file__, "")
         import FileConfiguration
-        f = FileConfiguration._FileSourceConfigurator(config_view, self.db, self)
+        f = FileConfiguration._FileSourceConfigurator(self, configurator, self.db)
+
+        f.name = name
+        f.icon = icon
+        f.connect('apply', self.config_apply)
+        f.connect('cancel', self.config_cancel)
+        f.connect('show', self.config_show)
+        f.connect('hide', self.config_hide)
+
+        ##FIXME FIXME: This seems wrong. Under what configurators is this a bad
+        #idea. Perhaps the configurators api should be changed to 
+        #configurator.add_container()
+        #which first checks if a container is not allready added, before adding it
+        configurator.set_containers([f])
+
         return f
-        #response = f.show_dialog()
-    
+
     '''
     def set_configuration_(self, config):
         for f in config.get("files",[]):

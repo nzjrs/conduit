@@ -5,7 +5,6 @@ import logging
 log = logging.getLogger("modules.File")
 
 import conduit
-import conduit.utils as Utils
 import conduit.Vfs as Vfs
 import conduit.gtkui.Database as Database
 import conduit.dataproviders.File as FileDataProvider
@@ -30,45 +29,13 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager, Configurator.BaseC
         # FIXME: icon handling should be done better on Maemo
         pass        
 
-    def __init__(self, config_view, db, dp):
+    def __init__(self, dataprovider, configurator, db):
         Vfs.FolderScannerThreadManager.__init__(self)
-        Configurator.BaseConfigController.__init__(self)
-        self.tree = Utils.dataprovider_glade_get_widget(
-                        __file__,
-                        "config.glade",
-                        "FilesFrame"
-                        )
-        dic = { "on_addfile_clicked" : self.on_addfile_clicked,
-                "on_adddir_clicked" : self.on_adddir_clicked,
-                "on_remove_clicked" : self.on_remove_clicked,
-                None : None
-                }
-        self.tree.signal_autoconnect(dic)
+        Configurator.BaseConfigContainer.__init__(self, dataprovider, configurator)
         self.db = db
         self.tree_model = Database.GenericDBListStore("config", self.db)
-        self.dataprovider = dp
 
-        self._make_view()
-
-        #setup dnd onto the file list
-        targets = [ ( "text/uri-list", 0, 0 ) ]
-        f = self.tree.get_widget("filesscrolledwindow")
-        f.drag_dest_set(
-            gtk.DEST_DEFAULT_MOTION | gtk.DEST_DEFAULT_HIGHLIGHT | gtk.DEST_DEFAULT_DROP,
-            targets,
-            gtk.gdk.ACTION_COPY
-            )
-        f.connect("drag_data_received", self._dnd_data_get)
-
-        self.filesFrame = self.tree.get_widget("FilesFrame")
-
-        #self.dlg = self.tree.get_widget("FileSourceConfigDialog")
-
-        #connect to dialog response signal because we want to validate that
-        #the user has named all the groups before we let them quit
-        #self.dlg.connect("response",self.on_response)
-        #self.dlg.set_transient_for(self.mainWindow)
-        #self.dlg.show_all()
+        self._make_ui()
 
         #Now go an background scan some folders to populate the UI estimates.
         for oid,uri in self.db.select("SELECT oid,URI FROM config WHERE TYPE=? and SCAN_COMPLETE=?",(FileDataProvider.TYPE_FOLDER,False,)):
@@ -92,14 +59,53 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager, Configurator.BaseC
             except Exception, err:
                 log.debug("Error adding %s\n%s" % (uri,err))
 
-    def _make_view(self):
+    def _make_ui(self):
         """
-        Creates the treeview and connects the tree_model and appropriate
-        cell_data_funcs
+        Creates the ui
         """
-        #Config the treeview when the DP is used as a source
-        self.view = self.tree.get_widget("treeview1")
-        self.view.set_model( self.tree_model )
+        self.frame = gtk.Frame("Files and Folders to Synchronize")
+        self.frame.props.shadow_type = gtk.SHADOW_NONE
+
+        align = gtk.Alignment(0.5,0.5,1.0,1.0)
+        align.props.left_padding = 12
+        self.frame.add(align)
+
+        sw = gtk.ScrolledWindow()
+        sw.props.hscrollbar_policy = gtk.POLICY_AUTOMATIC 
+        sw.props.vscrollbar_policy = gtk.POLICY_AUTOMATIC 
+        sw.props.shadow_type= gtk.SHADOW_IN
+        #setup dnd onto the file list
+        sw.drag_dest_set(
+            gtk.DEST_DEFAULT_MOTION | gtk.DEST_DEFAULT_HIGHLIGHT | gtk.DEST_DEFAULT_DROP,
+            [ ( "text/uri-list", 0, 0 ) ],
+            gtk.gdk.ACTION_COPY
+            )
+        sw.connect("drag_data_received", self._dnd_data_get)
+
+        af = gtk.Button("_Add File")
+        af.set_image(gtk.image_new_from_stock(gtk.STOCK_ADD, gtk.ICON_SIZE_BUTTON))
+        af.connect("clicked", self.on_addfile_clicked)
+        ad = gtk.Button("Add _Directory")
+        ad.set_image(gtk.image_new_from_stock(gtk.STOCK_ADD, gtk.ICON_SIZE_BUTTON))
+        ad.connect("clicked", self.on_adddir_clicked)
+        r = gtk.Button(stock=gtk.STOCK_REMOVE)
+        r.connect("clicked", self.on_remove_clicked)
+
+        hbb = gtk.HButtonBox()
+        hbb.props.layout_style = gtk.BUTTONBOX_SPREAD
+        hbb.props.spacing = 3
+        hbb.add(af)
+        hbb.add(ad)
+        hbb.add(r)
+
+        vb = gtk.VBox()
+        vb.pack_start(sw, expand=True, fill=True)
+        vb.pack_end(hbb, expand=False, fill=True, padding=5)
+        align.add(vb)
+
+        self.view = gtk.TreeView(self.tree_model)
+        sw.add(self.view)
+
         #First column is an icon (folder of File)
         iconRenderer = gtk.CellRendererPixbuf()
         column1 = gtk.TreeViewColumn(_("Icon"), iconRenderer)
@@ -232,7 +238,7 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager, Configurator.BaseC
         pass
 
     def get_config_widget(self):
-        return self.filesFrame
+        return self.frame
 
     def hide(self):
         self.cancel_all_threads()
