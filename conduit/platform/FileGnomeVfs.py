@@ -12,6 +12,7 @@ log = logging.getLogger("platform.FileGnomeVfs")
 
 class FileImpl(conduit.platform.File):
     SCHEMES = ("file://","http://","ftp://","smb://")
+    NAME = "GnomeVfs"
     def __init__(self, URI, impl=None):
         if impl:
             self._URI = impl

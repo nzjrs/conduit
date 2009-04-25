@@ -128,36 +128,40 @@ class FolderTwoWay(FileDataProvider.FolderTwoWay, AutoSync.AutoSync):
             followSymlinks = self.DEFAULT_FOLLOW_SYMLINKS,
         )     
         AutoSync.AutoSync.__init__(self)
+
         self._monitor = Vfs.FileMonitor()
         self._monitor.connect("changed", self._monitor_folder_cb)
 
+        self.update_configuration(
+            folder = (self.DEFAULT_FOLDER, self._set_folder, lambda: self.folder),
+            includeHidden = self.DEFAULT_HIDDEN,
+            compareIgnoreMtime = self.DEFAULT_COMPARE_IGNORE_MTIME,
+            followSymlinks = self.DEFAULT_FOLLOW_SYMLINKS
+        )
+
     def __del__(self):
         self._monitor.cancel()
-            
-    def configure(self, window):
-        Utils.dataprovider_add_dir_to_path(__file__, "")
-        import FileConfiguration
-        f = FileConfiguration._FolderTwoWayConfigurator(
-                                    window,
-                                    self.folder,
-                                    self.includeHidden,
-                                    self.compareIgnoreMtime,
-                                    self.followSymlinks)
-        self.folder, self.includeHidden, self.compareIgnoreMtime, self.followSymlinks = f.show_dialog()
-        self._monitor_folder()
-        
-    def set_configuration(self, config):
-        super(FolderTwoWay, self).set_configuration(config)
-        self._monitor_folder()
 
+    def _set_folder(self, f):
+        log.debug("Setting folder: %s" % f)
+        self.folder = f
+        self._monitor.add(f, self._monitor.MONITOR_DIRECTORY)
+
+    def config_setup(self, config):
+        config.add_item("Select folder", "filebutton", order = 1,
+            config_name = "folder",
+            directory = True,
+        )
+        config.add_section("Advanced")
+        config.add_item("Include hidden files", "check", config_name = "includeHidden")
+        config.add_item("Ignore file modification times", 'check', config_name = "compareIgnoreMtime")
+        config.add_item("Follow symbolic links", 'check', config_name = "followSymlinks")
+            
     def get_UID(self):
         return self.folder
         
     def get_name(self):
         return Vfs.uri_get_filename(self.folder)
-
-    def _monitor_folder(self):
-        self._monitor.add(self.folder, self._monitor.MONITOR_DIRECTORY)
 
     def _monitor_folder_cb(self, sender, event_uri, event):
         """

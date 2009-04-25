@@ -22,6 +22,19 @@ FileMonitor     = FileImpl.FileMonitor
 FolderScanner   = FileImpl.FolderScanner
 FileTransfer    = FileImpl.FileTransferImpl
 
+def backend_supports_remote_uri_schemes():
+    """
+    @returns: True if the file implementation supports non-local (file://)
+    uri schemes
+    """
+    return len(FileImpl.FileImpl.SCHEMES) > 1 and "file://" in FileImpl.FileImpl.SCHEMES
+
+def backend_name():
+    """
+    @returns: The name of the selected file impl backend
+    """
+    return FileImpl.FileImpl.NAME
+
 def uri_is_valid(uri):
     """
     Checks if the uri is valid (i.e. not a local path), and its type
