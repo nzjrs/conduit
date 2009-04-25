@@ -9,7 +9,7 @@ for impl in ("GIO", "GnomeVfs",):
     reload(Utils)
 
     ok("--- TESTING VFS WITH FILE IMPL: %s" % impl, True)
-    #print Vfs.FolderScanner
+    ok("Supports remote uri schemes: %s" % Vfs.backend_supports_remote_uri_schemes(), True)
 
     safe = '/&=:@'
     unsafe = ' !<>#%()[]{}'
