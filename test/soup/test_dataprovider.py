@@ -4,6 +4,10 @@ def make_testcase(wrp):
     class TestDataprovider(soup.TestCase):
         wrapperclass = wrp
 
+        @classmethod
+        def name(self):
+            return "TestDataProvider%s" % self.wrapperclass.name()
+
         def setUp(self):
             super(TestDataprovider, self).setUp()
             self.wrapper = self.wrapperclass(self)
@@ -13,21 +17,27 @@ def make_testcase(wrp):
             self.dp = None
 
         def test_add(self):
+            """ Should be able to add items """
             pass
 
         def test_replace(self):
+            """ Should be able to replace items """
             pass
 
         def test_delete(self):
+            """ Should be able to delete items """
             pass
 
         def test_refresh(self):
+            """ Refresh shouldnt throw exceptions """
             pass
 
         def test_finish(self):
+            """ Should be able to call finish on cold """
             self.dp.module.finish(None, None, None)
 
         def test_get_num_items(self):
+            """ Number of items in a fresh dataprovider should be 0 """
             self.dp.module.refresh()
             assert self.dp.module.get_num_items() == 0
 
@@ -37,7 +47,8 @@ def make_testcase(wrp):
 # Generate TestCase objects for each dataprovider wrapper
 self = soup.get_module(__name__)
 for wrapper in soup.modules.get_all():
-    setattr(self, "TestDataprovider%s" % wrapper.name(), make_testcase(wrapper))
+    testklass = make_testcase(wrapper)
+    setattr(self, testklass.name(), testklass)
 
 
 # Allow people to run the test case directly

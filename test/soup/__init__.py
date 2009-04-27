@@ -31,6 +31,21 @@ def get_module(name):
 
 class TestCase(unittest.TestCase):
 
+    def __init__(self, methodName='runTest'):
+        super(TestCase, self).__init__(methodName)
+        self.testMethodName = methodName
+        self.testMethod = getattr(self, methodName)
+
+    @classmethod
+    def name(self):
+        """ Returns the name of the class. We need to override this on generated classes """
+        return self.__class__.__name__
+
+    def shortDescription(self):
+        """ Describe the test that is currently running
+            Returns something like TestClass.test_function: Tests how good Conduit is """
+        return "%s.%s: %s" % (self.name(), self.testMethodName, super(TestCase, self).shortDescription())
+
     def setUp(self):
         #Set up our own mapping DB so we dont pollute the global one
         dbFile = os.path.join(os.environ['TEST_DIRECTORY'],Utils.random_string()+".db")
