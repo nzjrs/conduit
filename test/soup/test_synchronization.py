@@ -5,7 +5,12 @@ def make_testcase(src, snk):
         source = src
         sink = snk
 
+        @classmethod
+        def name(self):
+            return "TestSynchronization%s%s" % (self.source.name(), self.sink.name())
+
         def testDoNothing(self):
+            """ Test doing nothing """
             pass
 
     return TestSynchronization
@@ -18,7 +23,8 @@ for i in range(len(mods)):
     for j in range(i+1, len(mods)):
         source = mods[i]
         sink = mods[j]
-        setattr(self, "TestSynchronization%s%s" % (source.name(), sink.name()), make_testcase(source, sink))
+        testklass = make_testcase(source, sink)
+        setattr(self, testklass.name(), testklass)
 
 
 # Allow people to run the test directly
