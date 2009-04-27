@@ -18,7 +18,8 @@ def make_testcase(wrp):
 
         def test_add(self):
             """ Should be able to add items """
-            pass
+            testdata = self.wrapper.dataclass()
+            testdata.iter_samples()
 
         def test_replace(self):
             """ Should be able to replace items """

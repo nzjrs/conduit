@@ -1,5 +1,12 @@
 
+import soup
 import soup.modules
+
+from soup.data.note import NoteWrapper
+from soup.data.contact import ContactWrapper
+from soup.data.event import EventWrapper
+from soup.data.photo import PhotoWrapper
+from soup.data.music import MusicWrapper
 
 import conduit.modules.iPodModule.iPodModule as iPodModule
 import conduit.utils as Utils
@@ -14,6 +21,8 @@ def create_fake_ipod():
 
 class iPodNote(soup.modules.ModuleWrapper):
 
+    dataclass = NoteWrapper
+
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
         ipod = iPodModule.IPodNoteTwoWay(self.folder, "")
@@ -21,6 +30,8 @@ class iPodNote(soup.modules.ModuleWrapper):
 
 
 class iPodContacts(soup.modules.ModuleWrapper):
+
+    dataclass = ContactWrapper
 
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
@@ -30,6 +41,8 @@ class iPodContacts(soup.modules.ModuleWrapper):
 
 class iPodCalendar(soup.modules.ModuleWrapper):
 
+    dataclass = EventWrapper
+
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
         ipod = iPodModule.IPodCalendarTwoWay(self.folder, "")
@@ -38,6 +51,8 @@ class iPodCalendar(soup.modules.ModuleWrapper):
 
 class iPodPhoto(soup.modules.ModuleWrapper):
 
+    dataclass = PhotoWrapper
+
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
         ipod = iPodModule.IPodPhotoSink(self.folder, "")
@@ -45,6 +60,8 @@ class iPodPhoto(soup.modules.ModuleWrapper):
 
 
 class iPodMusic(soup.modules.ModuleWrapper):
+
+    dataclass = MusicWrapper
 
     def create_dataprovider(self):
         self.folder = create_fake_ipod()
