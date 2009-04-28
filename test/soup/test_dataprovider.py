@@ -12,14 +12,17 @@ def make_testcase(wrp):
             super(TestDataprovider, self).setUp()
             self.wrapper = self.wrapperclass(self)
             self.dp = self.wrapper.dp
+            self.data = self.wrapper.dataclass()
 
         def tearDown(self):
             self.dp = None
 
         def test_add(self):
             """ Should be able to add items """
-            testdata = self.wrapper.dataclass()
-            testdata.iter_samples()
+            self.dp.module.refresh()
+            for obj in self.data.iter_samples():
+                self.dp.module.put(obj, False, None)
+            self.dp.module.finish(False, False, False)
 
         def test_replace(self):
             """ Should be able to replace items """
@@ -35,7 +38,7 @@ def make_testcase(wrp):
 
         def test_finish(self):
             """ Should be able to call finish on cold """
-            self.dp.module.finish(None, None, None)
+            self.dp.module.finish(False, False, False)
 
         def test_get_num_items(self):
             """ Number of items in a fresh dataprovider should be 0 """

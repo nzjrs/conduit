@@ -2,7 +2,7 @@ import soup
 import soup.data
 
 import conduit.utils as Utils
-
+from conduit.datatypes import File
 
 class FileWrapper(soup.data.DataWrapper):
     """ Provides access to sample files and generated files """
