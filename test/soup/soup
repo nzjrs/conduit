@@ -11,9 +11,59 @@ from test_synchronization import *
 
 import unittest
 
-if __name__ == "__main__":
-    loader = unittest.TestLoader()
-    suite = loader.loadTestsFromModule(__import__('__main__'))
+def run_tests(tests):
     runner = unittest.TextTestRunner(verbosity=2)
     result = runner.run(suite)
     sys.exit(not result.wasSuccessfull())
+
+def list_tests(tests):
+    def flatten(tests):
+        if isinstance(tests, unittest.TestSuite):
+            res = []
+            for test in tests:
+               res.extend(flatten(test))
+            return res
+        else:
+            return [tests]
+    tests = flatten(tests)
+    for test in tests:
+        print test.name(), test.testMethodName
+
+if __name__ == "__main__":
+    import optparse
+
+    parser = optparse.OptionParser(usage="usage: %prog [options] arg1 arg2")
+
+    # Options about which tests are run
+    parser.add_option("-x", "--exclude", dest="exclude",
+                      help="Exclude patterns matching PATTERN", metavar="PATTERN")
+
+    # Options about how the tests are run
+    parser.add_option("-r", "--randomize", action="store_true", dest="randomize",
+                      help="Run tests in a random order")
+
+    # Add the different execution modes..
+    parser.add_option("-l", "--list", action="store_const", const="list", dest="mode",
+                      help="List tests instead of running them")
+    parser.add_option("-e", "--execute", action="store_const", const="execute", dest="mode",
+                      help="Run the tests")
+
+    # Set parse defaults
+    parser.set_defaults(mode="execute")
+
+    # And parse..
+    opts, args = parser.parse_args()
+
+    # Figure out which tests to run
+    loader = unittest.TestLoader()
+    suite = loader.loadTestsFromModule(__import__('__main__'))
+
+    # And run.
+    if opts.mode == "execute":
+        run_tests(suite)
+    elif opts.mode == "list":
+        list_tests(suite)
+    else:
+        print "I don't know what to do :("
+        sys.exit(1)
+
