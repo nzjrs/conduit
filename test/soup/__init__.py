@@ -16,6 +16,7 @@ import conduit.Module as Module
 import conduit.TypeConverter as TypeConverter
 import conduit.Synchronization as Synchronization
 import conduit.ModuleWrapper as ModuleWrapper
+import conduit.Conduit as Conduit
 
 conduit.SHARED_MODULE_DIR = os.path.join(root,"conduit","modules")
 
