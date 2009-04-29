@@ -1,9 +1,10 @@
 import soup
 
-def make_testcase(src, snk):
+def make_testcase(src, snk, dcls):
     class TestSynchronization(soup.TestCase):
         source_klass = src
         sink_klass = snk
+        dataclass = dcls
 
         @classmethod
         def name(self):
@@ -12,13 +13,30 @@ def make_testcase(src, snk):
         def setUp(self):
             self.setUpSync()
 
+            self.data = self.dataclass()
+
             self.source = self.source_klass(self)
             self.sink = self.sink_klass(self)
-            self.pair = self.create_conduit()
 
-        def testDoNothing(self):
-            """ Test doing nothing """
-            pass
+            self.pair = self.create_conduit()
+            self.pair.add_dataprovider(self.source.get_wrapped())
+            self.pair.add_dataprovider(self.sink.get_wrapped())
+
+        def test_empty_sync(self):
+            """ test empty synchronisation """
+            self.pair.sync(block=True)
+
+        def test_add_to_source(self):
+            """ testing adding data to source """
+            for data in self.data.iter_samples():
+                self.source.add(data)
+            self.pair.sync(block=True)
+
+        def test_add_to_sink(self):
+            """ test adding data to sink """
+            for data in self.data.iter_samples():
+                self.sink.add(data)
+            self.pair.sync(block=True)
 
     return TestSynchronization
 
@@ -33,7 +51,7 @@ for i in range(len(mods)):
         if sink.dataclass != source.dataclass:
             # FIXME: Need a generic way to say, hey you can sync contacts to folders
             continue
-        testklass = make_testcase(source, sink)
+        testklass = make_testcase(source, sink, sink.dataclass)
         setattr(self, testklass.name(), testklass)
 
 

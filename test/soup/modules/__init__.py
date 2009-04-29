@@ -14,23 +14,23 @@ class ModuleWrapper(object):
     def get_num_items(self):
         count = 0
         try:
-            self.dp.module.refresh()
-            count = self.dp.module.get_num_items()
+            self.dp.refresh()
+            count = self.dp.get_num_items()
         finally:
-            self.dp.module.finish()
+            self.dp.finish()
         return count
 
     def get(self, uid):
-        return self.dp.module.get(uid)
+        return self.dp.get(uid)
 
     def add(self, obj):
-        self.dp.module.put(obj, False)
+        self.dp.put(obj, False)
 
     def update(self, uid, obj):
-        self.dp.module.put(obj, True, LUID=uid)
+        self.dp.put(obj, True, LUID=uid)
 
     def delete(self, uid):
-        self.dp.module.delete(uid)
+        self.dp.delete(uid)
 
     def apply_changes(self, uid):
         for t, uid, obj in changes:
@@ -41,6 +41,8 @@ class ModuleWrapper(object):
             elif t == CHANGE_DELETE:
                 self.delete(uid)
 
+    def get_wrapped(self):
+        return self.conduit.wrap_dataprovider(self.dp)
 
 def load_modules():
     basepath = os.path.dirname(__file__)
