@@ -110,15 +110,69 @@ class TestCase(unittest.TestCase):
             syncManager=self.sync_manager
         )
 
-    def is_online(self):
-        try:
-            return os.environ["CONDUIT_ONLINE"] == "TRUE"
-        except KeyError:
-            return False
 
-    def is_interactive(self):
+#
+# Custom exceptions
+#
+
+class TestSkipped(Exception):
+    """ Indicate a test was intentionally skipped rather than failed """
+
+
+class UnavailableFeature(Exception):
+    """ A feature required for this test was unavailable """
+
+
+#
+# 'Features'
+# Some tests need things that might not be available, like python gpod, so provide an interface
+# to fail gracefully.
+#
+
+class Feature(object):
+
+    def __init__(self):
+        self._cached = None
+
+    def probe(self):
+        raise NotImplementedError
+
+    def available(self):
+        if self._cached == None:
+            self._cached = self.probe()
+        return self._cached
+
+    def require(self):
+        if not self.available():
+            raise UnavailableFeature
+
+    @classmethod
+    def name(cls):
+        return cls.__name__
+
+    def __str__(self):
+        return self.name()
+
+
+class _HumanInteractivity(Feature):
+
+    def probe(self):
         try:
             return os.environ["CONDUIT_INTERACTIVE"] == "TRUE"
-        except KeyError:
+        except:
             return False
+
+HumanInteractivity = _HumanInteractivity()
+
+
+class _Online(Feature):
+
+    def probe(self):
+        try:
+            return os.environ["CONDUIT_ONLINE"] == "TRUE"
+        except:
+            return False
+
+Online = _Online()
+
 
