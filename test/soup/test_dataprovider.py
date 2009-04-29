@@ -10,6 +10,7 @@ def make_testcase(wrp):
 
         def setUp(self):
             super(TestDataprovider, self).setUp()
+            self.setUpSync()
             self.wrapper = self.wrapperclass(self)
             self.dp = self.wrapper.dp
             self.data = self.wrapper.dataclass()

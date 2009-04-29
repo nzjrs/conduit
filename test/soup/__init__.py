@@ -46,7 +46,7 @@ class TestCase(unittest.TestCase):
             Returns something like TestClass.test_function: Tests how good Conduit is """
         return "%s.%s: %s" % (self.name(), self.testMethodName, super(TestCase, self).shortDescription())
 
-    def setUp(self):
+    def setUpSync(self):
         #Set up our own mapping DB so we dont pollute the global one
         dbFile = os.path.join(os.environ['TEST_DIRECTORY'],Utils.random_string()+".db")
         conduit.GLOBALS.mappingDB = MappingDB.MappingDB(dbFile)
@@ -59,9 +59,6 @@ class TestCase(unittest.TestCase):
         conduit.GLOBALS.typeConverter = self.type_converter
         self.sync_manager = conduit.Synchronization.SyncManager(self.type_converter)
         conduit.GLOBALS.syncManager = self.sync_manager
-
-    def tearDown(self):
-        pass
 
     def get_dataprovider(self, name):
         wrapper = None
