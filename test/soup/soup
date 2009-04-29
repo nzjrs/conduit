@@ -9,6 +9,11 @@ from test_datatypes import *
 from test_dataprovider import *
 from test_synchronization import *
 
+import unittest
+
 if __name__ == "__main__":
-    import unittest
-    unittest.main()
+    loader = unittest.TestLoader()
+    suite = loader.loadTestsFromModule(__import__('__main__'))
+    runner = unittest.TextTestRunner(verbosity=2)
+    result = runner.run(suite)
+    sys.exit(not result.wasSuccessfull())
