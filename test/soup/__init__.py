@@ -17,10 +17,10 @@ import conduit.TypeConverter as TypeConverter
 import conduit.Synchronization as Synchronization
 import conduit.ModuleWrapper as ModuleWrapper
 import conduit.Conduit as Conduit
+import conduit.Settings as Settings
 
 conduit.SHARED_MODULE_DIR = os.path.join(root,"conduit","modules")
-
-print conduit.SHARED_MODULE_DIR
+conduit.GLOBALS.settings = Settings.Settings()
 
 CHANGE_ADD = 1
 CHANGE_REPLACE = 2
