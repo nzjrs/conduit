@@ -16,7 +16,8 @@ class DataWrapper(object):
         """ Yields files that match the glob in the data dir """
         files = []
         for i in glob.glob(os.path.join(self.get_data_dir(),glob_str)):
-            yield os.path.abspath(i)
+            if os.path.isfile(i):
+                yield os.path.abspath(i)
 
     def iter_samples(self):
         """ Yield DataType objects containing sample data """
