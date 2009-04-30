@@ -177,3 +177,24 @@ class _Online(Feature):
 Online = _Online()
 
 
+#
+# Custom test loader
+#
+
+class TestLoader(unittest.TestLoader):
+
+    def _flatten(self, tests):
+        if isinstance(tests, unittest.TestSuite):
+            res = []
+            for test in tests:
+                res.extend(self._flatten(test))
+            return res
+        else:
+            return [tests]
+
+    def loadTestsFromModule(self, module):
+        return self._flatten(super(TestLoader, self).loadTestsFromModule(module))
+
+    def loadTestsFromMain(self):
+        """ Load all tests that can be found starting from __main__ """
+        return self.loadTestsFromModule(__import__('__main__'))

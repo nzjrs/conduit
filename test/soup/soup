@@ -10,6 +10,8 @@ os.environ['TEST_DIRECTORY'] = 'tmp'
 if not os.path.exists('tmp'):
     os.mkdir('tmp')
 
+import soup
+
 from test_datatypes import *
 from test_dataprovider import *
 from test_synchronization import *
@@ -68,19 +70,7 @@ if __name__ == "__main__":
     opts, args = parser.parse_args()
 
     # Figure out which tests to run
-    loader = unittest.TestLoader()
-    tests = loader.loadTestsFromModule(__import__('__main__'))
-
-    # Temporary - flatten tests
-    def flatten(tests):
-        if isinstance(tests, unittest.TestSuite):
-            res = []
-            for test in tests:
-                res.extend(flatten(test))
-            return res
-        else:
-            return [tests]
-    tests = flatten(tests)
+    tests = soup.TestLoader().loadTestsFromMain()
 
     if opts.randomize:
         import random
