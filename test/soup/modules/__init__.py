@@ -20,6 +20,10 @@ class ModuleWrapper(object):
             self.dp.finish()
         return count
 
+    def get_all(self):
+        self.dp.refresh()
+        return self.dp.get_all()
+
     def get(self, uid):
         return self.dp.get(uid)
 
@@ -31,6 +35,10 @@ class ModuleWrapper(object):
 
     def delete(self, uid):
         self.dp.delete(uid)
+
+    def delete_all(self):
+        for uid in self.get_all():
+            self.delete(uid)
 
     def apply_changes(self, uid):
         for t, uid, obj in changes:

@@ -22,20 +22,48 @@ def make_testcase(src, snk, dcls):
             self.pair.add_dataprovider(self.source.get_wrapped())
             self.pair.add_dataprovider(self.sink.get_wrapped())
 
+        def tearDown(self):
+            # we always do a no changes sync at the end, and make sure there are no changes...
+            self.pair.sync(block=True)
+
         def test_empty_sync(self):
             """ test empty synchronisation """
             self.pair.sync(block=True)
 
         def test_add_to_source(self):
-            """ testing adding data to source """
+            """ should be able to add data to source then sync """
             for data in self.data.iter_samples():
                 self.source.add(data)
             self.pair.sync(block=True)
 
+        def test_add_source_delete_source(self):
+            """ should be able to add data at source, sync, delete data from source then sync """
+            self.test_add_to_source()
+            self.source.delete_all()
+            self.pair.sync(block=True)
+
+        def test_add_source_delete_sink(self):
+            """ should be able to add data at source, sync, delete at sink, then sync """
+            self.test_add_to_source()
+            self.sink.delete_all()
+            self.pair.sync(block=True)
+
         def test_add_to_sink(self):
-            """ test adding data to sink """
+            """ should be able to add data to sink then sync """
             for data in self.data.iter_samples():
                 self.sink.add(data)
+            self.pair.sync(block=True)
+
+        def test_add_sink_delete_source(self):
+            """ should be able to add data at sink, sync, delete at source, then sync """
+            self.test_add_to_sink()
+            self.source.delete_all()
+            self.pair.sync(block=True)
+
+        def test_add_sink_delete_sink(self):
+            """ should be able to add data at sink, sync, delete at sink, then sync """
+            self.test_add_to_sink()
+            self.sink.delete_all()
             self.pair.sync(block=True)
 
     return TestSynchronization
