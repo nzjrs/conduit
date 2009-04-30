@@ -447,6 +447,7 @@ class IPodPhotoSink(IPodBase):
 
     def put(self, f, overwrite, LUID=None):
         photo = self.db.new_Photo(filename=f.get_local_uri())
+        self.album = self._get_photo_album(self.albumName)
         self.album.add(photo)
         gpod.itdb_photodb_write(self.db._itdb, None)
         return conduit.datatypes.Rid(str(photo['id']), None, hash(None))
