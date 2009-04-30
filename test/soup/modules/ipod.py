@@ -55,11 +55,11 @@ class iPodPhoto(soup.modules.ModuleWrapper):
         return iPodModule.IPodPhotoSink(self.folder, "")
 
 
-#class iPodMusic(soup.modules.ModuleWrapper):
+class iPodMusic(soup.modules.ModuleWrapper):
 
-#    dataclass = MusicWrapper
+    dataclass = MusicWrapper
 
-#    def create_dataprovider(self):
-#        self.folder = create_fake_ipod()
-#        return iPodModule.IPodMusicTwoWay(self.folder, "")
+    def create_dataprovider(self):
+        self.folder = create_fake_ipod()
+        return iPodModule.IPodMusicTwoWay(self.folder, "")
 
