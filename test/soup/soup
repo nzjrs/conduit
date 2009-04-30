@@ -5,6 +5,8 @@ testsdir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, testsdir)
 
 os.environ['TEST_DIRECTORY'] = 'tmp'
+if not os.path.exists('tmp'):
+    os.mkdir('tmp')
 
 from test_datatypes import *
 from test_dataprovider import *
