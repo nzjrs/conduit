@@ -14,8 +14,8 @@ from test_synchronization import *
 
 import unittest
 
-def run_tests(tests):
-    runner = unittest.TextTestRunner(verbosity=2)
+def run_tests(tests, verbose=False):
+    runner = unittest.TextTestRunner(verbosity=2 if verbose else 1)
     result = runner.run(unittest.TestSuite(tests))
     sys.exit(not result.wasSuccessful())
 
@@ -37,6 +37,8 @@ if __name__ == "__main__":
     # Options about how the tests are run
     parser.add_option("-r", "--randomize", action="store_true", dest="randomize",
                       help="Run tests in a random order")
+    parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
+                      help="Output lots of noise as tests are run")
 
     # Add the different execution modes..
     parser.add_option("-l", "--list", action="store_const", const="list", dest="mode",
@@ -45,7 +47,7 @@ if __name__ == "__main__":
                       help="Run the tests")
 
     # Set parse defaults
-    parser.set_defaults(mode="execute", randomize=False)
+    parser.set_defaults(mode="execute", randomize=False, verbose=False)
 
     # And parse..
     opts, args = parser.parse_args()
@@ -71,7 +73,7 @@ if __name__ == "__main__":
 
     # And run.
     if opts.mode == "execute":
-        run_tests(tests)
+        run_tests(tests, verbose=opts.verbose)
     elif opts.mode == "list":
         list_tests(tests)
 
