@@ -185,12 +185,11 @@ class TestLoader(unittest.TestLoader):
 
     def _flatten(self, tests):
         if isinstance(tests, unittest.TestSuite):
-            res = []
             for test in tests:
-                res.extend(self._flatten(test))
-            return res
+                for subtest in self._flatten(test):
+                    yield subtest
         else:
-            return [tests]
+            yield tests
 
     def loadTestsFromModule(self, module):
         return self._flatten(super(TestLoader, self).loadTestsFromModule(module))
