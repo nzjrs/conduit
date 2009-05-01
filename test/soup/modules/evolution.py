@@ -10,32 +10,36 @@ import conduit.modules.EvolutionModule.EvolutionModule as EvolutionModule
 
 class EvolutionMemo(soup.modules.ModuleWrapper):
 
+    klass = EvolutionModule.EvoMemoTwoWay
     dataclass = NoteWrapper
 
     def create_dataprovider(self):
-        return EvolutionModule.EvoMemoTwoWay()
+        return self.klass()
 
 
 class EvolutionContacts(soup.modules.ModuleWrapper):
 
+    klass = EvolutionModule.EvoContactTwoWay
     dataclass = ContactWrapper
 
     def create_dataprovider(self):
-        return EvolutionModule.EvoContactTwoWay()
+        return self.klass()
 
 
 class EvolutionCalendar(soup.modules.ModuleWrapper):
 
+    klass = EvolutionModule.EvoCalendarTwoWay
     dataclass = EventWrapper
 
     def create_dataprovider(self):
-        return EvolutionModule.EvoCalendarTwoWay()
+        return self.klass()
 
 
 class EvolutionTasks(soup.modules.ModuleWrapper):
 
+    klass = EvolutionModule.EvoTasksTwoWay
     dataclass = EventWrapper
 
     def create_dataprovider(self):
-        return EvolutionModule.EvoTasksTwoWay()
+        return self.klass()
 

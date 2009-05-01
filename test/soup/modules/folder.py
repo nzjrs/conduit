@@ -7,10 +7,11 @@ import conduit.utils as Utils
 
 class Folder(soup.modules.ModuleWrapper):
 
+    klass = FileModule.FolderTwoWay
     dataclass = FileWrapper
 
     def create_dataprovider(self):
-        dp = FileModule.FolderTwoWay()
+        dp = self.klass()
         dp.set_configuration({
             "folder": Utils.new_tempdir(),
         })

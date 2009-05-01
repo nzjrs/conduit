@@ -105,6 +105,8 @@ for i in range(len(mods)):
         if sink.dataclass != source.dataclass:
             # FIXME: Need a generic way to say, hey you can sync contacts to folders
             continue
+        if not source.is_twoway() or not sink.is_twoway():
+            continue
         testklass = make_testcase(source, sink, sink.dataclass)
         setattr(self, testklass.name(), testklass)
 

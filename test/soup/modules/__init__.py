@@ -49,6 +49,10 @@ class ModuleWrapper(object):
             elif t == CHANGE_DELETE:
                 self.delete(uid)
 
+    @classmethod
+    def is_twoway(cls):
+        return cls.klass._module_type_ == "twoway"
+
     def get_wrapped(self):
         return self.conduit.wrap_dataprovider(self.dp)
 

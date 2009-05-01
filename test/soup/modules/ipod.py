@@ -13,53 +13,31 @@ import conduit.utils as Utils
 
 import gpod
 
-def create_fake_ipod():
-    dir = Utils.new_tempdir()
-    assert gpod.gpod.itdb_init_ipod(dir, "MA450", "Test iPod", None)
-    return dir
+class iPodWrapper(object):
+
+    def create_dataprovider(self):
+        self.folder = Utils.new_tempdir()
+        assert gpod.gpod.itdb_init_ipod(self.folder, "MA450", "Test iPod", None)
+        return self.klass(self.folder, "")
 
 
-class iPodNote(soup.modules.ModuleWrapper):
-
+class iPodNote(soup.modules.ModuleWrapper, iPodWrapper):
+    klass = iPodModule.IPodNoteTwoWay
     dataclass = NoteWrapper
 
-    def create_dataprovider(self):
-        self.folder = create_fake_ipod()
-        return iPodModule.IPodNoteTwoWay(self.folder, "")
-
-
-class iPodContacts(soup.modules.ModuleWrapper):
-
+class iPodContacts(soup.modules.ModuleWrapper, iPodWrapper):
+    klass = iPodModule.IPodContactsTwoWay
     dataclass = ContactWrapper
 
-    def create_dataprovider(self):
-        self.folder = create_fake_ipod()
-        return iPodModule.IPodContactsTwoWay(self.folder, "")
-
-
-class iPodCalendar(soup.modules.ModuleWrapper):
-
+class iPodCalendar(soup.modules.ModuleWrapper, iPodWrapper):
+    klass = iPodModule.IPodCalendarTwoWay
     dataclass = EventWrapper
 
-    def create_dataprovider(self):
-        self.folder = create_fake_ipod()
-        return iPodModule.IPodCalendarTwoWay(self.folder, "")
-
-
-class iPodPhoto(soup.modules.ModuleWrapper):
-
+class iPodPhoto(soup.modules.ModuleWrapper, iPodWrapper):
+    klass = iPodModule.IPodPhotoSink
     dataclass = PhotoWrapper
 
-    def create_dataprovider(self):
-        self.folder = create_fake_ipod()
-        return iPodModule.IPodPhotoSink(self.folder, "")
-
-
-class iPodMusic(soup.modules.ModuleWrapper):
-
+class iPodMusic(soup.modules.ModuleWrapper, iPodWrapper):
+    klass = iPodModule.IPodMusicTwoWay
     dataclass = MusicWrapper
-
-    def create_dataprovider(self):
-        self.folder = create_fake_ipod()
-        return iPodModule.IPodMusicTwoWay(self.folder, "")
 
