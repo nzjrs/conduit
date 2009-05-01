@@ -183,6 +183,10 @@ Online = _Online()
 
 class TestLoader(unittest.TestLoader):
 
+    def __init__(self, include=None, exclude=None):
+        self.include = include or []
+        self.exclude = exclude or []
+
     def _flatten(self, tests):
         if isinstance(tests, unittest.TestSuite):
             for test in tests:
@@ -192,8 +196,24 @@ class TestLoader(unittest.TestLoader):
             yield tests
 
     def loadTestsFromModule(self, module):
-        return self._flatten(super(TestLoader, self).loadTestsFromModule(module))
+        for test in self._flatten(super(TestLoader, self).loadTestsFromModule(module)):
+            if len(self.include) > 0:
+                is_included = False
+                for i in self.include:
+                    if i in test.name():
+                        is_included = True
+                if not is_included:
+                    continue
+            if len(self.exclude) > 0:
+                is_excluded = False
+                for x in self.exclude:
+                    if x in test.name():
+                        is_excluded = True
+                if is_excluded:
+                    continue
+            yield test
 
     def loadTestsFromMain(self):
         """ Load all tests that can be found starting from __main__ """
         return self.loadTestsFromModule(__import__('__main__'))
+

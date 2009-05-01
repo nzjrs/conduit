@@ -46,7 +46,7 @@ if __name__ == "__main__":
     parser = optparse.OptionParser(usage="usage: %prog [options] arg1 arg2")
 
     # Options about which tests are run
-    parser.add_option("-x", "--exclude", dest="exclude",
+    parser.add_option("-x", "--exclude", action="append", type="string", dest="exclude",
                       help="Exclude patterns matching PATTERN", metavar="PATTERN")
 
     # Options about how the tests are run
@@ -64,13 +64,14 @@ if __name__ == "__main__":
                       help="Run the tests")
 
     # Set parse defaults
-    parser.set_defaults(mode="execute", randomize=False, verbose=False, coverage=False)
+    parser.set_defaults(mode="execute", randomize=False, verbose=False, coverage=False,
+                        exclude=[])
 
     # And parse..
     opts, args = parser.parse_args()
 
     # Figure out which tests to run
-    tests = soup.TestLoader().loadTestsFromMain()
+    tests = soup.TestLoader(include=args, exclude=opts.exclude).loadTestsFromMain()
 
     if opts.randomize:
         import random
