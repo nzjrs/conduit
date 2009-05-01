@@ -22,6 +22,28 @@ def make_testcase(src, snk, dcls):
             self.pair.add_dataprovider(self.source.get_wrapped())
             self.pair.add_dataprovider(self.sink.get_wrapped())
 
+            self.pair.enable_two_way_sync()
+            self.pair.set_policy("conflict", "replace")
+            self.pair.set_policy("deleted", "replace")
+
+        def add_testdata(self, target):
+            count = 0
+            for data in self.data.iter_samples():
+                count += 1
+                target.add(data)
+            return count
+
+        def modify_testdata(self, target):
+            uids = target.get_all()
+            for uid in uids:
+                data = self.data.mutate_sample(target.get(uid))
+                target.replace(uid, data)
+
+        def check_state(self, expected):
+            source_count, sink_count = self.source.get_num_items(), self.sink.get_num_items()
+            assert source_count == sink_count, "source has %d, sink has %d, expected %d" % (source_count, sink_count, expected)
+            assert source_count == expected
+
         def tearDown(self):
             # we always do a no changes sync at the end, and make sure there are no changes...
             self.pair.sync(block=True)
@@ -32,39 +54,43 @@ def make_testcase(src, snk, dcls):
 
         def test_add_to_source(self):
             """ should be able to add data to source then sync """
-            for data in self.data.iter_samples():
-                self.source.add(data)
+            added = self.add_testdata(self.source)
             self.pair.sync(block=True)
+            self.check_state(added)
 
         def test_add_source_delete_source(self):
             """ should be able to add data at source, sync, delete data from source then sync """
             self.test_add_to_source()
             self.source.delete_all()
             self.pair.sync(block=True)
+            self.check_state(0)
 
         def test_add_source_delete_sink(self):
             """ should be able to add data at source, sync, delete at sink, then sync """
             self.test_add_to_source()
             self.sink.delete_all()
             self.pair.sync(block=True)
+            self.check_state(0)
 
         def test_add_to_sink(self):
             """ should be able to add data to sink then sync """
-            for data in self.data.iter_samples():
-                self.sink.add(data)
+            added = self.add_testdata(self.sink)
             self.pair.sync(block=True)
+            self.check_state(added)
 
         def test_add_sink_delete_source(self):
             """ should be able to add data at sink, sync, delete at source, then sync """
             self.test_add_to_sink()
             self.source.delete_all()
             self.pair.sync(block=True)
+            self.check_state(0)
 
         def test_add_sink_delete_sink(self):
             """ should be able to add data at sink, sync, delete at sink, then sync """
             self.test_add_to_sink()
             self.sink.delete_all()
             self.pair.sync(block=True)
+            self.check_state(0)
 
     return TestSynchronization
 

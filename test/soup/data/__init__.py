@@ -29,7 +29,7 @@ class DataWrapper(object):
 
     def mutate_sample(self, obj):
         """ Modify a DataType object randomly """
-        raise NotImplementedError
+        return obj
 
 def load_modules():
     basepath = os.path.dirname(__file__)

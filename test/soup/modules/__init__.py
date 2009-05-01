@@ -17,7 +17,7 @@ class ModuleWrapper(object):
             self.dp.refresh()
             count = self.dp.get_num_items()
         finally:
-            self.dp.finish()
+            self.dp.finish(False, False, False)
         return count
 
     def get_all(self):
