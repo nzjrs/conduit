@@ -1,5 +1,5 @@
 conduit_handlersdir = $(libdir)/conduit/modules/FileModule
-conduit_handlers_PYTHON = FileModule.py FileConfiguration.py
+conduit_handlers_PYTHON = FileModule.py FileConfiguration.py __init__.py
 
 conduit_handlers_DATA = config.glade
 EXTRA_DIST = config.glade
