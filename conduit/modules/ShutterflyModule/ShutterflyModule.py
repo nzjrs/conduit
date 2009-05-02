@@ -31,9 +31,11 @@ class ShutterflySink(Image.ImageSink):
 	
 	def __init__(self, *args):
 		Image.ImageSink.__init__(self)
-		self.username = ""
-		self.password = ""
-		self.album = ""
+		self.update_configuration(
+			username = "",
+			password = "",
+			album = ""
+		)
 		self.sapi = None
 		self.salbum = None
 		self.sphotos = None
@@ -114,44 +116,7 @@ class ShutterflySink(Image.ImageSink):
 		config.add_section('Saved photo settings')
 		config.add_item('Album', 'text',
 			config_name = 'album',
-		)	
-	
-	def configure_(self, window):
-		"""
-		Configures the ShutterflySink
-		"""
-		widget = Utils.dataprovider_glade_get_widget(
-			__file__,
-			"shutterfly.glade",
-			"ShutterflySinkConfigDialog")
-		
-		# Get configuration widgets
-		username = widget.get_widget("username")
-		password = widget.get_widget("password")
-		album = widget.get_widget("album")
-		
-		# Load the widgets with presets
-		username.set_text(self.username)
-		password.set_text(self.password)
-		album.set_text(self.album)
-		
-		dlg = widget.get_widget("ShutterflySinkConfigDialog")
-		
-		response = Utils.run_dialog(dlg, window)
-		
-		if response == True:
-			self.username = username.get_text()
-			self.password = password.get_text()
-			self.album = album.get_text()
-		
-		dlg.destroy()
-	
-	def get_configuration(self):
-		return {
-			"username" : self.username, 
-			"password" : self.password, 
-			"album" : self.album
-			}
+		)
 	
 	def is_configured(self, isSource, isTwoWay):
 		if len(self.username) < 1:
