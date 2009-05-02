@@ -12,6 +12,12 @@ if not os.path.exists('tmp'):
 
 import soup
 
+known_failures = [
+    'Evo',              # Will trash your main evo :/
+    'Audio', 'Music'    # GStreamer hanging
+    'Video',            # Probably same as ^
+]
+
 from test_datatypes import *
 from test_dataprovider import *
 from test_synchronization import *
@@ -65,7 +71,7 @@ if __name__ == "__main__":
 
     # Set parse defaults
     parser.set_defaults(mode="execute", randomize=False, verbose=False, coverage=False,
-                        exclude=[])
+                        exclude=known_failures)
 
     # And parse..
     opts, args = parser.parse_args()
