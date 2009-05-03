@@ -41,6 +41,10 @@ def make_testcase(wrp):
             others = list(self.wrapper.get_compatible_datatypes())
             assert len(others) > 1
 
+        def test_is_compatible(self):
+            """ Should be compatible with self """
+            assert self.wrapper.is_compatible(self.wrapper.get_datatype())
+
     return TestDatatype
 
 

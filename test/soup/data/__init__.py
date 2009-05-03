@@ -64,6 +64,11 @@ class DataWrapper(object):
             tovisit.extend(n.__bases__)
             yield (cls.get_datatype(), n, cls)
 
+    @classmethod
+    def is_compatible(cls, datatype):
+        compatible = list(cls.get_compatible_datatypes())
+        return datatype in compatible
+
 def load_modules():
     basepath = os.path.dirname(__file__)
     for root, dirs, files in os.walk(basepath):
