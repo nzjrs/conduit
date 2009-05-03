@@ -14,14 +14,14 @@ class ModuleWrapper(object):
     def get_num_items(self):
         count = 0
         try:
-            self.dp.refresh(block=True)
+            self.dp.refresh()
             count = self.dp.get_num_items()
         finally:
             self.dp.finish(False, False, False)
         return count
 
     def get_all(self):
-        self.dp.refresh(block=True)
+        self.dp.refresh()
         return self.dp.get_all()
 
     def get(self, uid):
