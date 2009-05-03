@@ -58,6 +58,21 @@ def make_testcase(src, src_data, snk, snk_data):
             added = self.add_testdata(self.source, self.source_data)
             self.pair.sync(block=True)
             self.check_state(added)
+            return added
+
+        def test_add_source_modify_source(self):
+            """ should be able to add data to source, sync, modify source, then sync """
+            added = self.test_add_to_source()
+            self.modify_testdata(self.source, self.source_data)
+            self.pair.sync(block=True)
+            self.check_state(added)
+
+        def test_add_source_modify_sink(self):
+            """ should be able to add data to source, sync, modify sink, then sync """
+            added = self.test_add_to_source()
+            self.modify_testdata(self.sink, self.sink_data)
+            self.pair.sync(block=True)
+            self.check_state(added)
 
         def test_add_source_delete_source(self):
             """ should be able to add data at source, sync, delete data from source then sync """
@@ -76,6 +91,21 @@ def make_testcase(src, src_data, snk, snk_data):
         def test_add_to_sink(self):
             """ should be able to add data to sink then sync """
             added = self.add_testdata(self.sink, self.sink_data)
+            self.pair.sync(block=True)
+            self.check_state(added)
+            return added
+
+        def test_add_sink_modify_source(self):
+            """ should be able to add data to sink, sync, modify source, then sync """
+            added = self.test_add_to_sink()
+            self.modify_testdata(self.source, self.source_data)
+            self.pair.sync(block=True)
+            self.check_state(added)
+
+        def test_add_sink_modify_sink(self):
+            """ should be able to add data to sink, sync, modify sink, then sync """
+            added = self.test_add_to_sink()
+            self.modify_testdata(self.sink, self.sink_data)
             self.pair.sync(block=True)
             self.check_state(added)
 
