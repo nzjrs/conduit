@@ -102,8 +102,7 @@ for i in range(len(mods)):
     for j in range(i+1, len(mods)):
         source = mods[i]
         sink = mods[j]
-        if sink.dataclass != source.dataclass:
-            # FIXME: Need a generic way to say, hey you can sync contacts to folders
+        if not sink.dataclass.is_compatible(source.dataclass.get_datatype()) and not source.dataclass.is_compatible(sink.dataclass.get_datatype()):
             continue
         if not source.is_twoway() or not sink.is_twoway():
             continue
