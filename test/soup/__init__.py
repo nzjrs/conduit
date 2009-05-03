@@ -38,9 +38,13 @@ class TestCase(unittest.TestCase):
         self.testMethod = getattr(self, methodName)
 
     @classmethod
-    def name(self):
+    def name(cls):
         """ Returns the name of the class. We need to override this on generated classes """
-        return self.__class__.__name__
+        return cls.__name__
+
+    def id(self):
+        """ Returns the name of the class and the test this particular instance will run """
+        return self.name() + "." + self.testMethodName
 
     def shortDescription(self):
         """ Describe the test that is currently running
@@ -200,14 +204,14 @@ class TestLoader(unittest.TestLoader):
             if len(self.include) > 0:
                 is_included = False
                 for i in self.include:
-                    if i in test.name():
+                    if i in test.id():
                         is_included = True
                 if not is_included:
                     continue
             if len(self.exclude) > 0:
                 is_excluded = False
                 for x in self.exclude:
-                    if x in test.name():
+                    if x in test.id():
                         is_excluded = True
                 if is_excluded:
                     continue
