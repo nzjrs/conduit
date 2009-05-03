@@ -5,6 +5,8 @@ from conduit.datatypes import Contact
 
 class ContactWrapper(soup.data.DataWrapper):
 
+    wraps = Contact.Contact
+
     def iter_samples(self):
         for f in self.get_files_from_data_dir("*.vcard"):
             txt = open(f).read()

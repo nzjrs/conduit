@@ -36,6 +36,11 @@ def make_testcase(wrp):
             assert obj.get_hash() == clone.get_hash()
             assert obj.get_rid() == clone.get_rid()
 
+        def test_compatible_datatypes(self):
+            """ Should be compatible with other datatypes """
+            others = list(self.wrapper.get_compatible_datatypes())
+            assert len(others) > 1
+
     return TestDatatype
 
 

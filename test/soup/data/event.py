@@ -5,6 +5,8 @@ from conduit.datatypes import Event
 
 class EventWrapper(soup.data.DataWrapper):
 
+    wraps = Event.Event
+
     def iter_samples(self):
         for f in self.get_files_from_data_dir("*.ical"):
             txt = open(f).read()

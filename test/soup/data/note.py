@@ -5,6 +5,8 @@ from conduit.datatypes import Note
 
 class NoteWrapper(soup.data.DataWrapper):
 
+    wraps = Note.Note
+
     def iter_samples(self):
         #FIXME: This is not very useful
         for f in self.get_files_from_data_dir("*"):

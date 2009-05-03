@@ -4,6 +4,8 @@ from conduit.datatypes import Photo
 
 class PhotoWrapper(soup.data.DataWrapper):
 
+    wraps = Photo.Photo
+
     def iter_samples(self):
         for f in self.get_files_from_data_dir("*.png"):
             p = Photo.Photo(URI=f)

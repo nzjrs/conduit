@@ -1,5 +1,7 @@
 import os, sys, glob
 
+from conduit.datatypes import DataType, File
+
 class DataWrapper(object):
     """
     This class provides a wrapper around some test data.
@@ -30,6 +32,37 @@ class DataWrapper(object):
     def mutate_sample(self, obj):
         """ Modify a DataType object randomly """
         return obj
+
+    @classmethod
+    def get_datatype(cls):
+        return cls.wraps
+
+    @classmethod
+    def get_compatible_datatypes(cls):
+        """ Yields DataType classes that are (probably) compatible with this one
+
+            We can't rely on type converter system to make sane convertablity choices,
+            or we'd end up in a situation where we tried to convert a vcard into an mp3
+            (vcard to file, but file could convert to mp3. doh).
+
+            Instead we work out convertability by looking 'down class' (we assume there is a
+            conversion route from GoogleContact to Contact.
+
+            We also make some bold assumptions about being able to convert to and from files """
+        yield cls.get_datatype()
+
+        # Yuck. Assume compatibiliy with File.
+        yield File.File
+
+        tovisit = list(cls.get_datatype().__bases__)
+        while len(tovisit):
+            n = tovisit.pop(0)
+            if not issubclass(n, DataType.DataType):
+                continue
+            if n == File.File:
+                continue
+            tovisit.extend(n.__bases__)
+            yield (cls.get_datatype(), n, cls)
 
 def load_modules():
     basepath = os.path.dirname(__file__)

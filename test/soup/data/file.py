@@ -7,6 +7,8 @@ from conduit.datatypes import File
 class FileWrapper(soup.data.DataWrapper):
     """ Provides access to sample files and generated files """
 
+    wraps = File.File
+
     def iter_samples(self):
         for f in self.get_files_from_data_dir("*"):
             yield File.File(URI=f)
