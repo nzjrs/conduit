@@ -4,6 +4,7 @@ from soup.data.file import FileWrapper
 import conduit.modules.FileModule.FileModule as FileModule
 import conduit.utils as Utils
 
+import shutil
 
 class Folder(soup.modules.ModuleWrapper):
 
@@ -11,9 +12,13 @@ class Folder(soup.modules.ModuleWrapper):
     dataclass = FileWrapper
 
     def create_dataprovider(self):
+        self.folder = Utils.new_tempdir()
         dp = self.klass()
         dp.set_configuration({
-            "folder": Utils.new_tempdir(),
+            "folder": self.folder,
         })
         return dp
+
+    def destroy_dataprovider(self):
+        shutil.rmtree(self.folder)
 

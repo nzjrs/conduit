@@ -10,12 +10,16 @@ from soup.data.video import VideoWrapper
 import conduit.modules.N800Module.N800Module as N800Module
 import conduit.utils as Utils
 
+import shutil
+
 class N800Wrapper(object):
 
     def create_dataprovider(self):
         self.folder = Utils.new_tempdir()
         return self.klass(self.folder, "")
 
+    def destroy_dataprovider(self):
+        shutil.rmtree(self.folder)
 
 class N800Folder(soup.modules.ModuleWrapper, N800Wrapper):
     klass = N800Module.N800FolderTwoWay

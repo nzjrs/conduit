@@ -11,6 +11,7 @@ from soup.data.music import MusicWrapper
 import conduit.modules.iPodModule.iPodModule as iPodModule
 import conduit.utils as Utils
 
+import shutil
 import gpod
 
 class iPodWrapper(object):
@@ -20,6 +21,8 @@ class iPodWrapper(object):
         assert gpod.gpod.itdb_init_ipod(self.folder, "MA450", "Test iPod", None)
         return self.klass(self.folder, "")
 
+    def destroy_dataprovider(self):
+        shutil.rmtree(self.folder)
 
 class iPodNote(soup.modules.ModuleWrapper, iPodWrapper):
     klass = iPodModule.IPodNoteTwoWay

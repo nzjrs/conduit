@@ -27,6 +27,12 @@ def make_testcase(src, src_data, snk, snk_data):
             self.pair.set_policy("conflict", "replace")
             self.pair.set_policy("deleted", "replace")
 
+        def tearDown(self):
+            # we always do a no changes sync at the end, and make sure there are no changes...
+            self.pair.sync(block=True)
+            self.source.destroy_dataprovider()
+            self.sink.destroy_dataprovider()
+
         def add_testdata(self, target, target_data):
             count = 0
             for data in target_data.iter_samples():
@@ -44,10 +50,6 @@ def make_testcase(src, src_data, snk, snk_data):
             source_count, sink_count = self.source.get_num_items(), self.sink.get_num_items()
             assert source_count == sink_count, "source has %d, sink has %d, expected %d" % (source_count, sink_count, expected)
             assert source_count == expected
-
-        def tearDown(self):
-            # we always do a no changes sync at the end, and make sure there are no changes...
-            self.pair.sync(block=True)
 
         def test_empty_sync(self):
             """ test empty synchronisation """

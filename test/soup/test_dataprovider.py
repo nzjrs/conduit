@@ -15,7 +15,7 @@ def make_testcase(wrp):
             self.data = self.wrapper.dataclass()
 
         def tearDown(self):
-            self.dp = None
+            self.wrapper.destroy_dataprovider()
 
         def test_add(self):
             """ Should be able to add items """
