@@ -30,7 +30,7 @@ class ModuleWrapper(object):
     def add(self, obj):
         self.dp.put(obj, False)
 
-    def update(self, uid, obj):
+    def replace(self, uid, obj):
         self.dp.put(obj, True, LUID=uid)
 
     def delete(self, uid):
