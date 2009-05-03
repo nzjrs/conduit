@@ -132,7 +132,7 @@ def make_testcase(src, src_data, snk, snk_data):
 self = soup.get_module(__name__)
 mods = soup.modules.get_all()
 for i in range(len(mods)):
-    for j in range(i+1, len(mods)):
+    for j in range(len(mods)):
         source = mods[i]
         sink = mods[j]
 
