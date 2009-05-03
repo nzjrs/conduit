@@ -10,12 +10,15 @@ from soup.data.video import VideoWrapper
 import conduit.modules.N800Module.N800Module as N800Module
 import conduit.utils as Utils
 
-import shutil
+import os, shutil
 
 class N800Wrapper(object):
 
     def create_dataprovider(self):
         self.folder = Utils.new_tempdir()
+        path = os.path.join(self.folder, self.klass.DEFAULT_FOLDER)
+        if not os.path.exists(path):
+            os.mkdir(path)
         return self.klass(self.folder, "")
 
     def destroy_dataprovider(self):
