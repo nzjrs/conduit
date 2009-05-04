@@ -596,7 +596,7 @@ class IPodFileBase:
         
         #Get the information from the iPod track.
         #The track might look like a dict, but it isnt, so we make it into one.
-        track_tags = dict([(name, track[name]) for name in self.media_to_ipod.keys()])
+        track_tags = dict([(name, self.track[name]) for name in self.media_to_ipod.keys()])
         return dict(self._convert_tags(track_tags, self.ipod_to_media))
 
     #FIXME: Remove this. Use native operations from Conduit instead.
