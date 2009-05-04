@@ -1,13 +1,22 @@
 
 import os, sys
-cwd = os.path.dirname(__file__)
-root = os.path.abspath(os.path.join(cwd, '..', '..'))
-sys.path.insert(0, root)
-
 import unittest
+
+def get_root():
+    cwd = os.path.dirname(__file__)
+    parts = cwd.split(os.path.sep)
+    while len(parts) > 0:
+        path = os.path.join(os.path.sep, *parts)
+        if os.path.isfile(os.path.join(path, 'configure.ac')):
+            return path
+        parts.pop()
+    raise NotImplementedError(get_root)
+
+sys.path.insert(0, get_root())
 
 import modules
 import data
+import env
 
 import conduit
 import conduit.utils as Utils
@@ -21,8 +30,8 @@ import conduit.Settings as Settings
 
 conduit.IS_INSTALLED =              False
 conduit.IS_DEVELOPMENT_VERSION =    True
-conduit.SHARED_DATA_DIR =           os.path.join(root,"data")
-conduit.SHARED_MODULE_DIR =         os.path.join(root,"conduit","modules")
+conduit.SHARED_DATA_DIR =           os.path.join(get_root(),"data")
+conduit.SHARED_MODULE_DIR =         os.path.join(get_root(),"conduit","modules")
 conduit.FILE_IMPL =                 os.environ.get("CONDUIT_FILE_IMPL","GIO")
 conduit.BROWSER_IMPL =              os.environ.get("CONDUIT_BROWSER_IMPL","system")
 conduit.SETTINGS_IMPL =             os.environ.get("CONDUIT_SETTINGS_IMPL","GConf")
