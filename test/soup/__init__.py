@@ -62,7 +62,7 @@ class TestCase(unittest.TestCase):
         dbFile = os.path.join(os.environ['TEST_DIRECTORY'],Utils.random_string()+".db")
         conduit.GLOBALS.mappingDB = MappingDB.MappingDB(dbFile)
 
-        self.modules = Module.ModuleManager([conduit.SHARED_MODULE_DIR])
+        self.modules = Module.ModuleManager([])
         conduit.GLOBALS.moduleManager = self.modules
         self.modules.load_all(whitelist=None, blacklist=None)
 
