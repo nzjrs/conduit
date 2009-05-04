@@ -4,6 +4,7 @@ from soup.utils import progressbar
 
 import sys
 import unittest
+import cgitb
 
 class TestResult(unittest.TestResult):
 
@@ -39,6 +40,14 @@ class TestResult(unittest.TestResult):
     def addSuccess(self, test):
         super(TestResult, self).addSuccess(test)
         self.report_success(test)
+
+    def _exc_info_to_string(self, err, test):
+        """Converts a sys.exc_info()-style tuple of values into a string."""
+        exctype, value, tb = err
+        # Skip test runner traceback levels
+        while tb and self._is_relevant_tb_level(tb):
+            tb = tb.tb_next
+        return cgitb.text((exctype, value, tb))
 
     # FIXME: Maybe these should be callbacks?
 
