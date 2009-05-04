@@ -6,6 +6,7 @@ import sys
 import unittest
 import cgitb
 import traceback
+import time
 
 
 class TestResult(unittest.TestResult):
@@ -90,10 +91,28 @@ class TextTestResult(TestResult):
     def getDescription(self, test):
         return test.shortDescription()
 
-    def report_finished(self):
+    def report_finished(self, timeTaken):
         self.stream.writeln()
         self.printErrorList('ERROR', self.errors)
         self.printErrorList('FAIL', self.failures)
+        self.stream.writeln(self.seperator2)
+
+        run = self.testsRun
+        self.stream.writeln("Ran %d test%s in %.3fs" %
+                            (run, run != 1 and "s" or "", timeTaken))
+        self.stream.writeln()
+
+        if not self.wasSuccessful():
+            self.stream.write("FAILED (")
+            failed, errored = map(len, (self.failures, self.errors))
+            if failed:
+                self.stream.write("failures=%d" % failed)
+            if errored:
+                if failed: self.stream.write(", ")
+                self.stream.write("errors=%d" % errored)
+            self.stream.writeln(")")
+        else:
+            self.stream.writeln("OK")
 
     def printErrorList(self, flavour, errors):
         for test, err in errors:
@@ -137,7 +156,9 @@ class TestRunner(object):
     def run(self, tests):
         result = self.make_results(tests)
         result.report_starting()
+        start_time = time.time()
         tests.run(result)
-        result.report_finished()
+        time_taken = time.time() - start_time
+        result.report_finished(time_taken)
         return result
 
