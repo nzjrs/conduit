@@ -57,6 +57,9 @@ class TestResult(unittest.TestResult):
 
     # FIXME: Maybe these should be callbacks?
 
+    def report_starting(self):
+        pass
+
     def report_test_start(self, test):
         pass
 
@@ -75,8 +78,32 @@ class TestResult(unittest.TestResult):
     def report_success(self, test):
         pass
 
+    def report_finished(self):
+        pass
 
-class SimpleTestResult(TestResult):
+
+class TextTestResult(TestResult):
+
+    seperator1 = '=' * 70
+    seperator2 = '-' * 70
+
+    def getDescription(self, test):
+        return test.shortDescription()
+
+    def report_finished(self):
+        self.stream.writeln()
+        self.printErrorList('ERROR', self.errors)
+        self.printErrorList('FAIL', self.failures)
+
+    def printErrorList(self, flavour, errors):
+        for test, err in errors:
+            self.stream.writeln(self.seperator1)
+            self.stream.writeln("%s: %s" % (flavour, self.getDescription(test)))
+            self.stream.writeln(self.seperator2)
+            self.stream.writeln("%s" % err)
+
+
+class SimpleTestResult(TextTestResult):
 
     def report_starting(self):
         self.pb = progressbar.ProgressBar()
@@ -86,7 +113,7 @@ class SimpleTestResult(TestResult):
         self.pb.update(self.pb.cur + 1)
 
 
-class VerboseConsoleTextResult(TestResult):
+class VerboseConsoleTextResult(TextTestResult):
 
     def report_test_start(self, test):
         print test.shortDescription()
@@ -95,7 +122,7 @@ class VerboseConsoleTextResult(TestResult):
 class TestRunner(object):
 
     def __init__(self, stream=sys.stderr, descriptions=0, verbosity=1):
-        self.stream = stream
+        self.stream = unittest._WritelnDecorator(stream)
         self.descriptions = 0
         self.verbosity = 0
 
@@ -111,5 +138,6 @@ class TestRunner(object):
         result = self.make_results(tests)
         result.report_starting()
         tests.run(result)
+        result.report_finished()
         return result
 
