@@ -5,6 +5,8 @@ from soup.utils import progressbar
 import sys
 import unittest
 import cgitb
+import traceback
+
 
 class TestResult(unittest.TestResult):
 
@@ -47,6 +49,10 @@ class TestResult(unittest.TestResult):
         # Skip test runner traceback levels
         while tb and self._is_relevant_tb_level(tb):
             tb = tb.tb_next
+            if exctype is test.failureException:
+                # Skip assert*() traceback levels
+                length = self._count_relevant_tb_levels(tb)
+                return ''.join(traceback.format_exception(exctype, value, tb, length))
         return cgitb.text((exctype, value, tb))
 
     # FIXME: Maybe these should be callbacks?
