@@ -22,8 +22,10 @@ from test_datatypes import *
 from test_dataprovider import *
 from test_synchronization import *
 
+import result
+
 def run_tests(tests, verbose=False, do_coverage=False):
-    runner = unittest.TextTestRunner(verbosity=2 if verbose else 1)
+    runner = result.TestRunner(verbosity=2 if verbose else 1)
 
     if verbose:
         logging.basicConfig(level=logging.DEBUG)
@@ -33,7 +35,7 @@ def run_tests(tests, verbose=False, do_coverage=False):
         coverage.erase()
         coverage.start()
 
-    result = runner.run(unittest.TestSuite(tests))
+    res = runner.run(unittest.TestSuite(tests))
 
     if do_coverage:
         coverage.stop()
@@ -41,7 +43,7 @@ def run_tests(tests, verbose=False, do_coverage=False):
         coverage.report(modules, ignore_errors=1, show_missing=0)
         coverage.erase()
 
-    sys.exit(not result.wasSuccessful())
+    sys.exit(not res.wasSuccessful())
 
 def list_tests(tests):
     for test in tests:
