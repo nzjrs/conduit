@@ -1,4 +1,5 @@
 
+import soup.env
 from soup import UnavailableFeature
 from soup.utils import progressbar
 
@@ -140,10 +141,16 @@ class VerboseConsoleTextResult(TextTestResult):
 
 class TestRunner(object):
 
-    def __init__(self, stream=sys.stderr, descriptions=0, verbosity=1):
+    def __init__(self, opts, stream=sys.stderr, descriptions=0, verbosity=1):
         self.stream = unittest._WritelnDecorator(stream)
         self.descriptions = 0
         self.verbosity = 0
+
+        # Discover all enabled EnvironmentWrapper objects
+        self.env = []
+        for e in soup.env.get_all():
+            if e.enabled(opts):
+                self.env.append(e())
 
     def make_results(self, tests):
         if self.verbosity > 1:
@@ -153,12 +160,34 @@ class TestRunner(object):
 
         return klass(self.stream, self.descriptions, self.verbosity, num_tests=tests.countTestCases())
 
+    def iter_tests(self, tests):
+        if isinstance(tests, unittest.TestSuite):
+            for test in tests:
+                for subtest in self.iter_tests(test):
+                    yield subtest
+        else:
+            yield tests
+
     def run(self, tests):
         result = self.make_results(tests)
         result.report_starting()
+
+        for e in self.env:
+            e.prepare_environment()
+
         start_time = time.time()
-        tests.run(result)
+
+        for t in self.iter_tests(tests):
+            tr = t.run
+            for e in self.env:
+                tr = e.decorate_test(tr)
+            tr(result)
+
         time_taken = time.time() - start_time
+
+        for e in self.env:
+            e.finalize_environment()
+
         result.report_finished(time_taken)
         return result
 
