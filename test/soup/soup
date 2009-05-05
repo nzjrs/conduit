@@ -12,10 +12,10 @@ if not os.path.exists('tmp'):
 import soup
 
 known_failures = [
-    'Evo',              # Will trash your main evo :/
+    'Evo',          # Will trash your main evo :/
     'Tomboy',
-    'Audio', 'Music',  # GStreamer hanging
-    'Video',            # Probably same as ^
+    'Audio',        # GStreamer hanging
+    'Video',        # Probably same as ^
 ]
 
 from test_datatypes import *
