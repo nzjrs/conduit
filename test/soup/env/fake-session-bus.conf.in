@@ -3,7 +3,7 @@
 <busconfig>
   <type>session</type>
   <listen>unix:tmpdir=/tmp</listen>
-  <servicedir>/home/john/Projects/conduit/test/soup/tmp/dbus</servicedir>
+  <servicedir>@top_builddir@/test/soup/tmp/dbus</servicedir>
   <policy context="default">
     <allow send_destination="*" eavesdrop="true"/>
     <allow eavesdrop="true"/>
