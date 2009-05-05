@@ -20,9 +20,12 @@ def make_testcase(wrp):
         def test_add(self):
             """ Should be able to add items """
             self.dp.refresh()
+            count = 0
             for obj in self.data.iter_samples():
+                count += 1
                 self.dp.put(obj, False, None)
             self.dp.finish(False, False, False)
+            assert self.wrapper.get_num_items() == count
 
         def test_replace(self):
             """ Should be able to replace items """
@@ -42,9 +45,12 @@ def make_testcase(wrp):
             rid = self.dp.put(obj, False, None)
             self.dp.finish(False, False, False)
 
+            assert self.wrapper.get_num_items() == 1
+
             self.dp.refresh()
             self.dp.delete(rid.get_UID())
             self.dp.finish(False, False, False)
+            assert self.wrapper.get_num_items() == 0
 
         def test_refresh(self):
             """ Refresh shouldnt throw exceptions """
