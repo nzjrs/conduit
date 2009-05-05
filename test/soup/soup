@@ -13,7 +13,8 @@ import soup
 
 known_failures = [
     'Evo',              # Will trash your main evo :/
-    'Audio', 'Music'    # GStreamer hanging
+    'Tomboy',
+    'Audio', 'Music',  # GStreamer hanging
     'Video',            # Probably same as ^
 ]
 
