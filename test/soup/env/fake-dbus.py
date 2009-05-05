@@ -6,6 +6,11 @@ import tempfile
 
 import soup
 
+# FIXME: Something somewhere is causing us to poke libdbus into looking at DBUS_SESSION_BUS_ADDRESS early
+# The official answer is that soup is evil :'(
+# 1. Envrionment code should run as early as possible (before test loader)
+# 2. Should avoid doing too much crack on import :/
+
 class Dbus(soup.env.EnvironmentWrapper):
 
     @classmethod
