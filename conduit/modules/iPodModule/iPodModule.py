@@ -60,16 +60,10 @@ if errormsg:
         ITDB_MEDIATYPE_PODCAST = 4
 
 def _string_to_unqiue_file(txt, base_uri, prefix, postfix=''):
-    for i in range(1, 10000):
-        filename = prefix + str(i) + postfix
-        uri = os.path.join(base_uri, filename)
-        f = File.File(uri)
-        if not f.exists():
-            break
-
     temp = Utils.new_tempfile(txt)
+    uri = os.path.join(base_uri, prefix+temp.get_filename()+postfix)
     temp.transfer(uri, True)
-    temp.set_UID(filename)
+    temp.set_UID(uri)
     return temp.get_rid()
 
 class iPodFactory(VolumeFactory.VolumeFactory):
