@@ -11,6 +11,7 @@ from soup.data.music import MusicWrapper
 import conduit.modules.iPodModule.iPodModule as iPodModule
 import conduit.utils as Utils
 
+import uuid
 import shutil
 import gpod
 
@@ -19,7 +20,7 @@ class iPodWrapper(object):
     def create_dataprovider(self):
         self.folder = Utils.new_tempdir()
         assert gpod.gpod.itdb_init_ipod(self.folder, "MA450", "Test iPod", None)
-        return self.klass(self.folder, "")
+        return self.klass(self.folder, str(uuid.uuid4()))
 
     def destroy_dataprovider(self):
         shutil.rmtree(self.folder)

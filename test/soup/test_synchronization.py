@@ -1,5 +1,7 @@
 import soup
 
+import conduit
+
 def make_testcase(src, src_data, snk, snk_data):
     class TestSynchronization(soup.TestCase):
         source_class = src

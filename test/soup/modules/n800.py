@@ -10,7 +10,7 @@ from soup.data.video import VideoWrapper
 import conduit.modules.N800Module.N800Module as N800Module
 import conduit.utils as Utils
 
-import os, shutil
+import os, shutil, uuid
 
 class N800Wrapper(object):
 
@@ -19,7 +19,7 @@ class N800Wrapper(object):
         path = os.path.join(self.folder, self.klass.DEFAULT_FOLDER)
         if not os.path.exists(path):
             os.mkdir(path)
-        return self.klass(self.folder, "")
+        return self.klass(self.folder, str(uuid.uuid4()))
 
     def destroy_dataprovider(self):
         shutil.rmtree(self.folder)
