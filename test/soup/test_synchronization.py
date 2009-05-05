@@ -51,7 +51,7 @@ def make_testcase(src, src_data, snk, snk_data):
         def check_state(self, expected):
             source_count, sink_count = self.source.get_num_items(), self.sink.get_num_items()
             assert source_count == sink_count, "source has %d, sink has %d, expected %d" % (source_count, sink_count, expected)
-            assert source_count == expected
+            assert source_count == expected, "dataproviders have %d, expected %d" % (source_count, expected)
 
         def test_empty_sync(self):
             """ test empty synchronisation """
