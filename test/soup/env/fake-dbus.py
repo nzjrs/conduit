@@ -9,7 +9,7 @@ import soup
 class Dbus(soup.env.EnvironmentWrapper):
 
     @classmethod
-    def enabled(cls):
+    def enabled(cls, opts):
         return False
 
     def prepare_environment(self):
