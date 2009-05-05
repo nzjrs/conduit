@@ -2,6 +2,7 @@
 import os
 import signal
 import subprocess
+import tempfile
 
 import soup
 
@@ -28,6 +29,18 @@ class Dbus(soup.env.EnvironmentWrapper):
 
         # lets use this session bus when we run tests
         os.environ['DBUS_SESSION_BUS_ADDRESS'] = self.address
+
+    def decorate_test(self, test):
+        def _(*args, **kwargs):
+            fd, f = tempfile.mkstemp()
+            os.close(fd)
+            p = subprocess.Popen("dbus-monitor &> %s" % f, shell=True)
+            test(*args, **kwargs)
+            os.kill(p.pid, signal.SIGINT)
+            # FIXME: Need some way to attach data to a test
+            # print open(f).read()
+            os.unlink(f)
+        return _
 
     def finalize_environment(self):
         os.kill(int(self.pid), signal.SIGINT)
