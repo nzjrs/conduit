@@ -8,6 +8,10 @@ import soup
 
 class Dbus(soup.env.EnvironmentWrapper):
 
+    @classmethod
+    def enabled(cls):
+        return False
+
     def prepare_environment(self):
         conffile = os.path.join(os.path.dirname(__file__), "fake-session-bus.conf")
         daemonargs = ['dbus-daemon', '--fork', '--config-file=%s' % conffile, '--print-pid=1', '--print-address=1']
