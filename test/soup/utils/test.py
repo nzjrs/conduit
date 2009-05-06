@@ -55,15 +55,15 @@ class TestCase(unittest.TestCase):
             feature.require()
 
     def setUpSync(self):
-	# FIXME: I'd put this in an EnvironmentWrapper, but i need priorities before i can do that :/
-	conduit.IS_INSTALLED =              False
-	conduit.IS_DEVELOPMENT_VERSION =    True
-	conduit.SHARED_DATA_DIR =           os.path.join(soup.get_root(),"data")
-	conduit.SHARED_MODULE_DIR =         os.path.join(soup.get_root(),"conduit","modules")
-	conduit.FILE_IMPL =                 os.environ.get("CONDUIT_FILE_IMPL","GIO")
-	conduit.BROWSER_IMPL =              os.environ.get("CONDUIT_BROWSER_IMPL","system")
-	conduit.SETTINGS_IMPL =             os.environ.get("CONDUIT_SETTINGS_IMPL","GConf")
-	conduit.GLOBALS.settings =          Settings.Settings()
+        # FIXME: I'd put this in an EnvironmentWrapper, but i need priorities before i can do that :/
+        conduit.IS_INSTALLED =              False
+        conduit.IS_DEVELOPMENT_VERSION =    True
+        conduit.SHARED_DATA_DIR =           os.path.join(soup.get_root(),"data")
+        conduit.SHARED_MODULE_DIR =         os.path.join(soup.get_root(),"conduit","modules")
+        conduit.FILE_IMPL =                 os.environ.get("CONDUIT_FILE_IMPL","GIO")
+        conduit.BROWSER_IMPL =              os.environ.get("CONDUIT_BROWSER_IMPL","system")
+        conduit.SETTINGS_IMPL =             os.environ.get("CONDUIT_SETTINGS_IMPL","Python")
+        conduit.GLOBALS.settings =          Settings.Settings()
 
         #Set up our own mapping DB so we dont pollute the global one
         dbFile = os.path.join(os.environ['TEST_DIRECTORY'],Utils.random_string()+".db")
