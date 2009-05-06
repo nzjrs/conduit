@@ -27,4 +27,23 @@ class _EnvironmentLoader(PluginLoader):
     _module_ = "soup.env"
     _path_ = os.path.dirname(__file__)
 
+    def prepare_environment(self, opts):
+        self.active = []
+        for eklass in self.get_all():
+            if eklass.enabled(opts):
+                e = eklass()
+                e.prepare_environment()
+                self.active.append(e)
+
+    def decorate_test(self, test):
+        t = test
+        for e in self.active:
+            t = e.decorate_test(t)
+        return t
+
+    def finalize_environment(self):
+        for e in self.active:
+            e.finalize_environment()
+
+
 EnvironmentLoader = _EnvironmentLoader()

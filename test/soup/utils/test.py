@@ -163,12 +163,6 @@ class TestRunner(object):
         self.descriptions = 0
         self.verbosity = 0
 
-        # Discover all enabled EnvironmentWrapper objects
-        self.env = []
-        for e in soup.env.EnvironmentLoader.get_all():
-            if e.enabled(opts):
-                self.env.append(e())
-
     def make_results(self, tests):
         if self.verbosity > 1:
             klass = VerboseConsoleTextResult
@@ -189,21 +183,13 @@ class TestRunner(object):
         result = self.make_results(tests)
         result.report_starting()
 
-        for e in self.env:
-            e.prepare_environment()
-
         start_time = time.time()
 
         for t in self.iter_tests(tests):
-            tr = t.run
-            for e in self.env:
-                tr = e.decorate_test(tr)
+            tr = soup.env.EnvironmentLoader.decorate_test(t.run)
             tr(result)
 
         time_taken = time.time() - start_time
-
-        for e in self.env:
-            e.finalize_environment()
 
         result.report_finished(time_taken)
         return result

@@ -15,7 +15,7 @@ class Dbus(soup.env.EnvironmentWrapper):
 
     @classmethod
     def enabled(cls, opts):
-        return False
+        return True
 
     def prepare_environment(self):
         conffile = os.path.join(os.path.dirname(__file__), "fake-session-bus.conf")

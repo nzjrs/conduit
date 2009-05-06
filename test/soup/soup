@@ -9,19 +9,16 @@ os.environ['TEST_DIRECTORY'] = 'tmp'
 if not os.path.exists('tmp'):
     os.mkdir('tmp')
 
+from soup.env import EnvironmentLoader
+
 import soup
 from soup.utils import test
 
 known_failures = [
     'Evo',          # Will trash your main evo :/
-    'Tomboy',
     'Audio',        # GStreamer hanging
     'Video',        # Probably same as ^
 ]
-
-from test_datatypes import *
-from test_dataprovider import *
-from test_synchronization import *
 
 def run_tests(tests, opts):
     runner = test.TestRunner(opts)
@@ -31,56 +28,60 @@ def run_tests(tests, opts):
 
     res = runner.run(unittest.TestSuite(tests))
 
-    sys.exit(not res.wasSuccessful())
-
 def list_tests(tests, opts):
     for test in tests:
         print test.name(), test.testMethodName
-    sys.exit(0)
 
+import optparse
 
-if __name__ == "__main__":
-    import optparse
+parser = optparse.OptionParser(usage="usage: %prog [options] arg1 arg2")
 
-    parser = optparse.OptionParser(usage="usage: %prog [options] arg1 arg2")
+# Options about which tests are run
+parser.add_option("-x", "--exclude", action="append", type="string", dest="exclude",
+                  help="Exclude patterns matching PATTERN", metavar="PATTERN")
 
-    # Options about which tests are run
-    parser.add_option("-x", "--exclude", action="append", type="string", dest="exclude",
-                      help="Exclude patterns matching PATTERN", metavar="PATTERN")
+# Options about how the tests are run
+parser.add_option("-r", "--randomize", action="store_true", dest="randomize",
+                  help="Run tests in a random order")
+parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
+                  help="Output lots of noise as tests are run")
+parser.add_option("-c", "--coverage", action="store_true", dest="coverage",
+                  help="Enable code coverage")
+parser.add_option("-p", "--profile", action="store_true", dest="profile",
+                  help="Profile execution")
 
-    # Options about how the tests are run
-    parser.add_option("-r", "--randomize", action="store_true", dest="randomize",
-                      help="Run tests in a random order")
-    parser.add_option("-v", "--verbose", action="store_true", dest="verbose",
-                      help="Output lots of noise as tests are run")
-    parser.add_option("-c", "--coverage", action="store_true", dest="coverage",
-                      help="Enable code coverage")
-    parser.add_option("-p", "--profile", action="store_true", dest="profile",
-                      help="Profile execution")
+# Add the different execution modes..
+parser.add_option("-l", "--list", action="store_const", const="list", dest="mode",
+                  help="List tests instead of running them")
+parser.add_option("-e", "--execute", action="store_const", const="execute", dest="mode",
+                  help="Run the tests")
 
-    # Add the different execution modes..
-    parser.add_option("-l", "--list", action="store_const", const="list", dest="mode",
-                      help="List tests instead of running them")
-    parser.add_option("-e", "--execute", action="store_const", const="execute", dest="mode",
-                      help="Run the tests")
+# Set parse defaults
+parser.set_defaults(mode="execute", randomize=False, verbose=False, coverage=False,
+                    exclude=known_failures)
 
-    # Set parse defaults
-    parser.set_defaults(mode="execute", randomize=False, verbose=False, coverage=False,
-                        exclude=known_failures)
+# And parse..
+opts, args = parser.parse_args()
 
-    # And parse..
-    opts, args = parser.parse_args()
+EnvironmentLoader.prepare_environment(opts)
 
-    # Figure out which tests to run
-    tests = soup.TestLoader(include=args, exclude=opts.exclude).loadTestsFromMain()
+from test_datatypes import *
+from test_dataprovider import *
+from test_synchronization import *
 
-    if opts.randomize:
-        import random
-        random.shuffle(tests)
+# Figure out which tests to run
+tests = soup.TestLoader(include=args, exclude=opts.exclude).loadTestsFromMain()
 
-    # And run.
-    if opts.mode == "execute":
-        run_tests(tests, opts)
-    elif opts.mode == "list":
-        list_tests(tests, opts)
+if opts.randomize:
+   import random
+   random.shuffle(tests)
 
+# And run.
+if opts.mode == "execute":
+    run_tests(tests, opts)
+elif opts.mode == "list":
+    list_tests(tests, opts)
+
+EnvironmentLoader.finalize_environment()
+
+sys.exit(0)
