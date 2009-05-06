@@ -148,7 +148,7 @@ class TestRunner(object):
 
         # Discover all enabled EnvironmentWrapper objects
         self.env = []
-        for e in soup.env.get_all():
+        for e in soup.env.EnvironmentLoader.get_all():
             if e.enabled(opts):
                 self.env.append(e())
 

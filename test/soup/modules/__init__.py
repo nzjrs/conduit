@@ -1,5 +1,6 @@
 import os, sys
 
+from soup.utils.pluginloader import PluginLoader
 
 class ModuleWrapper(object):
 
@@ -56,25 +57,10 @@ class ModuleWrapper(object):
     def get_wrapped(self):
         return self.conduit.wrap_dataprovider(self.dp)
 
-def load_modules():
-    basepath = os.path.dirname(__file__)
-    for root, dirs, files in os.walk(basepath):
-        for dir in dirs:
-            if dir[:1] != ".":
-                load_module(dir)
-        for file in files:
-            if file.endswith(".py") and not file.startswith("__"):
-                load_module(file[:-3])
-        break
+class _ModuleLoader(PluginLoader):
+    _subclass_ = ModuleWrapper
+    _module_ = "soup.modules"
+    _path_ = os.path.dirname(__file__)
 
-def load_module(module):
-    if sys.modules.has_key(module):
-        reload(sys.modules[module])
-    else:
-        __import__("soup.modules", {}, {}, [module])
-
-def get_all():
-    if len(ModuleWrapper.__subclasses__()) == 0:
-        load_modules()
-    return ModuleWrapper.__subclasses__()
+ModuleLoader = _ModuleLoader()
 

@@ -2,6 +2,8 @@ import os, sys, glob
 
 from conduit.datatypes import DataType, File
 
+from soup.utils.pluginloader import PluginLoader
+
 class DataWrapper(object):
     """
     This class provides a wrapper around some test data.
@@ -69,25 +71,10 @@ class DataWrapper(object):
         compatible = list(cls.get_compatible_datatypes())
         return datatype in compatible
 
-def load_modules():
-    basepath = os.path.dirname(__file__)
-    for root, dirs, files in os.walk(basepath):
-        for dir in dirs:
-            if dir[:1] != ".":
-                load_module(dir)
-        for file in files:
-            if file.endswith(".py") and not file.startswith("__"):
-                load_module(file[:-3])
-        break
+class _DataLoader(PluginLoader):
+    _subclass_ = DataWrapper
+    _module_ = "soup.data"
+    _path_ = os.path.dirname(__file__)
 
-def load_module(module):
-    if sys.modules.has_key(module):
-        reload(sys.modules[module])
-    else:
-        __import__("soup.data", {}, {}, [module])
-
-def get_all():
-    if len(DataWrapper.__subclasses__()) == 0:
-        load_modules()
-    return DataWrapper.__subclasses__()
+DataLoader = _DataLoader()
 

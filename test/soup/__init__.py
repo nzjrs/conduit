@@ -14,9 +14,9 @@ def get_root():
 
 sys.path.insert(0, get_root())
 
-import modules
-import data
 import env
+import data
+import modules
 
 import conduit
 import conduit.utils as Utils
@@ -40,6 +40,7 @@ conduit.GLOBALS.settings =          Settings.Settings()
 CHANGE_ADD = 1
 CHANGE_REPLACE = 2
 CHANGE_DELETE = 3
+
 
 def get_module(name):
     """ This is just to avoid importing sys everywhere and i want my tests to be pretty! """
