@@ -9,6 +9,8 @@ class DataWrapper(object):
     This class provides a wrapper around some test data.
     """
 
+    requires = []
+
     @classmethod
     def name(cls):
         return cls.__name__

@@ -4,6 +4,8 @@ from soup.utils.pluginloader import PluginLoader
 
 class ModuleWrapper(object):
 
+    requires = []
+
     def __init__(self, conduit):
         self.conduit = conduit
         self.dp = self.create_dataprovider()

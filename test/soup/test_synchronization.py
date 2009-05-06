@@ -15,7 +15,13 @@ def make_testcase(src, src_data, snk, snk_data):
         def name(self):
             return "TestSynchronization%s%s" % (self.source_class.name(), self.sink_class.name())
 
+        def requires(self):
+            for obj in (self.source_class, self.source_data_class, self.sink_class, self.sink_data_class):
+                for thing in obj.requires:
+                    yield thing
+
         def setUp(self):
+            super(TestSynchronization, self).setUp()
             self.setUpSync()
 
             self.source = self.source_class(self)

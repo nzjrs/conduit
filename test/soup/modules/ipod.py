@@ -13,11 +13,24 @@ import conduit.utils as Utils
 
 import uuid
 import shutil
-import gpod
+
+
+class _GpodModule(soup.Feature):
+
+    def probe(self):
+        import pdb
+        pdb.set_trace()
+        try:
+            import gpod
+            return True
+        except:
+            return False
+
+GpodModule = _GpodModule()
 
 class iPodWrapper(object):
-
     def create_dataprovider(self):
+        import gpod
         self.folder = Utils.new_tempdir()
         assert gpod.gpod.itdb_init_ipod(self.folder, "MA450", "Test iPod", None)
         return self.klass(self.folder, str(uuid.uuid4()))
@@ -28,20 +41,25 @@ class iPodWrapper(object):
 class iPodNote(soup.modules.ModuleWrapper, iPodWrapper):
     klass = iPodModule.IPodNoteTwoWay
     dataclass = NoteWrapper
+    requires = [GpodModule]
 
 class iPodContacts(soup.modules.ModuleWrapper, iPodWrapper):
     klass = iPodModule.IPodContactsTwoWay
     dataclass = ContactWrapper
+    requires = [GpodModule]
 
 class iPodCalendar(soup.modules.ModuleWrapper, iPodWrapper):
     klass = iPodModule.IPodCalendarTwoWay
     dataclass = EventWrapper
+    requires = [GpodModule]
 
 class iPodPhoto(soup.modules.ModuleWrapper, iPodWrapper):
     klass = iPodModule.IPodPhotoSink
     dataclass = PhotoWrapper
+    requires = [GpodModule]
 
 class iPodMusic(soup.modules.ModuleWrapper, iPodWrapper):
     klass = iPodModule.IPodMusicTwoWay
     dataclass = MusicWrapper
+    requires = [GpodModule]
 

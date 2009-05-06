@@ -9,6 +9,9 @@ def make_testcase(wrp):
         def name(self):
             return "TestDataProvider%s" % self.wrapperclass.name()
 
+        def requires(self):
+            return self.wrapperclass.requires
+
         def setUp(self):
             super(TestDataprovider, self).setUp()
             self.wrapper = self.wrapperclass(self)

@@ -28,8 +28,8 @@ class TestResult(unittest.TestResult):
         self.report_test_stop(test)
 
     def addError(self, test, err):
-        if isinstance(err, UnavailableFeature):
-            self.addSkipped(self, test)
+        if isinstance(err[1], UnavailableFeature):
+            self.addSkipped(test)
         else:
             super(TestResult, self).addError(test, err)
             self.report_error(test)

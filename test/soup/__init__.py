@@ -62,10 +62,18 @@ class TestCase(unittest.TestCase):
         """ Returns the name of the class and the test this particular instance will run """
         return self.name() + "." + self.testMethodName
 
+    def requires(self):
+        """ Yields feature objects that we depend on to run this test, such as an internet connection or python-gpod """
+        return []
+
     def shortDescription(self):
         """ Describe the test that is currently running
             Returns something like TestClass.test_function: Tests how good Conduit is """
         return "%s.%s: %s" % (self.name(), self.testMethodName, super(TestCase, self).shortDescription())
+
+    def setUp(self):
+        for feature in self.requires():
+            feature.require()
 
     def setUpSync(self):
         #Set up our own mapping DB so we dont pollute the global one
