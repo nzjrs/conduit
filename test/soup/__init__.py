@@ -173,7 +173,7 @@ class Feature(object):
 
     def require(self):
         if not self.available():
-            raise UnavailableFeature
+            raise UnavailableFeature(self)
 
     @classmethod
     def name(cls):

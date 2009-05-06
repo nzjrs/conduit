@@ -18,10 +18,8 @@ import shutil
 class _GpodModule(soup.Feature):
 
     def probe(self):
-        import pdb
-        pdb.set_trace()
         try:
-            import gpod
+            import gpodmonkey
             return True
         except:
             return False

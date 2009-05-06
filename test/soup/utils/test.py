@@ -18,6 +18,7 @@ class TestResult(unittest.TestResult):
         self.descriptions = descriptions
         self.verbosity = verbosity
         self.num_tests = num_tests
+        self.unsupported = {}
 
     def startTest(self, test):
         super(TestResult, self).startTest(test)
@@ -29,7 +30,7 @@ class TestResult(unittest.TestResult):
 
     def addError(self, test, err):
         if isinstance(err[1], UnavailableFeature):
-            self.addSkipped(test)
+            self.addUnsupported(test, err[1].args[0])
         else:
             super(TestResult, self).addError(test, err)
             self.report_error(test)
@@ -37,6 +38,11 @@ class TestResult(unittest.TestResult):
     def addFailure(self, test, err):
         super(TestResult, self).addFailure(test, err)
         self.report_failure(test)
+
+    def addUnsupported(self, test, feature):
+        self.unsupported.setdefault(str(feature), 0)
+        self.unsupported[str(feature)] += 1
+        self.report_unsupported(test, feature)
 
     def addSkipped(self, test):
         self.report_skipped(test)
@@ -72,6 +78,9 @@ class TestResult(unittest.TestResult):
         pass
 
     def report_failure(self, test):
+        pass
+
+    def report_unsupported(self, test, feature):
         pass
 
     def report_skipped(self, test):
@@ -114,6 +123,10 @@ class TextTestResult(TestResult):
             self.stream.writeln(")")
         else:
             self.stream.writeln("OK")
+
+        if len(self.unsupported) > 0:
+            for feature, count in self.unsupported.iteritems():
+                self.stream.writeln("Feature '%s' not available, %d tests skipped" % (feature, count))
 
     def printErrorList(self, flavour, errors):
         for test, err in errors:
