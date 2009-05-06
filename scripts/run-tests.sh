@@ -15,7 +15,6 @@ Usage:\n\
 Options:\n\
     Test Types\n\
     -s NAME Perform only the test called NAME\n\
-    -a      Run the automatically generated (SLOW) tests\n\
     -D      Perform dataprovider tests\n\
     -S      Perform sync tests\n\
     -l      List (do not run) tests\n\
@@ -42,7 +41,6 @@ do_coverage=0
 do_upload=0
 do_single_test=""
 do_online="TRUE"
-do_auto=0
 do_debug=0
 do_dataprovider_tests=0
 do_sync_tests=0
@@ -51,7 +49,6 @@ do_list=0
 while getopts "acus:odDSNl" options
 do
     case $options in
-        a )     do_auto=1;;
         c )     do_coverage=1;;
         u )     do_upload=1;;
         s )     do_single_test=$OPTARG;;
@@ -97,10 +94,6 @@ else
     if [ $do_sync_tests -ne 0 ] ; then
         tests="$tests $PY_TEST_DIR/TestSync*.py"
     fi
-    if [ $do_auto -ne 0 ] ; then
-        python $PY_TEST_DIR/AutoGenerate.py
-        tests="$tests $PY_TEST_DIR/TestAuto*.py"
-    fi    
 fi
 testfiles=`ls $tests`
 
