@@ -16,8 +16,8 @@ class Widget(object):
     def update(self):
         raise NotImplementedError
 
-    def __str__(self):
-        return self.update()
+    def finish(self):
+        return ""
 
 
 class SimpleWidget(Widget):
@@ -36,6 +36,9 @@ class BarWidget(Widget):
         number_of_frobs = self.pb.cur * progress_space / self.pb.max
         number_of_spaces = progress_space - number_of_frobs
         return self.left + "*" * number_of_frobs + " " * number_of_spaces + self.right
+
+    def finish(self):
+        return "\r%s\r" % (self.pb.term_width * " ")
 
 
 class ProgressBar(object):
@@ -61,4 +64,7 @@ class ProgressBar(object):
     def update(self, cur):
         self.cur = cur
         self.f.write(self.widget.update() + '\r')
+
+    def finish(self):
+        self.widget.finish()
 

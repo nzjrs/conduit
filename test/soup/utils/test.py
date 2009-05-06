@@ -132,6 +132,10 @@ class SimpleTestResult(TextTestResult):
     def report_test_start(self, test):
         self.pb.update(self.pb.cur + 1)
 
+    def report_finished(self, timetaken):
+        self.pb.finish()
+        super(SimpleTestResult, self).report_finished(timetaken)
+
 
 class VerboseConsoleTextResult(TextTestResult):
 

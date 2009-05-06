@@ -34,10 +34,12 @@ def make_testcase(wrp):
             self.dp.refresh()
             rid = self.dp.put(obj, False, None)
             self.dp.finish(False, False, False)
+            assert self.wrapper.get_num_items() == 1
 
             self.dp.refresh()
             self.dp.put(obj, True, rid.get_UID())
             self.dp.finish(False, False, False)
+            assert self.wrapper.get_num_items() == 1
 
         def test_delete(self):
             """ Should be able to delete items """
