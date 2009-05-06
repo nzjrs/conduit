@@ -15,8 +15,12 @@ class GoogleContacts(soup.modules.ModuleWrapper):
     dataclass = ContactWrapper
 
     def create_dataprovider(self):
-        return self.klass()
-
+        dp = self.klass()
+        dp.set_configuration({
+            "username": "username",
+            "password": "password",
+        })
+        return dp
 
 class GoogleCalendar(soup.modules.ModuleWrapper):
 
@@ -25,5 +29,10 @@ class GoogleCalendar(soup.modules.ModuleWrapper):
     dataclass = EventWrapper
 
     def create_dataprovider(self):
-        return self.klass()
+        dp = self.klass()
+        dp.set_configuration({
+            "username": "username",
+            "password": "password",
+        })
+        return dp
 
