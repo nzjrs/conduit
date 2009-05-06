@@ -1,4 +1,5 @@
 import soup
+from soup.modules import ModuleLoader
 
 def make_testcase(wrp):
     class TestDataprovider(soup.TestCase):
@@ -71,7 +72,7 @@ def make_testcase(wrp):
 
 # Generate TestCase objects for each dataprovider wrapper
 self = soup.get_module(__name__)
-for wrapper in soup.modules.ModuleLoader.get_all():
+for wrapper in ModuleLoader.get_all():
     testklass = make_testcase(wrapper)
     setattr(self, testklass.name(), testklass)
 

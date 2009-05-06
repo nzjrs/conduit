@@ -1,4 +1,6 @@
+
 import soup
+from soup.modules import ModuleLoader
 
 import conduit
 
@@ -132,7 +134,7 @@ def make_testcase(src, src_data, snk, snk_data):
 
 # Generate all the variations of TestSynchronization
 self = soup.get_module(__name__)
-mods = soup.modules.ModuleLoader.get_all()
+mods = ModuleLoader.get_all()
 for i in range(len(mods)):
     for j in range(len(mods)):
         source = mods[i]

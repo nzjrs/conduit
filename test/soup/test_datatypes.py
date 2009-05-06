@@ -1,4 +1,5 @@
 import soup
+from soup.data import DataLoader
 
 import pickle
 
@@ -50,7 +51,7 @@ def make_testcase(wrp):
 
 # Generate TestCase objects for each datatype wrapper
 self = soup.get_module(__name__)
-for wrapper in soup.data.DataLoader.get_all():
+for wrapper in DataLoader.get_all():
     testklass = make_testcase(wrapper)
     setattr(self, testklass.name(), testklass)
 
