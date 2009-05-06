@@ -41,14 +41,13 @@ class Dbus(soup.env.EnvironmentWrapper):
 
     def decorate_test(self, test):
         def _(*args, **kwargs):
-            fd, f = tempfile.mkstemp()
-            os.close(fd)
-            p = subprocess.Popen("dbus-monitor &> %s" % f, shell=True)
+            logfile = tempfile.TemporaryFile()
+            p = subprocess.Popen("dbus-monitor", stdout=logfile, stderr=subprocess.STDOUT, close_fds=True)
             test(*args, **kwargs)
             os.kill(p.pid, signal.SIGINT)
+            logfile.seek(0)
             # FIXME: Need some way to attach data to a test
             # print open(f).read()
-            os.unlink(f)
         return _
 
     def finalize_environment(self):
