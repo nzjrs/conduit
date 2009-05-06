@@ -15,7 +15,7 @@ import uuid
 import shutil
 
 
-class _GpodModule(soup.Feature):
+class _GpodModule(soup.utils.test.Feature):
 
     def probe(self):
         try:

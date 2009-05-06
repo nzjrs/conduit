@@ -2,7 +2,7 @@
 import soup
 import soup.modules
 
-from soup import Online
+from soup.utils.test import Online
 from soup.data.contact import ContactWrapper
 from soup.data.event import EventWrapper
 

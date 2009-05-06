@@ -2,7 +2,7 @@ import soup
 from soup.modules import ModuleLoader
 
 def make_testcase(wrp):
-    class TestDataprovider(soup.TestCase):
+    class TestDataprovider(soup.utils.test.TestCase):
         wrapperclass = wrp
 
         @classmethod

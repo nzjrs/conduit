@@ -70,7 +70,7 @@ from test_dataprovider import *
 from test_synchronization import *
 
 # Figure out which tests to run
-tests = soup.TestLoader(include=args, exclude=opts.exclude).loadTestsFromMain()
+tests = test.TestLoader(include=args, exclude=opts.exclude).loadTestsFromMain()
 
 if opts.randomize:
    import random

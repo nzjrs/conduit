@@ -5,7 +5,7 @@ from soup.modules import ModuleLoader
 import conduit
 
 def make_testcase(src, src_data, snk, snk_data):
-    class TestSynchronization(soup.TestCase):
+    class TestSynchronization(soup.utils.test.TestCase):
         source_class = src
         source_data_class = src_data
         sink_class = snk

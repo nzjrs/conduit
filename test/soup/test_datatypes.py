@@ -4,7 +4,7 @@ from soup.data import DataLoader
 import pickle
 
 def make_testcase(wrp):
-    class TestDatatype(soup.TestCase):
+    class TestDatatype(soup.utils.test.TestCase):
         wrapperclass = wrp
 
         @classmethod
