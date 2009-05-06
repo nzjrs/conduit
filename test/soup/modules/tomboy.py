@@ -1,7 +1,7 @@
 
 import soup
 
-from soup.data.note import NoteWrapper
+from soup.data.note_tomboy import TomboyNoteWrapper
 
 import conduit.modules.TomboyModule as TomboyModule
 
@@ -10,7 +10,7 @@ import dbus
 class Tomboy(soup.modules.ModuleWrapper):
 
     klass = TomboyModule.TomboyNoteTwoWay
-    dataclass = NoteWrapper
+    dataclass = TomboyNoteWrapper
 
     def create_dataprovider(self):
         a, retval = dbus.SessionBus().start_service_by_name("org.gnome.Tomboy")
