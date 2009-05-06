@@ -46,7 +46,7 @@ do_dataprovider_tests=0
 do_sync_tests=0
 do_interactive="TRUE"
 do_list=0
-while getopts "acus:odDSNl" options
+while getopts "cus:odDSNl" options
 do
     case $options in
         c )     do_coverage=1;;
