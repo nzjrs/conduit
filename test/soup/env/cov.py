@@ -24,11 +24,19 @@ class Coverage(soup.env.EnvironmentWrapper):
     def prepare_environment(self):
         import coverage
         coverage.erase()
-        coverage.start()
+
+    def decorate_test(self, test):
+        def _(*args, **kwargs):
+            coverage.start()
+            test(*args, **kwargs)
+            coverage.stop()
+        return _
 
     def finalize_environment(self):
-        coverage.stop()
-        modules = glob("conduit/*.py") + glob("conduit/*/*.py") + glob("conduit/*/*/*.py")
+        root = soup.get_root() + '/conduit'
+        modules = []
+        for i in range(3):
+            modules.extend(glob(root + '/*' * i + '.py'))
         coverage.report(modules, ignore_errors=1, show_missing=0)
         coverage.erase()
 
