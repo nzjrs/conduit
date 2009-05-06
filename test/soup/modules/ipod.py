@@ -19,7 +19,7 @@ class _GpodModule(soup.Feature):
 
     def probe(self):
         try:
-            import gpodmonkey
+            import gpod
             return True
         except:
             return False
