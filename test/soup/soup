@@ -46,6 +46,10 @@ parser.add_option("-c", "--coverage", action="store_true", dest="coverage",
                   help="Enable code coverage")
 parser.add_option("-p", "--profile", action="store_true", dest="profile",
                   help="Profile execution")
+parser.add_option("-d", "--debug", action="store_true", dest="debug",
+                  help="Run test case in debugger")
+parser.add_option("-z", "--lazy-debug", action="store_true", dest="lazydebug",
+                  help="Break into pdb on unexpected exceptions")
 
 # Add the different execution modes..
 parser.add_option("-l", "--list", action="store_const", const="list", dest="mode",
@@ -55,7 +59,7 @@ parser.add_option("-e", "--execute", action="store_const", const="execute", dest
 
 # Set parse defaults
 parser.set_defaults(mode="execute", randomize=False, verbose=False, coverage=False,
-                    exclude=known_failures)
+                    exclude=known_failures, debug=False, lazydebug=False)
 
 # And parse..
 opts, args = parser.parse_args()

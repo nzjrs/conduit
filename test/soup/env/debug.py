@@ -7,7 +7,7 @@ class Debugger(soup.env.EnvironmentWrapper):
 
     @classmethod
     def enabled(cls, opts):
-        return False
+        return opts.debug
 
     def decorate_test(self, test):
         def _(*args, **kwargs):
