@@ -5,7 +5,7 @@ import soup.modules
 from soup.data.file import FileWrapper
 from soup.utils.test import Online
 
-import conduit.modules.FeedModule as FeedModule
+import conduit.modules.FeedModule.FeedModule as FeedModule
 import conduit.utils as Utils
 
 FeedPackages = soup.utils.test.Package("feedparser")
