@@ -164,13 +164,28 @@ class Feature(object):
         if not self.available():
             raise UnavailableFeature(self)
 
-    @classmethod
-    def name(cls):
-        return cls.__name__
+    def name(self):
+        return self.__name__
 
     def __str__(self):
         return self.name()
 
+class Package(Feature):
+
+    def __init__(self, *args):
+        super(Package, self).__init__()
+        self.packages = args
+
+    def probe(self):
+        for p in self.packages:
+            try:
+                __import__(p)
+            except:
+                return False
+        return True
+
+    def name(self):
+        return "python dependencies ('%s')" % ", ".join(self.packages)
 
 class _HumanInteractivity(Feature):
 
@@ -179,6 +194,9 @@ class _HumanInteractivity(Feature):
             return os.environ["CONDUIT_INTERACTIVE"] == "TRUE"
         except:
             return False
+
+    def name(self):
+        return "human button masher"
 
 HumanInteractivity = _HumanInteractivity()
 
@@ -190,6 +208,9 @@ class _Online(Feature):
             return os.environ["CONDUIT_ONLINE"] == "TRUE"
         except:
             return False
+
+    def name(self):
+        return "internet access"
 
 Online = _Online()
 
@@ -351,7 +372,7 @@ class TextTestResult(TestResult):
 
         if len(self.unsupported) > 0:
             for feature, count in self.unsupported.iteritems():
-                self.stream.writeln("Feature '%s' not available, %d tests skipped" % (feature, count))
+                self.stream.writeln("%s not available, %d tests skipped" % (feature, count))
 
     def printErrorList(self, flavour, errors):
         for test, err in errors:

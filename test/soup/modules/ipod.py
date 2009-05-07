@@ -14,17 +14,7 @@ import conduit.utils as Utils
 import uuid
 import shutil
 
-
-class _GpodModule(soup.utils.test.Feature):
-
-    def probe(self):
-        try:
-            import gpod
-            return True
-        except:
-            return False
-
-GpodModule = _GpodModule()
+GpodModule = soup.utils.test.Package("gpod")
 
 class iPodWrapper(object):
     def create_dataprovider(self):
