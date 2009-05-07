@@ -2,14 +2,9 @@
 import os
 import signal
 import subprocess
-import tempfile
 
 import soup
 
-# FIXME: Something somewhere is causing us to poke libdbus into looking at DBUS_SESSION_BUS_ADDRESS early
-# The official answer is that soup is evil :'(
-# 1. Envrionment code should run as early as possible (before test loader)
-# 2. Should avoid doing too much crack on import :/
 
 class Dbus(soup.env.EnvironmentWrapper):
 
@@ -38,16 +33,6 @@ class Dbus(soup.env.EnvironmentWrapper):
 
         # lets use this session bus when we run tests
         os.environ['DBUS_SESSION_BUS_ADDRESS'] = self.address
-
-    def decorate_test(self, test):
-        def _(result, *args, **kwargs):
-            logfile = tempfile.TemporaryFile()
-            p = subprocess.Popen("dbus-monitor", stdout=logfile, stderr=subprocess.STDOUT, close_fds=True)
-            test(result, *args, **kwargs)
-            os.kill(p.pid, signal.SIGINT)
-            logfile.seek(0)
-            result.addAttachment(test, "D-Bus Monitor logs", logfile.read())
-        return _
 
     def finalize_environment(self):
         os.kill(int(self.pid), signal.SIGINT)
