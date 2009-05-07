@@ -78,8 +78,9 @@ def make_testcase(wrp):
 # Generate TestCase objects for each dataprovider wrapper
 self = soup.get_module(__name__)
 for wrapper in ModuleLoader.get_all():
-    testklass = make_testcase(wrapper)
-    setattr(self, testklass.name(), testklass)
+    if wrapper.is_twoway():
+        testklass = make_testcase(wrapper)
+        setattr(self, testklass.name(), testklass)
 
 
 # Allow people to run the test case directly
