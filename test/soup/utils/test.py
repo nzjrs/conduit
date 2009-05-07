@@ -265,10 +265,15 @@ class TestResult(unittest.TestResult):
         self.verbosity = verbosity
         self.num_tests = num_tests
         self.unsupported = {}
+        self.attachments = {}
 
     def startTest(self, test):
         super(TestResult, self).startTest(test)
         self.report_test_start(test)
+
+    def addAttachment(self, test, name, attachment):
+        self.attachments.setdefault(test, [])
+        self.attachments[test].append((name, attachment))
 
     def stopTest(self, test):
         super(TestResult, self).stopTest(test)
