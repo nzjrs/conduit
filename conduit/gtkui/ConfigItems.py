@@ -14,6 +14,8 @@ log = logging.getLogger("gtkui.Config")
 
 from gettext import gettext as _
 
+import conduit.Vfs as Vfs
+
 class Error(Exception):
     """Base exception for all exceptions raised in this module."""
     pass
@@ -476,15 +478,24 @@ class ConfigFileButton(ItemBase):
     def __init__(self, *args, **kwargs):
         self.directory = kwargs.pop('directory', False)
         ItemBase.__init__(self, *args, **kwargs)
-        self._current_filename = None
+        self._current_uri = None
     
     def _selection_changed(self, filechooser):
-        if self._current_filename != filechooser.get_filename():
-            self._current_filename = filechooser.get_filename()
+        uri = filechooser.get_uri()
+        #if in folder mode, and no directory is selected, then
+        #default to the current directory. This hack was necessary in some
+        #old pygtk version, I am not sure if it is still required, as the
+        #filechooser seems to behave better now
+        if self.directory and not uri:
+            uri = filechooser.get_current_folder_uri()
+
+        if uri and self._current_uri != uri:
+            self._current_uri = uri
             self._value_changed()            
     
     def _build_widget(self):
         self.widget = gtk.FileChooserButton(self.title)
+        self.widget.props.local_only = not Vfs.backend_supports_remote_uri_schemes()
         self.widget.connect("selection-changed", self._selection_changed)
         if self.directory:
             self.widget.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
@@ -492,10 +503,10 @@ class ConfigFileButton(ItemBase):
             self.widget.set_action(gtk.FILE_CHOOSER_ACTION_OPEN)
     
     def _set_value(self, value):
-        self.widget.set_filename(str(value))
+        self.widget.set_uri(str(value))
     
     def _get_value(self):
-        return self._current_filename
+        return self._current_uri
 
 class ConfigRadio(ItemBase):
     __item_name__ = 'radio'

@@ -8,6 +8,7 @@ log = logging.getLogger("platform.FileGio")
 
 class FileImpl(conduit.platform.File):
     SCHEMES = ("file://","http://","ftp://","smb://")
+    NAME = "GIO"
     def __init__(self, URI, impl=None):
         if impl:
             self._file = impl
