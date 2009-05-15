@@ -1,6 +1,7 @@
 *.pyc
 *.gmo
 *.omf
+*~
 Makefile.in
 Makefile
 autom4te.cache/
