@@ -17,6 +17,7 @@
 
 from os.path import exists
 from xml.dom.minidom import parseString
+from urllib import quote, unquote
 
 class Error(Exception):
     pass
@@ -127,7 +128,7 @@ class Settings( object ):
         Returns data node with given name
         """
         for node in self.xml_document.documentElement.childNodes:
-            if node.nodeType == node.ELEMENT_NODE and node.nodeName == name:
+            if node.nodeType == node.ELEMENT_NODE and unquote(node.nodeName) == name:
                 return node
 
     def __iter__(self):
@@ -136,18 +137,18 @@ class Settings( object ):
     def iteritems(self):
         for node in self.xml_document.documentElement.childNodes:
             if node.nodeType == node.ELEMENT_NODE:
-                yield node.nodeName, self.__node_to_data__(node)
+                yield unquote(node.nodeName), self.__node_to_data__(node)
 
     def __data_to_node__(self, name, data):
         """
         Converts a python data type into an xml node
         """
-        node = self.xml_document.createElement(str(name))
+        node = self.xml_document.createElement(quote(str(name)))
         node.setAttribute("type", self.__type_as_string__(data))
         #node.setAttribute("name", str(name))
         if type(data) == dict:
-            for (index, value) in data.iteritems():
-                node.appendChild(self.__data_to_node__(index, value))
+            for (key, value) in data.iteritems():
+                node.appendChild(self.__data_to_node__(key, value))
         elif type(data) == list or type(data) == tuple:
             for (index, value) in enumerate(data):
                 node.appendChild(self.__data_to_node__("item", value))
@@ -167,6 +168,7 @@ class Settings( object ):
                     retval[childNode.nodeName] = self.__node_to_data__(childNode)
             return retval
         elif node_type in ("list", "tuple"):
+            #In older versions lists were saved as comma-separated strings
             if self.xml_version == 1:
                 retval = node.firstChild.data.split(',')
                 return retval
@@ -174,7 +176,6 @@ class Settings( object ):
                 retval = []
                 for childNode in node.childNodes:
                     if childNode.nodeType == node.ELEMENT_NODE:
-                        #retval.insert(int(childNode.nodeName), self.__node_to_data__(childNode))
                         retval.append(self.__node_to_data__(childNode))
                 if node_type == "tuple":
                     retval = tuple(retval)
