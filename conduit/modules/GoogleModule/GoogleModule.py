@@ -61,6 +61,8 @@ class _GoogleBase:
         )
         self.loggedIn = False
         self.service = service
+        self._status = "Not authenticated"
+        self.status_config = None
         
         if conduit.GLOBALS.settings.proxy_enabled():
             log.info("Configuring proxy for %s" % self.service)
@@ -81,22 +83,35 @@ class _GoogleBase:
                 self._do_login()
                 self.loggedIn = True
                 self.authenticated = True
+                self._set_status("Authenticated")
             except gdata.service.BadAuthentication:
                 log.info("Error logging in: Incorrect username or password")
+                self._set_status("Incorrect username or password")
             except Exception, e:
                 log.info("Error logging in: %s" % e)
-       
+                self._set_status("Error logging in")
+            else:
+                self._login_finished()
+                
+    def _set_status(self, status):
+        self._status = status
+        if self.status_config:
+            self.status_config.value = status
+
+    def _reset_authentication(self):
+        self.loggedIn = False
+        self.authenticated = False
+        self._set_status("Not authenticated")
+    
     def _set_username(self, username):
         if self.username != username:
             self.username = username
-            self.loggedIn = False
-            self.authenticated = False
+            self._reset_authentication()
     
     def _set_password(self, password):
         if self.password != password:
             self.password = password
-            self.loggedIn = False
-            self.authenticated = False
+            self._reset_authentication()
             
     def _login_finished(self):
         pass
@@ -105,7 +120,15 @@ class _GoogleBase:
         config.add_section("Google Account")
         username_config = config.add_item("Email", "text", config_name = "username")
         password_config = config.add_item("Password", "text", config_name = "password", password = True)
-        config.add_item("Login", "button")
+        
+        def _login(button):
+            config.apply_config(items = [username_config, password_config])
+            self._login()
+
+        if self.authenticated:
+            self._set_status("Authenticated")
+        self.status_config = config.add_item(None, "label", xalignment = 0.5, initial_value = self._status)
+        config.add_item("Authenticate", "button", image="dialog-password", action = _login)
         return username_config, password_config
 
     def is_configured (self, isSource, isTwoWay):
@@ -694,17 +717,16 @@ class PicasaTwoWay(_GoogleBase, Image.ImageTwoWay):
 
         self.service.Delete(self.gphoto_dict[LUID])
         del self.gphoto_dict[LUID]
+
+    def _login_finished(self):
+        if self.albums_config:
+            self.albums_config.choices = [album_name for album_name, album in self._get_albums()]
         
     def config_setup(self, config):
         username_config, password_config = _GoogleBase.config_setup(self, config)
-
-        def _load_albums(button):
-            config.apply_config(items = [username_config, password_config])
-            albums_config.choices = [album_name for album_name, album in self._get_albums()]
         
         config.add_section("Saved photo settings")
-        albums_config = config.add_item("Album", "combotext", config_name = "albumName")
-        config.add_item("Load albums", "button", action = _load_albums)
+        self.albums_config = config.add_item("Album", "combotext", config_name = "albumName")
         config.add_item("Resize photos", "combo", config_name = "imageSize", 
             choices = [self.NO_RESIZE] + self.IMAGE_SIZES)
 
@@ -734,6 +756,7 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
         self.update_configuration(
             selectedGroup = (None, self._set_contact_group, self._get_contact_group),
         )
+        self.group_config = None
 
     def _get_contact_group(self):
         if not self.selectedGroup:
@@ -752,7 +775,7 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
                 raise TypeError
             self.selectedGroup = _GoogleContactGroup(*value)
         except TypeError:
-            log.error("Unknown group information")
+            log.error("Unknown group information: %s" % str(value))
         
     def _google_contact_from_conduit_contact(self, contact, gc=None):
         """
@@ -952,61 +975,30 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
 
     def _get_all_groups(self):
         '''Get a list of addressbook groups'''
-        self._do_login()
+        self._login()
         #System Groups are only returned in version 2 of the API
         query=gdata.contacts.service.GroupsQuery()
         query['v']='2'
         feed = self.service.GetContactsFeed(query.ToUri())
         for entry in feed.entry:
             yield _GoogleContactGroup.from_google_format(entry)
+
+    def _login_finished(self):
+        if self.group_config:
+            groups = self._get_all_groups()
+            self.group_config.choices = [(group, group.get_name()) for group in groups]        
         
     def config_setup(self, config):
         username_config, password_config = _GoogleBase.config_setup(self, config)
-
-        def _load_groups(item):
-            config.apply_config(items = [username_config, password_config])
-            groups = self._get_all_groups()
-            group_config.choices = [(group, group.get_name()) for group in groups]
         
         config.add_section("Contacts group")
-        group_config = config.add_item("Group", "combo", config_name = "selectedGroup")
-        load_group_config = config.add_item("Load contact groups", "button", action = _load_groups)
-        
-    #TODO Test Contacts new config and remove old config
-    def configure_(self, window):
-        """
-        Configures the PicasaTwoWay
-        """
-        widget = Utils.dataprovider_glade_get_widget(
-                        __file__, 
-                        "contacts-config.glade", 
-                        "GoogleContactsConfigDialog")
-                        
-        #get a whole bunch of widgets
-        username = widget.get_widget("username")
-        password = widget.get_widget("password")
-        group = widget.get_widget("Group")
-        store = gtk.ListStore(gobject.TYPE_STRING, gobject.TYPE_PYOBJECT)
-        group.set_model(store)
-        
-        #preload the widgets        
-        username.set_text(self.username)
-        password.set_text(self.password)
-        
-        signalConnections = { "on_getGroups_clicked" : (self._load_groups, widget) }
-        widget.signal_autoconnect( signalConnections )
-        
-        if self.selectedGroup is not None:
-            rowref = store.append( (self.selectedGroup.get_name(), self.selectedGroup) )
-            group.set_active_iter(rowref)
-            
-        dlg = widget.get_widget("GoogleContactsConfigDialog")
-        response = Utils.run_dialog (dlg, window)
-        if response == True:
-            self._set_username(username.get_text())
-            self._set_password(password.get_text())
-            self.selectedGroup = store.get_value(group.get_active_iter(),1)
-        dlg.destroy()
+        if self.selectedGroup:
+            choices = [(self.selectedGroup, self.selectedGroup.get_name())]
+        self.group_config = config.add_item("Group", "combo", 
+            config_name = "selectedGroup",
+            initial_value_callback = lambda item: self.selectedGroup,
+            choices = choices,
+        )
 
     def is_configured (self, isSource, isTwoWay):
         if not _GoogleBase.is_configured(self, isSource, isTwoWay):
@@ -1027,6 +1019,8 @@ class _GoogleContactGroup:
         return cls(name, uri)
         
     def __eq__(self, other):
+        if not isinstance(other, _GoogleContactGroup):
+            return False
         if other is None:
             return False
         else:
@@ -1296,14 +1290,14 @@ class DocumentsSink(_GoogleBase,  DataProvider.DataSink):
     def config_setup(self, config):
         username_config, password_config = _GoogleBase.config_setup(self, config)
         
-        config.add_section("Downloaded document format")
-        
-        config.add_item("Documents", "combo", config_name = "documentFormat",
-            choices = self.SUPPORTED_DOCUMENTS)
-        config.add_item("Spreadsheets", "combo", config_name = "spreadsheetFormat",
-            choices = self.SUPPORTED_SPREADSHEETS)
-        config.add_item("Presentations", "combo", config_name = "presentationFormat",
-            choices = self.SUPPORTED_PRESENTATIONS)
+        #FIXME: It seems this is disabled in the old code
+        #config.add_section("Downloaded document format")
+        #config.add_item("Documents", "combo", config_name = "documentFormat",
+        #    choices = self.SUPPORTED_DOCUMENTS)
+        #config.add_item("Spreadsheets", "combo", config_name = "spreadsheetFormat",
+        #    choices = self.SUPPORTED_SPREADSHEETS)
+        #config.add_item("Presentations", "combo", config_name = "presentationFormat",
+        #    choices = self.SUPPORTED_PRESENTATIONS)
 
 class VideoUploadInfo:
     """

@@ -107,8 +107,8 @@ class ItemBase(gobject.GObject):
     }
     
     def __init__(self, container, title, order, config_name = None,
-        config_type = None, choices = [], needs_label = True,
-        needs_space = False, initial_value = None, initial_value_callback = None,
+        config_type = None, choices = None, needs_label = True,
+        needs_space = None, initial_value = None, initial_value_callback = None,
         save_callback = None, fill = False, enabled = True, disable_check = False,
         disabled_value = None):
         '''
@@ -151,6 +151,8 @@ class ItemBase(gobject.GObject):
         self.__widget = None
         self.__label = None
         self.__enabled = enabled
+        if not choices:
+            choices = []
         self.__choices = choices
 
         # These properties do not need any special processing when changed, 
@@ -167,6 +169,9 @@ class ItemBase(gobject.GObject):
         # happen at the moment)
         self.title = title
         self.order = order
+        if needs_space is None and title is None:
+            needs_space = False
+            needs_label = False
         self.needs_label = needs_label
         self.needs_space = needs_space
         self.fill = fill
@@ -463,7 +468,7 @@ class ConfigButton(ItemBase):
     
     def __init__(self, *args, **kwargs):
         action = kwargs.pop('action', None)
-        image = kwargs.pop('image', None)
+        self.image = kwargs.pop('image', None)
         ItemBase.__init__(self, *args, **kwargs)
         self.callback = None
         self.needs_space = kwargs.get('needs_space', False)
@@ -471,7 +476,7 @@ class ConfigButton(ItemBase):
         if action:
             self.initial_value = action
         self.read_only = True
-        
+    
     def _button_clicked(self, button_widget):
         if self.callback:
             self.callback(self)
@@ -479,14 +484,12 @@ class ConfigButton(ItemBase):
     def _build_widget(self):
         self.widget = gtk.Alignment(1.0, 0.5, 0.0, 1.0)
         button_widget = gtk.Button(self.title)
+        if self.image:
+            button_widget.set_image(gtk.image_new_from_icon_name(self.image, gtk.ICON_SIZE_BUTTON))
         button_widget.connect("clicked", self._button_clicked)
         self.widget.add(button_widget)
         
     def _set_value(self, value):
-        #if self.callback_id:
-        #    self.widget.disconnect(self.callback_id)
-        #self.callback_id = None
-        #self.callback = None
         if value is not None and not callable(value):
             raise Error("Button callback must be callable (%s is not)" % (value))
         self.callback = value
@@ -571,6 +574,7 @@ class ConfigRadio(ItemBase):
     def _set_value(self, new_value):
         if new_value in self.buttons:
             self.buttons[new_value].set_active(True)
+            self._active_button = self.buttons[new_value]
         else:
             log.warn("Value %s could not be applied to config %s" % (new_value, self.title))
 
@@ -580,7 +584,7 @@ class ConfigSpin(ItemBase):
     def __init__(self, *args, **kwargs):
         self.maximum = kwargs.pop('maximum', sys.maxint)
         self.minimum = kwargs.pop('minimum', 0)
-        self.step = kwargs.pop('step', 1)        
+        self.step = kwargs.pop('step', 1)
         ItemBase.__init__(self, *args, **kwargs)
     
     def _build_widget(self):

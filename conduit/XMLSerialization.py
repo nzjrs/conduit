@@ -18,6 +18,9 @@
 from os.path import exists
 from xml.dom.minidom import parseString
 
+class Error(Exception):
+    pass
+
 class Settings( object ):
     """
     A class to store/retrieve data to/from an XML file
@@ -42,6 +45,10 @@ class Settings( object ):
             return int(string)
         elif desired_type == "str":
             return str(string) # 'just in case'
+        elif desired_type == "none":
+            return None
+        else:
+            raise Error("Type %s not recognized for value %s" % (desired_type, string))
 
     def __type_as_string__(self, data_type):
         """
@@ -61,6 +68,10 @@ class Settings( object ):
             return "str"
         elif type(data_type) == bool:
             return "bool"
+        elif data_type is None:
+            return "none"
+        else:
+            raise Error("Type for %s is not supported" % data_type)
 
     def __bool_from_string__(self, string):
         """
@@ -136,8 +147,8 @@ class Settings( object ):
         #node.setAttribute("name", str(name))
         if type(data) == dict:
             for (index, value) in data.iteritems():
-                node.appendChild( self.__data_to_node__(index, value ))
-        elif type(data) == list:
+                node.appendChild(self.__data_to_node__(index, value))
+        elif type(data) == list or type(data) == tuple:
             for (index, value) in enumerate(data):
                 node.appendChild(self.__data_to_node__("item", value))
         else:
