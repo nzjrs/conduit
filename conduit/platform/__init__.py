@@ -3,6 +3,7 @@ import gobject
 
 class File:
     SCHEMES = ()
+    NAME = None
     def __init__(self, URI):
         pass
 

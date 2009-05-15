@@ -33,10 +33,12 @@ class SmugMugTwoWay(Image.ImageTwoWay):
 
     def __init__(self, *args):
         Image.ImageTwoWay.__init__(self)
-        self.username = ""
-        self.password = ""
-        self.album = ""
-        self.imageSize = "None"
+        self.update_configuration(
+            username = "",
+            password = "",
+            album = "",
+            imageSize = "None",
+        )
         self.sapi = None
 
     def _get_photo_info (self, photoId):
@@ -101,49 +103,24 @@ class SmugMugTwoWay(Image.ImageTwoWay):
     def _get_photo_size (self):
         return self.imageSize
  
-    def configure(self, window):
-        """
-        Configures the SmugMugTwoWay
-        """
-        widget = Utils.dataprovider_glade_get_widget(
-                        __file__, 
-                        "config.glade", 
-                        "SmugMugTwoWayConfigDialog")
-                        
-        #get a whole bunch of widgets
-        username = widget.get_widget("username")
-        password = widget.get_widget("password")
-        album = widget.get_widget("album")                
+    def config_setup(self, config):
+        config.add_section("Account details")
+        config.add_item("Username", "text",
+            config_name = "username"
+        )
+        config.add_item("Password", "text",
+            config_name = "password",
+            password = True
+        ) 
+        config.add_section("Saved photos settings")
+        config.add_item("Album", "text",
+            config_name = "album",
+        )
+        config.add_item("Resize photos", "combo",
+            choices = [("None", "No resize"), ("640x480", "640x480"), ("800x600", "800x600"), ("1024x768", "1024x768")],
+            config_name = "imageSize"
+        )
         
-        #preload the widgets        
-        username.set_text(self.username)
-        password.set_text(self.password)
-        album.set_text (self.album)
-
-        resizecombobox = widget.get_widget("combobox1")
-        self._resize_combobox_build(resizecombobox, self.imageSize)
-        
-        dlg = widget.get_widget("SmugMugTwoWayConfigDialog")
-
-        dlg.set_transient_for(window)
-        
-        response = Utils.run_dialog (dlg, window)
-
-        if response == True:
-            self.username = username.get_text()
-            self.password = password.get_text()
-            self.album = album.get_text()
-            self.imageSize = self._resize_combobox_get_active(resizecombobox)
-        dlg.destroy()    
-        
-    def get_configuration(self):
-        return {
-            "imageSize" : self.imageSize,
-            "username" : self.username,
-            "password" : self.password,
-            "album" : self.album
-            }
-            
     def is_configured (self, isSource, isTwoWay):
         if len(self.username) < 1:
             return False
