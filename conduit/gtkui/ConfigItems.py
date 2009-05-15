@@ -109,13 +109,14 @@ class ItemBase(gobject.GObject):
     def __init__(self, container, title, order, config_name = None,
         config_type = None, choices = [], needs_label = True,
         needs_space = False, initial_value = None, initial_value_callback = None,
-        save_callback = None, fill = False, enabled = True):
+        save_callback = None, fill = False, enabled = True, disable_check = False,
+        disabled_value = None):
         '''
         Creates a config item.
         
-        The parameters can customize how the item behaves:
-        @param config_name: Used to save/load the configuration value from the 
-            dataprovider.
+        The parameters customize how the item behaves and/or looks:
+        @param config_name: Used in the configuration dict that saves and restores
+            this item value.
         @param config_type: ``function(value)`` that converts the config value into
             something a dataprovider will accept. This could be something 
             like int, str, etc., or a custom function.
@@ -134,7 +135,9 @@ class ItemBase(gobject.GObject):
             to be aligned to the right in the window, set this to True.
         @param enabled: If the widget can be edited by the user.
         @param save_callback: A ``function(item, value)`` called when apply is 
-            selected and the value must be saved.        
+            selected and the value must be saved.
+        @param disable_check: When true a checkmark to disable the item is added
+        @param disabled_value: A value returned when the item is disabled
         '''
         gobject.GObject.__init__(self)
         
@@ -143,7 +146,7 @@ class ItemBase(gobject.GObject):
         self.read_only = False
         
         # Properties that take in effect while the configuration is running
-        # Access then using with their public attributes (as implemented
+        # Access then using their public attributes (as implemented
         # with properties below), such as ``item.enabled = False``
         self.__widget = None
         self.__label = None
@@ -157,6 +160,7 @@ class ItemBase(gobject.GObject):
         self.save_callback = save_callback 
         self.initial_value = initial_value 
         self.initial_value_callback = initial_value_callback
+        self.disabled_value = disabled_value
         
         # These properties takes no effect while the configuration is running,
         # unless the widgets are rebuilt (there are no provisions to make that
@@ -166,6 +170,7 @@ class ItemBase(gobject.GObject):
         self.needs_label = needs_label
         self.needs_space = needs_space
         self.fill = fill
+        self.disable_check = disable_check
     
     def _value_changed(self, *args):
         '''
@@ -273,8 +278,14 @@ class ItemBase(gobject.GObject):
             label_text = self.title
             if label_text and not label_text.rstrip().endswith(':'):
                 label_text += ':'
-            self.__label = gtk.Label(label_text)
-            self.__label.set_alignment(0.0, 0.5)
+            if not self.disable_check:
+                self.__label = gtk.Label(label_text)
+                self.__label.set_alignment(0.0, 0.5)
+            else:
+                self.__label = gtk.CheckButton()
+                self.__label.set_label(self.title)
+                self.__label.set_active(self.__enabled)
+                self.__label.connect("toggled", lambda widget: self.set_enabled(widget.get_active()))
         return self.__label
     
     def set_label(self, label):
@@ -293,7 +304,7 @@ class ItemBase(gobject.GObject):
         if not self.__widget:
             self._build_widget()
             if not self.__widget:
-                raise Error("Widget could not be built")            
+                raise Error("Widget could not be built")
             self.reset()
         return self.__widget
 
@@ -352,7 +363,14 @@ class ItemBase(gobject.GObject):
         '''
         if not self.config_name:
             return None
-        value = self.get_value()
+        #FIXME: This is a hack to allow the Youtube configuration to work.
+        # The way this should be implemented is adding a callback to this function
+        # or something similar. But because we already have too much callbacks
+        # this way is simpler
+        if (not self.enabled) and (self.disabled_value is not None):
+            value = self.disabled_value
+        else:
+            value = self.get_value()
         try:
             if self.config_type:
                 self.config_type(value)
@@ -371,7 +389,10 @@ class ItemBase(gobject.GObject):
     def _set_enabled(self, enabled):
         self.widget.set_sensitive(enabled)
         if self.label:
-            self.label.set_sensitive(enabled)
+            if self.disable_check:
+                self.__label.set_active(enabled)
+            else:
+                self.label.set_sensitive(enabled)
         
     def set_enabled(self, enabled):
         '''
@@ -398,7 +419,7 @@ class ItemBase(gobject.GObject):
     
     def save_state(self):
         '''
-        Seve the current value as the initial value.
+        Save the current value as the initial value.
         '''
         value = self.get_value()
         self.initial_value = value
@@ -442,6 +463,7 @@ class ConfigButton(ItemBase):
     
     def __init__(self, *args, **kwargs):
         action = kwargs.pop('action', None)
+        image = kwargs.pop('image', None)
         ItemBase.__init__(self, *args, **kwargs)
         self.callback = None
         self.needs_space = kwargs.get('needs_space', False)

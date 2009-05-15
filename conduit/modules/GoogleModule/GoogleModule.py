@@ -446,6 +446,7 @@ class GoogleCalendarTwoWay(_GoogleBase, DataProvider.TwoWay):
         tree.get_widget("okBtn").set_sensitive(True)
         dlg.window.set_cursor(oldCursor)
         
+    #TODO: Convert Calendar to new config
     def configure(self, window):
         import gtk
         tree = Utils.dataprovider_glade_get_widget(
@@ -971,6 +972,7 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
         group_config = config.add_item("Group", "combo", config_name = "selectedGroup")
         load_group_config = config.add_item("Load contact groups", "button", action = _load_groups)
         
+    #TODO Test Contacts new config and remove old config
     def configure_(self, window):
         """
         Configures the PicasaTwoWay
@@ -1094,9 +1096,11 @@ class DocumentsSink(_GoogleBase,  DataProvider.DataSink):
         DataProvider.DataSink.__init__(self)
         _GoogleBase.__init__(self,gdata.docs.service.DocsService())
 
-        self.documentFormat = 'ODT'
-        self.spreadsheetFormat = 'ODS'
-        self.presentationFormat = 'PPT'
+        self.update_configuration(
+            documentFormat = 'ODT',
+            spreadsheetFormat = 'ODS',
+            presentationFormat = 'PPT',
+        )
         
         self._docs = {}
         
@@ -1288,52 +1292,18 @@ class DocumentsSink(_GoogleBase,  DataProvider.DataSink):
             self.service.Delete(gdoc.editLink)
             return True
         return False
-
-    def configure(self, window):
-        import gtk
-
-        def make_combo(widget, docType, val, values):
-            cb = widget.get_widget("%sCombo" % docType)
-            
-            #FIXME: Make these unsensitive when download works better
-            cb.set_property("sensitive", False)
-            
-            store = gtk.ListStore(str)
-            cell = gtk.CellRendererText()
-            
-            cb.set_model(store)
-            cb.pack_start(cell, True)
-            cb.add_attribute(cell, 'text', 0)
-            
-            for name in values:
-                rowref = store.append( (name,) )
-                if name == val:
-                    cb.set_active_iter(rowref)
-            
-
-        widget = Utils.dataprovider_glade_get_widget(
-                        __file__, 
-                        "documents-config.glade", 
-                        "GoogleDocumentsConfigDialog")
-                        
-        #get a whole bunch of widgets
-        username = widget.get_widget("username")
-        password = widget.get_widget("password")
+    
+    def config_setup(self, config):
+        username_config, password_config = _GoogleBase.config_setup(self, config)
         
-        #preload the widgets        
-        username.set_text(self.username)
-        password.set_text(self.password)
-
-        #preload the combos
-        for i in (("document", self.documentFormat,self.SUPPORTED_DOCUMENTS),("spreadsheet", self.spreadsheetFormat,self.SUPPORTED_SPREADSHEETS),("presentation",self.presentationFormat,self.SUPPORTED_PRESENTATIONS)):
-            make_combo(widget, *i)
+        config.add_section("Downloaded document format")
         
-        dlg = widget.get_widget("GoogleDocumentsConfigDialog")
-        response = Utils.run_dialog (dlg, window)
-        if response == True:
-            self._set_username(username.get_text())
-            self._set_password(password.get_text())
-        dlg.destroy()   
+        config.add_item("Documents", "combo", config_name = "documentFormat",
+            choices = self.SUPPORTED_DOCUMENTS)
+        config.add_item("Spreadsheets", "combo", config_name = "spreadsheetFormat",
+            choices = self.SUPPORTED_SPREADSHEETS)
+        config.add_item("Presentations", "combo", config_name = "presentationFormat",
+            choices = self.SUPPORTED_PRESENTATIONS)
 
 class VideoUploadInfo:
     """
@@ -1390,52 +1360,26 @@ class YouTubeTwoWay(_GoogleBase, DataProvider.TwoWay):
         _GoogleBase.__init__(self,youtube_service)
 
         self.entries = None
-        self.max_downloads = 0
-        #filter type {0 = mostviewed, 1 = toprated, 2 = user upload, 3 = user favorites}
-        self.filter_type = 0
+        self.update_configuration(
+            max_downloads = 0,
+            filter_type = 0, #(0 = mostviewed, 1 = toprated, 2 = user upload, 3 = user favorites)
+        )
 
-    def configure(self, window):
-        tree = Utils.dataprovider_glade_get_widget (
-                __file__,
-                "youtube-config.glade",
-                "YouTubeTwoWayConfigDialog") 
-
-        dlg = tree.get_widget ("YouTubeTwoWayConfigDialog")
-        mostviewedRb = tree.get_widget("mostviewed")
-        topratedRb = tree.get_widget("toprated")
-        uploadedbyRb = tree.get_widget("uploadedby")
-        favoritesofRb = tree.get_widget("favoritesof")
-        max_downloads = tree.get_widget("maxdownloads")
-        username = tree.get_widget("username")
-        password = tree.get_widget("password")
-
-        if self.filter_type == 0:
-            mostviewedRb.set_active(True)
-        elif self.filter_type == 1:
-            topratedRb.set_active(True)
-        elif self.filter_type == 2:
-            uploadedbyRb.set_active(True)
-        else:
-            favoritesofRb.set_active(True)
-        max_downloads.set_value(self.max_downloads)
-        username.set_text(self.username)
-        password.set_text(self.password)
-
-        response = Utils.run_dialog(dlg, window)
-        if response == True:
-            if mostviewedRb.get_active():
-                self.filter_type = 0
-            elif topratedRb.get_active():
-                self.filter_type = 1
-            elif uploadedbyRb.get_active():
-                self.filter_type = 2
-            else:
-                self.filter_type = 3
-            self.max_downloads = int(max_downloads.get_value())
-            self.username = username.get_text()
-            self.password = password.get_text()
-
-        dlg.destroy()
+    def config_setup(self, config):
+        username_config, password_config = _GoogleBase.config_setup(self, config)
+        
+        config.add_section("Download videos")
+        config.add_item(None, "radio", config_name = "filter_type",
+            choices = ((0, "Most viewed"),
+                       (1, "Top rated"),
+                       (2, "User uploaded"),
+                       (3, "User favorites")))
+        config.add_item("Limit downloads", "spin", 
+            config_name = "max_downloads", 
+            minimum = 1,
+            disable_check = True, 
+            disabled_value = 0,
+            enabled = self.max_downloads > 0)
 
     def _get_video_info (self, id):
         if self.entries.has_key(id):
@@ -1556,14 +1500,6 @@ class YouTubeTwoWay(_GoogleBase, DataProvider.TwoWay):
     def finish(self, aborted, error, conflict):
         DataProvider.TwoWay.finish(self)
         self.entries = None
-
-    def get_configuration(self):
-        return {
-            "filter_type"       :   self.filter_type,
-            "max_downloads"     :   self.max_downloads,
-            "username"          :   self.username,
-            "password"          :   self.password
-        }
 
     def get_UID(self):
         return Utils.get_user_string()
