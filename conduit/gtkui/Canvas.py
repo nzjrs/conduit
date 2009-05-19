@@ -660,17 +660,13 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         dp = dpw.module
         conduitCanvasItem = self.selectedDataproviderItem.get_parent()
 
-        if hasattr(dp, "configure"):
-            log.critical("%s using old configuration system" % dpw.get_name())
-            dp.configure(self.parentWindow)
-        else:
-            config_container = dp.get_config_container(
-                                configContainerKlass=ConfigContainer.ConfigContainer,
-                                name=dpw.get_name(),
-                                icon=dpw.get_icon(),
-                                configurator=self.configurator
-            )
-            self.configurator.run(config_container)
+        config_container = dp.get_config_container(
+                            configContainerKlass=ConfigContainer.ConfigContainer,
+                            name=dpw.get_name(),
+                            icon=dpw.get_icon(),
+                            configurator=self.configurator
+        )
+        self.configurator.run(config_container)
 
         self._check_if_dataprovider_needs_configuration(
                 conduitCanvasItem.model,

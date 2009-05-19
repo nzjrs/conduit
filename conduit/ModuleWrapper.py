@@ -251,9 +251,6 @@ class ModuleWrapper:
     def get_configuration_xml(self):
         return self.module.get_configuration_xml()
 
-    def configure(self, window):
-        self.module.configure(window)
-        
     def instantiate_module(self):
         self.module = self.klass(*self.initargs)
         
