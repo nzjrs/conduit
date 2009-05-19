@@ -994,6 +994,8 @@ class ContactsTwoWay(_GoogleBase,  DataProvider.TwoWay):
         config.add_section("Contacts group")
         if self.selectedGroup:
             choices = [(self.selectedGroup, self.selectedGroup.get_name())]
+        else:
+            choices = []
         self.group_config = config.add_item("Group", "combo", 
             config_name = "selectedGroup",
             initial_value_callback = lambda item: self.selectedGroup,
