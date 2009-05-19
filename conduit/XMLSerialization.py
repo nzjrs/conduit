@@ -45,7 +45,9 @@ class Settings( object ):
         elif desired_type == "int":
             return int(string)
         elif desired_type == "str":
-            return str(string) # 'just in case'
+            return str(string)
+        elif desired_type == "unicode":
+            return unicode(string)        
         elif desired_type == "none":
             return None
         else:
@@ -67,6 +69,8 @@ class Settings( object ):
             return "float"
         elif type(data_type) == str:
             return "str"
+        elif type(data_type) == unicode:
+            return "unicode"
         elif type(data_type) == bool:
             return "bool"
         elif data_type is None:

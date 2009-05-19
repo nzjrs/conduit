@@ -27,19 +27,17 @@ class FileSource(FileDataProvider.FileSource):
     def __init__(self, *args):
         FileDataProvider.FileSource.__init__(self)
         self.file_configurator = None
-        self._files_folders = None
+        self.files = None
+        self.folders = None
         self.update_configuration(
-            files = ([], self.set_files, self.get_files),
-            folders = ([], self.set_folders, self.get_folders)
+            files_and_folders = ({'files':[], 'folders':[]}, self._set_files_folders, self._get_files_folders)
         )
         
-    def set_files(self, files):
-        for f in files:
-            self._add_file(f)        
-            
-    def set_folders(self, folders):
-        for folder in folders:
-            folder, group = folder.split("---FIXME---")
+    def _set_files_folders(self, value):
+        for f in value['files']:
+            self._add_file(f)
+        for folder in value['folders']:
+            folder, group = folder
             self._add_folder(folder, group)
 
     def get_config_container(self, configContainerKlass, name, icon, configurator):
@@ -57,23 +55,15 @@ class FileSource(FileDataProvider.FileSource):
 
         return self.file_configurator
     
-    def _get_files_folders(self, get_files = False, get_folders = False):
-        if self._files_folders:
-            files, folders = self._files_folders
-            self._files_folders = None
-        else:
-            files = []
-            folders = []
-            for uri,ftype,group in self.db.select("SELECT URI,TYPE,GROUP_NAME FROM config"):
-                if ftype == FileDataProvider.TYPE_FILE:
-                    files.append(uri)
-                else:
-                    folders.append("%s---FIXME---%s" % (uri,group))        
-            self._files_folders = (files, folders)
-        if get_files:
-            return files
-        if get_folders:
-            return folders
+    def _get_files_folders(self):
+        files = []
+        folders = []
+        for uri,ftype,group in self.db.select("SELECT URI,TYPE,GROUP_NAME FROM config"):
+            if ftype == FileDataProvider.TYPE_FILE:
+                files.append(uri)
+            else:
+                folders.append((uri,group))
+        return {'files': files, 'folders':folders}
     
     def get_files(self):
         self._get_files_folders(get_files = True)
