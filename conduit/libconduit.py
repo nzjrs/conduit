@@ -144,9 +144,6 @@ class ConduitWrapper:
             #show the error message in the conduit gui
             self.store.set_value(rowref, self.STATUS_IDX, "error")
 
-    def _add_uri(self, uri):
-        return self.conduit.AddData(uri, dbus_interface=EXPORTER_DBUS_IFACE)
-
     def _add_item(self, filename, uri, status, pixbuf):
         rowref = self._get_rowref()
         self.store.append(rowref,(
@@ -193,8 +190,11 @@ class ConduitWrapper:
                                 dbus_interface=EXPORTER_DBUS_IFACE
                                 )
 
+    def add_uri(self, uri):
+        return self.conduit.AddData(uri, dbus_interface=EXPORTER_DBUS_IFACE)
+
     def add_item(self, pixbuf, uri):
-        if self._add_uri(uri):
+        if self.add_uri(uri):
             #add to the store
             self._add_item(
                     filename=uri.split("/")[-1],
@@ -293,8 +293,10 @@ class ConduitApplicationWrapper(gobject.GObject):
                                                 store=self.store,
                                                 debug=self.debug
             )
+            return self.conduits[sinkName]
         else:
             self._debug("Could not build Conduit %s" % sinkName)
+            return None
 
     def get_application(self):
         return self.app
