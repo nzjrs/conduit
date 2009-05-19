@@ -1,10 +1,10 @@
 conduit/Main.py
 conduit/libconduit.py
+conduit/XMLSerialization.py
 data/conduit.desktop.in
 tools/eog-plugin/conduit.py
 tools/totem-plugin/conduit.py
 tools/test-db-wrapper/main.glade
-conduit/modules/GoogleModule/contacts-config.glade
 conduit/modules/SynceModule.py
 conduit/modules/SettingsModule/GConfUtils.py
 conduit/modules/SettingsModule/layout_loader.py
