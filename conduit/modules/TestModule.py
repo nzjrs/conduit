@@ -37,7 +37,6 @@ MODULES = {
     "TestConversionArgs" :      { "type": "dataprovider" },
     "TestTwoWay" :              { "type": "dataprovider" },
     "TestFailRefresh" :         { "type": "dataprovider" },
-    "TestSinkNeedConfigure" :   { "type": "dataprovider" },
     "TestiPodMusic" :           { "type": "dataprovider" },
     "TestiPodVideo" :           { "type": "dataprovider" },
     "TestFactory" :             { "type": "dataprovider-factory" },
@@ -603,30 +602,6 @@ class TestWebTwoWay(TestTwoWay):
         TestTwoWay.refresh(self)
         log.debug("REFRESH (thread: %s)" % thread.get_ident())
         Web.LoginMagic(self._name_, self.url, browser=self.browser, login_function=lambda: True)
-
-class TestSinkNeedConfigure(_TestBase, DataProvider.DataSink):
-
-    _name_ = "Test Need Configure"
-    _description_ = "Needs Configuration"
-    _category_ = conduit.dataproviders.CATEGORY_TEST
-    _module_type_ = "sink"
-    _in_type_ = "test_type"
-    _out_type_ = "test_type"
-    _icon_ = "preferences-system"
-
-    def __init__(self, *args):
-        DataProvider.DataSink.__init__(self, *args)
-        _TestBase.__init__(self)
-        self.isConfigured = False
-        
-    def configure(self, window):
-        self.isConfigured = True
-
-    def set_configuration(self, config):
-        self.isConfigured = True
-
-    def is_configured(self, isSource, isTwoWay):
-        return self.isConfigured
 
 class TestFailRefresh(TestTwoWay):
 
