@@ -80,7 +80,7 @@ class ConduitPlugin(eog.Plugin):
         self.conduit.sync()
 
     def _on_clear_clicked(self, sender, window):
-        self.conduit.clear()
+        self.conduit.delete()
 
     def _on_row_activated(self, treeview, path, view_column):
         #check the user didnt click a header row
@@ -186,7 +186,7 @@ class ConduitPlugin(eog.Plugin):
         box,ui_action_group = self.windows[window]
         window.get_sidebar().remove_page(box)
         window.get_ui_manager().remove_action_group(ui_action_group)
-        self.conduit.clear()
+        self.conduit.delete()
 
     def update_ui(self, window):
         self._debug("Update UI")

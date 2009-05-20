@@ -14,13 +14,9 @@ SYNCSET_DBUS_IFACE="org.conduit.SyncSet"
 SYNCSET_GUI_PATH = '/syncset/gui'
 SYNCSET_NOGUI_PATH = '/syncset/dbus'
 
-class TreeViewRowConduitWrapper:
+class ConduitWrapper:
 
     CONFIG_NAME="test-plugin"
-    NAME_IDX=0
-    URI_IDX=1
-    STATUS_IDX=2
-    PB_IDX=3
 
     def __init__(self, syncset, conduit, name, store, debug):
         self.syncset = syncset
@@ -93,11 +89,6 @@ class TreeViewRowConduitWrapper:
         except Exception, e:
             self._debug("Error saving config: %s" % e)
 
-    def _get_rowref(self):
-        if self.rowref == None:
-            self.add_rowref()
-        return self.rowref
-
     def _configure_reply_handler(self):
         #save the configuration
         xml = self.conduit.SinkGetConfigurationXml()
@@ -108,6 +99,54 @@ class TreeViewRowConduitWrapper:
         if self.pendingSync == True:
             self.pendingSync = False
             self.conduit.Sync(dbus_interface=CONDUIT_DBUS_IFACE)
+
+    def _configure_error_handler(self, error):
+        self._debug("CONFIGURE ERROR: %s" % error)
+
+    def _on_sync_started(self):
+        self._debug("Sync starting")
+
+    def _on_sync_progress(self, progress, uids):
+        self._debug("Sync progress: %s" % progress)
+        
+    def _on_sync_completed(self, abort, error, conflict):
+        self._debug("Sync complete: abort:%s error:%s conflict:%s" % (abort, error, conflict))
+        if abort == False and error == False:
+            self.delete()
+
+    def delete(self):
+        #delete conduit's remote instance
+        self.syncset.DeleteConduit(self.conduit, dbus_interface=SYNCSET_DBUS_IFACE)
+
+    def sync(self):
+        if self.configured == True:
+            self.conduit.Sync(dbus_interface=CONDUIT_DBUS_IFACE)
+        else:
+            #defer the sync until the conduit has been configured
+            self.pendingSync = True
+            #configure the sink and perform the actual synchronisation
+            #when the configuration is finished, this way the GUI doesnt
+            #block on the call
+            self.conduit.SinkConfigure(
+                                reply_handler=self._configure_reply_handler,
+                                error_handler=self._configure_error_handler,
+                                dbus_interface=EXPORTER_DBUS_IFACE
+                                )
+
+    def add_uri(self, uri):
+        return self.conduit.AddData(uri, dbus_interface=EXPORTER_DBUS_IFACE)
+
+class TreeViewRowConduitWrapper(ConduitWrapper):
+
+    NAME_IDX=0
+    URI_IDX=1
+    STATUS_IDX=2
+    PB_IDX=3
+
+    def _get_rowref(self):
+        if self.rowref == None:
+            self.add_rowref()
+        return self.rowref
 
     def _configure_error_handler(self, error):
         self._debug("CONFIGURE ERROR: %s" % error)
@@ -137,7 +176,7 @@ class TreeViewRowConduitWrapper:
     def _on_sync_completed(self, abort, error, conflict):
         rowref = self._get_rowref()
         if abort == False and error == False:
-            self.clear()
+            self.delete()
             #update the status
             self.store.set_value(rowref, self.STATUS_IDX, "finished")
         else:
@@ -161,7 +200,7 @@ class TreeViewRowConduitWrapper:
                             pixbuf) #ConduitWrapper.PB_IDX
         )
 
-    def clear(self):
+    def delete(self):
         rowref = self._get_rowref()
         #delete all the items from the list of items to upload
         delete = []
@@ -172,26 +211,8 @@ class TreeViewRowConduitWrapper:
         #need to do in two steps so we dont modify the store while iterating
         for d in delete:
             self.store.remove(d)
-        #delete conduit's remote instance
-        self.syncset.DeleteConduit(self.conduit, dbus_interface=SYNCSET_DBUS_IFACE)
-
-    def sync(self):
-        if self.configured == True:
-            self.conduit.Sync(dbus_interface=CONDUIT_DBUS_IFACE)
-        else:
-            #defer the sync until the conduit has been configured
-            self.pendingSync = True
-            #configure the sink and perform the actual synchronisation
-            #when the configuration is finished, this way the GUI doesnt
-            #block on the call
-            self.conduit.SinkConfigure(
-                                reply_handler=self._configure_reply_handler,
-                                error_handler=self._configure_error_handler,
-                                dbus_interface=EXPORTER_DBUS_IFACE
-                                )
-
-    def add_uri(self, uri):
-        return self.conduit.AddData(uri, dbus_interface=EXPORTER_DBUS_IFACE)
+        #parent deletes the remote conduit
+        ConduitWrapper.delete(self)
 
     def add_item(self, pixbuf, uri):
         if self.add_uri(uri):
@@ -342,7 +363,7 @@ class ConduitApplicationWrapper(gobject.GObject):
     def clear(self):
         if self.connected():
             for name,c in self.conduits.items():
-                c.clear()
+                c.delete()
                 if self.store and c.rowref:
                     self.store.remove(c.rowref)
                 del(self.conduits[name])
