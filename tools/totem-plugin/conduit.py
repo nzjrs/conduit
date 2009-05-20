@@ -16,7 +16,7 @@ SUPPORTED_SINKS = {
 if DEBUG:
     SUPPORTED_SINKS["TestVideoSink"] = "Test"
 
-class TotemConduitWrapper(libconduit.ConduitWrapper):
+class TotemConduitWrapper(libconduit.TreeViewRowConduitWrapper):
 
     CONFIG_NAME="totem-plugin"
 

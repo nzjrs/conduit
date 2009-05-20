@@ -22,7 +22,7 @@ SUPPORTED_SINKS = {
 if DEBUG:
     SUPPORTED_SINKS["TestImageSink"] = "Test Image Sink"
 
-class EogConduitWrapper(libconduit.ConduitWrapper):
+class EogConduitWrapper(libconduit.TreeViewRowConduitWrapper):
 
     CONFIG_NAME="eog-plugin"
 
@@ -109,7 +109,7 @@ class ConduitPlugin(eog.Plugin):
         box.pack_start(bbox,expand=False,fill=True)
         
         #two colums, an icon and a description/name
-        col0 = gtk.TreeViewColumn("Pic", gtk.CellRendererPixbuf(), pixbuf=libconduit.ConduitWrapper.PB_IDX)
+        col0 = gtk.TreeViewColumn("Pic", gtk.CellRendererPixbuf(), pixbuf=libconduit.TreeViewRowConduitWrapper.PB_IDX)
         view.append_column(col0)
         #second colum is the dataprovider name + status, or the filename 
         nameRenderer = gtk.CellRendererText()
@@ -170,10 +170,10 @@ class ConduitPlugin(eog.Plugin):
         self.windows[window] = (box, ui_action_group)
     			    
     def _name_data_func(self, column, cell_renderer, tree_model, rowref):
-        name = tree_model.get_value(rowref, libconduit.ConduitWrapper.NAME_IDX)
+        name = tree_model.get_value(rowref, libconduit.TreeViewRowConduitWrapper.NAME_IDX)
         #render the headers different to the data
         if tree_model.iter_depth(rowref) == 0:
-            status = tree_model.get_value(rowref, libconduit.ConduitWrapper.STATUS_IDX)
+            status = tree_model.get_value(rowref, libconduit.TreeViewRowConduitWrapper.STATUS_IDX)
             name = '%s <span foreground="grey" style="italic">(%s)</span>' % (name,status)
         cell_renderer.set_property("markup", name)
 

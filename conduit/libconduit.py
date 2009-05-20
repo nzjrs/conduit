@@ -14,7 +14,7 @@ SYNCSET_DBUS_IFACE="org.conduit.SyncSet"
 SYNCSET_GUI_PATH = '/syncset/gui'
 SYNCSET_NOGUI_PATH = '/syncset/dbus'
 
-class ConduitWrapper:
+class TreeViewRowConduitWrapper:
 
     CONFIG_NAME="test-plugin"
     NAME_IDX=0
