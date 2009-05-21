@@ -5,7 +5,8 @@ conduit_PYTHON = \
 	Memstats.py 				\
 	MediaFile.py 				\
 	CommandLineConverter.py		\
-	Singleton.py
+	Singleton.py				\
+	Wait.py
 
 clean-local:
 	rm -rf *.pyc *.pyo

@@ -4,6 +4,7 @@
 *~
 Makefile.in
 Makefile
+aclocal.m4
 autom4te.cache/
 conduit/defs.py
 config.log
@@ -13,6 +14,7 @@ data/conduit.desktop
 data/conduit.desktop.in
 data/conduit.pc
 data/org.conduit.service
+gnome-doc-utils.make
 help/*/.xml2po.mo
 !help/C/conduit.xml
 help/*/conduit.xml

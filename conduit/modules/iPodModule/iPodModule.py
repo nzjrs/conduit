@@ -60,16 +60,10 @@ if errormsg:
         ITDB_MEDIATYPE_PODCAST = 4
 
 def _string_to_unqiue_file(txt, base_uri, prefix, postfix=''):
-    for i in range(1, 10000):
-        filename = prefix + str(i) + postfix
-        uri = os.path.join(base_uri, filename)
-        f = File.File(uri)
-        if not f.exists():
-            break
-
     temp = Utils.new_tempfile(txt)
+    uri = os.path.join(base_uri, prefix+temp.get_filename()+postfix)
     temp.transfer(uri, True)
-    temp.set_UID(filename)
+    temp.set_UID(uri)
     return temp.get_rid()
 
 class iPodFactory(VolumeFactory.VolumeFactory):
@@ -447,6 +441,7 @@ class IPodPhotoSink(IPodBase):
 
     def put(self, f, overwrite, LUID=None):
         photo = self.db.new_Photo(filename=f.get_local_uri())
+        self.album = self._get_photo_album(self.albumName)
         self.album.add(photo)
         gpod.itdb_photodb_write(self.db._itdb, None)
         return conduit.datatypes.Rid(str(photo['id']), None, hash(None))
@@ -595,7 +590,7 @@ class IPodFileBase:
         
         #Get the information from the iPod track.
         #The track might look like a dict, but it isnt, so we make it into one.
-        track_tags = dict([(name, track[name]) for name in self.media_to_ipod.keys()])
+        track_tags = dict(self.track.pairs())
         return dict(self._convert_tags(track_tags, self.ipod_to_media))
 
     #FIXME: Remove this. Use native operations from Conduit instead.
