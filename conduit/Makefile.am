@@ -29,7 +29,8 @@ conduit_PYTHON = \
 	SyncSet.py \
 	TypeConverter.py \
 	Vfs.py \
-	Web.py
+	Web.py \
+	XMLSerialization.py
 	
 CLEANFILES = \
 	defs.py \

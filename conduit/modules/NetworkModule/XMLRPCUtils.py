@@ -12,6 +12,7 @@ import cPickle
 import xmlrpclib
 import SimpleXMLRPCServer
 import logging
+import time
 
 #One log for the client
 clog = logging.getLogger("modules.Network.C")
@@ -78,6 +79,7 @@ class StoppableXMLRPCServer(SimpleXMLRPCServer.SimpleXMLRPCServer):
     def serve(self):
         self.socket.setblocking(0)
         while not self.closed:
+            time.sleep(0.15)
             self.handle_request()        
             
     def get_request(self):

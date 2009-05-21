@@ -1,10 +1,11 @@
 *.pyc
 *.gmo
 *.omf
+*~
 Makefile.in
 Makefile
-autom4te.cache/
 aclocal.m4
+autom4te.cache/
 conduit/defs.py
 config.log
 config.status

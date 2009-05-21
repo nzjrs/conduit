@@ -14,6 +14,8 @@ log = logging.getLogger("gtkui.Config")
 
 from gettext import gettext as _
 
+import conduit.Vfs as Vfs
+
 class Error(Exception):
     """Base exception for all exceptions raised in this module."""
     pass
@@ -105,15 +107,16 @@ class ItemBase(gobject.GObject):
     }
     
     def __init__(self, container, title, order, config_name = None,
-        config_type = None, choices = [], needs_label = True,
-        needs_space = False, initial_value = None, initial_value_callback = None,
-        save_callback = None, fill = False, enabled = True):
+        config_type = None, choices = None, needs_label = True,
+        needs_space = None, initial_value = None, initial_value_callback = None,
+        save_callback = None, fill = False, enabled = True, disable_check = False,
+        disabled_value = None):
         '''
         Creates a config item.
         
-        The parameters can customize how the item behaves:
-        @param config_name: Used to save/load the configuration value from the 
-            dataprovider.
+        The parameters customize how the item behaves and/or looks:
+        @param config_name: Used in the configuration dict that saves and restores
+            this item value.
         @param config_type: ``function(value)`` that converts the config value into
             something a dataprovider will accept. This could be something 
             like int, str, etc., or a custom function.
@@ -132,7 +135,9 @@ class ItemBase(gobject.GObject):
             to be aligned to the right in the window, set this to True.
         @param enabled: If the widget can be edited by the user.
         @param save_callback: A ``function(item, value)`` called when apply is 
-            selected and the value must be saved.        
+            selected and the value must be saved.
+        @param disable_check: When true a checkmark to disable the item is added
+        @param disabled_value: A value returned when the item is disabled
         '''
         gobject.GObject.__init__(self)
         
@@ -141,11 +146,13 @@ class ItemBase(gobject.GObject):
         self.read_only = False
         
         # Properties that take in effect while the configuration is running
-        # Access then using with their public attributes (as implemented
+        # Access then using their public attributes (as implemented
         # with properties below), such as ``item.enabled = False``
         self.__widget = None
         self.__label = None
         self.__enabled = enabled
+        if not choices:
+            choices = []
         self.__choices = choices
 
         # These properties do not need any special processing when changed, 
@@ -155,15 +162,20 @@ class ItemBase(gobject.GObject):
         self.save_callback = save_callback 
         self.initial_value = initial_value 
         self.initial_value_callback = initial_value_callback
+        self.disabled_value = disabled_value
         
         # These properties takes no effect while the configuration is running,
         # unless the widgets are rebuilt (there are no provisions to make that
         # happen at the moment)
         self.title = title
         self.order = order
+        if needs_space is None and title is None:
+            needs_space = False
+            needs_label = False
         self.needs_label = needs_label
         self.needs_space = needs_space
         self.fill = fill
+        self.disable_check = disable_check
     
     def _value_changed(self, *args):
         '''
@@ -271,8 +283,14 @@ class ItemBase(gobject.GObject):
             label_text = self.title
             if label_text and not label_text.rstrip().endswith(':'):
                 label_text += ':'
-            self.__label = gtk.Label(label_text)
-            self.__label.set_alignment(0.0, 0.5)
+            if not self.disable_check:
+                self.__label = gtk.Label(label_text)
+                self.__label.set_alignment(0.0, 0.5)
+            else:
+                self.__label = gtk.CheckButton()
+                self.__label.set_label(self.title)
+                self.__label.set_active(self.__enabled)
+                self.__label.connect("toggled", lambda widget: self.set_enabled(widget.get_active()))
         return self.__label
     
     def set_label(self, label):
@@ -291,7 +309,7 @@ class ItemBase(gobject.GObject):
         if not self.__widget:
             self._build_widget()
             if not self.__widget:
-                raise Error("Widget could not be built")            
+                raise Error("Widget could not be built")
             self.reset()
         return self.__widget
 
@@ -350,7 +368,14 @@ class ItemBase(gobject.GObject):
         '''
         if not self.config_name:
             return None
-        value = self.get_value()
+        #FIXME: This is a hack to allow the Youtube configuration to work.
+        # The way this should be implemented is adding a callback to this function
+        # or something similar. But because we already have too much callbacks
+        # this way is simpler
+        if (not self.enabled) and (self.disabled_value is not None):
+            value = self.disabled_value
+        else:
+            value = self.get_value()
         try:
             if self.config_type:
                 self.config_type(value)
@@ -369,7 +394,10 @@ class ItemBase(gobject.GObject):
     def _set_enabled(self, enabled):
         self.widget.set_sensitive(enabled)
         if self.label:
-            self.label.set_sensitive(enabled)
+            if self.disable_check:
+                self.__label.set_active(enabled)
+            else:
+                self.label.set_sensitive(enabled)
         
     def set_enabled(self, enabled):
         '''
@@ -396,7 +424,7 @@ class ItemBase(gobject.GObject):
     
     def save_state(self):
         '''
-        Seve the current value as the initial value.
+        Save the current value as the initial value.
         '''
         value = self.get_value()
         self.initial_value = value
@@ -440,27 +468,28 @@ class ConfigButton(ItemBase):
     
     def __init__(self, *args, **kwargs):
         action = kwargs.pop('action', None)
+        self.image = kwargs.pop('image', None)
         ItemBase.__init__(self, *args, **kwargs)
         self.callback = None
-        self.needs_space = kwargs.get('needs_space', True)
+        self.needs_space = kwargs.get('needs_space', False)
         self.needs_label = kwargs.get('needs_label', False)
         if action:
             self.initial_value = action
         self.read_only = True
-        
+    
     def _button_clicked(self, button_widget):
         if self.callback:
             self.callback(self)
     
     def _build_widget(self):
-        self.widget = gtk.Button(self.title)
-        self.widget.connect("clicked", self._button_clicked)
+        self.widget = gtk.Alignment(1.0, 0.5, 0.0, 1.0)
+        button_widget = gtk.Button(self.title)
+        if self.image:
+            button_widget.set_image(gtk.image_new_from_icon_name(self.image, gtk.ICON_SIZE_BUTTON))
+        button_widget.connect("clicked", self._button_clicked)
+        self.widget.add(button_widget)
         
     def _set_value(self, value):
-        #if self.callback_id:
-        #    self.widget.disconnect(self.callback_id)
-        #self.callback_id = None
-        #self.callback = None
         if value is not None and not callable(value):
             raise Error("Button callback must be callable (%s is not)" % (value))
         self.callback = value
@@ -474,15 +503,24 @@ class ConfigFileButton(ItemBase):
     def __init__(self, *args, **kwargs):
         self.directory = kwargs.pop('directory', False)
         ItemBase.__init__(self, *args, **kwargs)
-        self._current_filename = None
+        self._current_uri = None
     
     def _selection_changed(self, filechooser):
-        if self._current_filename != filechooser.get_filename():
-            self._current_filename = filechooser.get_filename()
+        uri = filechooser.get_uri()
+        #if in folder mode, and no directory is selected, then
+        #default to the current directory. This hack was necessary in some
+        #old pygtk version, I am not sure if it is still required, as the
+        #filechooser seems to behave better now
+        if self.directory and not uri:
+            uri = filechooser.get_current_folder_uri()
+
+        if uri and self._current_uri != uri:
+            self._current_uri = uri
             self._value_changed()            
     
     def _build_widget(self):
         self.widget = gtk.FileChooserButton(self.title)
+        self.widget.props.local_only = not Vfs.backend_supports_remote_uri_schemes()
         self.widget.connect("selection-changed", self._selection_changed)
         if self.directory:
             self.widget.set_action(gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER)
@@ -490,10 +528,10 @@ class ConfigFileButton(ItemBase):
             self.widget.set_action(gtk.FILE_CHOOSER_ACTION_OPEN)
     
     def _set_value(self, value):
-        self.widget.set_filename(str(value))
+        self.widget.set_uri(str(value))
     
     def _get_value(self):
-        return self._current_filename
+        return self._current_uri
 
 class ConfigRadio(ItemBase):
     __item_name__ = 'radio'
@@ -536,6 +574,7 @@ class ConfigRadio(ItemBase):
     def _set_value(self, new_value):
         if new_value in self.buttons:
             self.buttons[new_value].set_active(True)
+            self._active_button = self.buttons[new_value]
         else:
             log.warn("Value %s could not be applied to config %s" % (new_value, self.title))
 
@@ -545,7 +584,7 @@ class ConfigSpin(ItemBase):
     def __init__(self, *args, **kwargs):
         self.maximum = kwargs.pop('maximum', sys.maxint)
         self.minimum = kwargs.pop('minimum', 0)
-        self.step = kwargs.pop('step', 1)        
+        self.step = kwargs.pop('step', 1)
         ItemBase.__init__(self, *args, **kwargs)
     
     def _build_widget(self):

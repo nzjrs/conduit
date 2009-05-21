@@ -1,3 +1,9 @@
+2009-04-17 John Stowers  <john.stowers@gmail.com>
+
+	* conduit/modules/NetworkModule/XMLRPCUtils.py:
+	Sleep between handle_requests to prevent CPU usage on python 2.6
+	Fixes #558473 (Alex Lau)
+
 2009-04-08 John Stowers  <john.stowers@gmail.com>
 
 	* conduit/platform/FileGio.py:

@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: conduit\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-23 00:20+0000\n"
-"PO-Revision-Date: 2009-01-27 23:01-0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=conduit&component=general\n"
+"POT-Creation-Date: 2009-04-16 03:24+0000\n"
+"PO-Revision-Date: 2009-04-17 23:37-0100\n"
 "Last-Translator: António Lima <amrlima@gmail.com>\n"
 "Language-Team: portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -268,7 +268,8 @@ msgstr "Base de Dados de Relações"
 msgid "Conversions Available"
 msgstr "Conversões Disponíveis"
 
-#: ../conduit/gtkui/UI.py:383 ../conduit/gtkui/Tree.py:348
+#: ../conduit/gtkui/UI.py:383
+#: ../conduit/gtkui/Tree.py:348
 #: ../conduit/modules/FileModule/FileConfiguration.py:105
 msgid "Name"
 msgstr "Nome"
@@ -277,7 +278,8 @@ msgstr "Nome"
 msgid "Loaded"
 msgstr "Carregado"
 
-#: ../conduit/gtkui/UI.py:515 ../conduit/hildonui/UI.py:127
+#: ../conduit/gtkui/UI.py:515
+#: ../conduit/hildonui/UI.py:127
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "Sincronização em progresso. Deseja cancelar?"
 
@@ -321,7 +323,7 @@ msgstr "A Sincronizar"
 msgid "Description"
 msgstr "Descrição"
 
-#: ../conduit/gtkui/ConfigItems.py:685
+#: ../conduit/gtkui/ConfigItems.py:690
 #, python-format
 msgid "Total: %d"
 msgstr "Total: %d"
@@ -378,76 +380,21 @@ msgstr "Conflito de Sincronização"
 msgid "Not Configured"
 msgstr "Não Configurado"
 
-#: ../conduit/modules/BackpackModule/BackpackModule.py:56
+#: ../conduit/modules/BackpackModule/BackpackModule.py:58
 msgid "Backpack Notes"
 msgstr "Notas de Mochila"
 
-#: ../conduit/modules/BackpackModule/BackpackModule.py:57
+#: ../conduit/modules/BackpackModule/BackpackModule.py:59
 msgid "Store things in Backpack Notes"
 msgstr "Armazenar dados nas Notas de Mochila"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:1
-#: ../conduit/modules/FlickrModule/config.glade.h:1
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:1
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:1
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:1
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:1
-#: ../conduit/modules/SmugMugModule/config.glade.h:1
-#: ../conduit/modules/ZotoModule/zoto.glade.h:1
-msgid "<b>Account Details</b>"
-msgstr "<b>Detalhes de Conta</b>"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:2
-msgid "<b>Saved Note Settings</b>"
-msgstr "<b>Definições de Notas Gravadas</b>"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:3
-msgid "API key:"
-msgstr "Chave API:"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:4
-msgid "Backpack"
-msgstr "Mochila"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:5
-msgid "Save notes in page:"
-msgstr "Gravar notas na página:"
-
-#: ../conduit/modules/BackpackModule/config.glade.h:6
-#: ../conduit/modules/FlickrModule/config.glade.h:8
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:8
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:9
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:6
-#: ../conduit/modules/SmugMugModule/config.glade.h:7
-#: ../conduit/modules/ZotoModule/zoto.glade.h:5
-msgid "Username:"
-msgstr "Nome de Utilizador:"
-
-#: ../conduit/modules/BansheeModule/BansheeModule.py:51
+#: ../conduit/modules/BansheeModule/BansheeModule.py:52
 msgid "Banshee Playlists"
 msgstr "Listas de Reprodução do Banshee"
 
-#: ../conduit/modules/BansheeModule/BansheeModule.py:52
+#: ../conduit/modules/BansheeModule/BansheeModule.py:53
 msgid "Synchronize your Banshee playlists"
 msgstr "Sincronizar as suas listas de reprodução do Banshee"
-
-#. column 1 is the tag name
-#: ../conduit/modules/BansheeModule/BansheeModule.py:217
-msgid "Playlist Name"
-msgstr "Nome da Lista de Reprodução"
-
-#: ../conduit/modules/BansheeModule/BansheeModule.py:225
-msgid "Enabled"
-msgstr "Activado"
-
-#: ../conduit/modules/BansheeModule/config.glade.h:1
-msgid "<b>Return Playlists</b>"
-msgstr "<b>Apresentar Listas de Reprodução</b>"
-
-#: ../conduit/modules/BansheeModule/config.glade.h:2
-msgid "Banshee"
-msgstr "Banshee"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:29
 msgid "Box.net"
@@ -457,53 +404,39 @@ msgstr "Box.net"
 msgid "Synchronize your Box.net files"
 msgstr "Sincronizar os seus ficheiros Box.net"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:108
-#, python-format
-msgid "Select %s:"
-msgstr "Seleccionar %s:"
-
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:147
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:127
 msgid "Evolution Contacts"
 msgstr "Contactos do Evolution"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:148
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:128
 msgid "Synchronize your contacts"
 msgstr "Sincronizar os seus contactos"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:198
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:178
 msgid "Evolution Calendar"
 msgstr "Calendário do Evolution"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:199
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:179
 msgid "Synchronize your calendar"
 msgstr "Sincronizar o seu calendário"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:260
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:240
 msgid "Evolution Tasks"
 msgstr "Tarefas do Evolution"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:261
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:241
 msgid "Synchronize your tasks"
 msgstr "Sincronizar as suas tarefas"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:317
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:297
 msgid "Evolution Memos"
 msgstr "Memos do Evolution"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:318
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:298
 msgid "Synchronize your memos"
 msgstr "Sincronizar os seus memos"
 
-#: ../conduit/modules/EvolutionModule/config.glade.h:1
-msgid "Addressbook:"
-msgstr "Livro de Endereços:"
-
-#: ../conduit/modules/EvolutionModule/config.glade.h:2
-msgid "Evolution"
-msgstr "Evolution"
-
 #: ../conduit/modules/FacebookModule/FacebookModule.py:38
-#: ../conduit/modules/FacebookModule/config.glade.h:2
 msgid "Facebook"
 msgstr "Facebook"
 
@@ -511,64 +444,30 @@ msgstr "Facebook"
 msgid "Synchronize your Facebook photos"
 msgstr "Sincronizar as suas fotos do Facebook"
 
-#: ../conduit/modules/FacebookModule/config.glade.h:1
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:3
-#: ../conduit/modules/iPodModule/config.glade.h:2
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:3
-#: ../conduit/modules/SmugMugModule/config.glade.h:3
-#: ../conduit/modules/ZotoModule/zoto.glade.h:3
-msgid "Album:"
-msgstr "Álbum:"
+#: ../conduit/modules/FacebookModule/FacebookModule.py:124
+msgid "Loading album list..."
+msgstr "A carregar lista de álbuns..."
 
-#: ../conduit/modules/FacebookModule/config.glade.h:3
-#: ../conduit/modules/FlickrModule/config.glade.h:4
-msgid "Load"
-msgstr "Carregar"
+#: ../conduit/modules/FacebookModule/FacebookModule.py:128
+msgid "Failed to connect"
+msgstr "Falha ao ligar"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:131
+#| msgid "Login"
+msgid "Logged in"
+msgstr "Com sessão iniciada"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:133
+msgid "Failed to login"
+msgstr "Falha ao iniciar sessão"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:58
-#: ../conduit/modules/FeedModule/config.glade.h:9
 msgid "RSS Feed"
 msgstr "Fontes RSS"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:59
 msgid "Synchronize data from RSS enclosures"
 msgstr "Sincronizar dados de componentes RSS"
-
-#: ../conduit/modules/FeedModule/config.glade.h:1
-msgid "<b>Enclosure Settings</b>"
-msgstr "<b>Definições de Componentes</b>"
-
-#: ../conduit/modules/FeedModule/config.glade.h:2
-msgid "<b>Feed Details</b>"
-msgstr "<b>Detalhes das Fontes</b>"
-
-#: ../conduit/modules/FeedModule/config.glade.h:3
-msgid "Download Audio Files"
-msgstr "Transferir Ficheiros Áudio"
-
-#: ../conduit/modules/FeedModule/config.glade.h:4
-msgid "Download Photos"
-msgstr "Transferir Fotos"
-
-#: ../conduit/modules/FeedModule/config.glade.h:5
-msgid "Download Video Files"
-msgstr "Transferir Ficheiros Vídeo"
-
-#: ../conduit/modules/FeedModule/config.glade.h:6
-msgid "Feed Address:"
-msgstr "Endereço da Fonte:"
-
-#: ../conduit/modules/FeedModule/config.glade.h:7
-msgid ""
-"Limit the Number of\n"
-"Enclosures Downloaded to:"
-msgstr ""
-"Limitar o Número de\n"
-"Componentes Transferidos para:"
-
-#: ../conduit/modules/FeedModule/config.glade.h:10
-msgid "Randomize Enclosures"
-msgstr "Tornar Fechos Aleatórios"
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:99
 msgid "Icon"
@@ -600,11 +499,8 @@ msgid "Please Name All Folders"
 msgstr "Por Favor dê um Nome a Todas as Pastas"
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:299
-msgid ""
-"All folders require a descriptive name. To name a folder simply click on it"
-msgstr ""
-"Todas as pastas requerem um nome descritivo. Para dar um nome a uma pasta "
-"simplesmente clique nesta"
+msgid "All folders require a descriptive name. To name a folder simply click on it"
+msgstr "Todas as pastas requerem um nome descritivo. Para dar um nome a uma pasta simplesmente clique nesta"
 
 #: ../conduit/modules/FileModule/FileModule.py:23
 msgid "Files"
@@ -666,36 +562,27 @@ msgstr "Incluir Ficheiros Ocultos"
 msgid "Select A Folder"
 msgstr "Seleccionar Uma Pasta"
 
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:26
+msgid "Firefox 3 Bookmarks"
+msgstr "Marcadores do Firefox 3"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:27
+#| msgid "Synchronize your Flickr.com photos"
+msgid "Syncronize your Firefox 3 Bookmarks"
+msgstr "Sincronizar os seus Marcadores do Firefox 3"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:87
+#| msgid "Firefox Profile:"
+msgid "Firefox Profile"
+msgstr "Perfil do Firefox"
+
 #: ../conduit/modules/FlickrModule/FlickrModule.py:76
-#: ../conduit/modules/FlickrModule/config.glade.h:3
 msgid "Flickr"
 msgstr "Flickr"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:77
 msgid "Synchronize your Flickr.com photos"
 msgstr "Sincronizar as suas fotos do Flickr.com"
-
-#: ../conduit/modules/FlickrModule/config.glade.h:2
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:2
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:2
-#: ../conduit/modules/SmugMugModule/config.glade.h:2
-#: ../conduit/modules/ZotoModule/zoto.glade.h:2
-msgid "<b>Saved Photo Settings</b>"
-msgstr "<b>Definições das Fotos Gravadas</b>"
-
-#: ../conduit/modules/FlickrModule/config.glade.h:5
-msgid "Photos are public"
-msgstr "As fotos são públicas"
-
-#: ../conduit/modules/FlickrModule/config.glade.h:6
-msgid "Photoset Name:"
-msgstr "Nome do Álbum Fotográfico:"
-
-#: ../conduit/modules/FlickrModule/config.glade.h:7
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:7
-#: ../conduit/modules/SmugMugModule/config.glade.h:5
-msgid "Resize Photos:"
-msgstr "Redimensionar Fotos:"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:25
 msgid "F-Spot"
@@ -725,61 +612,75 @@ msgstr "Definições da Aplicação"
 msgid "Synchronize your application settings"
 msgstr "Sincronizar as definições da aplicação"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:369
+#: ../conduit/modules/GConfModule/GConfModule.py:137
+#| msgid "Conduit Synchronizer"
+msgid "Applications to Synchronize"
+msgstr "Aplicações a Sincronizar"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:370
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
 msgstr "Google Calendar"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:370
+#: ../conduit/modules/GoogleModule/GoogleModule.py:371
 msgid "Synchronize your Google Calendar"
 msgstr "Sincronizar o seu Google Calendar"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:555
+#: ../conduit/modules/GoogleModule/GoogleModule.py:556
 #: ../conduit/modules/GoogleModule/picasa-config.glade.h:6
 msgid "Picasa"
 msgstr "Picasa"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:556
+#: ../conduit/modules/GoogleModule/GoogleModule.py:557
 msgid "Synchronize your Google Picasa photos"
 msgstr "Sincronizar as suas fotos do Google Picasa"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:803
+#: ../conduit/modules/GoogleModule/GoogleModule.py:804
 msgid "Google Contacts"
 msgstr "Contactos do Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:804
+#: ../conduit/modules/GoogleModule/GoogleModule.py:805
 msgid "Synchronize your Google Mail contacts"
 msgstr "Sincronizar os seus contactos do Gmail"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1060
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1165
 #: ../conduit/modules/GoogleModule/documents-config.glade.h:5
 msgid "Google Documents"
 msgstr "Documentos do Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1061
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1166
 msgid "Synchronize your Google Documents"
 msgstr "Sincronizar os seus documentos do Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1338
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1443
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:69
 msgid "Unknown"
 msgstr "Desconhecido"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1339
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1444
 msgid "miscellaneous"
 msgstr "diversos"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1340
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1445
 msgid "No description."
 msgstr "Sem descrição."
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1349
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1454
 msgid "YouTube"
 msgstr "Youtube"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1350
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1455
 msgid "Synchronize data from YouTube"
 msgstr "Sincronizar dados do YouTube"
+
+#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
+#: ../conduit/modules/GoogleModule/documents-config.glade.h:1
+#: ../conduit/modules/GoogleModule/picasa-config.glade.h:1
+#: ../conduit/modules/GoogleModule/youtube-config.glade.h:1
+#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:1
+#: ../conduit/modules/SmugMugModule/config.glade.h:1
+msgid "<b>Account Details</b>"
+msgstr "<b>Detalhes de Conta</b>"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
 msgid "Calendar:"
@@ -800,7 +701,6 @@ msgstr "Carregar Calendários"
 #: ../conduit/modules/GoogleModule/youtube-config.glade.h:6
 #: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:4
 #: ../conduit/modules/SmugMugModule/config.glade.h:4
-#: ../conduit/modules/ZotoModule/zoto.glade.h:4
 msgid "Password:"
 msgstr "Senha:"
 
@@ -820,9 +720,33 @@ msgstr "Apresentações"
 msgid "Spreadsheets"
 msgstr "Folhas de Cálculo"
 
+#: ../conduit/modules/GoogleModule/picasa-config.glade.h:2
+#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:2
+#: ../conduit/modules/SmugMugModule/config.glade.h:2
+msgid "<b>Saved Photo Settings</b>"
+msgstr "<b>Definições das Fotos Gravadas</b>"
+
+#: ../conduit/modules/GoogleModule/picasa-config.glade.h:3
+#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:3
+#: ../conduit/modules/SmugMugModule/config.glade.h:3
+msgid "Album:"
+msgstr "Álbum:"
+
 #: ../conduit/modules/GoogleModule/picasa-config.glade.h:4
 msgid "Login"
 msgstr "Iniciar Sessão"
+
+#: ../conduit/modules/GoogleModule/picasa-config.glade.h:7
+#: ../conduit/modules/SmugMugModule/config.glade.h:5
+msgid "Resize Photos:"
+msgstr "Redimensionar Fotos:"
+
+#: ../conduit/modules/GoogleModule/picasa-config.glade.h:8
+#: ../conduit/modules/GoogleModule/youtube-config.glade.h:9
+#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:6
+#: ../conduit/modules/SmugMugModule/config.glade.h:7
+msgid "Username:"
+msgstr "Nome de Utilizador:"
 
 #: ../conduit/modules/GoogleModule/youtube-config.glade.h:2
 msgid "<b>Download Videos</b>"
@@ -852,89 +776,70 @@ msgstr "Carregado pelo utilizador acima"
 msgid "YouTube Source"
 msgstr "Fonte do YouTube"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:735
+#: ../conduit/modules/iPodModule/iPodModule.py:694
+#: ../conduit/modules/N800Module/N800Module.py:77
 msgid "Encoding"
 msgstr "Codificação"
-
-#: ../conduit/modules/iPodModule/iPodModule.py:867
-msgid "Keep converted files"
-msgstr "Manter ficheiros convertidos"
-
-#: ../conduit/modules/iPodModule/config.glade.h:1
-msgid "<b>Encoding</b>"
-msgstr "<b>Codificação</b>"
-
-#: ../conduit/modules/iPodModule/config.glade.h:3
-msgid "iPod Photos"
-msgstr "Fotos do iPod"
 
 #. Translators: Translate this in derived classes.
 #: ../conduit/modules/N800Module/N800Module.py:55
 msgid "Conduit"
 msgstr "Conduit"
 
-#. Translators: Format string used to describe the acceptable formats the
-#. device accepts. The first arg is replaced with DEFAULT_FOLDER and the second
-#. arg is a comma seperated list of encodings
-#: ../conduit/modules/N800Module/N800Module.py:59
-#, python-format
-msgid "%s Format (%s)"
-msgstr "%s Formato (%s)"
-
 #. Signifies that a conversion should not take place
-#: ../conduit/modules/N800Module/N800Module.py:61
-msgid "unchanged"
-msgstr "inalterado"
+#: ../conduit/modules/N800Module/N800Module.py:57
+msgid "None"
+msgstr "Nenhum"
 
-#: ../conduit/modules/N800Module/N800Module.py:123
+#: ../conduit/modules/N800Module/N800Module.py:105
 msgid "N800 Files"
 msgstr "Ficheiros N800"
 
-#: ../conduit/modules/N800Module/N800Module.py:124
+#: ../conduit/modules/N800Module/N800Module.py:106
 msgid "Synchronizes files/folders to a N800 device"
 msgstr "Sincroniza ficheiros/pastas para um dispositivo N800"
 
 #. To translators: default backup folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:129
+#: ../conduit/modules/N800Module/N800Module.py:111
 msgid "Backups"
 msgstr "Cópias de Segurança"
 
-#: ../conduit/modules/N800Module/N800Module.py:144
+#: ../conduit/modules/N800Module/N800Module.py:126
 msgid "N800 Music"
 msgstr "Música N800"
 
-#: ../conduit/modules/N800Module/N800Module.py:145
+#: ../conduit/modules/N800Module/N800Module.py:127
 msgid "Synchronizes music to a N800 device"
 msgstr "Sincroniza música para um dispositivo N800"
 
 #. To translators: defaul music folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:151
+#: ../conduit/modules/N800Module/N800Module.py:133
 msgid "Music"
 msgstr "Música"
 
-#: ../conduit/modules/N800Module/N800Module.py:168
+#: ../conduit/modules/N800Module/N800Module.py:150
 msgid "N800 Videos"
 msgstr "Vídeos N800"
 
-#: ../conduit/modules/N800Module/N800Module.py:169
+#: ../conduit/modules/N800Module/N800Module.py:151
 msgid "Synchronizes video to a N800 device"
 msgstr "Sincronizar vídeos para um dispositivo N800"
 
 #. To translators: defaul video folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:175
+#: ../conduit/modules/N800Module/N800Module.py:157
 msgid "Video"
 msgstr "Vídeo"
 
-#: ../conduit/modules/N800Module/N800Module.py:192
+#: ../conduit/modules/N800Module/N800Module.py:174
 msgid "N800 Photos"
 msgstr "Fotos N800"
 
-#: ../conduit/modules/N800Module/N800Module.py:193
+#: ../conduit/modules/N800Module/N800Module.py:175
 msgid "Synchronizes photos to an N800 device"
 msgstr "Sincroniza fotos para um dispositivo N800"
 
 #. To translators: default photos folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:199
+#: ../conduit/modules/N800Module/N800Module.py:181
 msgid "Photo"
 msgstr "Foto"
 
@@ -977,7 +882,6 @@ msgid "Synchronize your SmugMug.com photos"
 msgstr "Sincronizar as suas fotos do SmugMug.com"
 
 #: ../conduit/modules/ZotoModule/ZotoModule.py:154
-#: ../conduit/modules/ZotoModule/zoto.glade.h:6
 msgid "Zoto"
 msgstr "Zoto"
 
@@ -985,149 +889,158 @@ msgstr "Zoto"
 msgid "Synchronize your Zoto photos"
 msgstr "Sincronizar as suas fotos do Zoto"
 
-#: ../conduit/modules/Firefox3Module/config.glade.h:1
-msgid "Firefox"
-msgstr "Firefox"
-
-#: ../conduit/modules/Firefox3Module/config.glade.h:2
-msgid "Firefox Profile:"
-msgstr "Perfil Firefox:"
-
+#~ msgid "<b>Saved Note Settings</b>"
+#~ msgstr "<b>Definições de Notas Gravadas</b>"
+#~ msgid "API key:"
+#~ msgstr "Chave API:"
+#~ msgid "Backpack"
+#~ msgstr "Mochila"
+#~ msgid "Save notes in page:"
+#~ msgstr "Gravar notas na página:"
+#~ msgid "Playlist Name"
+#~ msgstr "Nome da Lista de Reprodução"
+#~ msgid "Enabled"
+#~ msgstr "Activado"
+#~ msgid "<b>Return Playlists</b>"
+#~ msgstr "<b>Apresentar Listas de Reprodução</b>"
+#~ msgid "Banshee"
+#~ msgstr "Banshee"
+#~ msgid "Select %s:"
+#~ msgstr "Seleccionar %s:"
+#~ msgid "Addressbook:"
+#~ msgstr "Livro de Endereços:"
+#~ msgid "Evolution"
+#~ msgstr "Evolution"
+#~ msgid "Load"
+#~ msgstr "Carregar"
+#~ msgid "<b>Enclosure Settings</b>"
+#~ msgstr "<b>Definições de Componentes</b>"
+#~ msgid "<b>Feed Details</b>"
+#~ msgstr "<b>Detalhes das Fontes</b>"
+#~ msgid "Download Audio Files"
+#~ msgstr "Transferir Ficheiros Áudio"
+#~ msgid "Download Photos"
+#~ msgstr "Transferir Fotos"
+#~ msgid "Download Video Files"
+#~ msgstr "Transferir Ficheiros Vídeo"
+#~ msgid "Feed Address:"
+#~ msgstr "Endereço da Fonte:"
+#~ msgid ""
+#~ "Limit the Number of\n"
+#~ "Enclosures Downloaded to:"
+#~ msgstr ""
+#~ "Limitar o Número de\n"
+#~ "Componentes Transferidos para:"
+#~ msgid "Randomize Enclosures"
+#~ msgstr "Tornar Fechos Aleatórios"
+#~ msgid "Photos are public"
+#~ msgstr "As fotos são públicas"
+#~ msgid "Photoset Name:"
+#~ msgstr "Nome do Álbum Fotográfico:"
+#~ msgid "Keep converted files"
+#~ msgstr "Manter ficheiros convertidos"
+#~ msgid "<b>Encoding</b>"
+#~ msgstr "<b>Codificação</b>"
+#~ msgid "iPod Photos"
+#~ msgstr "Fotos do iPod"
+#~ msgid "%s Format (%s)"
+#~ msgstr "%s Formato (%s)"
+#~ msgid "unchanged"
+#~ msgstr "inalterado"
+#~ msgid "Firefox"
+#~ msgstr "Firefox"
 #~ msgid "Folder:"
 #~ msgstr "Pasta:"
-
 #~ msgid "Tag Name"
 #~ msgstr "Nome de Etiqueta"
-
 #~ msgid "<b>Return Photos Tagged With</b>"
 #~ msgstr "<b>Apresentar Fotos Etiquetadas Com</b>"
-
 #~ msgid "Create Tags: "
 #~ msgstr "Criar Etiquetas:"
-
 #~ msgid "Synchronize your desktop preferences"
 #~ msgstr "Sincronizar as suas preferências de ambiente trabalho"
-
 #~ msgid "<b>Synchronize the Following Playlists</b>"
 #~ msgstr "<b>Sincronizar as Seguintes Listas de Reprodução</b>"
-
 #~ msgid "Rhythmbox Playlists"
 #~ msgstr "Listas de Reprodução do Rhythmbox"
-
 #~ msgid "Slow Sync"
 #~ msgstr "Sincronização Lenta"
-
 #~ msgid "Sync Options"
 #~ msgstr "Opções de Sincronização"
-
 #~ msgid "Two Way Sync"
 #~ msgstr "Sincronização Bi-Direccional"
-
 #~ msgid "Use built in Web browser"
 #~ msgstr "Utilizar Navegador embutido"
-
 #~ msgid "_About"
 #~ msgstr "_Sobre"
-
 #~ msgid "About Conduit"
 #~ msgstr "Sobre o Conduit"
-
 #~ msgid "_Synchronize"
 #~ msgstr "_Sincronizar"
-
 #~ msgid "Synchronize all dataproviders"
 #~ msgstr "Sincronizar todos os fornecedores de dados"
-
 #~ msgid "Please Enter a Folder Name"
 #~ msgstr "Por Favor Insira um Nome de Pasta"
-
 #~ msgid ""
 #~ "All folders require a descriptive name. To name a folder enter its name "
 #~ "where indicated"
 #~ msgstr ""
 #~ "Todas as pastas requerem um nome descritivo. Para dar um nome a uma pasta "
 #~ "insira o seu nome onde é indicado"
-
 #~ msgid "Folder Name:"
 #~ msgstr "Nome da Pasta:"
-
 #~ msgid "F-Spot Photos"
 #~ msgstr "Fotos do F-Spot"
-
 #~ msgid "Gmail Emails"
 #~ msgstr "Endereços de Email do Gmail"
-
 #~ msgid "Sync your emails"
 #~ msgstr "Sincronizar os seus emails"
-
 #~ msgid "<b>Return Emails Matching</b>"
 #~ msgstr "<b>Apresentar Emails Que Coincidem Com</b>"
-
 #~ msgid "<b>When Saving Emails</b>"
 #~ msgstr "<b>Ao Gravar Emails</b>"
-
 #~ msgid "Add Label:"
 #~ msgstr "Adicionar Etiqueta:"
-
 #~ msgid "All emails"
 #~ msgstr "Todos os emails"
-
 #~ msgid "Emails in folder:"
 #~ msgstr "Emails na pasta:"
-
 #~ msgid "Emails with label:"
 #~ msgstr "Emails com etiqueta:"
-
 #~ msgid "Unread emails"
 #~ msgstr "Emails não lidos"
-
 #~ msgid "By user"
 #~ msgstr "Pelo utilizador"
-
 #~ msgid "User: "
 #~ msgstr "Utilizador: "
-
 #~ msgid "Sync your Evolution contacts"
 #~ msgstr "Sincronizar os seus contactos do Evolution"
-
 #~ msgid "Evolution Events"
 #~ msgstr "Eventos do Evolution"
-
 #~ msgid "Sync your Evolution events"
 #~ msgstr "Sincronizar os seus eventos do Evolution"
-
 #~ msgid "Evolution Todo"
 #~ msgstr "Tarefas do Evolution"
-
 #~ msgid "Sync your Evolution tasks"
 #~ msgstr "Sincronizar as suas tarefas do Evolution"
-
 #~ msgid "Picasa Desktop"
 #~ msgstr "Picasa Desktop"
-
 #~ msgid "Sync your Picasa photos"
 #~ msgstr "Sincronizar as suas fotos do Picasa"
-
 #~ msgid "Album Name"
 #~ msgstr "Nome do Álbum"
-
 #~ msgid "<b>Return Photos In The Following Albums</b>"
 #~ msgstr "<b>Apresentar Fotos Nos Seguintes Álbuns</b>"
-
 #~ msgid "Windows Mobile Contacts"
 #~ msgstr "Contactos do Windows Mobile"
-
 #~ msgid "Sync your devices contacts"
 #~ msgstr "Sincronizar os seus contactos de dispositivos"
-
 #~ msgid "Windows Mobile Events"
 #~ msgstr "Eventos do Windows Mobile"
-
 #~ msgid "Sync your devices events"
 #~ msgstr "Sincronizar os seus eventos dos dispositivos"
-
 #~ msgid "Windows Mobile Todo"
 #~ msgstr "Tarefas do Windows Mobile"
-
 #~ msgid "Sync your devices tasks"
 #~ msgstr "Sincronizar as tarefas dos seus dispositivos"
+

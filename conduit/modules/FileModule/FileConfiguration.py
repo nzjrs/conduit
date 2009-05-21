@@ -1,13 +1,14 @@
+import gobject
 import gtk
 from gettext import gettext as _
 import logging
 log = logging.getLogger("modules.File")
 
 import conduit
-import conduit.utils as Utils
 import conduit.Vfs as Vfs
 import conduit.gtkui.Database as Database
 import conduit.dataproviders.File as FileDataProvider
+import conduit.Configurator as Configurator
 
 #Indexes of data in the list store
 OID_IDX = 0
@@ -17,7 +18,7 @@ CONTAINS_NUM_ITEMS_IDX = 3      #(folder only) How many items in the folder
 SCAN_COMPLETE_IDX = 4           #(folder only) HAs the folder been recursively scanned
 GROUP_NAME_IDX = 5              #(folder only) The visible identifier for the folder
 
-class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
+class _FileSourceConfigurator(Vfs.FolderScannerThreadManager, Configurator.BaseConfigContainer):
     """
     Configuration dialog for the FileTwoway dataprovider
     """
@@ -28,53 +29,25 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
         # FIXME: icon handling should be done better on Maemo
         pass        
 
-    def __init__(self, mainWindow, db):
+    def __init__(self, dataprovider, configurator, db):
         Vfs.FolderScannerThreadManager.__init__(self)
-        self.tree = Utils.dataprovider_glade_get_widget(
-                        __file__, 
-                        "config.glade",
-						"FileSourceConfigDialog"
-						)
-        dic = { "on_addfile_clicked" : self.on_addfile_clicked,
-                "on_adddir_clicked" : self.on_adddir_clicked,
-                "on_remove_clicked" : self.on_remove_clicked,                
-                None : None
-                }
-        self.tree.signal_autoconnect(dic)
-        self.mainWindow = mainWindow
+        Configurator.BaseConfigContainer.__init__(self, dataprovider, configurator)
         self.db = db
-        self.model = Database.GenericDBListStore("config", self.db)
-        
-        self._make_view()
+        self.tree_model = Database.GenericDBListStore("config", self.db)
 
-        #setup dnd onto the file list
-        targets = [ ( "text/uri-list", 0, 0 ) ]
-        f = self.tree.get_widget("filesscrolledwindow")
-        f.drag_dest_set(
-            gtk.DEST_DEFAULT_MOTION | gtk.DEST_DEFAULT_HIGHLIGHT | gtk.DEST_DEFAULT_DROP,
-            targets, 
-            gtk.gdk.ACTION_COPY
-            )
-        f.connect("drag_data_received", self._dnd_data_get)
-
-        self.dlg = self.tree.get_widget("FileSourceConfigDialog")
-        #connect to dialog response signal because we want to validate that
-        #the user has named all the groups before we let them quit
-        self.dlg.connect("response",self.on_response)
-        self.dlg.set_transient_for(self.mainWindow)
-        self.dlg.show_all()
+        self._make_ui()
 
         #Now go an background scan some folders to populate the UI estimates.
         for oid,uri in self.db.select("SELECT oid,URI FROM config WHERE TYPE=? and SCAN_COMPLETE=?",(FileDataProvider.TYPE_FOLDER,False,)):
             self.make_thread(
-                    uri, 
+                    uri,
                     False,  #include hidden
                     False,  #follow symlinks
-                    self._on_scan_folder_progress, 
-                    self._on_scan_folder_completed, 
+                    self._on_scan_folder_progress,
+                    self._on_scan_folder_completed,
                     oid
                     )
-                    
+
     def _dnd_data_get(self, wid, context, x, y, selection, targetType, time):
         for uri in selection.get_uris():
             try:
@@ -85,15 +58,54 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
                     self._add_file(uri)
             except Exception, err:
                 log.debug("Error adding %s\n%s" % (uri,err))
-            
-    def _make_view(self):
+
+    def _make_ui(self):
         """
-        Creates the treeview and connects the model and appropriate
-        cell_data_funcs
+        Creates the ui
         """
-        #Config the treeview when the DP is used as a source
-        self.view = self.tree.get_widget("treeview1")
-        self.view.set_model( self.model )
+        self.frame = gtk.Frame("Files and Folders to Synchronize")
+        self.frame.props.shadow_type = gtk.SHADOW_NONE
+
+        align = gtk.Alignment(0.5,0.5,1.0,1.0)
+        align.props.left_padding = 12
+        self.frame.add(align)
+
+        sw = gtk.ScrolledWindow()
+        sw.props.hscrollbar_policy = gtk.POLICY_AUTOMATIC 
+        sw.props.vscrollbar_policy = gtk.POLICY_AUTOMATIC 
+        sw.props.shadow_type= gtk.SHADOW_IN
+        #setup dnd onto the file list
+        sw.drag_dest_set(
+            gtk.DEST_DEFAULT_MOTION | gtk.DEST_DEFAULT_HIGHLIGHT | gtk.DEST_DEFAULT_DROP,
+            [ ( "text/uri-list", 0, 0 ) ],
+            gtk.gdk.ACTION_COPY
+            )
+        sw.connect("drag_data_received", self._dnd_data_get)
+
+        af = gtk.Button("_Add File")
+        af.set_image(gtk.image_new_from_stock(gtk.STOCK_ADD, gtk.ICON_SIZE_BUTTON))
+        af.connect("clicked", self.on_addfile_clicked)
+        ad = gtk.Button("Add _Directory")
+        ad.set_image(gtk.image_new_from_stock(gtk.STOCK_ADD, gtk.ICON_SIZE_BUTTON))
+        ad.connect("clicked", self.on_adddir_clicked)
+        r = gtk.Button(stock=gtk.STOCK_REMOVE)
+        r.connect("clicked", self.on_remove_clicked)
+
+        hbb = gtk.HButtonBox()
+        hbb.props.layout_style = gtk.BUTTONBOX_SPREAD
+        hbb.props.spacing = 3
+        hbb.add(af)
+        hbb.add(ad)
+        hbb.add(r)
+
+        vb = gtk.VBox()
+        vb.pack_start(sw, expand=True, fill=True)
+        vb.pack_end(hbb, expand=False, fill=True, padding=5)
+        align.add(vb)
+
+        self.view = gtk.TreeView(self.tree_model)
+        sw.add(self.view)
+
         #First column is an icon (folder of File)
         iconRenderer = gtk.CellRendererPixbuf()
         column1 = gtk.TreeViewColumn(_("Icon"), iconRenderer)
@@ -114,12 +126,12 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
 
     def _item_icon_data_func(self, column, cell_renderer, tree_model, rowref):
         """
-        Draw the appropriate icon depending if the URI is a 
+        Draw the appropriate icon depending if the URI is a
         folder or a file. We only show single files in the GUI anyway
         """
-        path = self.model.get_path(rowref)
+        path = self.tree_model.get_path(rowref)
 
-        if self.model[path][TYPE_IDX] == FileDataProvider.TYPE_FILE:
+        if self.tree_model[path][TYPE_IDX] == FileDataProvider.TYPE_FILE:
             icon = _FileSourceConfigurator.FILE_ICON
         else:
             icon = _FileSourceConfigurator.FOLDER_ICON
@@ -128,25 +140,25 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
     def _item_contains_num_data_func(self, column, cell_renderer, tree_model, rowref):
         """
         Displays the number of files contained within a folder or an empty
-        string if the model item is a File
+        string if the tree_model item is a File
         """
-        path = self.model.get_path(rowref)
-        if self.model[path][TYPE_IDX] == FileDataProvider.TYPE_FILE:
+        path = self.tree_model.get_path(rowref)
+        if self.tree_model[path][TYPE_IDX] == FileDataProvider.TYPE_FILE:
             contains = ""
         else:
-            contains = _("<i>Contains %s files</i>") % self.model[path][CONTAINS_NUM_ITEMS_IDX]
+            contains = _("<i>Contains %s files</i>") % self.tree_model[path][CONTAINS_NUM_ITEMS_IDX]
         cell_renderer.set_property("markup",contains)
-        
+
     def _item_name_data_func(self, column, cell_renderer, tree_model, rowref):
         """
         If the user has set a descriptive name for the folder the display that,
-        otherwise display the filename. 
+        otherwise display the filename.
         """
-        path = self.model.get_path(rowref)
-        uri = self.model[path][URI_IDX]
+        path = self.tree_model.get_path(rowref)
+        uri = self.tree_model[path][URI_IDX]
 
-        if self.model[path][GROUP_NAME_IDX] != "":
-            displayName = self.model[path][GROUP_NAME_IDX]
+        if self.tree_model[path][GROUP_NAME_IDX] != "":
+            displayName = self.tree_model[path][GROUP_NAME_IDX]
         else:
             displayName = Vfs.uri_format_for_display(uri)
 
@@ -154,7 +166,7 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
         cell_renderer.set_property("ellipsize", True)
 
         #Can not edit the group name of a file
-        if self.model[path][TYPE_IDX] == FileDataProvider.TYPE_FILE:
+        if self.tree_model[path][TYPE_IDX] == FileDataProvider.TYPE_FILE:
             cell_renderer.set_property("editable", False)
         else:
             cell_renderer.set_property("editable", True)
@@ -165,7 +177,7 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
         """
         self.db.update(
             table="config",
-            oid=self.model[path][OID_IDX],
+            oid=self.tree_model[path][OID_IDX],
             GROUP_NAME=new_text
             )
 
@@ -201,35 +213,42 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
                         values=(folderURI,FileDataProvider.TYPE_FOLDER,0,False,"")
                         )
             self.make_thread(
-                    folderURI, 
+                    folderURI,
                     False,  #include hidden
                     False,  #follow symlinks
-                    self._on_scan_folder_progress, 
-                    self._on_scan_folder_completed, 
+                    self._on_scan_folder_progress,
+                    self._on_scan_folder_completed,
                     oid
                     )
 
     def _add_file(self, uri):
-            self.db.insert(
-                        table="config",
-                        values=(uri,FileDataProvider.TYPE_FILE,0,False,"")
-                        )
+        self.db.insert(
+                    table="config",
+                    values=(uri,FileDataProvider.TYPE_FILE,0,False,"")
+                    )
 
     def show_dialog(self):
-        response = self.dlg.run()
+        #response = self.dlg.run()
         #We can actually go ahead and cancel all the threads. The items count
         #is only used as GUI bling and is recalculated in refresh() anyway
+        #self.cancel_all_threads()
+
+        #self.dlg.destroy()
+        #return response
+        pass
+
+    def get_config_widget(self):
+        return self.frame
+
+    def hide(self):
         self.cancel_all_threads()
 
-        self.dlg.destroy()
-        return response
-        
     def on_addfile_clicked(self, *args):
-        dialog = gtk.FileChooserDialog( _("Include file..."),  
-                                        None, 
+        dialog = gtk.FileChooserDialog( _("Include file..."),
+                                        None,
                                         gtk.FILE_CHOOSER_ACTION_OPEN,
-                                        (gtk.STOCK_CANCEL, 
-                                        gtk.RESPONSE_CANCEL, 
+                                        (gtk.STOCK_CANCEL,
+                                        gtk.RESPONSE_CANCEL,
                                         gtk.STOCK_OPEN, gtk.RESPONSE_OK)
                                         )
         dialog.set_default_response(gtk.RESPONSE_OK)
@@ -250,12 +269,12 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
         dialog.destroy()
 
     def on_adddir_clicked(self, *args):
-        dialog = gtk.FileChooserDialog( _("Include folder..."), 
-                                        None, 
-                                        gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER, 
-                                        (gtk.STOCK_CANCEL, 
-                                        gtk.RESPONSE_CANCEL, 
-                                        gtk.STOCK_OPEN, 
+        dialog = gtk.FileChooserDialog( _("Include folder..."),
+                                        None,
+                                        gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER,
+                                        (gtk.STOCK_CANCEL,
+                                        gtk.RESPONSE_CANCEL,
+                                        gtk.STOCK_OPEN,
                                         gtk.RESPONSE_OK)
                                         )
         dialog.set_default_response(gtk.RESPONSE_OK)
@@ -274,10 +293,10 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
     def on_remove_clicked(self, *args):
         (store, rowref) = self.view.get_selection().get_selected()
         if rowref != None:
-            path = self.model.get_path(rowref)
+            path = self.tree_model.get_path(rowref)
             self.db.delete(
                 table="config",
-                oid=self.model[path][OID_IDX]
+                oid=self.tree_model[path][OID_IDX]
                 )
 
     def on_response(self, dialog, response_id):
@@ -292,51 +311,13 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager):
                 #user indicating that all folders must be named
                 warning = gtk.MessageDialog(
                                 parent=dialog,
-                                flags=gtk.DIALOG_MODAL, 
-                                type=gtk.MESSAGE_WARNING, 
-                                buttons=gtk.BUTTONS_OK, 
+                                flags=gtk.DIALOG_MODAL,
+                                type=gtk.MESSAGE_WARNING,
+                                buttons=gtk.BUTTONS_OK,
                                 message_format=_("Please Name All Folders"))
                 warning.format_secondary_text(_("All folders require a descriptive name. To name a folder simply click on it"))
                 warning.run()
                 warning.destroy()
                 dialog.emit_stop_by_name("response")
 
-class _FolderTwoWayConfigurator:
-    def __init__(self, mainWindow, folder, includeHidden, compareIgnoreMtime, followSymlinks):
-        log.debug("Starting new folder chooser at %s" % folder)
-        self.folder = folder
-        self.includeHidden = includeHidden
-        self.compareIgnoreMtime = compareIgnoreMtime
-        self.followSymlinks = followSymlinks
 
-        tree = Utils.dataprovider_glade_get_widget(
-                        __file__, 
-                        "config.glade",
-						"FolderTwoWayConfigDialog"
-						)
-        self.folderChooser = tree.get_widget("filechooserbutton1")
-        self.folderChooser.set_current_folder_uri(self.folder)
-        self.hiddenCb = tree.get_widget("hidden")
-        self.hiddenCb.set_active(includeHidden)
-        self.mtimeCb = tree.get_widget("ignoreMtime")
-        self.mtimeCb.set_active(self.compareIgnoreMtime)
-        self.followSymlinksCb = tree.get_widget("followSymlinks")
-        self.followSymlinksCb.set_active(self.followSymlinks)
-
-        self.dlg = tree.get_widget("FolderTwoWayConfigDialog")
-        self.dlg.connect("response",self.on_response)
-        self.dlg.set_transient_for(mainWindow)
-
-    def on_response(self, dialog, response_id):
-        if response_id == gtk.RESPONSE_OK:
-            self.folder = self.folderChooser.get_uri()
-            log.debug("Folderconfig returned %s" % self.folder)
-            self.includeHidden = self.hiddenCb.get_active()
-            self.compareIgnoreMtime = self.mtimeCb.get_active()
-            self.followSymlinks = self.followSymlinksCb.get_active() 
-
-    def show_dialog(self):
-        self.dlg.show_all()
-        self.dlg.run()
-        self.dlg.destroy()
-        return self.folder, self.includeHidden, self.compareIgnoreMtime, self.followSymlinks

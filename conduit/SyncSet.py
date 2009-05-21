@@ -17,7 +17,7 @@ import conduit.Settings as Settings
 
 #Increment this number when the xml settings file
 #changes format
-SETTINGS_VERSION = "1"
+SETTINGS_VERSION = "2"
 
 class SyncSet(gobject.GObject):
     """
@@ -55,7 +55,7 @@ class SyncSet(gobject.GObject):
                 except Exception:
                     log.warn("Could not uninitialize %s" % dp, exc_info=True)
                 
-    def _restore_dataprovider(self, cond, wrapperKey, dpName="", dpxml="", trySourceFirst=True):
+    def _restore_dataprovider(self, cond, wrapperKey, dpName="", dpxml="", xml_version=SETTINGS_VERSION, trySourceFirst=True):
         """
         Adds the dataprovider back onto the canvas at the specifed
         location and configures it with the given settings
@@ -68,7 +68,7 @@ class SyncSet(gobject.GObject):
             if dpxml:
                 for i in dpxml.childNodes:
                     if i.nodeType == i.ELEMENT_NODE and i.localName == "configuration":
-                        wrapper.set_configuration_xml(xmltext=i.toxml())
+                        wrapper.set_configuration_xml(xmltext=i.toxml(), xmlversion=xml_version)
         cond.add_dataprovider(wrapper, trySourceFirst)
 
     def on_dataprovider_available_unavailable(self, loader, dpw):
@@ -208,10 +208,20 @@ class SyncSet(gobject.GObject):
             
             #check the xml file is in a version we can read.
             if doc.documentElement.hasAttribute("settings-version"):
-                if SETTINGS_VERSION != doc.documentElement.getAttribute("settings-version"):
-                    log.info("%s xml file is incorrect version" % xmlSettingFilePath)
+                xml_version = doc.documentElement.getAttribute("settings-version")
+                try:
+                    xml_version = int(xml_version)
+                except ValueError, TypeError:
+                    log.error("%s xml file version is not valid" % xmlSettingFilePath)
                     os.remove(xmlSettingFilePath)
                     return
+                if int(SETTINGS_VERSION) < xml_version:
+                    log.warning("%s xml file is incorrect version" % xmlSettingFilePath)
+                    os.remove(xmlSettingFilePath)
+                    return
+            else:
+                log.info("%s xml file version not found, assuming version 1" % xmlSettingFilePath)
+                xml_version = 1
             
             #Parse...    
             for conds in doc.getElementsByTagName("conduit"):
@@ -242,7 +252,7 @@ class SyncSet(gobject.GObject):
                         name = i.getAttribute("name")
                         #add to canvas
                         if len(key) > 0:
-                            self._restore_dataprovider(cond, key, name, i, True)
+                            self._restore_dataprovider(cond, key, name, i, xml_version, True)
                     #many datasinks
                     elif i.nodeType == i.ELEMENT_NODE and i.localName == "datasinks":
                         #each datasink
@@ -252,7 +262,7 @@ class SyncSet(gobject.GObject):
                                 name = sink.getAttribute("name")
                                 #add to canvas
                                 if len(key) > 0:
-                                    self._restore_dataprovider(cond, key, name, sink, False)
+                                    self._restore_dataprovider(cond, key, name, sink, xml_version, False)
 
         except:
             log.warn("Error parsing %s. Exception:\n%s" % (xmlSettingFilePath, traceback.format_exc()))

@@ -8,8 +8,8 @@ for impl in ("GIO", "GnomeVfs",):
     reload(Vfs)
     reload(Utils)
 
-    ok("--- TESTING VFS WITH FILE IMPL: %s" % impl, True)
-    #print Vfs.FolderScanner
+    ok("--- TESTING VFS WITH FILE IMPL: %s" % Vfs.backend_name(), True)
+    ok("Supports remote uri schemes: %s" % Vfs.backend_supports_remote_uri_schemes(), True)
 
     safe = '/&=:@'
     unsafe = ' !<>#%()[]{}'
