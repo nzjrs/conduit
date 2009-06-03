@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: conduit.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=conduit&component=general\n"
-"POT-Creation-Date: 2009-04-09 03:24+0000\n"
-"PO-Revision-Date: 2009-04-09 17:36+0200\n"
+"product=conduit&component=documentation and translation\n"
+"POT-Creation-Date: 2009-05-28 02:41+0000\n"
+"PO-Revision-Date: 2009-06-03 10:27+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -270,7 +270,7 @@ msgid "Conversions Available"
 msgstr "Conversiones disponibles"
 
 #: ../conduit/gtkui/UI.py:383 ../conduit/gtkui/Tree.py:348
-#: ../conduit/modules/FileModule/FileConfiguration.py:105
+#: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
 msgstr "Nombre"
 
@@ -322,7 +322,7 @@ msgstr "Sincronizando"
 msgid "Description"
 msgstr "Descripción"
 
-#: ../conduit/gtkui/ConfigItems.py:690
+#: ../conduit/gtkui/ConfigItems.py:729
 #, python-format
 msgid "Total: %d"
 msgstr "Total: %d"
@@ -331,51 +331,51 @@ msgstr "Total: %d"
 msgid "Configure"
 msgstr "Configurar"
 
-#: ../conduit/dataproviders/DataProvider.py:19
+#: ../conduit/dataproviders/DataProvider.py:20
 msgid "Ready"
 msgstr "Preparado"
 
-#: ../conduit/dataproviders/DataProvider.py:20
+#: ../conduit/dataproviders/DataProvider.py:21
 msgid "New data to sync"
 msgstr "Nuevos datos para sincronizar"
 
-#: ../conduit/dataproviders/DataProvider.py:21
+#: ../conduit/dataproviders/DataProvider.py:22
 msgid "Refreshing..."
 msgstr "Refrescando…"
 
-#: ../conduit/dataproviders/DataProvider.py:22
+#: ../conduit/dataproviders/DataProvider.py:23
 msgid "Refreshed OK"
 msgstr "Actualización correcta"
 
-#: ../conduit/dataproviders/DataProvider.py:23
+#: ../conduit/dataproviders/DataProvider.py:24
 msgid "Error Refreshing"
 msgstr "Error al refrescar"
 
-#: ../conduit/dataproviders/DataProvider.py:24
+#: ../conduit/dataproviders/DataProvider.py:25
 msgid "Synchronizing..."
 msgstr "Sincronizando…"
 
-#: ../conduit/dataproviders/DataProvider.py:25
+#: ../conduit/dataproviders/DataProvider.py:26
 msgid "Synchronized OK"
 msgstr "Sincronización correcta"
 
-#: ../conduit/dataproviders/DataProvider.py:26
+#: ../conduit/dataproviders/DataProvider.py:27
 msgid "Error Synchronizing"
 msgstr "Error al sincronizar"
 
-#: ../conduit/dataproviders/DataProvider.py:27
+#: ../conduit/dataproviders/DataProvider.py:28
 msgid "Synchronization Skipped"
 msgstr "Se evitó la sincronización"
 
-#: ../conduit/dataproviders/DataProvider.py:28
+#: ../conduit/dataproviders/DataProvider.py:29
 msgid "Synchronization Cancelled"
 msgstr "Sincronización cancelada"
 
-#: ../conduit/dataproviders/DataProvider.py:29
+#: ../conduit/dataproviders/DataProvider.py:30
 msgid "Synchronization Conflict"
 msgstr "Conflicto en la sincronización"
 
-#: ../conduit/dataproviders/DataProvider.py:30
+#: ../conduit/dataproviders/DataProvider.py:31
 msgid "Not Configured"
 msgstr "Sin configurar"
 
@@ -444,6 +444,7 @@ msgid "Synchronize your Facebook photos"
 msgstr "Sincronice sus fotos en Facebook"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:124
+#: ../conduit/modules/FlickrModule/FlickrModule.py:282
 msgid "Loading album list..."
 msgstr "Cargando la lista de álbumes..."
 
@@ -452,7 +453,6 @@ msgid "Failed to connect"
 msgstr "Falló al conectar"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:131
-#| msgid "Login"
 msgid "Logged in"
 msgstr "Sesión iniciada"
 
@@ -468,36 +468,36 @@ msgstr "Fuente RSS"
 msgid "Synchronize data from RSS enclosures"
 msgstr "Sincronice datos desde fuentes RSS"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:99
+#: ../conduit/modules/FileModule/FileConfiguration.py:111
 msgid "Icon"
 msgstr "Icono"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:111
+#: ../conduit/modules/FileModule/FileConfiguration.py:123
 msgid "Items"
 msgstr "Elementos"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:137
+#: ../conduit/modules/FileModule/FileConfiguration.py:149
 #, python-format
 msgid "<i>Contains %s files</i>"
 msgstr "<i>Contiene %s archivos</i>"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:228
+#: ../conduit/modules/FileModule/FileConfiguration.py:247
 msgid "Include file..."
 msgstr "Incluir archivo…"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:238
+#: ../conduit/modules/FileModule/FileConfiguration.py:257
 msgid "All files"
 msgstr "Todos los archivos"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:253
+#: ../conduit/modules/FileModule/FileConfiguration.py:272
 msgid "Include folder..."
 msgstr "Incluir carpeta…"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:298
+#: ../conduit/modules/FileModule/FileConfiguration.py:317
 msgid "Please Name All Folders"
 msgstr "De nombre a todas las carpetas"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:299
+#: ../conduit/modules/FileModule/FileConfiguration.py:318
 msgid ""
 "All folders require a descriptive name. To name a folder simply click on it"
 msgstr ""
@@ -512,69 +512,23 @@ msgstr "Archivos"
 msgid "Source for synchronizing multiple files"
 msgstr "Fuente de sincronización para archivos múltiples"
 
-#: ../conduit/modules/FileModule/FileModule.py:63
+#: ../conduit/modules/FileModule/FileModule.py:96
 msgid "Folder"
 msgstr "Carpeta"
 
-#: ../conduit/modules/FileModule/FileModule.py:64
+#: ../conduit/modules/FileModule/FileModule.py:97
 msgid "Synchronize folders"
 msgstr "Sincronizar carpetas"
-
-#: ../conduit/modules/FileModule/config.glade.h:1
-msgid "<b>Items to Synchronize</b>"
-msgstr "<b>Elementos para sincronizar</b>"
-
-#: ../conduit/modules/FileModule/config.glade.h:2
-msgid "Add Directory"
-msgstr "Añadir directorio"
-
-#: ../conduit/modules/FileModule/config.glade.h:3
-msgid "Add File"
-msgstr "Añadir archivo"
-
-#: ../conduit/modules/FileModule/config.glade.h:4
-msgid "Advanced"
-msgstr "Avanzada"
-
-#: ../conduit/modules/FileModule/config.glade.h:5
-msgid "File Configuration"
-msgstr "Configuración de archivo"
-
-#: ../conduit/modules/FileModule/config.glade.h:6
-msgid "Folder Configuration"
-msgstr "Configuración de carpeta"
-
-#: ../conduit/modules/FileModule/config.glade.h:7
-msgid "Folder Location:"
-msgstr "Ubicación de la carpeta:"
-
-#: ../conduit/modules/FileModule/config.glade.h:8
-msgid "Follow Symbolic Links"
-msgstr "Seguir los enlaces simbólicos"
-
-#: ../conduit/modules/FileModule/config.glade.h:9
-msgid "Ignore File Modification Times"
-msgstr "Ignorar los tiempos de modificación de archivo"
-
-#: ../conduit/modules/FileModule/config.glade.h:10
-msgid "Include Hidden Files"
-msgstr "Incluir archivos ocultos"
-
-#: ../conduit/modules/FileModule/config.glade.h:11
-msgid "Select A Folder"
-msgstr "Seleccione una carpeta"
 
 #: ../conduit/modules/Firefox3Module/Firefox3Module.py:26
 msgid "Firefox 3 Bookmarks"
 msgstr "Marcadores de Firefox 3"
 
 #: ../conduit/modules/Firefox3Module/Firefox3Module.py:27
-#| msgid "Synchronize your Flickr.com photos"
 msgid "Syncronize your Firefox 3 Bookmarks"
 msgstr "Sincronizar sus Marcadores de Forefox 3"
 
 #: ../conduit/modules/Firefox3Module/Firefox3Module.py:87
-#| msgid "Firefox Profile:"
 msgid "Firefox Profile"
 msgstr "Perfil de Firefox"
 
@@ -585,6 +539,51 @@ msgstr "Flickr"
 #: ../conduit/modules/FlickrModule/FlickrModule.py:77
 msgid "Synchronize your Flickr.com photos"
 msgstr "Sincronizar sus fotos en Flickr"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:287
+#| msgid "Failed to connect"
+msgid "Failed to connect."
+msgstr "Falló al conectar."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:290
+msgid "Album names loaded."
+msgstr "Nombres de álbumes cargados."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:292
+#| msgid "Failed to login"
+msgid "Failed to login."
+msgstr "Falló al iniciar sesión."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:303
+msgid "Logging in, please wait..."
+msgstr "Iniciando sesión, espere..."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:307
+#| msgid "<b>Account Details</b>"
+msgid "Account details"
+msgstr "Detalles de la cuenta"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:318
+msgid "Authenticate"
+msgstr "Autenticar"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:322
+#| msgid "<b>Saved Photo Settings</b>"
+msgid "Saved photo settings"
+msgstr "Ajustes para las fotos guardadas"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:327
+#| msgid "Resize Photos:"
+msgid "Resize photos"
+msgstr "Redimensionar fotos"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+msgid "Do not resize"
+msgstr "No redimensionar"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:331
+msgid "Photos are public"
+msgstr "Las fotos son públicas"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:25
 msgid "F-Spot"
@@ -615,72 +614,64 @@ msgid "Synchronize your application settings"
 msgstr "Sincronizar los ajustes de sus aplicaciones"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:137
-#| msgid "Conduit Synchronizer"
 msgid "Applications to Synchronize"
 msgstr "Aplicaciones para sincronizar"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:370
+#: ../conduit/modules/GoogleModule/GoogleModule.py:399
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
 msgstr "Google Calendar"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:371
+#: ../conduit/modules/GoogleModule/GoogleModule.py:400
 msgid "Synchronize your Google Calendar"
 msgstr "Sincronizar su Calendario de Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:556
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:6
+#: ../conduit/modules/GoogleModule/GoogleModule.py:582
 msgid "Picasa"
 msgstr "Picasa"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:557
+#: ../conduit/modules/GoogleModule/GoogleModule.py:583
 msgid "Synchronize your Google Picasa photos"
 msgstr "Sincronizar sus fotos en Google Picasa"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:804
+#: ../conduit/modules/GoogleModule/GoogleModule.py:745
 msgid "Google Contacts"
 msgstr "Contactos de Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:805
+#: ../conduit/modules/GoogleModule/GoogleModule.py:746
 msgid "Synchronize your Google Mail contacts"
 msgstr "Sincronizar sus contactos de Google Mail"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1165
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:5
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1076
 msgid "Google Documents"
 msgstr "Documentos de Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1166
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1077
 msgid "Synchronize your Google Documents"
 msgstr "Sincronizar sus documentos de Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1443
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1322
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:69
 msgid "Unknown"
 msgstr "Desconocido"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1444
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1323
 msgid "miscellaneous"
 msgstr "miscelánea"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1445
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1324
 msgid "No description."
 msgstr "Sin descripción."
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1454
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1333
 msgid "YouTube"
 msgstr "YouTube"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1455
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1334
 msgid "Synchronize data from YouTube"
 msgstr "Sincronizar datos con YouTube"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:1
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:1
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:1
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:1
-#: ../conduit/modules/SmugMugModule/config.glade.h:1
 msgid "<b>Account Details</b>"
 msgstr "<b>Detalles de la cuenta</b>"
 
@@ -689,7 +680,6 @@ msgid "Calendar:"
 msgstr "Calendario:"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:4
 msgid "Email:"
 msgstr "Correo-e:"
 
@@ -698,87 +688,10 @@ msgid "Load Calendars"
 msgstr "Cargar calendarios"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:6
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:5
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:6
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:4
-#: ../conduit/modules/SmugMugModule/config.glade.h:4
 msgid "Password:"
 msgstr "Contraseña:"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:2
-msgid "<b>Downloaded Document Format</b>"
-msgstr "<b>Formato del documento descargado</b>"
-
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:3
-msgid "Documents"
-msgstr "Documentos"
-
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:7
-msgid "Presentations"
-msgstr "Presentaciones"
-
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:8
-msgid "Spreadsheets"
-msgstr "Hojas de cálculo"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:2
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:2
-#: ../conduit/modules/SmugMugModule/config.glade.h:2
-msgid "<b>Saved Photo Settings</b>"
-msgstr "<b>Ajustes para las fotos guardadas</b>"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:3
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:3
-#: ../conduit/modules/SmugMugModule/config.glade.h:3
-msgid "Album:"
-msgstr "Álbum:"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:4
-msgid "Login"
-msgstr "Identificación"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:7
-#: ../conduit/modules/SmugMugModule/config.glade.h:5
-msgid "Resize Photos:"
-msgstr "Redimensionar fotos:"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:8
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:9
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:6
-#: ../conduit/modules/SmugMugModule/config.glade.h:7
-msgid "Username:"
-msgstr "Usuario:"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:2
-msgid "<b>Download Videos</b>"
-msgstr "<b>Descargar vídeos</b>"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:3
-msgid "Favorites of above user"
-msgstr "Favoritos del usuario de encima"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:4
-msgid "Max retrieved videos (0 is unlimited):"
-msgstr "Máximo número de videos recuperados (0 es ilimitado):"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:5
-msgid "Most viewed"
-msgstr "Más visto"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:7
-msgid "Top rated"
-msgstr "Mejor puntuado"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:8
-msgid "Uploaded by above user"
-msgstr "Subido por el usuario de encima"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:10
-msgid "YouTube Source"
-msgstr "Fuente YouTube"
-
-#: ../conduit/modules/iPodModule/iPodModule.py:694
+#: ../conduit/modules/iPodModule/iPodModule.py:689
 #: ../conduit/modules/N800Module/N800Module.py:77
 msgid "Encoding"
 msgstr "Codificación"
@@ -862,7 +775,6 @@ msgid "Synchronize songs from your Rhythmbox playlists"
 msgstr "Sincronizr las canciones de sus listas de reproducción de Rhythmbox"
 
 #: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:26
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:5
 msgid "Shutterfly"
 msgstr "Shutterfly"
 
@@ -875,7 +787,6 @@ msgid "%Y-%m-%d %H:%M:%S"
 msgstr "%d-%m-%Y %H:%M:%S"
 
 #: ../conduit/modules/SmugMugModule/SmugMugModule.py:28
-#: ../conduit/modules/SmugMugModule/config.glade.h:6
 msgid "SmugMug"
 msgstr "SmugMug"
 
@@ -890,6 +801,81 @@ msgstr "Zoto"
 #: ../conduit/modules/ZotoModule/ZotoModule.py:155
 msgid "Synchronize your Zoto photos"
 msgstr "Sincronizar sus fotos en Zoto"
+
+#~ msgid "<b>Items to Synchronize</b>"
+#~ msgstr "<b>Elementos para sincronizar</b>"
+
+#~ msgid "Add Directory"
+#~ msgstr "Añadir directorio"
+
+#~ msgid "Add File"
+#~ msgstr "Añadir archivo"
+
+#~ msgid "Advanced"
+#~ msgstr "Avanzada"
+
+#~ msgid "File Configuration"
+#~ msgstr "Configuración de archivo"
+
+#~ msgid "Folder Configuration"
+#~ msgstr "Configuración de carpeta"
+
+#~ msgid "Folder Location:"
+#~ msgstr "Ubicación de la carpeta:"
+
+#~ msgid "Follow Symbolic Links"
+#~ msgstr "Seguir los enlaces simbólicos"
+
+#~ msgid "Ignore File Modification Times"
+#~ msgstr "Ignorar los tiempos de modificación de archivo"
+
+#~ msgid "Include Hidden Files"
+#~ msgstr "Incluir archivos ocultos"
+
+#~ msgid "Select A Folder"
+#~ msgstr "Seleccione una carpeta"
+
+#~ msgid "<b>Downloaded Document Format</b>"
+#~ msgstr "<b>Formato del documento descargado</b>"
+
+#~ msgid "Documents"
+#~ msgstr "Documentos"
+
+#~ msgid "Presentations"
+#~ msgstr "Presentaciones"
+
+#~ msgid "Spreadsheets"
+#~ msgstr "Hojas de cálculo"
+
+#~ msgid "Album:"
+#~ msgstr "Álbum:"
+
+#~ msgid "Login"
+#~ msgstr "Identificación"
+
+#~ msgid "Username:"
+#~ msgstr "Usuario:"
+
+#~ msgid "<b>Download Videos</b>"
+#~ msgstr "<b>Descargar vídeos</b>"
+
+#~ msgid "Favorites of above user"
+#~ msgstr "Favoritos del usuario de encima"
+
+#~ msgid "Max retrieved videos (0 is unlimited):"
+#~ msgstr "Máximo número de videos recuperados (0 es ilimitado):"
+
+#~ msgid "Most viewed"
+#~ msgstr "Más visto"
+
+#~ msgid "Top rated"
+#~ msgstr "Mejor puntuado"
+
+#~ msgid "Uploaded by above user"
+#~ msgstr "Subido por el usuario de encima"
+
+#~ msgid "YouTube Source"
+#~ msgstr "Fuente YouTube"
 
 #~ msgid "<b>Saved Note Settings</b>"
 #~ msgstr "<b>Configuración de notas guardadas</b>"
@@ -954,9 +940,6 @@ msgstr "Sincronizar sus fotos en Zoto"
 
 #~ msgid "Randomize Enclosures"
 #~ msgstr "Hacer fuentes aleatorias"
-
-#~ msgid "Photos are public"
-#~ msgstr "Las fotos son públicas"
 
 #~ msgid "Photoset Name:"
 #~ msgstr "Nombre del álbum:"
