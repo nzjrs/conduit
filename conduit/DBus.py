@@ -346,8 +346,19 @@ class DataProviderDBusItem(DBusItem):
 
     @dbus.service.method(DATAPROVIDER_DBUS_IFACE, in_signature='', out_signature='')
     def Configure(self):
-        self._print("Configure")       
-        self.dataprovider.configure(None)
+        self._print("Configure")
+        #FIXME Hard-coded GtkUI
+        from conduit.gtkui.WindowConfigurator import WindowConfigurator
+        from conduit.gtkui.ConfigContainer import ConfigContainer
+        configurator = WindowConfigurator(None)
+        container = self.dataprovider.module.get_config_container(
+                        configContainerKlass=ConfigContainer,
+                        name=self.dataprovider.get_name(),
+                        icon=self.dataprovider.get_icon(),
+                        configurator=configurator
+        )
+        configurator.set_containers([container])
+        configurator.run(container)
 
     @dbus.service.method(DATAPROVIDER_DBUS_IFACE, in_signature='s', out_signature='b')
     def AddData(self, uri):
