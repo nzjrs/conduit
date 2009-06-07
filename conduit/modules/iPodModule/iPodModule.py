@@ -562,7 +562,7 @@ class IPodFileBase:
         '''
         tags = f.get_media_tags()
         for name, value in self._convert_tags(tags, self.media_to_ipod):
-            log.debug("Got %s = %s" % (name, value))
+            #log.debug("Got %s = %s" % (name, value))
             self.track[name] = value
         #Make sure we have a title to this song, even if it's just the filename
         if self.track['title'] is None:
@@ -580,6 +580,12 @@ class IPodFileBase:
             filename = self.track._userdata_into_default_locale('filename')
         return filename
         
+    def get_hash(self):
+        return str(hash(tuple(self.get_media_tags())))
+
+    def get_snippet(self):
+        return "%(artist)s - %(title)s" % track
+
     def get_media_tags(self):
         '''
         Extends the MediaFile class to include the iPod metadata, instead of
@@ -766,9 +772,12 @@ class IPodMediaTwoWay(IPodBase):
     def put(self, f, overwrite, LUID=None):
         self.get_db()
         try:
-            media_file = self._ipodmedia_(db = self.db, f = f, **self.track_args)
-            #FIXME: We keep the db locked while we copy the file. Not good
-            #media_file.
+            if LUID and LUID in self.tracks_id:
+                track = self.tracks_id[LUID]
+                media_file = self._ipodmedia_(db = self.db, track = track, f = f, **self.track_args)
+            else:
+                media_file = self._ipodmedia_(db = self.db, f = f, **self.track_args)
+            #FIXME: We keep the db locked while we copy the file. Not good.
             media_file.copy_ipod()
             self.tracks_id[str(media_file.track['dbid'])] = media_file.track
             #FIXME: Writing the db here is for debug only. Closing does not actually
