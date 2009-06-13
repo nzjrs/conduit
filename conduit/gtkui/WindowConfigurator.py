@@ -28,26 +28,35 @@ class WindowConfigurator:
         @type window: C{gtk.Window}
         """        
         self.showing = False
-        self.built_configs = False
+        self.built_containers = False
         
         self.dialog = gtk.Dialog(self.CONFIG_WINDOW_TITLE_TEXT,
                           window,
                           gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-                          (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-                           gtk.STOCK_OK, gtk.RESPONSE_OK,
-                           gtk.STOCK_HELP, gtk.RESPONSE_HELP))
+                          (gtk.STOCK_REVERT_TO_SAVED, gtk.RESPONSE_CANCEL,
+                           gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
         #TODO: Unless we actually have a help to show, make the help button 
         #disabled.
         #BTW, modules should be able to define their own help
         self.dialog.set_has_separator(False)
-        self.dialog.set_response_sensitive(gtk.RESPONSE_HELP, False)
-        self.dialog.set_default_size(300, -1)
+        #self.dialog.set_response_sensitive(gtk.RESPONSE_HELP, False)
+        self.dialog.set_response_sensitive(gtk.RESPONSE_CANCEL, False)
+        self.dialog.set_default_size(-1, -1)
+        #self.dialog.set_border_width(12)
         
-        self.dialog_box = self.dialog.vbox
-        self.dialog_box.pack_start(self._make_config_widget())
+        self.dialog_box = self.dialog.get_content_area()
+        align = gtk.Alignment()
+        align.set_padding(0, 8, 0, 0)
+        align.add(self._make_config_widget())
+        
+        self.dialog_box.pack_start(align)
         self.dialog_box.show_all()
         
+        self.container_signals = {}
         self.container_widgets = {}
+        
+    def _container_changed(self, container, changed):
+        self.dialog.set_response_sensitive(gtk.RESPONSE_CANCEL, changed)
         
     def _make_config_widget(self):
         if self.NOTEBOOK:
@@ -57,24 +66,26 @@ class WindowConfigurator:
             self.notebook.set_show_tabs(self.MULTIPLE_VIEW)
             return self.notebook
         else:
-            self.containers_box = gtk.VBox(spacing = 8)
-            self.containers_box.set_border_width(6)        
+            self.containers_box = gtk.VBox(spacing = 6)
+            self.containers_box.set_border_width(12)
             return self.containers_box
         
     def set_containers(self, containers):
         self._clear_containers()
         self.built_containers = False
-        
         self.containers = containers
         
     def _clear_containers(self):
+        for container, signal_id in self.container_signals.iteritems():
+            container.disconnect(signal_id)
+        self.container_signals = {}
         if self.NOTEBOOK:
             while self.notebook.get_n_pages() > 0:
                 self.notebook.remove_page(0)
             self.tabs = {}
         else:
             for container, widget in self.container_widgets.iteritems():
-                self.containers_box.remove(widget)
+                self.containers_box.remove(widget)                
                 container_widget = container.get_config_widget()
                 container_widget.get_parent().remove(container_widget)
         self.container_widgets = {}
@@ -102,9 +113,10 @@ class WindowConfigurator:
                 title_box.show_all()
                 container_box.pack_start(title_box, False, False)
             container_box.pack_start(container_widget, True, True)
-            container_box.pack_start(gtk.HSeparator(), False, False)
+            #container_box.pack_start(gtk.HSeparator(), False, False)
             self.containers_box.pack_start(container_box)
             self.containers_box.show_all()
+        self.container_signals[container] = container.connect('changed', self._container_changed)
         self.container_widgets[container] = widget
     
     def build_containers(self):
@@ -133,8 +145,8 @@ class WindowConfigurator:
         if busy:
             self.window.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.WATCH))
         else:
-            self.window.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.ARROW))            
-        
+            self.window.window.set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))            
+    
     @property
     def window(self):
         return self.dialog
@@ -166,6 +178,10 @@ class WindowConfigurator:
             self.notebook.set_current_page(self.tabs[config_container])
         self.dialog.reshow_with_initial_size()
         resp = self.dialog.run()
+        while resp == gtk.RESPONSE_CANCEL:
+            for container in containers:
+                container.cancel_config()
+            resp = self.dialog.run()
         for container in containers:
             container.hide()
         self.dialog.hide()

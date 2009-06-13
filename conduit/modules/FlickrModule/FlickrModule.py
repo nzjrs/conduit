@@ -279,28 +279,28 @@ class FlickrTwoWay(Image.ImageTwoWay):
         def _login_finished(*args):
             try:
                 if self.logged_in:
-                    status_label.value = _('Loading album list...')
+                    config['status'].value = _('Loading album list...')
                     try:
                         #FIXME: Blocks and brings the whole UI with it.
                         photosets = self._get_photosets()
                     except:
-                        status_label.value = _('Failed to connect.')
+                        config['status'].value = _('Failed to connect.')
                     else:
-                        photoset_config.choices = [name for name, photoSetId in photosets]
-                        status_label.value = _('Album names loaded.')
+                        config['photoSetName'].choices = [name for name, photoSetId in photosets]
+                        config['status'].value = _('Album names loaded.')
                 else:
-                    status_label.value = _('Failed to login.')
+                    config['status'].value = _('Failed to login.')
             finally:
-                load_photosets_config.enabled = True
+                config['photoSetName'].enabled = True
                 account_section.enabled = True
                 config.set_busy(False)
                 
         def _load_photosets(button):
             config.set_busy(True)
-            load_photosets_config.enabled = False
+            config['photoSetName'].enabled = False
             account_section.enabled = False
             username_config.apply()
-            status_label.value = _('Logging in, please wait...')
+            config['status'].value = _('Logging in, please wait...')
             conduit.GLOBALS.syncManager.run_blocking_dataprovider_function_calls(
                 self, _login_finished, self._login)
 
@@ -311,6 +311,7 @@ class FlickrTwoWay(Image.ImageTwoWay):
         username_config.connect('value-changed',
             lambda item, initial, value: load_photosets_config.set_enabled(bool(value)))
         status_label = config.add_item(None, 'label',
+            name = 'status',
             initial_value = self.status,
             use_markup = True,
             xalignment = 0.5,
