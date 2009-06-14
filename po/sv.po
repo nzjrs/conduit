@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: conduit\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-26 23:55+0100\n"
-"PO-Revision-Date: 2009-03-26 23:55+0100\n"
+"POT-Creation-Date: 2009-06-14 11:15+0200\n"
+"PO-Revision-Date: 2009-06-14 11:49+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -268,7 +268,7 @@ msgstr "Konversioner tillgängliga"
 
 #: ../conduit/gtkui/UI.py:383
 #: ../conduit/gtkui/Tree.py:348
-#: ../conduit/modules/FileModule/FileConfiguration.py:105
+#: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
 msgstr "Namn"
 
@@ -322,7 +322,7 @@ msgstr "Synkronisering"
 msgid "Description"
 msgstr "Beskrivning"
 
-#: ../conduit/gtkui/ConfigItems.py:690
+#: ../conduit/gtkui/ConfigItems.py:729
 #, python-format
 msgid "Total: %d"
 msgstr "Totalt: %d"
@@ -331,51 +331,51 @@ msgstr "Totalt: %d"
 msgid "Configure"
 msgstr "Konfigurera"
 
-#: ../conduit/dataproviders/DataProvider.py:19
+#: ../conduit/dataproviders/DataProvider.py:20
 msgid "Ready"
 msgstr "Redo"
 
-#: ../conduit/dataproviders/DataProvider.py:20
+#: ../conduit/dataproviders/DataProvider.py:21
 msgid "New data to sync"
 msgstr "Nytt data att synkronisera"
 
-#: ../conduit/dataproviders/DataProvider.py:21
+#: ../conduit/dataproviders/DataProvider.py:22
 msgid "Refreshing..."
 msgstr "Uppdaterar..."
 
-#: ../conduit/dataproviders/DataProvider.py:22
+#: ../conduit/dataproviders/DataProvider.py:23
 msgid "Refreshed OK"
 msgstr "Uppdatering OK"
 
-#: ../conduit/dataproviders/DataProvider.py:23
+#: ../conduit/dataproviders/DataProvider.py:24
 msgid "Error Refreshing"
 msgstr "Fel vid uppdatering"
 
-#: ../conduit/dataproviders/DataProvider.py:24
+#: ../conduit/dataproviders/DataProvider.py:25
 msgid "Synchronizing..."
 msgstr "Synkroniserar..."
 
-#: ../conduit/dataproviders/DataProvider.py:25
+#: ../conduit/dataproviders/DataProvider.py:26
 msgid "Synchronized OK"
 msgstr "Synkronisering OK"
 
-#: ../conduit/dataproviders/DataProvider.py:26
+#: ../conduit/dataproviders/DataProvider.py:27
 msgid "Error Synchronizing"
 msgstr "Fel vid synkronisering"
 
-#: ../conduit/dataproviders/DataProvider.py:27
+#: ../conduit/dataproviders/DataProvider.py:28
 msgid "Synchronization Skipped"
 msgstr "Synkroniseringen hoppades över"
 
-#: ../conduit/dataproviders/DataProvider.py:28
+#: ../conduit/dataproviders/DataProvider.py:29
 msgid "Synchronization Cancelled"
 msgstr "Synkroniseringen avbröts"
 
-#: ../conduit/dataproviders/DataProvider.py:29
+#: ../conduit/dataproviders/DataProvider.py:30
 msgid "Synchronization Conflict"
 msgstr "Konflikt i synkronisering"
 
-#: ../conduit/dataproviders/DataProvider.py:30
+#: ../conduit/dataproviders/DataProvider.py:31
 msgid "Not Configured"
 msgstr "Inte konfigurerad"
 
@@ -444,6 +444,7 @@ msgid "Synchronize your Facebook photos"
 msgstr "Synkronisera dina Facebook-foton"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:124
+#: ../conduit/modules/FlickrModule/FlickrModule.py:282
 msgid "Loading album list..."
 msgstr "Läser in albumlista..."
 
@@ -467,36 +468,36 @@ msgstr "RSS-kanal"
 msgid "Synchronize data from RSS enclosures"
 msgstr "Synkronisera data från RSS-bilagor"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:99
+#: ../conduit/modules/FileModule/FileConfiguration.py:111
 msgid "Icon"
 msgstr "Ikon"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:111
+#: ../conduit/modules/FileModule/FileConfiguration.py:123
 msgid "Items"
 msgstr "Objekt"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:137
+#: ../conduit/modules/FileModule/FileConfiguration.py:149
 #, python-format
 msgid "<i>Contains %s files</i>"
 msgstr "<i>Innehåller %s filer</i>"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:228
+#: ../conduit/modules/FileModule/FileConfiguration.py:247
 msgid "Include file..."
 msgstr "Inkludera fil..."
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:238
+#: ../conduit/modules/FileModule/FileConfiguration.py:257
 msgid "All files"
 msgstr "Alla filer"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:253
+#: ../conduit/modules/FileModule/FileConfiguration.py:272
 msgid "Include folder..."
 msgstr "Inkludera mapp..."
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:298
+#: ../conduit/modules/FileModule/FileConfiguration.py:317
 msgid "Please Name All Folders"
 msgstr "Namnge alla mappar"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:299
+#: ../conduit/modules/FileModule/FileConfiguration.py:318
 msgid "All folders require a descriptive name. To name a folder simply click on it"
 msgstr "Alla mappar kräver ett beskrivande namn. Klicka på en mapp för att namnge den"
 
@@ -508,13 +509,25 @@ msgstr "Filer"
 msgid "Source for synchronizing multiple files"
 msgstr "Källa för synkronisering av flera filer"
 
-#: ../conduit/modules/FileModule/FileModule.py:63
+#: ../conduit/modules/FileModule/FileModule.py:96
 msgid "Folder"
 msgstr "Mapp"
 
-#: ../conduit/modules/FileModule/FileModule.py:64
+#: ../conduit/modules/FileModule/FileModule.py:97
 msgid "Synchronize folders"
 msgstr "Synkronisera mappar"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:26
+msgid "Firefox 3 Bookmarks"
+msgstr "Firefox 3-bokmärken"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:27
+msgid "Syncronize your Firefox 3 Bookmarks"
+msgstr "Synkronisera dina Firefox 3-bokmärken"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:87
+msgid "Firefox Profile"
+msgstr "Firefox-profil"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:76
 msgid "Flickr"
@@ -523,6 +536,46 @@ msgstr "Flickr"
 #: ../conduit/modules/FlickrModule/FlickrModule.py:77
 msgid "Synchronize your Flickr.com photos"
 msgstr "Synkronisera dina Flickr.com-foton"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:287
+msgid "Failed to connect."
+msgstr "Misslyckades med att ansluta."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:290
+msgid "Album names loaded."
+msgstr "Albumnamn inlästa."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:292
+msgid "Failed to login."
+msgstr "Misslyckades med att logga in."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:303
+msgid "Logging in, please wait..."
+msgstr "Loggar in, vänta..."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:307
+msgid "Account details"
+msgstr "Kontodetaljer"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:318
+msgid "Authenticate"
+msgstr "Autentisera"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:322
+msgid "Saved photo settings"
+msgstr "Inställningar för sparat foto"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:327
+msgid "Resize photos"
+msgstr "Ändra storlek på foton"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+msgid "Do not resize"
+msgstr "Ändra inte storlek"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:331
+msgid "Photos are public"
+msgstr "Foton är publika"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:25
 msgid "F-Spot"
@@ -556,69 +609,61 @@ msgstr "Synkronisera dina programinställningar"
 msgid "Applications to Synchronize"
 msgstr "Program att synkronisera"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:370
+#: ../conduit/modules/GoogleModule/GoogleModule.py:399
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
 msgstr "Google Kalender"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:371
+#: ../conduit/modules/GoogleModule/GoogleModule.py:400
 msgid "Synchronize your Google Calendar"
 msgstr "Synkronisera din Google Kalender"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:556
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:6
+#: ../conduit/modules/GoogleModule/GoogleModule.py:582
 msgid "Picasa"
 msgstr "Picasa"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:557
+#: ../conduit/modules/GoogleModule/GoogleModule.py:583
 msgid "Synchronize your Google Picasa photos"
 msgstr "Synkronisera dina Google Picasa-foton"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:804
+#: ../conduit/modules/GoogleModule/GoogleModule.py:745
 msgid "Google Contacts"
 msgstr "Google-kontakter"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:805
+#: ../conduit/modules/GoogleModule/GoogleModule.py:746
 msgid "Synchronize your Google Mail contacts"
 msgstr "Synkronisera dina Google Mail-kontakter"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1165
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:5
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1076
 msgid "Google Documents"
 msgstr "Google Dokument"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1166
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1077
 msgid "Synchronize your Google Documents"
 msgstr "Synkronisera dina Google Dokument"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1443
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1322
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:69
 msgid "Unknown"
 msgstr "Okänt"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1444
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1323
 msgid "miscellaneous"
 msgstr "diverse"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1445
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1324
 msgid "No description."
 msgstr "Ingen beskrivning."
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1454
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1333
 msgid "YouTube"
 msgstr "YouTube"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1455
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1334
 msgid "Synchronize data from YouTube"
 msgstr "Synkronisera data från YouTube"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:1
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:1
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:1
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:1
-#: ../conduit/modules/SmugMugModule/config.glade.h:1
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:1
 msgid "<b>Account Details</b>"
 msgstr "<b>Kontodetaljer</b>"
 
@@ -627,7 +672,6 @@ msgid "Calendar:"
 msgstr "Kalender:"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:4
 msgid "Email:"
 msgstr "E-post:"
 
@@ -636,87 +680,10 @@ msgid "Load Calendars"
 msgstr "Läs in kalendrar"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:6
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:5
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:6
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:4
-#: ../conduit/modules/SmugMugModule/config.glade.h:4
 msgid "Password:"
 msgstr "Lösenord:"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:2
-msgid "<b>Downloaded Document Format</b>"
-msgstr "<b>Hämtade dokumentformat</b>"
-
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:3
-msgid "Documents"
-msgstr "Dokument"
-
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:7
-msgid "Presentations"
-msgstr "Presentationer"
-
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:8
-msgid "Spreadsheets"
-msgstr "Kalkylblad"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:2
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:2
-#: ../conduit/modules/SmugMugModule/config.glade.h:2
-msgid "<b>Saved Photo Settings</b>"
-msgstr "<b>Inställningar för sparat foto</b>"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:3
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:3
-#: ../conduit/modules/SmugMugModule/config.glade.h:3
-msgid "Album:"
-msgstr "Album:"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:4
-msgid "Login"
-msgstr "Inloggning"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:7
-#: ../conduit/modules/SmugMugModule/config.glade.h:5
-msgid "Resize Photos:"
-msgstr "Ändra storlek på foton:"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:8
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:9
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:6
-#: ../conduit/modules/SmugMugModule/config.glade.h:7
-msgid "Username:"
-msgstr "Användarnamn:"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:2
-msgid "<b>Download Videos</b>"
-msgstr "<b>Hämta ner videor</b>"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:3
-msgid "Favorites of above user"
-msgstr "Favoriter för ovanstående användare"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:4
-msgid "Max retrieved videos (0 is unlimited):"
-msgstr "Maximalt hämtade videor (0 är obegränsat):"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:5
-msgid "Most viewed"
-msgstr "Mest visade"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:7
-msgid "Top rated"
-msgstr "Högst betygsatta"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:8
-msgid "Uploaded by above user"
-msgstr "Uppskickad av ovanstående användare"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:10
-msgid "YouTube Source"
-msgstr "YouTube-källa"
-
-#: ../conduit/modules/iPodModule/iPodModule.py:694
+#: ../conduit/modules/iPodModule/iPodModule.py:695
 #: ../conduit/modules/N800Module/N800Module.py:77
 msgid "Encoding"
 msgstr "Kodning"
@@ -800,7 +767,6 @@ msgid "Synchronize songs from your Rhythmbox playlists"
 msgstr "Synkronisera låtar från dina Rhythmbox-spellistor"
 
 #: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:26
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:5
 msgid "Shutterfly"
 msgstr "Shutterfly"
 
@@ -813,7 +779,6 @@ msgid "%Y-%m-%d %H:%M:%S"
 msgstr "%Y-%m-%d %H.%M.%S"
 
 #: ../conduit/modules/SmugMugModule/SmugMugModule.py:28
-#: ../conduit/modules/SmugMugModule/config.glade.h:6
 msgid "SmugMug"
 msgstr "SmugMug"
 
@@ -829,98 +794,76 @@ msgstr "Zoto"
 msgid "Synchronize your Zoto photos"
 msgstr "Synkronisera dina Zoto-foton"
 
-#: ../conduit/modules/FileModule/config.glade.h:1
-msgid "<b>Items to Synchronize</b>"
-msgstr "<b>Objekt att synkronisera</b>"
-
-#: ../conduit/modules/FileModule/config.glade.h:2
-msgid "Add Directory"
-msgstr "Lägg till katalog"
-
-#: ../conduit/modules/FileModule/config.glade.h:3
-msgid "Add File"
-msgstr "Lägg till fil"
-
-#: ../conduit/modules/FileModule/config.glade.h:4
-msgid "Advanced"
-msgstr "Avancerat"
-
-#: ../conduit/modules/FileModule/config.glade.h:5
-msgid "File Configuration"
-msgstr "Filkonfiguration"
-
-#: ../conduit/modules/FileModule/config.glade.h:6
-msgid "Folder Configuration"
-msgstr "Mappkonfiguration"
-
-#: ../conduit/modules/FileModule/config.glade.h:7
-msgid "Folder Location:"
-msgstr "Mapplats:"
-
-#: ../conduit/modules/FileModule/config.glade.h:8
-msgid "Follow Symbolic Links"
-msgstr "Följ symboliska länkar"
-
-#: ../conduit/modules/FileModule/config.glade.h:9
-msgid "Ignore File Modification Times"
-msgstr "Ignorera filändringstider"
-
-#: ../conduit/modules/FileModule/config.glade.h:10
-msgid "Include Hidden Files"
-msgstr "Inkludera dolda filer"
-
-#: ../conduit/modules/FileModule/config.glade.h:11
-msgid "Select A Folder"
-msgstr "Välj en mapp"
-
-#: ../conduit/modules/Firefox3Module/Firefox3Module.py:26
-msgid "Firefox 3 Bookmarks"
-msgstr "Firefox 3-bokmärken"
-
-#: ../conduit/modules/Firefox3Module/Firefox3Module.py:27
-msgid "Syncronize your Firefox 3 Bookmarks"
-msgstr "Synkronisera dina Firefox 3-bokmärken"
-
-#: ../conduit/modules/Firefox3Module/Firefox3Module.py:87
-msgid "Firefox Profile"
-msgstr "Firefox-profil"
-
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:2
-msgid "<b>Connection Settings</b>"
-msgstr "<b>Anslutningsinställningar</b>"
-
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:3
-msgid "<b>Storage Location</b>"
-msgstr "<b>Lagringsplats</b>"
-
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:4
-msgid "AWS Access Key:"
-msgstr "Åtkomstnyckel för AWS:"
-
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:5
-msgid "AWS Secret Access Key:"
-msgstr "Hemlig åtkomstnyckel för AWS:"
-
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:6
-msgid "Amazon S3"
-msgstr "Amazon S3"
-
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:7
-msgid "Bucket name:"
-msgstr "Bucket-namn:"
-
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:8
-msgid "Use SSL:"
-msgstr "Använd SSL:"
-
-#: ../conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade.h:9
-msgid ""
-"Yes\n"
-"No"
-msgstr ""
-"Ja\n"
-"Nej"
-
+#~ msgid "<b>Downloaded Document Format</b>"
+#~ msgstr "<b>Hämtade dokumentformat</b>"
+#~ msgid "Documents"
+#~ msgstr "Dokument"
+#~ msgid "Presentations"
+#~ msgstr "Presentationer"
+#~ msgid "Spreadsheets"
+#~ msgstr "Kalkylblad"
+#~ msgid "Album:"
+#~ msgstr "Album:"
+#~ msgid "Login"
+#~ msgstr "Inloggning"
+#~ msgid "Username:"
+#~ msgstr "Användarnamn:"
+#~ msgid "<b>Download Videos</b>"
+#~ msgstr "<b>Hämta ner videor</b>"
+#~ msgid "Favorites of above user"
+#~ msgstr "Favoriter för ovanstående användare"
+#~ msgid "Max retrieved videos (0 is unlimited):"
+#~ msgstr "Maximalt hämtade videor (0 är obegränsat):"
+#~ msgid "Most viewed"
+#~ msgstr "Mest visade"
+#~ msgid "Top rated"
+#~ msgstr "Högst betygsatta"
+#~ msgid "Uploaded by above user"
+#~ msgstr "Uppskickad av ovanstående användare"
+#~ msgid "YouTube Source"
+#~ msgstr "YouTube-källa"
+#~ msgid "<b>Items to Synchronize</b>"
+#~ msgstr "<b>Objekt att synkronisera</b>"
+#~ msgid "Add Directory"
+#~ msgstr "Lägg till katalog"
+#~ msgid "Add File"
+#~ msgstr "Lägg till fil"
+#~ msgid "Advanced"
+#~ msgstr "Avancerat"
+#~ msgid "File Configuration"
+#~ msgstr "Filkonfiguration"
+#~ msgid "Folder Configuration"
+#~ msgstr "Mappkonfiguration"
+#~ msgid "Folder Location:"
+#~ msgstr "Mapplats:"
+#~ msgid "Follow Symbolic Links"
+#~ msgstr "Följ symboliska länkar"
+#~ msgid "Ignore File Modification Times"
+#~ msgstr "Ignorera filändringstider"
+#~ msgid "Include Hidden Files"
+#~ msgstr "Inkludera dolda filer"
+#~ msgid "Select A Folder"
+#~ msgstr "Välj en mapp"
+#~ msgid "<b>Connection Settings</b>"
+#~ msgstr "<b>Anslutningsinställningar</b>"
+#~ msgid "<b>Storage Location</b>"
+#~ msgstr "<b>Lagringsplats</b>"
+#~ msgid "AWS Access Key:"
+#~ msgstr "Åtkomstnyckel för AWS:"
+#~ msgid "AWS Secret Access Key:"
+#~ msgstr "Hemlig åtkomstnyckel för AWS:"
+#~ msgid "Amazon S3"
+#~ msgstr "Amazon S3"
+#~ msgid "Bucket name:"
+#~ msgstr "Bucket-namn:"
+#~ msgid "Use SSL:"
+#~ msgstr "Använd SSL:"
+#~ msgid ""
+#~ "Yes\n"
+#~ "No"
+#~ msgstr ""
+#~ "Ja\n"
+#~ "Nej"
 #~ msgid "<b>Saved Note Settings</b>"
 #~ msgstr "<b>Inställningar för sparad anteckning</b>"
 #~ msgid "API key:"
