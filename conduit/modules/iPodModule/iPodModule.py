@@ -63,7 +63,7 @@ def _string_to_unqiue_file(txt, base_uri, prefix, postfix=''):
     temp = Utils.new_tempfile(txt)
     uri = os.path.join(base_uri, prefix+temp.get_filename()+postfix)
     temp.transfer(uri, True)
-    temp.set_UID(uri)
+    temp.set_UID(os.path.basename(uri))
     return temp.get_rid()
 
 class iPodFactory(VolumeFactory.VolumeFactory):
