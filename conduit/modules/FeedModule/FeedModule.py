@@ -111,29 +111,29 @@ class RSSSource(DataProvider.DataSource):
 
     def config_setup(self, config):
         #FIXME: Add Randomize
-        config.add_section("Feed details")
-        config.add_item("Feed address", "text",
+        config.add_section(_("Feed details"))
+        config.add_item(_("Feed address"), "text",
             config_name = 'feedUrl',
         )
-        config.add_section("Enclosure settings")
-        limit_config = config.add_item("Limit downloaded enclosures", "check",
+        config.add_section(_("Enclosure settings"))
+        limit_config = config.add_item(_("Limit downloaded enclosures"), "check",
             config_name = 'limit'
         )
         limit_config.connect("value-changed", 
             lambda item, changed, value: limit_spin_config.set_enabled(value)
         )
-        limit_spin_config = config.add_item("Limit to", "spin",
+        limit_spin_config = config.add_item(_("Limit to"), "spin",
             config_name = 'limitNum',
             enabled = self.limit,
         )
-        random_config = config.add_item("Randomize enclosures", "check",
+        random_config = config.add_item(_("Randomize enclosures"), "check",
             config_name = 'randomize'
         )
         
-        config.add_section("Download types")
-        config.add_item("Download audio files", "check", config_name = "downloadAudio")
-        config.add_item("Download video files", "check", config_name = "downloadVideo")
-        config.add_item("Download photo files", "check", config_name = "downloadPhotos")
+        config.add_section(_("Download types"))
+        config.add_item(_("Download audio files"), "check", config_name = "downloadAudio")
+        config.add_item(_("Download video files"), "check", config_name = "downloadVideo")
+        config.add_item(_("Download photo files"), "check", config_name = "downloadPhotos")
     
     def refresh(self):
         DataProvider.DataSource.refresh(self)

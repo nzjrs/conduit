@@ -142,18 +142,18 @@ class FacebookSink(Image.ImageSink):
             conduit.GLOBALS.syncManager.run_blocking_dataprovider_function_calls(
                 self, _login_finished, self._login)
 
-        status_label = config.add_item('Status', 'label',
+        status_label = config.add_item(_('Status'), 'label',
             initial_value = "Logged in" if self.fapi.uid else "Not logged in",
             use_markup = True,
         )
 
-        album_section = config.add_section("Album")
-        albums_config = config.add_item("Album name", "combotext",
+        album_section = config.add_section(_("Album"))
+        albums_config = config.add_item(_("Album name"), "combotext",
             config_name = "albumname",
             choices = [],
         )
         
-        load_albums_config = config.add_item("Load albums", "button",
+        load_albums_config = config.add_item(_("Load albums"), "button",
             initial_value = _load_albums
         )                    
         

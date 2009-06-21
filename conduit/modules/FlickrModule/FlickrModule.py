@@ -305,7 +305,7 @@ class FlickrTwoWay(Image.ImageTwoWay):
                 self, _login_finished, self._login)
 
         account_section = config.add_section(_('Account details'))
-        username_config = config.add_item('Username', 'text',
+        username_config = config.add_item(_('Username'), 'text',
             config_name = 'username',
         )
         username_config.connect('value-changed',
@@ -325,7 +325,7 @@ class FlickrTwoWay(Image.ImageTwoWay):
             choices = [],
         )
         config.add_item(_("Resize photos"), "combo",
-            choices = [("None", _("Do not resize")), "640x480", "800x600", "1024x768"],
+            choices = [("None", _("Do not resize")), _("640x480"), _("800x600"), _("1024x768")],
             config_name = "imageSize"
         )
         config.add_item(_('Photos are public'), 'check',

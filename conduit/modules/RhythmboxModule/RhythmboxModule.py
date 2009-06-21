@@ -113,8 +113,8 @@ class RhythmboxSource(DataProvider.DataSource):
     def config_setup(self, config):
         self.allPlaylists = [(name, name) for name, songs in self._parse_playlists(RhythmboxSource.PLAYLIST_PATH)]
 
-        config.add_section("Playlists")
-        config.add_item("Playlists", "list", 
+        config.add_section(_("Playlists"))
+        config.add_item(_("Playlists"), "list", 
             config_name = "playlists",
             choices = self.allPlaylists
         )

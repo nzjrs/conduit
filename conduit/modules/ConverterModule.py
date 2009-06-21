@@ -13,6 +13,8 @@ import conduit.datatypes.Note as Note
 import conduit.datatypes.Setting as Setting
 import conduit.datatypes.Bookmark as Bookmark
 
+from gettext import gettext as _
+
 MODULES = {
         "EmailConverter" :      { "type": "converter" },
         "NoteConverter" :       { "type": "converter" },
@@ -84,7 +86,7 @@ class NoteConverter(TypeConverter.Converter):
 
     def text_to_note(self, text, **kwargs):
         n = Note.Note(
-                    title="Note-"+Utils.random_string(),
+                    title=_("Note-")+Utils.random_string(),
                     contents=text
                     )
         return n

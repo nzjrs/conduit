@@ -176,8 +176,8 @@ class IPodNoteTwoWay(IPodBase):
     LUID is the note title
     """
 
-    _name_ = "Notes"
-    _description_ = "Synchronize your iPod notes"
+    _name_ = _("Notes")
+    _description_ = _("Synchronize your iPod notes")
     _module_type_ = "twoway"
     _in_type_ = "note"
     _out_type_ = "note"
@@ -292,8 +292,8 @@ class IPodNoteTwoWay(IPodBase):
 
 class IPodContactsTwoWay(IPodBase):
 
-    _name_ = "Contacts"
-    _description_ = "Synchronize your iPod contacts"
+    _name_ = _("Contacts")
+    _description_ = _("Synchronize your iPod contacts")
     _module_type_ = "twoway"
     _in_type_ = "contact"
     _out_type_ = "contact"
@@ -328,8 +328,8 @@ class IPodContactsTwoWay(IPodBase):
 
 class IPodCalendarTwoWay(IPodBase):
 
-    _name_ = "Calendar"
-    _description_ = "Synchronize your iPod calendar"
+    _name_ = _("Calendar")
+    _description_ = _("Synchronize your iPod calendar")
     _module_type_ = "twoway"
     _in_type_ = "event"
     _out_type_ = "event"
@@ -364,8 +364,8 @@ class IPodCalendarTwoWay(IPodBase):
 
 class IPodPhotoSink(IPodBase):
 
-    _name_ = "Photos"
-    _description_ = "Synchronize your iPod photos"
+    _name_ = _("Photos")
+    _description_ = _("Synchronize your iPod photos")
     _module_type_ = "sink"
     _in_type_ = "file/photo"
     _out_type_ = "file/photo"
@@ -458,11 +458,11 @@ class IPodPhotoSink(IPodBase):
             self._delete_album(album_config.get_value())
             album_config.choices = self._get_photo_albums()
 
-        album_config = config.add_item('Album', 'combotext',
+        album_config = config.add_item(_('Album'), 'combotext',
             config_name = 'albumName',
             choices = self._get_photo_albums(),
         )
-        config.add_item("Delete", "button",
+        config.add_item(_("Delete"), "button",
             initial_value = _delete_click
         )    
 
@@ -808,12 +808,12 @@ class IPodMediaTwoWay(IPodBase):
         encodings = [(enc_name, enc_opts.get('description', None) or enc_name)
                       for enc_name, enc_opts in self.encodings.iteritems()]
         
-        config.add_section("Conversion options")
-        config.add_item("Encoding", "combo", 
+        config.add_section(_("Conversion options"))
+        config.add_item(_("Encoding"), "combo", 
             config_name = "encoding",
             choices = encodings
         )
-        config.add_item("Keep converted files", "check",
+        config.add_item(_("Keep converted files"), "check",
             config_name = "keep_converted"
         )
 
@@ -843,8 +843,8 @@ IPOD_AUDIO_ENCODINGS = {
 
 class IPodMusicTwoWay(IPodMediaTwoWay):
 
-    _name_ = "iPod Music"
-    _description_ = "Synchronize your iPod music"
+    _name_ = _("iPod Music")
+    _description_ = _("Synchronize your iPod music")
     _module_type_ = "twoway"
     _in_type_ = "file/audio"
     _out_type_ = "file/audio"
@@ -879,8 +879,8 @@ IPOD_VIDEO_ENCODINGS = {
 
 class IPodVideoTwoWay(IPodMediaTwoWay):
 
-    _name_ = "iPod Video"
-    _description_ = "Synchronize your iPod videos"
+    _name_ = _("iPod Video")
+    _description_ = _("Synchronize your iPod videos")
     _module_type_ = "twoway"
     _in_type_ = "file/video"
     _out_type_ = "file/video"
@@ -904,11 +904,11 @@ class IPodVideoTwoWay(IPodMediaTwoWay):
 
     def config_setup(self, config):
         IPodMediaTwoWay.config_setup(self, config)
-        video_kinds = [('movie', 'Movie'), 
-                       ('musicvideo', 'Music Video'),
-                       ('tvshow', 'TV Show')]            
+        video_kinds = [('movie', _('Movie')), 
+                       ('musicvideo', _('Music Video')),
+                       ('tvshow', _('TV Show'))]            
         config.add_section()
-        config.add_item("Video kind", "combo",
+        config.add_item(_("Video kind"), "combo",
             config_name = "video_kind",
             choices = video_kinds)
         

@@ -7,14 +7,16 @@ import conduit.utils as Utils
 import conduit.dataproviders.File as FileDataProvider
 import conduit.dataproviders.DataProvider as DataProvider
 
+from gettext import gettext as _
+
 MODULES = {
     "DesktopWallpaperDataProvider" : { "type": "dataprovider" }
 }
 
 class DesktopWallpaperDataProvider(FileDataProvider.FolderTwoWay):
 
-    _name_ = "Wallpaper"
-    _description_ = "Changes your Desktop Wallpaper"
+    _name_ = _("Wallpaper")
+    _description_ = _("Changes your Desktop Wallpaper")
     _category_ = conduit.dataproviders.CATEGORY_MISC
     _module_type_ = "sink"
     _in_type_ = "file"

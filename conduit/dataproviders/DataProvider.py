@@ -17,18 +17,20 @@ import conduit.utils as Utils
 import conduit.Settings as Settings
 import conduit.XMLSerialization as XMLSerialization
 
-STATUS_NONE = _("Ready")
-STATUS_CHANGE_DETECTED = _("New data to sync")
-STATUS_REFRESH = _("Refreshing...")
-STATUS_DONE_REFRESH_OK = _("Refreshed OK")
-STATUS_DONE_REFRESH_ERROR = _("Error Refreshing")
-STATUS_SYNC = _("Synchronizing...")
-STATUS_DONE_SYNC_OK = _("Synchronized OK")
-STATUS_DONE_SYNC_ERROR = _("Error Synchronizing")
-STATUS_DONE_SYNC_SKIPPED = _("Synchronization Skipped")
-STATUS_DONE_SYNC_CANCELLED = _("Synchronization Cancelled")
-STATUS_DONE_SYNC_CONFLICT = _("Synchronization Conflict")
-STATUS_DONE_SYNC_NOT_CONFIGURED = _("Not Configured")
+def N_(message): return message
+
+STATUS_NONE = N_("Ready")
+STATUS_CHANGE_DETECTED = N_("New data to sync")
+STATUS_REFRESH = N_("Refreshing...")
+STATUS_DONE_REFRESH_OK = N_("Refreshed OK")
+STATUS_DONE_REFRESH_ERROR = N_("Error Refreshing")
+STATUS_SYNC = N_("Synchronizing...")
+STATUS_DONE_SYNC_OK = N_("Synchronized OK")
+STATUS_DONE_SYNC_ERROR = N_("Error Synchronizing")
+STATUS_DONE_SYNC_SKIPPED = N_("Synchronization Skipped")
+STATUS_DONE_SYNC_CANCELLED = N_("Synchronization Cancelled")
+STATUS_DONE_SYNC_CONFLICT = N_("Synchronization Conflict")
+STATUS_DONE_SYNC_NOT_CONFIGURED = N_("Not Configured")
 
 class DataProviderBase(gobject.GObject):
     """

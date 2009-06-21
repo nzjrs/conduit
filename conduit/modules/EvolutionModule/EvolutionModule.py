@@ -104,7 +104,7 @@ class EvoBase(DataProvider.TwoWay):
         self.uids = None
         
     def config_setup(self, config, name):
-        config.add_section("Select %s" % name)
+        config.add_section(_("Select %s") % name)
         #If we cant find the currently selected item in the availiable list,
         #selects the first we can find.
         for name, uri in self.allSourceURIs:

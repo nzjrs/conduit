@@ -214,13 +214,13 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
 
     def _make_hint(self, hint, timeout=4):
         if Knowledge.HINT_TEXT[hint][2]:
-            buttons = [("Show me",hint)]
+            buttons = [(_("Show me"), hint)]
         else:
             buttons = []
         h = self.msg.new_from_text_and_icon(
                             gtk.STOCK_INFO,
-                            Knowledge.HINT_TEXT[hint][0],
-                            Knowledge.HINT_TEXT[hint][1],
+                            _(Knowledge.HINT_TEXT[hint][0]),
+                            _(Knowledge.HINT_TEXT[hint][1]),
                             buttons=buttons,
                             timeout=timeout)
         h.connect("response", self._do_hint)

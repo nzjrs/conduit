@@ -13,6 +13,8 @@ import conduit.datatypes.Note as Note
 import conduit.datatypes.File as File
 import conduit.utils as Utils
 
+from gettext import gettext as _
+
 MODULES = {
 	"TomboyNoteTwoWay" :        { "type": "dataprovider"    },
 	"TomboyNoteConverter" :     { "type": "converter"       }
@@ -98,8 +100,8 @@ class TomboyNoteTwoWay(DataProvider.TwoWay, AutoSync.AutoSync):
     """
     LUID is the tomboy uid string
     """
-    _name_ = "Tomboy Notes"
-    _description_ = "Synchronize your Tomboy notes"
+    _name_ = _("Tomboy Notes")
+    _description_ = _("Synchronize your Tomboy notes")
     _category_ = conduit.dataproviders.CATEGORY_NOTES
     _module_type_ = "twoway"
     _in_type_ = "note/tomboy"
