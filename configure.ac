@@ -30,9 +30,9 @@ AM_PATH_PYTHON(2.4)
 FILE_IMPL="GIO"
 
 AC_ARG_WITH([file_impl],
-            AC_HELP_STRING([--with-file-impl], [GIO (default), GnomeVfs, Python]))
+            AC_HELP_STRING([--with-file-impl], [GIO (default), Python]))
 
-if test "$with_file_impl" = "GnomeVfs" || test "$with_file_impl" = "Python" ; then
+if test "$with_file_impl" = "Python" ; then
 	FILE_IMPL=$with_file_impl
 fi
 
@@ -63,8 +63,6 @@ AM_CHECK_PYMOD_VERSION([dbus], [__version__], [0.80.0], , AC_MSG_ERROR([Python m
 
 if test $FILE_IMPL = "GIO" ; then
 	AM_CHECK_PYMOD([gio], , , AC_MSG_ERROR([Python module gio required to run Conduit]))
-elif test $FILE_IMPL = "GnomeVfs" ; then
-	AM_CHECK_PYMOD([gnomevfs], , , AC_MSG_ERROR([Python module gnomevfs required to run Conduit]))
 fi
 
 ################################################################################

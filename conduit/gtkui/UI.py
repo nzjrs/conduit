@@ -80,10 +80,6 @@ class MainWindow:
         Constructs the mainwindow. Throws up a splash screen to cover 
         the most time consuming pieces
         """
-        if conduit.FILE_IMPL == "GnomeVfs":
-            import gnome.ui
-            gnome.ui.authentication_manager_init()        
-
         #add some additional dirs to the icon theme search path so that
         #modules can provider their own icons
         icon_dirs = [

@@ -32,10 +32,7 @@ class File(DataType.DataType):
         #you can override the file implmentation at runtime
         #for testing purposes only
         implName = kwargs.get("implName", conduit.FILE_IMPL)
-        if implName == "GnomeVfs":
-            import conduit.platform.FileGnomeVfs as FileImpl
-            self.FileImpl = FileImpl
-        elif implName == "GIO":
+        if implName == "GIO":
             import conduit.platform.FileGio as FileImpl
             self.FileImpl = FileImpl
         elif implName == "Python":
@@ -447,10 +444,7 @@ class File(DataType.DataType):
         os.close(fd)
 
         implName = conduit.FILE_IMPL
-        if implName == "GnomeVfs":
-            import conduit.platform.FileGnomeVfs as FileImpl
-            self.FileImpl = FileImpl
-        elif implName == "GIO":
+        if implName == "GIO":
             import conduit.platform.FileGio as FileImpl
             self.FileImpl = FileImpl
         elif implName == "Python":

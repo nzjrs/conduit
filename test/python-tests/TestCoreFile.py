@@ -14,7 +14,7 @@ import tempfile
 if os.environ.has_key("CONDUIT_FILE_IMPL"):
     impls = (os.environ["CONDUIT_FILE_IMPL"],)
 else:
-    impls = ("GIO", "GnomeVfs")
+    impls = ("GIO", )
 
 for impl in impls:
     ok("--- TESTING FILE IMPL: %s" % impl, True)

@@ -8,9 +8,7 @@ import urllib
 import conduit
 import conduit.utils.Singleton as Singleton
 
-if conduit.FILE_IMPL == "GnomeVfs":
-    import conduit.platform.FileGnomeVfs as FileImpl
-elif conduit.FILE_IMPL == "GIO":
+if conduit.FILE_IMPL == "GIO":
     import conduit.platform.FileGio as FileImpl
 elif conduit.FILE_IMPL == "Python":
     import conduit.platform.FilePython as FileImpl

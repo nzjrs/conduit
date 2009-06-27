@@ -3,7 +3,7 @@ from common import *
 import conduit.Vfs as Vfs
 import conduit.utils as Utils
 
-for impl in ("GIO", "GnomeVfs",):
+for impl in ("GIO",):
     conduit.FILE_IMPL = impl
     reload(Vfs)
     reload(Utils)

@@ -50,7 +50,7 @@ else:
     SHARED_DATA_DIR =           os.path.join(DIRECTORY, "data")
     SHARED_MODULE_DIR =         os.path.join(DIRECTORY, "conduit", "modules")
     DESKTOP_FILE_DIR =          os.path.join(DIRECTORY, "data")
-                                #{GnomeVfs, GIO, Python}
+                                #{GIO, Python}
     FILE_IMPL =                 os.environ.get("CONDUIT_FILE_IMPL","GIO")
                                 #{gtkmozembed, webkit, system}
     BROWSER_IMPL =              os.environ.get("CONDUIT_BROWSER_IMPL","webkit")

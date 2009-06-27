@@ -43,7 +43,7 @@ import csv
 import optparse
 import time
 import datetime 
-import gnomevfs, gobject
+import gobject, gtk
 import StringIO
 from string import Template
 
@@ -1093,7 +1093,7 @@ if opts.create_release_email:
 	if opts.debug:
 		print '\nCreating email...' 
 
-	gnomevfs.url_show(url)
+	gtk.show_uri(gtk.gdk.Screen(), url, 0L)
 	
 if opts.upload:
 	upload_tarball()
