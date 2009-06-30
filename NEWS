@@ -1,6 +1,6 @@
 NEW in 0.3.17:
 ==============
-
+ * Fixed 575000, why am I asked to "name" folders in the "files" data provider?
 
 NEW in 0.3.16:
 ==============

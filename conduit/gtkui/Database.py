@@ -112,7 +112,11 @@ class GenericDBListStore(gtk.GenericTreeModel):
         Parameters:
             offset -- the rows offset from 0.
         """
-        (oid,) = self.db.select_one("SELECT oid FROM %s LIMIT 1 OFFSET %d" % (self.table, offset))
+        try:
+            (oid,) = self.db.select_one("SELECT oid FROM %s LIMIT 1 OFFSET %d" % (self.table, offset))
+        except TypeError:
+            #Stops a crash at exit when the db is closed before the UI
+            oid = None
         return oid
     
     @DB.lru_cache(0)
