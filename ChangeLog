@@ -1,3 +1,9 @@
+2009-07-15  Andrew Stormont  <astormont@svn.gnome.org>
+
+	* conduit/conduit.real:
+	* conduit/gtkui/UI.py:
+	Workaround for PyGTK bug on Mac OSX
+
 2009-04-17 John Stowers  <john.stowers@gmail.com>
 
 	* conduit/modules/NetworkModule/XMLRPCUtils.py:

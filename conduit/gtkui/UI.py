@@ -532,7 +532,13 @@ class MainWindow:
         """
         drop cb
         """
-        self.canvas.drag_get_data(context, context.targets[0], time)
+        if context.targets:
+            target = context.targets[0]
+        else:
+            # FIXME: work-around for a bug in PyGTK on OSX: 
+            # http://bugzilla.gnome.org/show_bug.cgi?id=588643
+            target = 'conduit/element-name'
+        self.canvas.drag_get_data(context, target, time)
         return True
         
     def drag_data_received_data(self, treeview, context, x, y, selection, info, etime):
