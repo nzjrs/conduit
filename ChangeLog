@@ -1,3 +1,8 @@
+2009-07-16  Andrew Stormont  <astormont@svn.gnome.org>
+
+	* conduit/modules/Firefox3Module/Firefox3Module.py:
+	Only load FF3 module if $HOME/.mozilla/firefox exists	
+
 2009-07-15  Andrew Stormont  <astormont@svn.gnome.org>
 
 	* conduit/conduit.real:
