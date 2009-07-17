@@ -14,9 +14,18 @@ import conduit.utils as Utils
 import conduit.datatypes.Bookmark as Bookmark
 import conduit.Exceptions as Exceptions
 
-FFDIR = os.path.expanduser(os.path.join("~",".mozilla","firefox"))
+FFDIR = None
+LINFFDIR = os.path.expanduser(os.path.join("~",".mozilla","firefox"))
+MACFFDIR = os.path.expanduser(os.path.join("~","Library","Application Support","Firefox"))
 
-if os.path.exists(FFDIR): 
+if os.path.exists(LINFFDIR):
+    FFDIR = LINFFDIR
+elif os.path.exists(MACFFDIR):
+    FFDIR = MACFFDIR
+else:
+    log.warn("Firefox 3 bookmarks support disabled")
+
+if FFDIR: 
     MODULES = {
         "Firefox3DataProviderSource" : { "type" : "dataprovider" },
     }
