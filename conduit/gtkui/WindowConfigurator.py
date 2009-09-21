@@ -35,17 +35,12 @@ class WindowConfigurator:
                           gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
                           (gtk.STOCK_REVERT_TO_SAVED, gtk.RESPONSE_CANCEL,
                            gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
-        #TODO: Unless we actually have a help to show, make the help button 
-        #disabled.
-        #BTW, modules should be able to define their own help
         self.dialog.set_has_separator(False)
-        #self.dialog.set_response_sensitive(gtk.RESPONSE_HELP, False)
         self.dialog.set_response_sensitive(gtk.RESPONSE_CANCEL, False)
         self.dialog.set_default_size(-1, -1)
-        #self.dialog.set_border_width(12)
         
         self.dialog_box = self.dialog.get_content_area()
-        align = gtk.Alignment()
+        align = gtk.Alignment(0.0, 0.0, 1.0, 1.0)
         align.set_padding(0, 8, 0, 0)
         align.add(self._make_config_widget())
         
