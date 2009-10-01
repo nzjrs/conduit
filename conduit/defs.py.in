@@ -11,7 +11,7 @@ DESKTOP_FILE_DIR = "@DESKTOPFILEDIR@"
 # Platform specific implementations
 #
 
-#{GnomeVfs, GIO, Python}
+#{GIO, Python}
 FILE_IMPL = "@FILE_IMPL@"
 
 #{gtkmozembed, webkit, system}

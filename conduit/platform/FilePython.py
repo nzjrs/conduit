@@ -9,6 +9,7 @@ log = logging.getLogger("platform.FilePython")
 
 class FileImpl(conduit.platform.File):
     SCHEMES = ("file://",)
+    NAME = "Python"
     def __init__(self, URI):
         self._path = URI.split("file://")[-1]
 

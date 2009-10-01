@@ -1,4 +1,3 @@
-import gconf
 import logging
 log = logging.getLogger( "modules.DesktopWallpaper")
 
@@ -7,14 +6,37 @@ import conduit.utils as Utils
 import conduit.dataproviders.File as FileDataProvider
 import conduit.dataproviders.DataProvider as DataProvider
 
-MODULES = {
-    "DesktopWallpaperDataProvider" : { "type": "dataprovider" }
-}
+from gettext import gettext as _
+
+(WPNONE,WPGNOME,WPMAC) = range(3)
+WPTYPE = WPNONE
+
+import sys
+
+if sys.platform == 'darwin':
+    try:
+        from appscript import app, mactypes
+        WPTYPE = WPMAC
+    except ImportError:
+        log.warn("Wallpaper syncing disabled, install py25-appscript")
+else:
+    try:
+        import gconf
+        WPTYPE = WPGNOME
+    except ImportError:
+        log.warn("Wallpaper syncing disabled, install python-gconf")
+
+if WPTYPE: 
+    MODULES = {
+        "DesktopWallpaperDataProvider" : { "type": "dataprovider" }
+    }
+else:
+    MODULES = {}
 
 class DesktopWallpaperDataProvider(FileDataProvider.FolderTwoWay):
 
-    _name_ = "Wallpaper"
-    _description_ = "Changes your Desktop Wallpaper"
+    _name_ = _("Wallpaper")
+    _description_ = _("Changes your Desktop Wallpaper")
     _category_ = conduit.dataproviders.CATEGORY_MISC
     _module_type_ = "sink"
     _in_type_ = "file"
@@ -41,7 +63,8 @@ class DesktopWallpaperDataProvider(FileDataProvider.FolderTwoWay):
                             followSymlinks=False
                             )
 
-        self._client = gconf.client_get_default()
+        if WPTYPE == WPGNOME:
+            self._client = gconf.client_get_default()
 
     def get_UID(self):
         return Utils.get_user_string()
@@ -52,10 +75,14 @@ class DesktopWallpaperDataProvider(FileDataProvider.FolderTwoWay):
         #if the file was successfully transferred then set it
         #as the wallpaper
         if vfsFile.exists():
-            self._client.set_string(
-                    "/desktop/gnome/background/picture_filename",
-                    vfsFile.get_local_uri()
-            )
+            if WPTYPE == WPMAC:
+                print "SETTING BACKGROUND IMAGE"
+                app('Finder').desktop_picture.set(mactypes.File(vfsFile.get_local_uri()))
+            else:
+                self._client.set_string(
+                        "/desktop/gnome/background/picture_filename",
+                        vfsFile.get_local_uri()
+                )
 
         return rid
 

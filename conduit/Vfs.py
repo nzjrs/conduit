@@ -8,9 +8,7 @@ import urllib
 import conduit
 import conduit.utils.Singleton as Singleton
 
-if conduit.FILE_IMPL == "GnomeVfs":
-    import conduit.platform.FileGnomeVfs as FileImpl
-elif conduit.FILE_IMPL == "GIO":
+if conduit.FILE_IMPL == "GIO":
     import conduit.platform.FileGio as FileImpl
 elif conduit.FILE_IMPL == "Python":
     import conduit.platform.FilePython as FileImpl
@@ -21,6 +19,19 @@ VolumeMonitor   = FileImpl.VolumeMonitor
 FileMonitor     = FileImpl.FileMonitor     
 FolderScanner   = FileImpl.FolderScanner
 FileTransfer    = FileImpl.FileTransferImpl
+
+def backend_supports_remote_uri_schemes():
+    """
+    @returns: True if the file implementation supports non-local (file://)
+    uri schemes
+    """
+    return len(FileImpl.FileImpl.SCHEMES) > 1 and "file://" in FileImpl.FileImpl.SCHEMES
+
+def backend_name():
+    """
+    @returns: The name of the selected file impl backend
+    """
+    return FileImpl.FileImpl.NAME
 
 def uri_is_valid(uri):
     """

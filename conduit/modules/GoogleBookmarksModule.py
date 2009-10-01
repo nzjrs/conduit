@@ -8,14 +8,16 @@ import conduit
 import conduit.dataproviders.DataProvider as DataProvider
 import conduit.datatypes.Bookmark as Bookmark
 
+from gettext import gettext as _
+
 MODULES = {
     "GoogleBookmarksDataProviderSource" : { "type": "dataprovider" }
 }
 
 class GoogleBookmarksDataProviderSource(DataProvider.DataSource):
 
-    _name_ = "Google Bookmarks"
-    _description_ = "Sync your Google Bookmarks"
+    _name_ = _("Google Bookmarks")
+    _description_ = _("Sync your Google Bookmarks")
     _category_ = conduit.dataproviders.CATEGORY_BOOKMARKS
     _module_type_ = "source"
     _out_type_ = "bookmark"
@@ -61,11 +63,11 @@ class GoogleBookmarksDataProviderSource(DataProvider.DataSource):
         return self.username
 
     def config_setup(self, config):
-        config.add_section("Login Details")
-        config.add_item("Username", "text",
+        config.add_section(_("Login Details"))
+        config.add_item(_("Username"), "text",
             config_name = "username",
         )
-        config.add_item("Password", "text",
+        config.add_item(_("Password"), "text",
             config_name = "password",
             password = True
         )

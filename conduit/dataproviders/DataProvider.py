@@ -15,19 +15,22 @@ import conduit
 import conduit.ModuleWrapper as ModuleWrapper
 import conduit.utils as Utils
 import conduit.Settings as Settings
+import conduit.XMLSerialization as XMLSerialization
 
-STATUS_NONE = _("Ready")
-STATUS_CHANGE_DETECTED = _("New data to sync")
-STATUS_REFRESH = _("Refreshing...")
-STATUS_DONE_REFRESH_OK = _("Refreshed OK")
-STATUS_DONE_REFRESH_ERROR = _("Error Refreshing")
-STATUS_SYNC = _("Synchronizing...")
-STATUS_DONE_SYNC_OK = _("Synchronized OK")
-STATUS_DONE_SYNC_ERROR = _("Error Synchronizing")
-STATUS_DONE_SYNC_SKIPPED = _("Synchronization Skipped")
-STATUS_DONE_SYNC_CANCELLED = _("Synchronization Cancelled")
-STATUS_DONE_SYNC_CONFLICT = _("Synchronization Conflict")
-STATUS_DONE_SYNC_NOT_CONFIGURED = _("Not Configured")
+def N_(message): return message
+
+STATUS_NONE = N_("Ready")
+STATUS_CHANGE_DETECTED = N_("New data to sync")
+STATUS_REFRESH = N_("Refreshing...")
+STATUS_DONE_REFRESH_OK = N_("Refreshed OK")
+STATUS_DONE_REFRESH_ERROR = N_("Error Refreshing")
+STATUS_SYNC = N_("Synchronizing...")
+STATUS_DONE_SYNC_OK = N_("Synchronized OK")
+STATUS_DONE_SYNC_ERROR = N_("Error Synchronizing")
+STATUS_DONE_SYNC_SKIPPED = N_("Synchronization Skipped")
+STATUS_DONE_SYNC_CANCELLED = N_("Synchronization Cancelled")
+STATUS_DONE_SYNC_CONFLICT = N_("Synchronization Conflict")
+STATUS_DONE_SYNC_NOT_CONFIGURED = N_("Not Configured")
 
 class DataProviderBase(gobject.GObject):
     """
@@ -269,25 +272,11 @@ class DataProviderBase(gobject.GObject):
         Returns the dataprovider configuration as xml
         @rtype: C{string}
         """
-        doc = xml.dom.minidom.Element("configuration")
+        xml_configuration = XMLSerialization.Settings()
         configDict = self.get_configuration()
-        for config in configDict:
-                configxml = xml.dom.minidom.Element(str(config))
-                #store the value and value type
-                try:
-                    vtype = Settings.TYPE_TO_TYPE_NAME[ type(configDict[config]) ]
-                    value = Settings.TYPE_TO_STRING[  type(configDict[config]) ](configDict[config])
-                except KeyError:
-                    log.warn("Cannot convert %s to string. Value of %s not saved" % (type(configDict[config]), config))
-                    vtype = Settings.TYPE_TO_TYPE_NAME[str]
-                    value = Settings.TYPE_TO_STRING[str](configDict[config])
-                configxml.setAttribute("type", vtype)
-                valueNode = xml.dom.minidom.Text()
-                valueNode.data = value
-                configxml.appendChild(valueNode)
-                doc.appendChild(configxml)
-
-        return doc.toxml()
+        for name, value in configDict.iteritems():
+            xml_configuration[name] = value
+        return xml_configuration.xml_document.toxml()
 
     def _get_configuration_parameters(self, configuration):
         '''
@@ -378,39 +367,22 @@ class DataProviderBase(gobject.GObject):
                         callable(getattr(self, c, None)))
                         )
 
-    def set_configuration_xml(self, xmltext):
+    def set_configuration_xml(self, xmltext, xmlversion):
         """
         Restores applications settings from XML
 
         @param xmltext: xml representation of settings
         @type xmltext: C{string}
         """
-        doc = xml.dom.minidom.parseString(xmltext)
-        configxml = doc.documentElement
-
-        if configxml.nodeType == configxml.ELEMENT_NODE and configxml.localName == "configuration":
-            settings = {}
-            for s in configxml.childNodes:
-                if s.nodeType == s.ELEMENT_NODE:
-                    #now convert the setting to the correct type (if filled out)
-                    if s.hasChildNodes():
-                        raw = s.firstChild.data
-                        vtype = s.getAttribute("type")
-                        try:
-                            data = Settings.STRING_TO_TYPE[vtype](raw)
-                        except KeyError:
-                            #fallback to string type
-                            log.warn("Cannot convert string (%s) to native type %s\n" % (raw, vtype, traceback.format_exc()))
-                            data = str(raw)
-                        settings[s.localName] = data
-
-            try:
-                self.set_configuration(settings)
-            except Exception, err: 
-                log.warn("Error restoring %s configuration\n%s" % 
-                        (self._name_, traceback.format_exc()))
-        else:
-            log.debug("Could not find <configuration> xml fragment")
+        xml_configuration = XMLSerialization.Settings(xmltext, xmlversion)
+        settings = {}
+        for name, value in xml_configuration:
+            settings[name] = value
+        try:
+            self.set_configuration(settings)
+        except Exception, err: 
+            log.warn("Error restoring %s configuration\n%s" % 
+                    (self._name_, traceback.format_exc()))
 
     def get_UID(self):
         """

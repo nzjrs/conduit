@@ -128,11 +128,6 @@ def read_data_file_from_data_dir(filename):
     path = os.path.join(get_data_dir(),filename)
     return read_data_file(path)
 
-def init_gnomevfs_authentication():
-    import gnome.ui
-    gnome.init(conduit.APPNAME, conduit.APPVERSION)
-    gnome.ui.authentication_manager_init()     
-    
 def get_external_resources(typename):
     #Reads the appropriate file (typename.list) and 
     #returns a dict of name:uris beginning with subtypename

@@ -1,4 +1,4 @@
-AC_INIT([conduit], [0.3.16],[john.stowers@gmail.com],[conduit])
+AC_INIT([conduit], [0.3.17],[john.stowers@gmail.com],[conduit])
 AM_INIT_AUTOMAKE([1.9])
 AC_CONFIG_SRCDIR(conduit/__init__.py)
 AC_CONFIG_MACRO_DIR([m4])
@@ -30,9 +30,9 @@ AM_PATH_PYTHON(2.4)
 FILE_IMPL="GIO"
 
 AC_ARG_WITH([file_impl],
-            AC_HELP_STRING([--with-file-impl], [GIO (default), GnomeVfs, Python]))
+            AC_HELP_STRING([--with-file-impl], [GIO (default), Python]))
 
-if test "$with_file_impl" = "GnomeVfs" || test "$with_file_impl" = "Python" ; then
+if test "$with_file_impl" = "Python" ; then
 	FILE_IMPL=$with_file_impl
 fi
 
@@ -62,9 +62,7 @@ AM_CHECK_PYMOD_VERSION([goocanvas], [pygoocanvas_version], [0.9.0], , AC_MSG_ERR
 AM_CHECK_PYMOD_VERSION([dbus], [__version__], [0.80.0], , AC_MSG_ERROR([Python module dbus >= 0.80.0 required to run Conduit]))
 
 if test $FILE_IMPL = "GIO" ; then
-	AM_CHECK_PYMOD([gio], , , AC_MSG_ERROR([Python module gio required to run Conduit]))
-elif test $FILE_IMPL = "GnomeVfs" ; then
-	AM_CHECK_PYMOD([gnomevfs], , , AC_MSG_ERROR([Python module gnomevfs required to run Conduit]))
+	AM_CHECK_PYMOD_VERSION([gio], [pygio_version], [2.16.1], , AC_MSG_ERROR([Python module gio >= 2.16.1 required to run Conduit]))
 fi
 
 ################################################################################

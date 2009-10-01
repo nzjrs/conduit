@@ -184,8 +184,8 @@ class BansheeSource(DataProvider.DataSource):
              VIDEO_PLAYLIST: self.video_playlists}[playlist_type].append(playlist_id)
 
     def config_setup(self, config):
-        config.add_section("Playlists")        
-        self._playlist_config = config.add_item("Playlists", "list",
+        config.add_section(_("Playlists"))        
+        self._playlist_config = config.add_item(_("Playlists"), "list",
             initial_value_callback = self._get_config_playlists,
             save_callback = self._set_config_playlists
         )

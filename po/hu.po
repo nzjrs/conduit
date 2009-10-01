@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the Conduit package.
 #
 # Gabor Kelemen <kelemeng@gnome.hu>, 2008, 2009.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: Conduit HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=conduit&component=general\n"
-"POT-Creation-Date: 2009-02-22 10:22+0000\n"
-"PO-Revision-Date: 2009-03-07 16:50+0100\n"
-"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
-"Language-Team: Hungarian <gnome@fsf.hu>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-22 01:56+0200\n"
+"PO-Revision-Date: 2009-07-22 16:02+0200\n"
+"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"Language-Team: Hungarian <gnome at gnome dot hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -225,9 +226,219 @@ msgstr "_Fájl"
 msgid "_Help"
 msgstr "_Súgó"
 
+#: ../conduit/Knowledge.py:8
+msgid "What Do You Want to Synchronize?"
+msgstr "Mit szeretne szinkronizálni?"
+
+#: ../conduit/Knowledge.py:9
+msgid "Drag and Drop a Data Provider on the Canvas"
+msgstr "Húzzon egy adatszolgáltatót a vászonra"
+
+#: ../conduit/Knowledge.py:11
+msgid "Synchronization Group Created"
+msgstr "Szinkronizálási csoport létrehozva"
+
+#: ../conduit/Knowledge.py:12
+msgid "Add Another Data Provider to the Group to Synchronize it"
+msgstr "Adjon egy másik adatszolgáltatót a csoporthoz a szinkronizálásához"
+
+#: ../conduit/Knowledge.py:14
+msgid "You Are Now Ready to Synchronize"
+msgstr "Most már készen áll a szinkronizálásra"
+
+#: ../conduit/Knowledge.py:15
+msgid "Right Click on Group for Options"
+msgstr "Kattintson a jobb gombbal a csoporton a beállításokért"
+
+#. source,sinc                            #comment
+#. twoway
+#: ../conduit/Knowledge.py:22
+msgid "Synchronize Two Folders"
+msgstr "Két mappa szinkronizálása"
+
+#: ../conduit/Knowledge.py:24
+msgid "Backup Folder to Box.net"
+msgstr "Mappa mentése a Box.net-re"
+
+#: ../conduit/Knowledge.py:26
+msgid "Synchronize Tagged F-Spot Photos to Flickr"
+msgstr "Címkézett F-Spot fényképek szinkronizálása a Flickr-re"
+
+#: ../conduit/Main.py:59
+msgid "Conduit is a synchronization application."
+msgstr "A Conduit egy szinkronizáló alkalmazás."
+
+#: ../conduit/Main.py:63
+#, python-format
+msgid "Launch without GUI. [default: %default]"
+msgstr "Indítás grafikus felület nélkül. [alapértelmezett: %default]"
+
+#: ../conduit/Main.py:67
+#, python-format
+msgid "Save dataprovider configuration to FILE. [default: %default]"
+msgstr "Adatszolgáltató beállításainak mentése a FÁJLBA. [alapértelmezett: %default]"
+
+#: ../conduit/Main.py:71
+#, python-format
+msgid "Iconify on startup. [default: %default]"
+msgstr "Indításkor ikonméret. [alapértelmezett: %default]"
+
+#: ../conduit/Main.py:75
+#, python-format
+msgid "Run with the specified UI. [default: %default]"
+msgstr "Futtatás a megadott felülettel. [alapértelmezett: %default]"
+
+#: ../conduit/Main.py:79
+msgid "Only load modules in the named files. [default: load all modules]"
+msgstr "Csak a megadott fájlok moduljainak betöltése. [alapértelmezett: összes betöltése]"
+
+#: ../conduit/Main.py:83
+msgid "Do not load modules in the named files. [default: load all modules]"
+msgstr "Ne töltse be a megadott fájlok moduljait. [alapértelmezett: összes betöltése]"
+
+#: ../conduit/Main.py:87
+msgid ""
+"Explicitly set internal Conduit settings (keys) to the given values for this "
+"session. [default: do not set]"
+msgstr "Belső Conduit beállítások (kulcsok) megadása az adott értékekre erre a munkamenetre. [alapértelmezett: nincs beállítva]"
+
+#: ../conduit/Main.py:91
+#, python-format
+msgid ""
+"Enable loading of unfinished or unsupported dataproviders. [default: %"
+"default]"
+msgstr "Befejezetlen vagy nem támogatott adatszolgáltatók betöltése. [alapértelmezett: %default]"
+
+#: ../conduit/Main.py:95
+#, python-format
+msgid "Generate more debugging information. [default: %default]"
+msgstr "Több hibakeresési információ előállítása. [alapértelmezett: %default]"
+
+#: ../conduit/Main.py:99
+#, python-format
+msgid "Generate less debugging information. [default: %default]"
+msgstr "Kevesebb hibakeresési információ előállítása. [alapértelmezett: %default]"
+
+#: ../conduit/Main.py:103
+#, python-format
+msgid "Generate no debugging information. [default: %default]"
+msgstr "Ne állítson elő hibakeresési információkat. [alapértelmezett: %default]"
+
+#: ../conduit/dataproviders/DataProvider.py:22
+msgid "Ready"
+msgstr "Kész"
+
+#: ../conduit/dataproviders/DataProvider.py:23
+msgid "New data to sync"
+msgstr "Új szinkronizálandó adatok"
+
+#: ../conduit/dataproviders/DataProvider.py:24
+msgid "Refreshing..."
+msgstr "Frissítés…"
+
+#: ../conduit/dataproviders/DataProvider.py:25
+msgid "Refreshed OK"
+msgstr "Frissítés kész"
+
+#: ../conduit/dataproviders/DataProvider.py:26
+msgid "Error Refreshing"
+msgstr "Hiba a frissítéskor"
+
+#: ../conduit/dataproviders/DataProvider.py:27
+msgid "Synchronizing..."
+msgstr "Szinkronizálás…"
+
+#: ../conduit/dataproviders/DataProvider.py:28
+msgid "Synchronized OK"
+msgstr "Szinkronizálás kész"
+
+#: ../conduit/dataproviders/DataProvider.py:29
+msgid "Error Synchronizing"
+msgstr "Hiba a szinkronizáláskor"
+
+#: ../conduit/dataproviders/DataProvider.py:30
+msgid "Synchronization Skipped"
+msgstr "A szinkronizálás kihagyva"
+
+#: ../conduit/dataproviders/DataProvider.py:31
+msgid "Synchronization Cancelled"
+msgstr "A szinkronizálás megszakítva"
+
+#: ../conduit/dataproviders/DataProvider.py:32
+msgid "Synchronization Conflict"
+msgstr "Szinkronizálási ütközés"
+
+#: ../conduit/dataproviders/DataProvider.py:33
+msgid "Not Configured"
+msgstr "Nincs beállítva"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+msgid "640x480"
+msgstr "640x480"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+msgid "800x600"
+msgstr "800x600"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+msgid "1024x768"
+msgstr "1024x768"
+
+#. Signifies that a conversion should not take place
+#: ../conduit/dataproviders/Image.py:35
+#: ../conduit/modules/N800Module/N800Module.py:57
+msgid "None"
+msgstr "Nincs"
+
+#. Default Categories for the DataProviders
+#: ../conduit/dataproviders/__init__.py:6
+msgid "Files and Folders"
+msgstr "Fájlok és mappák"
+
+#: ../conduit/dataproviders/__init__.py:7
+#: ../conduit/modules/iPodModule/iPodModule.py:179
+msgid "Notes"
+msgstr "Megjegyzések"
+
+#: ../conduit/dataproviders/__init__.py:8
+#: ../conduit/modules/iPodModule/iPodModule.py:367
+msgid "Photos"
+msgstr "Fényképek"
+
+#: ../conduit/dataproviders/__init__.py:9
+msgid "Office"
+msgstr "Iroda"
+
+#: ../conduit/dataproviders/__init__.py:10
+msgid "Settings"
+msgstr "Beállítások"
+
+#: ../conduit/dataproviders/__init__.py:11
+msgid "Miscellaneous"
+msgstr "Egyebek"
+
+#: ../conduit/dataproviders/__init__.py:12
+msgid "Media"
+msgstr "Adathordozó"
+
+#: ../conduit/dataproviders/__init__.py:13
+msgid "Bookmarks"
+msgstr "Könyvjelzők"
+
+#: ../conduit/dataproviders/__init__.py:14
+msgid "Test"
+msgstr "Teszt"
+
 #: ../conduit/gtkui/Canvas.py:152
 msgid "Drag a Data Provider here to continue"
 msgstr "A folytatáshoz húzzon ide egy adatszolgáltatót"
+
+#: ../conduit/gtkui/Canvas.py:217
+msgid "Show me"
+msgstr "Jelenítsen meg"
 
 #. Visible column0 is
 #. [pixbuf + source display name] or
@@ -251,69 +462,103 @@ msgstr "Bemenet"
 msgid "Conflicts (%s)"
 msgstr "Ütközik (%s)"
 
+#. name,                      #url
+#: ../conduit/gtkui/UI.py:33
+msgid "Introduction"
+msgstr "Bevezetés"
+
+#: ../conduit/gtkui/UI.py:34
+msgid "Writing a Data Provider"
+msgstr "Adatszolgáltató írása"
+
+#: ../conduit/gtkui/UI.py:35
+msgid "API Documentation"
+msgstr "API dokumentáció"
+
+#: ../conduit/gtkui/UI.py:36
+msgid "Test Results"
+msgstr "Teszteredmények"
+
+#: ../conduit/gtkui/UI.py:129
+#, python-format
+msgid " - %s (Development Version)"
+msgstr " – %s (fejlesztői változat)"
+
+#: ../conduit/gtkui/UI.py:131
+msgid " - Running Uninstalled"
+msgstr " – Futás telepítetlenül"
+
+#: ../conduit/gtkui/UI.py:165
+msgid "Examples"
+msgstr "Példák"
+
+#: ../conduit/gtkui/UI.py:177
+msgid "Developers"
+msgstr "Fejlesztők"
+
 #. Build some liststores to display
-#: ../conduit/gtkui/UI.py:321
+#: ../conduit/gtkui/UI.py:318
 msgid "Convert from"
-msgstr "Átalakítás ebből"
+msgstr "Átalakítás ebből:"
 
-#: ../conduit/gtkui/UI.py:322
+#: ../conduit/gtkui/UI.py:319
 msgid "into"
-msgstr "ebbe"
+msgstr "ebbe:"
 
-#: ../conduit/gtkui/UI.py:373
+#: ../conduit/gtkui/UI.py:370
 msgid "Relationship Database"
 msgstr "Kapcsolat-adatbázis"
 
-#: ../conduit/gtkui/UI.py:377
+#: ../conduit/gtkui/UI.py:374
 msgid "Conversions Available"
 msgstr "Elérhető átalakítások"
 
-#: ../conduit/gtkui/UI.py:383 ../conduit/gtkui/Tree.py:348
-#: ../conduit/modules/FileModule/FileConfiguration.py:105
+#: ../conduit/gtkui/UI.py:380 ../conduit/gtkui/Tree.py:348
+#: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
 msgstr "Név"
 
-#: ../conduit/gtkui/UI.py:387
+#: ../conduit/gtkui/UI.py:384
 msgid "Loaded"
 msgstr "Betöltve"
 
-#: ../conduit/gtkui/UI.py:515 ../conduit/hildonui/UI.py:127
+#: ../conduit/gtkui/UI.py:512 ../conduit/hildonui/UI.py:127
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "A szinkronizálás folyamatban. Meg kívánja szakítani?"
 
-#: ../conduit/gtkui/UI.py:681
+#: ../conduit/gtkui/UI.py:684
 msgid "_Synchronize All"
 msgstr "Összes s_zinkronizálása"
 
-#: ../conduit/gtkui/UI.py:681
+#: ../conduit/gtkui/UI.py:684
 msgid "Synchronizes All Groups"
 msgstr "Minden csoport szinkronizálása"
 
-#: ../conduit/gtkui/UI.py:682
+#: ../conduit/gtkui/UI.py:685
 msgid "_Cancel Synchronization"
 msgstr "Szinkronizálása _megszakítása"
 
-#: ../conduit/gtkui/UI.py:682
+#: ../conduit/gtkui/UI.py:685
 msgid "Cancels Currently Synchronizing Groups"
 msgstr "Az aktuális csoportszinkronizálások megszakítása"
 
-#: ../conduit/gtkui/UI.py:683
+#: ../conduit/gtkui/UI.py:686
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#: ../conduit/gtkui/UI.py:683
+#: ../conduit/gtkui/UI.py:686
 msgid "Close Conduit"
 msgstr "A Conduit bezárása"
 
-#: ../conduit/gtkui/UI.py:723
+#: ../conduit/gtkui/UI.py:726
 msgid "Synchronization Error"
 msgstr "Szinkronizálási hiba"
 
-#: ../conduit/gtkui/UI.py:726
+#: ../conduit/gtkui/UI.py:729
 msgid "Synchronization Complete"
 msgstr "A szinkronizálás befejeződött"
 
-#: ../conduit/gtkui/UI.py:742
+#: ../conduit/gtkui/UI.py:745
 msgid "Synchronizing"
 msgstr "Szinkronizálás"
 
@@ -321,136 +566,60 @@ msgstr "Szinkronizálás"
 msgid "Description"
 msgstr "Leírás"
 
-#: ../conduit/gtkui/ConfigItems.py:685
+#: ../conduit/gtkui/ConfigItems.py:729
 #, python-format
 msgid "Total: %d"
 msgstr "Összesen: %d"
 
 #: ../conduit/gtkui/WindowConfigurator.py:14
-#| msgid "Configure Item"
 msgid "Configure"
 msgstr "Beállítás"
 
-#: ../conduit/dataproviders/DataProvider.py:19
-msgid "Ready"
-msgstr "Kész"
-
-#: ../conduit/dataproviders/DataProvider.py:20
-msgid "New data to sync"
-msgstr "Új szinkronizálandó adatok"
-
-#: ../conduit/dataproviders/DataProvider.py:21
-msgid "Refreshing..."
-msgstr "Frissítés…"
-
-#: ../conduit/dataproviders/DataProvider.py:22
-msgid "Refreshed OK"
-msgstr "Frissítés kész"
-
-#: ../conduit/dataproviders/DataProvider.py:23
-msgid "Error Refreshing"
-msgstr "Hiba a frissítéskor"
-
-#: ../conduit/dataproviders/DataProvider.py:24
-msgid "Synchronizing..."
-msgstr "Szinkronizálás…"
-
-#: ../conduit/dataproviders/DataProvider.py:25
-msgid "Synchronized OK"
-msgstr "Szinkronizálás kész"
-
-#: ../conduit/dataproviders/DataProvider.py:26
-msgid "Error Synchronizing"
-msgstr "Hiba a szinkronizáláskor"
-
-#: ../conduit/dataproviders/DataProvider.py:27
-msgid "Synchronization Skipped"
-msgstr "A szinkronizálás kihagyva"
-
-#: ../conduit/dataproviders/DataProvider.py:28
-msgid "Synchronization Cancelled"
-msgstr "A szinkronizálás megszakítva"
-
-#: ../conduit/dataproviders/DataProvider.py:29
-msgid "Synchronization Conflict"
-msgstr "Szinkronizálási ütközés"
-
-#: ../conduit/dataproviders/DataProvider.py:30
-#| msgid "Not Configured Correctly"
-msgid "Not Configured"
-msgstr "Nincs beállítva"
-
 # fixme valami szebbet
-#: ../conduit/modules/BackpackModule/BackpackModule.py:56
+#: ../conduit/modules/BackpackModule/BackpackModule.py:58
 msgid "Backpack Notes"
 msgstr "Hátizsák jegyzetek"
 
-#: ../conduit/modules/BackpackModule/BackpackModule.py:57
+#: ../conduit/modules/BackpackModule/BackpackModule.py:59
 msgid "Store things in Backpack Notes"
 msgstr "Elemek tárolása a hátizsák jegyzetekben"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:1
-#: ../conduit/modules/FlickrModule/config.glade.h:1
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:1
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:1
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:1
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:1
-#: ../conduit/modules/SmugMugModule/config.glade.h:1
-#: ../conduit/modules/ZotoModule/zoto.glade.h:1
-msgid "<b>Account Details</b>"
-msgstr "<b>Fiók részletei</b>"
+#: ../conduit/modules/BackpackModule/BackpackModule.py:105
+#: ../conduit/modules/FlickrModule/FlickrModule.py:307
+#: ../conduit/modules/ZotoModule/ZotoModule.py:243
+msgid "Account details"
+msgstr "Fiók részletei"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:2
-msgid "<b>Saved Note Settings</b>"
-msgstr "<b>Jegyzet beállításainak mentése</b>"
+#: ../conduit/modules/BackpackModule/BackpackModule.py:106
+msgid "Login"
+msgstr "Bejelentkezés"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:3
-msgid "API key:"
-msgstr "API kulcs:"
+#: ../conduit/modules/BackpackModule/BackpackModule.py:109
+msgid "API key"
+msgstr "API kulcs"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:4
-msgid "Backpack"
-msgstr "Hátizsák"
+#: ../conduit/modules/BackpackModule/BackpackModule.py:112
+msgid "Saved notes"
+msgstr "Jegyzetek mentése"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:5
-msgid "Save notes in page:"
-msgstr "Jegyzetek mentése erre az oldalra:"
+#: ../conduit/modules/BackpackModule/BackpackModule.py:113
+msgid "Save notes in page"
+msgstr "Jegyzetek mentése oldalra"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:6
-#: ../conduit/modules/FlickrModule/config.glade.h:8
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:8
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:9
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:6
-#: ../conduit/modules/SmugMugModule/config.glade.h:7
-#: ../conduit/modules/ZotoModule/zoto.glade.h:5
-msgid "Username:"
-msgstr "Felhasználónév:"
-
-#: ../conduit/modules/BansheeModule/BansheeModule.py:51
+#: ../conduit/modules/BansheeModule/BansheeModule.py:52
 msgid "Banshee Playlists"
 msgstr "Banshee lejátszólisták"
 
-#: ../conduit/modules/BansheeModule/BansheeModule.py:52
+#: ../conduit/modules/BansheeModule/BansheeModule.py:53
 msgid "Synchronize your Banshee playlists"
 msgstr "Banshee lejátszólisták szinkronizálása"
 
-#. column 1 is the tag name
-#: ../conduit/modules/BansheeModule/BansheeModule.py:217
-msgid "Playlist Name"
-msgstr "Lejátszólista neve"
-
-#: ../conduit/modules/BansheeModule/BansheeModule.py:225
-msgid "Enabled"
-msgstr "Engedélyezve"
-
-#: ../conduit/modules/BansheeModule/config.glade.h:1
-msgid "<b>Return Playlists</b>"
-msgstr "<b>Lejátszólisták visszaadása</b>"
-
-#: ../conduit/modules/BansheeModule/config.glade.h:2
-msgid "Banshee"
-msgstr "Banshee"
+#: ../conduit/modules/BansheeModule/BansheeModule.py:187
+#: ../conduit/modules/BansheeModule/BansheeModule.py:188
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:116
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:117
+msgid "Playlists"
+msgstr "Lejátszólisták"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:29
 msgid "Box.net"
@@ -460,53 +629,69 @@ msgstr "Box.net"
 msgid "Synchronize your Box.net files"
 msgstr "Box.net fájlok szinkronizálása"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:108
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:290
+#: ../conduit/modules/FileModule/FileModule.py:82
+msgid "Folder"
+msgstr "Mappa"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:291
+msgid "Folder name"
+msgstr "Mappanév"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:295
+msgid "Load folders"
+msgstr "Mappák betöltése"
+
+#: ../conduit/modules/ConverterModule.py:91
+msgid "Note-"
+msgstr "Jegyzet–"
+
+#: ../conduit/modules/DesktopWallpaperModule.py:38
+msgid "Wallpaper"
+msgstr "Háttérkép"
+
+#: ../conduit/modules/DesktopWallpaperModule.py:39
+msgid "Changes your Desktop Wallpaper"
+msgstr "Asztali háttérkép módosítása"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:107
 #, python-format
-msgid "Select %s:"
+msgid "Select %s"
 msgstr "%s kiválasztása:"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:147
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:127
 msgid "Evolution Contacts"
 msgstr "Evolution névjegyek"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:148
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:128
 msgid "Synchronize your contacts"
 msgstr "Névjegyek szinkronizálása"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:198
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:178
 msgid "Evolution Calendar"
 msgstr "Evolution naptár"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:199
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:179
 msgid "Synchronize your calendar"
 msgstr "Naptár szinkronizálása"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:260
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:240
 msgid "Evolution Tasks"
 msgstr "Evolution feladatok"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:261
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:241
 msgid "Synchronize your tasks"
 msgstr "Feladatok szinkronizálása"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:317
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:297
 msgid "Evolution Memos"
 msgstr "Evolution feljegyzések"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:318
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:298
 msgid "Synchronize your memos"
 msgstr "Feljegyzések szinkronizálása"
 
-#: ../conduit/modules/EvolutionModule/config.glade.h:1
-msgid "Addressbook:"
-msgstr "Címjegyzék:"
-
-#: ../conduit/modules/EvolutionModule/config.glade.h:2
-msgid "Evolution"
-msgstr "Evolution"
-
 #: ../conduit/modules/FacebookModule/FacebookModule.py:38
-#: ../conduit/modules/FacebookModule/config.glade.h:2
 msgid "Facebook"
 msgstr "Facebook"
 
@@ -514,22 +699,43 @@ msgstr "Facebook"
 msgid "Synchronize your Facebook photos"
 msgstr "Facebook fényképek szinkronizálása"
 
-#: ../conduit/modules/FacebookModule/config.glade.h:1
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:3
-#: ../conduit/modules/iPodModule/config.glade.h:2
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:3
-#: ../conduit/modules/SmugMugModule/config.glade.h:3
-#: ../conduit/modules/ZotoModule/zoto.glade.h:3
-msgid "Album:"
-msgstr "Album:"
+#: ../conduit/modules/FacebookModule/FacebookModule.py:124
+#: ../conduit/modules/FlickrModule/FlickrModule.py:282
+msgid "Loading album list..."
+msgstr "Albumlista betöltése…"
 
-#: ../conduit/modules/FacebookModule/config.glade.h:3
-#: ../conduit/modules/FlickrModule/config.glade.h:4
-msgid "Load"
-msgstr "Betöltés"
+#: ../conduit/modules/FacebookModule/FacebookModule.py:128
+msgid "Failed to connect"
+msgstr "A csatlakozás meghiúsult"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:131
+msgid "Logged in"
+msgstr "Bejelentkezve"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:133
+msgid "Failed to login"
+msgstr "A bejelentkezés meghiúsult"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:145
+#: ../conduit/modules/FspotModule/FspotModule.py:243
+msgid "Status"
+msgstr "Állapot"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:150
+#: ../conduit/modules/iPodModule/iPodModule.py:461
+#: ../conduit/modules/ZotoModule/ZotoModule.py:252
+msgid "Album"
+msgstr "Album"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:151
+msgid "Album name"
+msgstr "Album neve"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:156
+msgid "Load albums"
+msgstr "Albumok betöltése"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:58
-#: ../conduit/modules/FeedModule/config.glade.h:9
 msgid "RSS Feed"
 msgstr "RSS hírforrás"
 
@@ -537,72 +743,78 @@ msgstr "RSS hírforrás"
 msgid "Synchronize data from RSS enclosures"
 msgstr "Adatok szinkronizálása RSS forrásokból"
 
-#: ../conduit/modules/FeedModule/config.glade.h:1
-msgid "<b>Enclosure Settings</b>"
-msgstr "<b>Forrás beállításai</b>"
+#. FIXME: Add Randomize
+#: ../conduit/modules/FeedModule/FeedModule.py:114
+msgid "Feed details"
+msgstr "Hírforrás részletei"
 
-#: ../conduit/modules/FeedModule/config.glade.h:2
-msgid "<b>Feed Details</b>"
-msgstr "<b>Hírforrás részletei</b>"
+#: ../conduit/modules/FeedModule/FeedModule.py:115
+msgid "Feed address"
+msgstr "Hírforrás címe"
 
-#: ../conduit/modules/FeedModule/config.glade.h:3
-msgid "Download Audio Files"
-msgstr "Hangfájlok letöltése"
+#: ../conduit/modules/FeedModule/FeedModule.py:118
+msgid "Enclosure settings"
+msgstr "Forrás beállításai"
 
-#: ../conduit/modules/FeedModule/config.glade.h:4
-msgid "Download Photos"
-msgstr "Fényképek letöltése"
+#: ../conduit/modules/FeedModule/FeedModule.py:119
+msgid "Limit downloaded enclosures"
+msgstr "Letöltött források számának korlátozása"
 
-#: ../conduit/modules/FeedModule/config.glade.h:5
-msgid "Download Video Files"
-msgstr "Videofájlok letöltése"
+#: ../conduit/modules/FeedModule/FeedModule.py:125
+msgid "Limit to"
+msgstr "Korlátozás:"
 
-#: ../conduit/modules/FeedModule/config.glade.h:6
-msgid "Feed Address:"
-msgstr "Hírforrás címe:"
-
-#: ../conduit/modules/FeedModule/config.glade.h:7
-msgid ""
-"Limit the Number of\n"
-"Enclosures Downloaded to:"
-msgstr ""
-"Letöltött források\n"
-"számának korlátozása:"
-
-#: ../conduit/modules/FeedModule/config.glade.h:10
-msgid "Randomize Enclosures"
+#: ../conduit/modules/FeedModule/FeedModule.py:129
+msgid "Randomize enclosures"
 msgstr "Források véletlenszerűsítése"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:99
+#: ../conduit/modules/FeedModule/FeedModule.py:133
+msgid "Download types"
+msgstr "Típusok letöltése"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:134
+msgid "Download audio files"
+msgstr "Hangfájlok letöltése"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:135
+msgid "Download video files"
+msgstr "Videofájlok letöltése"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:136
+msgid "Download photo files"
+msgstr "Fényképek letöltése"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:111
 msgid "Icon"
 msgstr "Ikon"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:111
+#: ../conduit/modules/FileModule/FileConfiguration.py:123
+#: ../conduit/modules/GConfModule/GConfModule.py:138
 msgid "Items"
 msgstr "Elemek"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:137
+#: ../conduit/modules/FileModule/FileConfiguration.py:149
 #, python-format
 msgid "<i>Contains %s files</i>"
 msgstr "<i>%s fájlt tartalmaz</i>"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:228
+#: ../conduit/modules/FileModule/FileConfiguration.py:248
 msgid "Include file..."
 msgstr "Fájl felvétele…"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:238
+#: ../conduit/modules/FileModule/FileConfiguration.py:258
 msgid "All files"
 msgstr "Minden fájl"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:253
+#: ../conduit/modules/FileModule/FileConfiguration.py:271
 msgid "Include folder..."
 msgstr "Mappa felvétele…"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:298
+#: ../conduit/modules/FileModule/FileConfiguration.py:314
 msgid "Please Name All Folders"
 msgstr "Nevezzen el minden mappát"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:299
+#: ../conduit/modules/FileModule/FileConfiguration.py:315
 msgid "All folders require a descriptive name. To name a folder simply click on it"
 msgstr ""
 "Minden mappának rendelkeznie kell leíró névvel. Mappa elnevezéséhez "
@@ -616,60 +828,23 @@ msgstr "Fájlok"
 msgid "Source for synchronizing multiple files"
 msgstr "Több fájl szinkronizálásának forrása"
 
-#: ../conduit/modules/FileModule/FileModule.py:63
-msgid "Folder"
-msgstr "Mappa"
-
-#: ../conduit/modules/FileModule/FileModule.py:64
+#: ../conduit/modules/FileModule/FileModule.py:83
 msgid "Synchronize folders"
 msgstr "Mappák szinkronizálása"
 
-#: ../conduit/modules/FileModule/config.glade.h:1
-msgid "<b>Items to Synchronize</b>"
-msgstr "<b>Szinkronizálandó elemek</b>"
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:40
+msgid "Firefox 3 Bookmarks"
+msgstr "Firefox 3 könyvjelzők"
 
-#: ../conduit/modules/FileModule/config.glade.h:2
-msgid "Add Directory"
-msgstr "Könyvtár hozzáadása"
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:41
+msgid "Syncronize your Firefox 3 Bookmarks"
+msgstr "Firefox 3 könyvjelzők szinkronizálása"
 
-#: ../conduit/modules/FileModule/config.glade.h:3
-msgid "Add File"
-msgstr "Fájl hozzáadása"
-
-#: ../conduit/modules/FileModule/config.glade.h:4
-msgid "Advanced"
-msgstr "Speciális"
-
-#: ../conduit/modules/FileModule/config.glade.h:5
-msgid "File Configuration"
-msgstr "Fájl beállítása"
-
-#: ../conduit/modules/FileModule/config.glade.h:6
-msgid "Folder Configuration"
-msgstr "Mappa beállítása"
-
-#: ../conduit/modules/FileModule/config.glade.h:7
-msgid "Folder Location:"
-msgstr "Mappa helye:"
-
-#: ../conduit/modules/FileModule/config.glade.h:8
-msgid "Follow Symbolic Links"
-msgstr "Szimbolikus linkek követése"
-
-#: ../conduit/modules/FileModule/config.glade.h:9
-msgid "Ignore File Modification Times"
-msgstr "Fájl módosítási idejének figyelmen kívül hagyása"
-
-#: ../conduit/modules/FileModule/config.glade.h:10
-msgid "Include Hidden Files"
-msgstr "Rejtett fájlok felvétele"
-
-#: ../conduit/modules/FileModule/config.glade.h:11
-msgid "Select A Folder"
-msgstr "Válasszon ki egy mappát"
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:100
+msgid "Firefox Profile"
+msgstr "Firefox profil"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:76
-#: ../conduit/modules/FlickrModule/config.glade.h:3
 msgid "Flickr"
 msgstr "Flickr"
 
@@ -677,27 +852,48 @@ msgstr "Flickr"
 msgid "Synchronize your Flickr.com photos"
 msgstr "Flickr.com fényképek szinkronizálása"
 
-#: ../conduit/modules/FlickrModule/config.glade.h:2
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:2
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:2
-#: ../conduit/modules/SmugMugModule/config.glade.h:2
-#: ../conduit/modules/ZotoModule/zoto.glade.h:2
-msgid "<b>Saved Photo Settings</b>"
-msgstr "<b>Mentett fényképek beállításai</b>"
+#: ../conduit/modules/FlickrModule/FlickrModule.py:287
+msgid "Failed to connect."
+msgstr "A csatlakozás meghiúsult."
 
-#: ../conduit/modules/FlickrModule/config.glade.h:5
+#: ../conduit/modules/FlickrModule/FlickrModule.py:290
+msgid "Album names loaded."
+msgstr "Albumnevek betöltve."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:292
+msgid "Failed to login."
+msgstr "A bejelentkezés meghiúsult."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:303
+msgid "Logging in, please wait..."
+msgstr "Bejelentkezés, kis türelmet…"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:308
+#: ../conduit/modules/GoogleBookmarksModule.py:67
+#: ../conduit/modules/ZotoModule/ZotoModule.py:244
+msgid "Username"
+msgstr "Felhasználónév"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:318
+msgid "Authenticate"
+msgstr "Hitelesítés"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:322
+#: ../conduit/modules/ZotoModule/ZotoModule.py:251
+msgid "Saved photo settings"
+msgstr "Mentett fényképek beállításai"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:327
+msgid "Resize photos"
+msgstr "Fényképek átméretezése"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+msgid "Do not resize"
+msgstr "Ne méretezze át"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:331
 msgid "Photos are public"
 msgstr "A fényképek nyilvánosak"
-
-#: ../conduit/modules/FlickrModule/config.glade.h:6
-msgid "Photoset Name:"
-msgstr "Fényképsorozat neve:"
-
-#: ../conduit/modules/FlickrModule/config.glade.h:7
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:7
-#: ../conduit/modules/SmugMugModule/config.glade.h:5
-msgid "Resize Photos:"
-msgstr "Fényképek átméretezése:"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:25
 msgid "F-Spot"
@@ -719,78 +915,139 @@ msgstr "Az F-Spot fut"
 msgid "Please start F-Spot or activate the D-Bus Extension"
 msgstr "Indítsa el az F-Spotot vagy aktiválja a D-Bus kiterjesztést"
 
+#: ../conduit/modules/FspotModule/FspotModule.py:244
+msgid "Start F-Spot"
+msgstr "F-Spot indítása"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:248
+#: ../conduit/modules/FspotModule/FspotModule.py:249
+msgid "Tags"
+msgstr "Címkék"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:262
+msgid "Add tags"
+msgstr "Címkék hozzáadása"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:263
+msgid "Tag name"
+msgstr "Címke neve"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:266
+msgid "Add tag"
+msgstr "Címke hozzáadása"
+
 #: ../conduit/modules/GConfModule/GConfModule.py:21
-#| msgid "GConf Settings"
 msgid "Application Settings"
 msgstr "Alkalmazásbeállítások"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:22
-#| msgid "Synchronize your contacts"
 msgid "Synchronize your application settings"
 msgstr "Alkalmazások beállításainak szinkronizálása"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:369
+#: ../conduit/modules/GConfModule/GConfModule.py:31
+msgid "Metacity"
+msgstr "Metacity"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:32
+msgid "Nautilus"
+msgstr "Nautilus"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:33
+msgid "Preferred Applications"
+msgstr "Alapértelmezett alkalmazások"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:34
+msgid "Desktop Interface"
+msgstr "Asztali környezet felülete"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:35
+msgid "Gnome Terminal"
+msgstr "Gnome terminál"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:137
+msgid "Applications to Synchronize"
+msgstr "Szinkronizálandó alkalmazások"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:19
+msgid "Google Bookmarks"
+msgstr "Google könyvjelzők"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:20
+msgid "Sync your Google Bookmarks"
+msgstr "Google könyvjelzők szinkronizálása"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:66
+msgid "Login Details"
+msgstr "Bejelentkezés részleteo"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:70
+#: ../conduit/modules/ZotoModule/ZotoModule.py:247
+msgid "Password"
+msgstr "Jelszó"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:399
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
 msgstr "Google naptár"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:370
+#: ../conduit/modules/GoogleModule/GoogleModule.py:400
 msgid "Synchronize your Google Calendar"
 msgstr "Google naptár szinkronizálása"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:555
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:6
+#: ../conduit/modules/GoogleModule/GoogleModule.py:582
 msgid "Picasa"
 msgstr "Picasa"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:556
+#: ../conduit/modules/GoogleModule/GoogleModule.py:583
 msgid "Synchronize your Google Picasa photos"
 msgstr "Google Picasa fényképek szinkronizálása"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:803
+#: ../conduit/modules/GoogleModule/GoogleModule.py:745
 msgid "Google Contacts"
 msgstr "Google névjegyek"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:804
+#: ../conduit/modules/GoogleModule/GoogleModule.py:746
 msgid "Synchronize your Google Mail contacts"
 msgstr "Google Mail névjegyek szinkronizálása"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1060
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:5
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1076
 msgid "Google Documents"
 msgstr "Google dokumentumok"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1061
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1077
 msgid "Synchronize your Google Documents"
 msgstr "Google dokumentumok szinkronizálása"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1338
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1322
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:69
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1339
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1323
 msgid "miscellaneous"
 msgstr "egyéb"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1340
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1324
 msgid "No description."
 msgstr "Nincs leírás."
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1349
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1333
 msgid "YouTube"
 msgstr "YouTube"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1350
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1334
 msgid "Synchronize data from YouTube"
 msgstr "YouTube adatok szinkronizálása"
+
+#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
+msgid "<b>Account Details</b>"
+msgstr "<b>Fiók részletei</b>"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
 msgid "Calendar:"
 msgstr "Naptár:"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:4
 msgid "Email:"
 msgstr "E-mail:"
 
@@ -799,148 +1056,157 @@ msgid "Load Calendars"
 msgstr "Naptárak betöltése"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:6
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:5
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:6
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:4
-#: ../conduit/modules/SmugMugModule/config.glade.h:4
-#: ../conduit/modules/ZotoModule/zoto.glade.h:4
 msgid "Password:"
 msgstr "Jelszó:"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:2
-msgid "<b>Downloaded Document Format</b>"
-msgstr "<b>Letöltött dokumentumok formátuma</b>"
+#: ../conduit/modules/iPodModule/iPodModule.py:180
+msgid "Synchronize your iPod notes"
+msgstr "iPod jegyzetek szinkronizálása"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:3
-msgid "Documents"
-msgstr "Dokumentumok"
+#: ../conduit/modules/iPodModule/iPodModule.py:295
+#: ../conduit/modules/SynceModule.py:311
+msgid "Contacts"
+msgstr "Névjegyek"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:7
-msgid "Presentations"
-msgstr "Bemutatók"
+#: ../conduit/modules/iPodModule/iPodModule.py:296
+msgid "Synchronize your iPod contacts"
+msgstr "iPod névjegyek szinkronizálása"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:8
-msgid "Spreadsheets"
-msgstr "Táblázatok"
+#: ../conduit/modules/iPodModule/iPodModule.py:331
+#: ../conduit/modules/SynceModule.py:449
+msgid "Calendar"
+msgstr "Naptár"
 
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:4
-msgid "Login"
-msgstr "Bejelentkezés"
+#: ../conduit/modules/iPodModule/iPodModule.py:332
+msgid "Synchronize your iPod calendar"
+msgstr "iPod naptár szinkronizálása"
 
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:2
-msgid "<b>Download Videos</b>"
-msgstr "<b>Videók letöltése</b>"
+#: ../conduit/modules/iPodModule/iPodModule.py:368
+msgid "Synchronize your iPod photos"
+msgstr "iPod fényképek szinkronizálása"
 
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:3
-msgid "Favorites of above user"
-msgstr "Fenti felhasználó kedvencei"
+#: ../conduit/modules/iPodModule/iPodModule.py:465
+msgid "Delete"
+msgstr "Törlés"
 
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:4
-msgid "Max retrieved videos (0 is unlimited):"
-msgstr "Lekért videók legfeljebb (0 = végtelen):"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:5
-msgid "Most viewed"
-msgstr "Legtöbbet nézett"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:7
-msgid "Top rated"
-msgstr "Legjobban értékelt"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:8
-msgid "Uploaded by above user"
-msgstr "Fenti felhasználó által feltöltve"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:10
-msgid "YouTube Source"
-msgstr "YouTube forrás"
-
-#: ../conduit/modules/iPodModule/iPodModule.py:735
+#: ../conduit/modules/iPodModule/iPodModule.py:695
+#: ../conduit/modules/iPodModule/iPodModule.py:812
+#: ../conduit/modules/N800Module/N800Module.py:77
 msgid "Encoding"
 msgstr "Kódolás"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:867
+#: ../conduit/modules/iPodModule/iPodModule.py:811
+msgid "Conversion options"
+msgstr "Átalakítási beállítások"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:816
 msgid "Keep converted files"
 msgstr "Konvertált fájlok megtartása"
 
-#: ../conduit/modules/iPodModule/config.glade.h:1
-msgid "<b>Encoding</b>"
-msgstr "<b>Kódolás</b>"
+#: ../conduit/modules/iPodModule/iPodModule.py:846
+msgid "iPod Music"
+msgstr "iPod zene"
 
-#: ../conduit/modules/iPodModule/config.glade.h:3
-msgid "iPod Photos"
-msgstr "iPod fényképek"
+#: ../conduit/modules/iPodModule/iPodModule.py:847
+msgid "Synchronize your iPod music"
+msgstr "iPod zene szinkronizálása"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:882
+msgid "iPod Video"
+msgstr "iPod videó"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:883
+msgid "Synchronize your iPod videos"
+msgstr "iPod videók szinkronizálása"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:907
+msgid "Movie"
+msgstr "Film"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:908
+msgid "Music Video"
+msgstr "Zenei videó"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:909
+msgid "TV Show"
+msgstr "TV-műsor"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:911
+msgid "Video kind"
+msgstr "Videó fajtája"
 
 #. Translators: Translate this in derived classes.
 #: ../conduit/modules/N800Module/N800Module.py:55
 msgid "Conduit"
 msgstr "Conduit"
 
-#. Translators: Format string used to describe the acceptable formats the
-#. device accepts. The first arg is replaced with DEFAULT_FOLDER and the second
-#. arg is a comma seperated list of encodings
-#: ../conduit/modules/N800Module/N800Module.py:59
-#, python-format
-msgid "%s Format (%s)"
-msgstr "%s formátum (%s)"
-
-#. Signifies that a conversion should not take place
-#: ../conduit/modules/N800Module/N800Module.py:61
-msgid "unchanged"
-msgstr "változatlan"
-
-#: ../conduit/modules/N800Module/N800Module.py:123
+#: ../conduit/modules/N800Module/N800Module.py:105
 msgid "N800 Files"
 msgstr "N800 fájlok"
 
-#: ../conduit/modules/N800Module/N800Module.py:124
+#: ../conduit/modules/N800Module/N800Module.py:106
 msgid "Synchronizes files/folders to a N800 device"
 msgstr "Fájlok és mappák szinkronizálása N800 eszközre"
 
 #. To translators: default backup folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:129
+#: ../conduit/modules/N800Module/N800Module.py:111
 msgid "Backups"
 msgstr "Mentések"
 
-#: ../conduit/modules/N800Module/N800Module.py:144
+#: ../conduit/modules/N800Module/N800Module.py:126
 msgid "N800 Music"
 msgstr "N800 zene"
 
-#: ../conduit/modules/N800Module/N800Module.py:145
+#: ../conduit/modules/N800Module/N800Module.py:127
 msgid "Synchronizes music to a N800 device"
 msgstr "Zene szinkronizálása N800 eszközre"
 
 #. To translators: defaul music folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:151
+#: ../conduit/modules/N800Module/N800Module.py:133
 msgid "Music"
 msgstr "Zene"
 
-#: ../conduit/modules/N800Module/N800Module.py:168
+#: ../conduit/modules/N800Module/N800Module.py:150
 msgid "N800 Videos"
 msgstr "N800 videók"
 
-#: ../conduit/modules/N800Module/N800Module.py:169
+#: ../conduit/modules/N800Module/N800Module.py:151
 msgid "Synchronizes video to a N800 device"
 msgstr "Videók szinkronizálása N800 eszközre"
 
 #. To translators: defaul video folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:175
+#: ../conduit/modules/N800Module/N800Module.py:157
 msgid "Video"
 msgstr "Videó"
 
-#: ../conduit/modules/N800Module/N800Module.py:192
+#: ../conduit/modules/N800Module/N800Module.py:174
 msgid "N800 Photos"
 msgstr "N800 fényképek"
 
-#: ../conduit/modules/N800Module/N800Module.py:193
+#: ../conduit/modules/N800Module/N800Module.py:175
 msgid "Synchronizes photos to an N800 device"
 msgstr "Fényképek szinkronizálása N800 eszközre"
 
 #. To translators: default photos folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:199
+#: ../conduit/modules/N800Module/N800Module.py:181
 msgid "Photo"
 msgstr "Fotó"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:19
+msgid "Nautilus Bookmarks"
+msgstr "Nautilus könyvjelzők"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:20
+msgid "Sync your Nautilus Bookmarks"
+msgstr "Nautilus könyvjelzők szinkronizálása"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:145
+msgid "Sync bookmarks to local places/files"
+msgstr "Könyvjelzők szinkronizálása helyi helyekre/fájlokra"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:148
+msgid "Sync bookmarks to remote places/files"
+msgstr "Könyvjelzők szinkronizálása távoli helyekre/fájlokra"
 
 #: ../conduit/modules/NetworkModule/Server.py:147
 msgid "Network"
@@ -959,7 +1225,6 @@ msgid "Synchronize songs from your Rhythmbox playlists"
 msgstr "Zeneszámok szinkronizálása a Rythmbox lejátszólistákról"
 
 #: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:26
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:5
 msgid "Shutterfly"
 msgstr "Shutterfly"
 
@@ -972,7 +1237,6 @@ msgid "%Y-%m-%d %H:%M:%S"
 msgstr "%Y. %m %d. %k.%M.%S"
 
 #: ../conduit/modules/SmugMugModule/SmugMugModule.py:28
-#: ../conduit/modules/SmugMugModule/config.glade.h:6
 msgid "SmugMug"
 msgstr "SmugMug"
 
@@ -980,20 +1244,39 @@ msgstr "SmugMug"
 msgid "Synchronize your SmugMug.com photos"
 msgstr "SmugMug.com fényképek szinkronizálása"
 
+#: ../conduit/modules/SynceModule.py:139
+msgid "Create Partnership"
+msgstr "Kapcsolat létrehozása"
+
+#: ../conduit/modules/SynceModule.py:312
+msgid "Windows Mobile Contacts"
+msgstr "Windows Mobile névjegyek"
+
+#: ../conduit/modules/SynceModule.py:450
+msgid "Windows Mobile Calendar"
+msgstr "Windows Mobile naptár"
+
+#: ../conduit/modules/SynceModule.py:459
+msgid "Tasks"
+msgstr "Feladatok"
+
+#: ../conduit/modules/SynceModule.py:460
+msgid "Windows Mobile Tasks"
+msgstr "Windows Mobile feladatok"
+
+#: ../conduit/modules/TomboyModule.py:103
+msgid "Tomboy Notes"
+msgstr "Tomboy jegyzetek"
+
+#: ../conduit/modules/TomboyModule.py:104
+msgid "Synchronize your Tomboy notes"
+msgstr "Tomboy jegyzetek szinkronizálása"
+
 #: ../conduit/modules/ZotoModule/ZotoModule.py:154
-#: ../conduit/modules/ZotoModule/zoto.glade.h:6
 msgid "Zoto"
 msgstr "Zoto"
 
 #: ../conduit/modules/ZotoModule/ZotoModule.py:155
 msgid "Synchronize your Zoto photos"
 msgstr "Zoto fényképek szinkronizálása"
-
-#: ../conduit/modules/Firefox3Module/config.glade.h:1
-msgid "Firefox"
-msgstr "Firefox"
-
-#: ../conduit/modules/Firefox3Module/config.glade.h:2
-msgid "Firefox Profile:"
-msgstr "Firefox profil:"
 

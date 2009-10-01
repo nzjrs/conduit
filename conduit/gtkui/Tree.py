@@ -363,11 +363,11 @@ class DataProviderTreeView(gtk.TreeView):
         # DND info:
         # drag
         self.enable_model_drag_source(  gtk.gdk.BUTTON1_MASK,
-                                        self.DND_TARGETS,
-                                        gtk.gdk.ACTION_DEFAULT | gtk.gdk.ACTION_MOVE)
-        self.drag_source_set(           gtk.gdk.BUTTON1_MASK | gtk.gdk.BUTTON3_MASK,
-                                        self.DND_TARGETS,
-                                        gtk.gdk.ACTION_COPY | gtk.gdk.ACTION_LINK)
+                               self.DND_TARGETS,
+                               gtk.gdk.ACTION_DEFAULT | gtk.gdk.ACTION_MOVE)
+        self.drag_source_set(  gtk.gdk.BUTTON1_MASK | gtk.gdk.BUTTON3_MASK,
+                               self.DND_TARGETS,
+                               gtk.gdk.ACTION_COPY | gtk.gdk.ACTION_LINK)
         self.connect('drag-data-get', self.on_drag_data_get)
         self.connect('drag-data-delete', self.on_drag_data_delete)
         

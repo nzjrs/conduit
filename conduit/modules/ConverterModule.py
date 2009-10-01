@@ -1,4 +1,4 @@
-import re
+import sys, re
 import logging
 log = logging.getLogger("modules.Converter")
 
@@ -12,6 +12,10 @@ import conduit.datatypes.File as File
 import conduit.datatypes.Note as Note
 import conduit.datatypes.Setting as Setting
 import conduit.datatypes.Bookmark as Bookmark
+
+from gettext import gettext as _
+
+from xml.dom.minidom import parseString
 
 MODULES = {
         "EmailConverter" :      { "type": "converter" },
@@ -84,7 +88,7 @@ class NoteConverter(TypeConverter.Converter):
 
     def text_to_note(self, text, **kwargs):
         n = Note.Note(
-                    title="Note-"+Utils.random_string(),
+                    title=_("Note-")+Utils.random_string(),
                     contents=text
                     )
         return n
@@ -305,36 +309,78 @@ class BookmarkConverter(TypeConverter.Converter):
                                 uri=v
                                 )
         return bookmark
+
+    def get_bookmark_filename(self, bookmark):
+        # Return name without invalid characters
+        title = bookmark.get_title()
+        mapdict = { "/":"-",
+                    "%":"" }
+        for (old,new) in mapdict.iteritems():
+            title = title.replace(old,new)
+        return title
         
     def bookmark_to_file(self, bookmark):
-        # Now actually creates a useful filetype
-        if bookmark.get_title() != None and bookmark.get_uri() != None:
-            desktop = "[Desktop Entry]\n"
-            desktop += "Version=1.0\n"
-            desktop += "Encoding=UTF-8\n"
-            desktop += "Name=%s\n" % bookmark.get_title()
-            desktop += "Type=Link\n"
-            desktop += "URL=%s\n" % bookmark.get_uri()
-            desktop += "Icon=gnome-fs-bookmark\n"
-            f = File.TempFile(desktop)
-            f.force_new_filename(bookmark.get_title().replace("/","_") + ".desktop" )
-            return f
+        # Pick right format for OS
+        if bookmark.get_title() == None and bookmark.get_uri() == None: 
+            return
+        elif sys.platform == 'darwin':
+            return self.bookmark_to_webloc(bookmark)
+        else:
+            return self.bookmark_to_desktop(bookmark)
         
     def file_to_bookmark(self, f):
-        # This too. Now parses .desktop files... badly
+        # Pick right converter
         if f.get_mimetype().startswith("text"):
-            txt = f.get_contents_as_text()
-            title = None
-            uri = None
-            for line in txt.split("\n"):
-                if line.startswith( "Name" ):
-                    title = line.split( "=" )[1]
-                elif line.startswith( "URL" ):
-                    uri = line.split( "=" )[1]
-            if uri != None and title != None:
-                return Bookmark.Bookmark( title, uri )       
-            
+            (name,extension) = f.get_filename_and_extension()
+            if extension == 'desktop':
+                return self.desktop_to_bookmark(f)
+            elif extension == 'webloc':
+                return self.webloc_to_bookmark(f)
         
+    def bookmark_to_desktop(self, bookmark):
+        # Creates .desktop file
+        desktop = "[Desktop Entry]\n"
+        desktop += "Version=1.0\n"
+        desktop += "Encoding=UTF-8\n"
+        desktop += "Name=%s\n" % bookmark.get_title()
+        desktop += "Type=Link\n"
+        desktop += "URL=%s\n" % bookmark.get_uri()
+        desktop += "Icon=gnome-fs-bookmark\n"
+        f = File.TempFile(desktop)
+        f.force_new_filename(self.get_bookmark_filename(bookmark) + ".desktop")
+        return f
         
-        
-     
+    def desktop_to_bookmark(self, f):
+        # Parses .desktop files... badly
+        txt = f.get_contents_as_text()
+        title = None
+        uri = None
+        for line in txt.split("\n"):
+            if line.startswith( "Name" ):
+                title = line.split( "=" )[1]
+            elif line.startswith( "URL" ):
+                uri = line.split( "=" )[1]
+        if uri != None and title != None:
+            return Bookmark.Bookmark( title, uri )
+                
+    def bookmark_to_webloc(self,bookmark):
+        # Create .webloc as used by FireFox on Mac OSX
+        webloc = '<?xml version="1.0" encoding="UTF-8"?>\n'
+        webloc += '<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">\n'
+        webloc += '<plist version="1.0">\n'
+        webloc += '<dict>\n'
+        webloc += '    <key>URL</key>\n'
+        webloc += '    <string>%s</string>\n' % bookmark.get_uri()
+        webloc += '</dict>\n'
+        webloc += '</plist>\n'
+        f = File.TempFile(webloc)
+        f.force_new_filename(self.get_bookmark_filename(bookmark) + '.webloc')
+        return f
+
+    def webloc_to_bookmark(self,f):
+        # Parse .webloc files (easy)
+        title = f.get_filename_and_extension()[0]
+        uri = parseString(f.get_contents_as_text()).getElementsByTagName("string")[0]
+        if uri != None and title != None:
+            return Bookmark.Bookmark(title,uri)
+                

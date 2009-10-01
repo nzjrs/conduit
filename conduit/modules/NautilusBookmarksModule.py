@@ -8,14 +8,16 @@ import conduit.dataproviders.DataProvider as DataProvider
 import conduit.utils as Utils
 import conduit.datatypes.Bookmark as Bookmark
 
+from gettext import gettext as _
+
 MODULES = {
     "NautilusBookmarksDataProviderTwoWay" : { "type": "dataprovider" }
 }
 
 class NautilusBookmarksDataProviderTwoWay(DataProvider.TwoWay):
 
-    _name_ = "Nautilus Bookmarks"
-    _description_ = "Sync your Nautilus Bookmarks"
+    _name_ = _("Nautilus Bookmarks")
+    _description_ = _("Sync your Nautilus Bookmarks")
     _category_ = conduit.dataproviders.CATEGORY_BOOKMARKS
     _module_type_ = "twoway"
     _in_type_ = "bookmark"
@@ -140,10 +142,10 @@ class NautilusBookmarksDataProviderTwoWay(DataProvider.TwoWay):
         return False
 
     def config_setup(self, config):
-        config.add_item("Sync bookmarks to local places/files", "check", 
+        config.add_item(_("Sync bookmarks to local places/files"), "check", 
             config_name = "syncLocal"
         )
-        config.add_item("Sync bookmarks to remote places/files", "check", 
+        config.add_item(_("Sync bookmarks to remote places/files"), "check", 
             config_name = "syncRemote"
         )
 

@@ -14,9 +14,23 @@ import conduit.utils as Utils
 import conduit.datatypes.Bookmark as Bookmark
 import conduit.Exceptions as Exceptions
 
-MODULES = {
-    "Firefox3DataProviderSource" : { "type" : "dataprovider" },
-}
+FFDIR = None
+LINFFDIR = os.path.expanduser(os.path.join("~",".mozilla","firefox"))
+MACFFDIR = os.path.expanduser(os.path.join("~","Library","Application Support","Firefox"))
+
+if os.path.exists(LINFFDIR):
+    FFDIR = LINFFDIR
+elif os.path.exists(MACFFDIR):
+    FFDIR = MACFFDIR
+else:
+    log.warn("Firefox 3 bookmarks support disabled")
+
+if FFDIR: 
+    MODULES = {
+        "Firefox3DataProviderSource" : { "type" : "dataprovider" },
+    }
+else: 
+    MODULES = {}
 
 class Firefox3DataProviderSource(DataProvider.DataSource):
     """ 
@@ -37,9 +51,8 @@ class Firefox3DataProviderSource(DataProvider.DataSource):
         DataProvider.DataSource.__init__(self)
 
         self._bookmarks = []
-        self._ffdir = os.path.expanduser(os.path.join("~",".mozilla","firefox"))
         self._cf = ConfigParser.ConfigParser()
-        self._cf.read(os.path.join(self._ffdir,"profiles.ini"))
+        self._cf.read(os.path.join(FFDIR,"profiles.ini"))
 
         self.update_configuration(
             profilepath = self._cf.get("Profile0", "Path") # default
@@ -55,7 +68,7 @@ class Firefox3DataProviderSource(DataProvider.DataSource):
     def refresh(self):
         DataProvider.DataSource.refresh(self)
         # sqlite3 is not thread safe, so we cannot preserve connections in this class
-        con = sqlite3.connect(os.path.join(self._ffdir,self.profilepath,"places.sqlite"))
+        con = sqlite3.connect(os.path.join(FFDIR,self.profilepath,"places.sqlite"))
         try:
             # table structure
             # moz_bookmarks: id|type|fk|parent|position|title|keyword_id|folder_type|dateAdded|lastModified

@@ -8,6 +8,7 @@ log = logging.getLogger("platform.FileGio")
 
 class FileImpl(conduit.platform.File):
     SCHEMES = ("file://","http://","ftp://","smb://")
+    NAME = "GIO"
     def __init__(self, URI, impl=None):
         if impl:
             self._file = impl
@@ -218,7 +219,7 @@ class FileTransferImpl(conduit.platform.FileTransfer):
         try:
             if self._cancel_func():
                 log.info("Transfer of %s -> %s cancelled" % (self._source.get_uri(), self._dest.get_uri()))
-                c.cancel()
+                self._cancellable.cancel()
         except Exception:
             log.warn("Could not call transfer cancel function", exc_info=True)
         return True

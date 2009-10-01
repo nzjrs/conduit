@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """
 This module tests whether conduit appears 
 to be running from the source directory.

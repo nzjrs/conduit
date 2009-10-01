@@ -1,6 +1,7 @@
 import threading
 import conduit
 import conduit.datatypes.File as File
+import conduit.utils.Wait as Wait
 import logging
 log = logging.getLogger("datatypes.Audio")
 
@@ -53,19 +54,16 @@ class MediaFile(File.File):
         This is also a very expensive operation, should be called only when 
         necessary.   
         '''
-        event = threading.Event()
+        blocker = Wait.WaitOnSignal()
         def discovered(discoverer, valid):
             self._valid = valid
-            event.set()
+            blocker.unblock()
         # FIXME: Using Discoverer for now, but we should switch to utils.GstMetadata
         #        when we get it to work (and eventually support thumbnails).
         info = gst.extend.discoverer.Discoverer(self.get_local_uri())
         info.connect('discovered', discovered)
         info.discover()
-        # Wait for discover to finish (which is async and emits discovered)
-        # This thread MUST NOT be the mainloop thread, because then the signal
-        # will NEVER be received, and this will deadlock.
-        event.wait()
+        blocker.block()
         if self._valid:
             tags = info.tags
         else:

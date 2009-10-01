@@ -102,15 +102,15 @@ class BackpackNoteSink(DataProvider.DataSink, BackpackBase):
             log.debug("Found existing note: %s (uid:%s timestamp:%s)" % (title, uid, timestamp))
 
     def config_setup(self, config):
-        config.add_section("Account details")
-        config.add_item("Login", "text",
+        config.add_section(_("Account details"))
+        config.add_item(_("Login"), "text",
             config_name = "username"
         )
-        config.add_item("API key", "text", 
+        config.add_item(_("API key"), "text", 
             config_name = "apikey"
         )
-        config.add_section("Saved notes")
-        config.add_item("Save notes in page", "text",
+        config.add_section(_("Saved notes"))
+        config.add_item(_("Save notes in page"), "text",
             config_name = "storeInPage"
         )            
 

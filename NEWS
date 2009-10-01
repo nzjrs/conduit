@@ -1,11 +1,75 @@
+NEW in 0.3.17:
+==============
+ * Fixed 575000, why am I asked to "name" folders in the "files" data provider?
+
 NEW in 0.3.16:
 ==============
+* New Configuration System
 * Support Firefox3 Bookmarks
 * Support Google Bookmarks
 * Support Nautilus Bookmarks
 * Add dataprovider for changing desktop wallpaper
 * Autostart capability can now be controlled from 
   the preferences UI
+
+* Fixed #510126, Support Firefox 3 bookmarks (Andrew Stormont)
+* Fixed #529327, Lacking string hyphenation (Philip Withnall)
+* Fixed #529328, Informal use of "sync" (Alexandre Rosenfeld  <airmind@gemini>)
+* Fixed #531250, Support Nautilus' "bookmarks" (when they point to any "remote-looking" URI) (John Stowers)
+* Fixed #548962, Debug mode (John Stowers)
+* Fixed #550641, Conduit should not display ready if dataproviders need configuration first (John Stowers)
+* Fixed #552418, F-Spot module fails to open configuration dialogue (Alexandre Rosenfeld)
+* Fixed #555404, Fix sync to a fat filesystem (John Stowers)
+* Fixed #556892, More flexible search for JSON libraries (John Stowers)
+* Fixed #557589, Unable to sync 2 folders over local network connection (John Stowers)
+* Fixed #557669, Conduit halts with error (John Stowers)
+* Fixed #558176, GIO FileMonitor is busted (John Stowers)
+* Fixed #559055, The documentation URI is invalid (John Stowers)
+* Fixed #559599, Facebook does not respect default browser (John Stowers)
+* Fixed #561354, conduit locks up in  EvoCalendarTwoWay.refresh() method (John Stowers)
+* Fixed #561554, Depends on gio (but not checked in configure) (Tom Parker)
+* Fixed #561555, "pygst.require() must be called before importing gst" causes *many* import failures (Tom Parker)
+* Fixed #561557, Catching import errors using importfile is non-trivial (Tom Parker)
+* Fixed #562516, Syncing Folder to Facebook only uploads 1 photo (John Stowers)
+* Fixed #564020, Tomboy module XML detection fails - borks notes (Brian Teague)
+* Fixed #564141, Evolution calendar sync import fails (Brian Teague)
+* Fixed #564144, Evolution Calendar sync updates data endlessly (Brian Teague)
+* Fixed #564187, Tomboy note filenames don't save with special characters (Brian Teague)
+* Fixed #566588, Conduit Crashes with segfault on Box.net login window close - 32/64 bit (John Stowers)
+* Fixed #568091, Patch to add Google Bookmarks data source (Andrew Stormont)
+* Fixed #568293, Bookmarks should convert to .desktop files (Andrew Stormont)
+* Fixed #568361, Conflict resolution needs data type conversion (Brian Teague)
+* Fixed #568362, File data type's hash always returns 0 (Brian Teague)
+* Fixed #568363, Tomboy module misuses SynchronizeConflictError (Brian Teague)
+* Fixed #568372, Firefox 3 bookmarks dataprovider should suport multiple profiles (Andrew Stormont)
+* Fixed #568380, File data type's hash always returns 0 when using GIO (John Stowers)
+* Fixed #570434, Event datatype needs to import re (Brian Teague)
+* Fixed #571506, Import error module WindowConfigurator (Manuel Rego Casasnovas)
+* Fixed #572005, Patch for "--with-file-impl" configure flag to set File Implementation (Andrew Stormont)
+* Fixed #572132, Conduit displays category without name for ipods without name.  Patch attached. (Andrew Stormont)
+* Fixed #574907, It should be possible to select groups in google contacts (Michael Thompson)
+* Fixed #547133, Getting mtime over http backend is broken (John Stowers)
+
+Translations:
+* Updated el: Jennie Petoumenou
+* Updated fr: Claude Paroz
+* Updated zh_HK: Hong Kong
+* Updated pt_BR: Og Maciel, Leonardo Ferreira Fontenelle
+* Updated pt: Duarte Loreto
+* Updated ca: Gil Forcada
+* Updated de: Mario Blättermann, Andre Klapper
+* Updated sv: Daniel Nylander
+* Updated hu: Gabor Kelemen
+* Updated ar: Djihed Afifi <djihed@gmail.com>
+* Updated it: Luca Ferretti
+* Updated en_GB: Philip Withnall
+* Updated cs: Petr Kovar
+* Updated fi: Timo Jyrinki
+* Updated zh_TW: Taiwan
+* Updated es: Jorge Gonzalez, Jorge Gonzalez  <jorgegonz@svn.gnome.org>
+
+Help Manual Translations:
+* Updated de: Andre Klapper  <a9016009@gmx.de>, Mario Blättermann
 
 NEW in 0.3.15:
 ==============

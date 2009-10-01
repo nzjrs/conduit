@@ -60,16 +60,10 @@ if errormsg:
         ITDB_MEDIATYPE_PODCAST = 4
 
 def _string_to_unqiue_file(txt, base_uri, prefix, postfix=''):
-    for i in range(1, 10000):
-        filename = prefix + str(i) + postfix
-        uri = os.path.join(base_uri, filename)
-        f = File.File(uri)
-        if not f.exists():
-            break
-
     temp = Utils.new_tempfile(txt)
+    uri = os.path.join(base_uri, prefix+temp.get_filename()+postfix)
     temp.transfer(uri, True)
-    temp.set_UID(filename)
+    temp.set_UID(os.path.basename(uri))
     return temp.get_rid()
 
 class iPodFactory(VolumeFactory.VolumeFactory):
@@ -182,8 +176,8 @@ class IPodNoteTwoWay(IPodBase):
     LUID is the note title
     """
 
-    _name_ = "Notes"
-    _description_ = "Synchronize your iPod notes"
+    _name_ = _("Notes")
+    _description_ = _("Synchronize your iPod notes")
     _module_type_ = "twoway"
     _in_type_ = "note"
     _out_type_ = "note"
@@ -298,8 +292,8 @@ class IPodNoteTwoWay(IPodBase):
 
 class IPodContactsTwoWay(IPodBase):
 
-    _name_ = "Contacts"
-    _description_ = "Synchronize your iPod contacts"
+    _name_ = _("Contacts")
+    _description_ = _("Synchronize your iPod contacts")
     _module_type_ = "twoway"
     _in_type_ = "contact"
     _out_type_ = "contact"
@@ -334,8 +328,8 @@ class IPodContactsTwoWay(IPodBase):
 
 class IPodCalendarTwoWay(IPodBase):
 
-    _name_ = "Calendar"
-    _description_ = "Synchronize your iPod calendar"
+    _name_ = _("Calendar")
+    _description_ = _("Synchronize your iPod calendar")
     _module_type_ = "twoway"
     _in_type_ = "event"
     _out_type_ = "event"
@@ -370,8 +364,8 @@ class IPodCalendarTwoWay(IPodBase):
 
 class IPodPhotoSink(IPodBase):
 
-    _name_ = "Photos"
-    _description_ = "Synchronize your iPod photos"
+    _name_ = _("Photos")
+    _description_ = _("Synchronize your iPod photos")
     _module_type_ = "sink"
     _in_type_ = "file/photo"
     _out_type_ = "file/photo"
@@ -447,6 +441,7 @@ class IPodPhotoSink(IPodBase):
 
     def put(self, f, overwrite, LUID=None):
         photo = self.db.new_Photo(filename=f.get_local_uri())
+        self.album = self._get_photo_album(self.albumName)
         self.album.add(photo)
         gpod.itdb_photodb_write(self.db._itdb, None)
         return conduit.datatypes.Rid(str(photo['id']), None, hash(None))
@@ -463,11 +458,11 @@ class IPodPhotoSink(IPodBase):
             self._delete_album(album_config.get_value())
             album_config.choices = self._get_photo_albums()
 
-        album_config = config.add_item('Album', 'combotext',
+        album_config = config.add_item(_('Album'), 'combotext',
             config_name = 'albumName',
             choices = self._get_photo_albums(),
         )
-        config.add_item("Delete", "button",
+        config.add_item(_("Delete"), "button",
             initial_value = _delete_click
         )    
 
@@ -567,7 +562,7 @@ class IPodFileBase:
         '''
         tags = f.get_media_tags()
         for name, value in self._convert_tags(tags, self.media_to_ipod):
-            log.debug("Got %s = %s" % (name, value))
+            #log.debug("Got %s = %s" % (name, value))
             self.track[name] = value
         #Make sure we have a title to this song, even if it's just the filename
         if self.track['title'] is None:
@@ -585,6 +580,12 @@ class IPodFileBase:
             filename = self.track._userdata_into_default_locale('filename')
         return filename
         
+    def get_hash(self):
+        return str(hash(tuple(self.get_media_tags())))
+
+    def get_snippet(self):
+        return "%(artist)s - %(title)s" % track
+
     def get_media_tags(self):
         '''
         Extends the MediaFile class to include the iPod metadata, instead of
@@ -595,7 +596,7 @@ class IPodFileBase:
         
         #Get the information from the iPod track.
         #The track might look like a dict, but it isnt, so we make it into one.
-        track_tags = dict([(name, track[name]) for name in self.media_to_ipod.keys()])
+        track_tags = dict(self.track.pairs())
         return dict(self._convert_tags(track_tags, self.ipod_to_media))
 
     #FIXME: Remove this. Use native operations from Conduit instead.
@@ -705,7 +706,9 @@ class IPodMediaTwoWay(IPodBase):
         #self.tracks = {}
         self.tracks_id = {}
         self.track_args = {}
-        self.keep_converted = True
+        self.update_configuration(
+            keep_converted = True,
+        )
         
     def get_db(self):
         if self.db:
@@ -769,9 +772,12 @@ class IPodMediaTwoWay(IPodBase):
     def put(self, f, overwrite, LUID=None):
         self.get_db()
         try:
-            media_file = self._ipodmedia_(db = self.db, f = f, **self.track_args)
-            #FIXME: We keep the db locked while we copy the file. Not good
-            #media_file.
+            if LUID and LUID in self.tracks_id:
+                track = self.tracks_id[LUID]
+                media_file = self._ipodmedia_(db = self.db, track = track, f = f, **self.track_args)
+            else:
+                media_file = self._ipodmedia_(db = self.db, f = f, **self.track_args)
+            #FIXME: We keep the db locked while we copy the file. Not good.
             media_file.copy_ipod()
             self.tracks_id[str(media_file.track['dbid'])] = media_file.track
             #FIXME: Writing the db here is for debug only. Closing does not actually
@@ -802,12 +808,12 @@ class IPodMediaTwoWay(IPodBase):
         encodings = [(enc_name, enc_opts.get('description', None) or enc_name)
                       for enc_name, enc_opts in self.encodings.iteritems()]
         
-        config.add_section("Conversion options")
-        config.add_item("Encoding", "combo", 
+        config.add_section(_("Conversion options"))
+        config.add_item(_("Encoding"), "combo", 
             config_name = "encoding",
             choices = encodings
         )
-        config.add_item("Keep converted files", "check",
+        config.add_item(_("Keep converted files"), "check",
             config_name = "keep_converted"
         )
 
@@ -837,8 +843,8 @@ IPOD_AUDIO_ENCODINGS = {
 
 class IPodMusicTwoWay(IPodMediaTwoWay):
 
-    _name_ = "iPod Music"
-    _description_ = "Synchronize your iPod music"
+    _name_ = _("iPod Music")
+    _description_ = _("Synchronize your iPod music")
     _module_type_ = "twoway"
     _in_type_ = "file/audio"
     _out_type_ = "file/audio"
@@ -851,7 +857,9 @@ class IPodMusicTwoWay(IPodMediaTwoWay):
     def __init__(self, *args):
         IPodMediaTwoWay.__init__(self, *args)
         self.encodings = IPOD_AUDIO_ENCODINGS
-        self.encoding = 'aac'
+        self.update_configuration(
+            encoding = 'mp3',
+        )
 
 IPOD_VIDEO_ENCODINGS = {
     #FIXME: Add iPod mpeg4 restrictions. Follow:
@@ -871,8 +879,8 @@ IPOD_VIDEO_ENCODINGS = {
 
 class IPodVideoTwoWay(IPodMediaTwoWay):
 
-    _name_ = "iPod Video"
-    _description_ = "Synchronize your iPod videos"
+    _name_ = _("iPod Video")
+    _description_ = _("Synchronize your iPod videos")
     _module_type_ = "twoway"
     _in_type_ = "file/video"
     _out_type_ = "file/video"
@@ -885,8 +893,10 @@ class IPodVideoTwoWay(IPodMediaTwoWay):
     def __init__(self, *args):
         IPodMediaTwoWay.__init__(self, *args)
         self.encodings = IPOD_VIDEO_ENCODINGS
-        self.encoding = 'mp4_x264'
-        self.video_kind = 'movie'
+        self.update_configuration(
+            encoding = 'mp4_x264',
+            video_kind = 'movie',
+        )
         self._update_track_args()
         
     def _update_track_args(self):
@@ -894,21 +904,15 @@ class IPodVideoTwoWay(IPodMediaTwoWay):
 
     def config_setup(self, config):
         IPodMediaTwoWay.config_setup(self, config)
-        video_kinds = [('movie', 'Movie'), 
-                       ('musicvideo', 'Music Video'),
-                       ('tvshow', 'TV Show')]            
+        video_kinds = [('movie', _('Movie')), 
+                       ('musicvideo', _('Music Video')),
+                       ('tvshow', _('TV Show'))]            
         config.add_section()
-        config.add_item("Video kind", "combo",
+        config.add_item(_("Video kind"), "combo",
             config_name = "video_kind",
             choices = video_kinds)
         
     def set_configuration(self, config):
         IPodMediaTwoWay.set_configuration(self, config)
-        if 'video_kind' in config:
-            self.video_kind = config['video_kind']
+        #FIXME Move this to update_configuration callback
         self._update_track_args()
-
-    def get_configuration(self):
-        config = IPodMediaTwoWay.get_configuration(self)
-        config.update({'video_kind':self.video_kind})
-        return config
