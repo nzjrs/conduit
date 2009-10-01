@@ -208,9 +208,10 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager, Configurator.BaseC
         Adds the folder to the db. Starts a thread to scan it in the background
         """
         if folderURI not in self.scanThreads:
+            name = Vfs.uri_get_filename(folderURI)
             oid = self.db.insert(
                         table="config",
-                        values=(folderURI,FileDataProvider.TYPE_FOLDER,0,False,"")
+                        values=(folderURI,FileDataProvider.TYPE_FOLDER,0,False,name)
                         )
             self.make_thread(
                     folderURI,
@@ -261,8 +262,6 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager, Configurator.BaseC
         response = dialog.run()
         if response == gtk.RESPONSE_OK:
             fileURI = dialog.get_uri()
-            #FIXME: Returns a quoted uri string. Inconsistant with other gnomevfs methods
-            #fileURI = Vfs.uri_unescape(fileURI)
             self._add_file(fileURI)
         elif response == gtk.RESPONSE_CANCEL:
             pass
@@ -283,8 +282,6 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager, Configurator.BaseC
         response = dialog.run()
         if response == gtk.RESPONSE_OK:
             folderURI = dialog.get_uri()
-            #FIXME: Returns a quoted uri string. Inconsistant with other gnomevfs methods
-            #folderURI = Vfs.uri_unescape(folderURI)
             self._add_folder(folderURI)
         elif response == gtk.RESPONSE_CANCEL:
             pass

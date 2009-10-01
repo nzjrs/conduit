@@ -45,12 +45,12 @@ if IS_INSTALLED:
     if not PYTHONDIR in sys.path:
         sys.path.insert(0, PYTHONDIR)
 else:
-    VERSION =                   "0.3.16"
+    VERSION =                   "0.3.17"
     LOCALE_DIR =                os.path.join(DIRECTORY, "po")
     SHARED_DATA_DIR =           os.path.join(DIRECTORY, "data")
     SHARED_MODULE_DIR =         os.path.join(DIRECTORY, "conduit", "modules")
     DESKTOP_FILE_DIR =          os.path.join(DIRECTORY, "data")
-                                #{GnomeVfs, GIO, Python}
+                                #{GIO, Python}
     FILE_IMPL =                 os.environ.get("CONDUIT_FILE_IMPL","GIO")
                                 #{gtkmozembed, webkit, system}
     BROWSER_IMPL =              os.environ.get("CONDUIT_BROWSER_IMPL","webkit")

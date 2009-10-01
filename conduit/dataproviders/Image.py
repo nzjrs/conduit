@@ -7,6 +7,8 @@ import conduit.datatypes.File as File
 import conduit.dataproviders.DataProvider as DataProvider
 from conduit.datatypes import Rid
 
+from gettext import gettext as _
+
 class UploadInfo:
     """
     Upload information container, this way we can add info
@@ -29,8 +31,8 @@ class ImageSink(DataProvider.DataSink):
     _in_type_ = "file/photo"
     _out_type_ = "file/photo"
 
-    IMAGE_SIZES = ["640x480", "800x600", "1024x768"]
-    NO_RESIZE = "None"
+    IMAGE_SIZES = [_("640x480"), _("800x600"), _("1024x768")]
+    NO_RESIZE = _("None")
 
     def __init__(self, *args):
         DataProvider.DataSink.__init__(self)

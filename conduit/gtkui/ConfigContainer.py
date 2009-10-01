@@ -39,10 +39,11 @@ class ConfigContainer(Configurator.BaseConfigContainer):
         self.section = None
         self.sections = []
         self.items = []
+        self.item_names = {}
         self.built_items = False
         self.config_values = None
         
-        self._reset_modified_items()
+        self.__modified_items = None
         
         #the child widget to contain the custom settings
         self.widgetTable = gtk.Table(rows=1, columns=2)        
@@ -52,11 +53,19 @@ class ConfigContainer(Configurator.BaseConfigContainer):
         self.config_widget = self.widgetTable
         
         self.firstRow = True
+        
+    def __len__(self):
+        return len(self.item_names)
+        
+    def __getitem__(self, key):
+        return self.item_names[key]
 
     def _reset_modified_items(self, empty = True):
         '''
-        Reset the list of modified items. If empty is true, just create a new
-        empty list of modified items (so that no item is modified).
+        Reset the list of modified items. 
+        
+        If empty is True, just create a new empty list of modified items (so 
+        that no item is modified).
         If empty is False, set the list to None, so that it will be recreated
         next time get_modified_items is called.
         '''
@@ -67,8 +76,6 @@ class ConfigContainer(Configurator.BaseConfigContainer):
         
     def _item_changed(self, item, initial_state, value):
         self.emit("item-changed", item)
-        if self.modified_items is None:
-            self.get_modified_items()
         if not initial_state:
             self.modified_items.add(item)
         elif item in self.modified_items:
@@ -77,7 +84,7 @@ class ConfigContainer(Configurator.BaseConfigContainer):
         
     def _rebuild_widgets(self):
         '''
-        Rebuild widgets if needed
+        Rebuild widgets if needed.
         '''
         self.modified_items = None
         if self.showing:
@@ -85,7 +92,7 @@ class ConfigContainer(Configurator.BaseConfigContainer):
     
     def _build_widgets(self):
         '''
-        Creates all necessary widgets
+        Creates all necessary widgets.
         '''
         table = self.widgetTable
         if self.showing:
@@ -130,36 +137,58 @@ class ConfigContainer(Configurator.BaseConfigContainer):
         self._rebuild_widgets()
         return self.section
     
-    def add_item(self, title, kind, order = 0, **kwargs):
+    def add_item(self, title, kind, order = 0, name = None, **kwargs):
         '''
         Add a configuration item. Returns the Item object.
         
-        You can pass properties to the configuration item in kwargs.
+        Title is used for the label next to this item.
+        Kind is the type of item used for the widget. See the ConfigItems file
+        for a list of default kinds provided. Descendants of ItemBase are auto-
+        matically registered and can be used here.
+        Name is used to access this item via __getitem__ or with config[name].
+        If name is not specified here it will use the config_name defined in
+        kwargs, if availiable.
+        
+        You can pass other properties to the configuration item in kwargs. 
+        For documentation on which properties to use, check the ConfigItems file.
         '''
+        # Check if this kind of item is registered
+        if kind not in ConfigItems.ItemBase.items:
+            raise Error("Config kind %s not found" % kind)
+        # We only add a Section for this item if no previous section is defined.
         if not self.section:
             self.add_section()
-        # If we have a saved configuration in the config dict from the dp, 
-        # use it as initial value.
+        # If we have a saved configuration in the config dict from the 
+        # dataprovider use it as initial value.
+        # Note that we only get the configuration dict once for this 
+        # dataprovider, so that next items will get this cached version.
+        # Because dataproviders usually add several items in a row, this is 
+        # usually faster then retrieving it every time.
         if self.config_values is None:
             if self.dataprovider:
                 self.config_values = self.dataprovider.get_configuration()
             else:
-                self.config_values = {}        
-        if kwargs.get('config_name', None):
-            if kwargs['config_name'] in self.config_values:
-                kwargs['initial_value'] = self.config_values[kwargs['config_name']]
+                self.config_values = {}
+        config_name = kwargs.get('config_name', None)
+        if config_name:
+            if config_name in self.config_values:
+                kwargs['initial_value'] = self.config_values[config_name]
             else:
-                raise Error("Value for %s (configuration item %s) not found in dataprovider" % (kwargs['config_name'], title))
+                raise Error("Value for %s (configuration item %s) not found in dataprovider" % (config_name, title))
+        # The name of this item will be either the explicitely defined name or
+        # the config_name value.
+        name = name or config_name
         if 'enabled' not in kwargs:
             kwargs['enabled'] = self.section.enabled
-        try:
-            item_cls = ConfigItems.ItemBase.items[kind]
-        except KeyError:
-            raise Error("Config kind %s not found" % kind)
+        item_cls = ConfigItems.ItemBase.items[kind]
         item = item_cls(container = self, title = title, order = order, **kwargs)
         item.connect("value-changed", self._item_changed)
         self.items.append(item)
+        if name:
+            self.item_names[name] = item
         self.section.add_item(item)
+        # If we are already showing the configuration dialog, we need to 
+        # recreate the table of items.
         self._rebuild_widgets()
         return item
     
@@ -167,15 +196,20 @@ class ConfigContainer(Configurator.BaseConfigContainer):
         '''
         Return a list of items that has been modified
         '''
-        if self.modified_items is None:
-            self.modified_items = set([item for item in self.items if not item.is_initial_value()])
-        return self.modified_items
+        if self.__modified_items is None:
+            self.__modified_items = set([item for item in self.items if not item.is_initial_value()])
+        return self.__modified_items
+        
+    def set_modified_items(self, value):
+        self.__modified_items = value
+        
+    modified_items = property(get_modified_items, set_modified_items)
     
     def is_modified(self):
         '''
         Returns true if any item has been modified
         '''
-        return len(self.get_modified_items()) != 0        
+        return len(self.modified_items) != 0
         
     def get_config_values(self, items):
         '''
@@ -231,10 +265,11 @@ class ConfigContainer(Configurator.BaseConfigContainer):
             self.dataprovider.set_configuration(config_values)
         for item in items:
             item.save_state()
-        if not items and not sections:
-            self._reset_modified_items()
+        if items or sections:
+            self._reset_modified_items(empty = False)
         else:
-            self._reset_modified_items(False)
+            self._reset_modified_items(empty = True)
+        self.emit('changed', self.is_modified())
     
     def cancel_config(self):
         '''

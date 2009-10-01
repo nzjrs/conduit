@@ -1,3 +1,25 @@
+2009-07-20  Andrew Stormont  <astormont@svn.gnome.org>
+
+	* conduit/modules/DesktopWallpaperModule.py:
+	Support for Mac OSX added to Wallpaper Module
+
+2009-07-17  Andrew Stormont  <astormont@svn.gnome.org>
+
+	* conduit/modules/ConverterModule.py:
+	* conduit/modules/Firefox3Module/Firefox3Module.py:
+    Support for Mac OSX added to Firefox 3 Module
+
+2009-07-16  Andrew Stormont  <astormont@svn.gnome.org>
+
+	* conduit/modules/Firefox3Module/Firefox3Module.py:
+	Only load FF3 module if $HOME/.mozilla/firefox exists	
+
+2009-07-15  Andrew Stormont  <astormont@svn.gnome.org>
+
+	* conduit/conduit.real:
+	* conduit/gtkui/UI.py:
+	Workaround for PyGTK bug on Mac OSX
+
 2009-04-17 John Stowers  <john.stowers@gmail.com>
 
 	* conduit/modules/NetworkModule/XMLRPCUtils.py:

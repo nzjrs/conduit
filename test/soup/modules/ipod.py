@@ -7,6 +7,7 @@ from soup.data.contact import ContactWrapper
 from soup.data.event import EventWrapper
 from soup.data.photo import PhotoWrapper
 from soup.data.music import MusicWrapper
+from soup.data.video import VideoWrapper
 
 import conduit.modules.iPodModule.iPodModule as iPodModule
 import conduit.utils as Utils
@@ -49,5 +50,10 @@ class iPodPhoto(soup.modules.ModuleWrapper, iPodWrapper):
 class iPodMusic(soup.modules.ModuleWrapper, iPodWrapper):
     klass = iPodModule.IPodMusicTwoWay
     dataclass = MusicWrapper
+    requires = [GpodModule]
+
+class iPodVideo(soup.modules.ModuleWrapper, iPodWrapper):
+    klass = iPodModule.IPodVideoTwoWay
+    dataclass = VideoWrapper
     requires = [GpodModule]
 

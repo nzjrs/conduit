@@ -71,20 +71,6 @@ class FileSource(FileDataProvider.FileSource):
     def get_folders(self):
         self._get_files_folders(get_folders = True)        
 
-    '''
-    def get_configuration_(self):
-        files = []
-        folders = []
-        for uri,ftype,group in self.db.select("SELECT URI,TYPE,GROUP_NAME FROM config"):
-            if ftype == FileDataProvider.TYPE_FILE:
-                files.append(uri)
-            else:
-                folders.append("%s---FIXME---%s" % (uri,group))
-
-        return {"files" : files,
-                "folders" : folders}
-    '''
-
     def get_UID(self):
         return Utils.get_user_string()
 

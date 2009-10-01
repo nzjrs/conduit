@@ -275,6 +275,10 @@ class ItemBase(gobject.GObject):
             table.attach(align, 0, 2, row - 1, row, xoptions = gtk.FILL | gtk.EXPAND, yoptions = yoptions)
         return row        
 
+    def _enabled_check_toggled(self, widget):
+        self.set_enabled(widget.get_active())
+        self.emit('value-changed')
+
     def get_label(self):
         '''
         Returns the gtk.Label to this item (if needed)
@@ -334,6 +338,12 @@ class ItemBase(gobject.GObject):
         heavy processing in this method. 
         It is called every time the user changes the value.
         '''
+        #FIXME: This is a hack to allow the Youtube configuration to work.
+        # The way this should be implemented is adding a callback to this function
+        # or something similar. But because we already have too much callbacks
+        # this way is simpler
+        if (not self.enabled) and (self.disabled_value is not None):
+            return self.disabled_value
         if not self.__widget:
             return self.initial_value
         return self._get_value()
@@ -368,14 +378,7 @@ class ItemBase(gobject.GObject):
         '''
         if not self.config_name:
             return None
-        #FIXME: This is a hack to allow the Youtube configuration to work.
-        # The way this should be implemented is adding a callback to this function
-        # or something similar. But because we already have too much callbacks
-        # this way is simpler
-        if (not self.enabled) and (self.disabled_value is not None):
-            value = self.disabled_value
-        else:
-            value = self.get_value()
+        value = self.get_value()
         try:
             if self.config_type:
                 self.config_type(value)
@@ -406,7 +409,9 @@ class ItemBase(gobject.GObject):
         self.__enabled = enabled
         if self.__widget:
             self._set_enabled(enabled)
-            #self.widget.set_sensitive(enabled)
+            if self.disabled_value is not None:
+                log.critical("Toggling enabled")
+                self._value_changed()
     
     enabled = property(lambda self: self.__enabled, lambda self, enabled: self.set_enabled(enabled))
         

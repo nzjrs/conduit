@@ -1,376 +1,377 @@
-# Finnish messages for conduit 
-# Copyright (C) 2008 Free Software Foundation, Inc.
-# Ilkka Tuohela <hile@iki.fi> 2008.
-# Timo Jyrinki <timo.jyrinki@iki.fi> 2008-2009.
+# translation of eu.po to Basque
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 #
-# Huom: synkronisointi, ei synkronointi (lokalisointi.org)
-#
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: conduit\n"
+"Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-26 10:52+0300\n"
-"PO-Revision-Date: 2009-08-26 10:52+0300\n"
-"Last-Translator: Ilkka Tuohela <hile@iki.fi>\n"
-"Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2009-08-28 17:25+0200\n"
+"PO-Revision-Date: 2009-08-28 19:51+0200\n"
+"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
+"Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/conduit.desktop.in.in.h:1
 msgid "Conduit Synchronizer"
-msgstr "Conduit-synkronisointi"
+msgstr "Conduit sinkronizatzailea"
 
 #: ../data/conduit.desktop.in.in.h:2
 msgid "Synchronization for GNOME"
-msgstr "Synkronisointi Gnomelle"
+msgstr "Sinkronizazioa GNOMErako"
 
 #: ../data/conduit.glade.h:1
 msgid "<b>Default Synchronization Options</b>"
-msgstr "<b>Synkronisoinnin oletusvalinnat</b>"
+msgstr "<b>Sinkronizazio lehenetsiaren aukerak</b>"
 
 #: ../data/conduit.glade.h:2
 msgid "<b>General</b>"
-msgstr "<b>Yleiset</b>"
+msgstr "<b>Orokorra</b>"
 
 #: ../data/conduit.glade.h:3
 msgid "Always Up-To-Date"
-msgstr "Aina ajan tasalla"
+msgstr "Beti eguneratuta"
 
 #: ../data/conduit.glade.h:4
 msgid "Ask Me What to Do"
-msgstr "Kysy, mitä tehdään"
+msgstr "Galdetu niri zer egin"
 
 #: ../data/conduit.glade.h:5
 msgid "Ask me what to do"
-msgstr "Kysy, mitä tehdään"
+msgstr "Galdetu niri zer egin"
 
 #: ../data/conduit.glade.h:6
 msgid "Cancel Synchronization"
-msgstr "Peru synkronisointi"
+msgstr "Utzi sinkronizazioa"
 
 #: ../data/conduit.glade.h:7
 msgid "Cancel currently-synchronizing groups"
-msgstr "Peru tällä hetkellä synkronisoituvat ryhmät"
+msgstr "Utzi unean sinkronizatzen ari diren taldeak"
 
 #: ../data/conduit.glade.h:8
 msgid "Clear Canvas"
-msgstr "Tyhjennä kangas"
+msgstr "Garbitu oihala"
 
 #: ../data/conduit.glade.h:9
 msgid "Compare"
-msgstr "Vertaa"
+msgstr "Konparatu"
 
 #: ../data/conduit.glade.h:10
 msgid "Conduit Preferences"
-msgstr "Conduitin asetukset"
+msgstr "Conduit-en hobespenak"
 
 #: ../data/conduit.glade.h:11
 msgid "Configuration"
-msgstr "Asetukset"
+msgstr "Konfigurazioa"
 
 #: ../data/conduit.glade.h:12
 msgid "Configure Item"
-msgstr "Kohdan asetukset"
+msgstr "Konfiguratu elementua"
 
 #: ../data/conduit.glade.h:13
 msgid "Configure the synchronization settings for this item"
-msgstr "Määrittele tämän kohdan synkronisointiasetukset"
+msgstr "Konfiguratu sinkronizazioaren ezarpenak elementu honentzako"
 
 #: ../data/conduit.glade.h:14
 msgid "Conflict Options"
-msgstr "Ristiriitaiset valinnat"
+msgstr "Gatazken aukerak"
 
 #: ../data/conduit.glade.h:15
 msgid "Conflicts"
-msgstr "Ristiriidat"
+msgstr "Gatazkak"
 
 #: ../data/conduit.glade.h:16
 msgid "Contents"
-msgstr "Sisältö"
+msgstr "Edukia"
 
 #: ../data/conduit.glade.h:17
 msgid "Data Conversions"
-msgstr "Tietomuunnokset"
+msgstr "Datuen bihurketa"
 
 #: ../data/conduit.glade.h:18
 msgid "Data Providers"
-msgstr "Tiedon tarjoajat"
+msgstr "Datuen hornitzaileak"
 
 #: ../data/conduit.glade.h:19
 msgid "Delete Group"
-msgstr "Poista ryhmä"
+msgstr "Ezabatu taldea"
 
 #: ../data/conduit.glade.h:20
 msgid "Delete Item"
-msgstr "Poista kohta"
+msgstr "Ezabatu elementua"
 
 #: ../data/conduit.glade.h:21
 msgid "Delete Options"
-msgstr "Poiston valinnat"
+msgstr "Ezabatu aukerak"
 
 #: ../data/conduit.glade.h:22
 msgid "Delete from the corresponding sink"
-msgstr "Poista vastaavasta kohteesta"
+msgstr "Ezabatu dagokion sinkronizaziotik"
 
 #: ../data/conduit.glade.h:23
 msgid "Delete the Corresponding Item"
-msgstr "Poista vastaava kohta"
+msgstr "Ezabatu dagokion elementua"
 
 #: ../data/conduit.glade.h:24
 msgid "Editor"
-msgstr "Muokkain"
+msgstr "Editorea"
 
 #: ../data/conduit.glade.h:25
 msgid "Minimize to notification area"
-msgstr "Pienennä ilmoitusalueelle"
+msgstr "Ikonotu jakinarazpen-areara"
 
 #: ../data/conduit.glade.h:26
 msgid "Refresh Group"
-msgstr "Virkistä ryhmä"
+msgstr "Freskatu taldea"
 
 #: ../data/conduit.glade.h:27
 msgid "Refresh Item"
-msgstr "Virkistä kohta"
+msgstr "Freskatu elementua"
 
 #: ../data/conduit.glade.h:28
 msgid "Replace the Older Item"
-msgstr "Korvaa vanhempi kohde"
+msgstr "Ordeztu elementu zaharragoa"
 
 #: ../data/conduit.glade.h:29
 msgid "Replace the older item"
-msgstr "Korvaa vanhempi kohde"
+msgstr "Ordeztu elementu zaharragoa"
 
 #: ../data/conduit.glade.h:30
 msgid "Resolve Conflicts"
-msgstr "Selvitä ristiriidat"
+msgstr "Ebatzi gatazkak"
 
 #: ../data/conduit.glade.h:31
 msgid "Save settings on exit"
-msgstr "Tallenna asetukset lopetettaessa"
+msgstr "Gorde ezarpenak irtetzean"
 
 #: ../data/conduit.glade.h:32
 msgid "Show Hints"
-msgstr "Näytä vihjeet"
+msgstr "Erakutsi iradokizunak"
 
 #: ../data/conduit.glade.h:33
 msgid "Show status icon"
-msgstr "Näytä tilakuvake"
+msgstr "Erakutsi egoeraren ikonoa"
 
 #: ../data/conduit.glade.h:34
 msgid "Skip"
-msgstr "Ohita"
+msgstr "Saltatu"
 
 #: ../data/conduit.glade.h:35
 msgid "Slow Synchronization"
-msgstr "Hidas synkronisointi"
+msgstr "Moteldu sinkronizazioa"
 
 #: ../data/conduit.glade.h:36
 msgid "Start Conduit at login"
-msgstr "Käynnistä Conduit kirjauduttaessa sisään"
+msgstr "Abiarazi Conduit saioa hastean"
 
 #: ../data/conduit.glade.h:37
 msgid "Synchronization Options"
-msgstr "Synkronisoinnin valinnat"
+msgstr "Sinkronizazioaren aukerak"
 
 #: ../data/conduit.glade.h:38
 msgid "Synchronize All"
-msgstr "Synkronisoi kaikki"
+msgstr "Sinkronizatu guztiak"
 
 #: ../data/conduit.glade.h:39
 msgid "Synchronize Group"
-msgstr "Synkronisoi ryhmä"
+msgstr "Sinkronizatu taldea"
 
 #: ../data/conduit.glade.h:40
 msgid "Synchronize group"
-msgstr "Synkronisoi ryhmä"
+msgstr "Sinkronizatu taldea"
 
 #: ../data/conduit.glade.h:41
 msgid "Synchronizes all groups"
-msgstr "Synkronisoi kaikki ryhmät"
+msgstr "Sinkronizatu talde guztiak"
 
 #: ../data/conduit.glade.h:42
 msgid "Title"
-msgstr "Otsikko"
+msgstr "Titulua"
 
 #: ../data/conduit.glade.h:43
 msgid "Two-Way Synchronization"
-msgstr "Kaksisuuntainen synkronisointi"
+msgstr "Bi norabideko sinkronizazioa"
 
 #: ../data/conduit.glade.h:44
 msgid "When an item has been deleted:"
-msgstr "Kun kohde on poistettu:"
+msgstr "Elementu bat ezabatzean:"
 
 #: ../data/conduit.glade.h:45
 msgid "When an item is deleted..."
-msgstr "Kun kohde poistetaan..."
+msgstr "Elementu bat ezabatzean..."
 
 #: ../data/conduit.glade.h:46
 msgid "When there is a conflict..."
-msgstr "Kun on ristiriita..."
+msgstr "Gatazka bat dagoenean..."
 
 #: ../data/conduit.glade.h:47
 msgid "When there is a two-way conflict:"
-msgstr "Kun tapahtuu kaksisuuntainen ristiriita:"
+msgstr "Bi norabideko gatazka dagoenean:"
 
 #: ../data/conduit.glade.h:48
 msgid "_Edit"
-msgstr "_Muokkaa"
+msgstr "_Editatu"
 
 #: ../data/conduit.glade.h:49
 msgid "_File"
-msgstr "_Tiedosto"
+msgstr "_Fitxategia"
 
 #: ../data/conduit.glade.h:50
 msgid "_Help"
-msgstr "O_hje"
+msgstr "_Laguntza"
 
 #: ../conduit/Knowledge.py:8
 msgid "What Do You Want to Synchronize?"
-msgstr "Mitä haluat synkronisoida?"
+msgstr "Zer sinkronizatzea nahi duzu?"
 
 #: ../conduit/Knowledge.py:9
 msgid "Drag and Drop a Data Provider on the Canvas"
-msgstr "Raahaa tietolähde kankaalle"
+msgstr "Arrastatu eta jaregin datuen hornitzaile bat oihalera"
 
 #: ../conduit/Knowledge.py:11
 msgid "Synchronization Group Created"
-msgstr "Synkronisointiryhmä luotu"
+msgstr "Sinkronizazioko taldea sortuta"
 
 #: ../conduit/Knowledge.py:12
 msgid "Add Another Data Provider to the Group to Synchronize it"
-msgstr "Raahaa toinen tietolähde ryhmään synkronisoidaksesi sen"
+msgstr "Gehitu beste datuen hornitzailea taldeari sinkronizatzeko"
 
 #: ../conduit/Knowledge.py:14
 msgid "You Are Now Ready to Synchronize"
-msgstr "Valmis synkronisointiin"
+msgstr "Orain prest zaude sinkronizatzeko"
 
 #: ../conduit/Knowledge.py:15
 msgid "Right Click on Group for Options"
-msgstr "Napsauta ryhmää hiiren oikealla painikkeella valintoja varten"
+msgstr "Egin klik saguaren eskuineko botoiarekin taldean aukerentzako"
 
 #. source,sinc                            #comment
 #. twoway
 #: ../conduit/Knowledge.py:22
 msgid "Synchronize Two Folders"
-msgstr "Synkronisoi kaksi kansiota"
+msgstr "Sinkronizatu bi karpetak"
 
 #: ../conduit/Knowledge.py:24
 msgid "Backup Folder to Box.net"
-msgstr "Varmuuskopioi kansio Box.net:iin"
+msgstr "Egin karpetaren babeskopia Box.net gunean"
 
 #: ../conduit/Knowledge.py:26
 msgid "Synchronize Tagged F-Spot Photos to Flickr"
-msgstr "Synkronisoi merkityt F-Spot-valokuvat Flickriin"
+msgstr "Sinkronizatu etiketatutako F-Spot argazkiak Flickr-kin"
 
 #: ../conduit/Main.py:59
 msgid "Conduit is a synchronization application."
-msgstr "Conduit on synkronisointisovellus."
+msgstr "Conduit sinkronizatzeko aplikazio bat da."
 
 #: ../conduit/Main.py:63
 #, python-format
 msgid "Launch without GUI. [default: %default]"
-msgstr ""
+msgstr "Abiarazi GUIrik gabe. [lehenetsia: %default]"
 
 #: ../conduit/Main.py:67
 #, python-format
 msgid "Save dataprovider configuration to FILE. [default: %default]"
-msgstr ""
+msgstr "Gorde datu hornitzailearen konfigurazioa fitxategian. [lehenetsia: %default]"
 
 #: ../conduit/Main.py:71
 #, python-format
 msgid "Iconify on startup. [default: %default]"
-msgstr ""
+msgstr "Ikonotu abioan. [lehenetsia: %default]"
 
 #: ../conduit/Main.py:75
 #, python-format
 msgid "Run with the specified UI. [default: %default]"
-msgstr ""
+msgstr "Exekutatu zehaztutako UIarekin. [lehenetsia: %default]"
 
 #: ../conduit/Main.py:79
 msgid "Only load modules in the named files. [default: load all modules]"
-msgstr ""
+msgstr "Kargatu moduloak soilik izendatutako fitxategietan. [lehenetsia: kargatu modulo guztiak]"
 
 #: ../conduit/Main.py:83
 msgid "Do not load modules in the named files. [default: load all modules]"
-msgstr ""
+msgstr "Ez kargatu moduloak izendatutako fitxategietan. [lehenetsia: kargatu modulo guztiak]"
 
 #: ../conduit/Main.py:87
 msgid ""
 "Explicitly set internal Conduit settings (keys) to the given values for this "
 "session. [default: do not set]"
 msgstr ""
+"Conduit-en barneko ezarpenak (gakoak) saio honetan emandako baliotara ezarri "
+"esplizitoki. [lehenetsia: ez ezarri]"
 
 #: ../conduit/Main.py:91
 #, python-format
 msgid ""
 "Enable loading of unfinished or unsupported dataproviders. [default: %"
 "default]"
-msgstr ""
+msgstr "Gaitu osatu edo onartu gabeko datuen hornitzaileak kargatzea. [lehenetsia: %default]"
 
 #: ../conduit/Main.py:95
 #, python-format
 msgid "Generate more debugging information. [default: %default]"
-msgstr ""
+msgstr "Sortu arazketako informazio gehiago. [lehenetsia: %default]"
 
 #: ../conduit/Main.py:99
 #, python-format
 msgid "Generate less debugging information. [default: %default]"
-msgstr ""
+msgstr "Sortu arazketako informazio gutxiago. [lehenetsia: %default]"
 
 #: ../conduit/Main.py:103
 #, python-format
 msgid "Generate no debugging information. [default: %default]"
-msgstr ""
+msgstr "Ez sortu arazketako informaziorik. [lehenetsia: %default]"
 
 #: ../conduit/dataproviders/DataProvider.py:22
 msgid "Ready"
-msgstr "Valmis"
+msgstr "Prest"
 
 #: ../conduit/dataproviders/DataProvider.py:23
 msgid "New data to sync"
-msgstr "Uusia synkronisoitavia tietoja"
+msgstr "Datu berriak sinkronizatzeko"
 
 #: ../conduit/dataproviders/DataProvider.py:24
 msgid "Refreshing..."
-msgstr "Virkistetään..."
+msgstr "Freskatzen..."
 
 #: ../conduit/dataproviders/DataProvider.py:25
 msgid "Refreshed OK"
-msgstr "Virkistys onnistui"
+msgstr "Ongi freskatuta"
 
 #: ../conduit/dataproviders/DataProvider.py:26
 msgid "Error Refreshing"
-msgstr "Virhe virkistettäessä"
+msgstr "Errorea freskatzean"
 
 #: ../conduit/dataproviders/DataProvider.py:27
 msgid "Synchronizing..."
-msgstr "Synkronisoidaan..."
+msgstr "Sinkronizatzen..."
 
 #: ../conduit/dataproviders/DataProvider.py:28
 msgid "Synchronized OK"
-msgstr "Synkronisointi onnistui"
+msgstr "Ongi sinkronizatuta"
 
 #: ../conduit/dataproviders/DataProvider.py:29
 msgid "Error Synchronizing"
-msgstr "Virhe synkronisoitaessa"
+msgstr "Errorea sinkronizatzean"
 
 #: ../conduit/dataproviders/DataProvider.py:30
 msgid "Synchronization Skipped"
-msgstr "Synkronisointi ohitettiin"
+msgstr "Sinkronizazioa saltatuta"
 
 #: ../conduit/dataproviders/DataProvider.py:31
 msgid "Synchronization Cancelled"
-msgstr "Synkronisointi peruttiin"
+msgstr "Sinkronizazioa bertan behera utzita"
 
 #: ../conduit/dataproviders/DataProvider.py:32
 msgid "Synchronization Conflict"
-msgstr "Ristiriita synkronisoinnissa"
+msgstr "Sinkronizazioa gatazkan"
 
 #: ../conduit/dataproviders/DataProvider.py:33
 msgid "Not Configured"
-msgstr "Asetuksia ei ole tehty"
+msgstr "Konfiguratu gabe"
 
 #: ../conduit/dataproviders/Image.py:34
 #: ../conduit/modules/FlickrModule/FlickrModule.py:328
@@ -391,234 +392,234 @@ msgstr "1024x768"
 #: ../conduit/dataproviders/Image.py:35
 #: ../conduit/modules/N800Module/N800Module.py:57
 msgid "None"
-msgstr "Ei mitään"
+msgstr "Bat ere ez"
 
 #. Default Categories for the DataProviders
 #: ../conduit/dataproviders/__init__.py:6
 msgid "Files and Folders"
-msgstr "Tiedostot ja kansiot"
+msgstr "Fitxategiak eta karpetak"
 
 #: ../conduit/dataproviders/__init__.py:7
 #: ../conduit/modules/iPodModule/iPodModule.py:179
 msgid "Notes"
-msgstr "Muistilaput"
+msgstr "Oharrak"
 
 #: ../conduit/dataproviders/__init__.py:8
 #: ../conduit/modules/iPodModule/iPodModule.py:367
 msgid "Photos"
-msgstr "Valokuvat"
+msgstr "Argazkiak"
 
 #: ../conduit/dataproviders/__init__.py:9
 msgid "Office"
-msgstr "Toimisto"
+msgstr "Bulegoa"
 
 #: ../conduit/dataproviders/__init__.py:10
 msgid "Settings"
-msgstr "Asetukset"
+msgstr "Ezarpenak"
 
 #: ../conduit/dataproviders/__init__.py:11
 msgid "Miscellaneous"
-msgstr "Sekalaiset"
+msgstr "Hainbat"
 
 #: ../conduit/dataproviders/__init__.py:12
 msgid "Media"
-msgstr "Media"
+msgstr "Multimedia"
 
 #: ../conduit/dataproviders/__init__.py:13
 msgid "Bookmarks"
-msgstr "Kirjanmerkit"
+msgstr "Laster-markak"
 
 #: ../conduit/dataproviders/__init__.py:14
 msgid "Test"
-msgstr "Testi"
+msgstr "Proba"
 
 #: ../conduit/gtkui/Canvas.py:152
 msgid "Drag a Data Provider here to continue"
-msgstr "Raahaa tietolähde tähän jatkaaksesi"
+msgstr "Arrastatu datuen hornitzaile bat hona jarraitzeko"
 
 #: ../conduit/gtkui/Canvas.py:217
 msgid "Show me"
-msgstr "Näytä kohde"
+msgstr "Erakuts nazazu"
 
 #. Visible column0 is
 #. [pixbuf + source display name] or
 #. [source_data.get_snippet()]
 #: ../conduit/gtkui/ConflictResolver.py:91
 msgid "Source"
-msgstr "Lähde"
+msgstr "Iturburua"
 
 #: ../conduit/gtkui/ConflictResolver.py:105
 msgid "Resolution"
-msgstr "Tarkkuus"
+msgstr "Bereizmena"
 
 #. Visible column2 is the display name of source and source data
 #: ../conduit/gtkui/ConflictResolver.py:110
 msgid "Sink"
-msgstr "Kohde"
+msgstr "Sink."
 
 #: ../conduit/gtkui/ConflictResolver.py:150
 #: ../conduit/gtkui/ConflictResolver.py:151
 #, python-format
 msgid "Conflicts (%s)"
-msgstr "Ristiriidassa (%s)"
+msgstr "Gatazkak (%s)"
 
 #. name,                      #url
 #: ../conduit/gtkui/UI.py:33
 msgid "Introduction"
-msgstr "Johdanto"
+msgstr "Sarrera"
 
 #: ../conduit/gtkui/UI.py:34
 msgid "Writing a Data Provider"
-msgstr "Tietolähteen kirjoittaminen"
+msgstr "Datuen hornitzaile bat idazten"
 
 #: ../conduit/gtkui/UI.py:35
 msgid "API Documentation"
-msgstr "API-dokumentaatio"
+msgstr "APIaren dokumentazioa"
 
 #: ../conduit/gtkui/UI.py:36
 msgid "Test Results"
-msgstr "Testitulokset"
+msgstr "Probaren emaitzak"
 
 #: ../conduit/gtkui/UI.py:129
 #, python-format
 msgid " - %s (Development Version)"
-msgstr " - %s (kehitysversio)"
+msgstr " - %s (garapeneko bertsioa)"
 
 #: ../conduit/gtkui/UI.py:131
 msgid " - Running Uninstalled"
-msgstr " - suoritetaan asentamattomana"
+msgstr " - instalatu gabe exekutatzen"
 
 #: ../conduit/gtkui/UI.py:165
 msgid "Examples"
-msgstr "Esimerkit"
+msgstr "Adibideak"
 
 #: ../conduit/gtkui/UI.py:177
 msgid "Developers"
-msgstr "Kehittäjät"
+msgstr "Garatzaileak"
 
 #. Build some liststores to display
 #: ../conduit/gtkui/UI.py:318
 msgid "Convert from"
-msgstr "Muunna muodosta"
+msgstr "Bihurtu hemendik:"
 
 #: ../conduit/gtkui/UI.py:319
 msgid "into"
-msgstr "muotoon"
+msgstr "hona:"
 
 #: ../conduit/gtkui/UI.py:370
 msgid "Relationship Database"
-msgstr "Riippuvuussuhteiden tietokanta"
+msgstr "Erlazioen datu-basea"
 
 #: ../conduit/gtkui/UI.py:374
 msgid "Conversions Available"
-msgstr "Muunnoksia saatavilla"
+msgstr "Bihurketa erabilgarriak"
 
 #: ../conduit/gtkui/UI.py:380 ../conduit/gtkui/Tree.py:348
 #: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
-msgstr "Nimi"
+msgstr "Izena"
 
 #: ../conduit/gtkui/UI.py:384
 msgid "Loaded"
-msgstr "Ladattu"
+msgstr "Kargatuta"
 
 #: ../conduit/gtkui/UI.py:512 ../conduit/hildonui/UI.py:127
 msgid "Synchronization in progress. Do you want to cancel it?"
-msgstr "Synkronisointi on käynnissä. Haluatko perua sen?"
+msgstr "Sinkronizatzen ari da. Bertan behera uztea nahi duzu?"
 
 #: ../conduit/gtkui/UI.py:684
 msgid "_Synchronize All"
-msgstr "_Synkronisoi kaikki"
+msgstr "_Sinkronizatu guztiak"
 
 #: ../conduit/gtkui/UI.py:684
 msgid "Synchronizes All Groups"
-msgstr "Synkronisoi kaikki ryhmät"
+msgstr "Sinkronizatu talde guztiak"
 
 #: ../conduit/gtkui/UI.py:685
 msgid "_Cancel Synchronization"
-msgstr "_Peru synkronisointi"
+msgstr "_Utzi sinkronizatzea"
 
 #: ../conduit/gtkui/UI.py:685
 msgid "Cancels Currently Synchronizing Groups"
-msgstr "Peruu käynnissä olevat synkronisointiryhmät"
+msgstr "Bertan behera utzi taldeen uneko sinkronizazioa"
 
 #: ../conduit/gtkui/UI.py:686
 msgid "_Quit"
-msgstr "_Lopeta"
+msgstr "_Irten"
 
 #: ../conduit/gtkui/UI.py:686
 msgid "Close Conduit"
-msgstr "Sulje Conduit"
+msgstr "Itxi Conduit"
 
 #: ../conduit/gtkui/UI.py:726
 msgid "Synchronization Error"
-msgstr "Synkronisointivirhe"
+msgstr "Sinkronizazioko errorea"
 
 #: ../conduit/gtkui/UI.py:729
 msgid "Synchronization Complete"
-msgstr "Synkronisointi valmis"
+msgstr "Sinkronizazioa burututa"
 
 #: ../conduit/gtkui/UI.py:745
 msgid "Synchronizing"
-msgstr "Synkronisoidaan"
+msgstr "Sinkronizatzen"
 
 #: ../conduit/gtkui/Tree.py:357
 msgid "Description"
-msgstr "Kuvaus"
+msgstr "Azalpena"
 
 #: ../conduit/gtkui/ConfigItems.py:729
 #, python-format
 msgid "Total: %d"
-msgstr "Yhteensä: %d"
+msgstr "Guztira: %d"
 
 #: ../conduit/gtkui/WindowConfigurator.py:14
 msgid "Configure"
-msgstr "Aseta"
+msgstr "Konfiguratu"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:58
 msgid "Backpack Notes"
-msgstr "Backpack Notes"
+msgstr "Backpack-eko oharrak"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:59
 msgid "Store things in Backpack Notes"
-msgstr "Tallenna asioita Backpack Notes -muistilappupalveluun"
+msgstr "Gorde gauzak Backpack oharretan"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:105
 #: ../conduit/modules/FlickrModule/FlickrModule.py:307
 #: ../conduit/modules/ZotoModule/ZotoModule.py:243
 msgid "Account details"
-msgstr "Tilin yksityiskohdat"
+msgstr "Kontuaren xehetasunak"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:106
 msgid "Login"
-msgstr "Käyttäjätunnus"
+msgstr "Saio-hasiera"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:109
 msgid "API key"
-msgstr "API-avain"
+msgstr "APIaren gakoa"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:112
 msgid "Saved notes"
-msgstr "Tallennetut muistilaput"
+msgstr "Gordetako oharrak"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:113
 msgid "Save notes in page"
-msgstr "Tallenna muistilaput sivulle"
+msgstr "Gorde oharrak orrialdean"
 
 #: ../conduit/modules/BansheeModule/BansheeModule.py:52
 msgid "Banshee Playlists"
-msgstr "Banshee-soittolistat"
+msgstr "Banshee-ren erreprodukzio-zerrendak"
 
 #: ../conduit/modules/BansheeModule/BansheeModule.py:53
 msgid "Synchronize your Banshee playlists"
-msgstr "Synkronisoi Banshee-soittolistat"
+msgstr "Sinkronizatu zure Banshee-ko erreprodukzio-zerrendak"
 
 #: ../conduit/modules/BansheeModule/BansheeModule.py:187
 #: ../conduit/modules/BansheeModule/BansheeModule.py:188
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:116
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:117
 msgid "Playlists"
-msgstr "Soittolistat"
+msgstr "Erreprodukzio-zerrendak"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:29
 msgid "Box.net"
@@ -626,69 +627,69 @@ msgstr "Box.net"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:30
 msgid "Synchronize your Box.net files"
-msgstr "Synkronisoi Box.net-tiedostot"
+msgstr "Sinkronizatu zure Box.net- webguneko fitxategiak"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:290
 #: ../conduit/modules/FileModule/FileModule.py:82
 msgid "Folder"
-msgstr "Kansio"
+msgstr "Karpeta"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:291
 msgid "Folder name"
-msgstr "Kansion nimi"
+msgstr "Karpetaren izena"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:295
 msgid "Load folders"
-msgstr "Lataa kansiot"
+msgstr "Kargatu karpetak"
 
 #: ../conduit/modules/ConverterModule.py:91
 msgid "Note-"
-msgstr "Muistilappu-"
+msgstr "Oharra-"
 
 #: ../conduit/modules/DesktopWallpaperModule.py:38
 msgid "Wallpaper"
-msgstr "Taustakuva"
+msgstr "Horma-papera"
 
 #: ../conduit/modules/DesktopWallpaperModule.py:39
 msgid "Changes your Desktop Wallpaper"
-msgstr "Vaihtaa työpöydän taustakuvan"
+msgstr "Zure mahaigaineko horma-papera aldatzen du"
 
 #: ../conduit/modules/EvolutionModule/EvolutionModule.py:107
 #, python-format
 msgid "Select %s"
-msgstr "Valitse %s"
+msgstr "Hautatu %s"
 
 #: ../conduit/modules/EvolutionModule/EvolutionModule.py:127
 msgid "Evolution Contacts"
-msgstr "Evolution-yhteystiedot"
+msgstr "Evolution-eko kontaktuak"
 
 #: ../conduit/modules/EvolutionModule/EvolutionModule.py:128
 msgid "Synchronize your contacts"
-msgstr "Synkronisoi yhteystiedot"
+msgstr "Sinkronizatu zure kontaktuak"
 
 #: ../conduit/modules/EvolutionModule/EvolutionModule.py:178
 msgid "Evolution Calendar"
-msgstr "Evolution-kalenteri"
+msgstr "Evolution-eko egutegia"
 
 #: ../conduit/modules/EvolutionModule/EvolutionModule.py:179
 msgid "Synchronize your calendar"
-msgstr "Synkronisoi kalenterit"
+msgstr "Sinkronizatu zure egutegia"
 
 #: ../conduit/modules/EvolutionModule/EvolutionModule.py:240
 msgid "Evolution Tasks"
-msgstr "Evolution-tehtävät"
+msgstr "Evolution-eko zereginak"
 
 #: ../conduit/modules/EvolutionModule/EvolutionModule.py:241
 msgid "Synchronize your tasks"
-msgstr "Synkronisoi tehtävät"
+msgstr "Sinkronizatu zure zereginak"
 
 #: ../conduit/modules/EvolutionModule/EvolutionModule.py:297
 msgid "Evolution Memos"
-msgstr "Evolution-muistilaput"
+msgstr "Evolution-eko zirkularrak"
 
 #: ../conduit/modules/EvolutionModule/EvolutionModule.py:298
 msgid "Synchronize your memos"
-msgstr "Synkronisoi muistilaput"
+msgstr "Sinkronizatu zure zirkularrak"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:38
 msgid "Facebook"
@@ -696,152 +697,150 @@ msgstr "Facebook"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:39
 msgid "Synchronize your Facebook photos"
-msgstr "Synkronisoi Facebook-valokuvat"
+msgstr "Sinkronizatu zure Facebook-eko argazkiak"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:124
 #: ../conduit/modules/FlickrModule/FlickrModule.py:282
 msgid "Loading album list..."
-msgstr "Avataan levyluetteloa..."
+msgstr "Albumen zerrenda kargatzen..."
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:128
 msgid "Failed to connect"
-msgstr "Yhdistäminen epäonnistui"
+msgstr "Huts egin du konektatzean"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:131
 msgid "Logged in"
-msgstr "Kirjauduttiin sisään"
+msgstr "Saioan sartuta"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:133
 msgid "Failed to login"
-msgstr "Sisään kirjautuminen epäonnistui"
+msgstr "Huts egin du saio hastean"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:145
 #: ../conduit/modules/FspotModule/FspotModule.py:243
 msgid "Status"
-msgstr "Tila"
+msgstr "Egoera"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:150
 #: ../conduit/modules/iPodModule/iPodModule.py:461
 #: ../conduit/modules/ZotoModule/ZotoModule.py:252
 msgid "Album"
-msgstr "Levy"
+msgstr "Albuma"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:151
 msgid "Album name"
-msgstr "Levyn nimi"
+msgstr "Albumaren izena"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:156
 msgid "Load albums"
-msgstr "Lataa levyt"
+msgstr "Kargatu albumak"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:58
 msgid "RSS Feed"
-msgstr "RSS-virta"
+msgstr "RSS iturria"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:59
 msgid "Synchronize data from RSS enclosures"
-msgstr "Synkronisoi tietoja RSS-liitteistä"
+msgstr "Sinkronizatu datuak RSS eranskinetatik"
 
 #. FIXME: Add Randomize
 #: ../conduit/modules/FeedModule/FeedModule.py:114
 msgid "Feed details"
-msgstr "Virran yksityiskohdat"
+msgstr "Iturriaren xehetasunak"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:115
 msgid "Feed address"
-msgstr "Virran osoite"
+msgstr "Iturriaren helbidea"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:118
 msgid "Enclosure settings"
-msgstr "Liiteasetukset"
+msgstr "Erankinaren ezarpenak"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:119
 msgid "Limit downloaded enclosures"
-msgstr "Rajoita ladattuja liitteitä"
+msgstr "Mugatu deskargatutako eranskinak"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:125
 msgid "Limit to"
-msgstr "Rajoita määrään"
+msgstr "Mugatu hona:"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:129
 msgid "Randomize enclosures"
-msgstr "Satunnaista liitteet"
+msgstr "Ausazko eranskinak"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:133
 msgid "Download types"
-msgstr "Noutotyypit"
+msgstr "Deskarga motak"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:134
 msgid "Download audio files"
-msgstr "Nouda äänitiedostoja"
+msgstr "Deskargatu audio fitxategiak"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:135
 msgid "Download video files"
-msgstr "Nouda videotiedostoja"
+msgstr "Deskargatu bideo fitxategiak"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:136
 msgid "Download photo files"
-msgstr "Nouda valokuvatiedostoja"
+msgstr "Deskargatu argazki fitxategiak"
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:111
 msgid "Icon"
-msgstr "Kuvake"
+msgstr "Ikonoa"
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:123
 #: ../conduit/modules/GConfModule/GConfModule.py:138
 msgid "Items"
-msgstr "Kohtia"
+msgstr "Elementuak"
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:149
 #, python-format
 msgid "<i>Contains %s files</i>"
-msgstr "<i>Sisältää %s tiedostoa</i>"
+msgstr "<i>%s fitxategia du</i>"
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:248
 msgid "Include file..."
-msgstr "Sisällytä tiedosto..."
+msgstr "Sartu fitxategia..."
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:258
 msgid "All files"
-msgstr "Kaikki tiedostot"
+msgstr "Fitxategi denak"
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:271
 msgid "Include folder..."
-msgstr "Sisällytä kansio..."
+msgstr "Sartu karpeta..."
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:314
 msgid "Please Name All Folders"
-msgstr "Nimeä kaikki kansiot"
+msgstr "Izendatu karpeta guztiak"
 
 #: ../conduit/modules/FileModule/FileConfiguration.py:315
-msgid ""
-"All folders require a descriptive name. To name a folder simply click on it"
-msgstr ""
-"Kaikilla kansioilla tulee olla kuvaava nimi. Nimeä kansio napsauttamalla sitä"
+msgid "All folders require a descriptive name. To name a folder simply click on it"
+msgstr "Karpeta guztiek izen deskriptibo bat behar dute. Karpeta bati izena emateko egin klik haren gainean"
 
 #: ../conduit/modules/FileModule/FileModule.py:23
 msgid "Files"
-msgstr "Tiedostot"
+msgstr "Fitxategiak"
 
 #: ../conduit/modules/FileModule/FileModule.py:24
 msgid "Source for synchronizing multiple files"
-msgstr "Usean tiedoston synkronisointiin käytettävä lähde"
+msgstr "Iturburua hainbat fitxategi sinkronizatzeko"
 
 #: ../conduit/modules/FileModule/FileModule.py:83
 msgid "Synchronize folders"
-msgstr "Synkronisoi kansioita"
+msgstr "Sinkronizatu karpetak"
 
 #: ../conduit/modules/Firefox3Module/Firefox3Module.py:40
 msgid "Firefox 3 Bookmarks"
-msgstr "Firefox 3 -kirjanmerkit"
+msgstr "Firefox 3 laster-markak"
 
 #: ../conduit/modules/Firefox3Module/Firefox3Module.py:41
 msgid "Syncronize your Firefox 3 Bookmarks"
-msgstr "Synkronisoi Firefox 3 -kirjanmerkit"
+msgstr "Sinkronizatu zure Firefox 3-ko laster-markak"
 
 #: ../conduit/modules/Firefox3Module/Firefox3Module.py:100
 msgid "Firefox Profile"
-msgstr "Firefox-profiili"
+msgstr "Firefox profila"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:76
 msgid "Flickr"
@@ -849,50 +848,50 @@ msgstr "Flickr"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:77
 msgid "Synchronize your Flickr.com photos"
-msgstr "Synkronisoi Flickr.com-valokuvat"
+msgstr "Sinkronizatu Flickr.com webguneko zure argazkiak"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:287
 msgid "Failed to connect."
-msgstr "Yhdistäminen epäonnistui."
+msgstr "Huts egin du konektatzean."
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:290
 msgid "Album names loaded."
-msgstr "Levynimet avattiin."
+msgstr "Albumen izenak kargatuta."
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:292
 msgid "Failed to login."
-msgstr ""
+msgstr "Huts egin du saioa hastean."
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:303
 msgid "Logging in, please wait..."
-msgstr "Kirjaudutaan sisään, odota..."
+msgstr "Saioan sartzen. Itxaron..."
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:308
 #: ../conduit/modules/GoogleBookmarksModule.py:67
 #: ../conduit/modules/ZotoModule/ZotoModule.py:244
 msgid "Username"
-msgstr "Käyttäjätunnus"
+msgstr "Erabiltzaile-izena"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:318
 msgid "Authenticate"
-msgstr "Todennus"
+msgstr "Autentifikatu"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:322
 #: ../conduit/modules/ZotoModule/ZotoModule.py:251
 msgid "Saved photo settings"
-msgstr "Tallennettujen valokuvien asetukset"
+msgstr "Gordetako argazkien ezarpenak"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:327
 msgid "Resize photos"
-msgstr "Muuta valokuvien kokoa"
+msgstr "Aldatu argazkiak tamainaz"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:328
 msgid "Do not resize"
-msgstr "Älä muuta kokoa"
+msgstr "Ez aldatu tamainaz"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:331
 msgid "Photos are public"
-msgstr "Valokuvat ovat julkisia"
+msgstr "Argazkiak publikoak dira"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:25
 msgid "F-Spot"
@@ -900,48 +899,48 @@ msgstr "F-Spot"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:26
 msgid "Synchronize your F-Spot photos"
-msgstr "Synkronisoi F-Spot-valokuvat"
+msgstr "Sinkronizatu F-Spot-eko zure argazkiak"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:152
 msgid "F-Spot DBus interface is operating in read-only mode"
-msgstr "F-Spotin DBus-käyttöliittymä toimii vain luku -tilassa"
+msgstr "F-Spot DBus interfazea irakurtzeko soilik moduan ari da lanean"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:218
 msgid "F-Spot is running"
-msgstr "F-Spot on käynnissä"
+msgstr "F-Spot exekutatzen ari da"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:219
 msgid "Please start F-Spot or activate the D-Bus Extension"
-msgstr "Käynnistä F-Spot tai aktivoi D-Bus-laajennus"
+msgstr "Abiarazi F-Spot edo aktibatu D-Bus hedapena"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:244
 msgid "Start F-Spot"
-msgstr "Käynnistä F-Spot"
+msgstr "Abiarazi F-Spot"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:248
 #: ../conduit/modules/FspotModule/FspotModule.py:249
 msgid "Tags"
-msgstr "Luokitukset"
+msgstr "Etiketak"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:262
 msgid "Add tags"
-msgstr "Lisää luokituksia"
+msgstr "Gehitu etiketak"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:263
 msgid "Tag name"
-msgstr "Luokituksen nimi"
+msgstr "Etiketaren izena"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:266
 msgid "Add tag"
-msgstr "Lisää luokitus"
+msgstr "Gehitu etiketa"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:21
 msgid "Application Settings"
-msgstr "Sovellusasetukset"
+msgstr "Aplikazioaren ezarpenak"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:22
 msgid "Synchronize your application settings"
-msgstr "Synkronisoi sovellusasetukset"
+msgstr "Sinkronizatu zure aplikazioen ezarpenak"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:31
 msgid "Metacity"
@@ -953,46 +952,45 @@ msgstr "Nautilus"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:33
 msgid "Preferred Applications"
-msgstr "Oletussovellukset"
+msgstr "Hobetsitako aplikazioak"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:34
 msgid "Desktop Interface"
-msgstr "Työpöydän käyttöliittymä"
+msgstr "Mahaigaineko interfazea"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:35
 msgid "Gnome Terminal"
-msgstr "Gnomen pääte"
+msgstr "Gnome terminala"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:137
 msgid "Applications to Synchronize"
-msgstr "Synkronisoitavat sovellukset"
+msgstr "Aplikazioak sinkronizatzeko"
 
 #: ../conduit/modules/GoogleBookmarksModule.py:19
 msgid "Google Bookmarks"
-msgstr "Google-kirjanmerkit"
+msgstr "Google-ko laster-markak"
 
 #: ../conduit/modules/GoogleBookmarksModule.py:20
-#, fuzzy
 msgid "Sync your Google Bookmarks"
-msgstr "Synkronisoi Google Documents -asiakirjat"
+msgstr "Sinkronizatu zure Google-ko laster-markak"
 
 #: ../conduit/modules/GoogleBookmarksModule.py:66
 msgid "Login Details"
-msgstr "Sisäänkirjautumisen yksityiskohdat"
+msgstr "Saio-hasieraren xehetasunak"
 
 #: ../conduit/modules/GoogleBookmarksModule.py:70
 #: ../conduit/modules/ZotoModule/ZotoModule.py:247
 msgid "Password"
-msgstr "Salasana"
+msgstr "Pasahitza"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:399
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
-msgstr "Google-kalenteri"
+msgstr "Google-ko egutegia"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:400
 msgid "Synchronize your Google Calendar"
-msgstr "Synkronisoi Google-kalenteri"
+msgstr "Sinkronizatu zure Google-ko egutegia"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:582
 msgid "Picasa"
@@ -1000,36 +998,36 @@ msgstr "Picasa"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:583
 msgid "Synchronize your Google Picasa photos"
-msgstr "Synkronisoi Google Picasa -valokuvat"
+msgstr "Sinkronizatu zure Google Picasa-ko argazkiak"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:745
 msgid "Google Contacts"
-msgstr "Google-yhteystiedot"
+msgstr "Google-ko kontaktuak"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:746
 msgid "Synchronize your Google Mail contacts"
-msgstr "Synkronisoi Google Mail -yhteystiedot"
+msgstr "Sinkronizatu zure Google-ko posta-kontaktuak"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1076
 msgid "Google Documents"
-msgstr "Google-asiakirjat"
+msgstr "Google-ko dokumentuak"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1077
 msgid "Synchronize your Google Documents"
-msgstr "Synkronisoi Google Documents -asiakirjat"
+msgstr "Sinkronizatu zure Google-ko dokumentuak"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1322
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:69
 msgid "Unknown"
-msgstr "Tuntematon"
+msgstr "Ezezaguna"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1323
 msgid "miscellaneous"
-msgstr "sekalaista"
+msgstr "hainbat"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1324
 msgid "No description."
-msgstr "Ei kuvausta."
+msgstr "Azalpenik ez."
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1333
 msgid "YouTube"
@@ -1037,112 +1035,103 @@ msgstr "YouTube"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1334
 msgid "Synchronize data from YouTube"
-msgstr "Synkronisoi tietoja YouTubesta"
+msgstr "Sinkronizatu datuak YouTube-tik"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
 msgid "<b>Account Details</b>"
-msgstr "<b>Tilin yksityiskohdat</b>"
+msgstr "<b>Kontuaren xehetasunak</b>"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
 msgid "Calendar:"
-msgstr "Kalenteri:"
+msgstr "Egutegia:"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
 msgid "Email:"
-msgstr "Sähköposti:"
+msgstr "Hel.Elek.:"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:5
 msgid "Load Calendars"
-msgstr "Lataa kalenterit"
+msgstr "Kargatu egutegiak"
 
 #: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
 msgid "Password:"
-msgstr "Salasana:"
+msgstr "Pasahitza:"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:180
-#, fuzzy
 msgid "Synchronize your iPod notes"
-msgstr "Synkronisoi yhteystiedot"
+msgstr "Sinkronizatu zure iPod-eko oharrak"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:295
 #: ../conduit/modules/SynceModule.py:311
 msgid "Contacts"
-msgstr "Yhteystiedot"
+msgstr "Kontaktuak"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:296
-#, fuzzy
 msgid "Synchronize your iPod contacts"
-msgstr "Synkronisoi yhteystiedot"
+msgstr "Sinkronizatu zure iPod-eko kontaktuak"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:331
 #: ../conduit/modules/SynceModule.py:449
 msgid "Calendar"
-msgstr "Kalenteri"
+msgstr "Egutegia"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:332
-#, fuzzy
 msgid "Synchronize your iPod calendar"
-msgstr "Synkronisoi kalenterit"
+msgstr "Sinkronizatu zure iPod-eko egutegia"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:368
-#, fuzzy
 msgid "Synchronize your iPod photos"
-msgstr "Synkronisoi Zoto-valokuvat"
+msgstr "Sinkronizatu zure iPod-eko argazkiak"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:465
 msgid "Delete"
-msgstr "Poista"
+msgstr "Ezabatu"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:695
 #: ../conduit/modules/iPodModule/iPodModule.py:812
 #: ../conduit/modules/N800Module/N800Module.py:77
 msgid "Encoding"
-msgstr "Merkistö"
+msgstr "Kodeketa"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:811
 msgid "Conversion options"
-msgstr "Muunnosvalinnat"
+msgstr "Bihurketako aukerak"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:816
 msgid "Keep converted files"
-msgstr "Pidä muunnetut tiedostot"
+msgstr "Mantendu bihurtutako fitxategiak"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:846
-#, fuzzy
 msgid "iPod Music"
-msgstr "Musiikki"
+msgstr "iPod musika"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:847
-#, fuzzy
 msgid "Synchronize your iPod music"
-msgstr "Synkronisoi muistilaput"
+msgstr "Sinkronizatu zure iPod-eko musika"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:882
-#, fuzzy
 msgid "iPod Video"
-msgstr "Video"
+msgstr "iPod bideoa"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:883
-#, fuzzy
 msgid "Synchronize your iPod videos"
-msgstr "Synkronisoi muistilaput"
+msgstr "Sinkronizatu zure iPod-eko bideoak"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:907
 msgid "Movie"
-msgstr "Elokuva"
+msgstr "Filmeak"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:908
 msgid "Music Video"
-msgstr "Musiikkivideo"
+msgstr "Musika-bideoa"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:909
 msgid "TV Show"
-msgstr "TV-ohjelma"
+msgstr "TV programa"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:911
-#, fuzzy
 msgid "Video kind"
-msgstr "Video"
+msgstr "Bideo mota"
 
 #. Translators: Translate this in derived classes.
 #: ../conduit/modules/N800Module/N800Module.py:55
@@ -1151,87 +1140,87 @@ msgstr "Conduit"
 
 #: ../conduit/modules/N800Module/N800Module.py:105
 msgid "N800 Files"
-msgstr "N800-tiedostot"
+msgstr "N800 fitxategiak"
 
 #: ../conduit/modules/N800Module/N800Module.py:106
 msgid "Synchronizes files/folders to a N800 device"
-msgstr "Synkronisoi tiedostot ja kansiot N800-tabletille"
+msgstr "Sinkronizatu fitxategiak/karpetak N800 gailu batekin"
 
 #. To translators: default backup folder of N800
 #: ../conduit/modules/N800Module/N800Module.py:111
 msgid "Backups"
-msgstr "Varmuuskopiot"
+msgstr "Babeskopiak"
 
 #: ../conduit/modules/N800Module/N800Module.py:126
 msgid "N800 Music"
-msgstr "N800-musiikki"
+msgstr "N800 musika"
 
 #: ../conduit/modules/N800Module/N800Module.py:127
 msgid "Synchronizes music to a N800 device"
-msgstr "Synkronisoi musiikki N800-tabletille"
+msgstr "Sinkronizatu musika N800 gailu batekin"
 
 #. To translators: defaul music folder of N800
 #: ../conduit/modules/N800Module/N800Module.py:133
 msgid "Music"
-msgstr "Musiikki"
+msgstr "Musika"
 
 #: ../conduit/modules/N800Module/N800Module.py:150
 msgid "N800 Videos"
-msgstr "N800-videot"
+msgstr "N800 bideoak"
 
 #: ../conduit/modules/N800Module/N800Module.py:151
 msgid "Synchronizes video to a N800 device"
-msgstr "Synkronisoi videot N800-tabletille"
+msgstr "Sinkronizatu bideoak N800 gailu batekin"
 
 #. To translators: defaul video folder of N800
 #: ../conduit/modules/N800Module/N800Module.py:157
 msgid "Video"
-msgstr "Video"
+msgstr "Bideoa"
 
 #: ../conduit/modules/N800Module/N800Module.py:174
 msgid "N800 Photos"
-msgstr "N800-valokuvat"
+msgstr "N800 argazkiak"
 
 #: ../conduit/modules/N800Module/N800Module.py:175
 msgid "Synchronizes photos to an N800 device"
-msgstr "Synkronisoi valokuvat N800-tabletille"
+msgstr "Sinkronizatu argazkiak N800 gailu batekin"
 
 #. To translators: default photos folder of N800
 #: ../conduit/modules/N800Module/N800Module.py:181
 msgid "Photo"
-msgstr "Valokuvat"
+msgstr "Argazkia"
 
 #: ../conduit/modules/NautilusBookmarksModule.py:19
 msgid "Nautilus Bookmarks"
-msgstr "Nautilus-kirjanmerkit"
+msgstr "Nautilus-eko laster-markak"
 
 #: ../conduit/modules/NautilusBookmarksModule.py:20
 msgid "Sync your Nautilus Bookmarks"
-msgstr ""
+msgstr "Sinkronizatu zure Nautilus-eko laster-markak"
 
 #: ../conduit/modules/NautilusBookmarksModule.py:145
 msgid "Sync bookmarks to local places/files"
-msgstr ""
+msgstr "Sinkronizatu laster-markak lokaleko kokaleku/fitxategietan"
 
 #: ../conduit/modules/NautilusBookmarksModule.py:148
 msgid "Sync bookmarks to remote places/files"
-msgstr ""
+msgstr "Sinkronizatu laster-markak urruneko kokaleku/fitxategietan"
 
 #: ../conduit/modules/NetworkModule/Server.py:147
 msgid "Network"
-msgstr "Verkko"
+msgstr "Sarea"
 
 #: ../conduit/modules/NetworkModule/Server.py:148
 msgid "Enable synchronization via network"
-msgstr "Käytä verkkosynkronisointia"
+msgstr "Gaitu sare bidez sinkronizatzea"
 
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:44
 msgid "Rhythmbox Music"
-msgstr "Rytmilaatikon musiikki"
+msgstr "Rhythmbox musika"
 
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:45
 msgid "Synchronize songs from your Rhythmbox playlists"
-msgstr "Synkronisoi kappaleet Rytmilaatikon soittolistoista"
+msgstr "Sinkronizatu abestiak zure Rhythmbox-eko erreprodukzio-zerrendetatik"
 
 #: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:26
 msgid "Shutterfly"
@@ -1239,7 +1228,7 @@ msgstr "Shutterfly"
 
 #: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:27
 msgid "Synchronize your Shutterfly photos"
-msgstr "Synkronisoi Shutterfly-valokuvat"
+msgstr "Sinkronizatu Shutterfly-eko zure argazkiak"
 
 #: ../conduit/modules/ShutterflyModule/shutterfly/shutterfly.py:33
 msgid "%Y-%m-%d %H:%M:%S"
@@ -1251,29 +1240,27 @@ msgstr "SmugMug"
 
 #: ../conduit/modules/SmugMugModule/SmugMugModule.py:29
 msgid "Synchronize your SmugMug.com photos"
-msgstr "Synkronisoi SmugMug.com-valokuvat"
+msgstr "Sinkronizatu SmugMug.com webguneko zure argazkiak"
 
 #: ../conduit/modules/SynceModule.py:139
 msgid "Create Partnership"
-msgstr ""
+msgstr "Sortu elkartea"
 
 #: ../conduit/modules/SynceModule.py:312
-#, fuzzy
 msgid "Windows Mobile Contacts"
-msgstr "Google-yhteystiedot"
+msgstr "Windows Mobile-ko kontaktuak"
 
 #: ../conduit/modules/SynceModule.py:450
-#, fuzzy
 msgid "Windows Mobile Calendar"
-msgstr "Google-kalenteri"
+msgstr "Windows Mobile-ko egutegia"
 
 #: ../conduit/modules/SynceModule.py:459
 msgid "Tasks"
-msgstr "Tehtävät"
+msgstr "Zereginak"
 
 #: ../conduit/modules/SynceModule.py:460
 msgid "Windows Mobile Tasks"
-msgstr ""
+msgstr "Windows Mobile-ko zereginak"
 
 #: ../conduit/modules/ZotoModule/ZotoModule.py:154
 msgid "Zoto"
@@ -1281,164 +1268,5 @@ msgstr "Zoto"
 
 #: ../conduit/modules/ZotoModule/ZotoModule.py:155
 msgid "Synchronize your Zoto photos"
-msgstr "Synkronisoi Zoto-valokuvat"
+msgstr "Sinkronizatu Zoto.com webguneko zure argazkiak"
 
-#~ msgid "<b>Saved Note Settings</b>"
-#~ msgstr "<b>Tallennetun muistilapun asetukset</b>"
-
-#~ msgid "Backpack"
-#~ msgstr "Backpack"
-
-#~ msgid "Enabled"
-#~ msgstr "Käytössä"
-
-#~ msgid "<b>Return Playlists</b>"
-#~ msgstr "<b>Palauta soittolistat</b>"
-
-#~ msgid "Banshee"
-#~ msgstr "Banshee"
-
-#~ msgid "Folder:"
-#~ msgstr "Kansio:"
-
-#~ msgid "Load"
-#~ msgstr "Lataa"
-
-#~ msgid "Addressbook:"
-#~ msgstr "Osoitekirja:"
-
-#~ msgid "Evolution"
-#~ msgstr "Evolution"
-
-#~ msgid ""
-#~ "Limit the Number of\n"
-#~ "Enclosures Downloaded to:"
-#~ msgstr ""
-#~ "Rajoita noudettavien\n"
-#~ "liitteiden lukumäärä arvoon:"
-
-#~ msgid "<b>Items to Synchronize</b>"
-#~ msgstr "<b>Synkronisoitavat kohteet</b>"
-
-#~ msgid "Add Directory"
-#~ msgstr "Lisää kansio"
-
-#~ msgid "Add File"
-#~ msgstr "Lisää tiedosto"
-
-#~ msgid "Advanced"
-#~ msgstr "Lisäasetukset"
-
-#~ msgid "File Configuration"
-#~ msgstr "Tiedostojen määrittely"
-
-#~ msgid "Folder Configuration"
-#~ msgstr "Kansioiden määrittely"
-
-#~ msgid "Folder Location:"
-#~ msgstr "Kansion sijainti:"
-
-#~ msgid "Follow Symbolic Links"
-#~ msgstr "Seuraa symbolisia linkkejä"
-
-#~ msgid "Ignore File Modification Times"
-#~ msgstr "Älä huomioi tiedostojen muokkausaikoja"
-
-#~ msgid "Include Hidden Files"
-#~ msgstr "Ota piilotiedostot mukaan"
-
-#~ msgid "Select A Folder"
-#~ msgstr "Valitse kansio"
-
-#~ msgid "Photoset Name:"
-#~ msgstr "Valokuvakokoelman nimi:"
-
-#~ msgid "<b>Downloaded Document Format</b>"
-#~ msgstr "<b>Noudettujen asiakirjojen nouto</b>"
-
-#~ msgid "Presentations"
-#~ msgstr "Esitykset"
-
-#~ msgid "Spreadsheets"
-#~ msgstr "Laskentataulukot"
-
-#~ msgid "<b>Download Videos</b>"
-#~ msgstr "<b>Videoiden nouto</b>"
-
-#~ msgid "Favorites of above user"
-#~ msgstr "Yllä olevan käyttäjän suosikit"
-
-#~ msgid "Max retrieved videos (0 is unlimited):"
-#~ msgstr "Noudettavien videoiden enimmäismäärä (0 rajoittamaton):"
-
-#~ msgid "Top rated"
-#~ msgstr "Parhaiten arvostellut"
-
-#~ msgid "Uploaded by above user"
-#~ msgstr "Lähetetty yllä olevan käyttäjän toimesta"
-
-#~ msgid "YouTube Source"
-#~ msgstr "YouTube-lähde"
-
-#~ msgid "<b>Encoding</b>"
-#~ msgstr "<b>Merkistö</b>"
-
-#~ msgid "iPod Photos"
-#~ msgstr "iPod-valokuvat"
-
-#~ msgid "%s Format (%s)"
-#~ msgstr "%s-muoto (%s)"
-
-#~ msgid "unchanged"
-#~ msgstr "ei muutoksia"
-
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
-#~ msgid "<b>Return Photos Tagged With</b>"
-#~ msgstr "<b>Palauta valokuvat, joilla luokitukset</b>"
-
-#~ msgid "Create Tags: "
-#~ msgstr "Luo luokituksia: "
-
-#~ msgid "Synchronize your desktop preferences"
-#~ msgstr "Synkronisoi työpöytäasetukset"
-
-#~ msgid "<b>Synchronize the Following Playlists</b>"
-#~ msgstr "<b>Synkronisoi seuraavat soittolistat</b>"
-
-#~ msgid "Rhythmbox Playlists"
-#~ msgstr "Rytmilaatikon soittolistat"
-
-#~ msgid "Slow Sync"
-#~ msgstr "Hidas synkronisointi"
-
-#~ msgid "Sync Options"
-#~ msgstr "Synkronisoinnin valinnat"
-
-#~ msgid "Two Way Sync"
-#~ msgstr "Kaksisuuntainen synkronisointi"
-
-#~ msgid "_About"
-#~ msgstr "_Tietoja"
-
-#~ msgid "About Conduit"
-#~ msgstr "Tietoja Conduitista"
-
-#~ msgid "Use built in Web browser"
-#~ msgstr "Käytä sisäänrakennettua selainta"
-
-#~ msgid "Please Enter a Folder Name"
-#~ msgstr "Anna kansion nimi"
-
-#~ msgid "F-Spot Photos"
-#~ msgstr "F-Spot -valokuvat"
-
-#~ msgid "Sync contacts from Google"
-#~ msgstr "Synkronisoi yhteystiedot Googlesta"
-
-#~ msgid "By user"
-#~ msgstr "Käyttäjältä"
-
-#~ msgid "User: "
-#~ msgstr "Käyttäjä:"

@@ -1376,6 +1376,9 @@ class YouTubeTwoWay(_GoogleBase, DataProvider.TwoWay):
             disable_check = True, 
             disabled_value = 0,
             enabled = self.max_downloads > 0)
+    
+    def config_cancel(self, config):
+        config['max_downloads'].enabled = (self.max_downloads > 0)
 
     def _get_video_info (self, id):
         if self.entries.has_key(id):

@@ -25,14 +25,15 @@ import conduit.gtkui.Tree as Tree
 import conduit.gtkui.ConflictResolver as ConflictResolver
 import conduit.gtkui.Database as Database
 
+def N_(message): return message
 
 DEFAULT_CONDUIT_BROWSER = "gtkmozembed"
 DEVELOPER_WEB_LINKS = (
 #name,                      #url
-("Introduction",            "http://www.conduit-project.org/wiki/Development"),
-("Writing a Data Provider", "http://www.conduit-project.org/wiki/WritingADataProvider"),
-("API Documentation",       "http://doc.conduit-project.org/conduit/"),
-("Test Results",            "http://tests.conduit-project.org/")
+(N_("Introduction"),            "http://www.conduit-project.org/wiki/Development"),
+(N_("Writing a Data Provider"), "http://www.conduit-project.org/wiki/WritingADataProvider"),
+(N_("API Documentation"),       "http://doc.conduit-project.org/conduit/"),
+(N_("Test Results"),            "http://tests.conduit-project.org/")
 )
 
 #set up the gettext system and locales
@@ -80,10 +81,6 @@ class MainWindow:
         Constructs the mainwindow. Throws up a splash screen to cover 
         the most time consuming pieces
         """
-        if conduit.FILE_IMPL == "GnomeVfs":
-            import gnome.ui
-            gnome.ui.authentication_manager_init()        
-
         #add some additional dirs to the icon theme search path so that
         #modules can provider their own icons
         icon_dirs = [
@@ -129,15 +126,15 @@ class MainWindow:
         self.mainWindow.set_position(gtk.WIN_POS_CENTER)
         title = "Conduit"
         if conduit.IS_DEVELOPMENT_VERSION:
-            title = title + " - %s (Development Version)" % conduit.VERSION
+            title = title + _(" - %s (Development Version)") % conduit.VERSION
         if not conduit.IS_INSTALLED:
-            title = title + " - Running Uninstalled"
+            title = title + _(" - Running Uninstalled")
         self.mainWindow.set_title(title)
 
         #Configure canvas
         self.canvasSW = self.widgets.get_widget("canvasScrolledWindow")
         self.hpane = self.widgets.get_widget("hpaned1")
-        
+
         #start up the canvas
         msg = MsgArea.MsgAreaController()
         self.widgets.get_widget("mainVbox").pack_start(msg, False, False)
@@ -165,7 +162,7 @@ class MainWindow:
         #add the preconfigured Conduit menu
         if conduit.GLOBALS.settings.get("gui_show_hints"):
             self.preconfiguredConduitsMenu = _PreconfiguredConduitMenu()
-            item = gtk.ImageMenuItem("Examples")
+            item = gtk.ImageMenuItem(_("Examples"))
             item.set_image(
                     gtk.image_new_from_stock(gtk.STOCK_OPEN,gtk.ICON_SIZE_MENU))
             item.set_submenu(self.preconfiguredConduitsMenu)
@@ -177,7 +174,7 @@ class MainWindow:
         #to the help menu
         if conduit.IS_DEVELOPMENT_VERSION:
             helpMenu = self.widgets.get_widget("help_menu")
-            developersMenuItem = gtk.ImageMenuItem("Developers")
+            developersMenuItem = gtk.ImageMenuItem(_("Developers"))
             developersMenuItem.set_image(
                                 gtk.image_new_from_icon_name(
                                         "applications-development",
@@ -186,12 +183,12 @@ class MainWindow:
             developersMenuItem.set_submenu(developersMenu)
             helpMenu.prepend(developersMenuItem)
             for name,url in DEVELOPER_WEB_LINKS:
-                item = gtk.ImageMenuItem(name)
+                item = gtk.ImageMenuItem(_(name))
                 item.set_image(
                         gtk.image_new_from_icon_name(
                                 "applications-internet",
                                 gtk.ICON_SIZE_MENU))
-                item.connect("activate",self.on_developer_menu_item_clicked,name,url)
+                item.connect("activate",self.on_developer_menu_item_clicked,_(name),url)
                 developersMenu.append(item)
 
         #final GUI setup
@@ -419,7 +416,7 @@ class MainWindow:
                                 gtk.ICON_SIZE_MENU))
                 if currentValue == policyValue:
                     widget.set_active(True)
-                                        
+
         #The dataprovider factories can provide a configuration widget which is
         #packed into the notebook
         for i in conduit.GLOBALS.moduleManager.dataproviderFactories:#get_modules_by_type("dataprovider-factory"):
@@ -535,7 +532,13 @@ class MainWindow:
         """
         drop cb
         """
-        self.canvas.drag_get_data(context, context.targets[0], time)
+        if context.targets:
+            target = context.targets[0]
+        else:
+            # FIXME: work-around for a bug in PyGTK on OSX: 
+            # http://bugzilla.gnome.org/show_bug.cgi?id=588643
+            target = 'conduit/element-name'
+        self.canvas.drag_get_data(context, target, time)
         return True
         
     def drag_data_received_data(self, treeview, context, x, y, selection, info, etime):

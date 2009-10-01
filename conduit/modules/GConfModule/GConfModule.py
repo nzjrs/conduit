@@ -28,11 +28,11 @@ class GConfTwoWay(DataProvider.TwoWay, AutoSync.AutoSync):
     _configurable_ = True
     
     WHITELIST = (
-        ("Metacity",                "/apps/metacity/*"),
-        ("Nautilus",                "/apps/nautilus/*"),
-        ("Preferred Applications",  "/desktop/gnome/applications/*"),
-        ("Desktop Interface",       "/desktop/gnome/interface/*"),
-        ("Gnome Terminal",          "/apps/gnome-terminal/*")
+        (_("Metacity"),                "/apps/metacity/*"),
+        (_("Nautilus"),                "/apps/nautilus/*"),
+        (_("Preferred Applications"),  "/desktop/gnome/applications/*"),
+        (_("Desktop Interface"),       "/desktop/gnome/interface/*"),
+        (_("Gnome Terminal"),          "/apps/gnome-terminal/*")
     )
 
     def __init__(self, *args):
@@ -135,7 +135,7 @@ class GConfTwoWay(DataProvider.TwoWay, AutoSync.AutoSync):
 
     def config_setup(self, config):
         config.add_section(_("Applications to Synchronize"))
-        items_config = config.add_item("Items", "list",
+        items_config = config.add_item(_("Items"), "list",
             config_name = "sections",
             choices = [(path, name) for name, path in self.WHITELIST]
         )

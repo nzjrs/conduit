@@ -80,7 +80,13 @@ class StoppableXMLRPCServer(SimpleXMLRPCServer.SimpleXMLRPCServer):
         self.socket.setblocking(0)
         while not self.closed:
             time.sleep(0.15)
-            self.handle_request()        
+            try:
+                self.handle_request()
+            except TypeError:
+                #Python 2.6 throws this on close...
+                pass
+            except:
+                slog.critical("Error handling request", exc_info=True)
             
     def get_request(self):
         inputObjects = []
