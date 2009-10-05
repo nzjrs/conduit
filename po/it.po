@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Conduit 0.3.x\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=conduit&component=documentation and translation\n"
-"POT-Creation-Date: 2009-08-28 17:45+0000\n"
-"PO-Revision-Date: 2009-07-23 16:20+0200\n"
+"POT-Creation-Date: 2009-09-21 00:14+0000\n"
+"PO-Revision-Date: 2009-10-05 14:01+0200\n"
 "Last-Translator: Gianvito Cavasoli <janvitus@ubuntu-it.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../data/conduit.desktop.in.in.h:1
 msgid "Conduit Synchronizer"
-msgstr "Conduit - Sincronizzatore"
+msgstr "Sincronizzatore Conduit"
 
 #: ../data/conduit.desktop.in.in.h:2
 msgid "Synchronization for GNOME"
@@ -380,17 +380,17 @@ msgid "Not Configured"
 msgstr "Non configurata"
 
 #: ../conduit/dataproviders/Image.py:34
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "640x480"
 msgstr "640×480"
 
 #: ../conduit/dataproviders/Image.py:34
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "800x600"
 msgstr "800×600"
 
 #: ../conduit/dataproviders/Image.py:34
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "1024x768"
 msgstr "1024×768"
 
@@ -573,7 +573,7 @@ msgstr "Sincronizzazione"
 msgid "Description"
 msgstr "Descrizione"
 
-#: ../conduit/gtkui/ConfigItems.py:729
+#: ../conduit/gtkui/ConfigItems.py:734
 #, python-format
 msgid "Total: %d"
 msgstr "Totale: %d"
@@ -881,24 +881,24 @@ msgstr "Accesso, attendere..."
 msgid "Username"
 msgstr "Nome utente"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:318
+#: ../conduit/modules/FlickrModule/FlickrModule.py:319
 msgid "Authenticate"
 msgstr "Autentica"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:322
+#: ../conduit/modules/FlickrModule/FlickrModule.py:323
 #: ../conduit/modules/ZotoModule/ZotoModule.py:251
 msgid "Saved photo settings"
 msgstr "Impostazioni foto salvate"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:327
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
 msgid "Resize photos"
 msgstr "Ridimensiona foto"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "Do not resize"
 msgstr "Non ridimensionare"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:331
+#: ../conduit/modules/FlickrModule/FlickrModule.py:332
 msgid "Photos are public"
 msgstr "Rendere le foto pubbliche"
 
