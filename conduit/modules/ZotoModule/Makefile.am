@@ -1,4 +1,4 @@
-conduit_handlersdir = $(libdir)/conduit/modules/ZotoModule.py
+conduit_handlersdir = $(libdir)/conduit/modules/ZotoModule
 conduit_handlers_PYTHON = ZotoModule.py
 
 clean-local:
