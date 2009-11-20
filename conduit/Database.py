@@ -294,6 +294,7 @@ class ThreadSafeGenericDB(Thread, GenericDB):
             
     def run(self):
         GenericDB._open(self)
+        self.broken = False
         while not self.stopped:
             req, args, res, operation = self.reqs.get()
             if req=='--stop--': 
@@ -301,7 +302,16 @@ class ThreadSafeGenericDB(Thread, GenericDB):
             elif req=='--save--': 
                 self.db.commit()
             else:
-                self.cur.execute(req, args)
+                try:
+                    self.cur.execute(req, args)
+                except sqlite.ProgrammingError:
+                    log.critical("sqlite syntax error: %s" % req, exc_info=True)
+                    self.stopped = True
+                    self.broken = True
+                except:
+                    log.critical("unknown sqlite error", exc_info=True)
+                    self.stopped = True
+                    self.broken = True
 
                 #res is used to return a result to the caller
                 #in a blocking way
@@ -315,8 +325,9 @@ class ThreadSafeGenericDB(Thread, GenericDB):
                     else:
                         assert(False)
 
-        self.cur.close()
-        self.db.close()
+        if not self.broken:
+            self.cur.close()
+            self.db.close()
 
     def execute(self, req, args=(), res=None, operation=""):
         if self.DEBUG: log.debug(req)
