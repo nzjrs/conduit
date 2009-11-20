@@ -134,6 +134,7 @@ class GenericDB(gobject.GObject):
         else:
             self.db = sqlite.connect(self.filename)
         self.db.isolation_level = self.options.get("isolation_level",None)
+        self.db.text_factory = str
         if self.options.get("row_by_name",False) == True:
             self.db.row_factory = sqlite.Row
         self.cur = self.db.cursor()
