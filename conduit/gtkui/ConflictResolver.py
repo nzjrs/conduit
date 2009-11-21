@@ -45,7 +45,7 @@ class ConflictResolver:
     Manages a gtk.TreeView which is used for asking the user what they  
     wish to do in the case of a conflict
     """
-    def __init__(self, widgets):
+    def __init__(self, gtkbuilder):
         self.model = gtk.TreeStore( gobject.TYPE_PYOBJECT,  #Conflict
                                     gobject.TYPE_INT        #Resolved direction
                                     )
@@ -58,18 +58,18 @@ class ConflictResolver:
 
         #Connect up the GUI
         #this is the scrolled window in the bottom of the main gui
-        self.expander = widgets.get_widget("conflictExpander")
+        self.expander = gtkbuilder.get_object("conflictExpander")
         self.expander.connect("activate", self.on_expand)
-        self.vpane = widgets.get_widget("vpaned1")
+        self.vpane = gtkbuilder.get_object("vpaned1")
         self.expander.set_sensitive(False)
-        self.fullscreenButton = widgets.get_widget("conflictFullscreenButton")
+        self.fullscreenButton = gtkbuilder.get_object("conflictFullscreenButton")
         self.fullscreenButton.connect("toggled", self.on_fullscreen_toggled)
-        self.conflictScrolledWindow = widgets.get_widget("conflictExpanderVBox")
-        widgets.get_widget("conflictScrolledWindow").add(self.view)
+        self.conflictScrolledWindow = gtkbuilder.get_object("conflictExpanderVBox")
+        gtkbuilder.get_object("conflictScrolledWindow").add(self.view)
         #this is a stand alone window for showing conflicts in an easier manner
         self.standalone = gtk.Window()
         self.standalone.set_title("Conflicts")
-        self.standalone.set_transient_for(widgets.get_widget("MainWindow"))
+        self.standalone.set_transient_for(gtkbuilder.get_object("MainWindow"))
         self.standalone.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
         self.standalone.set_destroy_with_parent(True)
         self.standalone.set_default_size(-1, 200)
@@ -77,10 +77,10 @@ class ConflictResolver:
         #self.standalone.add(self.conflictScrolledWindow)
         self.standalone.connect("delete-event", self.on_standalone_closed)
         #the button callbacks are shared
-        widgets.get_widget("conflictCancelButton").connect("clicked", self.on_cancel_conflicts)
-        widgets.get_widget("conflictResolveButton").connect("clicked", self.on_resolve_conflicts)
+        gtkbuilder.get_object("conflictCancelButton").connect("clicked", self.on_cancel_conflicts)
+        gtkbuilder.get_object("conflictResolveButton").connect("clicked", self.on_resolve_conflicts)
         #the state of the compare button is managed by the selection changed callback
-        self.compareButton = widgets.get_widget("conflictCompareButton")
+        self.compareButton = gtkbuilder.get_object("conflictCompareButton")
         self.compareButton.connect("clicked", self.on_compare_conflicts)
         self.compareButton.set_sensitive(False)
 

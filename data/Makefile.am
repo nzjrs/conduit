@@ -34,7 +34,7 @@ update-icon-cache:
 
 resourcesdir = $(pkgdatadir)
 resources_DATA = \
-	conduit.glade \
+	conduit.ui \
 	backpack.png \
 	evolution-tasks.png \
 	evolution-memos.png \

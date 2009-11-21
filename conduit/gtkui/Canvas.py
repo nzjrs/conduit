@@ -150,7 +150,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
     ]
 
     WELCOME_MESSAGE = _("Drag a Data Provider here to continue")
-    def __init__(self, parentWindow, typeConverter, syncManager, dataproviderMenu, conduitMenu, msg):
+    def __init__(self, parentWindow, typeConverter, syncManager, gtkbuilder, msg):
         """
         Draws an empty canvas of the appropriate size
         """
@@ -173,7 +173,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
 
         self.configurator = WindowConfigurator.WindowConfigurator(self.parentWindow)
 
-        self._setup_popup_menus(dataproviderMenu, conduitMenu)
+        self._setup_popup_menus(gtkbuilder)
 
         #set up DND from the treeview
         self.drag_dest_set(  gtk.gdk.BUTTON1_MASK | gtk.gdk.BUTTON3_MASK,
@@ -256,7 +256,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
                 )
         self._changing_style = False
 
-    def _setup_popup_menus(self, dataproviderPopupXML, conduitPopupXML):
+    def _setup_popup_menus(self, gtkbuilder):
         """
         Sets up the popup menus and their callbacks
 
@@ -268,17 +268,25 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         @type dataproviderPopupXML: C{gtk.glade.XML}
         """
 
-        self.dataproviderMenu = dataproviderPopupXML.get_widget("DataProviderMenu")
-        self.configureMenuItem = dataproviderPopupXML.get_widget("configure")
+        self.dataproviderMenu = gtkbuilder.get_object("DataProviderMenu")
+        self.conduitMenu = gtkbuilder.get_object("ConduitMenu")
 
-        self.conduitMenu = conduitPopupXML.get_widget("ConduitMenu")
-        self.twoWayMenuItem = conduitPopupXML.get_widget("two_way_sync")
-        self.slowSyncMenuItem = conduitPopupXML.get_widget("slow_sync")
-        self.autoSyncMenuItem = conduitPopupXML.get_widget("auto_sync")
+        self.configureMenuItem = gtkbuilder.get_object("configure_dataprovider")
 
+        self.twoWayMenuItem = gtkbuilder.get_object("two_way_sync")
+        self.slowSyncMenuItem = gtkbuilder.get_object("slow_sync")
+        self.autoSyncMenuItem = gtkbuilder.get_object("auto_sync")
+
+        #connect the toggled signals
         self.twoWayMenuItem.connect("toggled", self.on_two_way_sync_toggle)
         self.slowSyncMenuItem.connect("toggled", self.on_slow_sync_toggle)
         self.autoSyncMenuItem.connect("toggled", self.on_auto_sync_toggle)
+
+        #connect the dataprovider and conduit menu signals
+        for widget in ( "delete_dataprovider", "configure_dataprovider",
+                        "refresh_dataprovider", "delete_conduit", 
+                        "synchronize_conduit", "refresh_conduit"):
+            gtkbuilder.get_object(widget).connect("activate", getattr(self, "on_%s_clicked" % widget))
 
         #connect the conflict popups
         self.policyWidgets = {}
@@ -286,13 +294,9 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
             for policyValue in Conduit.CONFLICT_POLICY_VALUES:
                 widgetName = "%s_%s" % (policyName,policyValue)
                 #store the widget and connect to toggled signal
-                widget = conduitPopupXML.get_widget(widgetName)
+                widget = gtkbuilder.get_object(widgetName)
                 widget.connect("toggled", self.on_policy_toggle, policyName, policyValue)
                 self.policyWidgets[widgetName] = widget
-                
-        #connect the menu callbacks
-        conduitPopupXML.signal_autoconnect(self)
-        dataproviderPopupXML.signal_autoconnect(self)
 
     def _delete_welcome(self):
         idx = self.root.find_child(self.welcome)
@@ -383,7 +387,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
 
         self.selectedDataproviderItem = selected_dataprovider
         self.selectedConduitItem = selected_conduit
-        
+
     def get_selected_conduit(self):
         if self.selectedConduitItem:
             return self.selectedConduitItem.model
