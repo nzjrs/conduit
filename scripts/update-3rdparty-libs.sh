@@ -11,7 +11,7 @@ echo "Not updating flickrapi (use stable releases only)"
 
 #update pyfacebook
 echo "Updating pyfacebook"
-svn export --force http://pyfacebook.googlecode.com/svn/trunk/facebook/__init__.py conduit/modules/FacebookModule/pyfacebook/__init__.py
+wget -qO conduit/modules/FacebookModule/pyfacebook/__init__.py http://github.com/sciyoshi/pyfacebook/raw/master/facebook/__init__.py
 
 #update pybackpack
 echo "Updating pybackpack"
