@@ -14,21 +14,21 @@ from conduit.datatypes import Rid
 
 from gettext import gettext as _
 
-#We have to use our own flickrapi until the following is applied
-#http://sourceforge.net/tracker/index.php?func=detail&aid=1874067&group_id=203043&atid=984009
-Utils.dataprovider_add_dir_to_path(__file__)
-import flickrapi
+MODULES = {}
+try:
+    import flickrapi
+    if flickrapi.__version__ >= "1.2":
+        MODULES = {
+        	"FlickrTwoWay" :          { "type": "dataprovider" }        
+        }
+        log.info("Module Information: %s" % Utils.get_module_information(flickrapi, "__version__"))
+        #turn of debugging in the library
+        flickrapi.set_log_level(logging.NOTSET)
+except ImportError:
+    pass
 
-if flickrapi.__version__ == "1.1":
-    MODULES = {
-    	"FlickrTwoWay" :          { "type": "dataprovider" }        
-    }
-    log.info("Module Information: %s" % Utils.get_module_information(flickrapi, "__version__"))
-    #turn of debugging in the library
-    flickrapi.set_log_level(logging.NOTSET)
-else:
-    MODULES = {}
-    log.info("Flickr support disabled")
+if not MODULES:
+    log.info("Flickr support disabled. Please install python-flickrapi > 1.2")
     
 class MyFlickrAPI(flickrapi.FlickrAPI):
     """
