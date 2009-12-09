@@ -1,0 +1,1269 @@
+# Chinese (China) translation for conduit.
+# Copyright (C) 2009 conduit's COPYRIGHT HOLDER
+# This file is distributed under the same license as the conduit package.
+# 运强 苏 <wzssyqa@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: conduit master\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=conduit&component=documentation and translation\n"
+"POT-Creation-Date: 2009-11-23 17:19+0000\n"
+"PO-Revision-Date: 2009-12-09 12:56+0800\n"
+"Last-Translator: 苏运强 <wzssyqa@gmail.com>\n"
+"Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/conduit.desktop.in.in.h:1
+msgid "Conduit Synchronizer"
+msgstr "Conduit 同步工具"
+
+#: ../data/conduit.desktop.in.in.h:2
+msgid "Synchronization for GNOME"
+msgstr "GNOME 的同步"
+
+#: ../data/conduit.glade.h:1
+msgid "<b>Default Synchronization Options</b>"
+msgstr "<b>默认同步选项</b>"
+
+#: ../data/conduit.glade.h:2
+msgid "<b>General</b>"
+msgstr "<b>常规</b>"
+
+#: ../data/conduit.glade.h:3
+msgid "Always Up-To-Date"
+msgstr "总是及时更新"
+
+#: ../data/conduit.glade.h:4
+msgid "Ask Me What to Do"
+msgstr "询问要做什么"
+
+#: ../data/conduit.glade.h:5
+msgid "Ask me what to do"
+msgstr "询问要做什么"
+
+#: ../data/conduit.glade.h:6
+msgid "Cancel Synchronization"
+msgstr "取消同步"
+
+#: ../data/conduit.glade.h:7
+msgid "Cancel currently-synchronizing groups"
+msgstr "取消正在进行的同步组"
+
+#: ../data/conduit.glade.h:8
+msgid "Clear Canvas"
+msgstr "清除显示区"
+
+#: ../data/conduit.glade.h:9
+msgid "Compare"
+msgstr "比较"
+
+#: ../data/conduit.glade.h:10
+msgid "Conduit Preferences"
+msgstr "Conduit 首选项"
+
+#: ../data/conduit.glade.h:11
+msgid "Configuration"
+msgstr "配置"
+
+#: ../data/conduit.glade.h:12
+msgid "Configure Item"
+msgstr "配置条目"
+
+#: ../data/conduit.glade.h:13
+msgid "Configure the synchronization settings for this item"
+msgstr "为此条目配置同步设置"
+
+#: ../data/conduit.glade.h:14
+msgid "Conflict Options"
+msgstr "冲突选项"
+
+#: ../data/conduit.glade.h:15
+msgid "Conflicts"
+msgstr "冲突"
+
+#: ../data/conduit.glade.h:16
+msgid "Contents"
+msgstr "内容"
+
+#: ../data/conduit.glade.h:17
+msgid "Data Conversions"
+msgstr "数据转换"
+
+#: ../data/conduit.glade.h:18
+msgid "Data Providers"
+msgstr "数据提供者"
+
+#: ../data/conduit.glade.h:19
+msgid "Delete Group"
+msgstr "删除组"
+
+#: ../data/conduit.glade.h:20
+msgid "Delete Item"
+msgstr "删除条目"
+
+#: ../data/conduit.glade.h:21
+msgid "Delete Options"
+msgstr "删除选项"
+
+#: ../data/conduit.glade.h:22
+msgid "Delete from the corresponding sink"
+msgstr "删除相应的接收器"
+
+#: ../data/conduit.glade.h:23
+msgid "Delete the Corresponding Item"
+msgstr "删除相应的条目"
+
+#: ../data/conduit.glade.h:24
+msgid "Editor"
+msgstr "编辑器"
+
+#: ../data/conduit.glade.h:25
+msgid "Minimize to notification area"
+msgstr "最小化到通知区域"
+
+#: ../data/conduit.glade.h:26
+msgid "Refresh Group"
+msgstr "刷新组"
+
+#: ../data/conduit.glade.h:27
+msgid "Refresh Item"
+msgstr "刷新条目"
+
+#: ../data/conduit.glade.h:28
+msgid "Replace the Older Item"
+msgstr "替代旧条目"
+
+#: ../data/conduit.glade.h:29
+msgid "Replace the older item"
+msgstr "替代旧条目"
+
+#: ../data/conduit.glade.h:30
+msgid "Resolve Conflicts"
+msgstr "解决冲突"
+
+#: ../data/conduit.glade.h:31
+msgid "Save settings on exit"
+msgstr "退出时保存设置"
+
+#: ../data/conduit.glade.h:32
+msgid "Show Hints"
+msgstr "显示提示"
+
+#: ../data/conduit.glade.h:33
+msgid "Show status icon"
+msgstr "显示状态图标"
+
+#: ../data/conduit.glade.h:34
+msgid "Skip"
+msgstr "跳过"
+
+#: ../data/conduit.glade.h:35
+msgid "Slow Synchronization"
+msgstr "慢速同步"
+
+#: ../data/conduit.glade.h:36
+msgid "Start Conduit at login"
+msgstr "登录时启动 Conduit"
+
+#: ../data/conduit.glade.h:37
+msgid "Synchronization Options"
+msgstr "同步选项"
+
+#: ../data/conduit.glade.h:38
+msgid "Synchronize All"
+msgstr "同步所有"
+
+#: ../data/conduit.glade.h:39
+msgid "Synchronize Group"
+msgstr "同步组"
+
+#: ../data/conduit.glade.h:40
+msgid "Synchronize group"
+msgstr "同步组"
+
+#: ../data/conduit.glade.h:41
+msgid "Synchronizes all groups"
+msgstr "同步所有组"
+
+#: ../data/conduit.glade.h:42
+msgid "Title"
+msgstr "标题"
+
+#: ../data/conduit.glade.h:43
+msgid "Two-Way Synchronization"
+msgstr "双向同步"
+
+#: ../data/conduit.glade.h:44
+msgid "When an item has been deleted:"
+msgstr "当一个条目被删除时："
+
+#: ../data/conduit.glade.h:45
+msgid "When an item is deleted..."
+msgstr "当一个条目被删除时..."
+
+#: ../data/conduit.glade.h:46
+msgid "When there is a conflict..."
+msgstr "当有一个冲突时"
+
+#: ../data/conduit.glade.h:47
+msgid "When there is a two-way conflict:"
+msgstr "当有双向冲突时："
+
+#: ../data/conduit.glade.h:48
+msgid "_Edit"
+msgstr "编辑(_E)"
+
+#: ../data/conduit.glade.h:49
+msgid "_File"
+msgstr "文件(_F)"
+
+#: ../data/conduit.glade.h:50
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: ../conduit/Knowledge.py:8
+msgid "What Do You Want to Synchronize?"
+msgstr "您要同步什么？"
+
+#: ../conduit/Knowledge.py:9
+msgid "Drag and Drop a Data Provider on the Canvas"
+msgstr "拖放一个数据提供者至画布"
+
+#: ../conduit/Knowledge.py:11
+msgid "Synchronization Group Created"
+msgstr "已创建同步组"
+
+#: ../conduit/Knowledge.py:12
+msgid "Add Another Data Provider to the Group to Synchronize it"
+msgstr "添加其他数据提供者至此组以同步它"
+
+#: ../conduit/Knowledge.py:14
+msgid "You Are Now Ready to Synchronize"
+msgstr "准备好同步了吗？"
+
+#: ../conduit/Knowledge.py:15
+msgid "Right Click on Group for Options"
+msgstr "在组上点右键获取选项"
+
+#. source,sinc                            #comment
+#. twoway
+#: ../conduit/Knowledge.py:22
+msgid "Synchronize Two Folders"
+msgstr "同步两个目录"
+
+#: ../conduit/Knowledge.py:24
+msgid "Backup Folder to Box.net"
+msgstr "备份目录到 Box.net"
+
+#: ../conduit/Knowledge.py:26
+msgid "Synchronize Tagged F-Spot Photos to Flickr"
+msgstr "同步标记的 F-Spot 照片到 Flickr"
+
+#: ../conduit/Main.py:59
+msgid "Conduit is a synchronization application."
+msgstr "Conduit 是一个同步程序。"
+
+#: ../conduit/Main.py:63
+#, python-format
+msgid "Launch without GUI. [default: %default]"
+msgstr "不使用图形界面运行。[默认： %default]"
+
+#: ../conduit/Main.py:67
+#, python-format
+msgid "Save dataprovider configuration to FILE. [default: %default]"
+msgstr "保存数据提供者配置至文件。[默认：%default]"
+
+#: ../conduit/Main.py:71
+#, python-format
+msgid "Iconify on startup. [default: %default]"
+msgstr "启动时最小化到托盘。[默认： %default]"
+
+#: ../conduit/Main.py:75
+#, python-format
+msgid "Run with the specified UI. [default: %default]"
+msgstr "使用指定的用户界面运行。[默认：%default]"
+
+#: ../conduit/Main.py:79
+msgid "Only load modules in the named files. [default: load all modules]"
+msgstr "只从命名的文件中加载模块。[默认：加载所有模块]"
+
+#: ../conduit/Main.py:83
+msgid "Do not load modules in the named files. [default: load all modules]"
+msgstr "不要从命名的文件中加载模块。[默认：加载所有模块]"
+
+#: ../conduit/Main.py:87
+msgid ""
+"Explicitly set internal Conduit settings (keys) to the given values for this "
+"session. [default: do not set]"
+msgstr "显式为会话设置内部 Conduit 设置 (keys) 为给定的值。[默认：不设置]"
+
+#: ../conduit/Main.py:91
+#, python-format
+msgid ""
+"Enable loading of unfinished or unsupported dataproviders. [default: %"
+"default]"
+msgstr "启用加载未完成或未支持的数据提供者。[默认：%default]"
+
+#: ../conduit/Main.py:95
+#, python-format
+msgid "Generate more debugging information. [default: %default]"
+msgstr "产生较多调试信息。[默认：%default]"
+
+#: ../conduit/Main.py:99
+#, python-format
+msgid "Generate less debugging information. [default: %default]"
+msgstr "产生较少调试信息。[默认：%default]"
+
+#: ../conduit/Main.py:103
+#, python-format
+msgid "Generate no debugging information. [default: %default]"
+msgstr "不产生调试信息。[默认：%default]"
+
+#: ../conduit/dataproviders/DataProvider.py:22
+msgid "Ready"
+msgstr "就绪"
+
+#: ../conduit/dataproviders/DataProvider.py:23
+msgid "New data to sync"
+msgstr "要同步的新数据"
+
+#: ../conduit/dataproviders/DataProvider.py:24
+msgid "Refreshing..."
+msgstr "正在刷新..."
+
+#: ../conduit/dataproviders/DataProvider.py:25
+msgid "Refreshed OK"
+msgstr "刷新完成"
+
+#: ../conduit/dataproviders/DataProvider.py:26
+msgid "Error Refreshing"
+msgstr "刷新出错"
+
+#: ../conduit/dataproviders/DataProvider.py:27
+msgid "Synchronizing..."
+msgstr "同步中..."
+
+#: ../conduit/dataproviders/DataProvider.py:28
+msgid "Synchronized OK"
+msgstr "同步完成"
+
+#: ../conduit/dataproviders/DataProvider.py:29
+msgid "Error Synchronizing"
+msgstr "同步出错"
+
+#: ../conduit/dataproviders/DataProvider.py:30
+msgid "Synchronization Skipped"
+msgstr "同步已跳过"
+
+#: ../conduit/dataproviders/DataProvider.py:31
+msgid "Synchronization Cancelled"
+msgstr "同步已取消"
+
+#: ../conduit/dataproviders/DataProvider.py:32
+msgid "Synchronization Conflict"
+msgstr "同步冲突"
+
+#: ../conduit/dataproviders/DataProvider.py:33
+msgid "Not Configured"
+msgstr "未配置"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "640x480"
+msgstr "640x480"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "800x600"
+msgstr "800x600"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "1024x768"
+msgstr "1024x768"
+
+#. Signifies that a conversion should not take place
+#: ../conduit/dataproviders/Image.py:35
+#: ../conduit/modules/N800Module/N800Module.py:57
+msgid "None"
+msgstr "无"
+
+#. Default Categories for the DataProviders
+#: ../conduit/dataproviders/__init__.py:6
+msgid "Files and Folders"
+msgstr "文件和目录"
+
+#: ../conduit/dataproviders/__init__.py:7
+#: ../conduit/modules/iPodModule/iPodModule.py:179
+msgid "Notes"
+msgstr "便笺"
+
+#: ../conduit/dataproviders/__init__.py:8
+#: ../conduit/modules/iPodModule/iPodModule.py:367
+msgid "Photos"
+msgstr "照片"
+
+#: ../conduit/dataproviders/__init__.py:9
+msgid "Office"
+msgstr "办公"
+
+#: ../conduit/dataproviders/__init__.py:10
+msgid "Settings"
+msgstr "设置"
+
+#: ../conduit/dataproviders/__init__.py:11
+msgid "Miscellaneous"
+msgstr "杂项"
+
+#: ../conduit/dataproviders/__init__.py:12
+msgid "Media"
+msgstr "媒体"
+
+#: ../conduit/dataproviders/__init__.py:13
+msgid "Bookmarks"
+msgstr "书签"
+
+#: ../conduit/dataproviders/__init__.py:14
+msgid "Test"
+msgstr "测试"
+
+#: ../conduit/gtkui/Canvas.py:152
+msgid "Drag a Data Provider here to continue"
+msgstr "拖动一个数据提供者至此处以继续"
+
+#: ../conduit/gtkui/Canvas.py:217
+msgid "Show me"
+msgstr "显示此项"
+
+#. Visible column0 is
+#. [pixbuf + source display name] or
+#. [source_data.get_snippet()]
+#: ../conduit/gtkui/ConflictResolver.py:91
+msgid "Source"
+msgstr "源"
+
+#: ../conduit/gtkui/ConflictResolver.py:105
+msgid "Resolution"
+msgstr ""
+
+#. Visible column2 is the display name of source and source data
+#: ../conduit/gtkui/ConflictResolver.py:110
+msgid "Sink"
+msgstr ""
+
+#: ../conduit/gtkui/ConflictResolver.py:150
+#: ../conduit/gtkui/ConflictResolver.py:151
+#, python-format
+msgid "Conflicts (%s)"
+msgstr "冲突(%s)"
+
+#. name,                      #url
+#: ../conduit/gtkui/UI.py:33
+msgid "Introduction"
+msgstr "简介"
+
+#: ../conduit/gtkui/UI.py:34
+msgid "Writing a Data Provider"
+msgstr "正在写入数据提供者"
+
+#: ../conduit/gtkui/UI.py:35
+msgid "API Documentation"
+msgstr "API 文档"
+
+#: ../conduit/gtkui/UI.py:36
+msgid "Test Results"
+msgstr "测试结果"
+
+#: ../conduit/gtkui/UI.py:129
+#, python-format
+msgid " - %s (Development Version)"
+msgstr " - %s (开发版)"
+
+#: ../conduit/gtkui/UI.py:131
+msgid " - Running Uninstalled"
+msgstr ""
+
+#: ../conduit/gtkui/UI.py:165
+msgid "Examples"
+msgstr "示例"
+
+#: ../conduit/gtkui/UI.py:177
+msgid "Developers"
+msgstr "开发者"
+
+#. Build some liststores to display
+#: ../conduit/gtkui/UI.py:318
+msgid "Convert from"
+msgstr "转换，从"
+
+#: ../conduit/gtkui/UI.py:319
+msgid "into"
+msgstr "至"
+
+#: ../conduit/gtkui/UI.py:370
+msgid "Relationship Database"
+msgstr "关系数据库"
+
+#: ../conduit/gtkui/UI.py:374
+msgid "Conversions Available"
+msgstr "转换可用"
+
+#: ../conduit/gtkui/UI.py:380 ../conduit/gtkui/Tree.py:348
+#: ../conduit/modules/FileModule/FileConfiguration.py:117
+msgid "Name"
+msgstr "名字"
+
+#: ../conduit/gtkui/UI.py:384
+msgid "Loaded"
+msgstr "已加载"
+
+#: ../conduit/gtkui/UI.py:512 ../conduit/hildonui/UI.py:127
+msgid "Synchronization in progress. Do you want to cancel it?"
+msgstr "同步正在进行。您想取消它？"
+
+#: ../conduit/gtkui/UI.py:684
+msgid "_Synchronize All"
+msgstr "同步所有(_S)"
+
+#: ../conduit/gtkui/UI.py:684
+msgid "Synchronizes All Groups"
+msgstr "同步所有组"
+
+#: ../conduit/gtkui/UI.py:685
+msgid "_Cancel Synchronization"
+msgstr "取消同步(_C)"
+
+#: ../conduit/gtkui/UI.py:685
+msgid "Cancels Currently Synchronizing Groups"
+msgstr "取消当前同步组"
+
+#: ../conduit/gtkui/UI.py:686
+msgid "_Quit"
+msgstr "退出(_Q)"
+
+#: ../conduit/gtkui/UI.py:686
+msgid "Close Conduit"
+msgstr "关闭 Conduit"
+
+#: ../conduit/gtkui/UI.py:726
+msgid "Synchronization Error"
+msgstr "同步出错"
+
+#: ../conduit/gtkui/UI.py:729
+msgid "Synchronization Complete"
+msgstr "同步完成"
+
+#: ../conduit/gtkui/UI.py:745
+msgid "Synchronizing"
+msgstr "正在同步"
+
+#: ../conduit/gtkui/Tree.py:357
+msgid "Description"
+msgstr "描述"
+
+#: ../conduit/gtkui/ConfigItems.py:734
+#, python-format
+msgid "Total: %d"
+msgstr "总计：%d"
+
+#: ../conduit/gtkui/WindowConfigurator.py:14
+msgid "Configure"
+msgstr "配置"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:58
+msgid "Backpack Notes"
+msgstr ""
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:59
+msgid "Store things in Backpack Notes"
+msgstr ""
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:105
+#: ../conduit/modules/FlickrModule/FlickrModule.py:307
+#: ../conduit/modules/ZotoModule/ZotoModule.py:243
+msgid "Account details"
+msgstr "账户细节"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:106
+msgid "Login"
+msgstr "登录"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:109
+msgid "API key"
+msgstr "API 键"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:112
+msgid "Saved notes"
+msgstr "已保存笔记"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:113
+msgid "Save notes in page"
+msgstr "保存便签至页面"
+
+#: ../conduit/modules/BansheeModule/BansheeModule.py:52
+msgid "Banshee Playlists"
+msgstr "Banshee 播放列表"
+
+#: ../conduit/modules/BansheeModule/BansheeModule.py:53
+msgid "Synchronize your Banshee playlists"
+msgstr "同步 Banshee 播放列表"
+
+#: ../conduit/modules/BansheeModule/BansheeModule.py:187
+#: ../conduit/modules/BansheeModule/BansheeModule.py:188
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:116
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:117
+msgid "Playlists"
+msgstr "播放列表"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:29
+msgid "Box.net"
+msgstr "Box.net"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:30
+msgid "Synchronize your Box.net files"
+msgstr "同步您的 Box.net 文件"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:290
+#: ../conduit/modules/FileModule/FileModule.py:82
+msgid "Folder"
+msgstr "目录"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:291
+msgid "Folder name"
+msgstr "目录名"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:295
+msgid "Load folders"
+msgstr "加载目录"
+
+#: ../conduit/modules/ConverterModule.py:91
+msgid "Note-"
+msgstr "便签-"
+
+#: ../conduit/modules/DesktopWallpaperModule.py:38
+msgid "Wallpaper"
+msgstr "壁纸"
+
+#: ../conduit/modules/DesktopWallpaperModule.py:39
+msgid "Changes your Desktop Wallpaper"
+msgstr "更改您的桌面壁纸"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:107
+#, python-format
+msgid "Select %s"
+msgstr "选择 %s"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:127
+msgid "Evolution Contacts"
+msgstr "Evolution 联系人"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:128
+msgid "Synchronize your contacts"
+msgstr "同步您的联系人"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:178
+msgid "Evolution Calendar"
+msgstr "同步日历"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:179
+msgid "Synchronize your calendar"
+msgstr "同步您的日历"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:240
+msgid "Evolution Tasks"
+msgstr "Evolution 任务"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:241
+msgid "Synchronize your tasks"
+msgstr "同步您的任务"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:297
+msgid "Evolution Memos"
+msgstr "Evolution 备忘录"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:298
+msgid "Synchronize your memos"
+msgstr "同步您的备忘录"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:38
+msgid "Facebook"
+msgstr "Facebook"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:39
+msgid "Synchronize your Facebook photos"
+msgstr "同步您的 Facebook 照片"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:124
+#: ../conduit/modules/FlickrModule/FlickrModule.py:282
+msgid "Loading album list..."
+msgstr "正在加载相册列表..."
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:128
+msgid "Failed to connect"
+msgstr "连接失败"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:131
+msgid "Logged in"
+msgstr "已登录"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:133
+msgid "Failed to login"
+msgstr "登录失败"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:145
+#: ../conduit/modules/FspotModule/FspotModule.py:243
+msgid "Status"
+msgstr "状态"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:150
+#: ../conduit/modules/iPodModule/iPodModule.py:461
+#: ../conduit/modules/ZotoModule/ZotoModule.py:252
+msgid "Album"
+msgstr "相册"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:151
+msgid "Album name"
+msgstr "相册名"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:156
+msgid "Load albums"
+msgstr "加载相册"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:58
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:59
+msgid "Synchronize data from RSS enclosures"
+msgstr "从 RSS enclosure 同步数据"
+
+#. FIXME: Add Randomize
+#: ../conduit/modules/FeedModule/FeedModule.py:114
+msgid "Feed details"
+msgstr "Feed 细节"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:115
+msgid "Feed address"
+msgstr "Feed 地址"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:118
+msgid "Enclosure settings"
+msgstr "Enclosure 设置"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:119
+msgid "Limit downloaded enclosures"
+msgstr "限制下载最大速度"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:125
+msgid "Limit to"
+msgstr "限制"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:129
+msgid "Randomize enclosures"
+msgstr ""
+
+#: ../conduit/modules/FeedModule/FeedModule.py:133
+msgid "Download types"
+msgstr "下载类型"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:134
+msgid "Download audio files"
+msgstr "下载音频文件"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:135
+msgid "Download video files"
+msgstr "下载视频文件"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:136
+msgid "Download photo files"
+msgstr "下载图像文件"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:111
+msgid "Icon"
+msgstr "图标"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:123
+#: ../conduit/modules/GConfModule/GConfModule.py:138
+msgid "Items"
+msgstr "条目"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:149
+#, python-format
+msgid "<i>Contains %s files</i>"
+msgstr "<i>包含 %s 文件</i>"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:248
+msgid "Include file..."
+msgstr "包含文件..."
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:258
+msgid "All files"
+msgstr "所有文件"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:271
+msgid "Include folder..."
+msgstr "包含目录..."
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:314
+msgid "Please Name All Folders"
+msgstr "请命名所有目录"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:315
+msgid ""
+"All folders require a descriptive name. To name a folder simply click on it"
+msgstr "所有目录都需要一个描述性的名字。要命名一个目录，只需在上边点击"
+
+#: ../conduit/modules/FileModule/FileModule.py:23
+msgid "Files"
+msgstr "文件"
+
+#: ../conduit/modules/FileModule/FileModule.py:24
+msgid "Source for synchronizing multiple files"
+msgstr ""
+
+#: ../conduit/modules/FileModule/FileModule.py:83
+msgid "Synchronize folders"
+msgstr "同步目录"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:40
+msgid "Firefox 3 Bookmarks"
+msgstr "Firefox 3 书签"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:41
+msgid "Syncronize your Firefox 3 Bookmarks"
+msgstr "同步您的 Firefox 3 书签"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:100
+msgid "Firefox Profile"
+msgstr "Firefox 配置文件"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:76
+msgid "Flickr"
+msgstr "Flickr"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:77
+msgid "Synchronize your Flickr.com photos"
+msgstr "同步您的 Flickr.com 照片"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:287
+msgid "Failed to connect."
+msgstr "连接失败"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:290
+msgid "Album names loaded."
+msgstr "已加载相册名。"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:292
+msgid "Failed to login."
+msgstr "登录失败"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:303
+msgid "Logging in, please wait..."
+msgstr "正在登录，请稍候..."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:308
+#: ../conduit/modules/GoogleBookmarksModule.py:67
+#: ../conduit/modules/ZotoModule/ZotoModule.py:244
+msgid "Username"
+msgstr "用户名"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:319
+msgid "Authenticate"
+msgstr "认证"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:323
+#: ../conduit/modules/ZotoModule/ZotoModule.py:251
+msgid "Saved photo settings"
+msgstr "已保存照片设置"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+msgid "Resize photos"
+msgstr "调整照片大小"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "Do not resize"
+msgstr "不要调整照片大小"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:332
+msgid "Photos are public"
+msgstr "公照片"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:25
+msgid "F-Spot"
+msgstr "F-Spot"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:26
+msgid "Synchronize your F-Spot photos"
+msgstr "同步您的 F-Spot 照片"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:152
+msgid "F-Spot DBus interface is operating in read-only mode"
+msgstr "F-Spot DBus 接口正在以只读模式操作"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:218
+msgid "F-Spot is running"
+msgstr "F-Spot 正在运行"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:219
+msgid "Please start F-Spot or activate the D-Bus Extension"
+msgstr "请启动 F-Spot 或激活此 D-Bus 扩展。"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:244
+msgid "Start F-Spot"
+msgstr "启动 F-Spot"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:248
+#: ../conduit/modules/FspotModule/FspotModule.py:249
+msgid "Tags"
+msgstr "标记"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:262
+msgid "Add tags"
+msgstr "添加标记"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:263
+msgid "Tag name"
+msgstr "标记名"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:266
+msgid "Add tag"
+msgstr "添加标记"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:21
+msgid "Application Settings"
+msgstr "程序设置"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:22
+msgid "Synchronize your application settings"
+msgstr "同步您的程序设置"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:31
+msgid "Metacity"
+msgstr "Metacity"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:32
+msgid "Nautilus"
+msgstr "Nautilus"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:33
+msgid "Preferred Applications"
+msgstr "首选应用程序"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:34
+msgid "Desktop Interface"
+msgstr "桌面接口"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:35
+msgid "Gnome Terminal"
+msgstr "Gnome 终端"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:137
+msgid "Applications to Synchronize"
+msgstr "要同步的应用程序"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:19
+msgid "Google Bookmarks"
+msgstr "Google 书签"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:20
+msgid "Sync your Google Bookmarks"
+msgstr "同步您的 Google 书签"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:66
+msgid "Login Details"
+msgstr "登录细节"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:70
+#: ../conduit/modules/ZotoModule/ZotoModule.py:247
+msgid "Password"
+msgstr "口令"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:399
+#: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
+msgid "Google Calendar"
+msgstr "Google 日历"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:400
+msgid "Synchronize your Google Calendar"
+msgstr "同步您的 Google 日历"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:582
+msgid "Picasa"
+msgstr "Picasa"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:583
+msgid "Synchronize your Google Picasa photos"
+msgstr "同步您的 Google Picasa 照片"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:745
+msgid "Google Contacts"
+msgstr "Google 联系人"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:746
+msgid "Synchronize your Google Mail contacts"
+msgstr "同步您的 Google Mail 联系人"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1076
+msgid "Google Documents"
+msgstr "Google 文档"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1077
+msgid "Synchronize your Google Documents"
+msgstr "同步您的 Google 文档"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1322
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:69
+msgid "Unknown"
+msgstr "未知"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1323
+msgid "miscellaneous"
+msgstr "杂项"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1324
+msgid "No description."
+msgstr "没有描述"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1333
+msgid "YouTube"
+msgstr "YouTube"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1334
+msgid "Synchronize data from YouTube"
+msgstr "从 YouTube 同步数据"
+
+#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
+msgid "<b>Account Details</b>"
+msgstr "<b>账户细节</b>"
+
+#: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
+msgid "Calendar:"
+msgstr "日历："
+
+#: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
+msgid "Email:"
+msgstr "电子邮件："
+
+#: ../conduit/modules/GoogleModule/calendar-config.glade.h:5
+msgid "Load Calendars"
+msgstr "加载日历"
+
+#: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
+msgid "Password:"
+msgstr "口令："
+
+#: ../conduit/modules/iPodModule/iPodModule.py:180
+msgid "Synchronize your iPod notes"
+msgstr "同步您的 iPod 笔记"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:295
+#: ../conduit/modules/SynceModule.py:311
+msgid "Contacts"
+msgstr "联系人"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:296
+msgid "Synchronize your iPod contacts"
+msgstr "同步您的 iPod 联系人"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:331
+#: ../conduit/modules/SynceModule.py:449
+msgid "Calendar"
+msgstr "日历"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:332
+msgid "Synchronize your iPod calendar"
+msgstr "同步您的 iPod 日历"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:368
+msgid "Synchronize your iPod photos"
+msgstr "同步您的 iPod 照片"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:465
+msgid "Delete"
+msgstr "删除"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:695
+#: ../conduit/modules/iPodModule/iPodModule.py:812
+#: ../conduit/modules/N800Module/N800Module.py:77
+msgid "Encoding"
+msgstr "编码"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:811
+msgid "Conversion options"
+msgstr "转换选项"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:816
+msgid "Keep converted files"
+msgstr "保持转换过的文件"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:846
+msgid "iPod Music"
+msgstr "iPod 音乐"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:847
+msgid "Synchronize your iPod music"
+msgstr "同步您的 iPod 音乐"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:882
+msgid "iPod Video"
+msgstr "iPod 视频"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:883
+msgid "Synchronize your iPod videos"
+msgstr "同步您的 iPod 视频"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:907
+msgid "Movie"
+msgstr "电影"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:908
+msgid "Music Video"
+msgstr "音乐视频"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:909
+msgid "TV Show"
+msgstr ""
+
+#: ../conduit/modules/iPodModule/iPodModule.py:911
+msgid "Video kind"
+msgstr ""
+
+#. Translators: Translate this in derived classes.
+#: ../conduit/modules/N800Module/N800Module.py:55
+msgid "Conduit"
+msgstr "Conduit"
+
+#: ../conduit/modules/N800Module/N800Module.py:105
+msgid "N800 Files"
+msgstr "N800 文件"
+
+#: ../conduit/modules/N800Module/N800Module.py:106
+msgid "Synchronizes files/folders to a N800 device"
+msgstr "同步文件或目录到 N800"
+
+#. To translators: default backup folder of N800
+#: ../conduit/modules/N800Module/N800Module.py:111
+msgid "Backups"
+msgstr "备份"
+
+#: ../conduit/modules/N800Module/N800Module.py:126
+msgid "N800 Music"
+msgstr "N800 音乐"
+
+#: ../conduit/modules/N800Module/N800Module.py:127
+msgid "Synchronizes music to a N800 device"
+msgstr "同步音乐到 N800"
+
+#. To translators: defaul music folder of N800
+#: ../conduit/modules/N800Module/N800Module.py:133
+msgid "Music"
+msgstr "音乐"
+
+#: ../conduit/modules/N800Module/N800Module.py:150
+msgid "N800 Videos"
+msgstr "N800 视频"
+
+#: ../conduit/modules/N800Module/N800Module.py:151
+msgid "Synchronizes video to a N800 device"
+msgstr "同步视频到 N800"
+
+#. To translators: defaul video folder of N800
+#: ../conduit/modules/N800Module/N800Module.py:157
+msgid "Video"
+msgstr "视频"
+
+#: ../conduit/modules/N800Module/N800Module.py:174
+msgid "N800 Photos"
+msgstr "N800 照片"
+
+#: ../conduit/modules/N800Module/N800Module.py:175
+msgid "Synchronizes photos to an N800 device"
+msgstr "同步照片到 N800"
+
+#. To translators: default photos folder of N800
+#: ../conduit/modules/N800Module/N800Module.py:181
+msgid "Photo"
+msgstr "照片"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:19
+msgid "Nautilus Bookmarks"
+msgstr "Nautilus 书签"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:20
+msgid "Sync your Nautilus Bookmarks"
+msgstr "同步您的 Nautilus 书签"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:145
+msgid "Sync bookmarks to local places/files"
+msgstr "同步书签到本地位置或文件"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:148
+msgid "Sync bookmarks to remote places/files"
+msgstr "同步书签到远程位置或文件"
+
+#: ../conduit/modules/NetworkModule/Server.py:147
+msgid "Network"
+msgstr "网络"
+
+#: ../conduit/modules/NetworkModule/Server.py:148
+msgid "Enable synchronization via network"
+msgstr "启用通过网络同步"
+
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:44
+msgid "Rhythmbox Music"
+msgstr "Rhythmbox 音乐"
+
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:45
+msgid "Synchronize songs from your Rhythmbox playlists"
+msgstr "从 Rhythmbox 播放列表同步歌曲"
+
+#: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:26
+msgid "Shutterfly"
+msgstr "Shutterfly"
+
+#: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:27
+msgid "Synchronize your Shutterfly photos"
+msgstr "同步您的 Shutterfly 照片"
+
+#: ../conduit/modules/ShutterflyModule/shutterfly/shutterfly.py:33
+msgid "%Y-%m-%d %H:%M:%S"
+msgstr "%Y-%m-%d %H:%M:%S"
+
+#: ../conduit/modules/SmugMugModule/SmugMugModule.py:28
+msgid "SmugMug"
+msgstr "SmugMug"
+
+#: ../conduit/modules/SmugMugModule/SmugMugModule.py:29
+msgid "Synchronize your SmugMug.com photos"
+msgstr "同步您的 SmugMug.com 照片"
+
+#: ../conduit/modules/SynceModule.py:139
+msgid "Create Partnership"
+msgstr "创建合作关系"
+
+#: ../conduit/modules/SynceModule.py:312
+msgid "Windows Mobile Contacts"
+msgstr "Windows Mobile 联系人"
+
+#: ../conduit/modules/SynceModule.py:450
+msgid "Windows Mobile Calendar"
+msgstr "Windows Mobile 日历"
+
+#: ../conduit/modules/SynceModule.py:459
+msgid "Tasks"
+msgstr "任务"
+
+#: ../conduit/modules/SynceModule.py:460
+msgid "Windows Mobile Tasks"
+msgstr "Windows Mobile 任务"
+
+#: ../conduit/modules/ZotoModule/ZotoModule.py:154
+msgid "Zoto"
+msgstr "Zoto"
+
+#: ../conduit/modules/ZotoModule/ZotoModule.py:155
+msgid "Synchronize your Zoto photos"
+msgstr "同步您的 Zoto 照片"
