@@ -85,6 +85,156 @@ class _PreconfiguredConduitMenu:
     def _dp_removed(self, manager, dpw):
         self.menu.remove(self._items[dpw])
 
+class PreferencesWindow:
+    def __init__(self, widgets):
+        self._widgets = widgets
+        self._autostartmanager = AutostartManager.AutostartManager()
+
+    def show(self, parent):
+        def on_clear_button_clicked(sender, treeview, sqliteListStore):
+            treeview.set_model(None)
+            conduit.GLOBALS.mappingDB.delete()
+            treeview.set_model(sqliteListStore)
+
+        #Build some liststores to display
+        CONVERT_FROM_MESSAGE = _("Convert from")
+        CONVERT_INTO_MESSAGE = _("into")
+
+        convertables = conduit.GLOBALS.typeConverter.get_convertables_list()
+        converterListStore = gtk.ListStore( str )
+        for froms,tos in convertables:
+            string = "%s %s %s %s" % (CONVERT_FROM_MESSAGE, froms, CONVERT_INTO_MESSAGE, tos)
+            converterListStore.append( (string,) )
+        dataProviderListStore = gtk.ListStore( str, bool )
+        #get all dataproviders
+        for i in conduit.GLOBALS.moduleManager.get_modules_by_type("sink","source","twoway"):
+            dataProviderListStore.append(("Name: %s\nDescription: %s)" % (i.name, i.description), True))
+        #include files that could not be loaded
+        for f in conduit.GLOBALS.moduleManager.invalidFiles:
+            dataProviderListStore.append(("Error loading file: %s" % f, False))
+
+        #construct the dialog
+        tree = gtk.glade.XML(self._widgets, "PreferencesDialog")
+        notebook = tree.get_widget("prop_notebook")
+
+        #Show the DB contents to help debugging
+        if conduit.IS_DEVELOPMENT_VERSION:
+            vbox = gtk.VBox(False,5)
+            
+            #build the treeview to show all column fields. For performance
+            #reasons it is fixed_height and fixed_FIXE
+            treeview = gtk.TreeView()
+            treeview.set_headers_visible(True)
+            treeview.set_fixed_height_mode(True)
+            index = 1
+            db = conduit.GLOBALS.mappingDB._db
+            for name in db.get_fields("mappings"):
+                column = gtk.TreeViewColumn(
+                                    name, 
+                                    gtk.CellRendererText(),
+                                    text=index)
+                column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
+                column.set_fixed_width(250)
+                treeview.append_column(column)
+                index = index + 1
+
+            store = Database.GenericDBListStore("mappings", db)
+            treeview.set_model(store)            
+            
+            sw = gtk.ScrolledWindow()
+            sw.add(treeview)
+            vbox.pack_start(sw,True,True)
+
+            clear = gtk.Button(None,gtk.STOCK_CLEAR)
+            clear.connect("clicked", on_clear_button_clicked, treeview, store)
+            vbox.pack_start(clear, False, False)
+
+            notebook.append_page(vbox,gtk.Label(_('Relationship Database')))
+        
+        converterTreeView = tree.get_widget("dataConversionsTreeView")
+        converterTreeView.set_model(converterListStore)
+        converterTreeView.append_column(gtk.TreeViewColumn(_("Conversions Available"), 
+                                        gtk.CellRendererText(), 
+                                        text=0)
+                                        )
+        dataproviderTreeView = tree.get_widget("dataProvidersTreeView")
+        dataproviderTreeView.set_model(dataProviderListStore)
+        dataproviderTreeView.append_column(gtk.TreeViewColumn(_("Name"), 
+                                        gtk.CellRendererText(), 
+                                        text=0)
+                                        )                                                   
+        dataproviderTreeView.append_column(gtk.TreeViewColumn(_("Loaded"), 
+                                        gtk.CellRendererToggle(), 
+                                        active=1)
+                                        )                                        
+                                        
+        #fill out the configuration tab
+        save_settings_check = tree.get_widget("save_settings_check")
+        save_settings_check.set_active(conduit.GLOBALS.settings.get("save_on_exit"))
+        status_icon_check = tree.get_widget("status_icon_check")
+        status_icon_check.set_active(conduit.GLOBALS.settings.get("show_status_icon")) 
+        minimize_to_tray_check = tree.get_widget("minimize_to_tray_check")
+        minimize_to_tray_check.set_active(conduit.GLOBALS.settings.get("gui_minimize_to_tray")) 
+        show_hints_check = tree.get_widget("show_hints_check")
+        show_hints_check.set_active(conduit.GLOBALS.settings.get("gui_show_hints"))
+
+        #special case start at login. Because we copy the desktop file from the
+        #system to ~/.config/autostart, we require conduit to be installed
+        start_at_login_check = tree.get_widget("start_at_login")
+        if conduit.IS_INSTALLED:
+            start_at_login_check.set_active(self._autostartmanager.is_start_at_login_enabled())
+        else:
+            start_at_login_check.set_sensitive(False)
+
+        #restore the current policy
+        for policyName in Conduit.CONFLICT_POLICY_NAMES:
+            currentValue = conduit.GLOBALS.settings.get("default_policy_%s" % policyName)
+            for policyValue in Conduit.CONFLICT_POLICY_VALUES:
+                name = "%s_%s" % (policyName,policyValue)
+                widget = tree.get_widget(name+"_radio")
+                widget.set_image(
+                        gtk.image_new_from_icon_name(
+                                Conduit.CONFLICT_POLICY_VALUE_ICONS[name],
+                                gtk.ICON_SIZE_MENU))
+                if currentValue == policyValue:
+                    widget.set_active(True)
+
+        #The dataprovider factories can provide a configuration widget which is
+        #packed into the notebook
+        for i in conduit.GLOBALS.moduleManager.dataproviderFactories:#get_modules_by_type("dataprovider-factory"):
+            widget = i.setup_configuration_widget()
+            if widget:
+                notebook.append_page(
+                            widget,
+                            gtk.Label(i.get_name()))
+
+        #Show the dialog
+        dialog = tree.get_widget("PreferencesDialog")
+        dialog.show_all()
+        dialog.set_transient_for(parent)
+
+        response = dialog.run()
+        if response == gtk.RESPONSE_OK:
+            conduit.GLOBALS.settings.set("save_on_exit", save_settings_check.get_active())
+            conduit.GLOBALS.settings.set("show_status_icon", status_icon_check.get_active())
+            conduit.GLOBALS.settings.set("gui_minimize_to_tray", minimize_to_tray_check.get_active())
+            conduit.GLOBALS.settings.set("gui_show_hints", show_hints_check.get_active())
+            self._autostartmanager.update_start_at_login(start_at_login_check.get_active())
+            #save the current policy
+            for policyName in Conduit.CONFLICT_POLICY_NAMES:
+                for policyValue in Conduit.CONFLICT_POLICY_VALUES:
+                    name = "%s_%s" % (policyName,policyValue)
+                    if tree.get_widget(name+"_radio").get_active() == True:
+                        conduit.GLOBALS.settings.set(
+                                "default_policy_%s" % policyName,
+                                policyValue)
+
+        #give the dataprovider factories to ability to save themselves
+        for factory in conduit.GLOBALS.moduleManager.dataproviderFactories:
+            factory.save_configuration(response == gtk.RESPONSE_OK)
+
+        dialog.destroy()                
+
 class MainWindow:
     """
     The main conduit window.
@@ -171,6 +321,9 @@ class MainWindow:
 
         #Set up the expander used for resolving sync conflicts
         self.conflictResolver = ConflictResolver.ConflictResolver(self.widgets)
+
+        #Preferences manager
+        self.preferences = PreferencesWindow(self.gladeFile)
         
         #add the preconfigured Conduit menu
         if conduit.GLOBALS.settings.get("gui_show_hints"):
@@ -281,152 +434,7 @@ class MainWindow:
         Show the properties of the current sync set (status, conflicts, etc
         Edit the sync specific properties
         """
-        def on_clear_button_clicked(sender, treeview, sqliteListStore):
-            treeview.set_model(None)
-            conduit.GLOBALS.mappingDB.delete()
-            treeview.set_model(sqliteListStore)
-               
-        #Build some liststores to display
-        CONVERT_FROM_MESSAGE = _("Convert from")
-        CONVERT_INTO_MESSAGE = _("into")
-
-        autostartmanager = AutostartManager.AutostartManager()
-
-        convertables = self.type_converter.get_convertables_list()
-        converterListStore = gtk.ListStore( str )
-        for froms,tos in convertables:
-            string = "%s %s %s %s" % (CONVERT_FROM_MESSAGE, froms, CONVERT_INTO_MESSAGE, tos)
-            converterListStore.append( (string,) )
-        dataProviderListStore = gtk.ListStore( str, bool )
-        #get all dataproviders
-        for i in conduit.GLOBALS.moduleManager.get_modules_by_type("sink","source","twoway"):
-            dataProviderListStore.append(("Name: %s\nDescription: %s)" % (i.name, i.description), True))
-        #include files that could not be loaded
-        for f in conduit.GLOBALS.moduleManager.invalidFiles:
-            dataProviderListStore.append(("Error loading file: %s" % f, False))
-
-        #construct the dialog
-        tree = gtk.glade.XML(self.gladeFile, "PreferencesDialog")
-        notebook = tree.get_widget("prop_notebook")
-
-        #Show the DB contents to help debugging
-        if conduit.IS_DEVELOPMENT_VERSION:
-            vbox = gtk.VBox(False,5)
-            
-            #build the treeview to show all column fields. For performance
-            #reasons it is fixed_height and fixed_FIXE
-            treeview = gtk.TreeView()
-            treeview.set_headers_visible(True)
-            treeview.set_fixed_height_mode(True)
-            index = 1
-            db = conduit.GLOBALS.mappingDB._db
-            for name in db.get_fields("mappings"):
-                column = gtk.TreeViewColumn(
-                                    name, 
-                                    gtk.CellRendererText(),
-                                    text=index)
-                column.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
-                column.set_fixed_width(250)
-                treeview.append_column(column)
-                index = index + 1
-
-            store = Database.GenericDBListStore("mappings", db)
-            treeview.set_model(store)            
-            
-            sw = gtk.ScrolledWindow()
-            sw.add(treeview)
-            vbox.pack_start(sw,True,True)
-
-            clear = gtk.Button(None,gtk.STOCK_CLEAR)
-            clear.connect("clicked", on_clear_button_clicked, treeview, store)
-            vbox.pack_start(clear, False, False)
-
-            notebook.append_page(vbox,gtk.Label(_('Relationship Database')))
-        
-        converterTreeView = tree.get_widget("dataConversionsTreeView")
-        converterTreeView.set_model(converterListStore)
-        converterTreeView.append_column(gtk.TreeViewColumn(_("Conversions Available"), 
-                                        gtk.CellRendererText(), 
-                                        text=0)
-                                        )
-        dataproviderTreeView = tree.get_widget("dataProvidersTreeView")
-        dataproviderTreeView.set_model(dataProviderListStore)
-        dataproviderTreeView.append_column(gtk.TreeViewColumn(_("Name"), 
-                                        gtk.CellRendererText(), 
-                                        text=0)
-                                        )                                                   
-        dataproviderTreeView.append_column(gtk.TreeViewColumn(_("Loaded"), 
-                                        gtk.CellRendererToggle(), 
-                                        active=1)
-                                        )                                        
-                                        
-        #fill out the configuration tab
-        save_settings_check = tree.get_widget("save_settings_check")
-        save_settings_check.set_active(conduit.GLOBALS.settings.get("save_on_exit"))
-        status_icon_check = tree.get_widget("status_icon_check")
-        status_icon_check.set_active(conduit.GLOBALS.settings.get("show_status_icon")) 
-        minimize_to_tray_check = tree.get_widget("minimize_to_tray_check")
-        minimize_to_tray_check.set_active(conduit.GLOBALS.settings.get("gui_minimize_to_tray")) 
-        show_hints_check = tree.get_widget("show_hints_check")
-        show_hints_check.set_active(conduit.GLOBALS.settings.get("gui_show_hints"))
-
-        #special case start at login. Because we copy the desktop file from the
-        #system to ~/.config/autostart, we require conduit to be installed
-        start_at_login_check = tree.get_widget("start_at_login")
-        if conduit.IS_INSTALLED:
-            start_at_login_check.set_active(autostartmanager.is_start_at_login_enabled())
-        else:
-            start_at_login_check.set_sensitive(False)
-
-        #restore the current policy
-        for policyName in Conduit.CONFLICT_POLICY_NAMES:
-            currentValue = conduit.GLOBALS.settings.get("default_policy_%s" % policyName)
-            for policyValue in Conduit.CONFLICT_POLICY_VALUES:
-                name = "%s_%s" % (policyName,policyValue)
-                widget = tree.get_widget(name+"_radio")
-                widget.set_image(
-                        gtk.image_new_from_icon_name(
-                                Conduit.CONFLICT_POLICY_VALUE_ICONS[name],
-                                gtk.ICON_SIZE_MENU))
-                if currentValue == policyValue:
-                    widget.set_active(True)
-
-        #The dataprovider factories can provide a configuration widget which is
-        #packed into the notebook
-        for i in conduit.GLOBALS.moduleManager.dataproviderFactories:#get_modules_by_type("dataprovider-factory"):
-            widget = i.setup_configuration_widget()
-            if widget:
-                notebook.append_page(
-                            widget,
-                            gtk.Label(i.get_name()))
-
-        notebook.show_all()
-
-        #Show the dialog
-        dialog = tree.get_widget("PreferencesDialog")
-        dialog.set_transient_for(self.mainWindow)
-        response = dialog.run()
-        if response == gtk.RESPONSE_OK:
-            conduit.GLOBALS.settings.set("save_on_exit", save_settings_check.get_active())
-            conduit.GLOBALS.settings.set("show_status_icon", status_icon_check.get_active())
-            conduit.GLOBALS.settings.set("gui_minimize_to_tray", minimize_to_tray_check.get_active())
-            conduit.GLOBALS.settings.set("gui_show_hints", show_hints_check.get_active())
-            autostartmanager.update_start_at_login(start_at_login_check.get_active())
-            #save the current policy
-            for policyName in Conduit.CONFLICT_POLICY_NAMES:
-                for policyValue in Conduit.CONFLICT_POLICY_VALUES:
-                    name = "%s_%s" % (policyName,policyValue)
-                    if tree.get_widget(name+"_radio").get_active() == True:
-                        conduit.GLOBALS.settings.set(
-                                "default_policy_%s" % policyName,
-                                policyValue)
-
-        #give the dataprovider factories to ability to save themselves
-        for factory in conduit.GLOBALS.moduleManager.dataproviderFactories:
-            factory.save_configuration(response == gtk.RESPONSE_OK)
-
-        dialog.destroy()                
-
+        self.preferences.show(self.mainWindow)
 
     def on_about_conduit(self, widget):
         """
