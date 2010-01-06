@@ -17,14 +17,27 @@ HINT_TEXT = {
 }
 
 PRECONFIGIRED_CONDUITS = {
-    #source,sinc                            #comment                        
+    #source,sinc                            
+        #comment
         #twoway
-    ("FolderTwoWay","FolderTwoWay"):(       N_("Synchronize Two Folders"),
+    ("FolderTwoWay","FolderTwoWay"):(
+        N_("Synchronize Two Folders"),
         True    ),
-    ("FolderTwoWay","BoxDotNetTwoWay"):(    N_("Backup Folder to Box.net"),
+    ("FolderTwoWay","BoxDotNetTwoWay"):(
+        N_("Backup Folder to Box.net"),
         False   ),
-    ("FSpotDbusTwoWay","FlickrTwoWay"):(    N_("Synchronize Tagged F-Spot Photos to Flickr"),
-        False   )
+    ("FSpotDbusTwoWay","FlickrTwoWay"):(
+        N_("Synchronize Tagged F-Spot Photos to Flickr"),
+        False   ),
+    ("FileSource","FlickrTwoWay"):(
+        N_("Synchronize Photos to Flickr"),
+        False   ),
+    ("FileSource","FacebookSink"):(
+        N_("Upload Photos to Facebook"),
+        False   ),
+    ("RSSSource","DesktopWallpaperDataProvider"):(
+        N_("Synchronize Desktop Wallpaper from a RSS Feed"),
+        False   ),
 }
 
 
