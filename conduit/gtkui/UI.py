@@ -43,19 +43,31 @@ for module in gtk.glade, gettext:
     if hasattr(module, 'bind_textdomain_codeset'):
         module.bind_textdomain_codeset('conduit','UTF-8')
 
-
-class _PreconfiguredConduitMenu(gtk.Menu):
+class _PreconfiguredConduitMenu:
+    """
+    Manages the list of preconfigured conduits examples
+    """
     def __init__(self):
-        gtk.Menu.__init__(self)
-#        self._items = {}
-#        conduit.GLOBALS.moduleManager.connect("dataprovider-available", self._dp_added)
-#        conduit.GLOBALS.moduleManager.connect("dataprovider-unavailable", self._dp_removed)
+        self.menu = gtk.Menu()
+        self.item = gtk.ImageMenuItem(_("Examples"))
+        self.item.set_image(
+                gtk.image_new_from_stock(gtk.STOCK_OPEN,gtk.ICON_SIZE_MENU))
+        self.item.set_submenu(self.menu)
 
-        for sok,sik,desc,w in conduit.GLOBALS.moduleManager.list_preconfigured_conduits():
-            item = gtk.MenuItem(desc)
-            item.connect("activate", self._create, sok, sik, w)
-            item.show()
-            self.append(item)
+        #FIXME: Add remove items when dps become availalbe
+        # self._items = {}
+        # conduit.GLOBALS.moduleManager.connect("dataprovider-available", self._dp_added)
+        # conduit.GLOBALS.moduleManager.connect("dataprovider-unavailable", self._dp_removed)
+
+        preconfigured = conduit.GLOBALS.moduleManager.list_preconfigured_conduits()
+        if preconfigured:
+            for sok,sik,desc,w in preconfigured:
+                item = gtk.MenuItem(desc)
+                item.connect("activate", self._create, sok, sik, w)
+                item.show()
+                self.menu.append(item)
+        else:
+            self.item.set_sensitive(False)
 
     def set_sync_set(self, syncSet):    
         self.syncSet = syncSet  
@@ -66,11 +78,11 @@ class _PreconfiguredConduitMenu(gtk.Menu):
     def _dp_added(self, manager, dpw):
         item = gtk.MenuItem(dpw.get_key())
         self._items[dpw] = item
-        self.append(item)
+        self.menu.append(item)
         item.show()
         
     def _dp_removed(self, manager, dpw):
-        self.remove(self._items[dpw])
+        self.menu.remove(self._items[dpw])
 
 class MainWindow:
     """
@@ -162,11 +174,7 @@ class MainWindow:
         #add the preconfigured Conduit menu
         if conduit.GLOBALS.settings.get("gui_show_hints"):
             self.preconfiguredConduitsMenu = _PreconfiguredConduitMenu()
-            item = gtk.ImageMenuItem(_("Examples"))
-            item.set_image(
-                    gtk.image_new_from_stock(gtk.STOCK_OPEN,gtk.ICON_SIZE_MENU))
-            item.set_submenu(self.preconfiguredConduitsMenu)
-            self.widgets.get_widget("file_menu").insert(item, 3)
+            self.widgets.get_widget("file_menu").insert(self.preconfiguredConduitsMenu.item, 3)
         else:
             self.preconfiguredConduitsMenu = None
 
