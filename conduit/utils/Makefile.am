@@ -6,6 +6,7 @@ conduit_PYTHON = \
 	MediaFile.py 				\
 	CommandLineConverter.py		\
 	Singleton.py				\
+	AutostartManager.py			\
 	Wait.py
 
 clean-local:

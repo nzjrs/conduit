@@ -19,6 +19,7 @@ log = logging.getLogger("gtkui.UI")
 import conduit
 import conduit.Web as Web
 import conduit.Conduit as Conduit
+import conduit.utils.AutostartManager as AutostartManager
 import conduit.gtkui.Canvas as Canvas
 import conduit.gtkui.MsgArea as MsgArea
 import conduit.gtkui.Tree as Tree
@@ -284,47 +285,12 @@ class MainWindow:
             treeview.set_model(None)
             conduit.GLOBALS.mappingDB.delete()
             treeview.set_model(sqliteListStore)
-
-        def is_start_at_login_enabled():
-            autostartFile = os.path.join(conduit.AUTOSTART_FILE_DIR, "conduit.desktop")
-            if os.path.exists(autostartFile):
-                #if it contains X-GNOME-Autostart-enabled=false then it has
-                #has been disabled by the user in the session applet, otherwise
-                #it is enabled
-                return open(autostartFile).read().find("X-GNOME-Autostart-enabled=false") == -1
-            else:
-                return False
-
-        def update_start_at_login(update):
-            autostartFile = os.path.join(conduit.AUTOSTART_FILE_DIR, "conduit.desktop")
-            desktopFile = os.path.join(conduit.DESKTOP_FILE_DIR, "conduit.desktop")
-
-            if os.path.exists(autostartFile):
-                log.info("Removing autostart desktop file")
-                os.remove(autostartFile)
-
-
-
-            if update and os.path.exists(desktopFile):
-                log.info("Adding autostart desktop file")
-                #copy the original file to the new file, but 
-                #add -i to the exec line (start iconified)
-                old = open(desktopFile, "r")
-                new = open(autostartFile, "w")
-
-                for l in old.readlines():         
-                    if l.startswith("Exec="):
-                        new.write(l[0:-1])
-                        new.write(" -i\n")
-                    else:
-                        new.write(l)
-
-                old.close()
-                new.close()
                
         #Build some liststores to display
         CONVERT_FROM_MESSAGE = _("Convert from")
         CONVERT_INTO_MESSAGE = _("into")
+
+        autostartmanager = AutostartManager.AutostartManager()
 
         convertables = self.type_converter.get_convertables_list()
         converterListStore = gtk.ListStore( str )
@@ -408,7 +374,7 @@ class MainWindow:
         #system to ~/.config/autostart, we require conduit to be installed
         start_at_login_check = tree.get_widget("start_at_login")
         if conduit.IS_INSTALLED:
-            start_at_login_check.set_active(is_start_at_login_enabled())
+            start_at_login_check.set_active(autostartmanager.is_start_at_login_enabled())
         else:
             start_at_login_check.set_sensitive(False)
 
@@ -445,7 +411,7 @@ class MainWindow:
             conduit.GLOBALS.settings.set("show_status_icon", status_icon_check.get_active())
             conduit.GLOBALS.settings.set("gui_minimize_to_tray", minimize_to_tray_check.get_active())
             conduit.GLOBALS.settings.set("gui_show_hints", show_hints_check.get_active())
-            update_start_at_login(start_at_login_check.get_active())
+            autostartmanager.update_start_at_login(start_at_login_check.get_active())
             #save the current policy
             for policyName in Conduit.CONFLICT_POLICY_NAMES:
                 for policyValue in Conduit.CONFLICT_POLICY_VALUES:
