@@ -19,6 +19,7 @@ log = logging.getLogger("gtkui.Canvas")
 import conduit.utils as Utils
 import conduit.Conduit as Conduit
 import conduit.Knowledge as Knowledge
+import conduit.Filter as Filter
 import conduit.gtkui.Tree
 import conduit.gtkui.Util as GtkUtil
 import conduit.dataproviders.DataProvider as DataProvider
@@ -918,6 +919,7 @@ class DataProviderCanvasItem(_CanvasItem):
 class ConduitCanvasItem(_CanvasItem):
 
     BUTTONS = False
+    BUTTON_WIDTH = 19
     DIVIDER = False
     FLAT_BOX = True
     WIDGET_HEIGHT = 63.0
@@ -1031,7 +1033,7 @@ class ConduitCanvasItem(_CanvasItem):
             w.set_relief(gtk.RELIEF_HALF)
             self.syncButton = goocanvas.Widget(
                                 widget=w,
-                                x=true_width-19,
+                                x=true_width-self.BUTTON_WIDTH,
                                 y=22,
                                 width=28,
                                 height=28,
@@ -1046,7 +1048,7 @@ class ConduitCanvasItem(_CanvasItem):
             w.set_relief(gtk.RELIEF_HALF)
             self.stopButton = goocanvas.Widget(
                                 widget=w,
-                                x=true_width-19,
+                                x=true_width-self.BUTTON_WIDTH,
                                 y=22+2+28,
                                 width=28,
                                 height=28,
@@ -1285,16 +1287,18 @@ class ConduitCanvasItem(_CanvasItem):
             self.divider.set_property("points", 
                                 goocanvas.Points(self.dividerPoints))
 
-        #if self.BUTTONS:
-        #    self.syncButton.set_property("x", true_width-19)
-        #    self.stopButton.set_property("x", true_width-19)
+        if self.BUTTONS:
+            self.syncButton.set_property("x", true_width-self.BUTTON_WIDTH)
+            self.stopButton.set_property("x", true_width-self.BUTTON_WIDTH)
 
         #resize the spacer
         p = goocanvas.Points([(0.0, 0.0), (true_width, 0.0)])
         self.l.set_property("points",p)
 
         for d in self.sinkDpItems:
-            desired = w - d.get_width() - self.SIDE_PADDING
+            desired = w - d.get_width() - self.SIDE_PADDING 
+            if self.BUTTONS:
+                desired = desired - self.SIDE_PADDING - self.BUTTON_WIDTH
             actual = d.get_left()
             change = desired-actual
             #move righthand dp
@@ -1484,4 +1488,16 @@ class ConnectorCanvasItem(_CanvasItem):
         self.twoway = twoway
         self._draw_arrow_ends()
 
+class Filter(_CanvasItem):
 
+    WIDGET_WIDTH = 30
+    WIDGET_HEIGHT = 50
+    LINE_WIDTH = 2.0
+
+    def __init__(self, parent):
+        _CanvasItem.__init__(self, parent, None)
+
+    def draw_filter(self, x):
+        pass
+
+        
