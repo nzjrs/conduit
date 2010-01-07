@@ -6,9 +6,6 @@ if [ ! -f $APP ] ; then
     exit 1
 fi
 
-#update flickrapi
-echo "Not updating flickrapi (use stable releases only)"
-
 #update pyfacebook
 echo "Updating pyfacebook"
 wget -qO conduit/modules/FacebookModule/pyfacebook/__init__.py http://github.com/sciyoshi/pyfacebook/raw/master/facebook/__init__.py
@@ -17,10 +14,11 @@ wget -qO conduit/modules/FacebookModule/pyfacebook/__init__.py http://github.com
 echo "Updating pybackpack"
 for i in COPYING backpack.py; do
     echo "    ...downloading $i"
-    wget -qO conduit/modules/BackpackModule/backpack/${i} http://github.com/dustin/py-backpack/tree/master%2F${i}?raw=true
+    wget -qO conduit/modules/BackpackModule/backpack/${i} http://github.com/dustin/py-backpack/raw/master/${i}
 done
 
 #update pyrtm
 echo "Updating pyrtm"
-wget -qO conduit/modules/UNSUPPORTED/RTMModule/rtm.py "http://repo.or.cz/w/pyrtm.git?a=blob_plain;f=rtm.py;hb=HEAD
+wget -qO conduit/modules/UNSUPPORTED/RTMModule/rtm.py http://bitbucket.org/srid/pyrtm/raw/f4715bfbcffa/rtm.py
+
 
