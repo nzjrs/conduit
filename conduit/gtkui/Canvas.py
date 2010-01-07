@@ -380,18 +380,6 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         self.selectedDataproviderItem = selected_dataprovider
         self.selectedConduitItem = selected_conduit
 
-    def get_selected_conduit(self):
-        if self.selectedConduitItem:
-            return self.selectedConduitItem.model
-        else:
-            return None
-    
-    def get_selected_dataprovider(self):
-        if self.selectedDataproviderItem:
-            return self.selectedDataproviderItem.model        
-        else:
-            return None
-
     def _on_conduit_button_press(self, view, target, event):
         """
         Handle button clicks on conduits
@@ -510,6 +498,18 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
                 dp.set_status(DataProvider.STATUS_NONE)
             else:
                 dp.set_status(DataProvider.STATUS_DONE_SYNC_NOT_CONFIGURED)
+
+    def get_selected_conduit(self):
+        if self.selectedConduitItem:
+            return self.selectedConduitItem.model
+        else:
+            return None
+
+    def get_selected_dataprovider(self):
+        if self.selectedDataproviderItem:
+            return self.selectedDataproviderItem.model
+        else:
+            return None
 
     def on_conduit_removed(self, sender, conduitRemoved):
         for item in self._get_child_conduit_canvas_items():

@@ -69,9 +69,6 @@ class _PreconfiguredConduitMenu:
         else:
             self.item.set_sensitive(False)
 
-    def set_sync_set(self, syncSet):    
-        self.syncSet = syncSet  
-        
     def _create(self, menu, sok, sik, w):
         self.syncSet.create_preconfigured_conduit(sok,sik,w)
         
@@ -83,6 +80,9 @@ class _PreconfiguredConduitMenu:
         
     def _dp_removed(self, manager, dpw):
         self.menu.remove(self._items[dpw])
+
+    def set_sync_set(self, syncSet):
+        self.syncSet = syncSet
 
 class _GtkBuilderWrapper(gtk.Builder):
     def __init__(self, *path):
@@ -758,14 +758,6 @@ class StatusIcon(gtk.StatusIcon):
             self.cancelButton.set_property("sensitive", False)
             return False
 
-    def on_conduit_added(self, syncset, cond):
-        cond.connect("sync-started", self._on_sync_started)
-        cond.connect("sync-completed", self._on_sync_completed)
-        cond.connect("sync-conflict", self._on_sync_conflict)
-        
-    def on_conduit_removed(self, syncset, cond):
-        pass
-
     def _on_sync_started(self, cond):
         if not self.animating:
             self.animating = True
@@ -779,6 +771,14 @@ class StatusIcon(gtk.StatusIcon):
 
     def _on_sync_conflict(self, cond, conflict):
         self.conflict = True
+
+    def on_conduit_added(self, syncset, cond):
+        cond.connect("sync-started", self._on_sync_started)
+        cond.connect("sync-completed", self._on_sync_completed)
+        cond.connect("sync-conflict", self._on_sync_conflict)
+
+    def on_conduit_removed(self, syncset, cond):
+        pass
 
     def on_synchronize(self, data):
         self.conduitApplication.Synchronize()
