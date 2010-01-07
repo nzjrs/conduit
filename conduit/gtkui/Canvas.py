@@ -234,7 +234,10 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
             return
             
         if newItem == conduitCanvasItem:
-            self._make_hint(Knowledge.HINT_ADD_DATAPROVIDER)
+            if conduitCanvasItem.model.can_sync():
+                self._make_hint(Knowledge.HINT_RIGHT_CLICK_CONFIGURE)
+            else:
+                self._make_hint(Knowledge.HINT_ADD_DATAPROVIDER)
         elif newItem == dataproviderCanvasItem:
             #check if we have a source and a sink
             if conduitCanvasItem.model.can_sync():
