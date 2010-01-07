@@ -4,7 +4,6 @@ import sys
 import os.path
 import tempfile
 import gtk
-import gtk.glade
 import pango
 import random
 import traceback
@@ -19,19 +18,19 @@ class Tester(object):
     def __init__(self, table, db):
         self.table = table
         self.db = db
-        gladeFile = os.path.join(os.path.dirname(__file__),"main.glade")
-        widgets = gtk.glade.XML(gladeFile, "MainWindow")
+        gtkbuilder = gtk.Builder()
+        gtkbuilder.add_from_file(os.path.join(os.path.dirname(__file__),"main.ui"))
         dic = { "add_clicked"       : self.on_add_clicked,
                 "edit_clicked"      : self.on_edit_clicked,
                 "delete_clicked"    : self.on_delete_clicked
                 }
-        widgets.signal_autoconnect(dic)
-        window = widgets.get_widget("MainWindow")
+        gtkbuilder.connect_signals(dic)
+        window = gtkbuilder.get_object("MainWindow")
         window.set_position(gtk.WIN_POS_CENTER)
         window.connect('destroy', self.on_quit)
 
 
-        scroller = widgets.get_widget("scrolledwindow")
+        scroller = gtkbuilder.get_object("scrolledwindow")
         self.treeview = gtk.TreeView()
         self.treeview.set_headers_visible(True)
         self.treeview.set_fixed_height_mode(True)
