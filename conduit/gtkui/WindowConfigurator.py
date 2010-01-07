@@ -1,5 +1,5 @@
 import os.path
-import gtk, gtk.glade
+import gtk
 import logging
 log = logging.getLogger("gtkui.WindowConfigurator")
 

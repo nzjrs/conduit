@@ -28,7 +28,6 @@ import conduit.gtkui.Database as Database
 
 def N_(message): return message
 
-DEFAULT_CONDUIT_BROWSER = "gtkmozembed"
 DEVELOPER_WEB_LINKS = (
 #name,                      #url
 (N_("Introduction"),            "http://www.conduit-project.org/wiki/Development"),

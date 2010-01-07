@@ -1,6 +1,6 @@
 import os.path
 import gobject
-import gtk, gtk.glade
+import gtk
 import logging
 log = logging.getLogger("gtkui.Config")
 

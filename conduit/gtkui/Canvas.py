@@ -257,17 +257,6 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         self._changing_style = False
 
     def _setup_popup_menus(self, gtkbuilder):
-        """
-        Sets up the popup menus and their callbacks
-
-        @param conduitPopupXML: The menu which is popped up when the user right
-        clicks on a conduit
-        @type conduitPopupXML: C{gtk.glade.XML}
-        @param dataproviderPopupXML: The menu which is popped up when the user right
-        clicks on a dataprovider
-        @type dataproviderPopupXML: C{gtk.glade.XML}
-        """
-
         self.dataproviderMenu = gtkbuilder.get_object("DataProviderMenu")
         self.conduitMenu = gtkbuilder.get_object("ConduitMenu")
 

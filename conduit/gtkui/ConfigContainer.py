@@ -9,7 +9,6 @@ License: GPLv2
 
 import gobject
 import gtk
-import gtk.glade
 import logging
 log = logging.getLogger("gtkui.ConfigContainer")
 
