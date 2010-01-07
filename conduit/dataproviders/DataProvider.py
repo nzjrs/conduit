@@ -367,14 +367,14 @@ class DataProviderBase(gobject.GObject):
                         callable(getattr(self, c, None)))
                         )
 
-    def set_configuration_xml(self, xmltext, xmlversion):
+    def set_configuration_xml(self, xmltext):
         """
         Restores applications settings from XML
 
         @param xmltext: xml representation of settings
         @type xmltext: C{string}
         """
-        xml_configuration = XMLSerialization.Settings(xmltext, xmlversion)
+        xml_configuration = XMLSerialization.Settings(xmltext)
         settings = {}
         for name, value in xml_configuration:
             settings[name] = value

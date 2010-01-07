@@ -14,10 +14,9 @@ log = logging.getLogger("SyncSet")
 import conduit
 import conduit.Conduit as Conduit
 import conduit.Settings as Settings
+import conduit.XMLSerialization as XMLSerialization
 
-#Increment this number when the xml settings file
-#changes format
-SETTINGS_VERSION = "2"
+SETTINGS_VERSION = XMLSerialization.Settings.XML_VERSION
 
 class SyncSet(gobject.GObject):
     """
@@ -55,7 +54,7 @@ class SyncSet(gobject.GObject):
                 except Exception:
                     log.warn("Could not uninitialize %s" % dp, exc_info=True)
                 
-    def _restore_dataprovider(self, cond, wrapperKey, dpName="", dpxml="", xml_version=SETTINGS_VERSION, trySourceFirst=True):
+    def _restore_dataprovider(self, cond, wrapperKey, dpName="", dpxml="", trySourceFirst=True):
         """
         Adds the dataprovider back onto the canvas at the specifed
         location and configures it with the given settings
@@ -68,7 +67,7 @@ class SyncSet(gobject.GObject):
             if dpxml:
                 for i in dpxml.childNodes:
                     if i.nodeType == i.ELEMENT_NODE and i.localName == "configuration":
-                        wrapper.set_configuration_xml(xmltext=i.toxml(), xmlversion=xml_version)
+                        wrapper.set_configuration_xml(xmltext=i.toxml())
         cond.add_dataprovider(wrapper, trySourceFirst)
 
     def on_dataprovider_available_unavailable(self, loader, dpw):
@@ -220,8 +219,9 @@ class SyncSet(gobject.GObject):
                     os.remove(xmlSettingFilePath)
                     return
             else:
-                log.info("%s xml file version not found, assuming version 1" % xmlSettingFilePath)
-                xml_version = 1
+                log.info("%s xml file version not found, assuming too old, removing" % xmlSettingFilePath)
+                os.remove(xmlSettingFilePath)
+                return
             
             #Parse...    
             for conds in doc.getElementsByTagName("conduit"):
@@ -252,7 +252,7 @@ class SyncSet(gobject.GObject):
                         name = i.getAttribute("name")
                         #add to canvas
                         if len(key) > 0:
-                            self._restore_dataprovider(cond, key, name, i, xml_version, True)
+                            self._restore_dataprovider(cond, key, name, i, True)
                     #many datasinks
                     elif i.nodeType == i.ELEMENT_NODE and i.localName == "datasinks":
                         #each datasink
@@ -262,7 +262,7 @@ class SyncSet(gobject.GObject):
                                 name = sink.getAttribute("name")
                                 #add to canvas
                                 if len(key) > 0:
-                                    self._restore_dataprovider(cond, key, name, sink, xml_version, False)
+                                    self._restore_dataprovider(cond, key, name, sink, False)
 
         except:
             log.warn("Error parsing %s. Exception:\n%s" % (xmlSettingFilePath, traceback.format_exc()))

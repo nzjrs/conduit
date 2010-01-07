@@ -27,12 +27,16 @@ class Settings( object ):
     A class to store/retrieve data to/from an XML file
     """
 
-    def __init__(self, xml_text="<configuration/>", xml_version = 2):
+    #Increment this number when the xml settings file
+    #changes format
+    XML_VERSION = "2"
+
+    def __init__(self, xml_text="<configuration/>"):
         """
         Initializes Settings class
         """
         self.xml_document = parseString(xml_text)
-        self.xml_version = xml_version
+        self.xml_version = self.XML_VERSION
 
     def __string_to_type__(self, string, desired_type):
         """
