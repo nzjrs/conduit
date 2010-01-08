@@ -1,6 +1,6 @@
 [encoding: UTF-8]
 data/conduit.desktop.in.in
-data/conduit.glade
+data/conduit.ui
 conduit/Knowledge.py
 conduit/Main.py
 #conduit/Module.py
@@ -32,7 +32,6 @@ conduit/modules/FspotModule/FspotModule.py
 conduit/modules/GConfModule/GConfModule.py
 conduit/modules/GoogleBookmarksModule.py
 conduit/modules/GoogleModule/GoogleModule.py
-conduit/modules/GoogleModule/calendar-config.glade
 conduit/modules/iPodModule/iPodModule.py
 conduit/modules/N800Module/N800Module.py
 conduit/modules/NautilusBookmarksModule.py
