@@ -5,14 +5,13 @@
 # Andre Klapper <ak-47@gmx.net>, 2008, 2009.
 # Hendrik Richter <hendrikr@gnome.org>, 2008.
 # Mario Blättermann <mariobl@gnome.org>, 2008, 2009.
-# Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009.
+# Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: conduit\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=conduit&component=documentation and translation\n"
-"POT-Creation-Date: 2009-08-16 21:35+0000\n"
-"PO-Revision-Date: 2009-08-23 12:32+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-08 12:51+0100\n"
+"PO-Revision-Date: 2010-01-08 12:56+0100\n"
 "Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -29,206 +28,6 @@ msgstr "Conduit Datenabgleich"
 #: ../data/conduit.desktop.in.in.h:2
 msgid "Synchronization for GNOME"
 msgstr "Datenabgleich für GNOME"
-
-#: ../data/conduit.glade.h:1
-msgid "<b>Default Synchronization Options</b>"
-msgstr "<b>Vorgegebene Einstellungen zum Abgleich</b>"
-
-#: ../data/conduit.glade.h:2
-msgid "<b>General</b>"
-msgstr "<b>Allgemein</b>"
-
-#: ../data/conduit.glade.h:3
-msgid "Always Up-To-Date"
-msgstr "Immer aktuell"
-
-#: ../data/conduit.glade.h:4
-msgid "Ask Me What to Do"
-msgstr "Beim Benutzer nachfragen"
-
-#: ../data/conduit.glade.h:5
-msgid "Ask me what to do"
-msgstr "Beim Benutzer nachfragen"
-
-#: ../data/conduit.glade.h:6
-msgid "Cancel Synchronization"
-msgstr "Datenabgleich abbrechen"
-
-#: ../data/conduit.glade.h:7
-msgid "Cancel currently-synchronizing groups"
-msgstr "Aktuelle Abgleichgruppen abbrechen"
-
-#: ../data/conduit.glade.h:8
-msgid "Clear Canvas"
-msgstr "Ansichtsbereich leeren"
-
-#: ../data/conduit.glade.h:9
-msgid "Compare"
-msgstr "Vergleichen"
-
-#: ../data/conduit.glade.h:10
-msgid "Conduit Preferences"
-msgstr "Conduit – Einstellungen"
-
-#: ../data/conduit.glade.h:11
-msgid "Configuration"
-msgstr "Allgemein"
-
-#: ../data/conduit.glade.h:12
-msgid "Configure Item"
-msgstr "Einstellungen"
-
-#: ../data/conduit.glade.h:13
-msgid "Configure the synchronization settings for this item"
-msgstr "Die Abgleicheinstellungen für dieses Element festlegen"
-
-#: ../data/conduit.glade.h:14
-msgid "Conflict Options"
-msgstr "Konflikteinstellungen"
-
-#: ../data/conduit.glade.h:15
-msgid "Conflicts"
-msgstr "Konflikte"
-
-#: ../data/conduit.glade.h:16
-msgid "Contents"
-msgstr "Inhalte"
-
-#: ../data/conduit.glade.h:17
-msgid "Data Conversions"
-msgstr "Datenumwandler"
-
-#: ../data/conduit.glade.h:18
-msgid "Data Providers"
-msgstr "Datenquellen"
-
-#: ../data/conduit.glade.h:19
-msgid "Delete Group"
-msgstr "Gruppe löschen"
-
-#: ../data/conduit.glade.h:20
-msgid "Delete Item"
-msgstr "Element löschen"
-
-#: ../data/conduit.glade.h:21
-msgid "Delete Options"
-msgstr "Optionen löschen"
-
-#: ../data/conduit.glade.h:22
-msgid "Delete from the corresponding sink"
-msgstr "Aus dem zugehörigen Empfänger löschen"
-
-#: ../data/conduit.glade.h:23
-msgid "Delete the Corresponding Item"
-msgstr "Das dazugehörige Element löschen"
-
-#: ../data/conduit.glade.h:24
-msgid "Editor"
-msgstr "Editor"
-
-#: ../data/conduit.glade.h:25
-msgid "Minimize to notification area"
-msgstr "Im Benachrichtigungsfeld minimieren"
-
-#: ../data/conduit.glade.h:26
-msgid "Refresh Group"
-msgstr "Gruppe auffrischen"
-
-#: ../data/conduit.glade.h:27
-msgid "Refresh Item"
-msgstr "Element auffrischen"
-
-#: ../data/conduit.glade.h:28
-msgid "Replace the Older Item"
-msgstr "Älteres Element ersetzen"
-
-#: ../data/conduit.glade.h:29
-msgid "Replace the older item"
-msgstr "Älteres Element ersetzen"
-
-#: ../data/conduit.glade.h:30
-msgid "Resolve Conflicts"
-msgstr "Konflikte auflösen"
-
-#: ../data/conduit.glade.h:31
-msgid "Save settings on exit"
-msgstr "Einstellungen beim Beenden speichern"
-
-#: ../data/conduit.glade.h:32
-msgid "Show Hints"
-msgstr "Hinweise anzeigen"
-
-#: ../data/conduit.glade.h:33
-msgid "Show status icon"
-msgstr "Statussymbol anzeigen"
-
-#: ../data/conduit.glade.h:34
-msgid "Skip"
-msgstr "Überspringen"
-
-#: ../data/conduit.glade.h:35
-msgid "Slow Synchronization"
-msgstr "Langsamer Datenabgleich"
-
-#: ../data/conduit.glade.h:36
-msgid "Start Conduit at login"
-msgstr "Conduit beim Anmelden starten"
-
-#: ../data/conduit.glade.h:37
-msgid "Synchronization Options"
-msgstr "Datenabgleich-Optionen"
-
-#: ../data/conduit.glade.h:38
-msgid "Synchronize All"
-msgstr "Alles abgleichen"
-
-#: ../data/conduit.glade.h:39
-msgid "Synchronize Group"
-msgstr "Gruppe abgleichen"
-
-#: ../data/conduit.glade.h:40
-msgid "Synchronize group"
-msgstr "Gruppe abgleichen"
-
-#: ../data/conduit.glade.h:41
-msgid "Synchronizes all groups"
-msgstr "Alle Gruppen abgleichen"
-
-#: ../data/conduit.glade.h:42
-msgid "Title"
-msgstr "Titel"
-
-#: ../data/conduit.glade.h:43
-msgid "Two-Way Synchronization"
-msgstr "Zweiwege-Abgleich"
-
-#: ../data/conduit.glade.h:44
-msgid "When an item has been deleted:"
-msgstr "Wenn ein Element gelöscht wurde:"
-
-#: ../data/conduit.glade.h:45
-msgid "When an item is deleted..."
-msgstr "Wenn ein Element gelöscht wurde …"
-
-#: ../data/conduit.glade.h:46
-msgid "When there is a conflict..."
-msgstr "Wenn ein Konflikt auftritt …"
-
-#: ../data/conduit.glade.h:47
-msgid "When there is a two-way conflict:"
-msgstr "Wenn ein zweiseitiger Konflikt auftritt:"
-
-#: ../data/conduit.glade.h:48
-msgid "_Edit"
-msgstr "_Bearbeiten"
-
-#: ../data/conduit.glade.h:49
-msgid "_File"
-msgstr "_Datei"
-
-#: ../data/conduit.glade.h:50
-msgid "_Help"
-msgstr "_Hilfe"
 
 #: ../conduit/Knowledge.py:8
 msgid "What Do You Want to Synchronize?"
@@ -254,19 +53,29 @@ msgstr "Sie sind nun bereit zum Abgleich"
 msgid "Right Click on Group for Options"
 msgstr "Für Optionen klicken Sie mit der rechten Maustaste auf »Gruppe«"
 
-#. source,sinc                            #comment
-#. twoway
-#: ../conduit/Knowledge.py:22
+#: ../conduit/Knowledge.py:24
 msgid "Synchronize Two Folders"
 msgstr "Zwei Ordner abgleichen"
 
-#: ../conduit/Knowledge.py:24
+#: ../conduit/Knowledge.py:27
 msgid "Backup Folder to Box.net"
 msgstr "Ordner in Box.net sichern"
 
-#: ../conduit/Knowledge.py:26
+#: ../conduit/Knowledge.py:30
 msgid "Synchronize Tagged F-Spot Photos to Flickr"
 msgstr "Markierte F-Spot-Fotos mit Flickr abgleichen"
+
+#: ../conduit/Knowledge.py:33
+msgid "Synchronize Photos to Flickr"
+msgstr "Fotos mit Flickr abgleichen"
+
+#: ../conduit/Knowledge.py:36
+msgid "Upload Photos to Facebook"
+msgstr "Fotos nach Facebook hochladen"
+
+#: ../conduit/Knowledge.py:39
+msgid "Synchronize Desktop Wallpaper from a RSS Feed"
+msgstr "Hintergrund der Arbeitsfläche mit RSS-Feed abgleichen"
 
 #: ../conduit/Main.py:59
 msgid "Conduit is a synchronization application."
@@ -384,17 +193,17 @@ msgid "Not Configured"
 msgstr "Nicht konfiguriert"
 
 #: ../conduit/dataproviders/Image.py:34
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "640x480"
 msgstr "640x480"
 
 #: ../conduit/dataproviders/Image.py:34
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "800x600"
 msgstr "800x600"
 
 #: ../conduit/dataproviders/Image.py:34
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "1024x768"
 msgstr "1024x768"
 
@@ -490,86 +299,86 @@ msgstr "API-Dokumentation"
 msgid "Test Results"
 msgstr "Testergebnisse"
 
-#: ../conduit/gtkui/UI.py:129
-#, python-format
-msgid " - %s (Development Version)"
-msgstr " - %s (Entwicklerversion)"
-
-#: ../conduit/gtkui/UI.py:131
-msgid " - Running Uninstalled"
-msgstr " - Ausführung ohne Installation"
-
-#: ../conduit/gtkui/UI.py:165
+#: ../conduit/gtkui/UI.py:52
 msgid "Examples"
 msgstr "Beispiele"
 
-#: ../conduit/gtkui/UI.py:177
-msgid "Developers"
-msgstr "Enwickler"
-
 #. Build some liststores to display
-#: ../conduit/gtkui/UI.py:318
+#: ../conduit/gtkui/UI.py:139
 msgid "Convert from"
 msgstr "Umwandeln von"
 
-#: ../conduit/gtkui/UI.py:319
+#: ../conduit/gtkui/UI.py:140
 msgid "into"
 msgstr "nach"
 
-#: ../conduit/gtkui/UI.py:370
+#: ../conduit/gtkui/UI.py:190
 msgid "Relationship Database"
 msgstr "Beziehungsdatenbank"
 
-#: ../conduit/gtkui/UI.py:374
+#: ../conduit/gtkui/UI.py:194
 msgid "Conversions Available"
 msgstr "Umwandlungen verfügbar"
 
-#: ../conduit/gtkui/UI.py:380 ../conduit/gtkui/Tree.py:348
+#: ../conduit/gtkui/UI.py:200 ../conduit/gtkui/Tree.py:348
 #: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
 msgstr "Name"
 
-#: ../conduit/gtkui/UI.py:384
+#: ../conduit/gtkui/UI.py:204
 msgid "Loaded"
 msgstr "Geladen"
 
-#: ../conduit/gtkui/UI.py:512 ../conduit/hildonui/UI.py:127
+#: ../conduit/gtkui/UI.py:329
+#, python-format
+msgid " - %s (Development Version)"
+msgstr " - %s (Entwicklerversion)"
+
+#: ../conduit/gtkui/UI.py:331
+msgid " - Running Uninstalled"
+msgstr " - Ausführung ohne Installation"
+
+#: ../conduit/gtkui/UI.py:375
+msgid "Developers"
+msgstr "Enwickler"
+
+#: ../conduit/gtkui/UI.py:539 ../conduit/hildonui/UI.py:127
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "Datenabgleich läuft. Soll er abgebrochen werden?"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:711
 msgid "_Synchronize All"
 msgstr "_Alle abgleichen"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:711
 msgid "Synchronizes All Groups"
 msgstr "Alle Gruppen abgleichen"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:712
 msgid "_Cancel Synchronization"
 msgstr "Datena_bgleich abbrechen"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:712
 msgid "Cancels Currently Synchronizing Groups"
 msgstr "Momentanen Abgleich der Gruppen abbrechen"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:713
 msgid "_Quit"
 msgstr "_Beenden"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:713
 msgid "Close Conduit"
 msgstr "Conduit schließen"
 
-#: ../conduit/gtkui/UI.py:726
+#: ../conduit/gtkui/UI.py:753
 msgid "Synchronization Error"
 msgstr "Fehler beim Datenabgleich"
 
-#: ../conduit/gtkui/UI.py:729
+#: ../conduit/gtkui/UI.py:756
 msgid "Synchronization Complete"
 msgstr "Datenabgleich abgeschlossen"
 
-#: ../conduit/gtkui/UI.py:745
+#: ../conduit/gtkui/UI.py:764
 msgid "Synchronizing"
 msgstr "Datenabgleich läuft"
 
@@ -577,7 +386,7 @@ msgstr "Datenabgleich läuft"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: ../conduit/gtkui/ConfigItems.py:729
+#: ../conduit/gtkui/ConfigItems.py:733
 #, python-format
 msgid "Total: %d"
 msgstr "Gesamt: %d"
@@ -885,24 +694,24 @@ msgstr "Anmeldung läuft, bitte warten …"
 msgid "Username"
 msgstr "Benutzername"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:318
+#: ../conduit/modules/FlickrModule/FlickrModule.py:319
 msgid "Authenticate"
 msgstr "Legitimieren"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:322
+#: ../conduit/modules/FlickrModule/FlickrModule.py:323
 #: ../conduit/modules/ZotoModule/ZotoModule.py:251
 msgid "Saved photo settings"
 msgstr "Einstellungen für gespeicherte Fotos"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:327
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
 msgid "Resize photos"
 msgstr "Fotogrößen ändern"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "Do not resize"
 msgstr "Größe nicht ändern"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:331
+#: ../conduit/modules/FlickrModule/FlickrModule.py:332
 msgid "Photos are public"
 msgstr "Fotos sind öffentlich"
 
@@ -1285,6 +1094,156 @@ msgstr "Zoto"
 #: ../conduit/modules/ZotoModule/ZotoModule.py:155
 msgid "Synchronize your Zoto photos"
 msgstr "Zoto-Fotos abgleichen"
+
+#~ msgid "<b>Default Synchronization Options</b>"
+#~ msgstr "<b>Vorgegebene Einstellungen zum Abgleich</b>"
+
+#~ msgid "<b>General</b>"
+#~ msgstr "<b>Allgemein</b>"
+
+#~ msgid "Always Up-To-Date"
+#~ msgstr "Immer aktuell"
+
+#~ msgid "Ask Me What to Do"
+#~ msgstr "Beim Benutzer nachfragen"
+
+#~ msgid "Ask me what to do"
+#~ msgstr "Beim Benutzer nachfragen"
+
+#~ msgid "Cancel Synchronization"
+#~ msgstr "Datenabgleich abbrechen"
+
+#~ msgid "Cancel currently-synchronizing groups"
+#~ msgstr "Aktuelle Abgleichgruppen abbrechen"
+
+#~ msgid "Clear Canvas"
+#~ msgstr "Ansichtsbereich leeren"
+
+#~ msgid "Compare"
+#~ msgstr "Vergleichen"
+
+#~ msgid "Conduit Preferences"
+#~ msgstr "Conduit – Einstellungen"
+
+#~ msgid "Configuration"
+#~ msgstr "Allgemein"
+
+#~ msgid "Configure Item"
+#~ msgstr "Einstellungen"
+
+#~ msgid "Configure the synchronization settings for this item"
+#~ msgstr "Die Abgleicheinstellungen für dieses Element festlegen"
+
+#~ msgid "Conflict Options"
+#~ msgstr "Konflikteinstellungen"
+
+#~ msgid "Conflicts"
+#~ msgstr "Konflikte"
+
+#~ msgid "Contents"
+#~ msgstr "Inhalte"
+
+#~ msgid "Data Conversions"
+#~ msgstr "Datenumwandler"
+
+#~ msgid "Data Providers"
+#~ msgstr "Datenquellen"
+
+#~ msgid "Delete Group"
+#~ msgstr "Gruppe löschen"
+
+#~ msgid "Delete Item"
+#~ msgstr "Element löschen"
+
+#~ msgid "Delete Options"
+#~ msgstr "Optionen löschen"
+
+#~ msgid "Delete from the corresponding sink"
+#~ msgstr "Aus dem zugehörigen Empfänger löschen"
+
+#~ msgid "Delete the Corresponding Item"
+#~ msgstr "Das dazugehörige Element löschen"
+
+#~ msgid "Editor"
+#~ msgstr "Editor"
+
+#~ msgid "Minimize to notification area"
+#~ msgstr "Im Benachrichtigungsfeld minimieren"
+
+#~ msgid "Refresh Group"
+#~ msgstr "Gruppe auffrischen"
+
+#~ msgid "Refresh Item"
+#~ msgstr "Element auffrischen"
+
+#~ msgid "Replace the Older Item"
+#~ msgstr "Älteres Element ersetzen"
+
+#~ msgid "Replace the older item"
+#~ msgstr "Älteres Element ersetzen"
+
+#~ msgid "Resolve Conflicts"
+#~ msgstr "Konflikte auflösen"
+
+#~ msgid "Save settings on exit"
+#~ msgstr "Einstellungen beim Beenden speichern"
+
+#~ msgid "Show Hints"
+#~ msgstr "Hinweise anzeigen"
+
+#~ msgid "Show status icon"
+#~ msgstr "Statussymbol anzeigen"
+
+#~ msgid "Skip"
+#~ msgstr "Überspringen"
+
+#~ msgid "Slow Synchronization"
+#~ msgstr "Langsamer Datenabgleich"
+
+#~ msgid "Start Conduit at login"
+#~ msgstr "Conduit beim Anmelden starten"
+
+#~ msgid "Synchronization Options"
+#~ msgstr "Datenabgleich-Optionen"
+
+#~ msgid "Synchronize All"
+#~ msgstr "Alles abgleichen"
+
+#~ msgid "Synchronize Group"
+#~ msgstr "Gruppe abgleichen"
+
+#~ msgid "Synchronize group"
+#~ msgstr "Gruppe abgleichen"
+
+#~ msgid "Synchronizes all groups"
+#~ msgstr "Alle Gruppen abgleichen"
+
+#~ msgid "Title"
+#~ msgstr "Titel"
+
+#~ msgid "Two-Way Synchronization"
+#~ msgstr "Zweiwege-Abgleich"
+
+#~ msgid "When an item has been deleted:"
+#~ msgstr "Wenn ein Element gelöscht wurde:"
+
+#~ msgid "When an item is deleted..."
+#~ msgstr "Wenn ein Element gelöscht wurde …"
+
+#~ msgid "When there is a conflict..."
+#~ msgstr "Wenn ein Konflikt auftritt …"
+
+#~ msgid "When there is a two-way conflict:"
+#~ msgstr "Wenn ein zweiseitiger Konflikt auftritt:"
+
+#~ msgid "_Edit"
+#~ msgstr "_Bearbeiten"
+
+#~ msgid "_File"
+#~ msgstr "_Datei"
+
+#~ msgid "_Help"
+#~ msgstr "_Hilfe"
 
 #~ msgid "<b>Items to Synchronize</b>"
 #~ msgstr "<b>Elemente zum Abgleichen</b>"
