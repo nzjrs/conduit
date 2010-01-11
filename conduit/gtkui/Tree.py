@@ -202,7 +202,14 @@ class DataProviderTreeModel(gtk.GenericTreeModel):
                 return None
             if debug:
                 print "on_get_iter: path = %s cat = %s" % (path, self.cats[path[0]])
-            return self.cats[path[0]]
+            try:
+                return self.cats[path[0]]
+            except IndexError:
+                #I cannot reproducibly hit this code path. This bug just seems to occur
+                #on Ubuntu Lucid
+                #https://bugs.launchpad.net/bugs/506110
+                log.critical("Strange bug, cannot get iter...")
+                return None
         else:
             try:
                 if debug:
