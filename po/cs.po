@@ -1,245 +1,266 @@
 # Czech translation of Conduit.
 # Copyright (C) 2008 the author(s) of Conduit.
 # This file is distributed under the same license as the conduit package.
+#
 # Jiří Eischmann <jiri@eischmann.cz>, 2008.
 # Jan Dobrovolný <dobrovolnyh@seznam.cz>, 2008.
-# Petr Kovar <pknbe@volny.cz>, 2008.
-#
+# Petr Kovar <pknbe@volny.cz>, 2008, 2010.
+# Marek Černocký <marek@manet.cz>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: conduit\n"
+"Project-Id-Version: conduit master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-15 03:07+0100\n"
-"PO-Revision-Date: 2008-11-15 02:57+0100\n"
+"POT-Creation-Date: 2010-01-12 20:57+0100\n"
+"PO-Revision-Date: 2010-01-12 20:56+0100\n"
 "Last-Translator: Petr Kovar <pknbe@volny.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: ../data/conduit.desktop.in.in.h:1
-#: ../data/conduit-autostart.desktop.in.in.h:2
 msgid "Conduit Synchronizer"
 msgstr "Synchronizátor Conduit"
 
 #: ../data/conduit.desktop.in.in.h:2
-#: ../data/conduit-autostart.desktop.in.in.h:3
 msgid "Synchronization for GNOME"
 msgstr "Synchronizace pro prostředí GNOME"
 
-#. Translators: Translate this in derived classes.
-#: ../data/conduit-autostart.desktop.in.in.h:1
-#: ../conduit/modules/N800Module/N800Module.py:55
-msgid "Conduit"
-msgstr "Conduit"
+#: ../conduit/Knowledge.py:8
+msgid "What Do You Want to Synchronize?"
+msgstr "Co chcete synchronizovat?"
 
-#: ../data/conduit.glade.h:1
-msgid "<b>Default Synchronization Options</b>"
-msgstr "<b>Výchozí volby synchronizace</b>"
+#: ../conduit/Knowledge.py:9
+msgid "Drag and Drop a Data Provider on the Canvas"
+msgstr "Přetáhněte poskytovatele dat na plátno"
 
-#: ../data/conduit.glade.h:2
-msgid "<b>General</b>"
-msgstr "<b>Obecné</b>"
+#: ../conduit/Knowledge.py:11
+msgid "Synchronization Group Created"
+msgstr "Vytvořena synchronizační skupina"
 
-#: ../data/conduit.glade.h:3
-#, fuzzy
-msgid "Always Up-To-Date"
-msgstr "Udržovat aktualizované"
+#: ../conduit/Knowledge.py:12
+msgid "Add Another Data Provider to the Group to Synchronize it"
+msgstr ""
+"Přidejte do skupiny dalšího poskytovatele dat, který se má synchronizovat"
 
-#: ../data/conduit.glade.h:4
-msgid "Ask Me What to Do"
-msgstr "Zeptat se, co dělat"
+#: ../conduit/Knowledge.py:14
+msgid "You Are Now Ready to Synchronize"
+msgstr "Nyní jste připraveni provést synchronizaci"
 
-#: ../data/conduit.glade.h:5
-msgid "Ask me what to do"
-msgstr "Zeptat se, co dělat"
+#: ../conduit/Knowledge.py:15
+msgid "Right Click on Group for Options"
+msgstr "Pro nastavení voleb klikněte na skupinu pravým tlačítkem"
 
-#: ../data/conduit.glade.h:6
-msgid "Cancel Synchronization"
-msgstr "Zrušit synchronizaci"
+#: ../conduit/Knowledge.py:24
+msgid "Synchronize Two Folders"
+msgstr "Synchronizovat dvě složky"
 
-#: ../data/conduit.glade.h:7
-#, fuzzy
-msgid "Cancel currently-synchronizing groups"
-msgstr "Zrušit právě synchronizující skupiny"
+#: ../conduit/Knowledge.py:27
+msgid "Backup Folder to Box.net"
+msgstr "Zálohovat složku na Box.net"
 
-#: ../data/conduit.glade.h:8
-msgid "Clear Canvas"
-msgstr "Vyčistit plátno"
+#: ../conduit/Knowledge.py:30
+msgid "Synchronize Tagged F-Spot Photos to Flickr"
+msgstr "Synchronizovat značkované fotografie F-Spot na Flickr"
 
-#: ../data/conduit.glade.h:9
-msgid "Compare"
-msgstr "Srovnat"
+#: ../conduit/Knowledge.py:33
+msgid "Synchronize Photos to Flickr"
+msgstr "Synchronizovat fotografie na Flickr"
 
-#: ../data/conduit.glade.h:10
-msgid "Conduit Preferences"
-msgstr "Nastavení Conduitu"
+#: ../conduit/Knowledge.py:36
+msgid "Upload Photos to Facebook"
+msgstr "Nahrát fotografie na Facebook"
 
-#: ../data/conduit.glade.h:11
-msgid "Configuration"
+#: ../conduit/Knowledge.py:39
+msgid "Synchronize Desktop Wallpaper from a RSS Feed"
+msgstr "Synchronizovat pozadí pracovní plochy z kanálu RSS"
+
+#: ../conduit/Main.py:59
+msgid "Conduit is a synchronization application."
+msgstr "Conduit je aplikace k provádění synchronizace."
+
+#: ../conduit/Main.py:63
+#, python-format
+msgid "Launch without GUI. [default: %default]"
+msgstr "Spustit bez grafického uživatelského rozhraní. [výchozí: %default]"
+
+#: ../conduit/Main.py:67
+#, python-format
+msgid "Save dataprovider configuration to FILE. [default: %default]"
+msgstr "Uložit nastavení poskytovatele dat do SOUBORU . [výchozí: %default]"
+
+#: ../conduit/Main.py:71
+#, python-format
+msgid "Iconify on startup. [default: %default]"
+msgstr "Po spuštění minimalizovat do ikony [výchozí: %default]"
+
+#: ../conduit/Main.py:75
+#, python-format
+msgid "Run with the specified UI. [default: %default]"
+msgstr "Spustit se zadaným uživatelským rozhraním . [výchozí: %default]"
+
+#: ../conduit/Main.py:79
+msgid "Only load modules in the named files. [default: load all modules]"
+msgstr ""
+"Načíst pouze moduly ve vyjmenovaných souborech [výchozí: načíst všechny "
+"moduly]"
+
+#: ../conduit/Main.py:83
+msgid "Do not load modules in the named files. [default: load all modules]"
+msgstr ""
+"Nenačítat moduly ve vyjmenovaných souborech [výchozí: načíst všechny moduly]"
+
+#: ../conduit/Main.py:87
+msgid ""
+"Explicitly set internal Conduit settings (keys) to the given values for this "
+"session. [default: do not set]"
+msgstr ""
+"Pro toto sezení výslovně změnit interní nastavení (klíče) aplikace Conduit "
+"na dané hodnoty [výchozí: nenastaveno]"
+
+#: ../conduit/Main.py:91
+#, python-format
+msgid ""
+"Enable loading of unfinished or unsupported dataproviders. [default: %"
+"default]"
+msgstr ""
+"Povolit načítání nedokončených nebo nepodporovaných poskytovatelů dat "
+"[výchozí: %default]"
+
+#: ../conduit/Main.py:95
+#, python-format
+msgid "Generate more debugging information. [default: %default]"
+msgstr "Generovat více ladicích informací [výchozí: %default]"
+
+#: ../conduit/Main.py:99
+#, python-format
+msgid "Generate less debugging information. [default: %default]"
+msgstr "Generovat méně ladicích informací [výchozí: %default]"
+
+#: ../conduit/Main.py:103
+#, python-format
+msgid "Generate no debugging information. [default: %default]"
+msgstr "Negenerovat žádné ladicí informace [výchozí: %default]"
+
+#: ../conduit/dataproviders/DataProvider.py:22
+msgid "Ready"
+msgstr "Připraven"
+
+#: ../conduit/dataproviders/DataProvider.py:23
+msgid "New data to sync"
+msgstr "Nová data k synchronizaci"
+
+#: ../conduit/dataproviders/DataProvider.py:24
+msgid "Refreshing..."
+msgstr "Obnovování..."
+
+#: ../conduit/dataproviders/DataProvider.py:25
+msgid "Refreshed OK"
+msgstr "Obnovení proběhlo v pořádku"
+
+#: ../conduit/dataproviders/DataProvider.py:26
+msgid "Error Refreshing"
+msgstr "Chyba při obnovování"
+
+#: ../conduit/dataproviders/DataProvider.py:27
+msgid "Synchronizing..."
+msgstr "Synchronizuje se…"
+
+#: ../conduit/dataproviders/DataProvider.py:28
+msgid "Synchronized OK"
+msgstr "Synchronizace proběhla v pořádku"
+
+#: ../conduit/dataproviders/DataProvider.py:29
+msgid "Error Synchronizing"
+msgstr "Chyba při synchronizaci"
+
+#: ../conduit/dataproviders/DataProvider.py:30
+msgid "Synchronization Skipped"
+msgstr "Synchronizace vynechána"
+
+#: ../conduit/dataproviders/DataProvider.py:31
+msgid "Synchronization Cancelled"
+msgstr "Synchronizace zrušena"
+
+#: ../conduit/dataproviders/DataProvider.py:32
+msgid "Synchronization Conflict"
+msgstr "Konflikt v synchronizaci"
+
+#: ../conduit/dataproviders/DataProvider.py:33
+msgid "Not Configured"
+msgstr "Nenastaveno"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "640x480"
+msgstr "640×480"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "800x600"
+msgstr "800×600"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "1024x768"
+msgstr "1024×768"
+
+#. Signifies that a conversion should not take place
+#: ../conduit/dataproviders/Image.py:35
+#: ../conduit/modules/N800Module/N800Module.py:57
+msgid "None"
+msgstr "Žádná"
+
+#. Default Categories for the DataProviders
+#: ../conduit/dataproviders/__init__.py:6
+msgid "Files and Folders"
+msgstr "Soubory a složky"
+
+#: ../conduit/dataproviders/__init__.py:7
+#: ../conduit/modules/iPodModule/iPodModule.py:179
+msgid "Notes"
+msgstr "Poznámky"
+
+#: ../conduit/dataproviders/__init__.py:8
+#: ../conduit/modules/iPodModule/iPodModule.py:367
+msgid "Photos"
+msgstr "Fotografie"
+
+#: ../conduit/dataproviders/__init__.py:9
+msgid "Office"
+msgstr "Kancelář"
+
+#: ../conduit/dataproviders/__init__.py:10
+msgid "Settings"
 msgstr "Nastavení"
 
-#: ../data/conduit.glade.h:12
-msgid "Configure Item"
-msgstr "Nastavit položku"
+#: ../conduit/dataproviders/__init__.py:11
+msgid "Miscellaneous"
+msgstr "Různé"
 
-#: ../data/conduit.glade.h:13
-msgid "Configure the synchronization settings for this item"
-msgstr "Změnit nastavení synchronizace pro tuto položku"
+#: ../conduit/dataproviders/__init__.py:12
+msgid "Media"
+msgstr "Média"
 
-#: ../data/conduit.glade.h:14
-msgid "Conflict Options"
-msgstr "Možnosti konfliktů"
+#: ../conduit/dataproviders/__init__.py:13
+msgid "Bookmarks"
+msgstr "Záložky"
 
-#: ../data/conduit.glade.h:15
-msgid "Conflicts"
-msgstr "Konflikty"
+#: ../conduit/dataproviders/__init__.py:14
+msgid "Test"
+msgstr "Testování"
 
-#: ../data/conduit.glade.h:16
-msgid "Contents"
-msgstr "Obsah"
-
-#: ../data/conduit.glade.h:17
-msgid "Data Conversions"
-msgstr "Převody dat"
-
-#: ../data/conduit.glade.h:18
-msgid "Data Providers"
-msgstr "Poskytovatelé dat"
-
-#: ../data/conduit.glade.h:19
-msgid "Delete Group"
-msgstr "Smazat skupinu"
-
-#: ../data/conduit.glade.h:20
-msgid "Delete Item"
-msgstr "Smazat položku"
-
-#: ../data/conduit.glade.h:21
-msgid "Delete Options"
-msgstr "Možnosti smazání"
-
-#: ../data/conduit.glade.h:22
-msgid "Delete from the corresponding sink"
-msgstr ""
-
-#: ../data/conduit.glade.h:23
-msgid "Delete the Corresponding Item"
-msgstr "Smazat odpovídající položku"
-
-#: ../data/conduit.glade.h:24
-msgid "Editor"
-msgstr "Editor"
-
-#: ../data/conduit.glade.h:25
-msgid "Minimize to notification area"
-msgstr "Minimalizovat do oznamovací oblasti"
-
-#: ../data/conduit.glade.h:26
-msgid "Refresh Group"
-msgstr "Obnovit skupinu"
-
-#: ../data/conduit.glade.h:27
-msgid "Refresh Item"
-msgstr "Obnovit položku"
-
-#: ../data/conduit.glade.h:28
-msgid "Replace the Older Item"
-msgstr "Nahradit starší položku"
-
-#: ../data/conduit.glade.h:29
-msgid "Replace the older item"
-msgstr "Nahradit starší položku"
-
-#: ../data/conduit.glade.h:30
-msgid "Resolve Conflicts"
-msgstr "Vyřešit konflikty"
-
-#: ../data/conduit.glade.h:31
-msgid "Save settings on exit"
-msgstr "Uložit nastavení při ukončení"
-
-#: ../data/conduit.glade.h:32
-msgid "Show Hints"
-msgstr "Zobrazit rady"
-
-#: ../data/conduit.glade.h:33
-msgid "Show status icon"
-msgstr "Zobrazit stavovou ikonu"
-
-#: ../data/conduit.glade.h:34
-msgid "Skip"
-msgstr "Přeskočit"
-
-#: ../data/conduit.glade.h:35
-#, fuzzy
-msgid "Slow Synchronization"
-msgstr "Zrušit synchronizaci"
-
-#: ../data/conduit.glade.h:36
-#, fuzzy
-msgid "Synchronization Options"
-msgstr "Chyba v synchronizaci"
-
-#: ../data/conduit.glade.h:37
-msgid "Synchronize All"
-msgstr "Synchronizovat vše"
-
-#: ../data/conduit.glade.h:38
-msgid "Synchronize Group"
-msgstr "Synchronizovat skupinu"
-
-#: ../data/conduit.glade.h:39
-msgid "Synchronize group"
-msgstr "Synchronizovat skupinu"
-
-#: ../data/conduit.glade.h:40
-msgid "Synchronizes all groups"
-msgstr "Synchronizuje všechny skupiny"
-
-#: ../data/conduit.glade.h:41
-msgid "Title"
-msgstr "Název"
-
-#: ../data/conduit.glade.h:42
-#, fuzzy
-msgid "Two-Way Synchronization"
-msgstr "Zrušit synchronizaci"
-
-#: ../data/conduit.glade.h:43
-msgid "When an item has been deleted:"
-msgstr "Když byla položka vymazána:"
-
-#: ../data/conduit.glade.h:44
-msgid "When an item is deleted..."
-msgstr "Když je položka vymazána..."
-
-#: ../data/conduit.glade.h:45
-msgid "When there is a conflict..."
-msgstr "Když existuje konflikt..."
-
-#: ../data/conduit.glade.h:46
-#, fuzzy
-msgid "When there is a two-way conflict:"
-msgstr "Když existuje obousměrný konflikt:"
-
-#: ../data/conduit.glade.h:47
-msgid "_Edit"
-msgstr "_Upravit"
-
-#: ../data/conduit.glade.h:48
-msgid "_File"
-msgstr "_Soubor"
-
-#: ../data/conduit.glade.h:49
-msgid "_Help"
-msgstr "_Nápověda"
-
-#: ../conduit/gtkui/Canvas.py:149
+#: ../conduit/gtkui/Canvas.py:152
 msgid "Drag a Data Provider here to continue"
 msgstr "Přetáhněte sem poskytovatele dat, abyste mohli pokračovat"
+
+#: ../conduit/gtkui/Canvas.py:217
+msgid "Show me"
+msgstr "Domovskou složku"
 
 #. Visible column0 is
 #. [pixbuf + source display name] or
@@ -250,12 +271,12 @@ msgstr "Zdroj"
 
 #: ../conduit/gtkui/ConflictResolver.py:105
 msgid "Resolution"
-msgstr "Rozlišení"
+msgstr "Řešení"
 
 #. Visible column2 is the display name of source and source data
 #: ../conduit/gtkui/ConflictResolver.py:110
 msgid "Sink"
-msgstr ""
+msgstr "Cíl"
 
 #: ../conduit/gtkui/ConflictResolver.py:150
 #: ../conduit/gtkui/ConflictResolver.py:151
@@ -263,358 +284,358 @@ msgstr ""
 msgid "Conflicts (%s)"
 msgstr "Konflikty (%s)"
 
+#. name,                      #url
+#: ../conduit/gtkui/UI.py:33
+msgid "Introduction"
+msgstr "Úvod"
+
+#: ../conduit/gtkui/UI.py:34
+msgid "Writing a Data Provider"
+msgstr "Zapisují se poskytovatelé dat"
+
+#: ../conduit/gtkui/UI.py:35
+msgid "API Documentation"
+msgstr "Dokumentace API"
+
+#: ../conduit/gtkui/UI.py:36
+msgid "Test Results"
+msgstr "Výsledky testu"
+
+#: ../conduit/gtkui/UI.py:52
+msgid "Examples"
+msgstr "Příklady"
+
 #. Build some liststores to display
-#: ../conduit/gtkui/UI.py:284
+#: ../conduit/gtkui/UI.py:139
 msgid "Convert from"
-msgstr "Převést z"
+msgstr "Převod z"
 
-#: ../conduit/gtkui/UI.py:285
+#: ../conduit/gtkui/UI.py:140
 msgid "into"
-msgstr ""
+msgstr "do"
 
-#: ../conduit/gtkui/UI.py:336
+#: ../conduit/gtkui/UI.py:190
 msgid "Relationship Database"
 msgstr "Databáze vztahů"
 
-#: ../conduit/gtkui/UI.py:340
+#: ../conduit/gtkui/UI.py:194
 msgid "Conversions Available"
-msgstr "Převody dostupné"
+msgstr "Dostupné převody"
 
-#: ../conduit/gtkui/UI.py:346 ../conduit/gtkui/Tree.py:348
-#: ../conduit/modules/FileModule/FileConfiguration.py:105
+#: ../conduit/gtkui/UI.py:200 ../conduit/gtkui/Tree.py:355
+#: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
 msgstr "Název"
 
-#: ../conduit/gtkui/UI.py:350
+#: ../conduit/gtkui/UI.py:204
 msgid "Loaded"
 msgstr "Načteno"
 
-#: ../conduit/gtkui/UI.py:462 ../conduit/hildonui/UI.py:127
+#: ../conduit/gtkui/UI.py:329
+#, python-format
+msgid " - %s (Development Version)"
+msgstr " - %s (vývojářská verze)"
+
+#: ../conduit/gtkui/UI.py:331
+msgid " - Running Uninstalled"
+msgstr " - běží nenainstalovaný"
+
+#: ../conduit/gtkui/UI.py:375
+msgid "Developers"
+msgstr "Vývojáři"
+
+#: ../conduit/gtkui/UI.py:539 ../conduit/hildonui/UI.py:127
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "Synchronizace právě probíhá. Chcete ji opravdu zrušit?"
 
-#: ../conduit/gtkui/UI.py:628
+#: ../conduit/gtkui/UI.py:711
 msgid "_Synchronize All"
 msgstr "S_ynchronizovat vše"
 
-#: ../conduit/gtkui/UI.py:628
+#: ../conduit/gtkui/UI.py:711
 msgid "Synchronizes All Groups"
 msgstr "Synchronizovat všechny skupiny"
 
-#: ../conduit/gtkui/UI.py:629
+#: ../conduit/gtkui/UI.py:712
 msgid "_Cancel Synchronization"
-msgstr "_Zrušit"
+msgstr "_Zrušit synchronizaci"
 
-#: ../conduit/gtkui/UI.py:629
+#: ../conduit/gtkui/UI.py:712
 msgid "Cancels Currently Synchronizing Groups"
-msgstr "Ruší právě synchronizující skupiny"
+msgstr "Ruší právě synchronizované skupiny"
 
-#: ../conduit/gtkui/UI.py:630
+#: ../conduit/gtkui/UI.py:713
 msgid "_Quit"
 msgstr "U_končit"
 
-#: ../conduit/gtkui/UI.py:630
+#: ../conduit/gtkui/UI.py:713
 msgid "Close Conduit"
-msgstr "Zavřít Conduit"
+msgstr "Zavřít aplikaci Conduit"
 
-#: ../conduit/gtkui/UI.py:670
+#: ../conduit/gtkui/UI.py:753
 msgid "Synchronization Error"
 msgstr "Chyba v synchronizaci"
 
-#: ../conduit/gtkui/UI.py:673
+#: ../conduit/gtkui/UI.py:756
 msgid "Synchronization Complete"
 msgstr "Synchronizace dokončena"
 
-#: ../conduit/gtkui/UI.py:689
+#: ../conduit/gtkui/UI.py:764
 msgid "Synchronizing"
-msgstr "Synchronizuji"
+msgstr "Synchronizuje se"
 
-#: ../conduit/gtkui/Tree.py:357
+#: ../conduit/gtkui/Tree.py:364
 msgid "Description"
 msgstr "Popis"
 
-#: ../conduit/dataproviders/DataProvider.py:19
-msgid "Ready"
-msgstr "Připraven"
+#: ../conduit/gtkui/ConfigItems.py:733
+#, python-format
+msgid "Total: %d"
+msgstr "Celkem: %d"
 
-#: ../conduit/dataproviders/DataProvider.py:20
-msgid "New data to sync"
-msgstr "Nová data k synchronizaci"
+#: ../conduit/gtkui/WindowConfigurator.py:14
+msgid "Configure"
+msgstr "Nastavit"
 
-#: ../conduit/dataproviders/DataProvider.py:21
-msgid "Refreshing..."
-msgstr "Aktualizuji..."
-
-#: ../conduit/dataproviders/DataProvider.py:22
-msgid "Refreshed OK"
-msgstr "Aktualizace proběhla v pořádku"
-
-#: ../conduit/dataproviders/DataProvider.py:23
-msgid "Error Refreshing"
-msgstr "Chyba při aktualizaci"
-
-#: ../conduit/dataproviders/DataProvider.py:24
-msgid "Synchronizing..."
-msgstr "Synchronizuji..."
-
-#: ../conduit/dataproviders/DataProvider.py:25
-msgid "Synchronized OK"
-msgstr "Synchronizace proběhla v pořádku"
-
-#: ../conduit/dataproviders/DataProvider.py:26
-msgid "Error Synchronizing"
-msgstr "Chyba v synchronizaci"
-
-#: ../conduit/dataproviders/DataProvider.py:27
-msgid "Synchronization Skipped"
-msgstr "Synchronizace přeskočena"
-
-#: ../conduit/dataproviders/DataProvider.py:28
-msgid "Synchronization Cancelled"
-msgstr "Synchronizace zrušena"
-
-#: ../conduit/dataproviders/DataProvider.py:29
-msgid "Synchronization Conflict"
-msgstr "Konflikt v synchronizaci"
-
-#: ../conduit/dataproviders/DataProvider.py:30
-msgid "Not Configured Correctly"
-msgstr "Špatně nastaveno"
-
-#: ../conduit/modules/BackpackModule/BackpackModule.py:56
+#: ../conduit/modules/BackpackModule/BackpackModule.py:58
 msgid "Backpack Notes"
 msgstr "Poznámky Backpack"
 
-#: ../conduit/modules/BackpackModule/BackpackModule.py:57
+#: ../conduit/modules/BackpackModule/BackpackModule.py:59
 msgid "Store things in Backpack Notes"
-msgstr "Uložit do poznámek Backpack"
+msgstr "Ukládání věcí do poznámek Backpack"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:1
-#: ../conduit/modules/FlickrModule/config.glade.h:1
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:1
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:1
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:1
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:1
-#: ../conduit/modules/SmugMugModule/config.glade.h:1
-#: ../conduit/modules/ZotoModule/zoto.glade.h:1
-msgid "<b>Account Details</b>"
-msgstr "<b>Podrobnosti účtu</b>"
+#: ../conduit/modules/BackpackModule/BackpackModule.py:105
+#: ../conduit/modules/FlickrModule/FlickrModule.py:307
+#: ../conduit/modules/ZotoModule/ZotoModule.py:243
+msgid "Account details"
+msgstr "Podrobnosti účtu"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:2
-msgid "<b>Saved Note Settings</b>"
-msgstr ""
+#: ../conduit/modules/BackpackModule/BackpackModule.py:106
+msgid "Login"
+msgstr "Přihlášení"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:3
-msgid "API key:"
-msgstr ""
+#: ../conduit/modules/BackpackModule/BackpackModule.py:109
+msgid "API key"
+msgstr "Klíč API"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:4
-msgid "Backpack"
-msgstr "Backpack"
+#: ../conduit/modules/BackpackModule/BackpackModule.py:112
+msgid "Saved notes"
+msgstr "Uložené poznámky"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:5
-msgid "Save notes in page:"
-msgstr "Uložit poznámky na stránce:"
+#: ../conduit/modules/BackpackModule/BackpackModule.py:113
+msgid "Save notes in page"
+msgstr "Uložit poznámky na stránce"
 
-#: ../conduit/modules/BackpackModule/config.glade.h:6
-#: ../conduit/modules/FlickrModule/config.glade.h:8
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:8
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:9
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:6
-#: ../conduit/modules/SmugMugModule/config.glade.h:7
-#: ../conduit/modules/ZotoModule/zoto.glade.h:5
-msgid "Username:"
-msgstr "Uživatelské jméno"
-
-#: ../conduit/modules/BansheeModule/BansheeModule.py:33
+#: ../conduit/modules/BansheeModule/BansheeModule.py:52
 msgid "Banshee Playlists"
 msgstr "Seznamy skladeb Banshee"
 
-#: ../conduit/modules/BansheeModule/BansheeModule.py:34
-#, fuzzy
+#: ../conduit/modules/BansheeModule/BansheeModule.py:53
 msgid "Synchronize your Banshee playlists"
-msgstr "Synchronizovat seznamy skladeb Banshee"
+msgstr "Synchronizace seznamů skladeb v přehrávači Banshee"
 
-#. column 1 is the tag name
-#: ../conduit/modules/BansheeModule/BansheeModule.py:141
-#: ../conduit/modules/FspotModule/FspotModule.py:246
-#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:145
-msgid "Tag Name"
-msgstr "Název značky"
-
-#: ../conduit/modules/BansheeModule/BansheeModule.py:149
-#: ../conduit/modules/FspotModule/FspotModule.py:254
-#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:153
-msgid "Enabled"
-msgstr "Povoleno"
-
-#: ../conduit/modules/BansheeModule/config.glade.h:1
-msgid "<b>Return Playlists</b>"
-msgstr ""
-
-#: ../conduit/modules/BansheeModule/config.glade.h:2
-msgid "Banshee"
-msgstr "Banshee"
+#: ../conduit/modules/BansheeModule/BansheeModule.py:187
+#: ../conduit/modules/BansheeModule/BansheeModule.py:188
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:116
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:117
+msgid "Playlists"
+msgstr "Seznamy skladeb"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:29
-#: ../conduit/modules/BoxDotNetModule/config.glade.h:1
 msgid "Box.net"
 msgstr "Box.net"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:30
-#, fuzzy
 msgid "Synchronize your Box.net files"
-msgstr "Synchronizovat soubory Box.net"
+msgstr "Synchronizace souborů na Box.net"
 
-#: ../conduit/modules/BoxDotNetModule/config.glade.h:2
-msgid "Folder:"
-msgstr "Složka:"
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:290
+#: ../conduit/modules/FileModule/FileModule.py:82
+msgid "Folder"
+msgstr "Složka"
 
-#: ../conduit/modules/BoxDotNetModule/config.glade.h:3
-#: ../conduit/modules/FacebookModule/config.glade.h:3
-#: ../conduit/modules/FlickrModule/config.glade.h:4
-msgid "Load"
-msgstr "Načíst"
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:291
+msgid "Folder name"
+msgstr "Název složky"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:108
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:295
+msgid "Load folders"
+msgstr "Načíst složky"
+
+#: ../conduit/modules/ConverterModule.py:91
+msgid "Note-"
+msgstr "Poznámka-"
+
+#: ../conduit/modules/DesktopWallpaperModule.py:38
+msgid "Wallpaper"
+msgstr "Pozadí pracovní plochy"
+
+#: ../conduit/modules/DesktopWallpaperModule.py:39
+msgid "Changes your Desktop Wallpaper"
+msgstr "Změní pozadí pracovní plochy"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:107
 #, python-format
-msgid "Select %s:"
-msgstr "Vybrat %s:"
+msgid "Select %s"
+msgstr "Vybrat %s"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:147
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:127
 msgid "Evolution Contacts"
 msgstr "Kontakty Evolution"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:148
-#, fuzzy
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:128
 msgid "Synchronize your contacts"
-msgstr "Synchronizovat kontakty"
+msgstr "Synchronizace kontaktů"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:198
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:178
 msgid "Evolution Calendar"
 msgstr "Kalendář Evolution"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:199
-#, fuzzy
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:179
 msgid "Synchronize your calendar"
-msgstr "Synchronizovat kalendář"
+msgstr "Synchronizace kalendáře"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:256
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:240
 msgid "Evolution Tasks"
 msgstr "Úkoly Evolution"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:257
-#, fuzzy
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:241
 msgid "Synchronize your tasks"
-msgstr "Synchronizovat úkoly"
+msgstr "Synchronizace úkolů"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:313
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:297
 msgid "Evolution Memos"
 msgstr "Poznámky Evolution"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:314
-#, fuzzy
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:298
 msgid "Synchronize your memos"
-msgstr "Synchronizovat poznámky"
+msgstr "Synchronizace poznámek"
 
-#: ../conduit/modules/EvolutionModule/config.glade.h:1
-msgid "Addressbook:"
-msgstr "Adresář:"
-
-#: ../conduit/modules/EvolutionModule/config.glade.h:2
-msgid "Evolution"
-msgstr "Evolution"
-
-#: ../conduit/modules/FacebookModule/FacebookModule.py:37
-#: ../conduit/modules/FacebookModule/config.glade.h:2
+#: ../conduit/modules/FacebookModule/FacebookModule.py:38
 msgid "Facebook"
 msgstr "Facebook"
 
-#: ../conduit/modules/FacebookModule/FacebookModule.py:38
-#, fuzzy
+#: ../conduit/modules/FacebookModule/FacebookModule.py:39
 msgid "Synchronize your Facebook photos"
-msgstr "Synchronizovat fotografie na Facebooku"
+msgstr "Synchronizace fotografií na Facebooku"
 
-#: ../conduit/modules/FacebookModule/config.glade.h:1
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:3
-#: ../conduit/modules/iPodModule/config.glade.h:2
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:3
-#: ../conduit/modules/SmugMugModule/config.glade.h:3
-#: ../conduit/modules/ZotoModule/zoto.glade.h:3
-msgid "Album:"
-msgstr "Album:"
+#: ../conduit/modules/FacebookModule/FacebookModule.py:124
+#: ../conduit/modules/FlickrModule/FlickrModule.py:282
+msgid "Loading album list..."
+msgstr "Načítá se seznam alb…"
 
-#: ../conduit/modules/FeedModule/FeedModule.py:57
-#: ../conduit/modules/FeedModule/config.glade.h:9
-msgid "RSS Feed"
-msgstr "RSS kanály"
+#: ../conduit/modules/FacebookModule/FacebookModule.py:128
+msgid "Failed to connect"
+msgstr "Selhalo připojení"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:131
+msgid "Logged in"
+msgstr "Přihlášen"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:133
+msgid "Failed to login"
+msgstr "Selhalo přihlášení"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:145
+#: ../conduit/modules/FspotModule/FspotModule.py:243
+msgid "Status"
+msgstr "Stav"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:150
+#: ../conduit/modules/iPodModule/iPodModule.py:461
+#: ../conduit/modules/ZotoModule/ZotoModule.py:252
+msgid "Album"
+msgstr "Album"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:151
+msgid "Album name"
+msgstr "Název alba"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:156
+msgid "Load albums"
+msgstr "Načíst alba"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:58
-#, fuzzy
+msgid "RSS Feed"
+msgstr "Kanály RSS"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:59
 msgid "Synchronize data from RSS enclosures"
-msgstr "Synchronizovat data z Youtube"
+msgstr "Synchronizace dat z příloh RSS"
 
-#: ../conduit/modules/FeedModule/config.glade.h:1
-msgid "<b>Enclosure Settings</b>"
-msgstr ""
+#. FIXME: Add Randomize
+#: ../conduit/modules/FeedModule/FeedModule.py:114
+msgid "Feed details"
+msgstr "Detaily kanálu"
 
-#: ../conduit/modules/FeedModule/config.glade.h:2
-msgid "<b>Feed Details</b>"
-msgstr "<b>Detaily kanálu</b>"
+#: ../conduit/modules/FeedModule/FeedModule.py:115
+msgid "Feed address"
+msgstr "Adresa kanálu"
 
-#: ../conduit/modules/FeedModule/config.glade.h:3
-msgid "Download Audio Files"
-msgstr "Stáhnout audio soubory"
+#: ../conduit/modules/FeedModule/FeedModule.py:118
+msgid "Enclosure settings"
+msgstr "Nastavení příloh"
 
-#: ../conduit/modules/FeedModule/config.glade.h:4
-msgid "Download Photos"
-msgstr "Stáhnout fotografie"
+#: ../conduit/modules/FeedModule/FeedModule.py:119
+msgid "Limit downloaded enclosures"
+msgstr "Omezit stahované přílohy"
 
-#: ../conduit/modules/FeedModule/config.glade.h:5
-msgid "Download Video Files"
+#: ../conduit/modules/FeedModule/FeedModule.py:125
+msgid "Limit to"
+msgstr "Omezit na"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:129
+msgid "Randomize enclosures"
+msgstr "Přílohy náhodně"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:133
+msgid "Download types"
+msgstr "Stahované typy"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:134
+msgid "Download audio files"
+msgstr "Stáhnout zvukové soubory"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:135
+msgid "Download video files"
 msgstr "Stáhnout video soubory"
 
-#: ../conduit/modules/FeedModule/config.glade.h:6
-msgid "Feed Address:"
-msgstr "Adresa kanálu:"
+#: ../conduit/modules/FeedModule/FeedModule.py:136
+msgid "Download photo files"
+msgstr "Stáhnout soubory s fotografiemi"
 
-#: ../conduit/modules/FeedModule/config.glade.h:7
-msgid ""
-"Limit the Number of\n"
-"Enclosures Downloaded to:"
-msgstr ""
-
-#: ../conduit/modules/FileModule/FileConfiguration.py:99
+#: ../conduit/modules/FileModule/FileConfiguration.py:111
 msgid "Icon"
 msgstr "Ikona"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:111
+#: ../conduit/modules/FileModule/FileConfiguration.py:123
+#: ../conduit/modules/GConfModule/GConfModule.py:138
 msgid "Items"
 msgstr "Položky"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:137
+#: ../conduit/modules/FileModule/FileConfiguration.py:149
 #, python-format
 msgid "<i>Contains %s files</i>"
-msgstr "<i>Obsahuje %s soubory</i>"
+msgstr "<i>Obsahuje %s souborů</i>"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:228
+#: ../conduit/modules/FileModule/FileConfiguration.py:248
 msgid "Include file..."
-msgstr "Včetně souboru..."
+msgstr "Včetně souboru…"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:238
+#: ../conduit/modules/FileModule/FileConfiguration.py:258
 msgid "All files"
 msgstr "Všechny soubory"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:253
+#: ../conduit/modules/FileModule/FileConfiguration.py:271
 msgid "Include folder..."
-msgstr "Včetně složky..."
+msgstr "Včetně složky…"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:298
+#: ../conduit/modules/FileModule/FileConfiguration.py:314
 msgid "Please Name All Folders"
 msgstr "Pojmenujte prosím všechny složky"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:299
+#: ../conduit/modules/FileModule/FileConfiguration.py:315
 msgid ""
 "All folders require a descriptive name. To name a folder simply click on it"
 msgstr ""
@@ -627,337 +648,366 @@ msgstr "Soubory"
 
 #: ../conduit/modules/FileModule/FileModule.py:24
 msgid "Source for synchronizing multiple files"
-msgstr "Zdroj k synchronizaci vícero souborů"
+msgstr "Zdroj pro synchronizaci vícero souborů"
 
-#: ../conduit/modules/FileModule/FileModule.py:63
-msgid "Folder"
-msgstr "Složka"
-
-#: ../conduit/modules/FileModule/FileModule.py:64
+#: ../conduit/modules/FileModule/FileModule.py:83
 msgid "Synchronize folders"
-msgstr "Synchronizovat složky"
+msgstr "Synchronizace složek"
 
-#: ../conduit/modules/FileModule/config.glade.h:1
-msgid "<b>Items to Synchronize</b>"
-msgstr "<b>Položky k synchronizaci</b>"
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:40
+msgid "Firefox 3 Bookmarks"
+msgstr "Záložky Firefox 3"
 
-#: ../conduit/modules/FileModule/config.glade.h:2
-msgid "Add Directory"
-msgstr "Přidat adresář"
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:41
+msgid "Syncronize your Firefox 3 Bookmarks"
+msgstr "Synchronizace záložek v aplikaci Firefox 3"
 
-#: ../conduit/modules/FileModule/config.glade.h:3
-msgid "Add File"
-msgstr "Přidat soubor"
-
-#: ../conduit/modules/FileModule/config.glade.h:4
-msgid "Advanced"
-msgstr "Pokročilé"
-
-#: ../conduit/modules/FileModule/config.glade.h:5
-msgid "File Configuration"
-msgstr "Nastavení souboru"
-
-#: ../conduit/modules/FileModule/config.glade.h:6
-msgid "Folder Configuration"
-msgstr "Nastavení složky"
-
-#: ../conduit/modules/FileModule/config.glade.h:7
-msgid "Folder Location:"
-msgstr "Umístění složky:"
-
-#: ../conduit/modules/FileModule/config.glade.h:8
-msgid "Follow Symbolic Links"
-msgstr "Sledovat symbolické odkazy"
-
-#: ../conduit/modules/FileModule/config.glade.h:9
-msgid "Ignore File Modification Times"
-msgstr ""
-
-#: ../conduit/modules/FileModule/config.glade.h:10
-msgid "Include Hidden Files"
-msgstr "Včetně skrytých souborů"
-
-#: ../conduit/modules/FileModule/config.glade.h:11
-msgid "Select A Folder"
-msgstr "Vybrat složku"
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:100
+msgid "Firefox Profile"
+msgstr "Profil Firefox"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:76
-#: ../conduit/modules/FlickrModule/config.glade.h:3
 msgid "Flickr"
 msgstr "Flickr"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:77
-#, fuzzy
 msgid "Synchronize your Flickr.com photos"
-msgstr "Synchronizovat fotografie na Flickr.com"
+msgstr "Synchronizace fotografií na Flickr.com"
 
-#: ../conduit/modules/FlickrModule/config.glade.h:2
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:2
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:2
-#: ../conduit/modules/SmugMugModule/config.glade.h:2
-#: ../conduit/modules/ZotoModule/zoto.glade.h:2
-msgid "<b>Saved Photo Settings</b>"
-msgstr "<b>Nastavení fotografií uloženo</b>"
+#: ../conduit/modules/FlickrModule/FlickrModule.py:287
+msgid "Failed to connect."
+msgstr "Selhalo připojení."
 
-#: ../conduit/modules/FlickrModule/config.glade.h:5
+#: ../conduit/modules/FlickrModule/FlickrModule.py:290
+msgid "Album names loaded."
+msgstr "Názvy alb načteny."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:292
+msgid "Failed to login."
+msgstr "Selhalo přihlášení."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:303
+msgid "Logging in, please wait..."
+msgstr "Přihlašuje se, vyčkejte prosím…"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:308
+#: ../conduit/modules/GoogleBookmarksModule.py:67
+#: ../conduit/modules/ZotoModule/ZotoModule.py:244
+msgid "Username"
+msgstr "Uživatelské jméno"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:319
+msgid "Authenticate"
+msgstr "Ověřit"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:323
+#: ../conduit/modules/ZotoModule/ZotoModule.py:251
+msgid "Saved photo settings"
+msgstr "Nastavení uložených fotografií"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+msgid "Resize photos"
+msgstr "Změnit velikost fotografií"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "Do not resize"
+msgstr "Neměnit velikost"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:332
 msgid "Photos are public"
-msgstr "Veřejné fotografie"
-
-#: ../conduit/modules/FlickrModule/config.glade.h:6
-msgid "Photoset Name:"
-msgstr "Název sady fotek:"
-
-#: ../conduit/modules/FlickrModule/config.glade.h:7
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:7
-#: ../conduit/modules/SmugMugModule/config.glade.h:5
-msgid "Resize Photos:"
-msgstr "Změnit velikost fotografií:"
+msgstr "Fotografie jsou veřejné"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:25
-#: ../conduit/modules/FspotModule/config.glade.h:3
 msgid "F-Spot"
 msgstr "F-Spot"
 
 #: ../conduit/modules/FspotModule/FspotModule.py:26
-#, fuzzy
 msgid "Synchronize your F-Spot photos"
-msgstr "Synchronizovat fotografie z F-Spot"
+msgstr "Synchronizace fotografií v aplikaci F-Spot"
 
-#: ../conduit/modules/FspotModule/FspotModule.py:127
-#, fuzzy
+#: ../conduit/modules/FspotModule/FspotModule.py:152
 msgid "F-Spot DBus interface is operating in read-only mode"
-msgstr "F-Spot DBus rozhraní pracuje v režimu pouze ke čtení"
+msgstr "Rozhraní F-Spot DBus pracuje v režimu pouze ke čtení"
 
-#: ../conduit/modules/FspotModule/config.glade.h:1
-msgid "<b>Return Photos Tagged With</b>"
-msgstr ""
+#: ../conduit/modules/FspotModule/FspotModule.py:218
+msgid "F-Spot is running"
+msgstr "Aplikace F-Spot běží"
 
-#: ../conduit/modules/FspotModule/config.glade.h:2
-msgid "Create Tags: "
-msgstr "Vytvořit značky: "
+#: ../conduit/modules/FspotModule/FspotModule.py:219
+msgid "Please start F-Spot or activate the D-Bus Extension"
+msgstr "Spusťte prosím aplikaci F-Spot nebo aktivujte rozšíření D-Bus"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:244
+msgid "Start F-Spot"
+msgstr "Spustit F-Spot"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:248
+#: ../conduit/modules/FspotModule/FspotModule.py:249
+msgid "Tags"
+msgstr "Značky"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:262
+msgid "Add tags"
+msgstr "Přidat značky"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:263
+msgid "Tag name"
+msgstr "Název značky"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:266
+msgid "Add tag"
+msgstr "Přidat značku"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:21
-msgid "GConf Settings"
-msgstr "Nastavení GConf"
+msgid "Application Settings"
+msgstr "Nastavení aplikace"
 
 #: ../conduit/modules/GConfModule/GConfModule.py:22
-#, fuzzy
-msgid "Synchronize your desktop preferences"
-msgstr "Synchronizovat nastavení pracovního prostředí"
+msgid "Synchronize your application settings"
+msgstr "Synchronizace nastavení aplikací"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:369
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
+#: ../conduit/modules/GConfModule/GConfModule.py:31
+msgid "Metacity"
+msgstr "Metacity"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:32
+msgid "Nautilus"
+msgstr "Nautilus"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:33
+msgid "Preferred Applications"
+msgstr "Upřednostňované aplikace"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:34
+msgid "Desktop Interface"
+msgstr "Rozhraní pracovní plochy"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:35
+msgid "Gnome Terminal"
+msgstr "Terminál Gnome"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:137
+msgid "Applications to Synchronize"
+msgstr "Aplikace, které se mají synchronizovat"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:19
+msgid "Google Bookmarks"
+msgstr "Záložky Google"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:20
+msgid "Sync your Google Bookmarks"
+msgstr "Synchronizace záložek Google"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:66
+msgid "Login Details"
+msgstr "Podrobnosti přihlášení"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:70
+#: ../conduit/modules/ZotoModule/ZotoModule.py:247
+msgid "Password"
+msgstr "Heslo"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:399
 msgid "Google Calendar"
 msgstr "Kalendář Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:370
-#, fuzzy
+#: ../conduit/modules/GoogleModule/GoogleModule.py:400
 msgid "Synchronize your Google Calendar"
-msgstr "Synchronizovat Kalendář Google"
+msgstr "Synchronizovat svůj kalendář Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:555
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:6
+#: ../conduit/modules/GoogleModule/GoogleModule.py:582
 msgid "Picasa"
 msgstr "Picasa"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:556
-#, fuzzy
+#: ../conduit/modules/GoogleModule/GoogleModule.py:583
 msgid "Synchronize your Google Picasa photos"
-msgstr "Synchronizovat fotografie z Google Picasa"
+msgstr "Synchronizovat své fotografie z Google Picasa"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:803
+#: ../conduit/modules/GoogleModule/GoogleModule.py:745
 msgid "Google Contacts"
-msgstr "Kontakty z Gmailu"
+msgstr "Kontakty Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:804
-#, fuzzy
+#: ../conduit/modules/GoogleModule/GoogleModule.py:746
 msgid "Synchronize your Google Mail contacts"
-msgstr "Synchronizovat kontakty z Gmailu"
+msgstr "Synchronizovat své kontakty z Gmailu"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1060
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:5
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1076
 msgid "Google Documents"
 msgstr "Dokumenty Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1061
-#, fuzzy
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1077
 msgid "Synchronize your Google Documents"
-msgstr "Synchronizovat dokumenty Google"
+msgstr "Synchronizovat své dokumenty Google"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1338
-#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:67
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1322
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:69
 msgid "Unknown"
 msgstr "Neznámé"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1339
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1323
 msgid "miscellaneous"
 msgstr "různé"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1340
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1324
 msgid "No description."
 msgstr "Bez popisu."
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1349
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1333
 msgid "YouTube"
 msgstr "YouTube"
 
-#: ../conduit/modules/GoogleModule/GoogleModule.py:1350
-#, fuzzy
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1334
 msgid "Synchronize data from YouTube"
 msgstr "Synchronizovat data z Youtube"
 
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
-msgid "Calendar:"
-msgstr "Kalendář:"
+#: ../conduit/modules/iPodModule/iPodModule.py:180
+msgid "Synchronize your iPod notes"
+msgstr "Synchronizace poznámek v zařízení iPod"
 
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:4
-msgid "Email:"
-msgstr "Email:"
+#: ../conduit/modules/iPodModule/iPodModule.py:295
+#: ../conduit/modules/SynceModule.py:311
+msgid "Contacts"
+msgstr "Kontakty"
 
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:5
-msgid "Load Calendars"
-msgstr "Načíst kalendáře"
+#: ../conduit/modules/iPodModule/iPodModule.py:296
+msgid "Synchronize your iPod contacts"
+msgstr "Synchronizace kontaktů v zařízení iPod"
 
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:6
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:5
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:6
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:4
-#: ../conduit/modules/SmugMugModule/config.glade.h:4
-#: ../conduit/modules/ZotoModule/zoto.glade.h:4
-msgid "Password:"
-msgstr "Heslo:"
+#: ../conduit/modules/iPodModule/iPodModule.py:331
+#: ../conduit/modules/SynceModule.py:449
+msgid "Calendar"
+msgstr "Kalendář"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:2
-msgid "<b>Downloaded Document Format</b>"
-msgstr "<b>Formát staženého dokumentu</b>"
+#: ../conduit/modules/iPodModule/iPodModule.py:332
+msgid "Synchronize your iPod calendar"
+msgstr "Synchronizace kalendáře v zařízení iPod"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:3
-msgid "Documents"
-msgstr "Dokumenty"
+#: ../conduit/modules/iPodModule/iPodModule.py:368
+msgid "Synchronize your iPod photos"
+msgstr "Synchronizace fotografií v zařízení iPod"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:7
-msgid "Presentations"
-msgstr "Prezentace"
+#: ../conduit/modules/iPodModule/iPodModule.py:465
+msgid "Delete"
+msgstr "Smazat"
 
-#: ../conduit/modules/GoogleModule/documents-config.glade.h:8
-msgid "Spreadsheets"
-msgstr "Tabulky"
-
-#: ../conduit/modules/GoogleModule/picasa-config.glade.h:4
-msgid "Login"
-msgstr "Přihlášení"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:2
-msgid "<b>Download Videos</b>"
-msgstr "<b>Stáhnout videa</b>"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:3
-msgid "Favorites of above user"
-msgstr ""
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:4
-msgid "Max retrieved videos (0 is unlimited):"
-msgstr "Maximální počet zobrazených videí (0 = bez limitu)"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:5
-msgid "Most viewed"
-msgstr "Nejzobrazovanější"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:7
-msgid "Top rated"
-msgstr "Nejlépe hodnocené"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:8
-msgid "Uploaded by above user"
-msgstr "Odesláno uživatelem výše"
-
-#: ../conduit/modules/GoogleModule/youtube-config.glade.h:10
-msgid "YouTube Source"
-msgstr "Zdroj Youtube"
-
-#: ../conduit/modules/iPodModule/iPodModule.py:650
+#: ../conduit/modules/iPodModule/iPodModule.py:695
+#: ../conduit/modules/iPodModule/iPodModule.py:812
+#: ../conduit/modules/N800Module/N800Module.py:77
 msgid "Encoding"
 msgstr "Kódování"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:756
+#: ../conduit/modules/iPodModule/iPodModule.py:811
+msgid "Conversion options"
+msgstr "Volby převodu"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:816
 msgid "Keep converted files"
 msgstr "Zachovat převedené soubory"
 
-#: ../conduit/modules/iPodModule/config.glade.h:1
-msgid "<b>Encoding</b>"
-msgstr "<b>Kódování</b>"
+#: ../conduit/modules/iPodModule/iPodModule.py:846
+msgid "iPod Music"
+msgstr "Hudba iPod"
 
-#: ../conduit/modules/iPodModule/config.glade.h:3
-msgid "iPod Photos"
-msgstr "Fotografie z iPodu"
+#: ../conduit/modules/iPodModule/iPodModule.py:847
+msgid "Synchronize your iPod music"
+msgstr "Synchronizace hudby v zařízení iPod"
 
-#. Translators: Format string used to describe the acceptable formats the
-#. device accepts. The first arg is replaced with DEFAULT_FOLDER and the second
-#. arg is a comma seperated list of encodings
-#: ../conduit/modules/N800Module/N800Module.py:59
-#, python-format
-msgid "%s Format (%s)"
-msgstr "%s Formát (%s)"
+#: ../conduit/modules/iPodModule/iPodModule.py:882
+msgid "iPod Video"
+msgstr "Video iPod"
 
-#. Signifies that a conversion should not take place
-#: ../conduit/modules/N800Module/N800Module.py:61
-msgid "unchanged"
-msgstr "Nezměněno"
+#: ../conduit/modules/iPodModule/iPodModule.py:883
+msgid "Synchronize your iPod videos"
+msgstr "Synchronizace videí v zařízení iPod"
 
-#: ../conduit/modules/N800Module/N800Module.py:123
+#: ../conduit/modules/iPodModule/iPodModule.py:907
+msgid "Movie"
+msgstr "Film"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:908
+msgid "Music Video"
+msgstr "Hudební video"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:909
+msgid "TV Show"
+msgstr "Televizní představení"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:911
+msgid "Video kind"
+msgstr "Druh videa"
+
+#. Translators: Translate this in derived classes.
+#: ../conduit/modules/N800Module/N800Module.py:55
+msgid "Conduit"
+msgstr "Conduit"
+
+#: ../conduit/modules/N800Module/N800Module.py:105
 msgid "N800 Files"
-msgstr "Soubory z N800"
+msgstr "Soubory v N800"
 
-#: ../conduit/modules/N800Module/N800Module.py:124
+#: ../conduit/modules/N800Module/N800Module.py:106
 msgid "Synchronizes files/folders to a N800 device"
-msgstr "Synchronizovat soubory/složky do zařízení N800"
+msgstr "Synchronizace souborů/složek do zařízení N800"
 
 #. To translators: default backup folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:129
+#: ../conduit/modules/N800Module/N800Module.py:111
 msgid "Backups"
 msgstr "Zálohy"
 
-#: ../conduit/modules/N800Module/N800Module.py:144
+#: ../conduit/modules/N800Module/N800Module.py:126
 msgid "N800 Music"
-msgstr "Hudba z N800"
+msgstr "Hudba v N800"
 
-#: ../conduit/modules/N800Module/N800Module.py:145
+#: ../conduit/modules/N800Module/N800Module.py:127
 msgid "Synchronizes music to a N800 device"
-msgstr "Synchronizovat hudbu do zařízení N800"
+msgstr "Synchronizace hudby do zařízení N800"
 
 #. To translators: defaul music folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:151
+#: ../conduit/modules/N800Module/N800Module.py:133
 msgid "Music"
 msgstr "Hudba"
 
-#: ../conduit/modules/N800Module/N800Module.py:168
+#: ../conduit/modules/N800Module/N800Module.py:150
 msgid "N800 Videos"
-msgstr "Videa z N800"
+msgstr "Videa v N800"
 
-#: ../conduit/modules/N800Module/N800Module.py:169
+#: ../conduit/modules/N800Module/N800Module.py:151
 msgid "Synchronizes video to a N800 device"
-msgstr "Synchronizovat video do zařízení N800"
+msgstr "Synchronizace videí do zařízení N800"
 
 #. To translators: defaul video folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:175
+#: ../conduit/modules/N800Module/N800Module.py:157
 msgid "Video"
 msgstr "Video"
 
-#: ../conduit/modules/N800Module/N800Module.py:192
+#: ../conduit/modules/N800Module/N800Module.py:174
 msgid "N800 Photos"
-msgstr "Fotografie z N800"
+msgstr "Fotografie v N800"
 
-#: ../conduit/modules/N800Module/N800Module.py:193
-#, fuzzy
+#: ../conduit/modules/N800Module/N800Module.py:175
 msgid "Synchronizes photos to an N800 device"
-msgstr "Synchronizovat fotografii do zařízení N800"
+msgstr "Synchronizace fotografií do zařízení N800"
 
 #. To translators: default photos folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:199
+#: ../conduit/modules/N800Module/N800Module.py:181
 msgid "Photo"
 msgstr "Fotografie"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:19
+msgid "Nautilus Bookmarks"
+msgstr "Záložky Nautilus"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:20
+msgid "Sync your Nautilus Bookmarks"
+msgstr "Synchronizace záložek v aplikaci Nautilus"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:145
+msgid "Sync bookmarks to local places/files"
+msgstr "Synchronizovat záložky do místních úložišť/souborů"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:148
+msgid "Sync bookmarks to remote places/files"
+msgstr "Synchronizovat záložky do vzdálených úložišť/souborů"
 
 #: ../conduit/modules/NetworkModule/Server.py:147
 msgid "Network"
@@ -965,58 +1015,331 @@ msgstr "Síť"
 
 #: ../conduit/modules/NetworkModule/Server.py:148
 msgid "Enable synchronization via network"
-msgstr "Povolit síťovou synchronizaci"
+msgstr "Umožňuje synchronizaci přes síť"
 
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:44
 msgid "Rhythmbox Music"
 msgstr "Hudba Rhythmbox"
 
 #: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:45
-#, fuzzy
 msgid "Synchronize songs from your Rhythmbox playlists"
-msgstr "Synchronizovat skladby ze seznamu skladeb Rhythmbox"
-
-#: ../conduit/modules/RhythmboxModule/config.glade.h:1
-msgid "<b>Synchronize the Following Playlists</b>"
-msgstr "<b>Synchronizovat následující seznamy skladeb</b>"
-
-#: ../conduit/modules/RhythmboxModule/config.glade.h:2
-msgid "Rhythmbox Playlists"
-msgstr "Seznamy skladeb Rhythmbox"
+msgstr "Synchronizace skladeb ze seznamů skladeb Rhythmbox"
 
 #: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:26
-#: ../conduit/modules/ShutterflyModule/shutterfly.glade.h:5
 msgid "Shutterfly"
 msgstr "Shutterfly"
 
 #: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:27
-#, fuzzy
 msgid "Synchronize your Shutterfly photos"
-msgstr "Synchronizovat fotografie Shutterfly"
+msgstr "Synchronizace fotografií na Shutterfly"
 
 #: ../conduit/modules/ShutterflyModule/shutterfly/shutterfly.py:33
 msgid "%Y-%m-%d %H:%M:%S"
-msgstr "%Y-%m-%d %H:%M:%S"
+msgstr "%e.%m.%Y %H:%M:%S"
 
 #: ../conduit/modules/SmugMugModule/SmugMugModule.py:28
-#: ../conduit/modules/SmugMugModule/config.glade.h:6
 msgid "SmugMug"
 msgstr "SmugMug"
 
 #: ../conduit/modules/SmugMugModule/SmugMugModule.py:29
-#, fuzzy
 msgid "Synchronize your SmugMug.com photos"
-msgstr "Synchronizovat fotografie z SmugMug.com"
+msgstr "Synchronizace fotografií na SmugMug.com"
+
+#: ../conduit/modules/SynceModule.py:139
+msgid "Create Partnership"
+msgstr "Vytvořit partnerství"
+
+#: ../conduit/modules/SynceModule.py:312
+msgid "Windows Mobile Contacts"
+msgstr "Kontakty z Windows Mobile"
+
+#: ../conduit/modules/SynceModule.py:450
+msgid "Windows Mobile Calendar"
+msgstr "Kalendář z Windows Mobile"
+
+#: ../conduit/modules/SynceModule.py:459
+msgid "Tasks"
+msgstr "Úkoly"
+
+#: ../conduit/modules/SynceModule.py:460
+msgid "Windows Mobile Tasks"
+msgstr "Úkoly z Windows Mobile"
 
 #: ../conduit/modules/ZotoModule/ZotoModule.py:154
-#: ../conduit/modules/ZotoModule/zoto.glade.h:6
 msgid "Zoto"
 msgstr "Zoto"
 
 #: ../conduit/modules/ZotoModule/ZotoModule.py:155
-#, fuzzy
 msgid "Synchronize your Zoto photos"
-msgstr "Synchronizovat fotografie Zoto"
+msgstr "Synchronizace fotografií na Zoto"
+
+#~ msgid "<b>Default Synchronization Options</b>"
+#~ msgstr "<b>Výchozí volby synchronizace</b>"
+
+#~ msgid "<b>General</b>"
+#~ msgstr "<b>Obecné</b>"
+
+#~ msgid "Always Up-To-Date"
+#~ msgstr "Udržovat aktuální"
+
+#~ msgid "Ask Me What to Do"
+#~ msgstr "Zeptat se, co dělat"
+
+#~ msgid "Ask me what to do"
+#~ msgstr "Zeptat se, co dělat"
+
+#~ msgid "Cancel Synchronization"
+#~ msgstr "Zrušit synchronizaci"
+
+#~ msgid "Cancel currently-synchronizing groups"
+#~ msgstr "Zrušit právě prováděné synchronizace skupin"
+
+#~ msgid "Clear Canvas"
+#~ msgstr "Vyčistit plátno"
+
+#~ msgid "Compare"
+#~ msgstr "Porovnat"
+
+#~ msgid "Conduit Preferences"
+#~ msgstr "Předvolby Conduit"
+
+#~ msgid "Configuration"
+#~ msgstr "Nastavení"
+
+#~ msgid "Configure Item"
+#~ msgstr "Nastavit položku"
+
+#~ msgid "Configure the synchronization settings for this item"
+#~ msgstr "Změnit nastavení synchronizace pro tuto položku"
+
+#~ msgid "Conflict Options"
+#~ msgstr "Volby pro konflikty"
+
+#~ msgid "Conflicts"
+#~ msgstr "Konflikty"
+
+#~ msgid "Contents"
+#~ msgstr "Obsah"
+
+#~ msgid "Data Conversions"
+#~ msgstr "Převody dat"
+
+#~ msgid "Data Providers"
+#~ msgstr "Poskytovatelé dat"
+
+#~ msgid "Delete Group"
+#~ msgstr "Smazat skupinu"
+
+#~ msgid "Delete Item"
+#~ msgstr "Smazat položku"
+
+#~ msgid "Delete Options"
+#~ msgstr "Volby mazání"
+
+#~ msgid "Delete from the corresponding sink"
+#~ msgstr "Vymazat z odpovídajícího cíle"
+
+#~ msgid "Delete the Corresponding Item"
+#~ msgstr "Smazat odpovídající položku"
+
+#~ msgid "Editor"
+#~ msgstr "Editor"
+
+#~ msgid "Minimize to notification area"
+#~ msgstr "Minimalizovat do oznamovací oblasti"
+
+#~ msgid "Refresh Group"
+#~ msgstr "Občerstvit skupinu"
+
+#~ msgid "Refresh Item"
+#~ msgstr "Občerstvit položku"
+
+#~ msgid "Replace the Older Item"
+#~ msgstr "Nahradit starší položku"
+
+#~ msgid "Replace the older item"
+#~ msgstr "Nahradit starší položku"
+
+#~ msgid "Resolve Conflicts"
+#~ msgstr "Vyřešit konflikty"
+
+#~ msgid "Save settings on exit"
+#~ msgstr "Uložit nastavení při ukončení"
+
+#~ msgid "Show Hints"
+#~ msgstr "Zobrazovat rady"
+
+#~ msgid "Show status icon"
+#~ msgstr "Zobrazit stavovou ikonu"
+
+#~ msgid "Skip"
+#~ msgstr "Přeskočit"
+
+#~ msgid "Slow Synchronization"
+#~ msgstr "Pomalá synchronizace"
+
+#~ msgid "Start Conduit at login"
+#~ msgstr "Spustit aplikaci Conduit při přihlášení"
+
+#~ msgid "Synchronization Options"
+#~ msgstr "Volby synchronizace"
+
+#~ msgid "Synchronize All"
+#~ msgstr "Synchronizovat vše"
+
+#~ msgid "Synchronize Group"
+#~ msgstr "Synchronizovat skupinu"
+
+#~ msgid "Synchronize group"
+#~ msgstr "Synchronizovat skupinu"
+
+#~ msgid "Synchronizes all groups"
+#~ msgstr "Synchronizuje všechny skupiny"
+
+#~ msgid "Title"
+#~ msgstr "Název"
+
+#~ msgid "Two-Way Synchronization"
+#~ msgstr "Obousměrná synchronizace"
+
+#~ msgid "When an item has been deleted:"
+#~ msgstr "Když byla položka vymazána:"
+
+#~ msgid "When an item is deleted..."
+#~ msgstr "Když je položka vymazána…"
+
+#~ msgid "When there is a conflict..."
+#~ msgstr "Když existuje konflikt…"
+
+#~ msgid "When there is a two-way conflict:"
+#~ msgstr "Když existuje obousměrný konflikt:"
+
+#~ msgid "_Edit"
+#~ msgstr "_Upravit"
+
+#~ msgid "_File"
+#~ msgstr "_Soubor"
+
+#~ msgid "_Help"
+#~ msgstr "_Nápověda"
+
+#~ msgid "<b>Account Details</b>"
+#~ msgstr "<b>Podrobnosti účtu</b>"
+
+#~ msgid "Calendar:"
+#~ msgstr "Kalendář:"
+
+#~ msgid "Email:"
+#~ msgstr "E-mail:"
+
+#~ msgid "Load Calendars"
+#~ msgstr "Načíst kalendáře"
+
+#~ msgid "Password:"
+#~ msgstr "Heslo:"
+
+#~ msgid "Backpack"
+#~ msgstr "Backpack"
+
+#~ msgid "Enabled"
+#~ msgstr "Povoleno"
+
+#~ msgid "Banshee"
+#~ msgstr "Banshee"
+
+#~ msgid "Folder:"
+#~ msgstr "Složka:"
+
+#~ msgid "Load"
+#~ msgstr "Načíst"
+
+#~ msgid "Addressbook:"
+#~ msgstr "Adresář:"
+
+#~ msgid "Evolution"
+#~ msgstr "Evolution"
+
+#~ msgid "<b>Items to Synchronize</b>"
+#~ msgstr "<b>Položky k synchronizaci</b>"
+
+#~ msgid "Add Directory"
+#~ msgstr "Přidat adresář"
+
+#~ msgid "Add File"
+#~ msgstr "Přidat soubor"
+
+#~ msgid "Advanced"
+#~ msgstr "Pokročilé"
+
+#~ msgid "File Configuration"
+#~ msgstr "Nastavení souboru"
+
+#~ msgid "Folder Configuration"
+#~ msgstr "Nastavení složky"
+
+#~ msgid "Folder Location:"
+#~ msgstr "Umístění složky:"
+
+#~ msgid "Follow Symbolic Links"
+#~ msgstr "Sledovat symbolické odkazy"
+
+#~ msgid "Include Hidden Files"
+#~ msgstr "Včetně skrytých souborů"
+
+#~ msgid "Select A Folder"
+#~ msgstr "Vybrat složku"
+
+#~ msgid "Photoset Name:"
+#~ msgstr "Název sady fotek:"
+
+#~ msgid "Create Tags: "
+#~ msgstr "Vytvořit značky: "
+
+#, fuzzy
+#~ msgid "Synchronize your desktop preferences"
+#~ msgstr "Synchronizovat nastavení pracovního prostředí"
+
+#~ msgid "<b>Downloaded Document Format</b>"
+#~ msgstr "<b>Formát staženého dokumentu</b>"
+
+#~ msgid "Presentations"
+#~ msgstr "Prezentace"
+
+#~ msgid "Spreadsheets"
+#~ msgstr "Tabulky"
+
+#~ msgid "<b>Download Videos</b>"
+#~ msgstr "<b>Stáhnout videa</b>"
+
+#~ msgid "Max retrieved videos (0 is unlimited):"
+#~ msgstr "Maximální počet zobrazených videí (0 = bez limitu)"
+
+#~ msgid "Top rated"
+#~ msgstr "Nejlépe hodnocené"
+
+#~ msgid "Uploaded by above user"
+#~ msgstr "Odesláno uživatelem výše"
+
+#~ msgid "YouTube Source"
+#~ msgstr "Zdroj Youtube"
+
+#~ msgid "<b>Encoding</b>"
+#~ msgstr "<b>Kódování</b>"
+
+#~ msgid "iPod Photos"
+#~ msgstr "Fotografie z iPodu"
+
+#~ msgid "%s Format (%s)"
+#~ msgstr "%s Formát (%s)"
+
+#~ msgid "unchanged"
+#~ msgstr "Nezměněno"
+
+#~ msgid "<b>Synchronize the Following Playlists</b>"
+#~ msgstr "<b>Synchronizovat následující seznamy skladeb</b>"
+
+#~ msgid "Rhythmbox Playlists"
+#~ msgstr "Seznamy skladeb Rhythmbox"
 
 #~ msgid "Slow Sync"
 #~ msgstr "Pomalá synchronizace"
