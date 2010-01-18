@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: conduit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=conduit&component=documentation and translation\n"
-"POT-Creation-Date: 2009-09-21 00:14+0000\n"
-"PO-Revision-Date: 2009-11-23 07:56+0100\n"
-"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"POT-Creation-Date: 2010-01-12 19:58+0000\n"
+"PO-Revision-Date: 2010-01-18 09:20+0100\n"
+"Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,206 +27,6 @@ msgstr "Usklajevalnik Conduit"
 #: ../data/conduit.desktop.in.in.h:2
 msgid "Synchronization for GNOME"
 msgstr "Usklajevalnik za GNOME"
-
-#: ../data/conduit.glade.h:1
-msgid "<b>Default Synchronization Options</b>"
-msgstr "<b>Privzete možnosti usklajevanja</b>"
-
-#: ../data/conduit.glade.h:2
-msgid "<b>General</b>"
-msgstr "<b>Splošno</b>"
-
-#: ../data/conduit.glade.h:3
-msgid "Always Up-To-Date"
-msgstr "Vedno posodobljeno"
-
-#: ../data/conduit.glade.h:4
-msgid "Ask Me What to Do"
-msgstr "Vprašaj kaj storiti"
-
-#: ../data/conduit.glade.h:5
-msgid "Ask me what to do"
-msgstr "Vprašaj kaj storiti"
-
-#: ../data/conduit.glade.h:6
-msgid "Cancel Synchronization"
-msgstr "Prekliči usklajevanje"
-
-#: ../data/conduit.glade.h:7
-msgid "Cancel currently-synchronizing groups"
-msgstr "Prekliči trenutno usklajevane skupine"
-
-#: ../data/conduit.glade.h:8
-msgid "Clear Canvas"
-msgstr "Počisti platno"
-
-#: ../data/conduit.glade.h:9
-msgid "Compare"
-msgstr "Primerjava"
-
-#: ../data/conduit.glade.h:10
-msgid "Conduit Preferences"
-msgstr "Nastavitve Conduit"
-
-#: ../data/conduit.glade.h:11
-msgid "Configuration"
-msgstr "Nastavitve"
-
-#: ../data/conduit.glade.h:12
-msgid "Configure Item"
-msgstr "Nastavi predmet"
-
-#: ../data/conduit.glade.h:13
-msgid "Configure the synchronization settings for this item"
-msgstr "Nastavi možnosti usklajevanja za ta predmet"
-
-#: ../data/conduit.glade.h:14
-msgid "Conflict Options"
-msgstr "Možnosti sporov"
-
-#: ../data/conduit.glade.h:15
-msgid "Conflicts"
-msgstr "Spori"
-
-#: ../data/conduit.glade.h:16
-msgid "Contents"
-msgstr "Vsebina"
-
-#: ../data/conduit.glade.h:17
-msgid "Data Conversions"
-msgstr "Pretvorba podatkov"
-
-#: ../data/conduit.glade.h:18
-msgid "Data Providers"
-msgstr "Ponudniki podatkov"
-
-#: ../data/conduit.glade.h:19
-msgid "Delete Group"
-msgstr "Izbriši skupino"
-
-#: ../data/conduit.glade.h:20
-msgid "Delete Item"
-msgstr "Izbriši predmet"
-
-#: ../data/conduit.glade.h:21
-msgid "Delete Options"
-msgstr "Možnosti brisanja"
-
-#: ../data/conduit.glade.h:22
-msgid "Delete from the corresponding sink"
-msgstr "Izbriši iz ustreznega korita"
-
-#: ../data/conduit.glade.h:23
-msgid "Delete the Corresponding Item"
-msgstr "Izbriši pripadajoči predmet"
-
-#: ../data/conduit.glade.h:24
-msgid "Editor"
-msgstr "Urejevalnik"
-
-#: ../data/conduit.glade.h:25
-msgid "Minimize to notification area"
-msgstr "Pomanjšaj v obvestilno področje"
-
-#: ../data/conduit.glade.h:26
-msgid "Refresh Group"
-msgstr "Osveži skupino"
-
-#: ../data/conduit.glade.h:27
-msgid "Refresh Item"
-msgstr "Osveži predmet"
-
-#: ../data/conduit.glade.h:28
-msgid "Replace the Older Item"
-msgstr "Zamenjaj starejši predmet"
-
-#: ../data/conduit.glade.h:29
-msgid "Replace the older item"
-msgstr "Zamenjaj starejši predmet"
-
-#: ../data/conduit.glade.h:30
-msgid "Resolve Conflicts"
-msgstr "Razreši spore"
-
-#: ../data/conduit.glade.h:31
-msgid "Save settings on exit"
-msgstr "Shrani nastavitve ob izhodu"
-
-#: ../data/conduit.glade.h:32
-msgid "Show Hints"
-msgstr "Prikaz namigov"
-
-#: ../data/conduit.glade.h:33
-msgid "Show status icon"
-msgstr "Prikaz ikone stanja"
-
-#: ../data/conduit.glade.h:34
-msgid "Skip"
-msgstr "Preskoči"
-
-#: ../data/conduit.glade.h:35
-msgid "Slow Synchronization"
-msgstr "Počasno usklajevanje"
-
-#: ../data/conduit.glade.h:36
-msgid "Start Conduit at login"
-msgstr "Zagon programa ob prijavi"
-
-#: ../data/conduit.glade.h:37
-msgid "Synchronization Options"
-msgstr "Možnosti usklajevanja"
-
-#: ../data/conduit.glade.h:38
-msgid "Synchronize All"
-msgstr "Uskladi vse"
-
-#: ../data/conduit.glade.h:39
-msgid "Synchronize Group"
-msgstr "Uskladi skupino"
-
-#: ../data/conduit.glade.h:40
-msgid "Synchronize group"
-msgstr "Uskladi skupino"
-
-#: ../data/conduit.glade.h:41
-msgid "Synchronizes all groups"
-msgstr "Uskladi vse skupine"
-
-#: ../data/conduit.glade.h:42
-msgid "Title"
-msgstr "Naslov"
-
-#: ../data/conduit.glade.h:43
-msgid "Two-Way Synchronization"
-msgstr "Dvosmerno usklajevanje"
-
-#: ../data/conduit.glade.h:44
-msgid "When an item has been deleted:"
-msgstr "Ko je bil predmet izbrisan:"
-
-#: ../data/conduit.glade.h:45
-msgid "When an item is deleted..."
-msgstr "Ko je predmet izbrisan ..."
-
-#: ../data/conduit.glade.h:46
-msgid "When there is a conflict..."
-msgstr "Ob sporu ..."
-
-#: ../data/conduit.glade.h:47
-msgid "When there is a two-way conflict:"
-msgstr "Ob dvosmernem sporu:"
-
-#: ../data/conduit.glade.h:48
-msgid "_Edit"
-msgstr "_Uredi"
-
-#: ../data/conduit.glade.h:49
-msgid "_File"
-msgstr "_Datoteka"
-
-#: ../data/conduit.glade.h:50
-msgid "_Help"
-msgstr "Pomo_č"
 
 #: ../conduit/Knowledge.py:8
 msgid "What Do You Want to Synchronize?"
@@ -252,19 +52,29 @@ msgstr "Sistem je pripravljen za usklajevanje"
 msgid "Right Click on Group for Options"
 msgstr "Desno kliknite na skupino za prikaz možnosti"
 
-#. source,sinc                            #comment
-#. twoway
-#: ../conduit/Knowledge.py:22
+#: ../conduit/Knowledge.py:24
 msgid "Synchronize Two Folders"
 msgstr "Usklajevanje dveh map"
 
-#: ../conduit/Knowledge.py:24
+#: ../conduit/Knowledge.py:27
 msgid "Backup Folder to Box.net"
 msgstr "Varnostna kopija mape na Box.net"
 
-#: ../conduit/Knowledge.py:26
+#: ../conduit/Knowledge.py:30
 msgid "Synchronize Tagged F-Spot Photos to Flickr"
 msgstr "Usklajevanje označenih F-Spot fotografij s Flicker-jem"
+
+#: ../conduit/Knowledge.py:33
+msgid "Synchronize Photos to Flickr"
+msgstr "Usklajevanje fotografij s Flicker-jem"
+
+#: ../conduit/Knowledge.py:36
+msgid "Upload Photos to Facebook"
+msgstr "Nalaganje fotografij na Facebook"
+
+#: ../conduit/Knowledge.py:39
+msgid "Synchronize Desktop Wallpaper from a RSS Feed"
+msgstr "Usklajevanje tapete namizja z vira RSS"
 
 #: ../conduit/Main.py:59
 msgid "Conduit is a synchronization application."
@@ -324,7 +134,7 @@ msgstr "Brez ustvarjanja podrobnosti razhroščevanja. [privzeto: %default]"
 
 #: ../conduit/dataproviders/DataProvider.py:22
 msgid "Ready"
-msgstr "Pripravljen"
+msgstr "Pripravljeno"
 
 #: ../conduit/dataproviders/DataProvider.py:23
 msgid "New data to sync"
@@ -399,7 +209,7 @@ msgstr "Datoteke in mape"
 #: ../conduit/dataproviders/__init__.py:7
 #: ../conduit/modules/iPodModule/iPodModule.py:179
 msgid "Notes"
-msgstr "Zapiski"
+msgstr "Opombe"
 
 #: ../conduit/dataproviders/__init__.py:8
 #: ../conduit/modules/iPodModule/iPodModule.py:367
@@ -416,7 +226,7 @@ msgstr "Nastavitve"
 
 #: ../conduit/dataproviders/__init__.py:11
 msgid "Miscellaneous"
-msgstr "Različno"
+msgstr "Razno"
 
 #: ../conduit/dataproviders/__init__.py:12
 msgid "Media"
@@ -477,103 +287,103 @@ msgstr "Dokumentacija API "
 msgid "Test Results"
 msgstr "Rezultati preizkusa"
 
-#: ../conduit/gtkui/UI.py:129
-#, python-format
-msgid " - %s (Development Version)"
-msgstr " - %s (razvojna različica)"
-
-#: ../conduit/gtkui/UI.py:131
-msgid " - Running Uninstalled"
-msgstr " - zagnano nenameščeno"
-
-#: ../conduit/gtkui/UI.py:165
+#: ../conduit/gtkui/UI.py:52
 msgid "Examples"
 msgstr "Primeri"
 
-#: ../conduit/gtkui/UI.py:177
-msgid "Developers"
-msgstr "Razvijalci"
-
 #. Build some liststores to display
-#: ../conduit/gtkui/UI.py:318
+#: ../conduit/gtkui/UI.py:139
 msgid "Convert from"
 msgstr "Pretvori iz"
 
-#: ../conduit/gtkui/UI.py:319
+#: ../conduit/gtkui/UI.py:140
 msgid "into"
 msgstr "v"
 
-#: ../conduit/gtkui/UI.py:370
+#: ../conduit/gtkui/UI.py:190
 msgid "Relationship Database"
 msgstr "Relacijska podatkovna zbirka"
 
-#: ../conduit/gtkui/UI.py:374
+#: ../conduit/gtkui/UI.py:194
 msgid "Conversions Available"
 msgstr "Pretvorbe na voljo"
 
-#: ../conduit/gtkui/UI.py:380
-#: ../conduit/gtkui/Tree.py:348
+#: ../conduit/gtkui/UI.py:200
+#: ../conduit/gtkui/Tree.py:355
 #: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
 msgstr "Ime"
 
-#: ../conduit/gtkui/UI.py:384
+#: ../conduit/gtkui/UI.py:204
 msgid "Loaded"
 msgstr "Naloženo"
 
-#: ../conduit/gtkui/UI.py:512
+#: ../conduit/gtkui/UI.py:329
+#, python-format
+msgid " - %s (Development Version)"
+msgstr " - %s (razvojna različica)"
+
+#: ../conduit/gtkui/UI.py:331
+msgid " - Running Uninstalled"
+msgstr " - zagnano nenameščeno"
+
+#: ../conduit/gtkui/UI.py:375
+msgid "Developers"
+msgstr "Razvijalci"
+
+#: ../conduit/gtkui/UI.py:539
 #: ../conduit/hildonui/UI.py:127
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "Usklajevanje je v teku. Ali ga želite preklicati?"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:711
 msgid "_Synchronize All"
 msgstr "_Uskladi vse"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:711
 msgid "Synchronizes All Groups"
-msgstr "Usklajevanje vseh skupin"
+msgstr "Uskladi vse skupine"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:712
 msgid "_Cancel Synchronization"
 msgstr "_Prekliči usklajevanje"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:712
 msgid "Cancels Currently Synchronizing Groups"
 msgstr "Preklic trenutno usklajevanih skupin"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:713
 msgid "_Quit"
 msgstr "_Končaj"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:713
 msgid "Close Conduit"
 msgstr "Zapri program"
 
-#: ../conduit/gtkui/UI.py:726
+#: ../conduit/gtkui/UI.py:753
 msgid "Synchronization Error"
 msgstr "Napaka usklajevanja"
 
-#: ../conduit/gtkui/UI.py:729
+#: ../conduit/gtkui/UI.py:756
 msgid "Synchronization Complete"
 msgstr "Usklajevanje je končano"
 
-#: ../conduit/gtkui/UI.py:745
+#: ../conduit/gtkui/UI.py:764
 msgid "Synchronizing"
 msgstr "Usklajevanje"
 
-#: ../conduit/gtkui/Tree.py:357
+#: ../conduit/gtkui/Tree.py:364
 msgid "Description"
 msgstr "Opis"
 
-#: ../conduit/gtkui/ConfigItems.py:734
+#: ../conduit/gtkui/ConfigItems.py:733
 #, python-format
 msgid "Total: %d"
 msgstr "Skupaj: %d"
 
 #: ../conduit/gtkui/WindowConfigurator.py:14
 msgid "Configure"
-msgstr "Nastavi"
+msgstr "Nastavitve"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:58
 msgid "Backpack Notes"
@@ -873,7 +683,7 @@ msgstr "Uporabniško ime"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:319
 msgid "Authenticate"
-msgstr "Overitev"
+msgstr "Overi"
 
 #: ../conduit/modules/FlickrModule/FlickrModule.py:323
 #: ../conduit/modules/ZotoModule/ZotoModule.py:251
@@ -983,7 +793,6 @@ msgid "Password"
 msgstr "Geslo"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:399
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
 msgstr "Google koledar"
 
@@ -1022,7 +831,7 @@ msgstr "Neznano"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1323
 msgid "miscellaneous"
-msgstr "različno"
+msgstr "razno"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1324
 msgid "No description."
@@ -1035,26 +844,6 @@ msgstr "YouTube"
 #: ../conduit/modules/GoogleModule/GoogleModule.py:1334
 msgid "Synchronize data from YouTube"
 msgstr "Usklajevanje podatkov z Youtube"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-msgid "<b>Account Details</b>"
-msgstr "<b>Podrobnosti računa</b>"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
-msgid "Calendar:"
-msgstr "Koledar:"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
-msgid "Email:"
-msgstr "E-pošta:"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:5
-msgid "Load Calendars"
-msgstr "Naloži koledarje"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
-msgid "Password:"
-msgstr "Geslo:"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:180
 msgid "Synchronize your iPod notes"
@@ -1269,6 +1058,116 @@ msgstr "Zoto"
 msgid "Synchronize your Zoto photos"
 msgstr "Usklajevanje fotografij Zoto"
 
+#~ msgid "<b>Default Synchronization Options</b>"
+#~ msgstr "<b>Privzete možnosti usklajevanja</b>"
+#~ msgid "<b>General</b>"
+#~ msgstr "<b>Splošno</b>"
+#~ msgid "Always Up-To-Date"
+#~ msgstr "Vedno posodobljeno"
+#~ msgid "Ask Me What to Do"
+#~ msgstr "Vprašaj kaj storiti"
+#~ msgid "Ask me what to do"
+#~ msgstr "Vprašaj kaj storiti"
+#~ msgid "Cancel Synchronization"
+#~ msgstr "Prekliči usklajevanje"
+#~ msgid "Cancel currently-synchronizing groups"
+#~ msgstr "Prekliči trenutno usklajevane skupine"
+#~ msgid "Clear Canvas"
+#~ msgstr "Počisti platno"
+#~ msgid "Compare"
+#~ msgstr "Primerjava"
+#~ msgid "Conduit Preferences"
+#~ msgstr "Možnosti Conduit"
+#~ msgid "Configuration"
+#~ msgstr "Nastavitve"
+#~ msgid "Configure Item"
+#~ msgstr "Nastavi predmet"
+#~ msgid "Configure the synchronization settings for this item"
+#~ msgstr "Nastavi možnosti usklajevanja za ta predmet"
+#~ msgid "Conflict Options"
+#~ msgstr "Možnosti sporov"
+#~ msgid "Conflicts"
+#~ msgstr "Spori"
+#~ msgid "Contents"
+#~ msgstr "Vsebina"
+#~ msgid "Data Conversions"
+#~ msgstr "Pretvorba podatkov"
+#~ msgid "Data Providers"
+#~ msgstr "Ponudnik podatkov"
+#~ msgid "Delete Group"
+#~ msgstr "Izbriši skupino"
+#~ msgid "Delete Item"
+#~ msgstr "Izbriši predmet"
+#~ msgid "Delete Options"
+#~ msgstr "Možnosti brisanja"
+#~ msgid "Delete from the corresponding sink"
+#~ msgstr "Izbriši iz ustreznega korita"
+#~ msgid "Delete the Corresponding Item"
+#~ msgstr "Izbriši pripadajoči predmet"
+#~ msgid "Editor"
+#~ msgstr "Urejevalnik"
+#~ msgid "Minimize to notification area"
+#~ msgstr "Pomanjšaj v obvestilno področje"
+#~ msgid "Refresh Group"
+#~ msgstr "Osveži skupino"
+#~ msgid "Refresh Item"
+#~ msgstr "Osveži predmet"
+#~ msgid "Replace the Older Item"
+#~ msgstr "Zamenjaj starejši predmet"
+#~ msgid "Replace the older item"
+#~ msgstr "Zamenjaj starejši predmet"
+#~ msgid "Resolve Conflicts"
+#~ msgstr "Razreši spore"
+#~ msgid "Save settings on exit"
+#~ msgstr "Shrani nastavitve ob izhodu"
+#~ msgid "Show Hints"
+#~ msgstr "Pokaži namige"
+#~ msgid "Show status icon"
+#~ msgstr "Pokaži ikono stanja"
+#~ msgid "Skip"
+#~ msgstr "Preskoči"
+#~ msgid "Slow Synchronization"
+#~ msgstr "Počasno usklajevanje"
+#~ msgid "Start Conduit at login"
+#~ msgstr "Zagon programa ob prijavi"
+#~ msgid "Synchronization Options"
+#~ msgstr "Možnosti usklajevanja"
+#~ msgid "Synchronize All"
+#~ msgstr "Uskladi vse"
+#~ msgid "Synchronize Group"
+#~ msgstr "Uskladi skupino"
+#~ msgid "Synchronize group"
+#~ msgstr "Uskladi skupino"
+#~ msgid "Synchronizes all groups"
+#~ msgstr "Uskladi vse skupine"
+#~ msgid "Title"
+#~ msgstr "Naslov"
+#~ msgid "Two-Way Synchronization"
+#~ msgstr "Dvosmerno usklajevanje"
+#~ msgid "When an item has been deleted:"
+#~ msgstr "Ko je bil predmet izbrisan:"
+#~ msgid "When an item is deleted..."
+#~ msgstr "Ko je predmet izbrisan ..."
+#~ msgid "When there is a conflict..."
+#~ msgstr "Ob sporu ..."
+#~ msgid "When there is a two-way conflict:"
+#~ msgstr "Ob dvosmernem sporu:"
+#~ msgid "_Edit"
+#~ msgstr "_Uredi"
+#~ msgid "_File"
+#~ msgstr "_Datoteka"
+#~ msgid "_Help"
+#~ msgstr "Pomo_č"
+#~ msgid "<b>Account Details</b>"
+#~ msgstr "<b>Podrobnosti računa</b>"
+#~ msgid "Calendar:"
+#~ msgstr "Koledar:"
+#~ msgid "Email:"
+#~ msgstr "E-pošta:"
+#~ msgid "Load Calendars"
+#~ msgstr "Naloži koledarje"
+#~ msgid "Password:"
+#~ msgstr "Geslo:"
 #~ msgid "Slow Sync"
 #~ msgstr "Počasno usklajevanje"
 #~ msgid "Sync Options"
@@ -1340,7 +1239,7 @@ msgstr "Usklajevanje fotografij Zoto"
 #~ msgid "Create Tags: "
 #~ msgstr "Ustvari oznake:"
 #~ msgid "Sync your desktop preferences"
-#~ msgstr "Uskladi lastnosti namizja"
+#~ msgstr "Uskladi možnosti namizja"
 #~ msgid "Sync contacts from Google"
 #~ msgstr "Uskladi stike z Googlom"
 #~ msgid "<b>Donwload Videos</b>"
