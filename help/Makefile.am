@@ -4,7 +4,7 @@ dist-hook: doc-dist-hook
 DOC_MODULE = conduit
 DOC_ENTITIES = 
 DOC_INCLUDES = 
-DOC_LINGUAS = de el es fr
+DOC_LINGUAS = de el es fr zh_CN
 
 DOC_FIGURES = \
     figures/conduit-login.png \
