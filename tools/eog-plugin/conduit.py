@@ -19,8 +19,8 @@ SUPPORTED_SINKS = {
     "FacebookSink"      :   "Upload to Facebook",
     "IPodPhotoSink"     :   "Add to iPod"
 }
-if DEBUG:
-    SUPPORTED_SINKS["TestImageSink"] = "Test Image Sink"
+#if DEBUG:
+#    SUPPORTED_SINKS["TestImageSink"] = "Test Image Sink"
 
 class EogConduitWrapper(libconduit.ConduitWrapper):
 

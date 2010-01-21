@@ -45,8 +45,8 @@ SUPPORTED_SINKS = {
     "BoxDotNetTwoWay"   :   "Upload to Box.net",
     "FolderTwoWay"      :   "Synchronize with Another Folder"
 }
-if DEBUG:
-    SUPPORTED_SINKS["TestFileSink"] = "Test"
+#if DEBUG:
+#    SUPPORTED_SINKS["TestFileSink"] = "Test"
 
 class ItemCallbackHandler:
     """
