@@ -1,3 +1,6 @@
+NEW in 0.3.18:
+==============
+
 NEW in 0.3.17:
 ==============
  * Fix dbus and configuration, install eog and nautilus extensions by default
