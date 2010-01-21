@@ -5,7 +5,7 @@ data/conduit.desktop.in
 tools/eog-plugin/conduit.py
 tools/totem-plugin/conduit.py
 tools/test-db-wrapper/main.ui
-conduit/modules/SynceModule.py
+conduit/modules/TestModule.py
 conduit/modules/SettingsModule/GConfUtils.py
 conduit/modules/SettingsModule/layout_loader.py
 conduit/modules/SettingsModule/layout_save.py
@@ -15,6 +15,7 @@ conduit/modules/UNSUPPORTED/PicasaDesktopModule/PicasaDesktopModule.py
 conduit/modules/UNSUPPORTED/PicasaDesktopModule/config.glade
 conduit/modules/UNSUPPORTED/RhythmboxDBusModule/RhythmboxDBusModule.py
 conduit/modules/UNSUPPORTED/RhythmboxDBusModule/config.glade
+conduit/modules/UNSUPPORTED/SynceModule.py
 
 
 
