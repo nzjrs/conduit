@@ -4,7 +4,7 @@ from common import *
 import conduit.dataproviders.File as FileDataProvider
 import conduit.datatypes.File as File
 import conduit.utils as Utils
-import conduit.Vfs as Vfs
+import conduit.vfs as Vfs
 
 GROUP_NAME = "Cheese"
 NESTED_DIR_NAME = "A Directory"

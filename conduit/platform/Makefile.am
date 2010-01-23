@@ -1,8 +1,6 @@
 conduitdir = $(pythondir)/conduit/platform
 conduit_PYTHON = \
 	__init__.py				\
-	FileGio.py				\
-	FilePython.py			\
 	SettingsGConf.py		\
 	SettingsPython.py		\
 	WebBrowserWebkit.py		\

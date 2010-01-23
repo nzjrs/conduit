@@ -7,7 +7,8 @@ import conduit
 import conduit.dataproviders.DataProvider as DataProvider
 import conduit.datatypes as DataType
 import conduit.datatypes.File as File
-import conduit.Vfs as Vfs
+import conduit.vfs as Vfs
+import conduit.vfs.File as VfsFile
 import conduit.Database as DB
 import conduit.Exceptions as Exceptions
 
@@ -72,7 +73,7 @@ def read_removable_volume_group_file(folderUri):
                     items.append((p,n))
     return items
 
-class FileSource(DataProvider.DataSource, Vfs.FolderScannerThreadManager):
+class FileSource(DataProvider.DataSource, VfsFile.FolderScannerThreadManager):
 
     _category_ = conduit.dataproviders.CATEGORY_FILES
     _module_type_ = "source"
@@ -82,7 +83,7 @@ class FileSource(DataProvider.DataSource, Vfs.FolderScannerThreadManager):
     
     def __init__(self):
         DataProvider.DataSource.__init__(self)
-        Vfs.FolderScannerThreadManager.__init__(self)
+        VfsFile.FolderScannerThreadManager.__init__(self)
 
         #One table stores the top level files and folders (config)
         #The other stores all files to sync. 
@@ -253,7 +254,7 @@ class FolderTwoWay(DataProvider.TwoWay):
         self.fstype = Vfs.uri_get_filesystem_type(self.folder)
 
         #scan the folder
-        scanThread = Vfs.FolderScanner(self.folder, self.includeHidden, self.followSymlinks)
+        scanThread = VfsFile.FolderScanner(self.folder, self.includeHidden, self.followSymlinks)
         scanThread.start()
         scanThread.join()
         self.files = scanThread.get_uris()

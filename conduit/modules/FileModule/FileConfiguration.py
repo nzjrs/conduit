@@ -5,7 +5,8 @@ import logging
 log = logging.getLogger("modules.File")
 
 import conduit
-import conduit.Vfs as Vfs
+import conduit.vfs as Vfs
+import conduit.vfs.File as VfsFile
 import conduit.gtkui.Database as Database
 import conduit.dataproviders.File as FileDataProvider
 import conduit.Configurator as Configurator
@@ -18,7 +19,7 @@ CONTAINS_NUM_ITEMS_IDX = 3      #(folder only) How many items in the folder
 SCAN_COMPLETE_IDX = 4           #(folder only) HAs the folder been recursively scanned
 GROUP_NAME_IDX = 5              #(folder only) The visible identifier for the folder
 
-class _FileSourceConfigurator(Vfs.FolderScannerThreadManager, Configurator.BaseConfigContainer):
+class _FileSourceConfigurator(VfsFile.FolderScannerThreadManager, Configurator.BaseConfigContainer):
     """
     Configuration dialog for the FileTwoway dataprovider
     """
@@ -30,7 +31,7 @@ class _FileSourceConfigurator(Vfs.FolderScannerThreadManager, Configurator.BaseC
         pass        
 
     def __init__(self, dataprovider, configurator, db):
-        Vfs.FolderScannerThreadManager.__init__(self)
+        VfsFile.FolderScannerThreadManager.__init__(self)
         Configurator.BaseConfigContainer.__init__(self, dataprovider, configurator)
         self.db = db
         self.tree_model = Database.GenericDBListStore("config", self.db)

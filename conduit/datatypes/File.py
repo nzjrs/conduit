@@ -8,7 +8,9 @@ log = logging.getLogger("datatypes.File")
 
 import conduit
 import conduit.datatypes.DataType as DataType
-import conduit.Vfs as Vfs
+import conduit.vfs as Vfs
+import conduit.vfs.File as VfsFile
+
 
 class FileTransferError(Exception):
     pass
@@ -28,20 +30,8 @@ class File(DataType.DataType):
           - group: A named group to which this file belongs
         """
         DataType.DataType.__init__(self)
-        
-        #you can override the file implmentation at runtime
-        #for testing purposes only
-        implName = kwargs.get("implName", conduit.FILE_IMPL)
-        if implName == "GIO":
-            import conduit.platform.FileGio as FileImpl
-            self.FileImpl = FileImpl
-        elif implName == "Python":
-            import conduit.platform.FilePython as FileImpl
-            self.FileImpl = FileImpl
-        else:
-            raise Exception("File Implementation %s Not Supported" % implName)
-            
-        self._file = self.FileImpl.FileImpl(URI)
+
+        self._file = VfsFile.File(URI)
         
         #optional args
         self.basePath = kwargs.get("basepath","")
@@ -125,9 +115,6 @@ class File(DataType.DataType):
             return newuri
         else:
             return olduri
-
-    def _get_impl(self):
-        return self._file
 
     def set_from_instance(self, f):
         """
@@ -232,7 +219,7 @@ class File(DataType.DataType):
 
         @type newURIString: C{string}
         """
-        trans = self.FileImpl.FileTransferImpl(
+        trans = VfsFile.FileTransfer(
                                 source=self._file,
                                 dest=newURIString)
         
@@ -442,18 +429,7 @@ class File(DataType.DataType):
         fd, name = tempfile.mkstemp(prefix="netsync")
         os.write(fd, data['data'])
         os.close(fd)
-
-        implName = conduit.FILE_IMPL
-        if implName == "GIO":
-            import conduit.platform.FileGio as FileImpl
-            self.FileImpl = FileImpl
-        elif implName == "Python":
-            import conduit.platform.FilePython as FileImpl
-            self.FileImpl = FileImpl
-        else:
-            raise Exception("File Implementation %s Not Supported" % implName)
-        
-        self._file = self.FileImpl.FileImpl(name)
+        self._file = VfsFile.File(name)
         self.basePath = data['basePath']
         self.group = data['group']
         self._defer_rename(data['filename'])

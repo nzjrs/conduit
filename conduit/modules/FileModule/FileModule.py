@@ -10,7 +10,9 @@ import conduit.dataproviders.File as FileDataProvider
 import conduit.dataproviders.SimpleFactory as SimpleFactory
 import conduit.dataproviders.AutoSync as AutoSync
 import conduit.utils as Utils
-import conduit.Vfs as Vfs
+import conduit.vfs as Vfs
+import conduit.vfs.File as VfsFile
+import conduit.vfs.Monitor as VfsMonitor
 
 MODULES = {
     "FileSource" :              { "type": "dataprovider" },
@@ -105,7 +107,7 @@ class FolderTwoWay(FileDataProvider.FolderTwoWay, AutoSync.AutoSync):
         )     
         AutoSync.AutoSync.__init__(self)
 
-        self._monitor = Vfs.FileMonitor()
+        self._monitor = VfsMonitor.FileMonitor()
         self._monitor.connect("changed", self._monitor_folder_cb)
 
         self.update_configuration(
@@ -157,7 +159,7 @@ class RemovableDeviceFactory(SimpleFactory.SimpleFactory):
         SimpleFactory.SimpleFactory.__init__(self, **kwargs)
         self._volumes = {}
         self._categories = {}
-        self._vm = Vfs.VolumeMonitor()
+        self._vm = VfsMonitor.VolumeMonitor()
         self._vm.connect("volume-mounted",self._volume_mounted_cb)
         self._vm.connect("volume-unmounted",self._volume_unmounted_cb)
 

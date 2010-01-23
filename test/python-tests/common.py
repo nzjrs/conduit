@@ -23,7 +23,6 @@ conduit.IS_INSTALLED =              False
 conduit.IS_DEVELOPMENT_VERSION =    True
 conduit.SHARED_DATA_DIR =           os.path.join(base_path,"data")
 conduit.SHARED_MODULE_DIR =         os.path.join(base_path,"conduit","modules")
-conduit.FILE_IMPL =                 os.environ.get("CONDUIT_FILE_IMPL","GIO")
 conduit.BROWSER_IMPL =              os.environ.get("CONDUIT_BROWSER_IMPL","system")
 conduit.SETTINGS_IMPL =             os.environ.get("CONDUIT_SETTINGS_IMPL","GConf")
 conduit.GLOBALS.settings =          Settings.Settings()
@@ -33,7 +32,7 @@ import conduit.Logging as Logging
 Logging.enable_debugging()
 
 import conduit.utils as Utils
-import conduit.Vfs as Vfs
+import conduit.vfs as Vfs
 import conduit.Module as Module
 import conduit.TypeConverter as TypeConverter
 import conduit.Synchronization as Synchronization
@@ -578,7 +577,8 @@ class SimpleSyncTest(SimpleTest):
     def get_source_count(self):
         try:
             self.source.module.refresh()
-        except Exception: pass
+        except Exception, e:
+            print e
 
         return self.source.module.get_num_items()
 

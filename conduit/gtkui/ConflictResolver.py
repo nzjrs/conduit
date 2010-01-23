@@ -14,7 +14,7 @@ log = logging.getLogger("gtkui.ConflictResolver")
 
 import conduit
 import conduit.dataproviders.DataProvider as DataProvider
-import conduit.Vfs as Vfs
+import conduit.vfs as Vfs
 import conduit.Conflict as Conflict
 
 from gettext import gettext as _

@@ -38,7 +38,6 @@ def make_testcase(src, src_data, snk, snk_data):
             conduit.IS_DEVELOPMENT_VERSION =    True
             conduit.SHARED_DATA_DIR =           os.path.join(soup.get_root(),"data")
             conduit.SHARED_MODULE_DIR =         os.path.join(soup.get_root(),"conduit","modules")
-            conduit.FILE_IMPL =                 os.environ.get("CONDUIT_FILE_IMPL","GIO")
             conduit.BROWSER_IMPL =              os.environ.get("CONDUIT_BROWSER_IMPL","system")
             conduit.SETTINGS_IMPL =             os.environ.get("CONDUIT_SETTINGS_IMPL","Python")
             conduit.GLOBALS.settings =          Settings.Settings()

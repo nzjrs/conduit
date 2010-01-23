@@ -11,9 +11,6 @@ DESKTOP_FILE_DIR = "@DESKTOPFILEDIR@"
 # Platform specific implementations
 #
 
-#{GIO, Python}
-FILE_IMPL = "@FILE_IMPL@"
-
 #{gtkmozembed, webkit, system}
 BROWSER_IMPL = "@BROWSER_IMPL@"
 

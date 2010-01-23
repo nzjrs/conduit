@@ -1,13 +1,12 @@
 import gio
-
-import conduit.platform
-
+import gobject
+import time
+import threading
 import os.path
 import logging
-log = logging.getLogger("platform.FileGio")
+log = logging.getLogger("vfs.File")
 
-class FileImpl(conduit.platform.File):
-    SCHEMES = ("file://","http://","ftp://","smb://")
+class File:
     NAME = "GIO"
     def __init__(self, URI, impl=None):
         if impl:
@@ -207,7 +206,7 @@ class FileImpl(conduit.platform.File):
         f = gio.File(URI)
         return f.get_uri_scheme()
 
-class FileTransferImpl(conduit.platform.FileTransfer):
+class FileTransfer:
     def __init__(self, source, dest):
         self._source = source._file
         self._dest = gio.File(dest)
@@ -252,7 +251,7 @@ class FileTransferImpl(conduit.platform.FileTransfer):
             parent.query_info("standard::name")
         except gio.Error, e:
             #does not exists
-            d = FileImpl(None, impl=parent)
+            d = File(None, impl=parent)
             d.make_directory_and_parents()
 
         #Copy the file
@@ -263,68 +262,42 @@ class FileTransferImpl(conduit.platform.FileTransfer):
                         cancellable=self._cancellable,
                         progress_callback=self._xfer_progress_callback
                         )
-            return ok, FileImpl(None, impl=self._dest)
+            return ok, File(None, impl=self._dest)
         except gio.Error, e:
             log.warn("File transfer error: %s" % e)
             return False, None
 
-class VolumeMonitor(conduit.platform.VolumeMonitor):
+class FolderScanner(threading.Thread, gobject.GObject):
+    """
+    Recursively scans a given folder URI, returning the number of
+    contained files.
+    """
 
-    def __init__(self):
-        conduit.platform.VolumeMonitor.__init__(self)
-        self._vm = gio.volume_monitor_get()
-        self._vm.connect("mount-added", self._mounted_cb)
-        self._vm.connect("mount-removed", self._unmounted_cb)
+    __gsignals__ =  { 
+                    "scan-progress": (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, [
+                        gobject.TYPE_INT]),
+                    "scan-completed": (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, [])
+                    }
+    CONFIG_FILE_NAME = ".conduit.conf"
 
-    def _mounted_cb(self, sender, mount):
-        self.emit("volume-mounted", 
-            mount.get_uuid(),
-            mount.get_root().get_uri(),
-            mount.get_name())
+    def __init__(self, baseURI, includeHidden, followSymlinks):
+        threading.Thread.__init__(self)
+        gobject.GObject.__init__(self)
+        self.baseURI = str(baseURI)
+        self.includeHidden = includeHidden
+        self.followSymlinks = followSymlinks
+        self.dirs = [self.baseURI]
+        self.cancelled = False
+        self.URIs = []
+        self.setName("FolderScanner Thread: %s" % self.baseURI)
 
-    def _unmounted_cb(self, sender, mount):
-        self.emit("volume-unmounted", mount.get_uuid())
-
-    def get_mounted_volumes(self):
-        vols = {}
-        for m in self._vm.get_mounts():
-            vols[m.get_uuid()] = (m.get_root().get_uri(), m.get_name())
-        return vols
-
-class FileMonitor(conduit.platform.FileMonitor):
-
-    MONITOR_EVENT_CREATED =             gio.FILE_MONITOR_EVENT_CREATED
-    MONITOR_EVENT_CHANGED =             gio.FILE_MONITOR_EVENT_CHANGED
-    MONITOR_EVENT_DELETED =             gio.FILE_MONITOR_EVENT_DELETED
-    MONITOR_DIRECTORY =                 255
-
-    def __init__(self):
-        conduit.platform.FileMonitor.__init__(self)
-        self._fm = None
-
-    def _on_change(self, monitor, f1, f2, event):
-        self.emit("changed", f1.get_uri(), event)
-
-    def add(self, URI, monitorType):
-        try:
-            if monitorType == self.MONITOR_DIRECTORY:
-                self._fm = gio.File(URI).monitor_directory()
-            else:
-                self._fm = gio.File(URI).monitor_file()
-
-            self._fm.connect("changed", self._on_change)
-        except gio.Error:
-            log.warn("Could not add monitor", exc_info=True)
-
-    def cancel(self):
-        if self._fm:
-            try:
-                self._fm.disconnect_by_func(self._on_change)
-            except TypeError:
-                pass
-            
-class FolderScanner(conduit.platform.FolderScanner):
     def run(self):
+        """
+        Recursively adds all files in dirs within the given list.
+        
+        Code adapted from Listen (c) 2006 Mehdi Abaakouk
+        (http://listengnome.free.fr/)
+        """
         delta = 0
         t = 1
         last_estimated = estimated = 0 
@@ -382,4 +355,93 @@ class FolderScanner(conduit.platform.FolderScanner):
         total = len(self.URIs)
         log.debug("%s files loaded" % total)
         self.emit("scan-completed")
+
+    def cancel(self):
+        """
+        Cancels the thread as soon as possible.
+        """
+        self.cancelled = True
+
+    def get_uris(self):
+        return self.URIs
+
+class FolderScannerThreadManager:
+    """
+    Manages many FolderScanner threads. This involves joining and cancelling
+    said threads, and respecting a maximum num of concurrent threads limit
+    """
+    def __init__(self, maxConcurrentThreads=2):
+        self.maxConcurrentThreads = maxConcurrentThreads
+        self.scanThreads = {}
+        self.pendingScanThreadsURIs = []
+
+    def make_thread(self, folderURI, includeHidden, followSymlinks, progressCb, completedCb, *args):
+        """
+        Makes a thread for scanning folderURI. The thread callsback the model
+        at regular intervals with the supplied args
+        """
+        running = len(self.scanThreads) - len(self.pendingScanThreadsURIs)
+
+        if folderURI not in self.scanThreads:
+            thread = FolderScanner(folderURI, includeHidden, followSymlinks)
+            thread.connect("scan-progress", progressCb, *args)
+            thread.connect("scan-completed", completedCb, *args)
+            thread.connect("scan-completed", self._register_thread_completed, folderURI)
+            self.scanThreads[folderURI] = thread
+            if running < self.maxConcurrentThreads:
+                log.debug("Starting thread %s" % folderURI)
+                self.scanThreads[folderURI].start()
+            else:
+                self.pendingScanThreadsURIs.append(folderURI)
+            return thread
+        else:
+            return self.scanThreads[folderURI]
+
+    def _register_thread_completed(self, sender, folderURI):
+        """
+        Decrements the count of concurrent threads and starts any 
+        pending threads if there is space
+        """
+        #delete the old thread
+        del(self.scanThreads[folderURI])
+        running = len(self.scanThreads) - len(self.pendingScanThreadsURIs)
+
+        log.debug("Thread %s completed. %s running, %s pending" % (folderURI, running, len(self.pendingScanThreadsURIs)))
+
+        if running < self.maxConcurrentThreads:
+            try:
+                uri = self.pendingScanThreadsURIs.pop()
+                log.debug("Starting pending thread %s" % uri)
+                self.scanThreads[uri].start()
+            except IndexError: pass
+
+    def join_all_threads(self):
+        """
+        Joins all threads (blocks)
+
+        Unfortunately we join all the threads do it in a loop to account
+        for join() a non started thread failing. To compensate I time.sleep()
+        to not smoke CPU
+        """
+        joinedThreads = 0
+        while(joinedThreads < len(self.scanThreads)):
+            for thread in self.scanThreads.values():
+                try:
+                    thread.join()
+                    joinedThreads += 1
+                except (RuntimeError, AssertionError):
+                    #deal with not started threads
+                    time.sleep(0.1)
+
+    def cancel_all_threads(self):
+        """
+        Cancels all threads ASAP. My block for a small period of time
+        because we use our own cancel method
+        """
+        for thread in self.scanThreads.values():
+            if thread.isAlive():
+                log.debug("Cancelling thread %s" % thread)
+                thread.cancel()
+            thread.join() #May block
+
 

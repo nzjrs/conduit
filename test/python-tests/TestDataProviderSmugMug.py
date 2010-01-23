@@ -5,7 +5,7 @@ import traceback
 
 import conduit.datatypes.File as File
 import conduit.utils as Utils
-import conduit.Vfs as Vfs
+import conduit.vfs as Vfs
 
 if not is_online():
     skip()

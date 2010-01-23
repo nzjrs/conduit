@@ -1,4 +1,4 @@
-SUBDIRS = datatypes dataproviders modules gtkui hildonui utils platform
+SUBDIRS = datatypes dataproviders modules gtkui hildonui utils platform vfs
 
 conduitbindir = $(bindir)
 conduitbin_SCRIPTS = \
@@ -28,7 +28,6 @@ conduit_PYTHON = \
 	Synchronization.py \
 	SyncSet.py \
 	TypeConverter.py \
-	Vfs.py \
 	Web.py \
 	XMLSerialization.py
 	

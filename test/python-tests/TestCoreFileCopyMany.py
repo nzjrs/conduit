@@ -1,7 +1,8 @@
 #common sets up the conduit environment
 from common import *
 
-import conduit.Vfs as Vfs
+import conduit.vfs as Vfs
+import conduit.vfs.File as VfsFile
 import conduit.utils as Utils
 import conduit.datatypes.File as File
 
@@ -43,8 +44,8 @@ for music in lines:
                 sinkDir,
                 Vfs.uri_get_relative(sourceDir, music))
 
-    xfer = Vfs.FileTransfer(
-                    File.File(music)._get_impl(),
+    xfer = VfsFile.FileTransfer(
+                    VfsFile.File(music),
                     dest)
     i = xfer.transfer(False, None)[0]
     if not i:
@@ -55,7 +56,7 @@ wait_seconds(2)
 def prog(*args): pass
 def done(*args): pass
 
-stm = Vfs.FolderScannerThreadManager(maxConcurrentThreads=1)
+stm = VfsFile.FolderScannerThreadManager(maxConcurrentThreads=1)
 t1 = stm.make_thread(sourceDir, True, True, prog, done)
 t2 = stm.make_thread(sinkDir, True, True, prog, done)
 stm.join_all_threads()

@@ -25,20 +25,6 @@ GNOME_DOC_INIT
 AM_PATH_PYTHON(2.4)
 
 ################################################################################
-# File Implementation
-################################################################################
-FILE_IMPL="GIO"
-
-AC_ARG_WITH([file_impl],
-            AC_HELP_STRING([--with-file-impl], [GIO (default), Python]))
-
-if test "$with_file_impl" = "Python" ; then
-	FILE_IMPL=$with_file_impl
-fi
-
-AC_SUBST(FILE_IMPL)
-
-################################################################################
 # Browser Implementation
 ################################################################################
 BROWSER_IMPL="webkit"
@@ -60,10 +46,7 @@ AM_CHECK_PYMOD([vobject], , , AC_MSG_ERROR([Python module vobject required to ru
 AM_CHECK_PYMOD([dateutil], , , AC_MSG_ERROR([Python module dateutil required to run Conduit]))
 AM_CHECK_PYMOD_VERSION([goocanvas], [pygoocanvas_version], [0.9.0], , AC_MSG_ERROR([Python module goocanvas >= 0.9.0 required to run Conduit]))
 AM_CHECK_PYMOD_VERSION([dbus], [__version__], [0.80.0], , AC_MSG_ERROR([Python module dbus >= 0.80.0 required to run Conduit]))
-
-if test $FILE_IMPL = "GIO" ; then
-	AM_CHECK_PYMOD_VERSION([gio], [pygio_version], [2.16.1], , AC_MSG_ERROR([Python module gio >= 2.16.1 required to run Conduit]))
-fi
+AM_CHECK_PYMOD_VERSION([gio], [pygio_version], [2.16.1], , AC_MSG_ERROR([Python module gio >= 2.16.1 required to run Conduit]))
 
 ################################################################################
 # DBus
@@ -164,6 +147,7 @@ Makefile
 conduit/defs.py
 conduit/Makefile
 conduit/utils/Makefile
+conduit/vfs/Makefile
 conduit/datatypes/Makefile
 conduit/dataproviders/Makefile
 conduit/gtkui/Makefile
@@ -228,7 +212,6 @@ echo
 echo $PACKAGE v$VERSION
 echo
 echo Prefix............... : $prefix
-echo File Implementation.. : $FILE_IMPL
 echo Browser Implementation: $BROWSER_IMPL
 echo Dbus Services Dir.... : $DBUS_SERVICES_DIR
 echo Nautilus Extension... : $enable_nautilus_extension
