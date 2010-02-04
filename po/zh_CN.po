@@ -1,16 +1,16 @@
 # Chinese (China) translation for conduit.
 # Copyright (C) 2009 conduit's COPYRIGHT HOLDER
 # This file is distributed under the same license as the conduit package.
-# 运强 苏 <wzssyqa@gmail.com>, 2009.
+# YunQiang Su <wzssyqa@gmail.com>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: conduit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=conduit&component=documentation and translation\n"
-"POT-Creation-Date: 2009-11-23 17:19+0000\n"
-"PO-Revision-Date: 2009-12-09 12:56+0800\n"
-"Last-Translator: 苏运强 <wzssyqa@gmail.com>\n"
+"POT-Creation-Date: 2010-01-21 23:50+0000\n"
+"PO-Revision-Date: 2010-02-01 16:44+0800\n"
+"Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,206 +23,6 @@ msgstr "Conduit 同步工具"
 #: ../data/conduit.desktop.in.in.h:2
 msgid "Synchronization for GNOME"
 msgstr "GNOME 的同步"
-
-#: ../data/conduit.glade.h:1
-msgid "<b>Default Synchronization Options</b>"
-msgstr "<b>默认同步选项</b>"
-
-#: ../data/conduit.glade.h:2
-msgid "<b>General</b>"
-msgstr "<b>常规</b>"
-
-#: ../data/conduit.glade.h:3
-msgid "Always Up-To-Date"
-msgstr "总是及时更新"
-
-#: ../data/conduit.glade.h:4
-msgid "Ask Me What to Do"
-msgstr "询问要做什么"
-
-#: ../data/conduit.glade.h:5
-msgid "Ask me what to do"
-msgstr "询问要做什么"
-
-#: ../data/conduit.glade.h:6
-msgid "Cancel Synchronization"
-msgstr "取消同步"
-
-#: ../data/conduit.glade.h:7
-msgid "Cancel currently-synchronizing groups"
-msgstr "取消正在进行的同步组"
-
-#: ../data/conduit.glade.h:8
-msgid "Clear Canvas"
-msgstr "清除显示区"
-
-#: ../data/conduit.glade.h:9
-msgid "Compare"
-msgstr "比较"
-
-#: ../data/conduit.glade.h:10
-msgid "Conduit Preferences"
-msgstr "Conduit 首选项"
-
-#: ../data/conduit.glade.h:11
-msgid "Configuration"
-msgstr "配置"
-
-#: ../data/conduit.glade.h:12
-msgid "Configure Item"
-msgstr "配置条目"
-
-#: ../data/conduit.glade.h:13
-msgid "Configure the synchronization settings for this item"
-msgstr "为此条目配置同步设置"
-
-#: ../data/conduit.glade.h:14
-msgid "Conflict Options"
-msgstr "冲突选项"
-
-#: ../data/conduit.glade.h:15
-msgid "Conflicts"
-msgstr "冲突"
-
-#: ../data/conduit.glade.h:16
-msgid "Contents"
-msgstr "内容"
-
-#: ../data/conduit.glade.h:17
-msgid "Data Conversions"
-msgstr "数据转换"
-
-#: ../data/conduit.glade.h:18
-msgid "Data Providers"
-msgstr "数据提供者"
-
-#: ../data/conduit.glade.h:19
-msgid "Delete Group"
-msgstr "删除组"
-
-#: ../data/conduit.glade.h:20
-msgid "Delete Item"
-msgstr "删除条目"
-
-#: ../data/conduit.glade.h:21
-msgid "Delete Options"
-msgstr "删除选项"
-
-#: ../data/conduit.glade.h:22
-msgid "Delete from the corresponding sink"
-msgstr "删除相应的接收器"
-
-#: ../data/conduit.glade.h:23
-msgid "Delete the Corresponding Item"
-msgstr "删除相应的条目"
-
-#: ../data/conduit.glade.h:24
-msgid "Editor"
-msgstr "编辑器"
-
-#: ../data/conduit.glade.h:25
-msgid "Minimize to notification area"
-msgstr "最小化到通知区域"
-
-#: ../data/conduit.glade.h:26
-msgid "Refresh Group"
-msgstr "刷新组"
-
-#: ../data/conduit.glade.h:27
-msgid "Refresh Item"
-msgstr "刷新条目"
-
-#: ../data/conduit.glade.h:28
-msgid "Replace the Older Item"
-msgstr "替代旧条目"
-
-#: ../data/conduit.glade.h:29
-msgid "Replace the older item"
-msgstr "替代旧条目"
-
-#: ../data/conduit.glade.h:30
-msgid "Resolve Conflicts"
-msgstr "解决冲突"
-
-#: ../data/conduit.glade.h:31
-msgid "Save settings on exit"
-msgstr "退出时保存设置"
-
-#: ../data/conduit.glade.h:32
-msgid "Show Hints"
-msgstr "显示提示"
-
-#: ../data/conduit.glade.h:33
-msgid "Show status icon"
-msgstr "显示状态图标"
-
-#: ../data/conduit.glade.h:34
-msgid "Skip"
-msgstr "跳过"
-
-#: ../data/conduit.glade.h:35
-msgid "Slow Synchronization"
-msgstr "慢速同步"
-
-#: ../data/conduit.glade.h:36
-msgid "Start Conduit at login"
-msgstr "登录时启动 Conduit"
-
-#: ../data/conduit.glade.h:37
-msgid "Synchronization Options"
-msgstr "同步选项"
-
-#: ../data/conduit.glade.h:38
-msgid "Synchronize All"
-msgstr "同步所有"
-
-#: ../data/conduit.glade.h:39
-msgid "Synchronize Group"
-msgstr "同步组"
-
-#: ../data/conduit.glade.h:40
-msgid "Synchronize group"
-msgstr "同步组"
-
-#: ../data/conduit.glade.h:41
-msgid "Synchronizes all groups"
-msgstr "同步所有组"
-
-#: ../data/conduit.glade.h:42
-msgid "Title"
-msgstr "标题"
-
-#: ../data/conduit.glade.h:43
-msgid "Two-Way Synchronization"
-msgstr "双向同步"
-
-#: ../data/conduit.glade.h:44
-msgid "When an item has been deleted:"
-msgstr "当一个条目被删除时："
-
-#: ../data/conduit.glade.h:45
-msgid "When an item is deleted..."
-msgstr "当一个条目被删除时..."
-
-#: ../data/conduit.glade.h:46
-msgid "When there is a conflict..."
-msgstr "当有一个冲突时"
-
-#: ../data/conduit.glade.h:47
-msgid "When there is a two-way conflict:"
-msgstr "当有双向冲突时："
-
-#: ../data/conduit.glade.h:48
-msgid "_Edit"
-msgstr "编辑(_E)"
-
-#: ../data/conduit.glade.h:49
-msgid "_File"
-msgstr "文件(_F)"
-
-#: ../data/conduit.glade.h:50
-msgid "_Help"
-msgstr "帮助(_H)"
 
 #: ../conduit/Knowledge.py:8
 msgid "What Do You Want to Synchronize?"
@@ -248,19 +48,29 @@ msgstr "准备好同步了吗？"
 msgid "Right Click on Group for Options"
 msgstr "在组上点右键获取选项"
 
-#. source,sinc                            #comment
-#. twoway
-#: ../conduit/Knowledge.py:22
+#: ../conduit/Knowledge.py:24
 msgid "Synchronize Two Folders"
 msgstr "同步两个目录"
 
-#: ../conduit/Knowledge.py:24
+#: ../conduit/Knowledge.py:27
 msgid "Backup Folder to Box.net"
 msgstr "备份目录到 Box.net"
 
-#: ../conduit/Knowledge.py:26
+#: ../conduit/Knowledge.py:30
 msgid "Synchronize Tagged F-Spot Photos to Flickr"
 msgstr "同步标记的 F-Spot 照片到 Flickr"
+
+#: ../conduit/Knowledge.py:33
+msgid "Synchronize Photos to Flickr"
+msgstr "同步照片到 Flickr"
+
+#: ../conduit/Knowledge.py:36
+msgid "Upload Photos to Facebook"
+msgstr "向 Facebook 上传照片"
+
+#: ../conduit/Knowledge.py:39
+msgid "Synchronize Desktop Wallpaper from a RSS Feed"
+msgstr "从 RSS 种子同步桌面壁纸"
 
 #: ../conduit/Main.py:59
 msgid "Conduit is a synchronization application."
@@ -477,94 +287,94 @@ msgstr "API 文档"
 msgid "Test Results"
 msgstr "测试结果"
 
-#: ../conduit/gtkui/UI.py:129
-#, python-format
-msgid " - %s (Development Version)"
-msgstr " - %s (开发版)"
-
-#: ../conduit/gtkui/UI.py:131
-msgid " - Running Uninstalled"
-msgstr ""
-
-#: ../conduit/gtkui/UI.py:165
+#: ../conduit/gtkui/UI.py:52
 msgid "Examples"
 msgstr "示例"
 
-#: ../conduit/gtkui/UI.py:177
-msgid "Developers"
-msgstr "开发者"
-
 #. Build some liststores to display
-#: ../conduit/gtkui/UI.py:318
+#: ../conduit/gtkui/UI.py:139
 msgid "Convert from"
 msgstr "转换，从"
 
-#: ../conduit/gtkui/UI.py:319
+#: ../conduit/gtkui/UI.py:140
 msgid "into"
 msgstr "至"
 
-#: ../conduit/gtkui/UI.py:370
+#: ../conduit/gtkui/UI.py:190
 msgid "Relationship Database"
 msgstr "关系数据库"
 
-#: ../conduit/gtkui/UI.py:374
+#: ../conduit/gtkui/UI.py:194
 msgid "Conversions Available"
 msgstr "转换可用"
 
-#: ../conduit/gtkui/UI.py:380 ../conduit/gtkui/Tree.py:348
+#: ../conduit/gtkui/UI.py:200 ../conduit/gtkui/Tree.py:355
 #: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
 msgstr "名字"
 
-#: ../conduit/gtkui/UI.py:384
+#: ../conduit/gtkui/UI.py:204
 msgid "Loaded"
 msgstr "已加载"
 
-#: ../conduit/gtkui/UI.py:512 ../conduit/hildonui/UI.py:127
+#: ../conduit/gtkui/UI.py:329
+#, python-format
+msgid " - %s (Development Version)"
+msgstr " - %s (开发版)"
+
+#: ../conduit/gtkui/UI.py:331
+msgid " - Running Uninstalled"
+msgstr " - 运行卸载"
+
+#: ../conduit/gtkui/UI.py:375
+msgid "Developers"
+msgstr "开发者"
+
+#: ../conduit/gtkui/UI.py:539 ../conduit/hildonui/UI.py:127
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "同步正在进行。您想取消它？"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:711
 msgid "_Synchronize All"
 msgstr "同步所有(_S)"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:711
 msgid "Synchronizes All Groups"
 msgstr "同步所有组"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:712
 msgid "_Cancel Synchronization"
 msgstr "取消同步(_C)"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:712
 msgid "Cancels Currently Synchronizing Groups"
 msgstr "取消当前同步组"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:713
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:713
 msgid "Close Conduit"
 msgstr "关闭 Conduit"
 
-#: ../conduit/gtkui/UI.py:726
+#: ../conduit/gtkui/UI.py:753
 msgid "Synchronization Error"
 msgstr "同步出错"
 
-#: ../conduit/gtkui/UI.py:729
+#: ../conduit/gtkui/UI.py:756
 msgid "Synchronization Complete"
 msgstr "同步完成"
 
-#: ../conduit/gtkui/UI.py:745
+#: ../conduit/gtkui/UI.py:764
 msgid "Synchronizing"
 msgstr "正在同步"
 
-#: ../conduit/gtkui/Tree.py:357
+#: ../conduit/gtkui/Tree.py:364
 msgid "Description"
 msgstr "描述"
 
-#: ../conduit/gtkui/ConfigItems.py:734
+#: ../conduit/gtkui/ConfigItems.py:733
 #, python-format
 msgid "Total: %d"
 msgstr "总计：%d"
@@ -575,11 +385,11 @@ msgstr "配置"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:58
 msgid "Backpack Notes"
-msgstr ""
+msgstr "Backpack Notes"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:59
 msgid "Store things in Backpack Notes"
-msgstr ""
+msgstr "在 Backpack Notes 存储东西"
 
 #: ../conduit/modules/BackpackModule/BackpackModule.py:105
 #: ../conduit/modules/FlickrModule/FlickrModule.py:307
@@ -822,7 +632,7 @@ msgstr "文件"
 
 #: ../conduit/modules/FileModule/FileModule.py:24
 msgid "Source for synchronizing multiple files"
-msgstr ""
+msgstr "同步多个文件的源"
 
 #: ../conduit/modules/FileModule/FileModule.py:83
 msgid "Synchronize folders"
@@ -982,7 +792,6 @@ msgid "Password"
 msgstr "口令"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:399
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
 msgstr "Google 日历"
 
@@ -1035,32 +844,11 @@ msgstr "YouTube"
 msgid "Synchronize data from YouTube"
 msgstr "从 YouTube 同步数据"
 
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-msgid "<b>Account Details</b>"
-msgstr "<b>账户细节</b>"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
-msgid "Calendar:"
-msgstr "日历："
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
-msgid "Email:"
-msgstr "电子邮件："
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:5
-msgid "Load Calendars"
-msgstr "加载日历"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
-msgid "Password:"
-msgstr "口令："
-
 #: ../conduit/modules/iPodModule/iPodModule.py:180
 msgid "Synchronize your iPod notes"
 msgstr "同步您的 iPod 笔记"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:295
-#: ../conduit/modules/SynceModule.py:311
 msgid "Contacts"
 msgstr "联系人"
 
@@ -1069,7 +857,6 @@ msgid "Synchronize your iPod contacts"
 msgstr "同步您的 iPod 联系人"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:331
-#: ../conduit/modules/SynceModule.py:449
 msgid "Calendar"
 msgstr "日历"
 
@@ -1125,11 +912,11 @@ msgstr "音乐视频"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:909
 msgid "TV Show"
-msgstr ""
+msgstr "电视节目"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:911
 msgid "Video kind"
-msgstr ""
+msgstr "视频类"
 
 #. Translators: Translate this in derived classes.
 #: ../conduit/modules/N800Module/N800Module.py:55
@@ -1240,26 +1027,6 @@ msgstr "SmugMug"
 msgid "Synchronize your SmugMug.com photos"
 msgstr "同步您的 SmugMug.com 照片"
 
-#: ../conduit/modules/SynceModule.py:139
-msgid "Create Partnership"
-msgstr "创建合作关系"
-
-#: ../conduit/modules/SynceModule.py:312
-msgid "Windows Mobile Contacts"
-msgstr "Windows Mobile 联系人"
-
-#: ../conduit/modules/SynceModule.py:450
-msgid "Windows Mobile Calendar"
-msgstr "Windows Mobile 日历"
-
-#: ../conduit/modules/SynceModule.py:459
-msgid "Tasks"
-msgstr "任务"
-
-#: ../conduit/modules/SynceModule.py:460
-msgid "Windows Mobile Tasks"
-msgstr "Windows Mobile 任务"
-
 #: ../conduit/modules/ZotoModule/ZotoModule.py:154
 msgid "Zoto"
 msgstr "Zoto"
@@ -1267,3 +1034,183 @@ msgstr "Zoto"
 #: ../conduit/modules/ZotoModule/ZotoModule.py:155
 msgid "Synchronize your Zoto photos"
 msgstr "同步您的 Zoto 照片"
+
+#~ msgid "<b>Default Synchronization Options</b>"
+#~ msgstr "<b>默认同步选项</b>"
+
+#~ msgid "<b>General</b>"
+#~ msgstr "<b>常规</b>"
+
+#~ msgid "Always Up-To-Date"
+#~ msgstr "总是及时更新"
+
+#~ msgid "Ask Me What to Do"
+#~ msgstr "询问要做什么"
+
+#~ msgid "Ask me what to do"
+#~ msgstr "询问要做什么"
+
+#~ msgid "Cancel Synchronization"
+#~ msgstr "取消同步"
+
+#~ msgid "Cancel currently-synchronizing groups"
+#~ msgstr "取消正在进行的同步组"
+
+#~ msgid "Clear Canvas"
+#~ msgstr "清除显示区"
+
+#~ msgid "Compare"
+#~ msgstr "比较"
+
+#~ msgid "Conduit Preferences"
+#~ msgstr "Conduit 首选项"
+
+#~ msgid "Configuration"
+#~ msgstr "配置"
+
+#~ msgid "Configure Item"
+#~ msgstr "配置条目"
+
+#~ msgid "Configure the synchronization settings for this item"
+#~ msgstr "为此条目配置同步设置"
+
+#~ msgid "Conflict Options"
+#~ msgstr "冲突选项"
+
+#~ msgid "Conflicts"
+#~ msgstr "冲突"
+
+#~ msgid "Contents"
+#~ msgstr "内容"
+
+#~ msgid "Data Conversions"
+#~ msgstr "数据转换"
+
+#~ msgid "Data Providers"
+#~ msgstr "数据提供者"
+
+#~ msgid "Delete Group"
+#~ msgstr "删除组"
+
+#~ msgid "Delete Item"
+#~ msgstr "删除条目"
+
+#~ msgid "Delete Options"
+#~ msgstr "删除选项"
+
+#~ msgid "Delete from the corresponding sink"
+#~ msgstr "删除相应的接收器"
+
+#~ msgid "Delete the Corresponding Item"
+#~ msgstr "删除相应的条目"
+
+#~ msgid "Editor"
+#~ msgstr "编辑器"
+
+#~ msgid "Minimize to notification area"
+#~ msgstr "最小化到通知区域"
+
+#~ msgid "Refresh Group"
+#~ msgstr "刷新组"
+
+#~ msgid "Refresh Item"
+#~ msgstr "刷新条目"
+
+#~ msgid "Replace the Older Item"
+#~ msgstr "替代旧条目"
+
+#~ msgid "Replace the older item"
+#~ msgstr "替代旧条目"
+
+#~ msgid "Resolve Conflicts"
+#~ msgstr "解决冲突"
+
+#~ msgid "Save settings on exit"
+#~ msgstr "退出时保存设置"
+
+#~ msgid "Show Hints"
+#~ msgstr "显示提示"
+
+#~ msgid "Show status icon"
+#~ msgstr "显示状态图标"
+
+#~ msgid "Skip"
+#~ msgstr "跳过"
+
+#~ msgid "Slow Synchronization"
+#~ msgstr "慢速同步"
+
+#~ msgid "Start Conduit at login"
+#~ msgstr "登录时启动 Conduit"
+
+#~ msgid "Synchronization Options"
+#~ msgstr "同步选项"
+
+#~ msgid "Synchronize All"
+#~ msgstr "同步所有"
+
+#~ msgid "Synchronize Group"
+#~ msgstr "同步组"
+
+#~ msgid "Synchronize group"
+#~ msgstr "同步组"
+
+#~ msgid "Synchronizes all groups"
+#~ msgstr "同步所有组"
+
+#~ msgid "Title"
+#~ msgstr "标题"
+
+#~ msgid "Two-Way Synchronization"
+#~ msgstr "双向同步"
+
+#~ msgid "When an item has been deleted:"
+#~ msgstr "当一个条目被删除时："
+
+#~ msgid "When an item is deleted..."
+#~ msgstr "当一个条目被删除时..."
+
+#~ msgid "When there is a conflict..."
+#~ msgstr "当有一个冲突时"
+
+#~ msgid "When there is a two-way conflict:"
+#~ msgstr "当有双向冲突时："
+
+#~ msgid "_Edit"
+#~ msgstr "编辑(_E)"
+
+#~ msgid "_File"
+#~ msgstr "文件(_F)"
+
+#~ msgid "_Help"
+#~ msgstr "帮助(_H)"
+
+#~ msgid "<b>Account Details</b>"
+#~ msgstr "<b>账户细节</b>"
+
+#~ msgid "Calendar:"
+#~ msgstr "日历："
+
+#~ msgid "Email:"
+#~ msgstr "电子邮件："
+
+#~ msgid "Load Calendars"
+#~ msgstr "加载日历"
+
+#~ msgid "Password:"
+#~ msgstr "口令："
+
+#~ msgid "Create Partnership"
+#~ msgstr "创建合作关系"
+
+#~ msgid "Windows Mobile Contacts"
+#~ msgstr "Windows Mobile 联系人"
+
+#~ msgid "Windows Mobile Calendar"
+#~ msgstr "Windows Mobile 日历"
+
+#~ msgid "Tasks"
+#~ msgstr "任务"
+
+#~ msgid "Windows Mobile Tasks"
+#~ msgstr "Windows Mobile 任务"
