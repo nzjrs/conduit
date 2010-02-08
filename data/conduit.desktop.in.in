@@ -3,7 +3,6 @@ Version=1.0
 Type=Application
 Terminal=false
 _Name=Conduit Synchronizer
-_GenericName=Conduit Synchronizer
 _Comment=Synchronization for GNOME
 Icon=conduit
 Exec=@BINDIR@/conduit
