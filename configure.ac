@@ -47,6 +47,7 @@ AM_CHECK_PYMOD([dateutil], , , AC_MSG_ERROR([Python module dateutil required to 
 AM_CHECK_PYMOD_VERSION([goocanvas], [pygoocanvas_version], [0.9.0], , AC_MSG_ERROR([Python module goocanvas >= 0.9.0 required to run Conduit]))
 AM_CHECK_PYMOD_VERSION([dbus], [__version__], [0.80.0], , AC_MSG_ERROR([Python module dbus >= 0.80.0 required to run Conduit]))
 AM_CHECK_PYMOD_VERSION([gio], [pygio_version], [2.16.1], , AC_MSG_ERROR([Python module gio >= 2.16.1 required to run Conduit]))
+AM_CHECK_PYMOD_VERSION([gudev], [__version__], [147.1], , AC_MSG_ERROR([Python module gudev >= 147.1 required to run Conduit]))
 
 ################################################################################
 # DBus

@@ -23,7 +23,7 @@ import conduit.vfs as Vfs
 from gettext import gettext as _
 
 MODULES = {
-    "N800Factory" : { "type": "dataprovider-factory" },
+#    "N800Factory" : { "type": "dataprovider-factory" },
 }
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF8 -*-
 #
-#  GObjectSingleton.py
+#  Singleton.py
 #  Copyright (c) 2006 INdT (Instituto Nokia de Tecnologia)
 #  Author: Eduardo de Barros Lima <eduardo.lima@indt.org.br>
 #
@@ -22,7 +22,7 @@
 
 import gobject
 
-class GObjectSingleton(gobject.GObjectMeta):
+class _GObjectSingleton(gobject.GObjectMeta):
 
     def __init__(cls, name, base, dict):
         gobject.GObjectMeta.__init__(cls, name, base, dict)
@@ -32,7 +32,7 @@ class GObjectSingleton(gobject.GObjectMeta):
 
     def __call__(cls, *args, **kwargs):
         if not cls.__instance:
-            cls.__instance = super(GObjectSingleton, cls).__call__(*args, **kwargs)
+            cls.__instance = super(_GObjectSingleton, cls).__call__(*args, **kwargs)
         return cls.__instance
 
 class Singleton:
@@ -40,7 +40,7 @@ class Singleton:
     A model that implements the Singleton pattern.
     """
 
-    __metaclass__ = GObjectSingleton
+    __metaclass__ = _GObjectSingleton
 
     pass
 

@@ -10,6 +10,7 @@ order to listen to HAL events
 Copyright: John Stowers, 2006
 License: GPLv2
 """
+import sys
 import os
 import pickle
 import logging
@@ -24,7 +25,8 @@ log = logging.getLogger("modules.iPod")
 import conduit
 import conduit.dataproviders.DataProvider as DataProvider
 import conduit.dataproviders.DataProviderCategory as DataProviderCategory
-import conduit.dataproviders.VolumeFactory as VolumeFactory
+import conduit.dataproviders.MediaPlayerFactory as MediaPlayerFactory
+import conduit.dataproviders.HalFactory as HalFactory
 import conduit.utils as Utils
 import conduit.datatypes.Note as Note
 import conduit.datatypes.Contact as Contact
@@ -38,15 +40,20 @@ from gettext import gettext as _
 errormsg = ""
 try:
     import gpod
-    if gpod.version_info >= (0,6,0):
+    if gpod.version_info >= (0,7,0):
         MODULES = {
             "iPodFactory" :         { "type":   "dataprovider-factory"  },
+            "iPhoneFactory" :       { "type":   "dataprovider-factory"  },
         }
         log.info("Module Information: %s" % Utils.get_module_information(gpod, 'version_info'))
 except ImportError:
     errormsg = "iPod support disabled (python-gpod not availiable)"
 except locale.Error:
     errormsg = "iPod support disabled (Incorrect locale)"
+
+PROPS_KEY_MOUNT = "CONDUIT_MOUNTPOINT"
+PROPS_KEY_NAME  = "CONDUIT_NAME"
+PROPS_KEY_ICON  = "CONDUIT_ICON"
 
 if errormsg:
     MODULES = {}
@@ -66,33 +73,104 @@ def _string_to_unqiue_file(txt, base_uri, prefix, postfix=''):
     temp.set_UID(os.path.basename(uri))
     return temp.get_rid()
 
-class iPodFactory(VolumeFactory.VolumeFactory):
-
-    def _get_mount_path(self, props):
-        return str(props["volume.mount_point"])
-
-    def is_interesting(self, udi, props):
-        if props.get("info.parent"):
-            parent = self._get_properties(props["info.parent"])
-            if parent.get("storage.model") == "iPod":
-                props.update(parent)
-                return True
+def _supports_photos(db):
+    if isinstance(p, gpod.PhotoDatabase) or isinstance(m, gpod.Database):
+        return gpod.itdb_device_supports_photo(db._itdb.device)
+    else:
+        log.critical("could not determine if device supports photos")
         return False
 
-    def get_category(self, udi, **kwargs):
-        label = kwargs['volume.label']
-        if not label:
-            label = "Apple iPod Music Player"
-        return DataProviderCategory.DataProviderCategory(
-                    label,
-                    "multimedia-player-ipod-standard-color",
-                    self._get_mount_path(kwargs))
+def _get_apple_label(props):
+    return props.get(PROPS_KEY_NAME,
+            "Apple " + props.get("ID_MODEL", "Device"))
 
-    def get_dataproviders(self, udi, **kwargs):
+def _get_apple_icon(props):
+    return props.get(PROPS_KEY_ICON, "multimedia-player-apple-ipod")
+
+class iPhoneFactory(HalFactory.HalFactory):
+
+    def is_interesting(self, sysfs_path, props):
+        #there is no media-player-info support for the apple iphone, so instead 
+        #we have to look for the correct model name instead.
+        if "Apple" in props.get("ID_VENDOR", "") and "iPhone" in props.get("ID_MODEL", ""):
+            #also have to check the iPhone has a valid serial, as that is used
+            #with gvfs to generate the uuid of the moint
+            self._print_device(self.get_udev_device_for_sysfs_path(sysfs_path))
+            if props.get("ID_SERIAL_SHORT"):
+                uuid = "afc://%s/" % props["ID_SERIAL_SHORT"]
+                for m in self.vm.get_mounts():
+                    root = m.get_root()
+                    uri = root.get_uri()
+                    if uuid == uri:
+                        #check that gvfs has mounted the volume at the expected location
+                        #FIXME: this is not very nice, as it depends on an implementation
+                        #detail of gvfs-afc backend. It would be best if there was some UUID
+                        #that was present in udev and guarenteed to be present in all gio mounts
+                        #but experimentation tells me there is no such uuid, it returns None
+                        props[PROPS_KEY_MOUNT] = root.get_path()
+                        props[PROPS_KEY_NAME]  = m.get_name()
+                        props[PROPS_KEY_ICON]  = "phone"
+                        return True
+                log.warning("iPhone not mounted by gvfs")
+            else:
+                log.critical("iPhone missing ID_SERIAL_SHORT udev property")
+        return False
+
+    def get_category(self, key, **props):
+        """ Return a category to contain these dataproviders """
+        print "get_category", props.get(PROPS_KEY_MOUNT)
+        return DataProviderCategory.DataProviderCategory(
+                    _get_apple_label(props),
+                    _get_apple_icon(props),
+                    key)
+    
+    def get_dataproviders(self, key, **props):
+        """ Return a list of dataproviders for this class of device """
+        print "get_dataproviders", props.get(PROPS_KEY_MOUNT)
+        return [IPodDummy, IPodPhotoSink]
+
+    def get_args(self, key, **props):
+        print "get_args", props.get(PROPS_KEY_MOUNT)
+        return (props[PROPS_KEY_MOUNT], key)
+
+class iPodFactory(MediaPlayerFactory.MediaPlayerFactory):
+
+    def is_interesting(self, sysfs_path, props):
+        #just like rhythmbox, we let media-player-info do the matching, and
+        #instead just check if it has told us that the media player uses the
+        #ipod storage protocol
+        access_protocols = self.get_mpi_access_protocol(props)
+        if "ipod" in access_protocols.split(";"):
+            uuid = props.get("ID_FS_UUID")
+            for vol in self.vm.get_volumes():
+                #is this the disk corresponding to the ipod
+                #FIXME: we should be able to do gio.VolumeMonitor.get_volume_for_uuid()
+                #but that doesnt work
+                if vol.get_identifier('uuid') == uuid:
+                    #now check it is mounted
+                    mount = vol.get_mount()
+                    if mount:
+                        f = mount.get_root()
+                        props[PROPS_KEY_MOUNT] = f.get_path()
+                        props[PROPS_KEY_NAME]  = "%s's %s" % (mount.get_name(), props.get("ID_MODEL", "iPod"))
+                        props[PROPS_KEY_ICON]  = self.get_mpi_icon(props, fallback="multimedia-player-apple-ipod")
+                        return True
+                    else:
+                        log.warn("ipod not mounted")
+            log.warn("could not find volume with udev ID_FS_UUID: %s" % uuid)
+        return False
+
+    def get_category(self, key, **props):
+        return DataProviderCategory.DataProviderCategory(
+                    _get_apple_label(props),
+                    _get_apple_icon(props),
+                    key)
+
+    def get_dataproviders(self, udi, **props):
         #Read information about the ipod, like if it supports
         #photos or not
         d = gpod.itdb_device_new()
-        gpod.itdb_device_set_mountpoint(d,self._get_mount_path(kwargs))
+        gpod.itdb_device_set_mountpoint(d, props[PROPS_KEY_MOUNT])
         supportsPhotos = gpod.itdb_device_supports_photo(d)
         gpod.itdb_device_free(d)
         if supportsPhotos:
@@ -101,12 +179,24 @@ class iPodFactory(VolumeFactory.VolumeFactory):
             log.info("iPod does not report photo support")
             return [IPodMusicTwoWay, IPodVideoTwoWay, IPodNoteTwoWay, IPodContactsTwoWay, IPodCalendarTwoWay]
 
-    def get_args(self, udi, **kwargs):
-        """
-        iPod needs a local path to the DB, not a URI
-        """
-        kwargs["mount_path"] = self._get_mount_path(kwargs)
-        return (kwargs['mount_path'], udi)
+    def get_args(self, key, **props):
+        return (props[PROPS_KEY_MOUNT], key)
+
+class IPodDummy(DataProvider.TwoWay):
+
+    _name_ = "Dummy"
+    _description_ = "Dummy iPod"
+    _module_type_ = "twoway"
+    _in_type_ = "file"
+    _out_type_ = "file"
+
+    def __init__(self, *args):
+        DataProvider.TwoWay.__init__(self)
+        print "CONSTRUCTED ", args
+        self.args = args or "q"
+
+    def get_UID(self):
+        print "-----".join(self.args)
 
 class IPodBase(DataProvider.TwoWay):
     def __init__(self, *args):
@@ -383,6 +473,7 @@ class IPodPhotoSink(IPodBase):
         )
 
     def _set_sysinfo(self, modelnumstr, model):
+        #this must only be used from TestDataProvideriPod.py
         gpod.itdb_device_set_sysinfo(self.db._itdb.device, modelnumstr, model)
 
     def _get_photo_album(self, albumName):
@@ -419,9 +510,13 @@ class IPodPhotoSink(IPodBase):
                         album.remove(photo)
                     self.db.remove(album)
 
-    def _empty_all_photos(self):
-        for photo in self.db.PhotoAlbums[0][:]:
-            self.db.remove(photo)
+    def _delete_all_photos(self):
+        for album in self.db.PhotoAlbums:
+            for photo in album[:]:
+                album.remove(photo)
+            if album.name != self.SAFE_PHOTO_ALBUM:
+                self.db.remove(album)
+        gpod.itdb_photodb_write(self.db._itdb, None)
 
     def _get_photo_albums(self):
         i = []
@@ -458,13 +553,19 @@ class IPodPhotoSink(IPodBase):
             self._delete_album(album_config.get_value())
             album_config.choices = self._get_photo_albums()
 
+        def _delete_all_click(button):
+            self._delete_all_photos()
+
         album_config = config.add_item(_('Album'), 'combotext',
             config_name = 'albumName',
             choices = self._get_photo_albums(),
         )
         config.add_item(_("Delete"), "button",
             initial_value = _delete_click
-        )    
+        )
+        config.add_item(_("Delete All Photos"), "button",
+            initial_value = _delete_all_click
+        )
 
 
     def is_configured (self, isSource, isTwoWay):

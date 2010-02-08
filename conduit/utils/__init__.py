@@ -407,3 +407,16 @@ def exec_command_and_return_result(cmd, arg):
     except OSError:
         return None
 
+def get_system_data_dirs():
+    """
+    Returns the system data dirs as specified by the XDG spec. 
+    http://standards.freedesktop.org/basedir-spec/latest/
+
+    This function should be removed once g_get_system_data_dirs () is wrapped
+    """
+    data_dirs = os.getenv("XDG_DATA_DIRS")
+    if data_dirs:
+        return data_dirs.split(":")
+    else:
+        return ("/usr/local/share/", "/usr/share/")
+
