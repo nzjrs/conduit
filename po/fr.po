@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Conduit HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=conduit&component=documentation and translation\n"
-"POT-Creation-Date: 2009-08-28 17:45+0000\n"
+"POT-Creation-Date: 2010-01-21 18:41+0000\n"
 "PO-Revision-Date: 2009-09-04 22:38+0200\n"
 "Last-Translator: Bruno Brouard <annoa.b@gmail.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -29,206 +29,6 @@ msgstr "Synchronisation Conduit"
 #: ../data/conduit.desktop.in.in.h:2
 msgid "Synchronization for GNOME"
 msgstr "Synchronisation pour GNOME"
-
-#: ../data/conduit.glade.h:1
-msgid "<b>Default Synchronization Options</b>"
-msgstr "<b>Options de synchronisation par défaut</b>"
-
-#: ../data/conduit.glade.h:2
-msgid "<b>General</b>"
-msgstr "<b>Général</b>"
-
-#: ../data/conduit.glade.h:3
-msgid "Always Up-To-Date"
-msgstr "Toujours à jour"
-
-#: ../data/conduit.glade.h:4
-msgid "Ask Me What to Do"
-msgstr "Me demander quoi faire"
-
-#: ../data/conduit.glade.h:5
-msgid "Ask me what to do"
-msgstr "Me demander quoi faire"
-
-#: ../data/conduit.glade.h:6
-msgid "Cancel Synchronization"
-msgstr "Annuler la synchronisation"
-
-#: ../data/conduit.glade.h:7
-msgid "Cancel currently-synchronizing groups"
-msgstr "Annule les groupes actuellement en cours de synchronisation"
-
-#: ../data/conduit.glade.h:8
-msgid "Clear Canvas"
-msgstr "Effacer le canevas"
-
-#: ../data/conduit.glade.h:9
-msgid "Compare"
-msgstr "Comparer"
-
-#: ../data/conduit.glade.h:10
-msgid "Conduit Preferences"
-msgstr "Préférences de Conduit"
-
-#: ../data/conduit.glade.h:11
-msgid "Configuration"
-msgstr "Configuration"
-
-#: ../data/conduit.glade.h:12
-msgid "Configure Item"
-msgstr "Configurer l'élément"
-
-#: ../data/conduit.glade.h:13
-msgid "Configure the synchronization settings for this item"
-msgstr "Configure les paramètres de synchronisation de cet élément"
-
-#: ../data/conduit.glade.h:14
-msgid "Conflict Options"
-msgstr "Options de conflits"
-
-#: ../data/conduit.glade.h:15
-msgid "Conflicts"
-msgstr "Conflits"
-
-#: ../data/conduit.glade.h:16
-msgid "Contents"
-msgstr "Contenu"
-
-#: ../data/conduit.glade.h:17
-msgid "Data Conversions"
-msgstr "Conversions de données"
-
-#: ../data/conduit.glade.h:18
-msgid "Data Providers"
-msgstr "Sources de données"
-
-#: ../data/conduit.glade.h:19
-msgid "Delete Group"
-msgstr "Supprimer ce groupe"
-
-#: ../data/conduit.glade.h:20
-msgid "Delete Item"
-msgstr "Supprimer l'élément"
-
-#: ../data/conduit.glade.h:21
-msgid "Delete Options"
-msgstr "Options de suppression"
-
-#: ../data/conduit.glade.h:22
-msgid "Delete from the corresponding sink"
-msgstr "Supprimer du collecteur correspondant"
-
-#: ../data/conduit.glade.h:23
-msgid "Delete the Corresponding Item"
-msgstr "Supprimer l'élément correspondant"
-
-#: ../data/conduit.glade.h:24
-msgid "Editor"
-msgstr "Éditeur"
-
-#: ../data/conduit.glade.h:25
-msgid "Minimize to notification area"
-msgstr "Minimiser dans la zone de notification"
-
-#: ../data/conduit.glade.h:26
-msgid "Refresh Group"
-msgstr "Actualiser le groupe"
-
-#: ../data/conduit.glade.h:27
-msgid "Refresh Item"
-msgstr "Actualiser l'élément"
-
-#: ../data/conduit.glade.h:28
-msgid "Replace the Older Item"
-msgstr "Remplacer l'élément le plus ancien"
-
-#: ../data/conduit.glade.h:29
-msgid "Replace the older item"
-msgstr "Remplacer l'élément le plus ancien"
-
-#: ../data/conduit.glade.h:30
-msgid "Resolve Conflicts"
-msgstr "Résoudre les conflits"
-
-#: ../data/conduit.glade.h:31
-msgid "Save settings on exit"
-msgstr "Enregistrer les paramètres à la fermeture"
-
-#: ../data/conduit.glade.h:32
-msgid "Show Hints"
-msgstr "Afficher les astuces"
-
-#: ../data/conduit.glade.h:33
-msgid "Show status icon"
-msgstr "Afficher l'icône d'état"
-
-#: ../data/conduit.glade.h:34
-msgid "Skip"
-msgstr "Ignorer"
-
-#: ../data/conduit.glade.h:35
-msgid "Slow Synchronization"
-msgstr "Synchronisation lente"
-
-#: ../data/conduit.glade.h:36
-msgid "Start Conduit at login"
-msgstr "Démarrer Conduit à la connexion"
-
-#: ../data/conduit.glade.h:37
-msgid "Synchronization Options"
-msgstr "Options de synchronisation"
-
-#: ../data/conduit.glade.h:38
-msgid "Synchronize All"
-msgstr "Tout synchroniser"
-
-#: ../data/conduit.glade.h:39
-msgid "Synchronize Group"
-msgstr "Synchroniser ce groupe"
-
-#: ../data/conduit.glade.h:40
-msgid "Synchronize group"
-msgstr "Synchroniser ce groupe"
-
-#: ../data/conduit.glade.h:41
-msgid "Synchronizes all groups"
-msgstr "Synchronise tous les groupes"
-
-#: ../data/conduit.glade.h:42
-msgid "Title"
-msgstr "Titre"
-
-#: ../data/conduit.glade.h:43
-msgid "Two-Way Synchronization"
-msgstr "Synchronisation bidirectionnelle"
-
-#: ../data/conduit.glade.h:44
-msgid "When an item has been deleted:"
-msgstr "Quand un objet a été supprimé :"
-
-#: ../data/conduit.glade.h:45
-msgid "When an item is deleted..."
-msgstr "Quand un objet est supprimé..."
-
-#: ../data/conduit.glade.h:46
-msgid "When there is a conflict..."
-msgstr "Quand il y a un conflit..."
-
-#: ../data/conduit.glade.h:47
-msgid "When there is a two-way conflict:"
-msgstr "Quand il y a un conflit bidirectionnel :"
-
-#: ../data/conduit.glade.h:48
-msgid "_Edit"
-msgstr "É_dition"
-
-#: ../data/conduit.glade.h:49
-msgid "_File"
-msgstr "_Fichier"
-
-#: ../data/conduit.glade.h:50
-msgid "_Help"
-msgstr "Aid_e"
 
 #: ../conduit/Knowledge.py:8
 msgid "What Do You Want to Synchronize?"
@@ -254,19 +54,29 @@ msgstr "Vous êtes maintenant prêt à synchroniser"
 msgid "Right Click on Group for Options"
 msgstr "Cliquez avec le bouton droit sur les groupes pour afficher les options"
 
-#. source,sinc                            #comment
-#. twoway
-#: ../conduit/Knowledge.py:22
+#: ../conduit/Knowledge.py:24
 msgid "Synchronize Two Folders"
 msgstr "Synchroniser deux dossiers"
 
-#: ../conduit/Knowledge.py:24
+#: ../conduit/Knowledge.py:27
 msgid "Backup Folder to Box.net"
-msgstr "Sauvegarder le dossier sur box.net"
+msgstr "Sauvegarder un dossier sur box.net"
 
-#: ../conduit/Knowledge.py:26
+#: ../conduit/Knowledge.py:30
 msgid "Synchronize Tagged F-Spot Photos to Flickr"
-msgstr "Synchroniser vos photos F-Spot étiquetées vers Flicker"
+msgstr "Synchroniser des photos F-Spot étiquetées vers Flickr"
+
+#: ../conduit/Knowledge.py:33
+msgid "Synchronize Photos to Flickr"
+msgstr "Synchroniser des photos vers Flickr"
+
+#: ../conduit/Knowledge.py:36
+msgid "Upload Photos to Facebook"
+msgstr "Déposer des photos sur FaceBook"
+
+#: ../conduit/Knowledge.py:39
+msgid "Synchronize Desktop Wallpaper from a RSS Feed"
+msgstr "Synchroniser le papier-peint du bureau depuis un flux RSS"
 
 #: ../conduit/Main.py:59
 msgid "Conduit is a synchronization application."
@@ -312,7 +122,7 @@ msgid ""
 "session. [default: do not set]"
 msgstr ""
 "Définir explicitement les paramètres internes (clés) de Conduit aux valeurs "
-"données pour cette session.  [par défaut : ne pas définir]"
+"données pour cette session. [par défaut : ne pas définir]"
 
 #: ../conduit/Main.py:91
 #, python-format
@@ -387,17 +197,17 @@ msgid "Not Configured"
 msgstr "Non configuré"
 
 #: ../conduit/dataproviders/Image.py:34
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "640x480"
 msgstr "640x480"
 
 #: ../conduit/dataproviders/Image.py:34
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "800x600"
 msgstr "800x600"
 
 #: ../conduit/dataproviders/Image.py:34
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "1024x768"
 msgstr "1024x768"
 
@@ -493,94 +303,94 @@ msgstr "Documentation de l'API"
 msgid "Test Results"
 msgstr "Résultats de tests"
 
-#: ../conduit/gtkui/UI.py:129
-#, python-format
-msgid " - %s (Development Version)"
-msgstr " - %s (version de développement)"
-
-#: ../conduit/gtkui/UI.py:131
-msgid " - Running Uninstalled"
-msgstr " - exécution sans installation"
-
-#: ../conduit/gtkui/UI.py:165
+#: ../conduit/gtkui/UI.py:52
 msgid "Examples"
 msgstr "Exemples"
 
-#: ../conduit/gtkui/UI.py:177
-msgid "Developers"
-msgstr "Développeurs"
-
 #. Build some liststores to display
-#: ../conduit/gtkui/UI.py:318
+#: ../conduit/gtkui/UI.py:139
 msgid "Convert from"
 msgstr "Convertir depuis"
 
-#: ../conduit/gtkui/UI.py:319
+#: ../conduit/gtkui/UI.py:140
 msgid "into"
 msgstr "en"
 
-#: ../conduit/gtkui/UI.py:370
+#: ../conduit/gtkui/UI.py:190
 msgid "Relationship Database"
 msgstr "Base de données des relations"
 
-#: ../conduit/gtkui/UI.py:374
+#: ../conduit/gtkui/UI.py:194
 msgid "Conversions Available"
 msgstr "Conversions disponibles"
 
-#: ../conduit/gtkui/UI.py:380 ../conduit/gtkui/Tree.py:348
+#: ../conduit/gtkui/UI.py:200 ../conduit/gtkui/Tree.py:355
 #: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
 msgstr "Nom"
 
-#: ../conduit/gtkui/UI.py:384
+#: ../conduit/gtkui/UI.py:204
 msgid "Loaded"
 msgstr "Chargé"
 
-#: ../conduit/gtkui/UI.py:512 ../conduit/hildonui/UI.py:127
+#: ../conduit/gtkui/UI.py:329
+#, python-format
+msgid " - %s (Development Version)"
+msgstr " - %s (version de développement)"
+
+#: ../conduit/gtkui/UI.py:331
+msgid " - Running Uninstalled"
+msgstr " - exécution sans installation"
+
+#: ../conduit/gtkui/UI.py:375
+msgid "Developers"
+msgstr "Développeurs"
+
+#: ../conduit/gtkui/UI.py:539 ../conduit/hildonui/UI.py:127
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "Synchronisation en cours. Voulez-vous l'annuler ?"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:711
 msgid "_Synchronize All"
 msgstr "_Tout synchroniser"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:711
 msgid "Synchronizes All Groups"
 msgstr "Synchronise tous les groupes"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:712
 msgid "_Cancel Synchronization"
 msgstr "_Annuler la synchronisation"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:712
 msgid "Cancels Currently Synchronizing Groups"
 msgstr "Annule les groupes actuellement en cours de synchronisation"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:713
 msgid "_Quit"
 msgstr "_Quitter"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:713
 msgid "Close Conduit"
 msgstr "Ferme Conduit"
 
-#: ../conduit/gtkui/UI.py:726
+#: ../conduit/gtkui/UI.py:753
 msgid "Synchronization Error"
 msgstr "Erreur de synchronisation"
 
-#: ../conduit/gtkui/UI.py:729
+#: ../conduit/gtkui/UI.py:756
 msgid "Synchronization Complete"
 msgstr "Synchronisation terminée"
 
-#: ../conduit/gtkui/UI.py:745
+#: ../conduit/gtkui/UI.py:764
 msgid "Synchronizing"
 msgstr "Synchronisation en cours"
 
-#: ../conduit/gtkui/Tree.py:357
+#: ../conduit/gtkui/Tree.py:364
 msgid "Description"
 msgstr "Description"
 
-#: ../conduit/gtkui/ConfigItems.py:729
+#: ../conduit/gtkui/ConfigItems.py:733
 #, python-format
 msgid "Total: %d"
 msgstr "Total : %d"
@@ -889,24 +699,24 @@ msgstr "Identification en cours, veuillez patienter..."
 msgid "Username"
 msgstr "Identifiant"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:318
+#: ../conduit/modules/FlickrModule/FlickrModule.py:319
 msgid "Authenticate"
 msgstr "S'authentifier"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:322
+#: ../conduit/modules/FlickrModule/FlickrModule.py:323
 #: ../conduit/modules/ZotoModule/ZotoModule.py:251
 msgid "Saved photo settings"
 msgstr "Paramètres des photos enregistrées"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:327
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
 msgid "Resize photos"
 msgstr "Redimensionner les photos"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
 msgid "Do not resize"
-msgstr "Ne pas redimmensioner"
+msgstr "Ne pas redimensionner"
 
-#: ../conduit/modules/FlickrModule/FlickrModule.py:331
+#: ../conduit/modules/FlickrModule/FlickrModule.py:332
 msgid "Photos are public"
 msgstr "Les photos sont publiques"
 
@@ -1001,7 +811,6 @@ msgid "Password"
 msgstr "Mot de passe"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:399
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
 msgstr "Calendrier Google"
 
@@ -1054,32 +863,11 @@ msgstr "YouTube"
 msgid "Synchronize data from YouTube"
 msgstr "Synchroniser des données de YouTube"
 
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-msgid "<b>Account Details</b>"
-msgstr "<b>Détails du compte</b>"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
-msgid "Calendar:"
-msgstr "Calendrier :"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
-msgid "Email:"
-msgstr "Courriel :"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:5
-msgid "Load Calendars"
-msgstr "Charger les calendriers"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
-msgid "Password:"
-msgstr "Mot de passe :"
-
 #: ../conduit/modules/iPodModule/iPodModule.py:180
 msgid "Synchronize your iPod notes"
 msgstr "Synchroniser vos notes iPod"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:295
-#: ../conduit/modules/SynceModule.py:311
 msgid "Contacts"
 msgstr "Contacts"
 
@@ -1088,7 +876,6 @@ msgid "Synchronize your iPod contacts"
 msgstr "Synchroniser vos contacts iPod"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:331
-#: ../conduit/modules/SynceModule.py:449
 msgid "Calendar"
 msgstr "Calendrier"
 
@@ -1259,26 +1046,6 @@ msgstr "SmugMug"
 msgid "Synchronize your SmugMug.com photos"
 msgstr "Synchroniser vos photos SmugMug.com"
 
-#: ../conduit/modules/SynceModule.py:139
-msgid "Create Partnership"
-msgstr "Créer un partenariat"
-
-#: ../conduit/modules/SynceModule.py:312
-msgid "Windows Mobile Contacts"
-msgstr "Contacts Windows Mobile"
-
-#: ../conduit/modules/SynceModule.py:450
-msgid "Windows Mobile Calendar"
-msgstr "Calendrier Windows Mobile"
-
-#: ../conduit/modules/SynceModule.py:459
-msgid "Tasks"
-msgstr "Tâches"
-
-#: ../conduit/modules/SynceModule.py:460
-msgid "Windows Mobile Tasks"
-msgstr "Tâches Windows Mobile"
-
 #: ../conduit/modules/ZotoModule/ZotoModule.py:154
 msgid "Zoto"
 msgstr "Zoto"
@@ -1286,3 +1053,183 @@ msgstr "Zoto"
 #: ../conduit/modules/ZotoModule/ZotoModule.py:155
 msgid "Synchronize your Zoto photos"
 msgstr "Synchroniser vos photos Zoto"
+
+#~ msgid "<b>Default Synchronization Options</b>"
+#~ msgstr "<b>Options de synchronisation par défaut</b>"
+
+#~ msgid "<b>General</b>"
+#~ msgstr "<b>Général</b>"
+
+#~ msgid "Always Up-To-Date"
+#~ msgstr "Toujours à jour"
+
+#~ msgid "Ask Me What to Do"
+#~ msgstr "Me demander quoi faire"
+
+#~ msgid "Ask me what to do"
+#~ msgstr "Me demander quoi faire"
+
+#~ msgid "Cancel Synchronization"
+#~ msgstr "Annuler la synchronisation"
+
+#~ msgid "Cancel currently-synchronizing groups"
+#~ msgstr "Annule les groupes actuellement en cours de synchronisation"
+
+#~ msgid "Clear Canvas"
+#~ msgstr "Effacer le canevas"
+
+#~ msgid "Compare"
+#~ msgstr "Comparer"
+
+#~ msgid "Conduit Preferences"
+#~ msgstr "Préférences de Conduit"
+
+#~ msgid "Configuration"
+#~ msgstr "Configuration"
+
+#~ msgid "Configure Item"
+#~ msgstr "Configurer l'élément"
+
+#~ msgid "Configure the synchronization settings for this item"
+#~ msgstr "Configure les paramètres de synchronisation de cet élément"
+
+#~ msgid "Conflict Options"
+#~ msgstr "Options de conflits"
+
+#~ msgid "Conflicts"
+#~ msgstr "Conflits"
+
+#~ msgid "Contents"
+#~ msgstr "Contenu"
+
+#~ msgid "Data Conversions"
+#~ msgstr "Conversions de données"
+
+#~ msgid "Data Providers"
+#~ msgstr "Sources de données"
+
+#~ msgid "Delete Group"
+#~ msgstr "Supprimer ce groupe"
+
+#~ msgid "Delete Item"
+#~ msgstr "Supprimer l'élément"
+
+#~ msgid "Delete Options"
+#~ msgstr "Options de suppression"
+
+#~ msgid "Delete from the corresponding sink"
+#~ msgstr "Supprimer du collecteur correspondant"
+
+#~ msgid "Delete the Corresponding Item"
+#~ msgstr "Supprimer l'élément correspondant"
+
+#~ msgid "Editor"
+#~ msgstr "Éditeur"
+
+#~ msgid "Minimize to notification area"
+#~ msgstr "Minimiser dans la zone de notification"
+
+#~ msgid "Refresh Group"
+#~ msgstr "Actualiser le groupe"
+
+#~ msgid "Refresh Item"
+#~ msgstr "Actualiser l'élément"
+
+#~ msgid "Replace the Older Item"
+#~ msgstr "Remplacer l'élément le plus ancien"
+
+#~ msgid "Replace the older item"
+#~ msgstr "Remplacer l'élément le plus ancien"
+
+#~ msgid "Resolve Conflicts"
+#~ msgstr "Résoudre les conflits"
+
+#~ msgid "Save settings on exit"
+#~ msgstr "Enregistrer les paramètres à la fermeture"
+
+#~ msgid "Show Hints"
+#~ msgstr "Afficher les astuces"
+
+#~ msgid "Show status icon"
+#~ msgstr "Afficher l'icône d'état"
+
+#~ msgid "Skip"
+#~ msgstr "Ignorer"
+
+#~ msgid "Slow Synchronization"
+#~ msgstr "Synchronisation lente"
+
+#~ msgid "Start Conduit at login"
+#~ msgstr "Démarrer Conduit à la connexion"
+
+#~ msgid "Synchronization Options"
+#~ msgstr "Options de synchronisation"
+
+#~ msgid "Synchronize All"
+#~ msgstr "Tout synchroniser"
+
+#~ msgid "Synchronize Group"
+#~ msgstr "Synchroniser ce groupe"
+
+#~ msgid "Synchronize group"
+#~ msgstr "Synchroniser ce groupe"
+
+#~ msgid "Synchronizes all groups"
+#~ msgstr "Synchronise tous les groupes"
+
+#~ msgid "Title"
+#~ msgstr "Titre"
+
+#~ msgid "Two-Way Synchronization"
+#~ msgstr "Synchronisation bidirectionnelle"
+
+#~ msgid "When an item has been deleted:"
+#~ msgstr "Quand un objet a été supprimé :"
+
+#~ msgid "When an item is deleted..."
+#~ msgstr "Quand un objet est supprimé..."
+
+#~ msgid "When there is a conflict..."
+#~ msgstr "Quand il y a un conflit..."
+
+#~ msgid "When there is a two-way conflict:"
+#~ msgstr "Quand il y a un conflit bidirectionnel :"
+
+#~ msgid "_Edit"
+#~ msgstr "É_dition"
+
+#~ msgid "_File"
+#~ msgstr "_Fichier"
+
+#~ msgid "_Help"
+#~ msgstr "Aid_e"
+
+#~ msgid "<b>Account Details</b>"
+#~ msgstr "<b>Détails du compte</b>"
+
+#~ msgid "Calendar:"
+#~ msgstr "Calendrier :"
+
+#~ msgid "Email:"
+#~ msgstr "Courriel :"
+
+#~ msgid "Load Calendars"
+#~ msgstr "Charger les calendriers"
+
+#~ msgid "Password:"
+#~ msgstr "Mot de passe :"
+
+#~ msgid "Create Partnership"
+#~ msgstr "Créer un partenariat"
+
+#~ msgid "Windows Mobile Contacts"
+#~ msgstr "Contacts Windows Mobile"
+
+#~ msgid "Windows Mobile Calendar"
+#~ msgstr "Calendrier Windows Mobile"
+
+#~ msgid "Tasks"
+#~ msgstr "Tâches"
+
+#~ msgid "Windows Mobile Tasks"
+#~ msgstr "Tâches Windows Mobile"
