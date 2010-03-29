@@ -680,7 +680,8 @@ class AboutDialog(gtk.AboutDialog):
         		"John Carr",
         		"Thomas Van Machelen",
         		"Jonny Lamb",
-                "Alexandre Rosenfeld"])
+                "Alexandre Rosenfeld",
+                "Andrew Stormont"])
         self.set_artists([
         		"John Stowers",
         		"mejogid",
