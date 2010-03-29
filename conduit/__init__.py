@@ -29,7 +29,7 @@ gobject.threads_init()
 # Global Constants
 ################################################################################
 DIRECTORY = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-IS_INSTALLED = not os.path.exists(os.path.join(DIRECTORY,"ChangeLog"))
+IS_INSTALLED = not os.path.exists(os.path.join(DIRECTORY,"NEWS"))
 IS_DEVELOPMENT_VERSION = True
 
 #test the existance of some compulsory directories
