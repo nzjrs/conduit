@@ -1,0 +1,1042 @@
+# translation of conduit to Ukrainian
+# Copyright (C) 2010 Free Software Foundation
+# This file is distributed under the same license as the conduit package.
+# Maxim Dziumanenko <dziumanenko@gmail.com>, 2010
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: conduit\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-02 10:54+0300\n"
+"PO-Revision-Date: 2010-04-01 20:22+0300\n"
+"Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../data/conduit.desktop.in.in.h:1
+msgid "Conduit Synchronizer"
+msgstr "Синхронізатор Conduit"
+
+#: ../data/conduit.desktop.in.in.h:2
+msgid "Synchronization for GNOME"
+msgstr "Синхронізація у GNOME"
+
+#: ../conduit/Knowledge.py:8
+msgid "What Do You Want to Synchronize?"
+msgstr "Що треба синхронізувати?"
+
+#: ../conduit/Knowledge.py:9
+msgid "Drag and Drop a Data Provider on the Canvas"
+msgstr "Перетягніть джерело даних на канву"
+
+#: ../conduit/Knowledge.py:11
+msgid "Synchronization Group Created"
+msgstr "Створено групу синхронізації"
+
+#: ../conduit/Knowledge.py:12
+msgid "Add Another Data Provider to the Group to Synchronize it"
+msgstr "Додайте до групи інше джерело даних для синхронізації"
+
+#: ../conduit/Knowledge.py:14
+msgid "You Are Now Ready to Synchronize"
+msgstr "Все готово для синхронізації"
+
+#: ../conduit/Knowledge.py:15
+msgid "Right Click on Group for Options"
+msgstr "Щоб отримати параметри, натисніть правою кнопкою миші на групі"
+
+#: ../conduit/Knowledge.py:24
+msgid "Synchronize Two Folders"
+msgstr "Синхронізувати дві теки"
+
+#: ../conduit/Knowledge.py:27
+msgid "Backup Folder to Box.net"
+msgstr "Створити резервну копію теки на Box.net"
+
+#: ../conduit/Knowledge.py:30
+msgid "Synchronize Tagged F-Spot Photos to Flickr"
+msgstr "Синхронізувати фотографії F-Spot на Flickr"
+
+#: ../conduit/Knowledge.py:33
+msgid "Synchronize Photos to Flickr"
+msgstr "Синхронізувати фотографії на Flickr"
+
+#: ../conduit/Knowledge.py:36
+msgid "Upload Photos to Facebook"
+msgstr "Завантажувати фотографії на Facebook"
+
+#: ../conduit/Knowledge.py:39
+msgid "Synchronize Desktop Wallpaper from a RSS Feed"
+msgstr "Синхронізувати зображення на робочому столі зі стрічкою RSS"
+
+#: ../conduit/Main.py:59
+msgid "Conduit is a synchronization application."
+msgstr "Conduit — програма для синхронізації."
+
+#: ../conduit/Main.py:63
+#, python-format
+msgid "Launch without GUI. [default: %default]"
+msgstr "Запускати без графічного інтерфейсу. [типово: %default]"
+
+#: ../conduit/Main.py:67
+#, python-format
+msgid "Save dataprovider configuration to FILE. [default: %default]"
+msgstr "Зберігати параметри джерела у ФАЙЛ. [типово: %default]"
+
+#: ../conduit/Main.py:71
+#, python-format
+msgid "Iconify on startup. [default: %default]"
+msgstr "Мінімізувати під час запуску. [типово: %default]"
+
+#: ../conduit/Main.py:75
+#, python-format
+msgid "Run with the specified UI. [default: %default]"
+msgstr "Запускати з певним інтерфейсом. [типово: %default]"
+
+#: ../conduit/Main.py:79
+msgid "Only load modules in the named files. [default: load all modules]"
+msgstr ""
+"Завантажувати модулі лише з вказаних файлів. [типово: завантажувати всі модулі]"
+
+#: ../conduit/Main.py:83
+msgid "Do not load modules in the named files. [default: load all modules]"
+msgstr "Не завантажувати модулі з вказаних файлів. [типово: завантажувати всі модулі]"
+
+#: ../conduit/Main.py:87
+msgid ""
+"Explicitly set internal Conduit settings (keys) to the given values for this "
+"session. [default: do not set]"
+msgstr ""
+"Встановити внутрішнім параметрам (ключам) Conduit дані значення для цього "
+"сеансу. [типово: не встановлювати]"
+
+#: ../conduit/Main.py:91
+#, python-format
+msgid ""
+"Enable loading of unfinished or unsupported dataproviders. [default: %"
+"default]"
+msgstr ""
+"Дозволити завантаження незавершених та непідтримуваних джерел даних. [типово: %default]"
+
+#: ../conduit/Main.py:95
+#, python-format
+msgid "Generate more debugging information. [default: %default]"
+msgstr "Видавати більше налагоджувальної інформації. [типово: %default]"
+
+#: ../conduit/Main.py:99
+#, python-format
+msgid "Generate less debugging information. [default: %default]"
+msgstr "Видавати менше налагоджувальної інформації. [типово: %default]"
+
+#: ../conduit/Main.py:103
+#, python-format
+msgid "Generate no debugging information. [default: %default]"
+msgstr "Не видавати налагоджувальну інформацію. [типово: %default]"
+
+#: ../conduit/dataproviders/DataProvider.py:22
+msgid "Ready"
+msgstr "Готовий"
+
+#: ../conduit/dataproviders/DataProvider.py:23
+msgid "New data to sync"
+msgstr "Нові дані для синхронізації"
+
+#: ../conduit/dataproviders/DataProvider.py:24
+msgid "Refreshing..."
+msgstr "Виконується оновлення..."
+
+#: ../conduit/dataproviders/DataProvider.py:25
+msgid "Refreshed OK"
+msgstr "Оновлення успішно завершено"
+
+#: ../conduit/dataproviders/DataProvider.py:26
+msgid "Error Refreshing"
+msgstr "Помилка при оновленні"
+
+#: ../conduit/dataproviders/DataProvider.py:27
+msgid "Synchronizing..."
+msgstr "Синхронізація..."
+
+#: ../conduit/dataproviders/DataProvider.py:28
+msgid "Synchronized OK"
+msgstr "Синхронізацію успішно завершено"
+
+#: ../conduit/dataproviders/DataProvider.py:29
+msgid "Error Synchronizing"
+msgstr "Помилка при синхронізації"
+
+#: ../conduit/dataproviders/DataProvider.py:30
+msgid "Synchronization Skipped"
+msgstr "Синхронізація пропущена"
+
+#: ../conduit/dataproviders/DataProvider.py:31
+msgid "Synchronization Cancelled"
+msgstr "Синхронізація скасована"
+
+#: ../conduit/dataproviders/DataProvider.py:32
+msgid "Synchronization Conflict"
+msgstr "Конфлікт при синхронізації"
+
+#: ../conduit/dataproviders/DataProvider.py:33
+msgid "Not Configured"
+msgstr "Не налаштовано"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "640x480"
+msgstr "640x480"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "800x600"
+msgstr "800x600"
+
+#: ../conduit/dataproviders/Image.py:34
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "1024x768"
+msgstr "1024x768"
+
+#. Signifies that a conversion should not take place
+#: ../conduit/dataproviders/Image.py:35
+#: ../conduit/modules/N800Module/N800Module.py:57
+msgid "None"
+msgstr "Немає"
+
+#. Default Categories for the DataProviders
+#: ../conduit/dataproviders/__init__.py:6
+msgid "Files and Folders"
+msgstr "Файли та теки"
+
+#: ../conduit/dataproviders/__init__.py:7
+#: ../conduit/modules/iPodModule/iPodModule.py:179
+msgid "Notes"
+msgstr "Примітки"
+
+#: ../conduit/dataproviders/__init__.py:8
+#: ../conduit/modules/iPodModule/iPodModule.py:367
+msgid "Photos"
+msgstr "Фотографії"
+
+#: ../conduit/dataproviders/__init__.py:9
+msgid "Office"
+msgstr "Офіс"
+
+#: ../conduit/dataproviders/__init__.py:10
+msgid "Settings"
+msgstr "Параметри"
+
+#: ../conduit/dataproviders/__init__.py:11
+msgid "Miscellaneous"
+msgstr "Різне"
+
+#: ../conduit/dataproviders/__init__.py:12
+msgid "Media"
+msgstr "Медіа"
+
+#: ../conduit/dataproviders/__init__.py:13
+msgid "Bookmarks"
+msgstr "Закладки"
+
+#: ../conduit/dataproviders/__init__.py:14
+msgid "Test"
+msgstr "Тест"
+
+#: ../conduit/gtkui/Canvas.py:152
+msgid "Drag a Data Provider here to continue"
+msgstr "Перетягніть сюди джерело данх"
+
+#: ../conduit/gtkui/Canvas.py:217
+msgid "Show me"
+msgstr "Показати мене"
+
+#. Visible column0 is
+#. [pixbuf + source display name] or
+#. [source_data.get_snippet()]
+#: ../conduit/gtkui/ConflictResolver.py:91
+msgid "Source"
+msgstr "Джерело"
+
+#: ../conduit/gtkui/ConflictResolver.py:105
+msgid "Resolution"
+msgstr "Роздільна здатність"
+
+#. Visible column2 is the display name of source and source data
+#: ../conduit/gtkui/ConflictResolver.py:110
+msgid "Sink"
+msgstr "Приймач"
+
+#: ../conduit/gtkui/ConflictResolver.py:150
+#: ../conduit/gtkui/ConflictResolver.py:151
+#, python-format
+msgid "Conflicts (%s)"
+msgstr "Конфлікти (%s)"
+
+#. name,                      #url
+#: ../conduit/gtkui/UI.py:33
+msgid "Introduction"
+msgstr "Вступ"
+
+#: ../conduit/gtkui/UI.py:34
+msgid "Writing a Data Provider"
+msgstr "Запис джерела даних"
+
+#: ../conduit/gtkui/UI.py:35
+msgid "API Documentation"
+msgstr "Документація API"
+
+#: ../conduit/gtkui/UI.py:36
+msgid "Test Results"
+msgstr "Результати тесту"
+
+#: ../conduit/gtkui/UI.py:52
+msgid "Examples"
+msgstr "Приклади"
+
+#. Build some liststores to display
+#: ../conduit/gtkui/UI.py:139
+msgid "Convert from"
+msgstr "Перетворювати з"
+
+#: ../conduit/gtkui/UI.py:140
+msgid "into"
+msgstr "у"
+
+#: ../conduit/gtkui/UI.py:190
+msgid "Relationship Database"
+msgstr "База даних взаємозв'язку"
+
+#: ../conduit/gtkui/UI.py:194
+msgid "Conversions Available"
+msgstr "Доступні перетворення"
+
+#: ../conduit/gtkui/UI.py:200 ../conduit/gtkui/Tree.py:355
+#: ../conduit/modules/FileModule/FileConfiguration.py:117
+msgid "Name"
+msgstr "Назва"
+
+#: ../conduit/gtkui/UI.py:204
+msgid "Loaded"
+msgstr "Завантажено"
+
+#: ../conduit/gtkui/UI.py:329
+#, python-format
+msgid " - %s (Development Version)"
+msgstr " — %s (версія у розробці)"
+
+#: ../conduit/gtkui/UI.py:331
+msgid " - Running Uninstalled"
+msgstr " — запуск віддаленої програми"
+
+#: ../conduit/gtkui/UI.py:375
+msgid "Developers"
+msgstr "Розробники"
+
+#: ../conduit/gtkui/UI.py:539 ../conduit/hildonui/UI.py:127
+msgid "Synchronization in progress. Do you want to cancel it?"
+msgstr "Виконується синхронізація. Хочете її скасувати?"
+
+#: ../conduit/gtkui/UI.py:712
+msgid "_Synchronize All"
+msgstr "_Синхронізувати все"
+
+#: ../conduit/gtkui/UI.py:712
+msgid "Synchronizes All Groups"
+msgstr "Синхронізує всі групи"
+
+#: ../conduit/gtkui/UI.py:713
+msgid "_Cancel Synchronization"
+msgstr "_Скасувати синхронізацію"
+
+#: ../conduit/gtkui/UI.py:713
+msgid "Cancels Currently Synchronizing Groups"
+msgstr "Скидає поточні групи синхронізації"
+
+#: ../conduit/gtkui/UI.py:714
+msgid "_Quit"
+msgstr "Ви_йти'"
+
+#: ../conduit/gtkui/UI.py:714
+msgid "Close Conduit"
+msgstr "Закрити Conduit"
+
+#: ../conduit/gtkui/UI.py:754
+msgid "Synchronization Error"
+msgstr "Помилка при синхронізації"
+
+#: ../conduit/gtkui/UI.py:757
+msgid "Synchronization Complete"
+msgstr "Синхронізацію виконано"
+
+#: ../conduit/gtkui/UI.py:765
+msgid "Synchronizing"
+msgstr "Синхронізація"
+
+#: ../conduit/gtkui/Tree.py:364
+msgid "Description"
+msgstr "Опис"
+
+#: ../conduit/gtkui/ConfigItems.py:733
+#, python-format
+msgid "Total: %d"
+msgstr "Загалом: %d"
+
+#: ../conduit/gtkui/WindowConfigurator.py:14
+msgid "Configure"
+msgstr "Налаштовування"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:58
+msgid "Backpack Notes"
+msgstr "Примітки Backpack"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:59
+msgid "Store things in Backpack Notes"
+msgstr "Зберегти речі у примітках Backpack"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:105
+#: ../conduit/modules/FlickrModule/FlickrModule.py:307
+#: ../conduit/modules/ZotoModule/ZotoModule.py:243
+msgid "Account details"
+msgstr "Подробиці про обліковий запис"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:106
+msgid "Login"
+msgstr "Увійти"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:109
+msgid "API key"
+msgstr "Ключ API"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:112
+msgid "Saved notes"
+msgstr "Збережені примітки"
+
+#: ../conduit/modules/BackpackModule/BackpackModule.py:113
+msgid "Save notes in page"
+msgstr "Зберігати примітки на сторінці"
+
+#: ../conduit/modules/BansheeModule/BansheeModule.py:52
+msgid "Banshee Playlists"
+msgstr "Списки відтворення Banshee"
+
+#: ../conduit/modules/BansheeModule/BansheeModule.py:53
+msgid "Synchronize your Banshee playlists"
+msgstr "Синхронізувати списки можливості Banshee"
+
+#: ../conduit/modules/BansheeModule/BansheeModule.py:187
+#: ../conduit/modules/BansheeModule/BansheeModule.py:188
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:116
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:117
+msgid "Playlists"
+msgstr "Списки відтворень"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:29
+msgid "Box.net"
+msgstr "Box.net"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:30
+msgid "Synchronize your Box.net files"
+msgstr "Синхронізувати файли Box.net"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:290
+#: ../conduit/modules/FileModule/FileModule.py:82
+msgid "Folder"
+msgstr "Тека"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:291
+msgid "Folder name"
+msgstr "Назва теки"
+
+#: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:295
+msgid "Load folders"
+msgstr "Завантажити теки"
+
+#: ../conduit/modules/ConverterModule.py:91
+msgid "Note-"
+msgstr "Примітка-"
+
+#: ../conduit/modules/DesktopWallpaperModule.py:38
+msgid "Wallpaper"
+msgstr "Тло"
+
+#: ../conduit/modules/DesktopWallpaperModule.py:39
+msgid "Changes your Desktop Wallpaper"
+msgstr "Змінює тло робочого столу"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:107
+#, python-format
+msgid "Select %s"
+msgstr "Виберіть %s"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:127
+msgid "Evolution Contacts"
+msgstr "Контакти Evolution"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:128
+msgid "Synchronize your contacts"
+msgstr "Синхронізувати контакти"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:178
+msgid "Evolution Calendar"
+msgstr "Календар Evolution"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:179
+msgid "Synchronize your calendar"
+msgstr "Синхронізувати календар"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:240
+msgid "Evolution Tasks"
+msgstr "Задачі Evolution"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:241
+msgid "Synchronize your tasks"
+msgstr "Синхронізувати задачі"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:297
+msgid "Evolution Memos"
+msgstr "Примітки Evolution"
+
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:298
+msgid "Synchronize your memos"
+msgstr "Синхронізувати примітки"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:38
+msgid "Facebook"
+msgstr "Facebook"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:39
+msgid "Synchronize your Facebook photos"
+msgstr "Синхронізувати фотографії Facebook"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:124
+#: ../conduit/modules/FlickrModule/FlickrModule.py:282
+msgid "Loading album list..."
+msgstr "Завантаження списку альбомів…"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:128
+msgid "Failed to connect"
+msgstr "Не вдається з'єднатися"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:131
+msgid "Logged in"
+msgstr "Увійшов у систему"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:133
+msgid "Failed to login"
+msgstr "Не вдалось увійти у систему"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:145
+#: ../conduit/modules/FspotModule/FspotModule.py:243
+msgid "Status"
+msgstr "Стан"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:150
+#: ../conduit/modules/iPodModule/iPodModule.py:461
+#: ../conduit/modules/ZotoModule/ZotoModule.py:252
+msgid "Album"
+msgstr "Альбом"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:151
+msgid "Album name"
+msgstr "Назва альбому"
+
+#: ../conduit/modules/FacebookModule/FacebookModule.py:156
+msgid "Load albums"
+msgstr "Завантажити альбоми"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:58
+msgid "RSS Feed"
+msgstr "RSS-потік"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:59
+msgid "Synchronize data from RSS enclosures"
+msgstr "Синхронізувати данні з вкладень RSS"
+
+#. FIXME: Add Randomize
+#: ../conduit/modules/FeedModule/FeedModule.py:114
+msgid "Feed details"
+msgstr "Подробиці про потік"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:115
+msgid "Feed address"
+msgstr "Адреса потоку"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:118
+msgid "Enclosure settings"
+msgstr "Параметри вкладень"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:119
+msgid "Limit downloaded enclosures"
+msgstr "Обмежити завантажені вкладення"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:125
+msgid "Limit to"
+msgstr "Обмежити до"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:129
+msgid "Randomize enclosures"
+msgstr "Рандомізувати вкладення"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:133
+msgid "Download types"
+msgstr "Типи завантажень"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:134
+msgid "Download audio files"
+msgstr "Завантажувати аудіофайли"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:135
+msgid "Download video files"
+msgstr "Завантажувати відеофайли"
+
+#: ../conduit/modules/FeedModule/FeedModule.py:136
+msgid "Download photo files"
+msgstr "Завантажувати файли фотографій"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:111
+msgid "Icon"
+msgstr "Значок"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:123
+#: ../conduit/modules/GConfModule/GConfModule.py:138
+msgid "Items"
+msgstr "Елементи"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:149
+#, python-format
+msgid "<i>Contains %s files</i>"
+msgstr "<i>Містить файли: %s</i>"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:248
+msgid "Include file..."
+msgstr "Включити файл…"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:258
+msgid "All files"
+msgstr "Усі файли"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:271
+msgid "Include folder..."
+msgstr "Включити теку…"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:314
+msgid "Please Name All Folders"
+msgstr "Дайте назви усім текам"
+
+#: ../conduit/modules/FileModule/FileConfiguration.py:315
+msgid ""
+"All folders require a descriptive name. To name a folder simply click on it"
+msgstr ""
+"У кожної теки має бути описову назву. Щоб дати теці назву, клацніть по ній"
+
+#: ../conduit/modules/FileModule/FileModule.py:23
+msgid "Files"
+msgstr "Файли"
+
+#: ../conduit/modules/FileModule/FileModule.py:24
+msgid "Source for synchronizing multiple files"
+msgstr "Джерело синхронізації багатьох файлів"
+
+#: ../conduit/modules/FileModule/FileModule.py:83
+msgid "Synchronize folders"
+msgstr "Синхронізувати теки"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:40
+msgid "Firefox 3 Bookmarks"
+msgstr "Закладки Firefox 3"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:41
+msgid "Syncronize your Firefox 3 Bookmarks"
+msgstr "Синхронізувати закладки Firefox 3"
+
+#: ../conduit/modules/Firefox3Module/Firefox3Module.py:100
+msgid "Firefox Profile"
+msgstr "Профіль Firefox"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:76
+msgid "Flickr"
+msgstr "Flickr"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:77
+msgid "Synchronize your Flickr.com photos"
+msgstr "Синхронізувати фотографії Flickr.com"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:287
+msgid "Failed to connect."
+msgstr "Не вдалось з'єднатися."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:290
+msgid "Album names loaded."
+msgstr "Отримано назви альбомів."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:292
+msgid "Failed to login."
+msgstr "Не вдалось увійти у систему."
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:303
+msgid "Logging in, please wait..."
+msgstr "Вхід у систему, зачекайте…"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:308
+#: ../conduit/modules/GoogleBookmarksModule.py:67
+#: ../conduit/modules/ZotoModule/ZotoModule.py:244
+msgid "Username"
+msgstr "Назва користувача"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:319
+msgid "Authenticate"
+msgstr "Автентифікація"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:323
+#: ../conduit/modules/ZotoModule/ZotoModule.py:251
+msgid "Saved photo settings"
+msgstr "Параметри збережених фотографій"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:328
+msgid "Resize photos"
+msgstr "Змінити розмір фотографій"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:329
+msgid "Do not resize"
+msgstr "Не змінювати розмір"
+
+#: ../conduit/modules/FlickrModule/FlickrModule.py:332
+msgid "Photos are public"
+msgstr "Фотографії доступні для усіх"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:25
+msgid "F-Spot"
+msgstr "F-Spot"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:26
+msgid "Synchronize your F-Spot photos"
+msgstr "Синхронізувати фотографії F-Spot"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:152
+msgid "F-Spot DBus interface is operating in read-only mode"
+msgstr "Інтерфейс F-Spot DBus працює у режимі «лише для читання»"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:218
+msgid "F-Spot is running"
+msgstr "F-Spot запущено"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:219
+msgid "Please start F-Spot or activate the D-Bus Extension"
+msgstr "Запустіть F-Spot або вимкніть розширення D-Bus"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:244
+msgid "Start F-Spot"
+msgstr "Запустити F-Spot"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:248
+#: ../conduit/modules/FspotModule/FspotModule.py:249
+msgid "Tags"
+msgstr "Мітки"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:262
+msgid "Add tags"
+msgstr "Додати мітки"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:263
+msgid "Tag name"
+msgstr "Назва мітки"
+
+#: ../conduit/modules/FspotModule/FspotModule.py:266
+msgid "Add tag"
+msgstr "Додати мітку"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:21
+msgid "Application Settings"
+msgstr "Параметри програми"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:22
+msgid "Synchronize your application settings"
+msgstr "Синхронізувати параметри програми"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:31
+msgid "Metacity"
+msgstr "Metacity"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:32
+msgid "Nautilus"
+msgstr "Nautilus"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:33
+msgid "Preferred Applications"
+msgstr "Уподобані програми"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:34
+msgid "Desktop Interface"
+msgstr "Інтерфейс робочого столу"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:35
+msgid "Gnome Terminal"
+msgstr "Термінал Gnome"
+
+#: ../conduit/modules/GConfModule/GConfModule.py:137
+msgid "Applications to Synchronize"
+msgstr "Програми для синхронізації"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:19
+msgid "Google Bookmarks"
+msgstr "Закладки Google"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:20
+msgid "Sync your Google Bookmarks"
+msgstr "Синхронізувати закладки Google"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:66
+msgid "Login Details"
+msgstr "Подробиці про обліковий запис"
+
+#: ../conduit/modules/GoogleBookmarksModule.py:70
+#: ../conduit/modules/ZotoModule/ZotoModule.py:247
+msgid "Password"
+msgstr "Пароль"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:399
+msgid "Google Calendar"
+msgstr "Календар Google"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:400
+msgid "Synchronize your Google Calendar"
+msgstr "Синхронізувати календар Google"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:582
+msgid "Picasa"
+msgstr "Picasa"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:583
+msgid "Synchronize your Google Picasa photos"
+msgstr "Синхронізувати фотографії з Google Picasa"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:745
+msgid "Google Contacts"
+msgstr "Контакти Google"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:746
+msgid "Synchronize your Google Mail contacts"
+msgstr "Синхронізувати контакти Google Mail"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1076
+msgid "Google Documents"
+msgstr "Документи Google"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1077
+msgid "Synchronize your Google Documents"
+msgstr "Синхронізувати документи Google"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1322
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:69
+msgid "Unknown"
+msgstr "Невідомо"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1323
+msgid "miscellaneous"
+msgstr "різне"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1324
+msgid "No description."
+msgstr "Без опису."
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1333
+msgid "YouTube"
+msgstr "YouTube"
+
+#: ../conduit/modules/GoogleModule/GoogleModule.py:1334
+msgid "Synchronize data from YouTube"
+msgstr "Синхронізувати дані з YouTube"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:180
+msgid "Synchronize your iPod notes"
+msgstr "Синхронізувати примітки iPod"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:295
+msgid "Contacts"
+msgstr "Контакти"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:296
+msgid "Synchronize your iPod contacts"
+msgstr "Синхронізувати контакти iPod"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:331
+msgid "Calendar"
+msgstr "Календар"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:332
+msgid "Synchronize your iPod calendar"
+msgstr "Синхронізувати календар iPod"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:368
+msgid "Synchronize your iPod photos"
+msgstr "Синхронізувати фотографії iPod"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:465
+msgid "Delete"
+msgstr "Видалити"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:695
+#: ../conduit/modules/iPodModule/iPodModule.py:812
+#: ../conduit/modules/N800Module/N800Module.py:77
+msgid "Encoding"
+msgstr "Кодування"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:811
+msgid "Conversion options"
+msgstr "Параметри перетворення"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:816
+msgid "Keep converted files"
+msgstr "Зберігати перетворені файли"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:846
+msgid "iPod Music"
+msgstr "Музика iPod"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:847
+msgid "Synchronize your iPod music"
+msgstr "Синхронізувати музику iPod"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:882
+msgid "iPod Video"
+msgstr "Відео iPod"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:883
+msgid "Synchronize your iPod videos"
+msgstr "Синхронізувати відео iPod"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:907
+msgid "Movie"
+msgstr "Кіно"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:908
+msgid "Music Video"
+msgstr "Музика та відео"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:909
+msgid "TV Show"
+msgstr "ТВ шоу"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:911
+msgid "Video kind"
+msgstr "Різне відео"
+
+#. Translators: Translate this in derived classes.
+#: ../conduit/modules/N800Module/N800Module.py:55
+msgid "Conduit"
+msgstr "Conduit"
+
+#: ../conduit/modules/N800Module/N800Module.py:105
+msgid "N800 Files"
+msgstr "Файли N800"
+
+#: ../conduit/modules/N800Module/N800Module.py:106
+msgid "Synchronizes files/folders to a N800 device"
+msgstr "Синхронізує файли та теки на пристрій N800"
+
+#. To translators: default backup folder of N800
+#: ../conduit/modules/N800Module/N800Module.py:111
+msgid "Backups"
+msgstr "Резервні копії"
+
+#: ../conduit/modules/N800Module/N800Module.py:126
+msgid "N800 Music"
+msgstr "Музика N800"
+
+#: ../conduit/modules/N800Module/N800Module.py:127
+msgid "Synchronizes music to a N800 device"
+msgstr "Синхронізує музику на пристрій N800"
+
+#. To translators: defaul music folder of N800
+#: ../conduit/modules/N800Module/N800Module.py:133
+msgid "Music"
+msgstr "Музика"
+
+#: ../conduit/modules/N800Module/N800Module.py:150
+msgid "N800 Videos"
+msgstr "Фотографії N800"
+
+#: ../conduit/modules/N800Module/N800Module.py:151
+msgid "Synchronizes video to a N800 device"
+msgstr "Синхронізує відео на пристрій N800"
+
+#. To translators: defaul video folder of N800
+#: ../conduit/modules/N800Module/N800Module.py:157
+msgid "Video"
+msgstr "Відео"
+
+#: ../conduit/modules/N800Module/N800Module.py:174
+msgid "N800 Photos"
+msgstr "Фотографії N800"
+
+#: ../conduit/modules/N800Module/N800Module.py:175
+msgid "Synchronizes photos to an N800 device"
+msgstr "Синхронізує фотографії на пристрій N800"
+
+#. To translators: default photos folder of N800
+#: ../conduit/modules/N800Module/N800Module.py:181
+msgid "Photo"
+msgstr "Фотографії"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:19
+msgid "Nautilus Bookmarks"
+msgstr "Закладки Nautilus"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:20
+msgid "Sync your Nautilus Bookmarks"
+msgstr "Синхронізувати закладки Nautilus"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:145
+msgid "Sync bookmarks to local places/files"
+msgstr "Синхронізувати закладки з локальними каталогами чи файлами"
+
+#: ../conduit/modules/NautilusBookmarksModule.py:148
+msgid "Sync bookmarks to remote places/files"
+msgstr "Синхронізувати закладки з віддаленими каталогами чи файлами"
+
+#: ../conduit/modules/NetworkModule/Server.py:147
+msgid "Network"
+msgstr "Мережа"
+
+#: ../conduit/modules/NetworkModule/Server.py:148
+msgid "Enable synchronization via network"
+msgstr "Дозволити синхронізацію з мережі"
+
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:44
+msgid "Rhythmbox Music"
+msgstr "Музика Rhythmbox"
+
+#: ../conduit/modules/RhythmboxModule/RhythmboxModule.py:45
+msgid "Synchronize songs from your Rhythmbox playlists"
+msgstr "Синхронізувати композиції зі списків відтворення Rhythmbox"
+
+#: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:26
+msgid "Shutterfly"
+msgstr "Shutterfly"
+
+#: ../conduit/modules/ShutterflyModule/ShutterflyModule.py:27
+msgid "Synchronize your Shutterfly photos"
+msgstr "Синхронізувати фотографії Shutterfly"
+
+#: ../conduit/modules/ShutterflyModule/shutterfly/shutterfly.py:33
+msgid "%Y-%m-%d %H:%M:%S"
+msgstr "%d-%m-%Y %H:%M:%S"
+
+#: ../conduit/modules/SmugMugModule/SmugMugModule.py:28
+msgid "SmugMug"
+msgstr "SmugMug"
+
+#: ../conduit/modules/SmugMugModule/SmugMugModule.py:29
+msgid "Synchronize your SmugMug.com photos"
+msgstr "Синхронізувати фотографії SmugMug.com"
+
+#: ../conduit/modules/ZotoModule/ZotoModule.py:154
+msgid "Zoto"
+msgstr "Zoto"
+
+#: ../conduit/modules/ZotoModule/ZotoModule.py:155
+msgid "Synchronize your Zoto photos"
+msgstr "Синхронізувати фотографії Zoto"
+
+
