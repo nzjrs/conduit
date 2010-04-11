@@ -1,0 +1,686 @@
+# Slovenian translation for conduit-help.
+# This file is distributed under the same license as the conduit-help package.
+# Andrej Žnidaršič <andrej.znidarsic@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: Conduit help\n"
+"POT-Creation-Date: 2009-11-23 17:19+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
+"X-Poedit-Language: Slovenian\n"
+"X-Poedit-Country: SLOVENIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/conduit.xml:122(None)
+msgid "@@image: 'figures/conduit-gui-parts.png'; md5=e7c7ebe8cac03bd0768e2de105155630"
+msgstr "@@image: 'figures/conduit-gui-parts.png'; md5=e7c7ebe8cac03bd0768e2de105155630"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/conduit.xml:214(None)
+msgid "@@image: 'figures/conduit-login.png'; md5=6e4fe96c2d518d23724e1a70a53fa026"
+msgstr "@@image: 'figures/conduit-login.png'; md5=6e4fe96c2d518d23724e1a70a53fa026"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/conduit.xml:233(None)
+msgid "@@image: 'figures/conduit-dp.png'; md5=ce99ba0bdc70c854b1f8a9999435e250"
+msgstr "@@image: 'figures/conduit-dp.png'; md5=ce99ba0bdc70c854b1f8a9999435e250"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/conduit.xml:279(None)
+msgid "@@image: 'figures/conduit-folder-configuration.png'; md5=ece672e8cf42e26947eee6e3fb5af7f9"
+msgstr "@@image: 'figures/conduit-folder-configuration.png'; md5=ece672e8cf42e26947eee6e3fb5af7f9"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/conduit.xml:345(None)
+msgid "@@image: 'figures/network-sync-pc1.png'; md5=118578724965f8af01b66ccdc7e39328"
+msgstr "@@image: 'figures/network-sync-pc1.png'; md5=118578724965f8af01b66ccdc7e39328"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: C/conduit.xml:358(None)
+msgid "@@image: 'figures/network-sync-pc2.png'; md5=565769e5f51b3decfebcfa18989ee391"
+msgstr "@@image: 'figures/network-sync-pc2.png'; md5=565769e5f51b3decfebcfa18989ee391"
+
+#: C/conduit.xml:14(title)
+msgid "Conduit Manual"
+msgstr "Priročnik Conduit"
+
+#: C/conduit.xml:16(para)
+msgid "Conduit is a program that synchronizes things"
+msgstr "Conduit je program za usklajevanje"
+
+#: C/conduit.xml:19(year)
+msgid "2007"
+msgstr "2007"
+
+#: C/conduit.xml:20(holder)
+msgid "John Stowers"
+msgstr "John Stowers"
+
+#: C/conduit.xml:23(publishername)
+msgid "GNOME Documentation Project"
+msgstr "Projekt dokumentacije GNOME"
+
+#: C/conduit.xml:28(firstname)
+msgid "John"
+msgstr "John"
+
+#: C/conduit.xml:29(surname)
+msgid "Stowers"
+msgstr "Stowers"
+
+#: C/conduit.xml:32(firstname)
+msgid "Brent"
+msgstr "Brent"
+
+#: C/conduit.xml:33(surname)
+msgid "Gueth"
+msgstr "Gueth"
+
+#: C/conduit.xml:39(revnumber)
+msgid "Conduit Manual 1.0"
+msgstr "Priročnik Conduit 1.0"
+
+#: C/conduit.xml:40(date)
+msgid "2008-01-03"
+msgstr "03.01.2008"
+
+#: C/conduit.xml:44(releaseinfo)
+msgid "This manual describes version 1.0 of Conduit"
+msgstr "Priročnik je namenjen različici programa Conduit 1.0"
+
+#: C/conduit.xml:48(title)
+msgid "What is Conduit"
+msgstr "Kaj je Conduit"
+
+#: C/conduit.xml:49(para)
+msgid "<ulink type=\"http\" url=\"http://www.conduit-project.org\">Conduit</ulink> is a synchronization application for GNOME. It allows you to synchronize your files, photos, emails, contacts, notes, calendar data and any other type of personal information and synchronize that data with another computer, an online service, or even another electronic device. Conduit manages the synchronization and conversion of data into other formats. For example, Conduit allows you to;"
+msgstr "<ulink type=\"http\" url=\"http://www.conduit-project.org\">Conduit</ulink> je usklajevalni program za GNOME. Omogoča vam usklajevanje vaših datotek, fotografij, e-pošte, stikov, sporočilc, podatkov koledarja in katerekoli druge vrste osebnih podatkov in usklajevanje teh podatkov z drugim računalnikom, spletno storitvijo ali celo drugo elektronsko napravo. Conduit upravlja usklajevanje in pretvarjanje podatkov v druge zapise. Conduit vam na primer omogoča:"
+
+#: C/conduit.xml:53(para)
+msgid "Synchronize your <ulink type=\"http\" url=\"http://www.gnome.org/projects/tomboy/\">Tomboy notes</ulink> with another computer"
+msgstr "Usklajevanje vaših <ulink type=\"http\" url=\"http://www.gnome.org/projects/tomboy/\">Sporočilc Tomboy</ulink> z drugim računalnikom"
+
+#: C/conduit.xml:56(para)
+msgid "Synchronize your PIM data to your mobile phone, <ulink type=\"http\" url=\"http://en.wikipedia.org/wiki/IPod\">iPod</ulink>, <ulink type=\"http\" url=\"http://en.wikipedia.org/wiki/Nokia_N800\">Nokia Internet tablet</ulink>, or between computers"
+msgstr "Usklajevanje vaših PIM podatkov z vašim mobilnim telefonom, <ulink type=\"http\" url=\"http://en.wikipedia.org/wiki/IPod\">iPodom</ulink>, <ulink type=\"http\" url=\"http://en.wikipedia.org/wiki/Nokia_N800\">Nokia spletnim tabličnikom</ulink> ali med računalniki"
+
+#: C/conduit.xml:59(para)
+msgid "Upload photos to <ulink type=\"http\" url=\"http://www.flickr.com\">Flickr</ulink>, <ulink type=\"http\" url=\"http://picasaweb.google.com\">Picasa</ulink>, <ulink type=\"http\" url=\"http://www.smugmug.com\">Smugmug</ulink>, <ulink type=\"http\" url=\"http://shutterfly.com\">Shutterfly</ulink> and your iPod,"
+msgstr "Nalaganje fotografij na  <ulink type=\"http\" url=\"http://www.flickr.com\">Flickr</ulink>, <ulink type=\"http\" url=\"http://picasaweb.google.com\">Picasa</ulink>, <ulink type=\"http\" url=\"http://www.smugmug.com\">Smugmug</ulink>, <ulink type=\"http\" url=\"http://shutterfly.com\">Shutterfly</ulink> in vaš iPod,"
+
+#: C/conduit.xml:61(para)
+msgid "... and many more"
+msgstr "... in veliko več"
+
+#: C/conduit.xml:63(para)
+msgid "Any combination you can imagine, Conduit will take care of the conversion and synchronization."
+msgstr "Katerakoli kombinacija, ki si jo lahko predstavljate. Conduit bo poskrbel za pretvorbo in usklajevanje."
+
+#: C/conduit.xml:65(title)
+msgid "Use Cases"
+msgstr "Uporabniški primeri"
+
+#: C/conduit.xml:68(para)
+msgid "Fred wants to sync his tomboy notes with <ulink type=\"http\" url=\"http://www.google.com/notebook\">Google notebook</ulink>"
+msgstr "Franci želi uskladiti svoje zapiske tomboy z <ulink type=\"http\" url=\"http://www.google.com/notebook\">Google beležnico</ulink>"
+
+#: C/conduit.xml:71(para)
+msgid "Joey wants to sync whatever is on his desktop to his <ulink type=\"http\" url=\"http://www.backpackit.com\">backpack account</ulink>"
+msgstr "Jana želi uskladiti karkoli ima na namizju s svojim računom <ulink type=\"http\" url=\"http://www.backpackit.com\">backpack</ulink>"
+
+#: C/conduit.xml:73(para)
+msgid "Nellie wants to keep a directory on his laptop and his desktop in sync"
+msgstr "Nataša želi obdržati mapo na njenem prenosniku usklajeno z namiznim računalnikom "
+
+#: C/conduit.xml:74(para)
+msgid "Paul wants to keep his evolution contacts in sync with his mobile phone"
+msgstr "Peter želi obdržati svoje stike evolution usklajene s svojim mobilnim telefonom"
+
+#: C/conduit.xml:75(para)
+msgid "Steve wants to keep his gnome preferences in sync between his two computers"
+msgstr "Janez želi obdržati svoje možnosti gnome usklajene med svojima dvema računalnikoma"
+
+#: C/conduit.xml:77(para)
+msgid "John wants to keep a directory of <ulink type=\"http\" url=\"http://openoffice.org\">OpenOffice</ulink> documents in sync with copies held on <ulink type=\"http\" url=\"http://docs.google.com\">Google Docs</ulink>"
+msgstr "Tomaž želi obdržati mapo z dokumenti <ulink type=\"http\" url=\"http://openoffice.org\">OpenOffice</ulink> usklajeno s kopijami na <ulink type=\"http\" url=\"http://docs.google.com\">Google Dokumentih</ulink>"
+
+#: C/conduit.xml:79(para)
+msgid "Pete wants to have photos saved to his server to be pushed to an external back up (usb hard drive / off-site ftp)"
+msgstr "Jure želi fotografije shranjene na svojem strežniku poslati na zunanjo varnostno kopijo (usb trdi disk / oddaljeni ftp)"
+
+#: C/conduit.xml:83(title)
+#: C/conduit.xml:114(title)
+#: C/conduit.xml:254(title)
+msgid "Introduction"
+msgstr "Uvod"
+
+#: C/conduit.xml:84(para)
+msgid "Conduit's goals are to synchronize your data as seamlessly as possible, be it from remote device or remote websites. It is about extending your life as you see it needs to be, no longer constrained by data, devices or formats. Conduit enables you to take your data where you want when you want. All of your mobile devices could be synchronized automatically by Conduit. Home file back-ups to a remote server? Synced automatically."
+msgstr "Cilj Conduit je omogočiti kar se da enostavno usklajevanje podatkov, bodisi iz oddaljene naprave ali oddaljenih spletišč. Cilj je o razširitev vašega življenja kot si želite, brez omejitev s podatki, napravami ali oblikami. Conduit vam omogoča s sabo vzeti podatke kamor jih želite in kadar jih želite. Conduit lahko samodejno usklajuje vse vaše prenosne naprave. Varnostne kopije domačih datotek na oddaljen strežnik? Usklajeno samodejno."
+
+#: C/conduit.xml:85(para)
+msgid "It may sometimes seem that Conduit is overly complicated, one of the design goals has always been to make the interface as simple and intuitive as possible. However Conduit is much more powerful then the simplistic design may lead on. This documentation will describe all the configuration options for groups and data providers, while the following gives some examples of items you may wish to synchronize;"
+msgstr "Včasih se morda zdi da je Conduit preveč zapleten, toda en od oblikovalskih ciljev je vedno bil narediti vmesnik kar se da enostaven in intuitiven. Vendar je Conduit bolj zmogljiv kot je videti iz enostavnega oblikovanja. Ta dokumentacija bo opisala vse nastavitvene možnosti za skupine in ponudnike podatkov, naslednje vrstice vam podajajo primere predmetov, ki jih morda želite uskladiti;"
+
+#: C/conduit.xml:88(para)
+msgid "A <ulink type=\"http\" url=\"http://www.gnome.org\">GNOME</ulink> user might store information in a wide variety of places on the desktop including;"
+msgstr "<ulink type=\"http\" url=\"http://www.gnome.org\">GNOME</ulink> uporabnik lahko shrani podatke na veliko različnih mestih na namizju vključno z:"
+
+#: C/conduit.xml:91(para)
+msgid "<ulink type=\"http\" url=\"http://www.gnome.org/projects/evolution/\">Evolution</ulink> (email, calendar, address book)"
+msgstr "<ulink type=\"http\" url=\"http://www.gnome.org/projects/evolution/\">Evolution</ulink> (e-pošta, koledar, imenika)"
+
+#: C/conduit.xml:95(para)
+msgid "<ulink type=\"http\" url=\"http://www.gnome.org/projects/tomboy/\">Tomboy</ulink> (notes)"
+msgstr "<ulink type=\"http\" url=\"http://www.gnome.org/projects/tomboy/\">Tomboy</ulink> (sporočilca)"
+
+#: C/conduit.xml:98(para)
+msgid "Directories (important files)"
+msgstr "Mape (pomembne datoteke)"
+
+#: C/conduit.xml:99(para)
+msgid "Photos"
+msgstr "Fotografije"
+
+#: C/conduit.xml:100(para)
+msgid "Bookmarks (web and feeds)"
+msgstr "Zaznamki (splet in viri)"
+
+#: C/conduit.xml:101(para)
+msgid "Music"
+msgstr "Glasba"
+
+#: C/conduit.xml:104(para)
+msgid "<ulink type=\"http\" url=\"http://del.icio.us\">Delicious</ulink> (bookmarks)"
+msgstr "<ulink type=\"http\" url=\"http://del.icio.us\">Delicious</ulink> (zaznamki)"
+
+#: C/conduit.xml:104(para)
+msgid "<ulink type=\"http\" url=\"http://www.gmail.com\">Gmail</ulink> (bookmarks, calendar, feeds, email, photos)"
+msgstr "<ulink type=\"http\" url=\"http://www.gmail.com\">Gmail</ulink> (zaznamki, koledar, viri, e-pošta, fotografije)"
+
+#: C/conduit.xml:104(para)
+msgid "<ulink type=\"http\" url=\"http://www.flickr.com\">Flickr</ulink> (photos)"
+msgstr "<ulink type=\"http\" url=\"http://www.flickr.com\">Flickr</ulink> (fotografije)"
+
+#: C/conduit.xml:104(para)
+msgid "The user might also use one of the many popular online services including <placeholder-1/>"
+msgstr "Uporabnik morda lahko uporablja eno od mnogih priljubljenih spletnih storitev vključno z <placeholder-1/>"
+
+#: C/conduit.xml:105(para)
+msgid "A second laptop, also running GNOME"
+msgstr "Drugi prenosnik, na katerem tudi teče GNOME"
+
+#: C/conduit.xml:105(para)
+msgid "A mobile phone"
+msgstr "Prenosni telefon"
+
+#: C/conduit.xml:105(para)
+msgid "A <ulink type=\"http\" url=\"http://www.nokia.com\">Nokia</ulink> 770/800"
+msgstr "<ulink type=\"http\" url=\"http://www.nokia.com\">Nokia</ulink> 770/800"
+
+#: C/conduit.xml:105(para)
+msgid "A <ulink type=\"http\" url=\"http://www.palm.com\">Palm</ulink> or <ulink type=\"http\" url=\"http://www.microsoft.com/windowsmobile/default.mspx\">Windows Mobile</ulink> Pocket PC"
+msgstr "<ulink type=\"http\" url=\"http://www.palm.com\">Palm</ulink> ali <ulink type=\"http\" url=\"http://www.microsoft.com/windowsmobile/default.mspx\">Windows Mobile</ulink> žepni računalnik"
+
+#: C/conduit.xml:105(para)
+msgid "An iPod"
+msgstr "iPod"
+
+#: C/conduit.xml:105(para)
+msgid "They probably also own another electronic device such as <placeholder-1/>"
+msgstr "Verjetno so lastniki drugih elektronskih naprav kot so <placeholder-1/>"
+
+#: C/conduit.xml:107(para)
+msgid "Its hard enough keeping your information organized when limited to the desktop, let alone the added burden of keeping your information in sync with any of the other services or devices listed above."
+msgstr "Dovolj težko je obdržati vaše podatke organizirane, ko ste omejeni na namizje, še težje pa z bremenom usklajevanja podatkov s katerokoli drugo storitvijo ali napravo našteto zgoraj."
+
+#: C/conduit.xml:108(para)
+msgid "Our goal for Conduit is to allow GNOME users to keep their information in sync. Irrespective of the type, irrespective of the way in which that information is stored. Conduit should just work."
+msgstr "Cilj programa je omogočiti uporabnikom GNOME usklajevanje njihovih podatkov ne glede na vrsto in ne glede na način shrambe podatkov. Conduit mora enostavno delovati."
+
+#: C/conduit.xml:112(title)
+msgid "Understanding the Conduit Interface"
+msgstr "Razumevanje vmesnika Conduit"
+
+#: C/conduit.xml:115(para)
+msgid "Conduit has a few basic concepts worth understanding before you begin. Knowing these concepts will help you discover things that you never knew you could keep in sync, for example, uploading photos right from your mobile phone to Picasa!"
+msgstr "Conduit ima nekaj osnovnih konceptov, ki jih potrebno razumeti pred začetkom. Poznavanje teh konceptov vam bo pomagalo odkriti stvari za katere niste nikoli vedeli, da jih lahko imate usklajene, na primer nalaganje vaših fotografij z vašega mobilnega telefona na Picasa!"
+
+#: C/conduit.xml:118(title)
+msgid "Conduit GUI"
+msgstr "Conduit grafični uporabniški vmesnik"
+
+#: C/conduit.xml:125(para)
+msgid "The Parts of the Conduit GUI"
+msgstr "Deli grafičnega uporabniškega vmesnika Conduit"
+
+#: C/conduit.xml:131(para)
+msgid "<xref linkend=\"conduit-FIG-gui-parts\"/> shows the Conduit interface's four main components;"
+msgstr "<xref linkend=\"conduit-FIG-gui-parts\"/> prikazuje štiri glavne sestavne dele vmesnika Conduit;"
+
+#: C/conduit.xml:133(para)
+msgid "The file, edit and help menus store operations which apply to all groups. For more information on the contents of these menus, see below."
+msgstr "Meniji datoteka, uredi in pomoč shranjujejo opravila, ki so uveljavljena za vse skupine. Za več podrobnosti o vsebini teh menijev poglejte spodaj."
+
+#: C/conduit.xml:133(para)
+msgid "The Menu<placeholder-1/>"
+msgstr "Meni<placeholder-1/> "
+
+#: C/conduit.xml:134(para)
+msgid "Located on the left hand side of the window, lists all of the data providers that are detected and ready for use on your system."
+msgstr "Na levi strani tega okna našteje vse ponudnike podatkov, ki so zaznani in pripravljeni za uporabo na vašem sistemu. "
+
+#: C/conduit.xml:134(para)
+msgid "Data providers are the source or destination of data you wish to sync. Please refer to the <emphasis>Data Provider</emphasis> section of the documentation to receive instructions on how to configure each data provider."
+msgstr "Ponudniki podatkov so izvor ali cilj podatkov, ki jih želite uskladiti. Oglejte si odsek dokumentacije <emphasis>Ponudnik podatkov</emphasis> za navodila o nastavitvah za vsakega ponudnika podatkov."
+
+#: C/conduit.xml:134(para)
+msgid "The Data Provider Pane <placeholder-1/>"
+msgstr "Pladenj ponudnika podatkov <placeholder-1/>"
+
+#: C/conduit.xml:135(para)
+msgid "Used to create groups of data providers to synchronize. Drag a data source to the left of the canvas pane and one or more data sinks to the right of the data pane to create a group. For more explanation on groups please check <xref linkend=\"conduit-providers-and-groups\"/>."
+msgstr "Uporaben za ustvarjanje skupin ponudnikov podatkov za usklajevanje. Za ustvarjanje skupine povlecite vir podatkov na levo stran pladnja platna in enega ali več podatkovnih korit na desno stran pladnja podatkov. Za več razlage o skupinah preverite <xref linkend=\"conduit-providers-and-groups\"/>."
+
+#: C/conduit.xml:135(para)
+msgid "The Canvas Pane <placeholder-1/>"
+msgstr "Pladenj platna <placeholder-1/>"
+
+#: C/conduit.xml:136(para)
+msgid "If you receive any conflict notifications while trying to run a sync job they will be listed here. For information on how to deal with possible conflicts please check the <emphasis>Conflicts and Resolutions</emphasis> section of the documentation."
+msgstr "V primeru da med poskusom usklajevanja prejmete sporočila o sporih, bodo našteta tukaj. Za podrobnosti kako se spopasti z morebitnimi spori preverite odsek dokumentacije <emphasis>Spori in njihovo razreševanje</emphasis>."
+
+#: C/conduit.xml:136(para)
+msgid "The Conflicts Pane <placeholder-1/>"
+msgstr "Pladenj sporov <placeholder-1/>"
+
+#: C/conduit.xml:140(title)
+msgid "The Menus"
+msgstr "Meniji"
+
+#: C/conduit.xml:142(title)
+msgid "The File Menu"
+msgstr "Meni Datoteka"
+
+#: C/conduit.xml:144(para)
+msgid "<menuchoice><guimenu>File</guimenu><guimenuitem>Save</guimenuitem></menuchoice> Saves all configured synchronization groups. Groups are saved automatically when you exit Conduit if you have selected <guilabel>Save Settings on Exit</guilabel> in <xref linkend=\"conduit-preferences-window\"/>"
+msgstr "<menuchoice><guimenu>Datoteka</guimenu><guimenuitem>Shrani</guimenuitem></menuchoice> Shrani vse nastavljene skupine usklajevanja. Skupine so samodejno shranjene ko končate Conduit, če ste izbrali<guilabel> Shrani nastavitve ob končanju</guilabel> v <xref linkend=\"conduit-preferences-window\"/>"
+
+#: C/conduit.xml:145(para)
+msgid "<menuchoice><guimenu>File</guimenu><guimenuitem>Synchronize All</guimenuitem></menuchoice> Synchronizes all groups at the same time. You can still run each sync group separately (see the <emphasis>Groups</emphasis> section), but this saves you the time of having to select and manually going through each group to start the sync process."
+msgstr "<menuchoice><guimenu>Datoteka</guimenu><guimenuitem>Uskladi vse</guimenuitem></menuchoice> Uskladi vse skupine hkrati. Še vedno lahko vsako skupino usklajevanja poženete ločeno (oglejte si odsek <emphasis>Skupine</emphasis>), toda to vam prihrani čas in potrebo po ročnem poganjanju usklajevanja za vsako skupino."
+
+#: C/conduit.xml:146(para)
+msgid "<menuchoice><guimenu>File</guimenu><guimenuitem>Quit</guimenuitem></menuchoice> Closes conduit. You will be prompted to stop any synchronization currently in progress."
+msgstr "<menuchoice><guimenu>Datoteka</guimenu><guimenuitem>Končaj</guimenuitem></menuchoice> Zapre conduit. Vprašani boste za zaustavitev morebitnih usklajevanj v teku."
+
+#: C/conduit.xml:150(title)
+msgid "The Edit Menu"
+msgstr "Meni Uredi"
+
+#: C/conduit.xml:152(para)
+msgid "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Clear Canvas</guimenuitem></menuchoice> Removes all configurations, data providers, and groups from the canvas pane. This allows you start using the canvas as it was a clean slate. The best time to use this is when you are re-configuring a large portion of your sync groups. There is no quick way to revert back after selecting this setting."
+msgstr "<menuchoice><guimenu>Uredi</guimenu><guimenuitem>Počisti platno</guimenuitem></menuchoice> Odstrani vse nastavitve, ponudnike podatkov in skupine iz pladnja platna. To vam omogoča ponovno uporabo platna, kot da bi bilo čisto. Najboljši čas za uporabo te zmožnosti je ob ponovnem nastavljanju velikega deleža vaših skupin usklajevanja. Po izbiri te nastavitve ni hitrega načina za povrnitev nazaj."
+
+#: C/conduit.xml:153(para)
+msgid "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences</guimenuitem></menuchoice> Global Conduit settings that effect all of your sync groups and basic Conduit operations. For more information please see <xref linkend=\"conduit-preferences-window\"/>"
+msgstr "<menuchoice><guimenu>Uredi</guimenu><guimenuitem>Možnosti</guimenuitem></menuchoice> Splošne nastavitve Conduit, ki imajo učinek na vse vaše usklajevalne skupine in osnovna opravila Conduit. Za več podrobnosti si oglejte <xref linkend=\"conduit-preferences-window\"/>"
+
+#: C/conduit.xml:157(title)
+msgid "The Help Menu"
+msgstr "Meni Pomoč"
+
+#: C/conduit.xml:159(para)
+msgid "<menuchoice><guimenu>Help</guimenu><guimenuitem>Developers</guimenuitem></menuchoice> If you are developer, and interested in contributing to Conduit, then this option includes links to all the appropriate documentation."
+msgstr "<menuchoice><guimenu>Pomoč</guimenu><guimenuitem>Razvijalci</guimenuitem></menuchoice> V primeru da ste razvijalec in bi radi prispevali h Conduit, ta možnost vključuje povezave do vse primerne dokumentacije."
+
+#: C/conduit.xml:160(para)
+msgid "<menuchoice><guimenu>Help</guimenu><guimenuitem>Contents</guimenuitem></menuchoice> Shows this help document."
+msgstr "<menuchoice><guimenu>Pomoč</guimenu><guimenuitem>Vsebina</guimenuitem></menuchoice> Pokaže ta dokument pomoči."
+
+#: C/conduit.xml:161(para)
+msgid "<menuchoice><guimenu>Help</guimenu><guimenuitem>About</guimenuitem></menuchoice> Shows the version number and a list of Conduit developers."
+msgstr "<menuchoice><guimenu>Pomoč</guimenu><guimenuitem>O programu</guimenuitem></menuchoice> Pokaže številko različice in seznam razvijalcev Conduit."
+
+#: C/conduit.xml:166(title)
+msgid "The Preferences Window"
+msgstr "Okno možnosti"
+
+#: C/conduit.xml:167(para)
+msgid "The Conduit preferences is accessed from the Edit menu. Any setting or change that you make within the preferences menu affect all of your sync groups and basic Conduit operations."
+msgstr "Do možnosti Conduit je mogoče dostopati iz menija Uredi. Katerakoli nastavitev ali sprememba, ki jo naredite znotraj menija možnosti, vpliva na vse vaše usklajevalne skupine in osnovna opravila Conduit. "
+
+#: C/conduit.xml:169(title)
+msgid "Configuration Tab"
+msgstr "Zavihek nastavitev"
+
+#: C/conduit.xml:170(para)
+msgid "The configuration tab is where all of Conduit's global settings are configured. There are six global settings:"
+msgstr "V zavihku nastavitev so nastavljene vse splošne nastavitve Conduit. Obstaja šest splošnih nastavitev:"
+
+#: C/conduit.xml:173(guilabel)
+msgid "Save Settings on Exit"
+msgstr "Shrani nastavitve ob izhodu"
+
+#: C/conduit.xml:174(para)
+msgid "Instructs Conduit that all configured dataproviders and groups should be saved when the application exits."
+msgstr "Določi naj bodo vsi nastavljeni ponudniki podatkov in skupine shranjene ob izhodu iz programa."
+
+#: C/conduit.xml:177(guilabel)
+msgid "Show Status Icon"
+msgstr "Pokaži ikono stanja"
+
+#: C/conduit.xml:178(para)
+msgid "Shows a status icon in the notification area. This icon animates to indicate a sync is in progress."
+msgstr "Pokaže ikono stanja v obvestilnem področju. Ikona z animacijo nakazuje usklajevanje v teku."
+
+#: C/conduit.xml:181(guilabel)
+msgid "Minimize to Notification Area"
+msgstr "Pomanjšaj v obvestilno področje"
+
+#: C/conduit.xml:182(para)
+msgid "Instructs Conduit to minimize to the notification area instead of to the panel."
+msgstr "Določi naj se Conduit pomanjša v obvestilno področje namesto v pult."
+
+#: C/conduit.xml:185(guilabel)
+msgid "Use Built in Web Browser"
+msgstr "Uporabi vgrajen spletni brskalnik"
+
+#: C/conduit.xml:186(para)
+msgid "When a data provider requires that you log onto a website, this option tells Conduit to use its own web browser to do so."
+msgstr "Ko ponudnik podatkov zahteva prijavo na spletišče, ta možnost pove Conduit naj za to uporabi svoj lasten spletni brskalnik."
+
+#: C/conduit.xml:188(guilabel)
+msgid "When an Item Has Been Deleted"
+msgstr "Ko je bil predmet izbrisan"
+
+#: C/conduit.xml:189(guilabel)
+msgid "Where There is a Two Way Conflict"
+msgstr "Kjer je dvosmerni spor"
+
+#: C/conduit.xml:193(title)
+msgid "Data Providers Tab"
+msgstr "Zavihek ponudnikov podatkov"
+
+#: C/conduit.xml:194(para)
+msgid "This tab shows a list of the data providers that are currently installed."
+msgstr "Ta zavihek pokaže seznam ponudnikov podatkov, ki so trenutno nameščeni."
+
+#: C/conduit.xml:197(title)
+msgid "Data Conversions Tab"
+msgstr "Zavihek pretvorbe podatkov"
+
+#: C/conduit.xml:198(para)
+msgid "This tab lists the data conversions that Conduit is capable of performing."
+msgstr "Ta zavihek razvrsti pretvorbe podatkov, ki jih lahko Conduit izvede."
+
+#: C/conduit.xml:201(title)
+msgid "Mapping DB"
+msgstr "Preslikava podatkovne zbirke"
+
+#: C/conduit.xml:202(para)
+msgid "This is a list of the UID that Conduit uses to maintain accurate sync data from different sources. Here you have the option to clear the mapping database."
+msgstr "To je seznam UID, ki jih Conduit uporablja za vzdrževanje natančnih podatkov usklajevanja iz različnih virov. Tukaj imate možnost čiščenja preslikave zbirke podatkov. "
+
+#: C/conduit.xml:206(title)
+msgid "The Web Login Window"
+msgstr "Okno spletne prijave"
+
+#: C/conduit.xml:207(para)
+msgid "Sometimes you will be required to log into a website associated with certain data providers. The frequency at which you may have to log in is not determined by Conduit, but by the security policy of the respective data provider. For example, Box.net requires you to log in every time Conduit is run, whereas Flickr only requires you to log in once, to give permission to Conduit to upload photos. If you are required to log into a website, and you have selected the <guilabel>Use Built in Web Browser</guilabel> from the Conduit preferences, then a window will pop up like the one shown below."
+msgstr "Včasih se boste morali prijaviti na spletišče, povezano z določenimi ponudniki podatkov. Pogostosti prijav ne določi Conduit, ampak varnostna politika določenega ponudnika podatkov. Na primer Box.net zahteva prijavo ob vsakem zagonu Conduit, Flickr zahteva le enkratno prijavo za dovoljenje Conduit za pošiljanje fotografij. V primeru da se morate prijaviti v spletišče in ste v možnostih Conduit izbrali <guilabel>Uporabi vgrajen spletni brskalnik</guilabel>, se bo pojavilo okno kot je prikazano spodaj."
+
+#: C/conduit.xml:210(title)
+msgid "Conduit Login Window"
+msgstr "Prijavno okno Conduit"
+
+#: C/conduit.xml:217(para)
+msgid "The window shown when logging into data provider websites"
+msgstr "Okno prikazano ob prijavi v spletišča ponudnikov podatkov"
+
+#: C/conduit.xml:225(title)
+msgid "Data Providers and Groups"
+msgstr "Ponudniki podatkov in skupine"
+
+#: C/conduit.xml:226(para)
+msgid "Conduit represents the things your want to synchronize graphically. When data providers get added to the canvas, they get arranged into so called groups. A group is a collection of data providers that share data. In the figure below you will see the following parts"
+msgstr "Conduit stvari, ki jih želite uskladiti, predstavlja grafično. Ko so ponudniki podatkov dodani na platno, so ponovno urejeni v tako imenovane skupine. Skupina je zbirka ponudnikov podatkov, ki si delijo podatke. Na sliki spodaj boste videli naslednje dele"
+
+#: C/conduit.xml:229(title)
+msgid "Conduit Depicts Synchronizations Graphically"
+msgstr "Conduit grafično prikazuje usklajevanje"
+
+#: C/conduit.xml:236(para)
+msgid "Parts of a Synchronization Group"
+msgstr "Deli usklajevalne skupine"
+
+#: C/conduit.xml:243(para)
+msgid "A data provider for synchronizing two way whose status indicates that it is ready to be synchronized."
+msgstr "Ponudnik podatkov za dvosmerno usklajevanje, katerega stanje nakazuje, da je pripravljen za usklajevanje."
+
+#: C/conduit.xml:244(para)
+msgid "A group containing two folder dataproviders. The arrow has two ends, indicating that the two dataproviders will undergo a two way synchronization, that is data will flow in both directions, and both folders will contain the same information once the sync finishes."
+msgstr "Skupina, ki vsebuje dva ponudnika podatkov map. Puščica ima dva konca, kar nakazuje, da bosta dva ponudnika podatkov izvedla dvosmerno usklajevanje. To pomeni, da bodo podatki tekli v obe smeri in da bosta po končanem usklajevanju obe mapi vsebovali enake podatke."
+
+#: C/conduit.xml:245(para)
+msgid "A second folder data provider. By convention, data providers that lie on the right side of groups are called data sinks. This is because during a one way sync, data can only flow into them."
+msgstr "Drugi ponudnik podatkov mape. Po dogovoru so ponudniki podatkov na desni strani skupin imenovani podatkovna korita. Takšno ime imajo, ker lahko med enosmernim usklajevanjem podatki lahko le tečejo v njih."
+
+#: C/conduit.xml:246(para)
+msgid "A Facebook and Picasa data provider for uploading images to those sites. Notice that that the group has three data providers, and the arrow has changed to indicate that data will flow in only one direction, that is images will be uploaded from F-Spot to Facebook and Picasa."
+msgstr "Ponudnika podatkov Facebook in Picasa za pošiljanje slik na ti strani. Skupina ima tri ponudnike podatkov in puščica se je spremenila in s tem nakazuje da bodo podatki tekli le v eno smer, torej bodo slike poslane iz F-Spot na Facebook in Picasa."
+
+#: C/conduit.xml:251(title)
+msgid "Synchronizing Something"
+msgstr "Usklajevanje nečesa"
+
+#: C/conduit.xml:252(para)
+msgid "This section describes the steps required to synchronize two data providers. The example given illustrates how to synchronize two folders but the concepts are applicable to anything you wish to synchronize. If you need more information on specific settings please refer to the corresponding section of the documentation."
+msgstr "Ta odsek opisuje korake zahtevane za usklajevanje dveh ponudnikov podatkov. Podan primer prikazuje kako uskladiti dve mapi, toda koncepte je mogoče uveljaviti na karkoli želite uskladiti. V primeru da potrebujete več podrobnosti o določenih nastavitvah si oglejte ustrezen odsek dokumentacije."
+
+#: C/conduit.xml:255(para)
+msgid "<xref linkend=\"conduit-FIG-dp-parts\"/> contains two groups. This section will describe the steps to recreate those groups."
+msgstr "<xref linkend=\"conduit-FIG-dp-parts\"/> vsebuje dve skupini. V tem odseku bodo opisani koraki za ponovno ustvarjanje teh skupin."
+
+#: C/conduit.xml:257(para)
+msgid "The top group depicts a two way synchronization of two folders"
+msgstr "Zgornja skupina prikazuje dvosmerno usklajevanje dveh map."
+
+#: C/conduit.xml:258(para)
+msgid "The bottom group depicts a one way sync of images, from F-Spot to Facebook, and to the Picasa web albums."
+msgstr "Spodnja skupina prikazuje enosmerno usklajevanje slik iz F-Spot na Facebook in v Picasa spletne albume."
+
+#: C/conduit.xml:262(title)
+msgid "Example 1: Synchronizing Two Folders"
+msgstr "Primer 1: Usklajevanje dveh map"
+
+#: C/conduit.xml:263(para)
+msgid "The following steps will recreate the two way synchronization group shown as <emphasis>#1</emphasis> in the figure above."
+msgstr "Naslednji koraki bodo ustvarili dvosmerno usklajevalno skupino kot je pokazano v <emphasis>številki 1</emphasis> na sliki zgoraj."
+
+#: C/conduit.xml:265(para)
+msgid "On your desktop create three folders named folder1, folder2, and folder3. Drag a file of your choice into folder1."
+msgstr "Na namizju ustvarite tri mape z imeni mapa1, mapa2 in mapa3. Povlecite datoteko po izbiri v mapo1."
+
+#: C/conduit.xml:266(para)
+#: C/conduit.xml:305(para)
+msgid "Start Conduit"
+msgstr "Zaženite Conduit"
+
+#: C/conduit.xml:268(para)
+msgid "Add a data provider for <emphasis>folder1</emphasis>"
+msgstr "Dodajte ponudnika podatkov za <emphasis>mapo1</emphasis>"
+
+#: C/conduit.xml:269(para)
+msgid "From the data provider pane, drag the folder data provider and drop it on the left hand side of the canvas pane. This will be the data source that we are going to sync from."
+msgstr "Iz pladnja ponudnikov podatkov povlecite mapo ponudnika podatkov in jo spustite na levo stran pladnja platna. To bo bil vir podatkov iz katerega bo potekalo usklajevanje."
+
+#: C/conduit.xml:272(para)
+msgid "Configure <emphasis>folder1</emphasis>"
+msgstr "Nastavite <emphasis>mapo1</emphasis>"
+
+#: C/conduit.xml:275(title)
+msgid "Configuring Folder 1"
+msgstr "Nastavljanje mape 1"
+
+#: C/conduit.xml:273(para)
+msgid "Double click on the data provider you recently dropped on the canvas. This will bring up the folder configuration window as shown below. Enter something memorable in the name field and change the <emphasis>Folder Location</emphasis> to the folder you created in step 1. <placeholder-1/>"
+msgstr "Dvokliknite na ponudnika podatkov, ki ste ga nedavno spustili na platno. To bo poklicalo okno nastavitev mape, kot je prikazano spodaj. Vnesite nekaj nepozabnega v polje imena in spremenite <emphasis>Mesto mape</emphasis> na mapo, ki ste jo ustvarili v prvem koraku."
+
+#: C/conduit.xml:287(para)
+msgid "Add a data provider for <emphasis>folder2</emphasis>"
+msgstr "Dodajte ponudnika podatkov za <emphasis>mapo2</emphasis>"
+
+#: C/conduit.xml:288(para)
+msgid "Drag another folder data provider from the pane on the left. This time drop it adjacent to the folder1 dataprovider. This should result in an arrow connecting it to folder1 being created."
+msgstr "Povlecite drugega ponudnika podatkov iz pladnja na levi. Tokrat ga spustite poleg ponudnika podatkov mape1. To bi moralo ustvariti puščico, ki ga povezuje z mapo1."
+
+#: C/conduit.xml:291(para)
+msgid "Configure <emphasis>folder2</emphasis>"
+msgstr "Nastavite <emphasis>mapo2</emphasis>"
+
+#: C/conduit.xml:292(para)
+msgid "Configure the data provider so that its <emphasis>Folder Location</emphasis> points to <emphasis>folder2</emphasis> on the desktop, and importantly, its <emphasis>Folder Name</emphasis> is the same as that entered in step <emphasis>#4</emphasis>."
+msgstr "Nastavite ponudnika podatkov tako, da njegovo <emphasis>Mesto mape</emphasis> kaže na <emphasis>mapo2</emphasis> na namizju in je njegovo <emphasis>Ime mape</emphasis> enako kot ime vneseno v koraku <emphasis> št. 4</emphasis>."
+
+#: C/conduit.xml:295(para)
+msgid "Configure the synchronization parameters"
+msgstr "Nastavitev parametrov usklajevanja"
+
+#: C/conduit.xml:296(para)
+msgid "Right click on the associated group, and under sync options, select a two way sync. Since this is just a basic run through on how to setup a sync we are not going to go through any advanced syncing options in this section of the documentation. If you wish more information on the options available, please see <xref linkend=\"conduit-providers-and-groups\"/>."
+msgstr "Desno kliknite na povezano skupino in med možnostmi usklajevanja izberite dvosmerno usklajevanje. Ker je namen tega dela dokumentacije samo osnoven prikaz kako nastaviti usklajevanje, so napredne možnosti izpuščene. V primeru da želite več podrobnosti o razpoložljivih možnostih, si oglejte <xref linkend=\"conduit-providers-and-groups\"/>."
+
+#: C/conduit.xml:298(para)
+msgid "Synchronize the two folders by right clicking on them and selecting sync, or from the File menu. Once the sync is finished you should see the file that you placed in folder1 on your desktop within folder2."
+msgstr "Uskladite dve mapi z desnim klikom nanju in izbiro uskladi, ali iz menija Datoteka. Ko je usklajevanje končano, bi morali videti datoteko, ki ste jo dal v mapo1 na vašem namizju, v mapi2."
+
+#: C/conduit.xml:302(title)
+msgid "Example 2: Exporting Images to Multiple Destinations"
+msgstr "Primer 2: Izvažanje slik na več ciljev"
+
+#: C/conduit.xml:303(para)
+msgid "The second group shown in <xref linkend=\"conduit-FIG-dp-parts\"/> shows a single F-Spot data source exporting its photos to two data sinks, a Facebook one, and a Picasa one."
+msgstr "Druga skupina prikazana v <xref linkend=\"conduit-FIG-dp-parts\"/> prikazuje en vir podatkov F-Spot, ki izvaža svoje fotografije v dve koriti podatkov, Facebook in Picasa."
+
+#: C/conduit.xml:306(para)
+msgid "Start F-Spot"
+msgstr "Zaženite F-Spot"
+
+#: C/conduit.xml:307(para)
+msgid "Drag a F-Spot data provider from the data provider pane and drop it onto an empty spot on the canvas. A new group containing just the F-Spot data provider will be created."
+msgstr "Povlecite ponudnika podatkov F-Spot iz pladnja ponudnika podatkov in ga spustite na prazen prostor na platnu. Ustvarjena bo nova skupina, ki bo vsebovala samo ponudnika podatkov F-Spot."
+
+#: C/conduit.xml:308(para)
+msgid "Drag Facebook and Picasa data providers into the Group that was just created."
+msgstr "Povlecite ponudnika podatkov Facebook in Picasa v pravkar ustvarjeno skupino. "
+
+#: C/conduit.xml:309(para)
+msgid "Configure the data providers by double clicking on them."
+msgstr "Nastavite ponudnika podatkov z dvojnim klikom nanju."
+
+#: C/conduit.xml:310(para)
+msgid "Now synchronize the group to upload photos. You will be prompted to log into Facebook using the Conduit login window, shown in <xref linkend=\"conduit-FIG-login\"/>."
+msgstr "Sedaj uskladite skupino za pošiljanje fotografij. Pozvani boste za prijavo v Facebook z uporabo prijavnega okna Conduit, prikazanega v <xref linkend=\"conduit-FIG-login\"/>."
+
+#: C/conduit.xml:314(title)
+msgid "Summary"
+msgstr "Povzetek"
+
+#: C/conduit.xml:315(para)
+msgid "All sync operations work exactly like this. The only difference is the data you are syncing and the providers you are using. You always follow the same sequence of steps,"
+msgstr "Vsa opravila usklajevanja delujejo natanko tako. Edina razlika je v usklajevanih podatkih in ponudnikih. Vedno lahko sledite enakemu zaporedju korakov,"
+
+#: C/conduit.xml:317(para)
+msgid "Add dataproviders to create a new group, or to an existing group."
+msgstr "Dodajte ponudnike podatkov za ustvarjanje nove skupine, ali pa jih dodajte obstoječi skupini."
+
+#: C/conduit.xml:318(para)
+msgid "Configure the data providers. Each data provider requires a unique configuration. For reference on these please the <emphasis>Data Providers</emphasis> section of the documentation."
+msgstr "Nastavite ponudnike podatkov. Vsak ponudnik podatkov zahteva edinstveno nastavitev. Za podatke ponudnikih si v dokumentaciji oglejte odsek <emphasis>Ponudniki podatkov</emphasis>."
+
+#: C/conduit.xml:319(para)
+msgid "Configure the group, selecting what should happen on conflict, etc."
+msgstr "Nastavite skupino in izberite kaj naj se zgodi ob sporu, itn."
+
+#: C/conduit.xml:320(para)
+msgid "Synchronize the dataproviders as you wish."
+msgstr "Uskladite ponudnike podatkov kakor želite."
+
+#: C/conduit.xml:325(title)
+msgid "Network Synchronization"
+msgstr "Usklajevanje preko omrežja"
+
+#: C/conduit.xml:326(para)
+msgid "If you have two computers at home, Conduit can be used to synchronize the data between them, directly, without first having to store the data somewhere else first. The steps below will illustrate how to synchronize Tomboy notes on two computers, called nzjrs-desktop and nzjrs-laptop. The following key will be used to help explain the setup procedure."
+msgstr "V primeru da imate doma dva računalnika, je mogoče Conduit uporabiti za uskladitev podatkov neposredno med njima, brez potrebe po shranjevanju podatkov nekje vmes. Koraki spodaj bodo pokazali kako uskladiti sporočilca Tomboy na dveh računalnikih z imenoma nzjrs-deskop in nzjrs-laptop. Sledeči ključ bo uporabljen za pomoč pri razlaganju postopka nastavitev."
+
+#: C/conduit.xml:329(para)
+msgid "<inlinegraphic format=\"PNG\" fileref=\"figures/network-pc1.png\"/> Image taken on the first computer."
+msgstr "<inlinegraphic format=\"PNG\" fileref=\"figures/network-pc1.png\"/> Slika posneta na prvemu računalniku."
+
+#: C/conduit.xml:330(para)
+msgid "<inlinegraphic format=\"PNG\" fileref=\"figures/network-pc2.png\"/> Image taken on the second computer."
+msgstr "<inlinegraphic format=\"PNG\" fileref=\"figures/network-pc2.png\"/> Slika posneta na drugemu računalniku."
+
+#: C/conduit.xml:335(title)
+msgid "Network Synchronization Tip"
+msgstr "Namig za usklajevanje preko omrežja"
+
+#: C/conduit.xml:336(para)
+msgid "The process below, although describing Tomboy note synchronization, could be suitably modified to synchronize all sorts of data between two computers, including Contacts, Calendar information, and even F-Spot photos."
+msgstr "Čeprav opravila spodaj opisujejo usklajevanje sporočilc Tomboy, jih je mogoče primerno spremeniti za usklajevanje vseh vrst podatkov med dvema računalnikoma, vključno s Stiki, podatki Koledarja in celo F-Spot fotografijami."
+
+#: C/conduit.xml:341(title)
+msgid "Configuration of the First Computer"
+msgstr "Nastavitev prvega računalnika"
+
+#: C/conduit.xml:339(para)
+msgid "On the first computer create a synchronization group connecting Tomboy to the Network dataprovider, which is listed in the Miscellaneous category in the dataprovider pane. This makes Tomboy available for synchronization on the second computer. <placeholder-1/>"
+msgstr "Na prvem računalniku ustvarite usklajevalno skupino, ki povezuje Tomboy z omrežnim ponudnikov podatkov, ki je naštet v kategoriji različno v pladnju ponudnikov podatkov. To naredi Tomboy razpoložljiv za usklajevanje na drugem računalniku. <placeholder-1/>"
+
+#: C/conduit.xml:351(para)
+msgid "After a short delay, this will result in a new category being created on the second computer. The category will take the name of the first computer, nzjrs-desktop in my case, and it shall contain any dataproviders currently available for synchronization."
+msgstr "Po kratkem zamiku bo to ustvarilo novo kategorijo na drugem računalniku. Kategorija bo vzela ime prvega računalnika, na primer nzjrs-desktop, in bo vsebovala katerekoli ponudnike podatkov, ki so trenutno na voljo za usklajevanje."
+
+#: C/conduit.xml:354(title)
+msgid "Configuration of the Second Computer"
+msgstr "Nastavitev drugega računalnika"
+
+#: C/conduit.xml:352(para)
+msgid "Still on the second computer, drag the Tomboy dataprovider from the newly created category onto the canvas. Notice how its name is Remote Tomboy, indicating it refers to data on the remote, or first, computer. <placeholder-1/>"
+msgstr "Še vedno na drugem računalniku, povlecite ponudnika podatkov Tomboy iz novo ustvarjene kategorije na platno. Opazite da je njegovo ime oddaljen Tomboy, kar nakazuje da se sklicuje na podatke na oddaljenem, prvem računalniku. <placeholder-1/>"
+
+#: C/conduit.xml:364(para)
+msgid "Finally, on the second computer, start the sync in the normal manner."
+msgstr "Na koncu na drugem računalniku začnite usklajevanje na običajen način."
+
+#: C/conduit.xml:365(para)
+msgid "Your tomboy notes should now be synchronized between the two computers."
+msgstr "Vaša sporočilca tomboy bodo bila usklajena med dvema računalnikoma."
+
+#: C/conduit.xml:368(title)
+msgid "File Synchronization"
+msgstr "Usklajevanje datotek"
+
+#: C/conduit.xml:369(para)
+msgid "Due to performance and security reasons, we do not recommend using the network sync feature to synchronize large files between two computers. We hope to address this limitation in the future."
+msgstr "Zaradi varnostnih in zmogljivostnih vzrokov ne priporočamo uporabe zmožnosti omrežnega usklajevanja za usklajevanje velikih datotek med dvema računalnikoma. Upamo, da bomo v prihodnosti odpravili to omejitev.  "
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: C/conduit.xml:0(None)
+msgid "translator-credits"
+msgstr "Andrej Žnidaršič <andrej.znidarsic@gmail.com"
+
