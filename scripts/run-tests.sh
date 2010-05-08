@@ -23,6 +23,7 @@ Options:\n\
     -u      Upload results\n\
     -o      Offline. Skip tests that require a net connection\n\
     -d      Debug. also print test ouput to console\n\
+    -t      Trace statement execution\n\
     -N      Non interactive. Skip tests that require interaction (web login)\n\
     -x      Dont exit on test failure\n\
 The operation of the script is affected by two environment\n\
@@ -48,7 +49,8 @@ do_sync_tests=0
 do_interactive="TRUE"
 do_list=0
 do_fatal="TRUE"
-while getopts "cus:odDSNlx" options
+do_trace=0
+while getopts "cus:odDSNlxt" options
 do
     case $options in
         c )     do_coverage=1;;
@@ -61,6 +63,7 @@ do
         N )     do_interactive="FALSE";;
         l )     do_list=1;;
         x )     do_fatal="FALSE";;
+        t )     do_trace=1;;
         \? )    echo -e $USAGE
                 exit 1;;
         * )     echo -e $USAGE
@@ -137,7 +140,11 @@ do
     if [ $do_coverage -ne 0 ] ; then
         EXEC="$COVERAGE_APP -x $t"
     else
-        EXEC="$t"
+        if [ $do_trace -ne 0 ] ; then
+            EXEC="-m trace --trace $t"
+        else
+            EXEC="$t"
+        fi
     fi
 
     #code coverage analysis?
