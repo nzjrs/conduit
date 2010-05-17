@@ -1,7 +1,7 @@
 # Italian translation of Conduit.
 # Copyright (C) 2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the Conduit package.
-# Gianvito Cavasoli <janvitus@ubuntu-it.org>, 2007, 2008, 2009.
+# Gianvito Cavasoli <janvitus@ubuntu-it.org>, 2007, 2008, 2009, 2010.
 #
 #
 msgid ""
@@ -9,10 +9,10 @@ msgstr ""
 "Project-Id-Version: Conduit 0.3.x\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=conduit&component=documentation and translation\n"
-"POT-Creation-Date: 2009-09-21 00:14+0000\n"
-"PO-Revision-Date: 2009-10-05 14:01+0200\n"
+"POT-Creation-Date: 2010-03-29 20:43+0000\n"
+"PO-Revision-Date: 2010-03-29 11:28+0200\n"
 "Last-Translator: Gianvito Cavasoli <janvitus@ubuntu-it.org>\n"
-"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language-Team: Italiana <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,206 +25,6 @@ msgstr "Sincronizzatore Conduit"
 #: ../data/conduit.desktop.in.in.h:2
 msgid "Synchronization for GNOME"
 msgstr "Sincronizzazione per GNOME"
-
-#: ../data/conduit.glade.h:1
-msgid "<b>Default Synchronization Options</b>"
-msgstr "<b>Opzioni di sincronizzazione predefinite</b>"
-
-#: ../data/conduit.glade.h:2
-msgid "<b>General</b>"
-msgstr "<b>Generale</b>"
-
-#: ../data/conduit.glade.h:3
-msgid "Always Up-To-Date"
-msgstr "Sempre aggiornato"
-
-#: ../data/conduit.glade.h:4
-msgid "Ask Me What to Do"
-msgstr "Chiedi cosa fare"
-
-#: ../data/conduit.glade.h:5
-msgid "Ask me what to do"
-msgstr "Chiedere cosa fare"
-
-#: ../data/conduit.glade.h:6
-msgid "Cancel Synchronization"
-msgstr "Annulla sincronizzazione"
-
-#: ../data/conduit.glade.h:7
-msgid "Cancel currently-synchronizing groups"
-msgstr "Annulla i gruppi attualmente in sincronizzazione"
-
-#: ../data/conduit.glade.h:8
-msgid "Clear Canvas"
-msgstr "Svuota riquadro"
-
-#: ../data/conduit.glade.h:9
-msgid "Compare"
-msgstr "Compara"
-
-#: ../data/conduit.glade.h:10
-msgid "Conduit Preferences"
-msgstr "Preferenze di Conduit"
-
-#: ../data/conduit.glade.h:11
-msgid "Configuration"
-msgstr "Configurazione"
-
-#: ../data/conduit.glade.h:12
-msgid "Configure Item"
-msgstr "Configura elemento"
-
-#: ../data/conduit.glade.h:13
-msgid "Configure the synchronization settings for this item"
-msgstr "Configura le impostazioni di sincronizzazione per questo oggetto"
-
-#: ../data/conduit.glade.h:14
-msgid "Conflict Options"
-msgstr "Opzioni dei conflitti"
-
-#: ../data/conduit.glade.h:15
-msgid "Conflicts"
-msgstr "Conflitti"
-
-#: ../data/conduit.glade.h:16
-msgid "Contents"
-msgstr "Sommario"
-
-#: ../data/conduit.glade.h:17
-msgid "Data Conversions"
-msgstr "Conversione dati"
-
-#: ../data/conduit.glade.h:18
-msgid "Data Providers"
-msgstr "Sorgenti dati"
-
-#: ../data/conduit.glade.h:19
-msgid "Delete Group"
-msgstr "Elimina gruppo"
-
-#: ../data/conduit.glade.h:20
-msgid "Delete Item"
-msgstr "Elimina elemento"
-
-#: ../data/conduit.glade.h:21
-msgid "Delete Options"
-msgstr "Opzioni di eliminazione"
-
-#: ../data/conduit.glade.h:22
-msgid "Delete from the corresponding sink"
-msgstr "Eliminare dalla sincronizzazione corrispondente"
-
-#: ../data/conduit.glade.h:23
-msgid "Delete the Corresponding Item"
-msgstr "Elimina l'oggetto corrispondente"
-
-#: ../data/conduit.glade.h:24
-msgid "Editor"
-msgstr "Editor"
-
-#: ../data/conduit.glade.h:25
-msgid "Minimize to notification area"
-msgstr "Minimizzare nell'area di notifica"
-
-#: ../data/conduit.glade.h:26
-msgid "Refresh Group"
-msgstr "Aggiorna gruppo"
-
-#: ../data/conduit.glade.h:27
-msgid "Refresh Item"
-msgstr "Aggiorna elemento"
-
-#: ../data/conduit.glade.h:28
-msgid "Replace the Older Item"
-msgstr "Rimpiazza l'elemento più vecchio"
-
-#: ../data/conduit.glade.h:29
-msgid "Replace the older item"
-msgstr "Rimpiazzare l'elemento più vecchio"
-
-#: ../data/conduit.glade.h:30
-msgid "Resolve Conflicts"
-msgstr "Risolvere conflitti"
-
-#: ../data/conduit.glade.h:31
-msgid "Save settings on exit"
-msgstr "Salvare impostazioni all'uscita"
-
-#: ../data/conduit.glade.h:32
-msgid "Show Hints"
-msgstr "Mostrare suggerimenti"
-
-#: ../data/conduit.glade.h:33
-msgid "Show status icon"
-msgstr "Mostrare icona di stato"
-
-#: ../data/conduit.glade.h:34
-msgid "Skip"
-msgstr "Ignora"
-
-#: ../data/conduit.glade.h:35
-msgid "Slow Synchronization"
-msgstr "Sincronizzazione lenta"
-
-#: ../data/conduit.glade.h:36
-msgid "Start Conduit at login"
-msgstr "Avviare l'applicazione all'accesso"
-
-#: ../data/conduit.glade.h:37
-msgid "Synchronization Options"
-msgstr "Opzioni di sincronizzazione"
-
-#: ../data/conduit.glade.h:38
-msgid "Synchronize All"
-msgstr "Sincronizza tutto"
-
-#: ../data/conduit.glade.h:39
-msgid "Synchronize Group"
-msgstr "Sincronizza gruppo"
-
-#: ../data/conduit.glade.h:40
-msgid "Synchronize group"
-msgstr "Sincronizza il gruppo"
-
-#: ../data/conduit.glade.h:41
-msgid "Synchronizes all groups"
-msgstr "Sincronizza tutti i gruppi"
-
-#: ../data/conduit.glade.h:42
-msgid "Title"
-msgstr "Titolo"
-
-#: ../data/conduit.glade.h:43
-msgid "Two-Way Synchronization"
-msgstr "Sincronizzazione a due vie"
-
-#: ../data/conduit.glade.h:44
-msgid "When an item has been deleted:"
-msgstr "Quando un oggetto è stato eliminato:"
-
-#: ../data/conduit.glade.h:45
-msgid "When an item is deleted..."
-msgstr "Quando un oggetto viene eliminato..."
-
-#: ../data/conduit.glade.h:46
-msgid "When there is a conflict..."
-msgstr "Quando si riscontra un conflitto..."
-
-#: ../data/conduit.glade.h:47
-msgid "When there is a two-way conflict:"
-msgstr "Quando si riscontra un conflitto a due vie:"
-
-#: ../data/conduit.glade.h:48
-msgid "_Edit"
-msgstr "_Modifica"
-
-#: ../data/conduit.glade.h:49
-msgid "_File"
-msgstr "_File"
-
-#: ../data/conduit.glade.h:50
-msgid "_Help"
-msgstr "A_iuto"
 
 #: ../conduit/Knowledge.py:8
 msgid "What Do You Want to Synchronize?"
@@ -250,19 +50,29 @@ msgstr "Pronto per la sincronizzazione"
 msgid "Right Click on Group for Options"
 msgstr "Fare clic col pulsante destro sul gruppo per le opzioni"
 
-#. source,sinc                            #comment
-#. twoway
-#: ../conduit/Knowledge.py:22
-msgid "Synchronize Two Folders"
-msgstr "Sincronizzare due cartelle"
-
 #: ../conduit/Knowledge.py:24
+msgid "Synchronize Two Folders"
+msgstr "Sincronizza due cartelle"
+
+#: ../conduit/Knowledge.py:27
 msgid "Backup Folder to Box.net"
 msgstr "Backup della cartella su Box.net"
 
-#: ../conduit/Knowledge.py:26
+#: ../conduit/Knowledge.py:30
 msgid "Synchronize Tagged F-Spot Photos to Flickr"
-msgstr "Sincronizzare le foto etichettate di F-Spot su Flickr"
+msgstr "Sincronizza le foto etichettate di F-Spot su Flickr"
+
+#: ../conduit/Knowledge.py:33
+msgid "Synchronize Photos to Flickr"
+msgstr "Sincronizza le foto su Flickr"
+
+#: ../conduit/Knowledge.py:36
+msgid "Upload Photos to Facebook"
+msgstr "Carica le foto su Facebook"
+
+#: ../conduit/Knowledge.py:39
+msgid "Synchronize Desktop Wallpaper from a RSS Feed"
+msgstr "Sincronizza lo sfondo della scrivania da un notiziario RSS"
 
 #: ../conduit/Main.py:59
 msgid "Conduit is a synchronization application."
@@ -486,94 +296,94 @@ msgstr "Documentazione delle API"
 msgid "Test Results"
 msgstr "Risultati test"
 
-#: ../conduit/gtkui/UI.py:129
-#, python-format
-msgid " - %s (Development Version)"
-msgstr " - %s (Versione di sviluppo)"
-
-#: ../conduit/gtkui/UI.py:131
-msgid " - Running Uninstalled"
-msgstr " - In esecuzione non installato"
-
-#: ../conduit/gtkui/UI.py:165
+#: ../conduit/gtkui/UI.py:52
 msgid "Examples"
 msgstr "Esempi"
 
-#: ../conduit/gtkui/UI.py:177
-msgid "Developers"
-msgstr "Sviluppatori"
-
 #. Build some liststores to display
-#: ../conduit/gtkui/UI.py:318
+#: ../conduit/gtkui/UI.py:139
 msgid "Convert from"
 msgstr "Converti da"
 
-#: ../conduit/gtkui/UI.py:319
+#: ../conduit/gtkui/UI.py:140
 msgid "into"
 msgstr "in"
 
-#: ../conduit/gtkui/UI.py:370
+#: ../conduit/gtkui/UI.py:190
 msgid "Relationship Database"
 msgstr "Database relazionale"
 
-#: ../conduit/gtkui/UI.py:374
+#: ../conduit/gtkui/UI.py:194
 msgid "Conversions Available"
 msgstr "Convertitori disponibili"
 
-#: ../conduit/gtkui/UI.py:380 ../conduit/gtkui/Tree.py:348
+#: ../conduit/gtkui/UI.py:200 ../conduit/gtkui/Tree.py:355
 #: ../conduit/modules/FileModule/FileConfiguration.py:117
 msgid "Name"
 msgstr "Nome"
 
-#: ../conduit/gtkui/UI.py:384
+#: ../conduit/gtkui/UI.py:204
 msgid "Loaded"
 msgstr "Caricato"
 
-#: ../conduit/gtkui/UI.py:512 ../conduit/hildonui/UI.py:127
+#: ../conduit/gtkui/UI.py:329
+#, python-format
+msgid " - %s (Development Version)"
+msgstr " - %s (Versione di sviluppo)"
+
+#: ../conduit/gtkui/UI.py:331
+msgid " - Running Uninstalled"
+msgstr " - In esecuzione non installato"
+
+#: ../conduit/gtkui/UI.py:375
+msgid "Developers"
+msgstr "Sviluppatori"
+
+#: ../conduit/gtkui/UI.py:539 ../conduit/hildonui/UI.py:127
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "Sincronizzazione in corso. Annullare?"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:712
 msgid "_Synchronize All"
 msgstr "Sincroniz_za tutto"
 
-#: ../conduit/gtkui/UI.py:684
+#: ../conduit/gtkui/UI.py:712
 msgid "Synchronizes All Groups"
 msgstr "Sincronizza tutti i gruppi"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:713
 msgid "_Cancel Synchronization"
 msgstr "_Annulla sincronizzazione"
 
-#: ../conduit/gtkui/UI.py:685
+#: ../conduit/gtkui/UI.py:713
 msgid "Cancels Currently Synchronizing Groups"
 msgstr "Annulla i gruppi attualmente in sincronizzazione"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:714
 msgid "_Quit"
 msgstr "_Esci"
 
-#: ../conduit/gtkui/UI.py:686
+#: ../conduit/gtkui/UI.py:714
 msgid "Close Conduit"
 msgstr "Chiude l'applicazione"
 
-#: ../conduit/gtkui/UI.py:726
+#: ../conduit/gtkui/UI.py:754
 msgid "Synchronization Error"
 msgstr "Errore di sincronizzazione"
 
-#: ../conduit/gtkui/UI.py:729
+#: ../conduit/gtkui/UI.py:757
 msgid "Synchronization Complete"
 msgstr "Sincronizzazione completa"
 
-#: ../conduit/gtkui/UI.py:745
+#: ../conduit/gtkui/UI.py:765
 msgid "Synchronizing"
 msgstr "Sincronizzazione"
 
-#: ../conduit/gtkui/Tree.py:357
+#: ../conduit/gtkui/Tree.py:364
 msgid "Description"
 msgstr "Descrizione"
 
-#: ../conduit/gtkui/ConfigItems.py:734
+#: ../conduit/gtkui/ConfigItems.py:733
 #, python-format
 msgid "Total: %d"
 msgstr "Totale: %d"
@@ -993,7 +803,6 @@ msgid "Password"
 msgstr "Password"
 
 #: ../conduit/modules/GoogleModule/GoogleModule.py:399
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:4
 msgid "Google Calendar"
 msgstr "Google Calendar"
 
@@ -1046,32 +855,11 @@ msgstr "YouTube"
 msgid "Synchronize data from YouTube"
 msgstr "Sincronizza i dati da YouTube"
 
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:1
-msgid "<b>Account Details</b>"
-msgstr "<b>Dettagli account</b>"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:2
-msgid "Calendar:"
-msgstr "Calendario:"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:3
-msgid "Email:"
-msgstr "Email:"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:5
-msgid "Load Calendars"
-msgstr "Carica calendari"
-
-#: ../conduit/modules/GoogleModule/calendar-config.glade.h:6
-msgid "Password:"
-msgstr "Password:"
-
 #: ../conduit/modules/iPodModule/iPodModule.py:180
 msgid "Synchronize your iPod notes"
 msgstr "Sincronizza le note dell'iPod"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:295
-#: ../conduit/modules/SynceModule.py:311
 msgid "Contacts"
 msgstr "Contatti"
 
@@ -1080,7 +868,6 @@ msgid "Synchronize your iPod contacts"
 msgstr "Sincronizza i contatti dell'iPod"
 
 #: ../conduit/modules/iPodModule/iPodModule.py:331
-#: ../conduit/modules/SynceModule.py:449
 msgid "Calendar"
 msgstr "Calendario"
 
@@ -1153,7 +940,7 @@ msgstr "File dell'N800"
 
 #: ../conduit/modules/N800Module/N800Module.py:106
 msgid "Synchronizes files/folders to a N800 device"
-msgstr "Sincronizza i file e le cartelle a un dispositivo N800"
+msgstr "Sincronizza i file e le cartelle con un dispositivo N800"
 
 #. To translators: default backup folder of N800
 #: ../conduit/modules/N800Module/N800Module.py:111
@@ -1166,7 +953,7 @@ msgstr "Musica dell'N800"
 
 #: ../conduit/modules/N800Module/N800Module.py:127
 msgid "Synchronizes music to a N800 device"
-msgstr "Sincronizza la musica a un dispositivo N800"
+msgstr "Sincronizza la musica con un dispositivo N800"
 
 #. To translators: defaul music folder of N800
 #: ../conduit/modules/N800Module/N800Module.py:133
@@ -1179,7 +966,7 @@ msgstr "Video dell'N800"
 
 #: ../conduit/modules/N800Module/N800Module.py:151
 msgid "Synchronizes video to a N800 device"
-msgstr "Sincronizza i video a un dispositivo N800"
+msgstr "Sincronizza i video con un dispositivo N800"
 
 #. To translators: defaul video folder of N800
 #: ../conduit/modules/N800Module/N800Module.py:157
@@ -1192,7 +979,7 @@ msgstr "Foto dell'N800"
 
 #: ../conduit/modules/N800Module/N800Module.py:175
 msgid "Synchronizes photos to an N800 device"
-msgstr "Sincronizza le foto a un dispositivo N800"
+msgstr "Sincronizza le foto con un dispositivo N800"
 
 #. To translators: default photos folder of N800
 #: ../conduit/modules/N800Module/N800Module.py:181
@@ -1250,26 +1037,6 @@ msgstr "SmugMug"
 #: ../conduit/modules/SmugMugModule/SmugMugModule.py:29
 msgid "Synchronize your SmugMug.com photos"
 msgstr "Sincronizza le foto di SmugMug.com"
-
-#: ../conduit/modules/SynceModule.py:139
-msgid "Create Partnership"
-msgstr "Crea associazione"
-
-#: ../conduit/modules/SynceModule.py:312
-msgid "Windows Mobile Contacts"
-msgstr "Contatti Windows Mobile"
-
-#: ../conduit/modules/SynceModule.py:450
-msgid "Windows Mobile Calendar"
-msgstr "Calendario Windows Mobile"
-
-#: ../conduit/modules/SynceModule.py:459
-msgid "Tasks"
-msgstr "Attività"
-
-#: ../conduit/modules/SynceModule.py:460
-msgid "Windows Mobile Tasks"
-msgstr "Attività Windows Mobile"
 
 #: ../conduit/modules/ZotoModule/ZotoModule.py:154
 msgid "Zoto"
