@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: conduit master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=conduit&component=documentation and translation\n"
-"POT-Creation-Date: 2010-01-21 23:50+0000\n"
-"PO-Revision-Date: 2010-02-01 16:44+0800\n"
+"POT-Creation-Date: 2010-07-05 16:11+0000\n"
+"PO-Revision-Date: 2010-07-25 19:22+0800\n"
 "Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -257,12 +257,13 @@ msgstr "源"
 
 #: ../conduit/gtkui/ConflictResolver.py:105
 msgid "Resolution"
-msgstr ""
+msgstr "分辨率"
 
 #. Visible column2 is the display name of source and source data
 #: ../conduit/gtkui/ConflictResolver.py:110
+#, fuzzy
 msgid "Sink"
-msgstr ""
+msgstr "输出"
 
 #: ../conduit/gtkui/ConflictResolver.py:150
 #: ../conduit/gtkui/ConflictResolver.py:151
@@ -334,39 +335,39 @@ msgstr "开发者"
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "同步正在进行。您想取消它？"
 
-#: ../conduit/gtkui/UI.py:711
+#: ../conduit/gtkui/UI.py:712
 msgid "_Synchronize All"
 msgstr "同步所有(_S)"
 
-#: ../conduit/gtkui/UI.py:711
+#: ../conduit/gtkui/UI.py:712
 msgid "Synchronizes All Groups"
 msgstr "同步所有组"
 
-#: ../conduit/gtkui/UI.py:712
+#: ../conduit/gtkui/UI.py:713
 msgid "_Cancel Synchronization"
 msgstr "取消同步(_C)"
 
-#: ../conduit/gtkui/UI.py:712
+#: ../conduit/gtkui/UI.py:713
 msgid "Cancels Currently Synchronizing Groups"
 msgstr "取消当前同步组"
 
-#: ../conduit/gtkui/UI.py:713
+#: ../conduit/gtkui/UI.py:714
 msgid "_Quit"
 msgstr "退出(_Q)"
 
-#: ../conduit/gtkui/UI.py:713
+#: ../conduit/gtkui/UI.py:714
 msgid "Close Conduit"
 msgstr "关闭 Conduit"
 
-#: ../conduit/gtkui/UI.py:753
+#: ../conduit/gtkui/UI.py:754
 msgid "Synchronization Error"
 msgstr "同步出错"
 
-#: ../conduit/gtkui/UI.py:756
+#: ../conduit/gtkui/UI.py:757
 msgid "Synchronization Complete"
 msgstr "同步完成"
 
-#: ../conduit/gtkui/UI.py:764
+#: ../conduit/gtkui/UI.py:765
 msgid "Synchronizing"
 msgstr "正在同步"
 
@@ -548,7 +549,7 @@ msgstr "RSS Feed"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:59
 msgid "Synchronize data from RSS enclosures"
-msgstr "从 RSS enclosure 同步数据"
+msgstr "从 RSS 附件区同步数据"
 
 #. FIXME: Add Randomize
 #: ../conduit/modules/FeedModule/FeedModule.py:114
@@ -561,11 +562,11 @@ msgstr "Feed 地址"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:118
 msgid "Enclosure settings"
-msgstr "Enclosure 设置"
+msgstr "附件区设置"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:119
 msgid "Limit downloaded enclosures"
-msgstr "限制下载最大速度"
+msgstr "限制附件区下载大小"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:125
 msgid "Limit to"
@@ -573,7 +574,7 @@ msgstr "限制"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:129
 msgid "Randomize enclosures"
-msgstr ""
+msgstr "随机附件区大小"
 
 #: ../conduit/modules/FeedModule/FeedModule.py:133
 msgid "Download types"
