@@ -1,6 +1,9 @@
 import gobject
 import dbus
 
+import logging
+log = logging.getLogger("dataproviders.HalFactory")
+
 import conduit.utils as Utils
 import conduit.dataproviders.SimpleFactory as SimpleFactory
 
@@ -43,7 +46,7 @@ class HalFactory(SimpleFactory.SimpleFactory):
                 #so we force it to
                 buf[str(x)] = y
         except:
-            log.warn("Could not get HAL properties for %s" % device_udi)
+            log.warn("Could not get HAL properties for %s" % device)
         return buf
 
     def probe(self):
