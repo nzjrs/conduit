@@ -14,9 +14,13 @@ except ImportError:
     Utils.dataprovider_add_dir_to_path(__file__)
     import shotwell
 
-MODULES = {
-    "ShotwellDataProvider" : { "type": "dataprovider" }
-}
+if Utils.program_installed("shotwell"):
+    MODULES = {
+        "ShotwellDataProvider" : { "type": "dataprovider" }
+    }
+else:
+    MODULES = {}
+    log.info("Shotwell not installed")
 
 # Why is this not in the standard library?
 def _flatten(lst):
