@@ -211,6 +211,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
                                 new,
                                 1,1
                                 )
+        self.msg.remove(msgarea)
 
     def _make_hint(self, hint, timeout=4):
         if Knowledge.HINT_TEXT[hint][2]:
@@ -218,9 +219,9 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         else:
             buttons = []
         h = self.msg.new_from_text_and_icon(
-                            gtk.STOCK_INFO,
-                            _(Knowledge.HINT_TEXT[hint][0]),
-                            _(Knowledge.HINT_TEXT[hint][1]),
+                            primary=Knowledge.HINT_TEXT[hint][0],
+                            secondary=Knowledge.HINT_TEXT[hint][1],
+                            message_type=gtk.MESSAGE_INFO,
                             buttons=buttons,
                             timeout=timeout)
         h.connect("response", self._do_hint)
