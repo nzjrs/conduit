@@ -42,7 +42,6 @@ class Application(dbus.service.Object):
         self.statusIcon = None
         self.dbus = None
         self.guiSyncSet = None
-        self.dbusSyncSet = None
         self.uiLib = None
 
         gobject.set_application_name("Conduit")
@@ -185,10 +184,6 @@ class Application(dbus.service.Object):
                         syncManager=conduit.GLOBALS.syncManager,
                         xmlSettingFilePath=self.settingsFile
                         )
-        self.dbusSyncSet = SyncSet(
-                    moduleManager=conduit.GLOBALS.moduleManager,
-                    syncManager=conduit.GLOBALS.syncManager
-                    )
 
         #Set the view models
         if options.build_gui:
@@ -202,13 +197,13 @@ class Application(dbus.service.Object):
                         moduleManager=conduit.GLOBALS.moduleManager,
                         typeConverter=conduit.GLOBALS.typeConverter,
                         syncManager=conduit.GLOBALS.syncManager,
-                        guiSyncSet=self.guiSyncSet,
-                        dbusSyncSet=self.dbusSyncSet
+                        guiSyncSet=self.guiSyncSet
                         )
         
         if self.statusIcon:
-            self.dbusSyncSet.connect("conduit-added", self.statusIcon.on_conduit_added)
-            self.dbusSyncSet.connect("conduit-removed", self.statusIcon.on_conduit_removed)
+            dbusSyncSet = self.dbus.get_syncset()
+            dbusSyncSet.connect("conduit-added", self.statusIcon.on_conduit_added)
+            dbusSyncSet.connect("conduit-removed", self.statusIcon.on_conduit_removed)
 
         #hide the splash screen
         self.HideSplash()
@@ -287,9 +282,9 @@ class Application(dbus.service.Object):
         #unitialize all dataproviders
         log.info("Unitializing dataproviders")
         self.guiSyncSet.quit()
-        log.info("GUI Quit")
-        self.dbusSyncSet.quit()
-        log.info("DBus Quit")
+
+        log.info("Closing DBus interface")
+        self.dbus.quit()
 
         #Save the mapping DB
         conduit.GLOBALS.mappingDB.save()

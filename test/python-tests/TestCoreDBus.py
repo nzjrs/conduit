@@ -2,9 +2,9 @@
 from common import *
 from conduit.DBus import *
 
-skip("FIXME: Hangs")
-
 import tempfile
+
+import threading
 
 #Call the DBus functions directly so that we get code coverage analysis
 #See example-dbus-conduit-client.py file for and example of the DBus iface
@@ -19,13 +19,12 @@ def get_dbus_object(path):
     return EXPORTED_OBJECTS[path]
 
 test = SimpleTest()
-DBusInterface(
+dbi = DBusInterface(
         conduitApplication=None,
         moduleManager=test.model,
         typeConverter=test.type_converter,
         syncManager=test.sync_manager,
-        guiSyncSet=test.sync_set,
-        dbusSyncSet=None)
+        guiSyncSet=test.sync_set)
         
 dbus = get_dbus_object("/")
 
@@ -120,5 +119,6 @@ ss3 = dbus.NewSyncSet()
 ss3.RestoreFromXml(xmlfile)
 ok("Restore SyncSet from xml", True)
 
+dbi.quit()
 test.finished()
 finished()

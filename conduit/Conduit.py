@@ -351,3 +351,12 @@ class Conduit(gobject.GObject):
             del(self._conflicts[hc])
         except KeyError:
             log.warn("Unknown conflict")
+
+    def quit(self):
+        for dp in self.get_all_dataproviders():
+            if dp.module:
+                try:
+                    dp.module.uninitialize()
+                except Exception:
+                    log.warn("Could not uninitialize %s" % dp, exc_info=True)
+

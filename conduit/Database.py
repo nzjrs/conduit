@@ -281,7 +281,7 @@ class ThreadSafeGenericDB(Thread, GenericDB):
         self.reqs=Queue()
         self.stopped = False
         self.start()
-        
+      
     def _open(self):
         #open the db in the thread where it is used
         pass

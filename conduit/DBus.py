@@ -434,7 +434,7 @@ class SyncSetDBusItem(DBusItem):
         self.syncSet.restore_from_xml(os.path.abspath(path))
 
 class DBusInterface(DBusItem):
-    def __init__(self, conduitApplication, moduleManager, typeConverter, syncManager, guiSyncSet, dbusSyncSet):
+    def __init__(self, conduitApplication, moduleManager, typeConverter, syncManager, guiSyncSet):
         DBusItem.__init__(self, iface=APPLICATION_DBUS_IFACE, path="/")
 
         self.conduitApplication = conduitApplication
@@ -447,16 +447,14 @@ class DBusInterface(DBusItem):
         #type converter and sync manager
         self.type_converter = typeConverter
         self.sync_manager = syncManager
-
         
         #export the syncsets
-        if guiSyncSet != None:
-            new = SyncSetDBusItem(guiSyncSet, "gui")
-            EXPORTED_OBJECTS[new.get_path()] = new
+        new = SyncSetDBusItem(guiSyncSet, "gui")
+        EXPORTED_OBJECTS[new.get_path()] = new
 
-        if dbusSyncSet != None:
-            new = SyncSetDBusItem(dbusSyncSet, "dbus")
-            EXPORTED_OBJECTS[new.get_path()] = new
+        self.sync_set = SyncSet.SyncSet(moduleManager,syncManager)
+        new = SyncSetDBusItem(self.sync_set, "dbus")
+        EXPORTED_OBJECTS[new.get_path()] = new
             
         #export myself
         EXPORTED_OBJECTS[self.get_path()] = self
@@ -475,7 +473,7 @@ class DBusInterface(DBusItem):
         i = Utils.uuid_string()
         new = SyncSetDBusItem(ss, i)
         EXPORTED_OBJECTS[new.get_path()] = new
-        return new    
+        return new
     
     def _get_dataprovider(self, key):
         """
@@ -521,6 +519,18 @@ class DBusInterface(DBusItem):
 
     def _on_dataprovider_unavailable(self, loader, dataprovider):
         self.DataproviderUnavailable(dataprovider.get_key())
+
+    def quit(self):
+        #need to call quit() on all sync sets or conduits as they may have been 
+        #created here...
+        for path in EXPORTED_OBJECTS:
+            if path.startswith("/syncset/"):
+                EXPORTED_OBJECTS[path].syncSet.quit()
+            elif path.startswith("/conduit/"):
+                EXPORTED_OBJECTS[path].conduit.quit()
+
+    def get_syncset(self):
+        return self.sync_set
 
     @dbus.service.signal(APPLICATION_DBUS_IFACE, signature='s')
     def DataproviderAvailable(self, key):

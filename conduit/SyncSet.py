@@ -46,14 +46,6 @@ class SyncSet(gobject.GObject):
         # FIXME: temporary hack - need to let factories know about this factory :-\!
         self.moduleManager.emit("syncset-added", self)
         
-    def _unitialize_dataproviders(self, cond):
-        for dp in cond.get_all_dataproviders():
-            if dp.module:
-                try:
-                    dp.module.uninitialize()
-                except Exception:
-                    log.warn("Could not uninitialize %s" % dp, exc_info=True)
-                
     def _restore_dataprovider(self, cond, wrapperKey, dpName="", dpxml="", trySourceFirst=True):
         """
         Adds the dataprovider back onto the canvas at the specifed
@@ -107,7 +99,7 @@ class SyncSet(gobject.GObject):
 
     def remove_conduit(self, cond):
         self.emit("conduit-removed", cond)
-        self._unitialize_dataproviders(cond)
+        cond.quit()
         self.conduits.remove(cond)
 
     def get_all_conduits(self):
@@ -273,5 +265,6 @@ class SyncSet(gobject.GObject):
         Calls unitialize on all dataproviders
         """
         for c in self.conduits:
-            self._unitialize_dataproviders(c)
+            c.quit()
+
 
