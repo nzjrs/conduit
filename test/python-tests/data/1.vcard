@@ -8,8 +8,7 @@ BDAY;value=date:02-10
 TEL;type=HOME:+01-(0)2-765.43.21
 TEL;type=CELL:+01-(0)5-555.55.55
 ACCOUNT;type=HOME:010-1234567-05
-ADR;type=HOME:;;Haight Street 512\;\nEscape\, Test;Novosibirsk;;80214;Gnuland
+ADR;type=HOME:;;Haight Street 512
 TEL;type=HOME:+01-(0)2-876.54.32
-ORG:University of Novosibirsk\, Department of Octopus
-  Parthenogenesis
+ORG:University of Novosibirsk
 END:VCARD
