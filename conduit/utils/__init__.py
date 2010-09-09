@@ -297,7 +297,7 @@ def datetime_from_timestamp(t):
         raise Exception("Timestamp must be a number")
 
     if t < 0:
-        raise Exception("Timestamps before 1970 are not valid")
+        raise Exception("Timestamps before 1970 are not valid (was %s)" % t)
 
     return datetime.datetime.fromtimestamp(long(t))
 
@@ -313,7 +313,7 @@ def datetime_get_timestamp(d):
 
     f = time.mktime(d.timetuple())
     if f < 0:
-        raise Exception("Timestamps before 1970 are not valid")
+        raise Exception("Timestamps before 1970 are not valid (was %s)" % f)
 
     return long(f)
 

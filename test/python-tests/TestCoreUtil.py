@@ -12,7 +12,7 @@ import sys
 
 if is_online():
     ts = Utils.get_http_resource_last_modified("http://files.conduit-project.org/Conduit-0.3.0-screencast-small.mpeg")
-    ok("Got mtime (timestamp) of http resource", ts == 1178459256.0)
+    ok("Got mtime (timestamp) of http resource", ts == 1178419656.0)
 
     mimetype = Utils.get_http_resource_mimetype("http://files.conduit-project.org/Conduit-0.3.0-screencast-small.mpeg")
     ok("Got mimetype of http resource", mimetype == 'video/mpeg')
@@ -68,7 +68,7 @@ ok("Cmd with wrong args", Utils.exec_command_and_return_result("ls","does-not-ex
 ok("Cmd that doesnt exist", Utils.exec_command_and_return_result("cmd-does-not-exist",".") == None)  
 
 ts = 0
-dt = datetime.datetime(1970, 1, 1, 1, 0)
+dt = Utils.datetime_from_timestamp(ts)
 ok("Datetime to unix timestamp", Utils.datetime_get_timestamp(dt) == ts)
 ok("Unix timestamp to datetime", Utils.datetime_from_timestamp(ts) == dt)
 
