@@ -399,4 +399,5 @@ sync_and_check_result(
         expectedMappings=3,
         sinkExpects=(0,0))
 
+test.finished()
 finished()

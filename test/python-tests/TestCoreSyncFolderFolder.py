@@ -197,4 +197,5 @@ for i in range(1,SYNC_N_TIMES+1):
     mapSink2Source = conduit.GLOBALS.mappingDB.get_mappings_for_dataproviders(sinkW.get_UID(), sourceW.get_UID())
     ok("Hidden: %s Mappings in total" % nmaps, len(mapSource2Sink + mapSink2Source) == nmaps)
 
+test.finished()
 finished()

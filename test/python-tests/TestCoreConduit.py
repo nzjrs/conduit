@@ -84,4 +84,5 @@ ok("Twoway no longer possible", res == False)
 cond.refresh_dataprovider(dpk2, block=True)
 ok("Refresh dp failed", test.sync_manager.did_sync_abort(cond) == True and test.sync_manager.did_sync_error(cond) == False)
 
+test.finished()
 finished()

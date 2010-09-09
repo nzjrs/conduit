@@ -105,6 +105,7 @@ for f, fKlass, t, tKlass, exist, expected in TEST_CONVERSIONS:
         newdata = tc.convert(f,"%s?%s"%(t,Utils.encode_conversion_args(args)),data)
         ok("Data converted ok (with args)", data._name_ == fKlass._name_ and newdata._name_ == tKlass._name_)
 
+test.finished()
 finished()
 
 

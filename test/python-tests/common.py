@@ -46,7 +46,24 @@ import conduit.MappingDB as MappingDB
 from conduit.datatypes import File, Note, Setting, Contact, Email, Text, Video, Photo, Audio, Event, Bookmark
 from conduit.modules import TestModule
 
+def cleanup_threads():
+    #Keep in sync with conduit.Main
 
+    #Cancel all syncs
+    conduit.GLOBALS.cancelled = True
+
+    #cancel all conduits
+    if conduit.GLOBALS.syncManager:
+        conduit.GLOBALS.syncManager.cancel_all()
+
+    #give the dataprovider factories time to shut down
+    if conduit.GLOBALS.moduleManager:
+        conduit.GLOBALS.moduleManager.quit()
+
+    #Save the mapping DB
+    if conduit.GLOBALS.mappingDB:
+        conduit.GLOBALS.mappingDB.save()
+        conduit.GLOBALS.mappingDB.close()
 
 def is_online():
     try:    
@@ -65,6 +82,7 @@ def ok(message, code, die=True):
         if code == -1:
             print "[FAIL] %s" % message
             if die:
+                cleanup_threads()
                 sys.exit()
             return False
         else:
@@ -74,6 +92,7 @@ def ok(message, code, die=True):
         if code == False:
             print "[FAIL] %s" % message
             if die:
+                cleanup_threads()
                 sys.exit()
             return False
         else:
@@ -87,10 +106,12 @@ def skip(msg="no reason given"):
         elif not is_interactive():
             msg = "interactive tests disabled"
     print "[SKIPPED] (%s)" % msg
+    cleanup_threads()
     sys.exit()
 
 def finished():
     print "[FINISHED]"
+    cleanup_threads()
     sys.exit()
 
 def wait_seconds(s):
@@ -482,6 +503,10 @@ class SimpleTest(object):
                     data,
                     "photo"
                     )
+
+    def finished(self):
+        cleanup_threads()
+        self.sync_set.quit()
         
 class SimpleSyncTest(SimpleTest):
     """

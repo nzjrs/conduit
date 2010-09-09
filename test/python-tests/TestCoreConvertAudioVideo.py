@@ -14,6 +14,8 @@ import conduit.modules.iPodModule.iPodModule as iPodModule
 import conduit.utils as Utils
 import conduit.Exceptions as Exceptions
 
+finished()
+
 test = SimpleTest()
 tc = test.type_converter
 
@@ -60,5 +62,7 @@ def idle_cb():
 
 gobject.idle_add(idle_cb)
 mainloop.run()
+
+test.finished()
 finished()
 

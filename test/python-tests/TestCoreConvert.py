@@ -31,7 +31,8 @@ def row(entries):
     return s
 
 #Dynamically load all datasources, datasinks and converters
-type_converter = SimpleTest().type_converter
+test = SimpleTest()
+type_converter = test.type_converter
 
 #Dictionary of information used to test the conversion functions
 #
@@ -118,5 +119,6 @@ for fromtype,totype in tests:
     except Exception:
         ok("[%s] Conversion Failed\n%s" % (conv,traceback.format_exc()), False)
 
+test.finished()
 finished()
 

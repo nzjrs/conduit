@@ -50,6 +50,8 @@ for music in lines:
     if not i:
         ok("File transfer failed", i)
 
+wait_seconds(2)
+
 def prog(*args): pass
 def done(*args): pass
 
@@ -57,6 +59,8 @@ stm = Vfs.FolderScannerThreadManager(maxConcurrentThreads=1)
 t1 = stm.make_thread(sourceDir, True, True, prog, done)
 t2 = stm.make_thread(sinkDir, True, True, prog, done)
 stm.join_all_threads()
+
+wait_seconds(2)
 
 uris1 = t1.get_uris()
 uris2 = t2.get_uris()

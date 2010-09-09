@@ -38,4 +38,5 @@ ok("Didnt resolve when resolution is skip", resolved == False and len(test.condu
 resolved = conf.resolve(Conflict.CONFLICT_COPY_SOURCE_TO_SINK)
 ok("Resolved, source -> sink", resolved == True and len(test.conduit._conflicts) == 0)
 
+test.finished()
 finished()

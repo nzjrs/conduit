@@ -23,6 +23,8 @@ ok("Sync completed", aborted == False)
 error = test.sync_errored()
 ok("Non fatal error trapped", error == True)
 
+test.finished()
+
 ###
 #One way, should abort, but still put data in second sink
 ###
@@ -47,6 +49,8 @@ test.sync(debug=False)
 aborted = test.sync_aborted()
 ok("Sync completed", aborted == False)
 
+test.finished()
+
 ###
 #One way, should abort (sink fail refresh)
 ###
@@ -62,6 +66,8 @@ test.set_two_way_sync(False)
 test.sync(debug=False)
 aborted = test.sync_aborted()
 ok("Sync aborted due to no refreshing sinks", aborted == True)
+
+test.finished()
 
 ###
 #One way, should abort (source fail refresh)
@@ -79,6 +85,8 @@ test.sync(debug=False)
 aborted = test.sync_aborted()
 ok("Sync aborted due to source fail refresh", aborted == True)
 
+test.finished()
+
 ###
 #One way, should abort (not configured)
 ###
@@ -94,6 +102,8 @@ test.set_two_way_sync(False)
 test.sync(debug=False)
 aborted = test.sync_aborted()
 ok("Sync aborted due to no configured sinks", aborted == True)
+
+test.finished()
 
 ###
 #One way, should conflict
@@ -113,6 +123,8 @@ ok("Sync completed", aborted == False)
 conflict = test.sync_conflicted()
 ok("Conflict trapped", conflict == True)
 
+test.finished()
+
 ###
 #Two way
 ###
@@ -128,6 +140,8 @@ test.set_two_way_sync(True)
 test.sync(debug=False)
 aborted = test.sync_aborted()
 ok("Sync completed", aborted == False)
+
+test.finished()
 
 ###
 #One way, much data, 2 sinks
@@ -153,6 +167,8 @@ test.sync(debug=False)
 aborted = test.sync_aborted()
 ok("Sync completed", aborted == False)
 
+test.finished()
+
 ###
 #Test conversion args
 ###
@@ -167,6 +183,8 @@ test.set_two_way_sync(False)
 test.sync(debug=False)
 aborted = test.sync_aborted()
 ok("Sync completed", aborted == False)
+
+test.finished()
 
 ###
 #Test file and image sink
@@ -186,6 +204,8 @@ test.sync(debug=False)
 aborted,errored,conflicted = test.get_sync_result()
 ok("Sync completed without conflicts", aborted == False and errored == False and conflicted == False)
 
+test.finished()
+
 ###
 #Test file and image sink
 ###
@@ -201,6 +221,7 @@ test.sync(debug=False)
 aborted,errored,conflicted = test.get_sync_result()
 ok("Sync completed without conflicts", aborted == False and errored == False and conflicted == False)
 
+test.finished()
 
 ###
 #Test folder sink
@@ -219,4 +240,5 @@ test.sync(debug=False)
 aborted,errored,conflicted = test.get_sync_result()
 ok("Sync completed without conflicts", aborted == False and errored == False and conflicted == False)
 
+test.finished()
 finished()

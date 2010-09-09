@@ -41,4 +41,5 @@ for t,func in TYPES.items():
     ok("%s: original and unpickled clone have the same hash" % t, orig.get_hash() == clone.get_hash())
     ok("%s: original and unpickled clone have the same rid" % t, orig.get_rid() == clone.get_rid())
 
+test.finished()
 finished()

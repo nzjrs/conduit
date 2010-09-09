@@ -67,6 +67,8 @@ fb = open(FILENAME % todir, 'r')
 ok("Updated File transferred", fb.read() == CONTENTS_NEW)
 fb.close()
 
+test.finished()
+
 ########################################
 # Putting an older file over an unknown new one shoud conflict
 ########################################
@@ -87,6 +89,8 @@ fa.close()
 test.sync()
 abort,error,conflict = test.get_sync_result()
 ok("Detected conflict on existing file", abort == False and error == False and conflict == True)
+
+test.finished()
 
 ########################################
 # Putting a file over an unknown new one with the same mtime, but diff size
@@ -120,6 +124,8 @@ test.sync(debug=False)
 abort,error,conflict = test.get_sync_result()
 ok("Detected conflict on existing file, same mtime, diff size", abort == False and error == False and conflict == True)
 
+test.finished()
+
 ########################################
 # Putting a file over an unknown new one with the same mtime, and same size
 # wont conflict, we cant do any stronger tests without hashing
@@ -152,5 +158,6 @@ test.sync(debug=False)
 abort,error,conflict = test.get_sync_result()
 ok("No conflict for existing same files", abort == False and error == False and conflict == False)
 
+test.finished()
 finished()
 

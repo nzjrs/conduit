@@ -120,4 +120,5 @@ maps = conduit.GLOBALS.mappingDB.get_mappings_for_dataproviders(
 
 test.sync(debug=DB_DEBUG)
 
+test.finished()
 finished()
