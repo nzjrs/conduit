@@ -15,7 +15,7 @@ SYNC_N_TIMES = 3
 #an even integer
 NUM_FILES = 10
 #Sleep time for file I/O
-SLEEP_TIME = 1
+SLEEP_TIME = 2
 #Print the mapping DB on the last sync?
 PRINT_MAPPING_DB = False
 
@@ -74,7 +74,7 @@ for i in range(1,SYNC_N_TIMES+1):
     nmaps = len(FILES)/2
 
     abort,error,conflict = test.get_sync_result()
-    ok("Oneway Sync: Sync #%s completed" % i, abort == False and error == False and conflict == False)
+    ok("Oneway Sync: Sync #%s completed (a:%d e:%d c:%d)" % (i,abort,error,conflict), abort == False and error == False and conflict == False)
 
     a = test.get_source_count()
     b = test.get_sink_count()
@@ -93,7 +93,7 @@ for i in range(1,SYNC_N_TIMES+1):
     nmaps = len(FILES)
 
     abort,error,conflict = test.get_sync_result()
-    ok("Sync: Sync #%s completed" % i, abort == False and error == False and conflict == False)
+    ok("Sync: Sync #%s completed (a:%d e:%d c:%d)" % (i,abort,error,conflict), abort == False and error == False and conflict == False)
 
     a = test.get_source_count()
     b = test.get_sink_count()
@@ -137,7 +137,7 @@ for i in range(1,SYNC_N_TIMES+1):
     abort,error,conflict = test.get_sync_result()
     #There will only be a conflict (delete) the first sync, because the two way policy
     #is to replace the deleted items
-    ok("Delete: Sync #%s completed" % i, abort == False and error == False and conflict == (i == 1))
+    ok("Delete: Sync #%s completed (a:%d e:%d c:%d)" % (i,abort,error,conflict), abort == False and error == False and conflict == (i == 1))
 
     a = test.get_source_count()
     b = test.get_sink_count()
@@ -188,7 +188,7 @@ for i in range(1,SYNC_N_TIMES+1):
     nmaps = len(FILES)
     
     abort,error,conflict = test.get_sync_result()
-    ok("Hidden: Sync #%s completed" % i, abort == False and error == False and conflict == False)
+    ok("Hidden: Sync #%s completed (a:%d e:%d c:%d)" % (i,abort,error,conflict), abort == False and error == False and conflict == False)
 
     a = test.get_source_count()
     b = test.get_sink_count()

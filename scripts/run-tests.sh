@@ -24,6 +24,7 @@ Options:\n\
     -o      Offline. Skip tests that require a net connection\n\
     -d      Debug. also print test ouput to console\n\
     -N      Non interactive. Skip tests that require interaction (web login)\n\
+    -x      Dont exit on test failure\n\
 The operation of the script is affected by two environment\n\
 variables. TEST_USERNAME and TEST_PASSWORD are used as\n\
 login information in the relevant dataproviders\n\
@@ -46,7 +47,8 @@ do_dataprovider_tests=0
 do_sync_tests=0
 do_interactive="TRUE"
 do_list=0
-while getopts "cus:odDSNl" options
+do_fatal="TRUE"
+while getopts "cus:odDSNlx" options
 do
     case $options in
         c )     do_coverage=1;;
@@ -58,6 +60,7 @@ do
         S )     do_sync_tests=1;;
         N )     do_interactive="FALSE";;
         l )     do_list=1;;
+        x )     do_fatal="FALSE";;
         \? )    echo -e $USAGE
                 exit 1;;
         * )     echo -e $USAGE
@@ -145,6 +148,7 @@ do
         CONDUIT_LOGFILE=$logfile \
         CONDUIT_ONLINE=$do_online \
         CONDUIT_INTERACTIVE=$do_interactive \
+        CONDUIT_TESTS_FATAL=$do_fatal \
         python $EXEC
     else
         #run the test
@@ -153,6 +157,7 @@ do
         CONDUIT_LOGFILE=$logfile \
         CONDUIT_ONLINE=$do_online \
         CONDUIT_INTERACTIVE=$do_interactive \
+        CONDUIT_TESTS_FATAL=$do_fatal \
         python $EXEC 2> /dev/null | \
         tee $tempfile
     fi

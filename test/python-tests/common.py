@@ -66,18 +66,14 @@ def cleanup_threads():
         conduit.GLOBALS.mappingDB.close()
 
 def is_online():
-    try:    
-        return os.environ["CONDUIT_ONLINE"] == "TRUE"
-    except KeyError:
-        return False
+    return os.environ.get("CONDUIT_ONLINE") == "TRUE"
         
 def is_interactive():
-    try:    
-        return os.environ["CONDUIT_INTERACTIVE"] == "TRUE"
-    except KeyError:
-        return False
+    return os.environ.get("CONDUIT_INTERACTIVE") == "TRUE"
 
-def ok(message, code, die=True):
+def ok(message, code, die=None):
+    if die == None:
+        die = os.environ.get("CONDUIT_TESTS_FATAL") == "TRUE"
     if type(code) == int:
         if code == -1:
             print "[FAIL] %s" % message
