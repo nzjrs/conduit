@@ -4,8 +4,6 @@ import gudev
 import logging
 log = logging.getLogger("utils.UDev")
 
-import conduit.utils as Utils
-
 class UDevHelper(gudev.Client):
     def __init__(self, *subsystems):
         gudev.Client.__init__(self, subsystems)
