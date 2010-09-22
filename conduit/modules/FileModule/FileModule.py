@@ -160,6 +160,7 @@ class RemovableDeviceFactory(SimpleFactory.SimpleFactory):
         SimpleFactory.SimpleFactory.__init__(self, **kwargs)
         self._volumes = {}
         self._categories = {}
+
         self._vm = gio.volume_monitor_get()
         self._vm.connect("mount-added",self._volume_mounted_cb)
         self._vm.connect("mount-removed",self._volume_unmounted_cb)
@@ -168,14 +169,18 @@ class RemovableDeviceFactory(SimpleFactory.SimpleFactory):
         #The volume uuid is not always present, so use the mounted root URI instead
         return gmount.get_root().get_uri()
 
+    def _inspect_and_add_volume(self, device_udi, gmount):
+        #Checks for preconfigured conduits, calls item_added as needed
+        mount = gmount.get_root().get_uri()
+        label = gmount.get_name()
+        self._check_preconfigured(device_udi, mount, label)
+        self.item_added(device_udi, mount=mount, label=label)
+
     def _volume_mounted_cb(self, monitor, gmount):
         device_udi = self._get_mount_udi(gmount)
         log.info("Volume mounted, %s" % device_udi)
         if device_udi:
-            mount = gmount.get_root().get_uri()
-            label = gmount.get_name()
-            self._check_preconfigured(device_udi, mount, label)
-            self.item_added(device_udi, mount=mount, label=label)
+            self._inspect_and_add_volume(device_udi, gmount)
 
     def _volume_unmounted_cb(self, monitor, gmount):
         device_udi = self._get_mount_udi(gmount)
@@ -227,12 +232,10 @@ class RemovableDeviceFactory(SimpleFactory.SimpleFactory):
         """
         Called after initialised to detect already connected volumes
         """
-        for m in self._vm.get_mounts():
-            device_udi = self._get_mount_udi(mount)
+        for gmount in self._vm.get_mounts():
+            device_udi = self._get_mount_udi(gmount)
             if device_udi:
-                mount,label = volumes[device_udi]
-                self._check_preconfigured(device_udi, mount, label)
-                self.item_added(device_udi, mount=mount, label=label)
+                self._inspect_and_add_volume(device_udi, gmount)
 
     def emit_added(self, klass, initargs, category):
         """
