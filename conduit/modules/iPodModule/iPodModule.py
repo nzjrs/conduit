@@ -90,13 +90,15 @@ def _get_apple_icon(props):
 
 class iPhoneFactory(HalFactory.HalFactory):
 
+    UDEV_SUBSYSTEMS = ("usb",)
+
     def is_interesting(self, sysfs_path, props):
         #there is no media-player-info support for the apple iphone, so instead 
         #we have to look for the correct model name instead.
         if "Apple" in props.get("ID_VENDOR", "") and "iPhone" in props.get("ID_MODEL", ""):
             #also have to check the iPhone has a valid serial, as that is used
             #with gvfs to generate the uuid of the moint
-            self._print_device(self.get_udev_device_for_sysfs_path(sysfs_path))
+            self._print_device(self.gudev.query_by_sysfs_path(sysfs_path))
             if props.get("ID_SERIAL_SHORT"):
                 uuid = "afc://%s/" % props["ID_SERIAL_SHORT"]
                 for m in gio.volume_monitor_get().get_mounts():

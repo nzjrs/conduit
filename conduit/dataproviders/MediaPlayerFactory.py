@@ -4,6 +4,7 @@ import logging
 log = logging.getLogger("dataproviders.MediaPlayerFactory")
 
 import conduit.utils as Utils
+import conduit.utils.UDev as UDev
 import conduit.dataproviders.HalFactory as HalFactory
 
 class MediaPlayerFactory(HalFactory.HalFactory):
@@ -14,8 +15,7 @@ class MediaPlayerFactory(HalFactory.HalFactory):
     MPI_ICON            = ("Device", "Icon",           "MPI_ICON")
     MPI_KEYS = (MPI_ACCESS_PROTOCOL, MPI_ICON)
 
-    def __init__(self, *args, **kwargs):
-        HalFactory.HalFactory.__init__(self, *args, **kwargs)
+    UDEV_SUBSYSTEMS = ("block",)
 
     #taken from quodlibet
     def __get_mpi_dir(self):
@@ -38,8 +38,8 @@ class MediaPlayerFactory(HalFactory.HalFactory):
             if read: return parser
 
     def _maybe_new(self, device):
-        props = self._get_device_properties(device)
-        sysfs_path = self.get_sysfs_path_for_device(device)
+        props = self.gudev.get_device_properties(device)
+        sysfs_path = device.get_sysfs_path()
         try:
             mplayer_id = props["ID_MEDIA_PLAYER"]
 
