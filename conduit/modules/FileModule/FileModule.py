@@ -108,7 +108,7 @@ class FolderTwoWay(FileDataProvider.FolderTwoWay, AutoSync.AutoSync):
         )     
         AutoSync.AutoSync.__init__(self)
 
-        self._monitor = VfsMonitor.FileMonitor()
+        self._monitor = VfsFile.MultipleFileMonitor()
         self._monitor.connect("changed", self._monitor_folder_cb)
 
         self.update_configuration(
