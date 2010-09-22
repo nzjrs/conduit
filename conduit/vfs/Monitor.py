@@ -41,39 +41,4 @@ class FileMonitor(gobject.GObject):
             except TypeError:
                 pass
 
-class VolumeMonitor(gobject.GObject):
-
-    __gsignals__ = {
-        "volume-mounted" :      (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, [
-            gobject.TYPE_STRING,        #udi/uuid
-            gobject.TYPE_STRING,        #mount point
-            gobject.TYPE_STRING]),      #label
-        "volume-unmounted" :    (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, [
-            gobject.TYPE_STRING])       #udi/uuid
-
-    }
-
-    def __init__(self):
-        gobject.GObject.__init__(self)
-        self._vm = gio.volume_monitor_get()
-        self._vm.connect("mount-added", self._mounted_cb)
-        self._vm.connect("mount-removed", self._unmounted_cb)
-
-    def _mounted_cb(self, sender, mount):
-        self.emit("volume-mounted", 
-            mount.get_uuid(),
-            mount.get_root().get_uri(),
-            mount.get_name())
-
-    def _unmounted_cb(self, sender, mount):
-        self.emit("volume-unmounted", mount.get_uuid())
-
-    def get_mounted_volumes(self):
-        """
-        @returs: Dict of mounted volumes, uuid : (mount, name) 
-        """
-        vols = {}
-        for m in self._vm.get_mounts():
-            vols[m.get_uuid()] = (m.get_root().get_uri(), m.get_name())
-        return vols
 

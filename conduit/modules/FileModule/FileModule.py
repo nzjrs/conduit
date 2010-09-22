@@ -3,6 +3,8 @@ from gettext import gettext as _
 import logging
 log = logging.getLogger("modules.File")
 
+import gio
+
 import conduit
 import conduit.dataproviders.DataProvider as DataProvider
 import conduit.dataproviders.DataProviderCategory as DataProviderCategory
@@ -12,7 +14,6 @@ import conduit.dataproviders.AutoSync as AutoSync
 import conduit.utils as Utils
 import conduit.vfs as Vfs
 import conduit.vfs.File as VfsFile
-import conduit.vfs.Monitor as VfsMonitor
 
 MODULES = {
     "FileSource" :              { "type": "dataprovider" },
@@ -159,17 +160,25 @@ class RemovableDeviceFactory(SimpleFactory.SimpleFactory):
         SimpleFactory.SimpleFactory.__init__(self, **kwargs)
         self._volumes = {}
         self._categories = {}
-        self._vm = VfsMonitor.VolumeMonitor()
-        self._vm.connect("volume-mounted",self._volume_mounted_cb)
-        self._vm.connect("volume-unmounted",self._volume_unmounted_cb)
+        self._vm = gio.volume_monitor_get()
+        self._vm.connect("mount-added",self._volume_mounted_cb)
+        self._vm.connect("mount-removed",self._volume_unmounted_cb)
 
-    def _volume_mounted_cb(self, monitor, device_udi, mount, label):
-        log.info("Volume mounted, %s : (%s : %s)" % (device_udi,mount,label))
+    def _get_mount_udi(self, gmount):
+        #The volume uuid is not always present, so use the mounted root URI instead
+        return gmount.get_root().get_uri()
+
+    def _volume_mounted_cb(self, monitor, gmount):
+        device_udi = self._get_mount_udi(gmount)
+        log.info("Volume mounted, %s" % device_udi)
         if device_udi:
+            mount = gmount.get_root().get_uri()
+            label = gmount.get_name()
             self._check_preconfigured(device_udi, mount, label)
             self.item_added(device_udi, mount=mount, label=label)
 
-    def _volume_unmounted_cb(self, monitor, device_udi):
+    def _volume_unmounted_cb(self, monitor, gmount):
+        device_udi = self._get_mount_udi(gmount)
         log.info("Volume unmounted, %s" % device_udi)
         if device_udi and device_udi in self._volumes:
             self.item_removed(device_udi)
@@ -218,14 +227,11 @@ class RemovableDeviceFactory(SimpleFactory.SimpleFactory):
         """
         Called after initialised to detect already connected volumes
         """
-        volumes = self._vm.get_mounted_volumes()
-        for device_udi in volumes:
+        for m in self._vm.get_mounts():
+            device_udi = self._get_mount_udi(mount)
             if device_udi:
                 mount,label = volumes[device_udi]
                 self._check_preconfigured(device_udi, mount, label)
-                self.item_added(device_udi, mount=mount, label=label)
-            if device_udi:
-                mount,label = volumes[device_udi]
                 self.item_added(device_udi, mount=mount, label=label)
 
     def emit_added(self, klass, initargs, category):
