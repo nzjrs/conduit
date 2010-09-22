@@ -948,7 +948,7 @@ IPOD_AUDIO_ENCODINGS = {
 
 class IPodMusicTwoWay(IPodMediaTwoWay):
 
-    _name_ = _("iPod Music")
+    _name_ = _("Music")
     _description_ = _("Synchronize your iPod music")
     _module_type_ = "twoway"
     _in_type_ = "file/audio"
@@ -984,7 +984,7 @@ IPOD_VIDEO_ENCODINGS = {
 
 class IPodVideoTwoWay(IPodMediaTwoWay):
 
-    _name_ = _("iPod Video")
+    _name_ = _("Video")
     _description_ = _("Synchronize your iPod videos")
     _module_type_ = "twoway"
     _in_type_ = "file/video"
