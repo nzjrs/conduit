@@ -13,21 +13,24 @@ import conduit.datatypes.Event as Event
 import conduit.datatypes.Note as Note
 
 MODULES = {}
-try:
-    import evolution
-    if evolution.__version__ >= (0,0,4):
-        MODULES = {
-                "EvoContactTwoWay"  : { "type": "dataprovider" },
-                "EvoCalendarTwoWay" : { "type": "dataprovider" },
-                "EvoTasksTwoWay"    : { "type": "dataprovider" },
-                "EvoMemoTwoWay"     : { "type": "dataprovider" },
-        }
-        log.info("Module Information: %s" % Utils.get_module_information(evolution, '__version__'))
-    if evolution.__version__ <= (2,2,2):
-        #Work around bug #561354
-        import bonobo
-except ImportError:
-    log.info("Evolution support disabled")
+if Utils.program_installed("evolution"):
+    try:
+        import evolution
+        if evolution.__version__ >= (0,0,4):
+            MODULES = {
+                    "EvoContactTwoWay"  : { "type": "dataprovider" },
+                    "EvoCalendarTwoWay" : { "type": "dataprovider" },
+                    "EvoTasksTwoWay"    : { "type": "dataprovider" },
+                    "EvoMemoTwoWay"     : { "type": "dataprovider" },
+            }
+            log.info("Module Information: %s" % Utils.get_module_information(evolution, '__version__'))
+        if evolution.__version__ <= (2,2,2):
+            #Work around bug #561354
+            import bonobo
+    except ImportError:
+        log.info("Evolution support disabled (please install evolution bindings)")
+else:
+    log.info("Evolution not installed")
 
 class EvoBase(DataProvider.TwoWay):
     _configurable_ = True

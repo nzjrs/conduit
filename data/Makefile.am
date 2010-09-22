@@ -36,8 +36,6 @@ resourcesdir = $(pkgdatadir)
 resources_DATA = \
 	conduit.ui \
 	backpack.png \
-	evolution-tasks.png \
-	evolution-memos.png \
 	conduit-splash.png \
 	facebook.png \
 	feed.png \
@@ -48,6 +46,7 @@ resources_DATA = \
 	shutterfly.png \
 	youtube.png \
 	zoto.png \
+	note.png \
 	windows.png
 
 conduitbindir = $(libdir)/conduit

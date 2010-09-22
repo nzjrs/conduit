@@ -181,7 +181,7 @@ class IPodNoteTwoWay(IPodBase):
     _module_type_ = "twoway"
     _in_type_ = "note"
     _out_type_ = "note"
-    _icon_ = "tomboy"
+    _icon_ = "note"
 
     # datatypes.Note doesn't care about encoding,
     # lets be naive and assume that all notes are utf-8
