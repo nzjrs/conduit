@@ -572,7 +572,6 @@ class DataProviderFactory(gobject.GObject):
         Emits the dataprovider-added signal for the given class with the
         given conctruction arguments
         """
-        print "emit_added",klass,initargs,category,customKey
         dpw = ModuleWrapper.ModuleWrapper(   
                     klass=klass,
                     initargs=initargs,

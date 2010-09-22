@@ -56,7 +56,7 @@ class MediaPlayerFactory(HalFactory.HalFactory):
                 self.item_added(sysfs_path, **props)
 
         except KeyError:
-            log.debug("Device not media player")
+            log.debug("Device not media player (%s)" % props.get("ID_SERIAL", props.get("ID_VENDOR","")))
 
     def get_mpi_access_protocol(self, props):
         return props.get(self.MPI_ACCESS_PROTOCOL[2], "")

@@ -20,9 +20,7 @@ class SimpleFactory(DataProvider.DataProviderFactory):
         idxs = []
         for klass in self.get_dataproviders(key, **kwargs):
             args = self.get_args(key, **kwargs)
-            print "emit_added"
             idx = self.emit_added(klass, args, cat)
-            print "emmitted"
             idxs.append(idx)
         self.items[key] = idxs
 

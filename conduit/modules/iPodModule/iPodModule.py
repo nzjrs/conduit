@@ -118,7 +118,6 @@ class iPhoneFactory(HalFactory.HalFactory):
 
     def get_category(self, key, **props):
         """ Return a category to contain these dataproviders """
-        print "get_category", props.get(PROPS_KEY_MOUNT)
         return DataProviderCategory.DataProviderCategory(
                     _get_apple_label(props),
                     _get_apple_icon(props),
@@ -126,16 +125,21 @@ class iPhoneFactory(HalFactory.HalFactory):
     
     def get_dataproviders(self, key, **props):
         """ Return a list of dataproviders for this class of device """
-        print "get_dataproviders", props.get(PROPS_KEY_MOUNT)
         return [IPodDummy, IPodPhotoSink]
 
     def get_args(self, key, **props):
-        print "get_args", props.get(PROPS_KEY_MOUNT)
         return (props[PROPS_KEY_MOUNT], key)
 
 class iPodFactory(MediaPlayerFactory.MediaPlayerFactory):
 
     def is_interesting(self, sysfs_path, props):
+        #FIXME:
+        #
+        # THIS ONLY WORKS DURING PROBE. NO IDEA WHY.
+        # When called in response to a Udev added event, gioVolumeMonitor does
+        # not return the newly added volumes. There appears to be some sort of
+        # race condition
+        #
         #just like rhythmbox, we let media-player-info do the matching, and
         #instead just check if it has told us that the media player uses the
         #ipod storage protocol

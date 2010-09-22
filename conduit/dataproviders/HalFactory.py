@@ -25,6 +25,8 @@ class HalFactory(SimpleFactory.SimpleFactory):
         self.vm = gio.volume_monitor_get()
 
     def _print_device(self, device):
+        return
+
         print "subsystem", device.get_subsystem()
         print "devtype", device.get_devtype()
         print "name", device.get_name()
@@ -44,10 +46,17 @@ class HalFactory(SimpleFactory.SimpleFactory):
     def _on_uevent(self, client, action, device):
         self._print_device(device)
         if action == "add":
+            log.debug("Device added")
+            self._maybe_new(device)
+        elif action == "change":
+            log.debug("Device changed")
             self._maybe_new(device)
         elif action == "remove":
+            log.debug("Device removed")
             sysfs_path = self.get_sysfs_path_for_device(device)
             self.item_removed(sysfs_path)
+        else:
+            log.info("Device unknown action: %s" % action)
 
     def _get_device_properties(self, device):
         props = {}
