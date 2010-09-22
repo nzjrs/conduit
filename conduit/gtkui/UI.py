@@ -722,61 +722,30 @@ class StatusIcon(gtk.StatusIcon):
         self.connect('popup-menu', self.on_popup_menu)
         self.connect('activate', self.on_click)
 
-        self.animating = False
-        self.check_animate = False
-        self.conflict = False
-        self.animated_idx = 0
-        self.animated_icons = range(1,8)
-
-        #start with the application icon
         self.cancelButton.set_property("sensitive", False)
         self.set_from_icon_name("conduit")
         self.set_tooltip("Conduit")
         self.set_visible(True)
 
-    def _animate_icon_timeout(self):
-        #FIXME: When will gtk support animated gtk status icons?
-        if self.animating:
-            if self.animated_idx == self.animated_icons[-1]:
-                self.animated_idx = 1
-            else:
-                self.animated_idx += 1
-                self.set_from_icon_name("conduit-progress-%d" % self.animated_idx)
-            # re-check animation?                
-            if self.check_animate:
-                self.animating =  conduit.GLOBALS.syncManager.is_busy()
-                self.check_animate = False
-            return True
-
-        else: 
-            if self.conflict:
-                self.set_from_icon_name("dialog-error")
-                self.set_tooltip(_("Synchronization Error"))
-            else:
-                self.set_from_icon_name("conduit")
-                self.set_tooltip(_("Synchronization Complete"))
-            self.conflict = False
-            self.cancelButton.set_property("sensitive", False)
-            return False
-
     def _on_sync_started(self, cond):
-        if not self.animating:
-            self.animating = True
-            self.set_tooltip(_("Synchronizing"))
-            self.cancelButton.set_property("sensitive", True)
-            gobject.timeout_add(100, self._animate_icon_timeout)
+        self.set_tooltip(_("Synchronizing"))
+        self.cancelButton.set_property("sensitive", True)
 
     def _on_sync_completed(self, cond, aborted, error, conflict):
-        # check need for animation on next iteration
-        self.check_animate = True
-
-    def _on_sync_conflict(self, cond, conflict):
-        self.conflict = True
+        if not aborted and not error and not conflict:
+            self.set_from_icon_name("conduit")
+            self.set_tooltip(_("Synchronization Complete"))
+        else:
+            self.set_from_icon_name("dialog-error")
+            if aborted or error:
+                self.set_tooltip(_("Synchronization Error"))
+            else:
+                self.set_tooltip(_("Synchronization Conflict"))
+        self.cancelButton.set_property("sensitive", False)
 
     def on_conduit_added(self, syncset, cond):
         cond.connect("sync-started", self._on_sync_started)
         cond.connect("sync-completed", self._on_sync_completed)
-        cond.connect("sync-conflict", self._on_sync_conflict)
 
     def on_conduit_removed(self, syncset, cond):
         pass
