@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: conduit\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=conduit&component=documentation and translation\n"
-"POT-Creation-Date: 2010-01-12 19:58+0000\n"
-"PO-Revision-Date: 2010-07-05 07:39+0100\n"
+"POT-Creation-Date: 2010-09-22 06:21+0000\n"
+"PO-Revision-Date: 2010-09-22 09:21+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Usklajevalnik Conduit"
 
 #: ../data/conduit.desktop.in.in.h:2
 msgid "Synchronization for GNOME"
-msgstr "Usklajevalnik za GNOME"
+msgstr "Usklajevanje za GNOME"
 
 #: ../conduit/Knowledge.py:8
 msgid "What Do You Want to Synchronize?"
@@ -76,58 +76,58 @@ msgstr "Nalaganje fotografij na Facebook"
 msgid "Synchronize Desktop Wallpaper from a RSS Feed"
 msgstr "Usklajevanje tapete namizja z vira RSS"
 
-#: ../conduit/Main.py:59
+#: ../conduit/Main.py:58
 msgid "Conduit is a synchronization application."
 msgstr "Conduit je program za usklajevanje."
 
-#: ../conduit/Main.py:63
+#: ../conduit/Main.py:62
 #, python-format
 msgid "Launch without GUI. [default: %default]"
 msgstr "Zagon brez grafičnega uporabniškega vmesnika. [privzeto: %default]"
 
-#: ../conduit/Main.py:67
+#: ../conduit/Main.py:66
 #, python-format
 msgid "Save dataprovider configuration to FILE. [default: %default]"
 msgstr "Shrani nastavitev ponudnika podatkov v DATOTEKO. [privzeto: %default]"
 
-#: ../conduit/Main.py:71
+#: ../conduit/Main.py:70
 #, python-format
 msgid "Iconify on startup. [default: %default]"
 msgstr "Pomanjšaj v ikono ob zagonu. [privzeto: %default]"
 
-#: ../conduit/Main.py:75
+#: ../conduit/Main.py:74
 #, python-format
 msgid "Run with the specified UI. [default: %default]"
 msgstr "Zagon z navedenim uporabniškim vmesnikom. [privzeto: %default]"
 
-#: ../conduit/Main.py:79
+#: ../conduit/Main.py:78
 msgid "Only load modules in the named files. [default: load all modules]"
 msgstr "Naloži le module v imenovanih datotekah. [privzeto: nalaganje vseh modulov]"
 
-#: ../conduit/Main.py:83
+#: ../conduit/Main.py:82
 msgid "Do not load modules in the named files. [default: load all modules]"
 msgstr "Ne naloži modulov v imenovanih datotekah. [privzeto: nalaganje vseh modulov]"
 
-#: ../conduit/Main.py:87
+#: ../conduit/Main.py:86
 msgid "Explicitly set internal Conduit settings (keys) to the given values for this session. [default: do not set]"
 msgstr "Izrecno nastavi notranje nastavitve Conduit (ključev) na vrednosti podane med to mejo. [privzeto: ne nastavi]"
 
-#: ../conduit/Main.py:91
+#: ../conduit/Main.py:90
 #, python-format
 msgid "Enable loading of unfinished or unsupported dataproviders. [default: %default]"
 msgstr "Omogoči nalaganje nedokončanih ali nepodprtih ponudnikov podatkov. [privzeto: %default]"
 
-#: ../conduit/Main.py:95
+#: ../conduit/Main.py:94
 #, python-format
 msgid "Generate more debugging information. [default: %default]"
 msgstr "Ustvarjanje več podrobnosti razhroščevanja. [privzeto: %default]"
 
-#: ../conduit/Main.py:99
+#: ../conduit/Main.py:98
 #, python-format
 msgid "Generate less debugging information. [default: %default]"
 msgstr "Ustvarjanje manj podrobnosti razhroščevanja. [privzeto: %default]"
 
-#: ../conduit/Main.py:103
+#: ../conduit/Main.py:102
 #, python-format
 msgid "Generate no debugging information. [default: %default]"
 msgstr "Brez ustvarjanja podrobnosti razhroščevanja. [privzeto: %default]"
@@ -207,12 +207,12 @@ msgid "Files and Folders"
 msgstr "Datoteke in mape"
 
 #: ../conduit/dataproviders/__init__.py:7
-#: ../conduit/modules/iPodModule/iPodModule.py:179
+#: ../conduit/modules/iPodModule/iPodModule.py:273
 msgid "Notes"
 msgstr "Opombe"
 
 #: ../conduit/dataproviders/__init__.py:8
-#: ../conduit/modules/iPodModule/iPodModule.py:367
+#: ../conduit/modules/iPodModule/iPodModule.py:461
 msgid "Photos"
 msgstr "Fotografije"
 
@@ -244,7 +244,7 @@ msgstr "Preizkus"
 msgid "Drag a Data Provider here to continue"
 msgstr "Na to mesto povlecite ponudnika podatkov za nadaljevanje"
 
-#: ../conduit/gtkui/Canvas.py:217
+#: ../conduit/gtkui/Canvas.py:227
 msgid "Show me"
 msgstr "Pokaži mi"
 
@@ -310,7 +310,7 @@ msgstr "Pretvorbe na voljo"
 
 #: ../conduit/gtkui/UI.py:200
 #: ../conduit/gtkui/Tree.py:355
-#: ../conduit/modules/FileModule/FileConfiguration.py:117
+#: ../conduit/modules/FileModule/FileConfiguration.py:118
 msgid "Name"
 msgstr "Ime"
 
@@ -336,39 +336,39 @@ msgstr "Razvijalci"
 msgid "Synchronization in progress. Do you want to cancel it?"
 msgstr "Usklajevanje je v teku. Ali ga želite preklicati?"
 
-#: ../conduit/gtkui/UI.py:711
+#: ../conduit/gtkui/UI.py:712
 msgid "_Synchronize All"
 msgstr "_Uskladi vse"
 
-#: ../conduit/gtkui/UI.py:711
+#: ../conduit/gtkui/UI.py:712
 msgid "Synchronizes All Groups"
 msgstr "Uskladi vse skupine"
 
-#: ../conduit/gtkui/UI.py:712
+#: ../conduit/gtkui/UI.py:713
 msgid "_Cancel Synchronization"
 msgstr "_Prekliči usklajevanje"
 
-#: ../conduit/gtkui/UI.py:712
+#: ../conduit/gtkui/UI.py:713
 msgid "Cancels Currently Synchronizing Groups"
 msgstr "Prekliče trenutno usklajevane skupine"
 
-#: ../conduit/gtkui/UI.py:713
+#: ../conduit/gtkui/UI.py:714
 msgid "_Quit"
 msgstr "_Končaj"
 
-#: ../conduit/gtkui/UI.py:713
+#: ../conduit/gtkui/UI.py:714
 msgid "Close Conduit"
 msgstr "Zapre program"
 
-#: ../conduit/gtkui/UI.py:753
+#: ../conduit/gtkui/UI.py:754
 msgid "Synchronization Error"
 msgstr "Napaka usklajevanja"
 
-#: ../conduit/gtkui/UI.py:756
+#: ../conduit/gtkui/UI.py:757
 msgid "Synchronization Complete"
 msgstr "Usklajevanje je končano"
 
-#: ../conduit/gtkui/UI.py:764
+#: ../conduit/gtkui/UI.py:765
 msgid "Synchronizing"
 msgstr "Usklajevanje"
 
@@ -439,7 +439,7 @@ msgid "Synchronize your Box.net files"
 msgstr "Uskladite svoje datoteke Box.net"
 
 #: ../conduit/modules/BoxDotNetModule/BoxDotNetModule.py:290
-#: ../conduit/modules/FileModule/FileModule.py:82
+#: ../conduit/modules/FileModule/FileModule.py:85
 msgid "Folder"
 msgstr "Mapa"
 
@@ -463,40 +463,40 @@ msgstr "Tapeta"
 msgid "Changes your Desktop Wallpaper"
 msgstr "Spremeni vašo tapeto namizja"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:107
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:110
 #, python-format
 msgid "Select %s"
 msgstr "Izberite %s"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:127
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:130
 msgid "Evolution Contacts"
 msgstr "Stiki Evolution "
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:128
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:131
 msgid "Synchronize your contacts"
 msgstr "Uskladite svoje stike"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:178
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:181
 msgid "Evolution Calendar"
 msgstr "Koledar Evolution "
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:179
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:182
 msgid "Synchronize your calendar"
 msgstr "Uskladite svoj koledar"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:240
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:243
 msgid "Evolution Tasks"
 msgstr "Naloge Evolution "
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:241
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:244
 msgid "Synchronize your tasks"
 msgstr "Uskladite svoje naloge"
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:297
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:300
 msgid "Evolution Memos"
 msgstr "Opomniki Evolution "
 
-#: ../conduit/modules/EvolutionModule/EvolutionModule.py:298
+#: ../conduit/modules/EvolutionModule/EvolutionModule.py:301
 msgid "Synchronize your memos"
 msgstr "Uskladite svoje opomnike"
 
@@ -531,7 +531,7 @@ msgid "Status"
 msgstr "Stanje"
 
 #: ../conduit/modules/FacebookModule/FacebookModule.py:150
-#: ../conduit/modules/iPodModule/iPodModule.py:461
+#: ../conduit/modules/iPodModule/iPodModule.py:563
 #: ../conduit/modules/ZotoModule/ZotoModule.py:252
 msgid "Album"
 msgstr "Album"
@@ -593,49 +593,49 @@ msgstr "Prejmi video datoteke"
 msgid "Download photo files"
 msgstr "Prejmi fotografije"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:111
+#: ../conduit/modules/FileModule/FileConfiguration.py:112
 msgid "Icon"
 msgstr "Ikona"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:123
+#: ../conduit/modules/FileModule/FileConfiguration.py:124
 #: ../conduit/modules/GConfModule/GConfModule.py:138
 msgid "Items"
 msgstr "Predmeti"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:149
+#: ../conduit/modules/FileModule/FileConfiguration.py:150
 #, python-format
 msgid "<i>Contains %s files</i>"
 msgstr "<i>Vsebuje %s datotek</i>"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:248
+#: ../conduit/modules/FileModule/FileConfiguration.py:249
 msgid "Include file..."
 msgstr "Vključi datoteko ..."
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:258
+#: ../conduit/modules/FileModule/FileConfiguration.py:259
 msgid "All files"
 msgstr "Vse datoteke"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:271
+#: ../conduit/modules/FileModule/FileConfiguration.py:272
 msgid "Include folder..."
 msgstr "Vključi mapo ..."
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:314
+#: ../conduit/modules/FileModule/FileConfiguration.py:315
 msgid "Please Name All Folders"
 msgstr "Poimenujte vse mape"
 
-#: ../conduit/modules/FileModule/FileConfiguration.py:315
+#: ../conduit/modules/FileModule/FileConfiguration.py:316
 msgid "All folders require a descriptive name. To name a folder simply click on it"
 msgstr "Vse mape morajo imeti opisno ime. Za poimenovanje mape enostavno kliknite nanjo"
 
-#: ../conduit/modules/FileModule/FileModule.py:23
+#: ../conduit/modules/FileModule/FileModule.py:26
 msgid "Files"
 msgstr "Datoteke"
 
-#: ../conduit/modules/FileModule/FileModule.py:24
+#: ../conduit/modules/FileModule/FileModule.py:27
 msgid "Source for synchronizing multiple files"
 msgstr "Vir za usklajevanje več datotek"
 
-#: ../conduit/modules/FileModule/FileModule.py:83
+#: ../conduit/modules/FileModule/FileModule.py:86
 msgid "Synchronize folders"
 msgstr "Usklajevanje map"
 
@@ -845,79 +845,85 @@ msgstr "YouTube"
 msgid "Synchronize data from YouTube"
 msgstr "Uskladite podatke z Youtube"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:180
+#: ../conduit/modules/iPodModule/iPodModule.py:274
 msgid "Synchronize your iPod notes"
 msgstr "Uskladite svoja sporočilca iPod"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:295
-#: ../conduit/modules/SynceModule.py:311
+#: ../conduit/modules/iPodModule/iPodModule.py:389
 msgid "Contacts"
 msgstr "Stiki"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:296
+#: ../conduit/modules/iPodModule/iPodModule.py:390
 msgid "Synchronize your iPod contacts"
 msgstr "Uskladite svoje stike iPod"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:331
-#: ../conduit/modules/SynceModule.py:449
+#: ../conduit/modules/iPodModule/iPodModule.py:425
 msgid "Calendar"
 msgstr "Koledar"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:332
+#: ../conduit/modules/iPodModule/iPodModule.py:426
 msgid "Synchronize your iPod calendar"
 msgstr "Uskladitev svoj koledar iPod"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:368
+#: ../conduit/modules/iPodModule/iPodModule.py:462
 msgid "Synchronize your iPod photos"
 msgstr "Uskladite svoje fotografije iPod"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:465
+#: ../conduit/modules/iPodModule/iPodModule.py:567
 msgid "Delete"
 msgstr "Izbriši"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:695
-#: ../conduit/modules/iPodModule/iPodModule.py:812
+#: ../conduit/modules/iPodModule/iPodModule.py:570
+msgid "Delete All Photos"
+msgstr "Izbriši vse fotografije"
+
+#: ../conduit/modules/iPodModule/iPodModule.py:800
+#: ../conduit/modules/iPodModule/iPodModule.py:917
 #: ../conduit/modules/N800Module/N800Module.py:77
 msgid "Encoding"
 msgstr "Kodiranje"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:811
+#: ../conduit/modules/iPodModule/iPodModule.py:916
 msgid "Conversion options"
 msgstr "Možnosti pretvorbe"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:816
+#: ../conduit/modules/iPodModule/iPodModule.py:921
 msgid "Keep converted files"
 msgstr "Obdrži pretvorjene datoteke"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:846
-msgid "iPod Music"
-msgstr "Glasba iPod"
+#. To translators: defaul music folder of N800
+#: ../conduit/modules/iPodModule/iPodModule.py:951
+#: ../conduit/modules/N800Module/N800Module.py:133
+msgid "Music"
+msgstr "Glasba"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:847
+#: ../conduit/modules/iPodModule/iPodModule.py:952
 msgid "Synchronize your iPod music"
 msgstr "Uskladite svojo glasbo iPod "
 
-#: ../conduit/modules/iPodModule/iPodModule.py:882
-msgid "iPod Video"
-msgstr "iPod Video"
+#. To translators: defaul video folder of N800
+#: ../conduit/modules/iPodModule/iPodModule.py:987
+#: ../conduit/modules/N800Module/N800Module.py:157
+msgid "Video"
+msgstr "Video"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:883
+#: ../conduit/modules/iPodModule/iPodModule.py:988
 msgid "Synchronize your iPod videos"
 msgstr "Uskladite svoje videe iPod"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:907
+#: ../conduit/modules/iPodModule/iPodModule.py:1012
 msgid "Movie"
 msgstr "Film"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:908
+#: ../conduit/modules/iPodModule/iPodModule.py:1013
 msgid "Music Video"
 msgstr "Glasbeni video"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:909
+#: ../conduit/modules/iPodModule/iPodModule.py:1014
 msgid "TV Show"
 msgstr "TV oddaja"
 
-#: ../conduit/modules/iPodModule/iPodModule.py:911
+#: ../conduit/modules/iPodModule/iPodModule.py:1016
 msgid "Video kind"
 msgstr "Vrsta videa"
 
@@ -947,11 +953,6 @@ msgstr "Glasba N800"
 msgid "Synchronizes music to a N800 device"
 msgstr "Uskladi glasbo z napravo N800"
 
-#. To translators: defaul music folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:133
-msgid "Music"
-msgstr "Glasba"
-
 #: ../conduit/modules/N800Module/N800Module.py:150
 msgid "N800 Videos"
 msgstr "Videoposnetki N800"
@@ -959,11 +960,6 @@ msgstr "Videoposnetki N800"
 #: ../conduit/modules/N800Module/N800Module.py:151
 msgid "Synchronizes video to a N800 device"
 msgstr "Uskladi video z napravo N800"
-
-#. To translators: defaul video folder of N800
-#: ../conduit/modules/N800Module/N800Module.py:157
-msgid "Video"
-msgstr "Video"
 
 #: ../conduit/modules/N800Module/N800Module.py:174
 msgid "N800 Photos"
@@ -1030,26 +1026,6 @@ msgstr "SmugMug"
 msgid "Synchronize your SmugMug.com photos"
 msgstr "Uskladitve svoje fotografije SmugMug.com"
 
-#: ../conduit/modules/SynceModule.py:139
-msgid "Create Partnership"
-msgstr "Ustvari družabništvo"
-
-#: ../conduit/modules/SynceModule.py:312
-msgid "Windows Mobile Contacts"
-msgstr "Stiki Windows Mobile"
-
-#: ../conduit/modules/SynceModule.py:450
-msgid "Windows Mobile Calendar"
-msgstr "Koledar Windows Mobile"
-
-#: ../conduit/modules/SynceModule.py:459
-msgid "Tasks"
-msgstr "Naloge"
-
-#: ../conduit/modules/SynceModule.py:460
-msgid "Windows Mobile Tasks"
-msgstr "Naloge Windows Mobile"
-
 #: ../conduit/modules/ZotoModule/ZotoModule.py:154
 msgid "Zoto"
 msgstr "Zoto"
@@ -1057,6 +1033,27 @@ msgstr "Zoto"
 #: ../conduit/modules/ZotoModule/ZotoModule.py:155
 msgid "Synchronize your Zoto photos"
 msgstr "Uskladite svoje fotografije Zoto"
+
+#~ msgid "iPod Music"
+#~ msgstr "Glasba iPod"
+
+#~ msgid "iPod Video"
+#~ msgstr "iPod Video"
+
+#~ msgid "Create Partnership"
+#~ msgstr "Ustvari družabništvo"
+
+#~ msgid "Windows Mobile Contacts"
+#~ msgstr "Stiki Windows Mobile"
+
+#~ msgid "Windows Mobile Calendar"
+#~ msgstr "Koledar Windows Mobile"
+
+#~ msgid "Tasks"
+#~ msgstr "Naloge"
+
+#~ msgid "Windows Mobile Tasks"
+#~ msgstr "Naloge Windows Mobile"
 
 #~ msgid "<b>Default Synchronization Options</b>"
 #~ msgstr "<b>Privzete možnosti usklajevanja</b>"
@@ -1117,9 +1114,6 @@ msgstr "Uskladite svoje fotografije Zoto"
 
 #~ msgid "Delete Item"
 #~ msgstr "Izbriši predmet"
-
-#~ msgid "Delete Options"
-#~ msgstr "Možnosti brisanja"
 
 #~ msgid "Delete from the corresponding sink"
 #~ msgstr "Izbriši iz ustreznega korita"
