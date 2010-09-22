@@ -20,6 +20,7 @@ import locale
 import weakref
 import threading
 import gobject
+import gio
 log = logging.getLogger("modules.iPod")
 
 import conduit
@@ -98,7 +99,7 @@ class iPhoneFactory(HalFactory.HalFactory):
             self._print_device(self.get_udev_device_for_sysfs_path(sysfs_path))
             if props.get("ID_SERIAL_SHORT"):
                 uuid = "afc://%s/" % props["ID_SERIAL_SHORT"]
-                for m in self.vm.get_mounts():
+                for m in gio.volume_monitor_get().get_mounts():
                     root = m.get_root()
                     uri = root.get_uri()
                     if uuid == uri:
@@ -146,7 +147,7 @@ class iPodFactory(MediaPlayerFactory.MediaPlayerFactory):
         access_protocols = self.get_mpi_access_protocol(props)
         if "ipod" in access_protocols.split(";"):
             uuid = props.get("ID_FS_UUID")
-            for vol in self.vm.get_volumes():
+            for vol in gio.volume_monitor_get().get_volumes():
                 #is this the disk corresponding to the ipod
                 #FIXME: we should be able to do gio.VolumeMonitor.get_volume_for_uuid()
                 #but that doesnt work

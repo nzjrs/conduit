@@ -1,6 +1,5 @@
 import gobject
 import gudev
-import gio
 
 import logging
 log = logging.getLogger("dataproviders.HalFactory")
@@ -22,7 +21,6 @@ class HalFactory(SimpleFactory.SimpleFactory):
 
         self.gudev = UDev.UDevSingleton(self.SUBSYSTEMS)
         self.gudev.connect("uevent", self._on_uevent)
-        self.vm = gio.volume_monitor_get()
 
     def _print_device(self, device):
         return
