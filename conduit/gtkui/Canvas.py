@@ -214,6 +214,15 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         self.msg.remove(msgarea)
 
     def _make_hint(self, hint, timeout=4):
+        if not self.msg:
+            return
+
+        if not conduit.GLOBALS.settings.get("gui_show_hints"):
+            return
+
+        if self.msg.is_showing_message():
+            return
+
         if Knowledge.HINT_TEXT[hint][2]:
             buttons = [(_("Show me"), hint)]
         else:
@@ -228,12 +237,6 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         h.show_all()    
         
     def _show_hint(self, conduitCanvasItem, dataproviderCanvasItem, newItem):
-        if not self.msg:
-            return
-            
-        if not conduit.GLOBALS.settings.get("gui_show_hints"):
-            return
-            
         if newItem == conduitCanvasItem:
             if conduitCanvasItem.model.can_sync():
                 self._make_hint(Knowledge.HINT_RIGHT_CLICK_CONFIGURE)
@@ -316,8 +319,7 @@ class Canvas(goocanvas.Canvas, _StyleMixin):
         if self.model == None or (self.model != None and self.model.num_conduits() == 0):
             if self.welcome == None:
                 self._create_welcome()
-            if self.msg and conduit.GLOBALS.settings.get("gui_show_hints"):
-                self._make_hint(Knowledge.HINT_BLANK_CANVAS, timeout=0)
+            self._make_hint(Knowledge.HINT_BLANK_CANVAS, timeout=0)
 
         elif self.welcome:
             self._delete_welcome()

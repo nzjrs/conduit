@@ -51,6 +51,9 @@ class MsgAreaController(gtk.VBox):
         for i in self.get_children():
             if type(i) == InfoBar:
                 self.remove(i)
+
+    def is_showing_message(self):
+        return len(self.get_children()) > 0
         
     def new_from_text_and_icon(self, primary, secondary=None, message_type=gtk.MESSAGE_INFO, buttons=(), timeout=0):
         infobar = InfoBar(primary, secondary, message_type, buttons)
