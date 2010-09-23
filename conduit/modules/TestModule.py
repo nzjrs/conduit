@@ -743,6 +743,11 @@ class TestFactory(DataProvider.DataProviderFactory):
     def save_configuration(self, ok):
         log.debug("OK: %s Message: %s" % (ok,self.entry.get_text()))
 
+_test_factory_cat = DataProviderCategory.DataProviderCategory(
+    "TestHotplug",
+    "emblem-system",
+    "/test/simplefactory")
+
 class TestFactoryRemoval(DataProvider.DataProviderFactory):
     """
     Repeatedly add/remove a DP/Category to stress test framework
@@ -751,19 +756,16 @@ class TestFactoryRemoval(DataProvider.DataProviderFactory):
         DataProvider.DataProviderFactory.__init__(self, **kwargs)
         self.count = 200
         self.stats = Memstats.Memstats()
-        self.cat = DataProviderCategory.DataProviderCategory(
-                    "TestHotplug",
-                    "emblem-system",
-                    "/test/")
+        self.cat = _test_factory_cat
         gobject.timeout_add(5000, self.added)
 
     def added(self):
         self.stats.calculate()
         self.key = self.emit_added(
-                           klass=type("DynamicTestSource", (TestSource, ), {"_name_":"Dynamic Source"}),
+                           klass=type("DynamicTestSource", (TestSource, ), {"_name_":"Factory Dynamic Source"}),
                            initargs=("Bar","Bazzer"),
                            category=self.cat)
-        gobject.timeout_add(500, self.removed)
+        gobject.timeout_add(1000, self.removed)
         return False
 
     def removed(self):
@@ -785,18 +787,15 @@ class TestSimpleFactory(SimpleFactory.SimpleFactory):
     """
     def __init__(self, **kwargs):
         SimpleFactory.SimpleFactory.__init__(self, **kwargs)
-        gobject.timeout_add(5000, self._added)
+        gobject.timeout_add(3000, self._added)
         self.count = 200
         self.stats = Memstats.Memstats()
 
     def get_category(self, key, **kwargs):
-        return DataProviderCategory.DataProviderCategory(
-            "TestHotplug",
-            "emblem-system",
-            "/test/")
+        return _test_factory_cat
 
     def get_dataproviders(self, key, **kwargs):
-        return [type("DynamicTestSource", (TestSource, ), {"_name_":"Dynamic Source"})]
+        return [type("DynamicTestSource", (TestSource, ), {"_name_":"Simple Factory Dynamic Source"})]
 
     def get_args(self, key, **kwargs):
         return ()
@@ -805,7 +804,7 @@ class TestSimpleFactory(SimpleFactory.SimpleFactory):
         """ Some hal event added a device? """
         self.stats.calculate()
         self.item_added("foobar", **{})
-        gobject.timeout_add(500, self._removed)
+        gobject.timeout_add(1000, self._removed)
         return False
 
     def _removed(self):
