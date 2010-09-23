@@ -704,8 +704,10 @@
                     <child type="label">
                       <object class="GtkLabel" id="label66">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">&lt;b&gt;General&lt;/b&gt;</property>
-                        <property name="use_markup">True</property>
+                        <property name="label" translatable="yes">General</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+                        </attributes>
                       </object>
                     </child>
                   </object>
@@ -892,8 +894,10 @@
                     <child type="label">
                       <object class="GtkLabel" id="label76">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes">&lt;b&gt;Default Synchronization Options&lt;/b&gt;</property>
-                        <property name="use_markup">True</property>
+                        <property name="label" translatable="yes">Default Synchronization Options</property>
+                        <attributes>
+                          <attribute name="weight" value="PANGO_WEIGHT_BOLD"/>
+                        </attributes>
                       </object>
                     </child>
                   </object>
