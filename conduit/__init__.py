@@ -34,9 +34,11 @@ IS_DEVELOPMENT_VERSION = True
 
 #test the existance of some compulsory directories
 CONFIG_DIR = os.environ.get("XDG_CONFIG_HOME", os.path.join(os.environ['HOME'], ".config"))
+CACHE_DIR = os.environ.get("XDG_CACHE_HOME", os.path.join(os.environ['HOME'], ".cache"))
 AUTOSTART_FILE_DIR = os.path.join(CONFIG_DIR,	"autostart")
 USER_DIR = os.path.join(CONFIG_DIR,	"conduit")
-for d in (AUTOSTART_FILE_DIR, USER_DIR):
+USER_CACHE_DIR = os.path.join(CACHE_DIR, "conduit")
+for d in (AUTOSTART_FILE_DIR, USER_DIR, USER_CACHE_DIR):
     if not os.path.exists(d):
         os.makedirs(d)
 

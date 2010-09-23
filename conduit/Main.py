@@ -171,7 +171,6 @@ class Application(dbus.service.Object):
         #Initialize all globals variables
         conduit.GLOBALS.app = self
         conduit.GLOBALS.moduleManager = ModuleManager(dirs_to_search)
-        conduit.GLOBALS.moduleManager.load_all(whitelist, blacklist)
         conduit.GLOBALS.typeConverter = TypeConverter(conduit.GLOBALS.moduleManager)
         conduit.GLOBALS.syncManager = SyncManager(conduit.GLOBALS.typeConverter)
         conduit.GLOBALS.mappingDB = MappingDB(self.dbFile)
@@ -206,10 +205,18 @@ class Application(dbus.service.Object):
 
         #hide the splash screen
         self.HideSplash()
+        #load the modules on idle to speed startup
+        gobject.idle_add(self._load_modules, whitelist, blacklist)
+
         try:
             conduit.GLOBALS.mainloop.run()
         except KeyboardInterrupt:
             self.Quit()
+
+    def _load_modules(self, whitelist, blacklist):
+        conduit.GLOBALS.moduleManager.load_all(whitelist, blacklist)
+        self.guiSyncSet.restore_from_xml()
+        return False
 
     def get_syncset(self):
         return self.guiSyncSet
@@ -228,7 +235,6 @@ class Application(dbus.service.Object):
                                 )
 
         #reload the saved sync set
-        self.guiSyncSet.restore_from_xml()
         self.gui.set_model(self.guiSyncSet)
 
         if self.statusIcon:
