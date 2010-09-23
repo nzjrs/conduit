@@ -1,1 +1,1 @@
-SUBDIRS = actions apps hildon status
+SUBDIRS = actions apps status

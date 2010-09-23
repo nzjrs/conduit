@@ -159,7 +159,6 @@ conduit/vfs/Makefile
 conduit/datatypes/Makefile
 conduit/dataproviders/Makefile
 conduit/gtkui/Makefile
-conduit/hildonui/Makefile
 conduit/platform/Makefile
 conduit/modules/Makefile
 conduit/modules/BackpackModule/Makefile
@@ -195,7 +194,6 @@ data/icons/hicolor/Makefile
 data/icons/hicolor/16x16/Makefile
 data/icons/hicolor/16x16/actions/Makefile
 data/icons/hicolor/16x16/apps/Makefile
-data/icons/hicolor/16x16/hildon/Makefile
 data/icons/hicolor/16x16/status/Makefile
 data/icons/hicolor/22x22/Makefile
 data/icons/hicolor/22x22/apps/Makefile

@@ -13,8 +13,6 @@ conduit/gtkui/UI.py
 conduit/gtkui/Tree.py
 conduit/gtkui/ConfigItems.py
 conduit/gtkui/WindowConfigurator.py
-conduit/hildonui/Canvas.py
-conduit/hildonui/UI.py
 conduit/modules/BackpackModule/BackpackModule.py
 conduit/modules/BackpackModule/backpack/backpack.py
 conduit/modules/BansheeModule/BansheeModule.py
