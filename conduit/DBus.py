@@ -532,6 +532,11 @@ class DBusInterface(DBusItem):
     def get_syncset(self):
         return self.sync_set
 
+    def get_all_syncsets(self):
+        return [EXPORTED_OBJECTS[path].syncSet
+                    for path in EXPORTED_OBJECTS if path.startswith("/syncset/")
+        ]
+
     @dbus.service.signal(APPLICATION_DBUS_IFACE, signature='s')
     def DataproviderAvailable(self, key):
         self._print("Emmiting DBus signal DataproviderAvailable %s" % key)

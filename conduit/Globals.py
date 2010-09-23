@@ -15,6 +15,8 @@ class Globals:
 
         #the main application
         self.app = None
+        #the dbus interface
+        self.dbus = None
 
         #Global cancellation flag
         self.cancelled = False
@@ -22,3 +24,9 @@ class Globals:
         #the application main loop
         self.mainloop = None
 
+    def get_all_syncsets(self):
+        ss = []
+        for s in [self.app.get_syncset()] + [self.dbus.get_syncset()] + self.dbus.get_all_syncsets():
+            if s not in ss:
+                ss.append(s)
+        return ss

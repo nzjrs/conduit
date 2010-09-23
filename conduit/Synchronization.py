@@ -141,8 +141,8 @@ class SyncManager:
         #need to get the conduit assocated with this dataprovider because the sync-completed
         #signal is emmited from the conduit object
         conds = []
-        conds.extend(conduit.GLOBALS.app.guiSyncSet.get_all_conduits())
-        conds.extend(conduit.GLOBALS.app.dbusSyncSet.get_all_conduits())
+        for ss in conduit.GLOBALS.get_all_syncsets():
+            conds.extend(ss.get_all_conduits())
         for c in conds:
             for dpw in c.get_all_dataproviders():
                 if dataprovider == dpw.module:
