@@ -160,7 +160,7 @@ class ModuleWrapper:
         if not self.icon.has_key(size) or self.icon[size] is None:
             if self.module_type in ["source", "sink", "twoway", "category"]:
                 try:
-                    info = gtk.icon_theme_get_default().lookup_icon(self.icon_name, size, 0)
+                    info = gtk.icon_theme_get_default().lookup_icon(self.icon_name, size, gtk.ICON_LOOKUP_GENERIC_FALLBACK)
                     self.icon[size] = info.load_icon()
                     self.icon_path = info.get_filename()
                 except:
