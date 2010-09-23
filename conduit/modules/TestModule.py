@@ -745,8 +745,7 @@ class TestFactory(DataProvider.DataProviderFactory):
 
 _test_factory_cat = DataProviderCategory.DataProviderCategory(
     "TestHotplug",
-    "emblem-system",
-    "/test/simplefactory")
+    "emblem-system")
 
 class TestFactoryRemoval(DataProvider.DataProviderFactory):
     """

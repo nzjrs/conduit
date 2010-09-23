@@ -105,8 +105,7 @@ class SynceFactory(HalFactory.HalFactory):
     def get_category(self, udi, **kwargs):
         return DataProviderCategory.DataProviderCategory(
                     "Windows Mobile",
-                    "windows",
-                    udi)
+                    "windows")
 
     def get_dataproviders(self, udi, **kwargs):
         return [SynceContactsTwoWay, SynceCalendarTwoWay, SynceTasksTwoWay]

@@ -255,8 +255,7 @@ class RemovableDeviceFactory(SimpleFactory.SimpleFactory):
         if not self._categories.has_key(udi):
             self._categories[udi] = DataProviderCategory.DataProviderCategory(
                     kwargs['label'],
-                    "drive-removable-media",
-                    udi)
+                    "drive-removable-media")
         return self._categories[udi]
 
     def get_dataproviders(self, udi, **kwargs):

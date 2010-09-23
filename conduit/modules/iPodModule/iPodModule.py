@@ -123,8 +123,7 @@ class iPhoneFactory(HalFactory.HalFactory):
         """ Return a category to contain these dataproviders """
         return DataProviderCategory.DataProviderCategory(
                     _get_apple_label(props),
-                    _get_apple_icon(props),
-                    key)
+                    _get_apple_icon(props))
     
     def get_dataproviders(self, key, **props):
         """ Return a list of dataproviders for this class of device """
@@ -170,8 +169,7 @@ class iPodFactory(MediaPlayerFactory.MediaPlayerFactory):
     def get_category(self, key, **props):
         return DataProviderCategory.DataProviderCategory(
                     _get_apple_label(props),
-                    _get_apple_icon(props),
-                    key)
+                    _get_apple_icon(props))
 
     def get_dataproviders(self, udi, **props):
         #Read information about the ipod, like if it supports

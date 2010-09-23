@@ -43,8 +43,7 @@ class PhoneFactory(DataProvider.DataProviderFactory):
         if name not in self._cats:
             self._cats[name] = DataProviderCategory.DataProviderCategory(
                                     name,
-                                    "phone",
-                                    address)    
+                                    "phone")
         category = self._cats[name]
 
         #create the klass for controlling the phone

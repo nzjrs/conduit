@@ -27,14 +27,13 @@ class CategoryWrapper(ModuleWrapper):
                             initargs=(),
                             category=category
                             )
-        self.key=category.key
         self.name=category.name
         self.classname=category.name
         self.icon_name=category.icon
         self.module_type="category"
 
     def get_UID(self):
-        return self.key
+        return self.name
 
 IDX_ICON = 0
 IDX_NAME = 1

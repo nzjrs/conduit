@@ -39,8 +39,7 @@ class N800Factory(VolumeFactory.VolumeFactory):
     def get_category(self, udi, **kwargs):
         return DataProviderCategory.DataProviderCategory(
                     "Nokia N800",
-                    "n800",
-                    kwargs['mount'])
+                    "n800")
 
     def get_dataproviders(self, udi, **kwargs):
          return [N800FolderTwoWay, N800AudioTwoWay, N800VideoTwoWay, N800PhotoTwoWay]

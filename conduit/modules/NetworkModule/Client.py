@@ -50,7 +50,7 @@ class NetworkClientFactory(DataProvider.DataProviderFactory):
 
         if not self.peers.has_key(url):
             #Create a category group for this host
-            self.categories[url] = DataProviderCategory.DataProviderCategory("On %s" % host, "computer", host)
+            self.categories[url] = DataProviderCategory.DataProviderCategory("On %s" % host, "computer")
             # Create a dataproviders list for this host
             self.dataproviders[url] = {}
             # Request all dp's for this host. Because there is no
