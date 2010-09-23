@@ -2,6 +2,7 @@ conduit/Main.py
 conduit/libconduit.py
 conduit/XMLSerialization.py
 data/conduit.desktop.in
+test/soup/utils/test.py
 tools/eog-plugin/conduit.py
 tools/totem-plugin/conduit.py
 tools/test-db-wrapper/main.ui
@@ -9,6 +10,8 @@ conduit/modules/TestModule.py
 conduit/modules/SettingsModule/GConfUtils.py
 conduit/modules/SettingsModule/layout_loader.py
 conduit/modules/SettingsModule/layout_save.py
+conduit/modules/UNSUPPORTED/AmazonS3Module/config.glade
+conduit/modules/UNSUPPORTED/GoogleModule/GoogleModule.py
 conduit/modules/UNSUPPORTED/RTMModule/RTMModule.py
 conduit/modules/UNSUPPORTED/RTMModule/config.glade
 conduit/modules/UNSUPPORTED/PicasaDesktopModule/PicasaDesktopModule.py
@@ -16,7 +19,3 @@ conduit/modules/UNSUPPORTED/PicasaDesktopModule/config.glade
 conduit/modules/UNSUPPORTED/RhythmboxDBusModule/RhythmboxDBusModule.py
 conduit/modules/UNSUPPORTED/RhythmboxDBusModule/config.glade
 conduit/modules/UNSUPPORTED/SynceModule.py
-
-
-
-

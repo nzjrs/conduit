@@ -1,6 +1,6 @@
 [encoding: UTF-8]
 data/conduit.desktop.in.in
-data/conduit.ui
+[type: gettext/glade]data/conduit.ui
 conduit/Knowledge.py
 conduit/Main.py
 #conduit/Module.py
@@ -31,12 +31,12 @@ conduit/modules/FlickrModule/FlickrModule.py
 conduit/modules/FspotModule/FspotModule.py
 conduit/modules/GConfModule/GConfModule.py
 conduit/modules/GoogleBookmarksModule.py
-conduit/modules/GoogleModule/GoogleModule.py
 conduit/modules/iPodModule/iPodModule.py
 conduit/modules/N800Module/N800Module.py
 conduit/modules/NautilusBookmarksModule.py
 conduit/modules/NetworkModule/Server.py
 conduit/modules/RhythmboxModule/RhythmboxModule.py
+conduit/modules/ShotwellModule/ShotwellModule.py
 conduit/modules/ShutterflyModule/ShutterflyModule.py
 conduit/modules/ShutterflyModule/shutterfly/shutterfly.py
 conduit/modules/SmugMugModule/SmugMugModule.py
