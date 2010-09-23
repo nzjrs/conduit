@@ -11,7 +11,6 @@ SUBDIRS = \
 	ShotwellModule \
 	SmugMugModule \
 	EvolutionModule \
-	GoogleModule \
 	ShutterflyModule \
 	RhythmboxModule \
 	N800Module \
