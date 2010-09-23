@@ -15,10 +15,13 @@ import conduit.utils as Utils
 
 from gettext import gettext as _
 
-MODULES = {
-	"TomboyNoteTwoWay" :        { "type": "dataprovider"    },
-	"TomboyNoteConverter" :     { "type": "converter"       }
-}
+if Utils.program_installed("tomboy"):
+    MODULES = {
+	    "TomboyNoteTwoWay" :        { "type": "dataprovider"    },
+	    "TomboyNoteConverter" :     { "type": "converter"       }
+    }
+else:
+    MODULES = {}
 
 class TomboyNote(Note.Note):
     """
