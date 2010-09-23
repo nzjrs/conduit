@@ -764,7 +764,7 @@ class DataProviderCanvasItem(_CanvasItem):
 
     WIDGET_WIDTH = 130
     WIDGET_HEIGHT = 50
-    IMAGE_TO_TEXT_PADDING = 5
+    IMAGE_TO_TEXT_PADDING = 3
     PENDING_MESSAGE = "Pending"
     MAX_TEXT_LENGTH = 8
     MAX_TEXT_LINES = 2
@@ -812,7 +812,7 @@ class DataProviderCanvasItem(_CanvasItem):
                                 **self.get_style_properties("box")
                                 )
         pb = self.model.get_icon()
-        pbx = int((1*self.WIDGET_WIDTH/5) - (pb.get_width()/2))
+        pbx = int(1*self.WIDGET_WIDTH/10)
         pby = int((1*self.WIDGET_HEIGHT/3) - (pb.get_height()/2))
         self.image = goocanvas.Image(pixbuf=pb,
                                 x=pbx,
@@ -886,8 +886,8 @@ class DataProviderCanvasItem(_CanvasItem):
             }
         elif specifier == "statusText":
             kwargs = {
-                "font":"Sans 7",
-                "fill_color_rgba":self.get_style_color_int_rgba("text_aa","normal")
+                "font":"Sans 6",
+                "fill_color_rgba":self.get_style_color_int_rgba("text","normal")
             }
         
         return kwargs
