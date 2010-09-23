@@ -6,18 +6,13 @@ Based upon code from
 Copyright 2007: John Stowers
 License: GPLv2
 """
+import glib
 import urllib
-import os
+import os.path
+import xml.sax
+import xml.etree.ElementTree as ET
 import logging
-from xml.sax import make_parser, handler, SAXException
-
 log = logging.getLogger("modules.Rhythmbox")
-
-
-try:
-    import elementtree.ElementTree as ET
-except:
-    import xml.etree.ElementTree as ET
 
 import conduit
 import conduit.dataproviders.DataProvider as DataProvider
@@ -37,7 +32,16 @@ else:
 NAME_IDX=0
 CHECK_IDX=1
 
-class SearchComplete(SAXException): pass
+#Rhythmbox moved its xml files from ~/.gnome2 -> XDG_USER_DATA_DIR
+
+def _get_rhythmbox_xml_path(xml):
+    for base in (glib.get_user_data_dir(),os.path.expanduser("~/.gnome2")):
+        path = os.path.join(base,"rhythmbox",xml)
+        if os.path.exists(path):
+            return path
+    return "/dev/null"
+
+class SearchComplete(xml.sax.SAXException): pass
 
 class RhythmboxSource(DataProvider.DataSource):
 
@@ -50,8 +54,8 @@ class RhythmboxSource(DataProvider.DataSource):
     _icon_ = "rhythmbox"
     _configurable_ = True
 
-    PLAYLIST_PATH="~/.gnome2/rhythmbox/playlists.xml"
-    RHYTHMDB_PATH="~/.gnome2/rhythmbox/rhythmdb.xml"
+    PLAYLIST_PATH = _get_rhythmbox_xml_path("playlists.xml")
+    RHYTHMDB_PATH = _get_rhythmbox_xml_path("rhythmdb.xml")
 
     def __init__(self, *args):
         DataProvider.DataSource.__init__(self)
@@ -100,7 +104,7 @@ class RhythmboxSource(DataProvider.DataSource):
 
     def _init_songdata(self, songs):
         rb_handler = RhythmDBHandler(songs)
-        parser = make_parser()
+        parser = xml.sax.make_parser()
         parser.setContentHandler(rb_handler)
         path = os.path.expanduser(self.RHYTHMDB_PATH) 
         try:
@@ -177,7 +181,7 @@ class RhythmboxAudio(Audio.Audio):
         return self.rhythmdb_tags
 
 
-class RhythmDBHandler(handler.ContentHandler):
+class RhythmDBHandler(xml.sax.handler.ContentHandler):
     '''A SAX XML handler that loops through a list of songs and retrieves the interesting data.  
     While we're at it, clean the filepath and check for the existance of the file 
     before adding it to the final list of songs.
@@ -192,7 +196,7 @@ class RhythmDBHandler(handler.ContentHandler):
         'play-count', 'rating', 'duration', 'bitrate')
 
     def __init__(self, searchlist):
-        handler.ContentHandler.__init__(self)
+        xml.sax.handler.ContentHandler.__init__(self)
         self.searchlist = searchlist
         self.cleansongs = []
         self.songdata = {}
