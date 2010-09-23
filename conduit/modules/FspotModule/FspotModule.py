@@ -14,9 +14,12 @@ import conduit.dataproviders.Image as Image
 
 from gettext import gettext as _
 
-MODULES = {
-	"FSpotDbusTwoWay" :     { "type": "dataprovider"    },
-}
+if Utils.program_installed("f-spot"):
+    MODULES = {
+	    "FSpotDbusTwoWay" :     { "type": "dataprovider"    },
+    }
+else:
+    MODULES = {}
 
 NAME_IDX = 0
 ID_IDX = 1
