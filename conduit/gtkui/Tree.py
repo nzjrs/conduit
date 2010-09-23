@@ -27,13 +27,14 @@ class CategoryWrapper(ModuleWrapper):
                             initargs=(),
                             category=category
                             )
+        self.key=category.key
         self.name=category.name
         self.classname=category.name
         self.icon_name=category.icon
         self.module_type="category"
 
     def get_UID(self):
-        return self.name
+        return self.key
 
 IDX_ICON = 0
 IDX_NAME = 1
@@ -44,7 +45,9 @@ COLUMN_TYPES = (gtk.gdk.Pixbuf, str, str, str)
 class DataProviderTreeModel(gtk.GenericTreeModel):
     """
     A treemodel for managing dynamically loaded modules. Manages an internal 
-    list of L{conduit.ModuleManager.ModuleWrapper}
+    list of L{conduit.ModuleManager.ModuleWrapper}.
+
+    rowrefs are Wrapper objects.
     
     @ivar modules: The array of modules under this treeviews control.
     @type modules: L{conduit.ModuleManager.ModuleWrapper}[]
@@ -73,17 +76,23 @@ class DataProviderTreeModel(gtk.GenericTreeModel):
     def _is_category_heading(self, rowref):
         return rowref.module_type == "category"
 
-    def _get_category_index_by_name(self, category_name):
+    def _get_category_rowref_index(self, category):
+        """
+        Returns the index in self.cats of the wrapper containing the
+        given DataProviderCategory
+        """
         i = 0
         for j in self.cats:
-            if j.category == category_name:
+            if j.category == category:
                 return i
             i += 1
         return None
 
-    def _get_category_by_name(self, category_name):
-        idx = self._get_category_index_by_name(category_name)
-        return self.cats[idx]
+    def _get_category_rowref(self, category):
+        """
+        Returns the Wrapper in self.cats for the given DataProviderCategory
+        """
+        return self.cats[self._get_category_rowref_index(category)]
         
     def _rebuild_path_mappings(self):
         self.pathMappings = {}
@@ -124,7 +133,7 @@ class DataProviderTreeModel(gtk.GenericTreeModel):
         @type signal: C{bool}
         """
         #Do we need to create a category first?
-        i = self._get_category_index_by_name(dpw.category)
+        i = self._get_category_rowref_index(dpw.category)
         if i == None:
             new_cat = CategoryWrapper(dpw.category)
             self.cats.append(new_cat)
@@ -163,7 +172,7 @@ class DataProviderTreeModel(gtk.GenericTreeModel):
         
         #del (self.childrencache[parent])
 
-        i = self._get_category_index_by_name(dpw.category)
+        i = self._get_category_rowref_index(dpw.category)
         if len(self.dataproviders[i]) == 0:
             log.info("Category %s empty - removing." % dpw.category)
             self.row_deleted((i, ))
@@ -325,8 +334,8 @@ class DataProviderTreeModel(gtk.GenericTreeModel):
             #print "on_iter_parent: parent = None"
             return None
         else:
-            cat = self._get_category_by_name(rowref.category)
-            path = self.on_get_path(cat)
+            rowref = self._get_category_rowref(rowref.category)
+            path = self.on_get_path(rowref)
             #print "on_iter_parent: parent = ", self.cats[path[0]]
             return self.cats[path[0]]
             
