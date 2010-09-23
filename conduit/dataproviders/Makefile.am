@@ -6,8 +6,8 @@ conduit_PYTHON = \
 	File.py \
 	HalFactory.py \
 	Image.py \
+	MediaPlayerFactory.py \
 	SimpleFactory.py \
-	VolumeFactory.py \
 	__init__.py
 
 clean-local:

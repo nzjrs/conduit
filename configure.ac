@@ -177,6 +177,8 @@ conduit/modules/FspotModule/Makefile
 conduit/modules/iPodModule/Makefile
 conduit/modules/SmugMugModule/Makefile
 conduit/modules/SmugMugModule/SmugMugAPI/Makefile
+conduit/modules/ShotwellModule/Makefile
+conduit/modules/ShotwellModule/shotwell/Makefile
 conduit/modules/ShutterflyModule/Makefile
 conduit/modules/ShutterflyModule/shutterfly/Makefile
 conduit/modules/RhythmboxModule/Makefile
