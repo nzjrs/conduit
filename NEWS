@@ -1,6 +1,9 @@
 NEW in 0.3.18:
 ==============
 
+Bugs fixed:
+ 614173, 626217, 626572, 584450, 589704, 582530, 568798, 564275
+
 NEW in 0.3.17:
 ==============
  * Fix dbus and configuration, install eog and nautilus extensions by default
