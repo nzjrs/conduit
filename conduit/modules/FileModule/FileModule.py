@@ -4,6 +4,7 @@ import logging
 log = logging.getLogger("modules.File")
 
 import gio
+import glib
 
 import conduit
 import conduit.dataproviders.DataProvider as DataProvider
@@ -86,7 +87,7 @@ class FolderTwoWay(FileDataProvider.FolderTwoWay, AutoSync.AutoSync):
     _description_ = _("Synchronize folders")
     _configurable_ = True
 
-    DEFAULT_FOLDER = "file://"+os.path.expanduser("~")
+    DEFAULT_FOLDER = "file://"+glib.get_user_special_dir(glib.USER_DIRECTORY_DOCUMENTS)
     DEFAULT_GROUP = "Home"
     DEFAULT_HIDDEN = False
     DEFAULT_COMPARE_IGNORE_MTIME = False
