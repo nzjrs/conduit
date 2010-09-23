@@ -29,7 +29,7 @@ class Rid(object):
         self.hash = str(hash)
 
         assert (type(uid) == str or type(uid) == unicode or uid == None), "UID must be unicode,string or None not %s" % type(uid)
-        assert (type(mtime) == datetime.datetime or mtime == None), "mtime must be datatime or None not %s" % type(datetime)
+        assert (type(mtime) == datetime.datetime or mtime == None), "mtime must be datetime or None not %s" % type(datetime)
 
     def __eq__(self, other):
         if other == None:
