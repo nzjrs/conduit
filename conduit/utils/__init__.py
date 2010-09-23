@@ -165,15 +165,6 @@ def dataprovider_add_dir_to_path(dataproviderfile, directory=""):
     path = os.path.abspath(path)
     sys.path.insert(0,path)
 
-def dataprovider_glade_get_widget(dataproviderfile, gladefilename, widget):
-    """
-    Gets a single gtk widget from a glad file
-    """
-    import gtk.glade
-    path = os.path.join(dataproviderfile, "..", gladefilename)
-    path = os.path.abspath(path)
-    return gtk.glade.XML(path, widget)
-
 def run_dialog(dialog, window=None):
     """
     Runs a given dialog, and makes it transient for
