@@ -1,27 +1,14 @@
-#!/bin/sh
-# Start Conduit
+#!/usr/bin/env python
+import sys
+import os.path
 
-# Work around https://bugs.launchpad.net/ubuntu/+source/firefox/+bug/26436
-# Note: This bug is also present in Mandriva and Fedora, for this reason, 
-# We will use run-mozilla in all cases
+#support running uninstalled
+_dirname = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if os.path.exists(os.path.join(_dirname,"NEWS")):
+    sys.path.insert(0, _dirname)
 
-# Run mozilla takes care of settin up the appropriate environment variables
-# to run a program using mozilla libs
+import conduit
+import conduit.Main
 
-if [ x$CONDUIT_BROWSER_IMPL = x"gtkmozembed" ]; then
-    for d in `ls -d /usr/lib*/firefox* /usr/lib*/mozilla-firefox* 2> /dev/null | sort -r`
-    do
-        if [ -x $d/run-mozilla.sh ]; then
-            echo INFO: FOUND FIREFOX LIBS AT $d
-            $d/run-mozilla.sh `dirname $0`/conduit.real $*
-            exit
-        fi
-    done
-
-    echo "WARNING: COULD NOT FIND FIREFOX LIBRARIES"
-    echo "WARNING: CONDUIT MAY CRASH UNEXPECTEDLY"
-    echo "WARNING: PLEASE TALK TO THE PERSON WHO PACKAGED CONDUIT"
-fi
-
-`dirname $0`/conduit.real $*
-
+app = conduit.Main.Application()
+ 

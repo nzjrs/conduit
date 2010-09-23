@@ -2,7 +2,6 @@ SUBDIRS = datatypes dataproviders modules gtkui hildonui utils platform vfs
 
 conduitbindir = $(bindir)
 conduitbin_SCRIPTS = \
-	conduit.real \
 	conduit
 
 conduitdir = $(pythondir)/conduit
@@ -40,7 +39,6 @@ DISTCLEANFILES = \
 	
 EXTRA_DIST = \
 	defs.py.in \
-	conduit.real \
 	conduit
 
 clean-local:

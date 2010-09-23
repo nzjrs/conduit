@@ -26,8 +26,7 @@ class Settings:
     
 class WebBrowser(gobject.GObject):
     """
-    Basic webbrowser abstraction to provide an upgrade path
-    to webkit from gtkmozembed
+    Basic webbrowser abstraction
     """
     __gsignals__ = {
         "location_changed" : (

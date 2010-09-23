@@ -65,9 +65,7 @@ class LoginWindow(Singleton.Singleton):
             return False
 
         import gtk
-        if browserName == "gtkmozembed":
-            import conduit.platform.WebBrowserMozilla as WebBrowserImpl
-        elif browserName == "webkit":
+        if browserName == "webkit":
             import conduit.platform.WebBrowserWebkit as WebBrowserImpl
 
         #lazy init to save a bit of time
@@ -176,7 +174,7 @@ class LoginMagic(object):
             login = WebBrowserSystem.WebBrowserImpl()
         else:
             try:
-                if browser not in ("gtkmozembed","webkit"):
+                if browser != "webkit":
                     log.warn("Unknown browser type")
                     return
 

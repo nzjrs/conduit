@@ -4,8 +4,7 @@ conduit_PYTHON = \
 	SettingsGConf.py		\
 	SettingsPython.py		\
 	WebBrowserWebkit.py		\
-	WebBrowserSystem.py		\
-	WebBrowserMozilla.py
+	WebBrowserSystem.py
 	
 clean-local:
 	rm -rf *.pyc *.pyo
