@@ -502,16 +502,10 @@ class MainWindow:
 
         log.debug("Launching help: %s" % uri)
 
-        if gtk.gtk_version >= (2,14,0):
-            gtk.show_uri(
-                self.mainWindow.get_screen(),
-                uri,
-                gtk.get_current_event_time())
-        else:
-            gobject.spawn_async(
-                        argv=("xdg-open",uri),
-                        flags=gobject.SPAWN_SEARCH_PATH | gobject.SPAWN_STDOUT_TO_DEV_NULL | gobject.SPAWN_STDERR_TO_DEV_NULL
-                        )
+        gtk.show_uri(
+            self.mainWindow.get_screen(),
+            uri,
+            gtk.get_current_event_time())
 
     def on_window_state_event(self, widget, event):
         visible = self.is_visible()

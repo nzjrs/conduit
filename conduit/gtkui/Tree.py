@@ -354,7 +354,7 @@ class DataProviderTreeView(gtk.TreeView):
         """
         gtk.TreeView.__init__(self, model)
         self.set_property("enable-search", False)
-        if gtk.pygtk_version >= (2,10,0) and conduit.GLOBALS.settings.get("gui_show_treeview_lines"):
+        if conduit.GLOBALS.settings.get("gui_show_treeview_lines"):
             self.set_property("enable-tree-lines", True)
         
         #First column is an image and name
@@ -409,12 +409,10 @@ class DataProviderTreeView(gtk.TreeView):
                     else:
                         self.collapse_row(path)
                 except KeyError:
-                    #expand all
+                    log.warning("Could not expand row")
                     break
-            return
-        #Work around a (py)gtk 2.8 bug
-        if gtk.pygtk_version >= (2,10,0):
-            gtk.TreeView.expand_all(self)
+        else:
+            self.expand_all()
         
     def on_drag_data_get(self, treeview, context, selection, target_id, etime):
         """
